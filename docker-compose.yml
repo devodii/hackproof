@@ -40,10 +40,10 @@ services:
     ports:
       - "8000:8000"
 
-  indexer:
+  cli:
     <<: *api
     profiles: [tools]
-    command: uv run hackproof sync
+    entrypoint: ["uv", "run", "hackproof"]
 
   web:
     image: node:24-alpine
