@@ -5,7 +5,7 @@ from hackproof.db import pool
 from hackproof.hackathon import get_hackathon
 
 PROJECTS_SQL = """
-SELECT p.project_id, p.full_name, r.url, p.footprint, p.contracts, p.classic_ops, p.assets,
+SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.classic_ops, p.assets,
        p.builders, p.wasm_uploads, p.failed_txs, p.first_activity, p.last_activity,
        r.description, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
        r.country, r.dependencies,
@@ -21,9 +21,10 @@ WHERE ($1::text IS NULL
        OR p.project_id = 'acct:' || $2
        OR p.project_id IN (SELECT project_id FROM account_projects WHERE account = $2))
   AND ($3::text IS NULL OR p.project_id = $3)
+  AND ($4::text[] IS NULL OR p.tier = ANY($4))
 ORDER BY p.linked DESC, p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST,
          p.last_activity DESC
-LIMIT $4 OFFSET $5
+LIMIT $5 OFFSET $6
 """
 
 CONTRACTS_SQL = """
@@ -81,23 +82,27 @@ LIMIT $6 OFFSET $7
 
 STATS_SQL = """
 SELECT
-    (SELECT count(*) FROM projects) AS projects,
-    (SELECT count(*) FROM projects WHERE footprint = 'contracts') AS contract_projects,
-    (SELECT count(*) FROM projects WHERE footprint = 'classic') AS classic_projects,
-    (SELECT count(*) FROM projects WHERE footprint = 'github') AS github_projects,
-    (SELECT count(*) FROM projects WHERE linked) AS linked_projects,
+    (SELECT count(*) FROM projects WHERE tier IN ('verified', 'declared', 'likely')) AS projects,
+    (SELECT count(*) FROM projects WHERE tier = 'verified') AS verified_projects,
+    (SELECT count(*) FROM projects WHERE tier = 'declared') AS declared_projects,
+    (SELECT count(*) FROM projects WHERE tier = 'likely') AS likely_projects,
+    (SELECT count(*) FROM projects WHERE tier = 'possible') AS possible_projects,
+    (SELECT count(*) FROM projects WHERE tier = 'unattributed') AS unattributed_accounts,
     (SELECT count(*) FROM contracts WHERE deployed_at BETWEEN $1 AND $2) AS contracts,
     (SELECT count(*) FROM (
         SELECT deployer FROM contracts WHERE deployed_at BETWEEN $1 AND $2
         UNION SELECT uploader FROM wasm_uploads WHERE uploaded_at BETWEEN $1 AND $2
         UNION SELECT subject FROM links WHERE subject_kind = 'account') builders) AS builders,
     (SELECT count(DISTINCT c.login) FROM repo_contributors c
-     JOIN projects p ON p.full_name = c.full_name) AS contributors,
+     JOIN projects p ON p.full_name = c.full_name
+     WHERE p.tier IN ('verified', 'declared', 'likely')) AS contributors,
     (SELECT count(DISTINCT country) FROM (
         SELECT r.country FROM projects p JOIN repos r ON r.full_name = p.full_name
+        WHERE p.tier IN ('verified', 'declared', 'likely')
         UNION SELECT u.country FROM projects p
             JOIN repo_contributors c ON c.full_name = p.full_name
-            JOIN github_users u ON u.login = c.login) found
+            JOIN github_users u ON u.login = c.login
+        WHERE p.tier IN ('verified', 'declared', 'likely')) found
      WHERE country IS NOT NULL) AS countries,
     (SELECT count(*) FROM wasm_uploads WHERE uploaded_at BETWEEN $1 AND $2) AS wasm_uploads,
     (SELECT count(*) FROM failed_txs WHERE created_at BETWEEN $1 AND $2) AS failed_txs
@@ -137,11 +142,15 @@ async def list_page(
     q: str | None = None,
     account: str | None = None,
     project_id: str | None = None,
+    tiers: list[str] | None = None,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
-    filters = (q, account, project_id, limit, offset)
-    args = filters if resource == "projects" else (*window(), *filters)
+    args = (
+        (q, account, project_id, tiers, limit, offset)
+        if resource == "projects"
+        else (*window(), q, account, project_id, limit, offset)
+    )
     async with pool().acquire() as connection:
         rows = await connection.fetch(RESOURCE_SQL[resource], *args)
     total = rows[0]["total"] if rows else 0

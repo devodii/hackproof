@@ -11,12 +11,14 @@ from hackproof.schemas import (
     Project,
     ProjectDetail,
     Stats,
+    Tier,
     WasmUpload,
 )
 
 router = APIRouter()
 
 Search = Annotated[str | None, Query(max_length=120)]
+Tiers = Annotated[list[Tier] | None, Query()]
 Limit = Annotated[int, Query(ge=1, le=200)]
 Offset = Annotated[int, Query(ge=0)]
 EVERYTHING = 10_000
@@ -33,8 +35,13 @@ async def _page(resource: queries.Resource, q: str | None, limit: int, offset: i
 
 
 @router.get("/projects")
-async def projects(q: Search = None, limit: Limit = 50, offset: Offset = 0) -> Page[Project]:
-    return await _page("projects", q, limit, offset)
+async def projects(
+    q: Search = None, tier: Tiers = None, limit: Limit = 50, offset: Offset = 0
+) -> Page[Project]:
+    items, total = await queries.list_page(
+        "projects", q=q, tiers=list(tier) if tier else None, limit=limit, offset=offset
+    )
+    return Page(items=items, total=total)
 
 
 @router.get("/contracts")

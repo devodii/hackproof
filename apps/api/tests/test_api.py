@@ -8,10 +8,11 @@ def test_stats_reports_every_counter():
         body = client.get("/api/stats").json()
     assert set(body) == {
         "projects",
-        "contract_projects",
-        "classic_projects",
-        "github_projects",
-        "linked_projects",
+        "verified_projects",
+        "declared_projects",
+        "likely_projects",
+        "possible_projects",
+        "unattributed_accounts",
         "contracts",
         "builders",
         "contributors",
@@ -38,3 +39,9 @@ def test_unknown_project_and_builder_are_not_found():
     with TestClient(app) as client:
         assert client.get("/api/projects/repo:nobody/nothing").status_code == 404
         assert client.get("/api/builders/GNOBODY").status_code == 404
+
+
+def test_projects_can_be_filtered_by_tier():
+    with TestClient(app) as client:
+        body = client.get("/api/projects", params={"tier": ["verified", "declared"], "limit": 100})
+    assert {item["tier"] for item in body.json()["items"]} <= {"verified", "declared"}

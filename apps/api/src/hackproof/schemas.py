@@ -5,13 +5,16 @@ from pydantic import BaseModel
 
 from hackproof.github.models import DependencyFingerprint
 
+Tier = Literal["verified", "declared", "likely", "possible", "unattributed"]
+
 
 class Stats(BaseModel):
     projects: int
-    contract_projects: int
-    classic_projects: int
-    github_projects: int
-    linked_projects: int
+    verified_projects: int
+    declared_projects: int
+    likely_projects: int
+    possible_projects: int
+    unattributed_accounts: int
     contracts: int
     builders: int
     contributors: int
@@ -25,6 +28,7 @@ class Project(BaseModel):
     full_name: str | None
     url: str | None
     footprint: Literal["contracts", "classic", "github"]
+    tier: Tier
     contracts: int
     classic_ops: int
     assets: int
