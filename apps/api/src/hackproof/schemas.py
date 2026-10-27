@@ -67,7 +67,6 @@ class Link(BaseModel):
     subject_kind: str
     subject: str
     method: str
-    confidence: float
     path: str | None
 
 

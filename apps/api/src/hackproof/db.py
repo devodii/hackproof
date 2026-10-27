@@ -3,8 +3,9 @@ import json
 import asyncpg
 
 from hackproof.config import get_settings
+from hackproof.linking.methods import METHOD_RANK_SQL
 
-SCHEMA = """
+TABLES = """
 CREATE TABLE IF NOT EXISTS contracts (
     contract_id TEXT PRIMARY KEY,
     deployer TEXT NOT NULL,
@@ -121,7 +122,6 @@ CREATE TABLE IF NOT EXISTS links (
     subject_kind TEXT NOT NULL,
     subject TEXT NOT NULL,
     method TEXT NOT NULL,
-    confidence REAL NOT NULL,
     PRIMARY KEY (subject_kind, subject, full_name)
 );
 
@@ -140,18 +140,6 @@ CREATE TABLE IF NOT EXISTS projects (
     last_activity TIMESTAMPTZ
 );
 
-CREATE OR REPLACE VIEW attribution AS
-SELECT DISTINCT ON (l.subject_kind, l.subject)
-       l.subject_kind, l.subject, l.full_name, l.method, l.confidence
-FROM links l
-JOIN repos r ON r.full_name = l.full_name
-ORDER BY l.subject_kind, l.subject, l.confidence DESC, l.method,
-         r.created_at NULLS LAST, l.full_name;
-
-CREATE OR REPLACE VIEW account_projects AS
-SELECT subject AS account, 'repo:' || full_name AS project_id
-FROM attribution WHERE subject_kind = 'account';
-
 CREATE TABLE IF NOT EXISTS sync_state (
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL
@@ -159,6 +147,22 @@ CREATE TABLE IF NOT EXISTS sync_state (
 """
 
 _pool: asyncpg.Pool | None = None
+
+
+VIEWS = f"""
+CREATE OR REPLACE VIEW attribution AS
+SELECT DISTINCT ON (l.subject_kind, l.subject)
+       l.subject_kind, l.subject, l.full_name, l.method
+FROM links l
+JOIN repos r ON r.full_name = l.full_name
+ORDER BY l.subject_kind, l.subject, {METHOD_RANK_SQL}, r.created_at NULLS LAST, l.full_name;
+
+CREATE OR REPLACE VIEW account_projects AS
+SELECT subject AS account, 'repo:' || full_name AS project_id
+FROM attribution WHERE subject_kind = 'account';
+"""
+
+SCHEMA = TABLES + VIEWS
 
 
 async def _init_connection(connection: asyncpg.Connection) -> None:

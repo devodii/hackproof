@@ -26,6 +26,7 @@ from hackproof.export.urls import (
     tx_url,
 )
 from hackproof.hackathon import Hackathon
+from hackproof.linking.methods import METHOD_RANK_SQL
 
 STRICT_TIERS = ("verified", "declared", "likely")
 TIER_ORDER = ("verified", "declared", "likely", "possible")
@@ -71,13 +72,13 @@ WHERE a.full_name = ANY($1) AND w.uploaded_at BETWEEN $2 AND $3
 ORDER BY a.full_name, w.wasm_hash, w.uploaded_at
 """
 
-EVIDENCE_SQL = """
-SELECT l.full_name, l.subject_kind, l.subject, l.method, l.confidence, r.path
+EVIDENCE_SQL = f"""
+SELECT l.full_name, l.subject_kind, l.subject, l.method, r.path
 FROM links l
 LEFT JOIN repo_refs r
        ON r.full_name = l.full_name AND r.kind = l.subject_kind AND r.value = l.subject
 WHERE l.full_name = ANY($1) AND l.method <> 'footprint'
-ORDER BY l.confidence DESC, l.subject_kind, l.subject
+ORDER BY {METHOD_RANK_SQL}, l.subject_kind, l.subject
 """
 
 
@@ -185,7 +186,6 @@ async def build_export(
                         kind=e["subject_kind"],
                         subject=e["subject"],
                         method=e["method"],
-                        confidence=e["confidence"],
                         explorer_url=_evidence_url(e["subject_kind"], e["subject"]),
                         repo_file_url=(repo_file_url(row["url"], e["path"]) if e["path"] else None),
                     )

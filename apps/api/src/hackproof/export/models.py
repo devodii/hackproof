@@ -65,7 +65,6 @@ class Evidence(Model):
         "deployer_in_repo",
         "asset_in_repo",
     ] = Field(description="How the match was made; every method is an exact string match")
-    confidence: float = Field(description="1.0 exact, 0.95 asset, 0.9 account", ge=0, le=1)
     explorer_url: str | None = Field(
         description="Stellar Expert page for the matched item; null for a wasm hash"
     )

@@ -3,6 +3,7 @@ from typing import Any, Literal
 
 from hackproof.db import pool
 from hackproof.hackathon import get_hackathon
+from hackproof.linking.methods import METHOD_RANK_SQL
 
 PROJECTS_SQL = """
 SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.classic_ops, p.assets,
@@ -109,13 +110,13 @@ SELECT
     (SELECT count(*) FROM failed_txs WHERE created_at BETWEEN $1 AND $2) AS failed_txs
 """
 
-LINKS_SQL = """
-SELECT l.subject_kind, l.subject, l.method, l.confidence, r.path
+LINKS_SQL = f"""
+SELECT l.subject_kind, l.subject, l.method, r.path
 FROM links l
 LEFT JOIN repo_refs r
        ON r.full_name = l.full_name AND r.kind = l.subject_kind AND r.value = l.subject
 WHERE l.full_name = $1
-ORDER BY l.confidence DESC, l.subject_kind, l.subject
+ORDER BY {METHOD_RANK_SQL}, l.subject_kind, l.subject
 """
 
 CONTRIBUTORS_SQL = """

@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
 from hackproof.hackathon import get_hackathon
-from hackproof.linking.methods import CONFIDENCE, LinkMethod
+from hackproof.linking.methods import LinkMethod
 from hackproof.linking.repo_ref import normalize_repo
 
 log = logging.getLogger("hackproof.reconcile")
@@ -186,8 +186,8 @@ async def _insert_links(
 ) -> None:
     await connection.execute(
         f"""
-        INSERT INTO links (full_name, subject_kind, subject, method, confidence)
-        SELECT s.full_name, s.subject_kind, s.subject, '{method}', {CONFIDENCE[method]}
+        INSERT INTO links (full_name, subject_kind, subject, method)
+        SELECT s.full_name, s.subject_kind, s.subject, '{method}'
         FROM ({select}) AS s(full_name, subject_kind, subject)
         ON CONFLICT DO NOTHING
         """,
@@ -213,11 +213,10 @@ async def _wasm_meta_links(connection: asyncpg.Connection) -> None:
                     "wasm",
                     row["wasm_hash"],
                     LinkMethod.WASM_META,
-                    CONFIDENCE[LinkMethod.WASM_META],
                 )
             )
     await connection.executemany(
-        "INSERT INTO links VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING", links
+        "INSERT INTO links VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING", links
     )
 
 
