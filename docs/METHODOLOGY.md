@@ -54,6 +54,18 @@ A project is a repo with at least one link, a wasm-metadata repo, or a repo with
 
 No language model is used in any join.
 
+## Verify it yourself
+
+Every identifier on the site links to the place you can check it.
+
+- Contracts, accounts, transactions, ledgers and assets open on [Stellar Expert](https://stellar.expert/explorer/testnet) for testnet.
+- Each project's evidence table names the repo file a match was found in and links to it on GitHub.
+- Commit counts link to the repo's commit history filtered to the 27 hour window.
+- Contributors and owners link to their GitHub profiles, and demos link to the project's own site.
+- The exported JSON and YAML carry the same Stellar Expert and GitHub urls for every item.
+
+To check a verified project: open it, follow a matched contract to Stellar Expert and confirm it was deployed inside the window, then follow the "Found in" link and confirm the contract id is in that file. Tiers below verified are signals, and the site labels them that way.
+
 ## What still escapes
 
 Private repos. Teams that used a throwaway key they never committed and never posted a repo for. Futurenet and local-only builds. Mainnet-only teams are only noticed when their repo names the network. Team grouping by accounts that fund each other, and rebuilding contracts from source to compare hashes, are not implemented yet.
