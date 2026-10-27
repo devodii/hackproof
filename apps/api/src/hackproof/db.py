@@ -76,11 +76,13 @@ CREATE TABLE IF NOT EXISTS repos (
     homepage TEXT,
     created_at TIMESTAMPTZ,
     pushed_at TIMESTAMPTZ,
+    topics TEXT[] NOT NULL DEFAULT '{}',
     discovered_via TEXT[] NOT NULL DEFAULT '{}',
     dependencies JSONB NOT NULL DEFAULT '{}',
     window_commits INTEGER,
     total_commits INTEGER,
     mentions_hackathon BOOLEAN NOT NULL DEFAULT FALSE,
+    stellar_added_in_window BOOLEAN,
     scanned_at TIMESTAMPTZ
 );
 
