@@ -21,11 +21,12 @@ export interface Column<T> {
 interface DataTableProps<T> {
   columns: Column<T>[]
   rows: T[]
-  total: number
+  total: number | undefined
   page: number
   onPageChange: (page: number) => void
   rowKey: (row: T) => string
   isLoading?: boolean
+  isRefreshing?: boolean
   empty?: string
 }
 
@@ -37,11 +38,17 @@ export function DataTable<T>({
   onPageChange,
   rowKey,
   isLoading = false,
+  isRefreshing = false,
   empty = 'Nothing here.',
 }: DataTableProps<T>) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="overflow-x-auto rounded-lg border">
+      <div
+        className={cn(
+          'overflow-x-auto rounded-lg border transition-opacity',
+          isRefreshing && 'opacity-50',
+        )}
+      >
         <Table>
           <TableHeader>
             <TableRow>

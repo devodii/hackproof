@@ -27,25 +27,27 @@ export function ChartCard({ title, description, headers, rows, children }: Chart
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         {children}
-        <details className="text-sm">
-          <summary className="cursor-pointer text-muted-foreground">Table view</summary>
-          <Table className="mt-2">
-            <TableHeader>
-              <TableRow>
-                <TableHead>{headers[0]}</TableHead>
-                <TableHead className="text-right">{headers[1]}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {rows.map(([label, value]) => (
-                <TableRow key={label}>
-                  <TableCell>{label}</TableCell>
-                  <TableCell className="text-right tabular-nums">{value}</TableCell>
+        {rows.length > 0 && (
+          <details className="text-sm">
+            <summary className="cursor-pointer text-muted-foreground">Table view</summary>
+            <Table className="mt-2">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{headers[0]}</TableHead>
+                  <TableHead className="text-right">{headers[1]}</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </details>
+              </TableHeader>
+              <TableBody>
+                {rows.map(([label, value]) => (
+                  <TableRow key={label}>
+                    <TableCell>{label}</TableCell>
+                    <TableCell className="text-right tabular-nums">{value}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </details>
+        )}
       </CardContent>
     </Card>
   )

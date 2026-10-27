@@ -22,7 +22,12 @@ export function ResourceTable<T>({
   tiers,
 }: ResourceTableProps<T>) {
   const [page, setPage] = useState(0)
-  const { data, isPending, isError } = usePagedList<T>(resource, search, page, tiers)
+  const { data, isPending, isPlaceholderData, isError } = usePagedList<T>(
+    resource,
+    search,
+    page,
+    tiers,
+  )
 
   if (isError) {
     return (
@@ -37,11 +42,12 @@ export function ResourceTable<T>({
     <DataTable
       columns={columns}
       rows={data?.items ?? []}
-      total={data?.total ?? 0}
+      total={data?.total}
       page={page}
       onPageChange={setPage}
       rowKey={rowKey}
       isLoading={isPending}
+      isRefreshing={isPlaceholderData}
       empty={empty}
     />
   )
