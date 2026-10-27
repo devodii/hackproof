@@ -1,10 +1,14 @@
-export async function apiGet<T>(path: string): Promise<T> {
-  const response = await fetch(`/api${path}`)
-  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
-  return response.json() as Promise<T>
+export class ApiError extends Error {
+  readonly status: number
+
+  constructor(status: number, message: string) {
+    super(message)
+    this.status = status
+  }
 }
 
-export interface HackWindow {
-  start: string
-  end: string
+export async function apiGet<T>(path: string): Promise<T> {
+  const response = await fetch(`/api${path}`)
+  if (!response.ok) throw new ApiError(response.status, response.statusText)
+  return response.json() as Promise<T>
 }
