@@ -141,9 +141,12 @@ CREATE TABLE IF NOT EXISTS projects (
 );
 
 CREATE OR REPLACE VIEW attribution AS
-SELECT DISTINCT ON (subject_kind, subject) subject_kind, subject, full_name, method, confidence
-FROM links
-ORDER BY subject_kind, subject, confidence DESC, method;
+SELECT DISTINCT ON (l.subject_kind, l.subject)
+       l.subject_kind, l.subject, l.full_name, l.method, l.confidence
+FROM links l
+JOIN repos r ON r.full_name = l.full_name
+ORDER BY l.subject_kind, l.subject, l.confidence DESC, l.method,
+         r.created_at NULLS LAST, l.full_name;
 
 CREATE OR REPLACE VIEW account_projects AS
 SELECT subject AS account, 'repo:' || full_name AS project_id

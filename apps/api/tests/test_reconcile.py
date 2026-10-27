@@ -153,3 +153,18 @@ async def test_matches_that_only_touch_the_pre_start_margin_are_not_verified(scr
 
     assert (await links(db))[("team/early", "contract", "C1")] == "contract_in_repo"
     assert (await tiers(db))["repo:team/early"] == "possible"
+
+
+async def test_a_chain_item_matched_by_two_repos_is_credited_to_the_older_one(scratch_db):
+    db = scratch_db
+    for name, created in (("team/copy", INSIDE), ("team/original", INSIDE - timedelta(days=30))):
+        await add_repo(db, name, window_commits=3, created_at=created)
+        await add_ref(db, name, "contract", "C1")
+    await add_contract(db, "C1", "GDEPLOYER", "w1")
+
+    await reconcile(db)
+    first = await db.fetchval("SELECT full_name FROM attribution WHERE subject = 'C1'")
+    await reconcile(db)
+    second = await db.fetchval("SELECT full_name FROM attribution WHERE subject = 'C1'")
+
+    assert first == second == "team/original"
