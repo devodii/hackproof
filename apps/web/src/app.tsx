@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router'
 
 import { SiteHeader } from '@/components/layout/site-header'
 import { HomePage } from '@/pages/home'
+import { ProjectPage } from '@/pages/project'
 
 export function App() {
   return (
@@ -10,6 +11,7 @@ export function App() {
       <main className="mx-auto w-full max-w-6xl px-6 py-12">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/project/*" element={<ProjectPage />} />
         </Routes>
       </main>
     </div>
