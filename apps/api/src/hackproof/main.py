@@ -5,7 +5,7 @@ from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from hackproof.config import get_settings
-from hackproof.db import init_db
+from hackproof.db import close_pool, open_pool
 
 api = APIRouter(prefix="/api")
 
@@ -26,8 +26,9 @@ async def window() -> dict[str, str]:
 
 @asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
-    await init_db()
+    await open_pool()
     yield
+    await close_pool()
 
 
 app = FastAPI(title="hackproof", lifespan=lifespan)
