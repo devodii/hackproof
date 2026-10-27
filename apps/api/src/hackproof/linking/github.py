@@ -1,12 +1,10 @@
-from dataclasses import dataclass
-
 import httpx
+from pydantic import BaseModel
 
 API = "https://api.github.com"
 
 
-@dataclass(frozen=True)
-class GithubRepo:
+class GithubRepo(BaseModel):
     full_name: str
     url: str
     description: str | None

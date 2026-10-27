@@ -1,11 +1,19 @@
 import json
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, ClassVar
 
+from pydantic import BaseModel, ConfigDict
 
-@dataclass(frozen=True)
-class Deploy:
+
+class Event(BaseModel):
+    model_config = ConfigDict(frozen=True)
+    table: ClassVar[str]
+
+    def row(self) -> tuple[Any, ...]:
+        raise NotImplementedError
+
+
+class Deploy(Event):
     table: ClassVar[str] = "contracts"
     contract_id: str
     deployer: str
@@ -18,8 +26,7 @@ class Deploy:
         return (self.contract_id, self.deployer, self.wasm_hash, self.tx_hash, self.ledger, self.at)
 
 
-@dataclass(frozen=True)
-class Upload:
+class Upload(Event):
     table: ClassVar[str] = "wasm_uploads"
     wasm_hash: str
     uploader: str
@@ -42,8 +49,7 @@ class Upload:
         )
 
 
-@dataclass(frozen=True)
-class Failure:
+class Failure(Event):
     table: ClassVar[str] = "failed_txs"
     tx_hash: str
     source_account: str
@@ -63,8 +69,7 @@ class Failure:
         )
 
 
-@dataclass(frozen=True)
-class Funding:
+class Funding(Event):
     table: ClassVar[str] = "accounts"
     account: str
     funder: str
@@ -76,8 +81,7 @@ class Funding:
         return (self.account, self.funder, self.tx_hash, self.ledger, self.at)
 
 
-@dataclass(frozen=True)
-class ClassicOp:
+class ClassicOp(Event):
     table: ClassVar[str] = "classic_ops"
     tx_hash: str
     index: int
@@ -99,6 +103,3 @@ class ClassicOp:
             self.ledger,
             self.at,
         )
-
-
-Event = Deploy | Upload | Failure | Funding | ClassicOp

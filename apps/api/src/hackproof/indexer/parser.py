@@ -136,13 +136,13 @@ def _host_function_event(
     if function.type == UPLOAD:
         wasm = function.wasm
         return Upload(
-            hashlib.sha256(wasm).hexdigest(),
-            source,
-            len(wasm),
-            contract_meta(wasm),
-            tx_hash,
-            ledger,
-            at,
+            wasm_hash=hashlib.sha256(wasm).hexdigest(),
+            uploader=source,
+            size=len(wasm),
+            meta=contract_meta(wasm),
+            tx_hash=tx_hash,
+            ledger=ledger,
+            at=at,
         )
     if function.type in (CREATE, CREATE_V2):
         args = function.create_contract if function.type == CREATE else function.create_contract_v2
@@ -153,7 +153,12 @@ def _host_function_event(
             return None
         contract_id = _contract_id(args.contract_id_preimage, network_id)
         return Deploy(
-            contract_id, source, args.executable.wasm_hash.hash.hex(), tx_hash, ledger, at
+            contract_id=contract_id,
+            deployer=source,
+            wasm_hash=args.executable.wasm_hash.hash.hex(),
+            tx_hash=tx_hash,
+            ledger=ledger,
+            at=at,
         )
     return None
 
@@ -183,25 +188,32 @@ def parse_transaction(raw: dict[str, Any], network_id: bytes) -> list[Event]:
             continue
         elif op_type == OP.CREATE_ACCOUNT:
             destination = _account_id(operation.body.create_account_op.destination)
-            events.append(Funding(destination, source, tx_hash, ledger, at))
+            events.append(
+                Funding(account=destination, funder=source, tx_hash=tx_hash, ledger=ledger, at=at)
+            )
         elif op_type in ASSET_FIELDS or op_type in PLAIN_CLASSIC:
             events.append(
                 ClassicOp(
-                    tx_hash,
-                    index,
-                    source,
-                    op_type.name.lower(),
-                    _classic_asset(operation),
-                    _counterparty(operation),
-                    ledger,
-                    at,
+                    tx_hash=tx_hash,
+                    index=index,
+                    source_account=source,
+                    op_type=op_type.name.lower(),
+                    asset=_classic_asset(operation),
+                    counterparty=_counterparty(operation),
+                    ledger=ledger,
+                    at=at,
                 )
             )
 
     if failed and failure_kind is not None:
         events.append(
             Failure(
-                tx_hash, default_source, failure_kind, _result_code(raw["resultXdr"]), ledger, at
+                tx_hash=tx_hash,
+                source_account=default_source,
+                kind=failure_kind,
+                result_code=_result_code(raw["resultXdr"]),
+                ledger=ledger,
+                at=at,
             )
         )
     return events

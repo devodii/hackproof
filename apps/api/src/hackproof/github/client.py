@@ -1,9 +1,9 @@
 import asyncio
 import time
-from dataclasses import dataclass, field
 from typing import Any, Literal
 
 import httpx
+from pydantic import BaseModel
 
 API = "https://api.github.com"
 RAW = "https://raw.githubusercontent.com"
@@ -12,19 +12,18 @@ SEARCH_INTERVAL = {"code": 6.5, "repositories": 2.2}
 Search = Literal["code", "repositories"]
 
 
-@dataclass
-class Token:
+class Token(BaseModel):
     value: str | None
     remaining: int = 5000
     blocked_until: float = 0.0
     next_search_at: float = 0.0
-    requests: int = field(default=0)
+    requests: int = 0
 
 
 class GithubClient:
     def __init__(self, http: httpx.AsyncClient, tokens: list[str]) -> None:
         self._http = http
-        self._tokens = [Token(value) for value in tokens] or [Token(None)]
+        self._tokens = [Token(value=value) for value in tokens] or [Token(value=None)]
         self._lock = asyncio.Lock()
 
     async def _acquire(self, search: Search | None) -> Token:
