@@ -8,6 +8,8 @@ from hackproof.db import open_pool, pool
 from hackproof.github.client import GithubClient, GithubUnavailable
 from hackproof.github.discovery import discover, read_seeds, store_candidates, wasm_meta_repos
 from hackproof.github.models import Candidate
+from hackproof.github.profiles import resolve_profiles
+from hackproof.github.repositories import fetch_repositories
 from hackproof.github.scan import Scanner, store_scan
 from hackproof.hackathon import get_hackathon
 
@@ -58,9 +60,11 @@ async def run_scan(force: bool) -> None:
 
     limits = httpx.Limits(max_connections=200, max_keepalive_connections=50)
     async with httpx.AsyncClient(timeout=30, limits=limits) as http:
-        scanner = Scanner(
-            GithubClient(http, settings.github_tokens), http, hackathon.window, hackathon.discovery
-        )
+        github = GithubClient(http, settings.github_tokens)
+        refreshed = await fetch_repositories(github, [repo.full_name for repo in repos])
+        async with pool().acquire() as connection:
+            await store_candidates(connection, refreshed)
+        scanner = Scanner(github, http, hackathon.window, hackathon.discovery)
 
         async def scan(repo: Candidate) -> None:
             nonlocal done
@@ -77,3 +81,6 @@ async def run_scan(force: bool) -> None:
             log.info("scanned %s/%s %s", done, len(repos), repo.full_name)
 
         await asyncio.gather(*(scan(repo) for repo in repos))
+        async with pool().acquire() as connection:
+            resolved = await resolve_profiles(github, connection)
+        log.info("resolved %s contributor profiles", resolved)

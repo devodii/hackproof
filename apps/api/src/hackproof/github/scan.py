@@ -11,7 +11,7 @@ from hackproof.github.commits import count_commits
 from hackproof.github.demo import scan_demo
 from hackproof.github.dependencies import MANIFESTS, fingerprint
 from hackproof.github.history import stellar_added_in_window
-from hackproof.github.models import Candidate, Ref, RepoScan
+from hackproof.github.models import Candidate, Contributor, Ref, RepoScan
 from hackproof.github.refs import extract_refs
 from hackproof.hackathon import Discovery, Window
 from hackproof.linking.country import resolve_country
@@ -109,7 +109,7 @@ class Scanner:
         if tree is None:
             return None
         text_paths, wasm_paths = select_files(tree["tree"])
-        texts, wasms, window_commits, total_commits, location = await asyncio.gather(
+        texts, wasms, window_commits, total_commits, location, people = await asyncio.gather(
             asyncio.gather(*(self._text(repo, branch, path) for path in text_paths)),
             asyncio.gather(*(self._wasm_ref(repo, branch, path) for path in wasm_paths)),
             count_commits(
@@ -120,6 +120,7 @@ class Scanner:
             ),
             count_commits(self._github, repo.full_name),
             self._owner_location(repo.owner),
+            self._github.json(f"/repos/{repo.full_name}/contributors", {"per_page": 100}),
         )
         files = dict(texts)
         refs = [ref for path, text in files.items() for ref in extract_refs(text, path)]
@@ -144,8 +145,22 @@ class Scanner:
             mentions_hackathon=bool(HACKATHON_MENTION.search(readme))
             or any(HACKATHON_TOPIC.search(topic) for topic in repo.topics),
             stellar_added_in_window=added,
+            contributors=contributors_from(people),
             owner_location=location,
         )
+
+
+def contributors_from(items: list[dict] | None) -> list[Contributor]:
+    return [
+        Contributor(
+            login=item["login"],
+            url=item["html_url"],
+            avatar_url=item.get("avatar_url"),
+            contributions=item["contributions"],
+        )
+        for item in items or []
+        if item.get("type") == "User"
+    ]
 
 
 def _is_readme(path: str) -> bool:
@@ -157,6 +172,17 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         await connection.executemany(
             "INSERT INTO repo_refs VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING",
             [(scan.full_name, ref.kind, ref.value, ref.path) for ref in scan.refs],
+        )
+        await connection.executemany(
+            """
+            INSERT INTO repo_contributors VALUES ($1, $2, $3, $4, $5)
+            ON CONFLICT (full_name, login) DO UPDATE SET contributions = EXCLUDED.contributions,
+                avatar_url = EXCLUDED.avatar_url
+            """,
+            [
+                (scan.full_name, c.login, c.url, c.avatar_url, c.contributions)
+                for c in scan.contributors
+            ],
         )
         await connection.execute(
             """

@@ -1,5 +1,5 @@
 from hackproof.github.demo import is_public_http
-from hackproof.github.scan import select_files
+from hackproof.github.scan import contributors_from, select_files
 
 
 def blob(path: str, size: int = 100) -> dict:
@@ -36,3 +36,20 @@ def test_demo_urls_must_be_public_http():
     assert not is_public_http("http://127.0.0.1/admin")
     assert not is_public_http("http://169.254.169.254/latest")
     assert not is_public_http("file:///etc/passwd")
+
+
+def test_contributors_keep_people_and_drop_bots():
+    people = contributors_from(
+        [
+            {
+                "login": "ana",
+                "html_url": "https://github.com/ana",
+                "avatar_url": "a",
+                "type": "User",
+                "contributions": 12,
+            },
+            {"login": "dependabot[bot]", "html_url": "x", "type": "Bot", "contributions": 40},
+        ]
+    )
+    assert [(p.login, p.contributions) for p in people] == [("ana", 12)]
+    assert contributors_from(None) == []

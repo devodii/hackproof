@@ -105,7 +105,9 @@ class GithubClient:
         self, path: str, params: dict[str, Any] | None = None, *, search: Search | None = None
     ) -> Any | None:
         response = await self.get(path, params, search=search)
-        return response.json() if response is not None else None
+        if response is None or response.status_code == 204:
+            return None
+        return response.json()
 
     async def graphql(self, query: str) -> dict[str, Any]:
         response = await self._send(

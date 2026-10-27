@@ -28,12 +28,22 @@ class Candidate(BaseModel):
     owner_avatar: str | None = None
     default_branch: str | None = None
     homepage: str | None = None
+    language: str | None = None
+    license: str | None = None
+    forks: int = 0
     created_at: datetime | None = None
     pushed_at: datetime | None = None
     fork: bool = False
     window_commits: int | None = None
     topics: list[str] = Field(default_factory=list)
     discovered_via: set[str] = Field(default_factory=set)
+
+
+class Contributor(BaseModel):
+    login: str
+    url: str
+    avatar_url: str | None = None
+    contributions: int
 
 
 class RepoScan(BaseModel):
@@ -44,4 +54,5 @@ class RepoScan(BaseModel):
     total_commits: int | None
     mentions_hackathon: bool
     stellar_added_in_window: bool | None
+    contributors: list[Contributor]
     owner_location: str | None
