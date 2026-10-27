@@ -1,6 +1,21 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 $id: https://hackproof.vercel.app/schema/hackathon-export-1.0.json
 $defs:
+  Account:
+    properties:
+      address:
+        description: Stellar account (G...)
+        title: Address
+        type: string
+      explorerUrl:
+        description: Stellar Expert page for the account on testnet
+        title: Explorerurl
+        type: string
+    required:
+    - address
+    - explorerUrl
+    title: Account
+    type: object
   Chain:
     properties:
       contractCount:
@@ -26,14 +41,14 @@ $defs:
       accounts:
         description: Stellar accounts attributed to the project
         items:
-          type: string
+          $ref: '#/$defs/Account'
         title: Accounts
         type: array
-      wasmHashes:
-        description: Wasm hashes uploaded by the project's accounts
+      wasmUploads:
+        description: Wasm uploaded by the project's accounts
         items:
-          type: string
-        title: Wasmhashes
+          $ref: '#/$defs/WasmUpload'
+        title: Wasmuploads
         type: array
       contracts:
         description: Contracts deployed inside the window
@@ -54,7 +69,7 @@ $defs:
     - assetCount
     - failedTxCount
     - accounts
-    - wasmHashes
+    - wasmUploads
     - contracts
     - evidence
     title: Chain
@@ -78,11 +93,31 @@ $defs:
         format: date-time
         title: Deployedat
         type: string
+      ledger:
+        description: Ledger sequence of the deploy
+        title: Ledger
+        type: integer
+      txHash:
+        description: Hash of the deploy transaction
+        title: Txhash
+        type: string
+      explorerUrl:
+        description: Stellar Expert page for the contract on testnet
+        title: Explorerurl
+        type: string
+      txUrl:
+        description: Stellar Expert page for the deploy transaction
+        title: Txurl
+        type: string
     required:
     - contractId
     - deployer
     - wasmHash
     - deployedAt
+    - ledger
+    - txHash
+    - explorerUrl
+    - txUrl
     title: Contract
     type: object
   Contributor:
@@ -150,11 +185,25 @@ $defs:
         minimum: 0
         title: Confidence
         type: number
+      explorerUrl:
+        anyOf:
+        - type: string
+        - type: 'null'
+        description: Stellar Expert page for the matched item; null for a wasm hash
+        title: Explorerurl
+      repoFileUrl:
+        anyOf:
+        - type: string
+        - type: 'null'
+        description: GitHub file where the match was found; null when the evidence is not in a file
+        title: Repofileurl
     required:
     - kind
     - subject
     - method
     - confidence
+    - explorerUrl
+    - repoFileUrl
     title: Evidence
     type: object
   Hackathon:
@@ -364,6 +413,26 @@ $defs:
     - contributors
     - chain
     title: Project
+    type: object
+  WasmUpload:
+    properties:
+      wasmHash:
+        description: sha256 of the contract wasm, hex
+        title: Wasmhash
+        type: string
+      uploadTx:
+        description: Hash of the transaction that uploaded the wasm
+        title: Uploadtx
+        type: string
+      explorerUrl:
+        description: Stellar Expert page for the upload transaction
+        title: Explorerurl
+        type: string
+    required:
+    - wasmHash
+    - uploadTx
+    - explorerUrl
+    title: WasmUpload
     type: object
 properties:
   schemaVersion:
