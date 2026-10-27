@@ -46,6 +46,7 @@ export interface Project {
   first_activity: string | null
   last_activity: string | null
   description: string | null
+  homepage: string | null
   stars: number | null
   forks: number | null
   language: string | null
@@ -75,6 +76,7 @@ export interface Link {
   subject: string
   method: string
   confidence: number
+  path: string | null
 }
 
 export interface Contract {
