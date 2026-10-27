@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { type ReactNode, useState } from 'react'
 
 import { PaginationBar } from '@/components/pagination-bar'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -10,7 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { PAGE_SIZE } from '@/hooks/use-paged-list'
 import { cn } from '@/lib/utils'
+
+function isInteractive(target: EventTarget) {
+  return target instanceof Element && target.closest('a, button') !== null
+}
 
 export interface Column<T> {
   header: string
@@ -18,29 +23,37 @@ export interface Column<T> {
   className?: string
 }
 
-interface DataTableProps<T> {
-  columns: Column<T>[]
-  rows: T[]
+interface ServerPaging {
   total: number | undefined
   page: number
   onPageChange: (page: number) => void
+}
+
+interface DataTableProps<T> {
+  columns: Column<T>[]
+  rows: T[]
   rowKey: (row: T) => string
+  server?: ServerPaging
   isLoading?: boolean
   isRefreshing?: boolean
   empty?: string
+  onRowClick?: (row: T) => void
 }
 
 export function DataTable<T>({
   columns,
   rows,
-  total,
-  page,
-  onPageChange,
   rowKey,
+  server,
   isLoading = false,
   isRefreshing = false,
   empty = 'Nothing here.',
+  onRowClick,
 }: DataTableProps<T>) {
+  const [localPage, setLocalPage] = useState(0)
+  const paging = server ?? { total: rows.length, page: localPage, onPageChange: setLocalPage }
+  const visible = server ? rows : rows.slice(paging.page * PAGE_SIZE, (paging.page + 1) * PAGE_SIZE)
+
   return (
     <div className="flex flex-col gap-3">
       <div
@@ -70,8 +83,25 @@ export function DataTable<T>({
                     ))}
                   </TableRow>
                 ))
-              : rows.map((row) => (
-                  <TableRow key={rowKey(row)}>
+              : visible.map((row) => (
+                  <TableRow
+                    key={rowKey(row)}
+                    className={cn(onRowClick && 'cursor-pointer')}
+                    tabIndex={onRowClick ? 0 : undefined}
+                    onClick={
+                      onRowClick
+                        ? (event) => !isInteractive(event.target) && onRowClick(row)
+                        : undefined
+                    }
+                    onKeyDown={
+                      onRowClick
+                        ? (event) =>
+                            event.key === 'Enter' &&
+                            event.target === event.currentTarget &&
+                            onRowClick(row)
+                        : undefined
+                    }
+                  >
                     {columns.map((column) => (
                       <TableCell key={column.header} className={cn(column.className)}>
                         {column.cell(row)}
@@ -79,7 +109,7 @@ export function DataTable<T>({
                     ))}
                   </TableRow>
                 ))}
-            {!isLoading && rows.length === 0 && (
+            {!isLoading && visible.length === 0 && (
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
@@ -92,7 +122,7 @@ export function DataTable<T>({
           </TableBody>
         </Table>
       </div>
-      <PaginationBar total={total} page={page} onPageChange={onPageChange} />
+      <PaginationBar {...paging} />
     </div>
   )
 }

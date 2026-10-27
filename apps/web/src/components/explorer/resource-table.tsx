@@ -11,6 +11,7 @@ interface ResourceTableProps<T> {
   rowKey: (row: T) => string
   empty: string
   tiers?: readonly string[]
+  onRowClick?: (row: T) => void
 }
 
 export function ResourceTable<T>({
@@ -20,6 +21,7 @@ export function ResourceTable<T>({
   rowKey,
   empty,
   tiers,
+  onRowClick,
 }: ResourceTableProps<T>) {
   const [page, setPage] = useState(0)
   const { data, isPending, isPlaceholderData, isError } = usePagedList<T>(
@@ -42,13 +44,12 @@ export function ResourceTable<T>({
     <DataTable
       columns={columns}
       rows={data?.items ?? []}
-      total={data?.total}
-      page={page}
-      onPageChange={setPage}
+      server={{ total: data?.total, page, onPageChange: setPage }}
       rowKey={rowKey}
       isLoading={isPending}
       isRefreshing={isPlaceholderData}
       empty={empty}
+      onRowClick={onRowClick}
     />
   )
 }

@@ -1,11 +1,13 @@
 import { ExternalLinkIcon, StarIcon } from 'lucide-react'
 import { useParams } from 'react-router'
 
-import { ClientTable } from '@/components/client-table'
 import { Contributors } from '@/components/contributors'
-import { ActivityTabs } from '@/components/explorer/activity-tabs'
+import { DataTable } from '@/components/data-table'
+import { ActivitySections } from '@/components/explorer/activity-sections'
 import { linkColumns } from '@/components/explorer/columns'
 import { DetailError, DetailSkeleton } from '@/components/query-state'
+import { Section } from '@/components/section'
+import { Accordion } from '@/components/ui/accordion'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { useHackWindow } from '@/hooks/use-hack-window'
@@ -138,30 +140,28 @@ export function ProjectPage() {
           </div>
         )}
       </header>
-      {contributors.length > 0 && (
-        <section className="flex flex-col gap-3">
-          <h2 className="text-lg font-medium">Contributors ({contributors.length})</h2>
-          <Contributors contributors={contributors} />
-        </section>
-      )}
-      {direct.length > 0 && (
-        <section className="flex flex-col gap-3">
-          <h2 className="text-lg font-medium">Why this is linked</h2>
-          <p className="max-w-2xl text-sm text-muted-foreground">
-            Each match below is an exact string found in the repo and on testnet. Open the file to
-            see it in the code, and the explorer link to see it on chain.
-            {derived > 0 &&
-              ` ${derived} more contracts, accounts and assets are attributed through the same deploy accounts and are listed in the tables below.`}
-          </p>
-          <ClientTable
-            columns={linkColumns(project.full_name ?? '')}
-            rows={direct}
-            rowKey={(row) => `${row.subject_kind}:${row.subject}`}
-            empty="No links."
-          />
-        </section>
-      )}
-      <ActivityTabs contracts={contracts} wasmUploads={wasm_uploads} failedTxs={failed_txs} />
+      <Accordion multiple defaultValue={['evidence']}>
+        {contributors.length > 0 && (
+          <Section value="contributors" title="Contributors" count={contributors.length}>
+            <Contributors contributors={contributors} />
+          </Section>
+        )}
+        {direct.length > 0 && (
+          <Section value="evidence" title="Why this is linked" count={direct.length}>
+            <DataTable
+              columns={linkColumns(project.full_name ?? '')}
+              rows={direct}
+              rowKey={(row) => `${row.subject_kind}:${row.subject}`}
+            />
+            {derived > 0 && (
+              <p className="mt-3 text-sm text-muted-foreground">
+                {derived} more items are attributed through the same deploy accounts.
+              </p>
+            )}
+          </Section>
+        )}
+        <ActivitySections contracts={contracts} wasmUploads={wasm_uploads} failedTxs={failed_txs} />
+      </Accordion>
     </div>
   )
 }

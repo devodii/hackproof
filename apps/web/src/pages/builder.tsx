@@ -1,15 +1,18 @@
 import { ExternalLinkIcon } from 'lucide-react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
-import { ClientTable } from '@/components/client-table'
-import { ActivityTabs } from '@/components/explorer/activity-tabs'
+import { DataTable } from '@/components/data-table'
+import { ActivitySections } from '@/components/explorer/activity-sections'
 import { projectColumns } from '@/components/explorer/columns'
 import { DetailError, DetailSkeleton } from '@/components/query-state'
+import { Section } from '@/components/section'
+import { Accordion } from '@/components/ui/accordion'
 import { useBuilder } from '@/hooks/use-builder'
 import { expertUrl } from '@/lib/links'
 
 export function BuilderPage() {
   const address = useParams().address ?? ''
+  const navigate = useNavigate()
   const { data, isPending, error } = useBuilder(address)
 
   if (isPending) return <DetailSkeleton />
@@ -29,20 +32,23 @@ export function BuilderPage() {
           <ExternalLinkIcon className="size-3.5 shrink-0" />
         </a>
       </header>
-      <section className="flex flex-col gap-3">
-        <h2 className="text-lg font-medium">Projects</h2>
-        <ClientTable
-          columns={projectColumns}
-          rows={data.projects}
-          rowKey={(row) => row.project_id}
-          empty="No projects."
+      <Accordion multiple defaultValue={['projects']}>
+        {data.projects.length > 0 && (
+          <Section value="projects" title="Projects" count={data.projects.length}>
+            <DataTable
+              columns={projectColumns}
+              rows={data.projects}
+              rowKey={(row) => row.project_id}
+              onRowClick={(row) => navigate(`/project/${row.project_id}`)}
+            />
+          </Section>
+        )}
+        <ActivitySections
+          contracts={data.contracts}
+          wasmUploads={data.wasm_uploads}
+          failedTxs={data.failed_txs}
         />
-      </section>
-      <ActivityTabs
-        contracts={data.contracts}
-        wasmUploads={data.wasm_uploads}
-        failedTxs={data.failed_txs}
-      />
+      </Accordion>
     </div>
   )
 }

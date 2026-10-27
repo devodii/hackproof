@@ -10,6 +10,8 @@ interface PaginationBarProps {
 }
 
 export function PaginationBar({ total, page, onPageChange }: PaginationBarProps) {
+  if (total !== undefined && total <= PAGE_SIZE) return null
+
   const lastPage = Math.max(0, Math.ceil((total ?? 0) / PAGE_SIZE) - 1)
 
   return (
