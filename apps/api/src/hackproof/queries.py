@@ -91,8 +91,8 @@ SELECT
     (SELECT count(*) FROM contracts WHERE deployed_at BETWEEN $1 AND $2) AS contracts,
     (SELECT count(*) FROM (
         SELECT deployer FROM contracts WHERE deployed_at BETWEEN $1 AND $2
-        UNION SELECT uploader FROM wasm_uploads WHERE uploaded_at BETWEEN $1 AND $2
-        UNION SELECT subject FROM links WHERE subject_kind = 'account') builders) AS builders,
+        UNION SELECT uploader FROM wasm_uploads WHERE uploaded_at BETWEEN $1 AND $2) builders)
+        AS builders,
     (SELECT count(DISTINCT c.login) FROM repo_contributors c
      JOIN projects p ON p.full_name = c.full_name
      WHERE p.tier IN ('verified', 'declared', 'likely')) AS contributors,
