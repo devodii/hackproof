@@ -33,7 +33,7 @@ async def activity(address: str) -> dict[str, Any] | None:
         row = await connection.fetchrow(ACTIVITY_SQL, address, start, end)
     if row["first_activity"] is None:
         return None
-    _, projects = await queries.list_projects(q=None, account=address, limit=1, offset=0)
+    _, projects = await queries.list_page("projects", account=address, limit=1)
     return {**dict(row), "projects": projects}
 
 

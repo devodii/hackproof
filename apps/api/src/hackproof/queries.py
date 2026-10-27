@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 from hackproof.config import get_settings
 from hackproof.db import pool
@@ -31,8 +31,8 @@ LEFT JOIN repos r ON r.full_name = g.full_name
 WHERE ($3::text IS NULL
        OR g.project_id ILIKE '%' || $3 || '%'
        OR r.description ILIKE '%' || $3 || '%')
-  AND ($4::text IS NULL OR g.project_id = $4)
-  AND ($5::text IS NULL OR $5 = ANY(g.deployers))
+  AND ($4::text IS NULL OR $4 = ANY(g.deployers))
+  AND ($5::text IS NULL OR g.project_id = $5)
 ORDER BY g.contracts DESC, g.last_deployed_at DESC
 LIMIT $6 OFFSET $7
 """
@@ -115,44 +115,32 @@ def window() -> tuple[datetime, datetime]:
     return settings.hack_start, settings.hack_end
 
 
-def split_total(rows: list[Any]) -> tuple[list[dict[str, Any]], int]:
-    total = rows[0]["total"] if rows else 0
-    return [{k: v for k, v in row.items() if k != "total"} for row in map(dict, rows)], total
+RESOURCE_SQL = {
+    "projects": PROJECTS_SQL,
+    "contracts": CONTRACTS_SQL,
+    "wasm": WASM_SQL,
+    "failed": FAILED_SQL,
+}
+
+Resource = Literal["projects", "contracts", "wasm", "failed"]
 
 
-async def _page(
-    sql: str,
+async def list_page(
+    resource: Resource,
     *,
-    q: str | None,
-    limit: int,
-    offset: int,
+    q: str | None = None,
     account: str | None = None,
     project_id: str | None = None,
-    projects: bool = False,
+    limit: int = 50,
+    offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
     start, end = window()
-    if projects:
-        args = (start, end, q, project_id, account, limit, offset)
-    else:
-        args = (start, end, q, account, project_id, limit, offset)
     async with pool().acquire() as connection:
-        return split_total(await connection.fetch(sql, *args))
-
-
-async def list_projects(**kwargs: Any) -> tuple[list[dict[str, Any]], int]:
-    return await _page(PROJECTS_SQL, projects=True, **kwargs)
-
-
-async def list_contracts(**kwargs: Any) -> tuple[list[dict[str, Any]], int]:
-    return await _page(CONTRACTS_SQL, **kwargs)
-
-
-async def list_wasm(**kwargs: Any) -> tuple[list[dict[str, Any]], int]:
-    return await _page(WASM_SQL, **kwargs)
-
-
-async def list_failed(**kwargs: Any) -> tuple[list[dict[str, Any]], int]:
-    return await _page(FAILED_SQL, **kwargs)
+        rows = await connection.fetch(
+            RESOURCE_SQL[resource], start, end, q, account, project_id, limit, offset
+        )
+    total = rows[0]["total"] if rows else 0
+    return [{k: v for k, v in dict(row).items() if k != "total"} for row in rows], total
 
 
 async def fetch_stats() -> dict[str, int]:
