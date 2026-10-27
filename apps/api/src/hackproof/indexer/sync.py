@@ -18,6 +18,7 @@ log = logging.getLogger("hackproof.sync")
 
 CHUNK_LEDGERS = 400
 CHUNK_PREFIX = "chunk:v2:"
+DEADLOCK_RETRIES = 5
 
 
 async def _fetch_chunk(rpc: SorobanRpc, network_id: bytes, start: int, end: int) -> list[Event]:
@@ -33,12 +34,22 @@ async def _fetch_chunk(rpc: SorobanRpc, network_id: bytes, start: int, end: int)
     return events
 
 
-async def _store(connection: asyncpg.Connection, events: list[Event], chunk_key: str) -> None:
+async def _store(events: list[Event], chunk_key: str) -> None:
+    for attempt in range(DEADLOCK_RETRIES):
+        try:
+            async with pool().acquire() as connection:
+                return await _insert(connection, events, chunk_key)
+        except asyncpg.DeadlockDetectedError:
+            await asyncio.sleep(attempt + 1)
+    raise RuntimeError(f"{chunk_key} kept deadlocking")
+
+
+async def _insert(connection: asyncpg.Connection, events: list[Event], chunk_key: str) -> None:
     by_table: dict[str, list[Event]] = defaultdict(list)
     for event in events:
         by_table[event.table].append(event)
     async with connection.transaction():
-        for table, rows in by_table.items():
+        for table, rows in sorted(by_table.items()):
             placeholders = ", ".join(f"${n}" for n in range(1, len(rows[0].row()) + 1))
             await connection.executemany(
                 f"INSERT INTO {table} VALUES ({placeholders}) ON CONFLICT DO NOTHING",
@@ -85,8 +96,7 @@ async def run_sync() -> None:
                 events = await _fetch_chunk(
                     rpc, network_id, start, min(start + CHUNK_LEDGERS - 1, last)
                 )
-            async with pool().acquire() as connection:
-                await _store(connection, events, f"{CHUNK_PREFIX}{start}")
+            await _store(events, f"{CHUNK_PREFIX}{start}")
             completed += 1
             log.info("chunk %s/%s done (%s events)", completed, len(pending), len(events))
 
