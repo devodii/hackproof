@@ -21,6 +21,7 @@ TEXT_SUFFIXES = {
 }  # fmt: skip
 SKIP_DIRECTORIES = {"node_modules", "dist", "target", ".git", "build", "vendor", ".next"}
 SKIP_FILES = {"package-lock.json", "pnpm-lock.yaml", "yarn.lock", "Cargo.lock", "poetry.lock"}
+FILE_CONCURRENCY = 100
 MAX_TEXT_FILES = 60
 MAX_WASM_FILES = 5
 MAX_TEXT_BYTES = 512_000
@@ -88,7 +89,7 @@ class Scanner:
         self._window = window
         self._discovery = discovery
         self._locations: dict[str, str | None] = {}
-        self._files = asyncio.Semaphore(24)
+        self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
     async def _text(self, repo: Candidate, branch: str, path: str) -> tuple[str, str]:
         async with self._files:

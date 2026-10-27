@@ -13,7 +13,7 @@ from hackproof.hackathon import get_hackathon
 
 log = logging.getLogger("hackproof.github")
 
-SCAN_CONCURRENCY = 6
+SCAN_CONCURRENCY = 20
 
 
 async def run_discover() -> None:
@@ -52,7 +52,8 @@ async def run_scan(force: bool) -> None:
     gate = asyncio.Semaphore(SCAN_CONCURRENCY)
     done = 0
 
-    async with httpx.AsyncClient(timeout=30) as http:
+    limits = httpx.Limits(max_connections=200, max_keepalive_connections=50)
+    async with httpx.AsyncClient(timeout=30, limits=limits) as http:
         scanner = Scanner(
             GithubClient(http, settings.github_tokens), http, hackathon.window, hackathon.discovery
         )
