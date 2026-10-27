@@ -38,7 +38,7 @@ export function SummaryPage() {
       <section className="flex flex-col gap-4">
         <h2 className="text-2xl font-semibold tracking-tight">The numbers</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {STAT_DEFINITIONS.map(({ key, label, meaning, counted }) => (
+          {STAT_DEFINITIONS.map(({ key, label, meaning, counted, href }) => (
             <Card key={key}>
               <CardHeader>
                 <span className="text-sm text-muted-foreground">{label}</span>
@@ -55,6 +55,11 @@ export function SummaryPage() {
                 <p className="text-muted-foreground">
                   <span className="font-medium text-foreground">Counted as:</span> {counted}
                 </p>
+                {href && (
+                  <Link to={href} className="w-fit underline underline-offset-4">
+                    See the records
+                  </Link>
+                )}
               </CardContent>
             </Card>
           ))}

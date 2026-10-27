@@ -5,6 +5,7 @@ export interface StatDefinition {
   label: string
   meaning: string
   counted: string
+  href?: string
 }
 
 export const STAT_DEFINITIONS: StatDefinition[] = [
@@ -14,6 +15,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     meaning:
       'GitHub repos we treat as HackMeridian submissions. This is a reconstruction, not an official total: the real submission list is private.',
     counted: 'Repos in the verified, declared and likely tiers added together.',
+    href: '/',
   },
   {
     key: 'verified_projects',
@@ -22,12 +24,14 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
       'Repos tied to testnet activity by an exact match, such as a deployed contract id, a wasm hash or a deploy account found in the repo.',
     counted:
       'At least one exact match, and the matched account was active inside the 27 hour window.',
+    href: '/',
   },
   {
     key: 'declared_projects',
     label: 'Declared',
     meaning: 'Repos that say they belong to HackMeridian, with work done during the event.',
     counted: 'The readme or a topic names HackMeridian, and at least one commit inside the window.',
+    href: '/',
   },
   {
     key: 'likely_projects',
@@ -36,6 +40,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
       'Repos that look like hackathon builds from their history, but say nothing about it. A signal, not proof.',
     counted:
       'A Stellar dependency and commits in the window, and the repo was created during the hack or added its Stellar dependency during it.',
+    href: '/',
   },
   {
     key: 'possible_projects',
@@ -58,6 +63,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     meaning: 'Every Soroban contract deployed on testnet during the event, from any account.',
     counted:
       'Deploy operations between 09:00 UTC on 25 Oct and 12:00 UTC on 26 Oct. Not limited to the projects above.',
+    href: '/?tab=contracts',
   },
   {
     key: 'builders',
@@ -84,6 +90,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     label: 'Wasm uploads',
     meaning: 'Contract code uploaded to testnet before any contract is created from it.',
     counted: 'Upload operations inside the window.',
+    href: '/?tab=wasm',
   },
   {
     key: 'failed_txs',
@@ -91,6 +98,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     meaning:
       'Soroban transactions that failed during the event: contract panics, fee estimation errors and resource limits.',
     counted: 'Failed invoke, deploy and upload transactions inside the window.',
+    href: '/?tab=failed',
   },
 ]
 

@@ -1,5 +1,6 @@
 import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
+import { useSearchParams } from 'react-router'
 
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
@@ -14,13 +15,20 @@ import { ProjectGrid } from './project-grid'
 import { ResourceTable } from './resource-table'
 
 export function Explorer() {
-  const [input, setInput] = useState('')
+  const [params, setParams] = useSearchParams()
+  const [input, setInput] = useState(params.get('q') ?? '')
   const [strict, setStrict] = useState(true)
   const [view, setView] = useState<'cards' | 'table'>('cards')
   const search = useDebouncedValue(input.trim())
 
   return (
-    <Tabs defaultValue="projects" className="w-full gap-4">
+    <Tabs
+      value={params.get('tab') ?? 'projects'}
+      onValueChange={(tab) =>
+        setParams((previous) => new URLSearchParams({ ...Object.fromEntries(previous), tab }))
+      }
+      className="w-full gap-4"
+    >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <TabsList>
           <TabsTrigger value="projects">Projects</TabsTrigger>
