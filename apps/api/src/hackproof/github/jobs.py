@@ -82,6 +82,9 @@ async def run_scan(force: bool) -> None:
             except GithubUnavailable:
                 log.warning("skipped %s, github unreachable", repo.full_name)
                 result = None
+            except Exception:
+                log.exception("skipped %s, scan failed", repo.full_name)
+                result = None
             if result is not None:
                 async with pool().acquire() as connection:
                     await store_scan(connection, result)
