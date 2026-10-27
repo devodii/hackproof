@@ -133,7 +133,6 @@ export function linkColumns(fullName: string): Column<Link>[] {
       cell: (row) => <EvidenceSubject kind={row.subject_kind} subject={row.subject} />,
     },
     { header: 'Method', cell: (row) => <Badge variant="secondary">{row.method}</Badge> },
-    { header: 'Confidence', className: numeric, cell: (row) => row.confidence.toFixed(2) },
     {
       header: 'Found in',
       cell: (row) =>

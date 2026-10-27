@@ -75,7 +75,6 @@ export interface Link {
   subject_kind: string
   subject: string
   method: string
-  confidence: number
   path: string | null
 }
 
