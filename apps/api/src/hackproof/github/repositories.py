@@ -4,7 +4,7 @@ import re
 from collections.abc import Iterable
 from typing import Any
 
-from hackproof.github.client import GithubClient
+from hackproof.github.client import GithubClient, GithubUnavailable
 from hackproof.github.models import Candidate
 
 FIELDS = """
@@ -13,7 +13,7 @@ FIELDS = """
   defaultBranchRef { name } owner { login avatarUrl }
   repositoryTopics(first: 20) { nodes { topic { name } } }
 """
-BATCH = 100
+BATCH = 50
 CONCURRENCY = 4
 VALID_NAME = re.compile(r"^[\w.-]+/[\w.-]+$")
 
@@ -56,8 +56,15 @@ async def fetch_repositories(github: GithubClient, names: Iterable[str]) -> list
     gate = asyncio.Semaphore(CONCURRENCY)
 
     async def fetch(batch: list[str]) -> list[Candidate]:
-        async with gate:
-            data = await github.graphql(_query(batch))
+        try:
+            async with gate:
+                data = await github.graphql(_query(batch))
+        except GithubUnavailable:
+            if len(batch) == 1:
+                return []
+            half = len(batch) // 2
+            first, second = await asyncio.gather(fetch(batch[:half]), fetch(batch[half:]))
+            return first + second
         return [candidate_from_node(node) for node in data.values() if node]
 
     return [c for found in await asyncio.gather(*(fetch(b) for b in batches)) for c in found]

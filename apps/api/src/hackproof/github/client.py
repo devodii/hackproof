@@ -112,15 +112,21 @@ class GithubClient:
         return response.json()
 
     async def graphql(self, query: str) -> dict[str, Any]:
-        response = await self._send(
-            "POST", f"{API}/graphql", resource="graphql", json={"query": query}
-        )
-        response.raise_for_status()
-        payload = response.json()
-        errors = [e for e in payload.get("errors", []) if e.get("type") != "NOT_FOUND"]
-        if errors:
-            raise GithubUnavailable(errors[0].get("message", "graphql error"))
-        return payload["data"]
+        for attempt in range(ATTEMPTS):
+            response = await self._send(
+                "POST", f"{API}/graphql", resource="graphql", json={"query": query}
+            )
+            try:
+                payload = response.json()
+            except ValueError:
+                await asyncio.sleep(2**attempt / 2)
+                continue
+            errors = [e for e in payload.get("errors", []) if e.get("type") != "NOT_FOUND"]
+            if errors or "data" not in payload:
+                await asyncio.sleep(2**attempt / 2)
+                continue
+            return payload["data"]
+        raise GithubUnavailable("graphql")
 
     async def raw(self, full_name: str, ref: str, path: str, limit: int = 512_000) -> bytes | None:
         url = f"{RAW}/{full_name}/{ref}/{path}"
