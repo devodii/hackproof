@@ -1,7 +1,7 @@
 import asyncio
 import hashlib
-import json
 import logging
+from collections import defaultdict
 
 import asyncpg
 import httpx
@@ -9,13 +9,15 @@ import httpx
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
 from hackproof.hackathon import get_hackathon
+from hackproof.indexer.events import Event
 from hackproof.indexer.horizon import Horizon
-from hackproof.indexer.parser import Deploy, Event, Failure, Upload, parse_transaction
+from hackproof.indexer.parser import parse_transaction
 from hackproof.indexer.rpc import SorobanRpc
 
 log = logging.getLogger("hackproof.sync")
 
 CHUNK_LEDGERS = 400
+CHUNK_PREFIX = "chunk:v2:"
 
 
 async def _fetch_chunk(rpc: SorobanRpc, network_id: bytes, start: int, end: int) -> list[Event]:
@@ -32,38 +34,16 @@ async def _fetch_chunk(rpc: SorobanRpc, network_id: bytes, start: int, end: int)
 
 
 async def _store(connection: asyncpg.Connection, events: list[Event], chunk_key: str) -> None:
-    deploys = [e for e in events if isinstance(e, Deploy)]
-    uploads = [e for e in events if isinstance(e, Upload)]
-    failures = [e for e in events if isinstance(e, Failure)]
+    by_table: dict[str, list[Event]] = defaultdict(list)
+    for event in events:
+        by_table[event.table].append(event)
     async with connection.transaction():
-        await connection.executemany(
-            "INSERT INTO contracts VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING",
-            [(e.contract_id, e.deployer, e.wasm_hash, e.tx_hash, e.ledger, e.at) for e in deploys],
-        )
-        await connection.executemany(
-            "INSERT INTO wasm_uploads VALUES ($1, $2, $3, $4, $5, $6::jsonb, $7, $8)"
-            " ON CONFLICT DO NOTHING",
-            [
-                (
-                    e.tx_hash,
-                    e.wasm_hash,
-                    e.uploader,
-                    e.size,
-                    e.meta.get("source_repo"),
-                    json.dumps(e.meta),
-                    e.ledger,
-                    e.at,
-                )
-                for e in uploads
-            ],
-        )
-        await connection.executemany(
-            "INSERT INTO failed_txs VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING",
-            [
-                (e.tx_hash, e.source_account, e.kind, e.result_code, e.ledger, e.at)
-                for e in failures
-            ],
-        )
+        for table, rows in by_table.items():
+            placeholders = ", ".join(f"${n}" for n in range(1, len(rows[0].row()) + 1))
+            await connection.executemany(
+                f"INSERT INTO {table} VALUES ({placeholders}) ON CONFLICT DO NOTHING",
+                [event.row() for event in rows],
+            )
         await connection.execute(
             "INSERT INTO sync_state VALUES ($1, 'done') ON CONFLICT DO NOTHING", chunk_key
         )
@@ -90,10 +70,10 @@ async def run_sync() -> None:
             done = {
                 row["key"]
                 for row in await connection.fetch(
-                    "SELECT key FROM sync_state WHERE key LIKE 'chunk:%'"
+                    "SELECT key FROM sync_state WHERE key LIKE $1", f"{CHUNK_PREFIX}%"
                 )
             }
-        pending = [s for s in starts if f"chunk:{s}" not in done]
+        pending = [s for s in starts if f"{CHUNK_PREFIX}{s}" not in done]
         log.info("%s of %s chunks pending", len(pending), len(starts))
 
         semaphore = asyncio.Semaphore(settings.rpc_concurrency)
@@ -106,7 +86,7 @@ async def run_sync() -> None:
                     rpc, network_id, start, min(start + CHUNK_LEDGERS - 1, last)
                 )
             async with pool().acquire() as connection:
-                await _store(connection, events, f"chunk:{start}")
+                await _store(connection, events, f"{CHUNK_PREFIX}{start}")
             completed += 1
             log.info("chunk %s/%s done (%s events)", completed, len(pending), len(events))
 
