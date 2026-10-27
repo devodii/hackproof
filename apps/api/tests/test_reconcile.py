@@ -158,3 +158,29 @@ async def test_repos_created_inside_the_window_become_projects(scratch_db):
     await reconcile(db)
 
     assert await db.fetchval("SELECT project_id FROM projects") == "repo:team/new"
+
+
+async def tiers(db: asyncpg.Connection) -> dict[str, str]:
+    rows = await db.fetch("SELECT project_id, tier FROM projects")
+    return {row["project_id"]: row["tier"] for row in rows}
+
+
+async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(scratch_db):
+    db = scratch_db
+    await add_repo(db, "a/chain", window_commits=1)
+    await add_ref(db, "a/chain", "contract", "C1")
+    await add_contract(db, "C1", "GCHAIN", "w1")
+    await add_repo(db, "b/declared", window_commits=2, mentions_hackathon=True)
+    await add_repo(db, "c/likely", window_commits=2, created_at=INSIDE, dependencies=STELLAR)
+    await add_repo(db, "d/possible", window_commits=5, dependencies=STELLAR)
+    await add_repo(db, "e/seeded", discovered_via=["seed:discord"])
+
+    await reconcile(db)
+
+    assert await tiers(db) == {
+        "repo:a/chain": "verified",
+        "repo:b/declared": "declared",
+        "repo:c/likely": "likely",
+        "repo:d/possible": "possible",
+        "repo:e/seeded": "declared",
+    }

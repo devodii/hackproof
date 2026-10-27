@@ -107,6 +107,15 @@ SELECT 'repo:' || r.full_name, r.full_name,
        CASE WHEN COALESCE(cs.contracts, 0) > 0 THEN 'contracts'
             WHEN COALESCE(os.classic_ops, 0) + COALESCE(ast.assets, 0) > 0 THEN 'classic'
             ELSE 'github' END,
+       CASE
+           WHEN EXISTS (SELECT 1 FROM links l WHERE l.full_name = r.full_name) THEN 'verified'
+           WHEN EXISTS (SELECT 1 FROM unnest(r.discovered_via) via WHERE via LIKE 'seed:%')
+                OR (r.mentions_hackathon AND COALESCE(r.window_commits, 0) > 0) THEN 'declared'
+           WHEN jsonb_array_length(r.dependencies -> 'ecosystems') > 0
+                AND COALESCE(r.window_commits, 0) > 0
+                AND (r.created_at BETWEEN $1 AND $2
+                     OR COALESCE(r.stellar_added_in_window, FALSE)) THEN 'likely'
+           ELSE 'possible' END,
        COALESCE(cs.contracts, 0), COALESCE(os.classic_ops, 0), COALESCE(ast.assets, 0),
        COALESCE(ws.wasm, 0), COALESCE(fs.failed, 0), COALESCE(cs.builders, 0),
        COALESCE(cs.first_at, r.pushed_at), COALESCE(cs.last_at, r.pushed_at),
@@ -120,6 +129,7 @@ LEFT JOIN failed_stats fs USING (full_name)
 WHERE r.full_name IN (SELECT full_name FROM links)
    OR EXISTS (
        SELECT 1 FROM unnest(r.discovered_via) via WHERE via LIKE 'seed:%' OR via = 'wasm_meta')
+   OR (r.mentions_hackathon AND COALESCE(r.window_commits, 0) > 0)
    OR (jsonb_array_length(r.dependencies -> 'ecosystems') > 0
        AND (r.mentions_hackathon OR COALESCE(r.window_commits, 0) >= $3
             OR COALESCE(r.stellar_added_in_window, FALSE)
@@ -141,6 +151,7 @@ WITH builders AS (
 SELECT 'acct:' || o.account, NULL,
        CASE WHEN EXISTS (SELECT 1 FROM contracts c WHERE c.deployer = o.account
                          AND c.deployed_at BETWEEN $1 AND $2) THEN 'contracts' ELSE 'classic' END,
+       'unattributed',
        (SELECT count(*) FROM contracts c
         WHERE c.deployer = o.account AND c.deployed_at BETWEEN $1 AND $2),
        (SELECT count(*) FROM classic_ops x
@@ -168,6 +179,7 @@ FROM orphans o
 class Report(BaseModel):
     links_by_method: dict[str, int]
     projects_by_footprint: dict[str, int]
+    projects_by_tier: dict[str, int]
     linked_projects: int
 
 
@@ -244,10 +256,12 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
     footprints = await connection.fetch(
         "SELECT footprint, count(*) AS n FROM projects GROUP BY footprint"
     )
+    tiers = await connection.fetch("SELECT tier, count(*) AS n FROM projects GROUP BY tier")
     linked = await connection.fetchval("SELECT count(DISTINCT full_name) FROM links")
     return Report(
         links_by_method={row["method"]: row["n"] for row in methods},
         projects_by_footprint={row["footprint"]: row["n"] for row in footprints},
+        projects_by_tier={row["tier"]: row["n"] for row in tiers},
         linked_projects=linked,
     )
 

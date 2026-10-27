@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS projects (
     project_id TEXT PRIMARY KEY,
     full_name TEXT,
     footprint TEXT NOT NULL,
+    tier TEXT NOT NULL,
     contracts INTEGER NOT NULL,
     classic_ops INTEGER NOT NULL,
     assets INTEGER NOT NULL,
