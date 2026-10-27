@@ -6,7 +6,7 @@ import httpx
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
 from hackproof.github.client import GithubClient, GithubUnavailable
-from hackproof.github.discovery import discover, read_seeds, store_candidates, wasm_meta_repos
+from hackproof.github.discovery import discover, store_candidates, wasm_meta_repos
 from hackproof.github.models import Candidate
 from hackproof.github.profiles import resolve_profiles
 from hackproof.github.repositories import fetch_repositories
@@ -30,7 +30,6 @@ async def run_discover(include_strings: bool) -> None:
             hackathon.window,
             hackathon.discovery,
             from_wasm,
-            read_seeds(settings.seeds_file),
             include_strings,
         )
         async for candidates in stages:
@@ -61,8 +60,7 @@ async def run_scan(force: bool) -> None:
                 FROM repos
                 WHERE ($1 OR scanned_at IS NULL)
                   AND (COALESCE(window_commits, 0) > 0
-                       OR EXISTS (SELECT 1 FROM unnest(discovered_via) via
-                                  WHERE via LIKE 'seed:%' OR via = 'wasm_meta'))
+                       OR 'wasm_meta' = ANY(discovered_via))
                 ORDER BY pushed_at DESC NULLS LAST
                 """,
                 force,

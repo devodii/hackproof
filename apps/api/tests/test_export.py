@@ -10,7 +10,7 @@ from hackproof.linking.reconcile import reconcile
 from tests.helpers import STELLAR, WINDOW, add_contract, add_ref, add_repo, add_upload
 
 
-async def seeded_export(db):
+async def populated_export(db):
     await add_repo(
         db,
         "team/app",
@@ -38,7 +38,7 @@ async def seeded_export(db):
 
 
 async def test_export_carries_repo_chain_and_evidence(scratch_db):
-    export = await seeded_export(scratch_db)
+    export = await populated_export(scratch_db)
 
     [project] = export.projects
     assert (project.repo_full_name, project.tier, project.name) == ("team/app", "verified", "app")
@@ -52,7 +52,7 @@ async def test_export_carries_repo_chain_and_evidence(scratch_db):
 
 
 async def test_json_and_yaml_exports_validate_against_the_published_schema(scratch_db):
-    export = await seeded_export(scratch_db)
+    export = await populated_export(scratch_db)
     schema = json_schema()
 
     jsonschema.validate(yaml.safe_load(to_yaml(export)), schema)

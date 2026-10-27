@@ -1,6 +1,6 @@
 from datetime import UTC, datetime
 
-from hackproof.github.discovery import is_pinned, parse_seeds, should_keep, split_range
+from hackproof.github.discovery import is_pinned, should_keep, split_range
 from hackproof.github.models import Candidate
 from hackproof.hackathon import Discovery, Window
 
@@ -40,17 +40,12 @@ def test_drops_stale_forked_and_excluded_repos():
     assert not should_keep(candidate(owner="Stellar"), WINDOW, DISCOVERY)
 
 
-def test_pinned_repos_bypass_every_filter():
+def test_repos_named_in_wasm_metadata_bypass_every_filter():
     stale = candidate(
-        pushed_at=datetime(2025, 1, 1, tzinfo=UTC), fork=True, discovered_via={"seed:discord"}
+        pushed_at=datetime(2025, 1, 1, tzinfo=UTC), fork=True, discovered_via={"wasm_meta"}
     )
     assert is_pinned(stale)
     assert should_keep(stale, WINDOW, DISCOVERY)
-
-
-def test_parse_seeds_reads_urls_and_tags():
-    text = "# header\n\nhttps://github.com/a/b discord\ngithub:c/d\nnot a repo\n"
-    assert parse_seeds(text) == [("a/b", "discord"), ("c/d", "manual")]
 
 
 async def test_split_range_slices_until_every_range_fits_the_cap():

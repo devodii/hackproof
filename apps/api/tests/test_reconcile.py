@@ -127,7 +127,6 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
     await add_repo(db, "b/declared", window_commits=2, mentions_hackathon=True)
     await add_repo(db, "c/likely", window_commits=2, created_at=INSIDE, dependencies=STELLAR)
     await add_repo(db, "d/possible", window_commits=5, dependencies=STELLAR)
-    await add_repo(db, "e/seeded", discovered_via=["seed:discord"])
 
     await reconcile(db)
 
@@ -136,7 +135,6 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
         "repo:b/declared": "declared",
         "repo:c/likely": "likely",
         "repo:d/possible": "possible",
-        "repo:e/seeded": "declared",
     }
 
 

@@ -17,7 +17,6 @@ class Settings(BaseSettings):
     soroban_rpc_url: str = "https://soroban-testnet.stellar.org"
     network_passphrase: str = "Test SDF Network ; September 2015"
     hackathon_file: Path = ROOT / "config" / "hackmeridian-2026.yaml"
-    seeds_file: Path = ROOT / "data" / "seed" / "hackmeridian-2026" / "repos.txt"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
     github_tokens: Annotated[list[str], NoDecode] = Field(

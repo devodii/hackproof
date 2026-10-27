@@ -2,7 +2,6 @@ import asyncio
 import logging
 from collections.abc import AsyncIterator, Awaitable, Callable
 from datetime import UTC, datetime, timedelta
-from pathlib import Path
 from typing import Any
 
 import asyncpg
@@ -19,13 +18,13 @@ log = logging.getLogger("hackproof.discovery")
 PAGE_SIZE = 100
 RESULT_CAP = 1000
 SIZE_CEILING = 400_000
-PINNED_PREFIXES = ("seed:", "wasm_meta")
+PINNED_VIA = "wasm_meta"
 
 Count = Callable[[int, int], Awaitable[int]]
 
 
 def is_pinned(candidate: Candidate) -> bool:
-    return any(via.startswith(PINNED_PREFIXES) for via in candidate.discovered_via)
+    return PINNED_VIA in candidate.discovered_via
 
 
 def should_keep(candidate: Candidate, window: Window, discovery: Discovery) -> bool:
@@ -36,18 +35,6 @@ def should_keep(candidate: Candidate, window: Window, discovery: Discovery) -> b
     return candidate.pushed_at is not None and candidate.pushed_at >= window.start - timedelta(
         days=1
     )
-
-
-def parse_seeds(text: str) -> list[tuple[str, str]]:
-    seeds = []
-    for line in text.splitlines():
-        parts = line.split()
-        if not parts or parts[0].startswith("#"):
-            continue
-        full_name = normalize_repo(parts[0])
-        if full_name:
-            seeds.append((full_name, parts[1] if len(parts) > 1 else "manual"))
-    return seeds
 
 
 async def split_range(
@@ -156,7 +143,6 @@ async def discover(
     window: Window,
     discovery: Discovery,
     wasm_meta_repos: list[str],
-    seeds: list[tuple[str, str]],
     include_strings: bool = False,
     now: datetime | None = None,
 ) -> AsyncIterator[list[Candidate]]:
@@ -164,8 +150,6 @@ async def discover(
     pinned: dict[str, set[str]] = {}
     for name in wasm_meta_repos:
         pinned.setdefault(name.lower(), set()).add("wasm_meta")
-    for name, tag in seeds:
-        pinned.setdefault(name.lower(), set()).add(f"seed:{tag}")
 
     stages = [(discovery.github_queries, [], pinned), ([], discovery.github_code_queries, {})]
     if include_strings:
@@ -230,7 +214,3 @@ async def wasm_meta_repos(connection: asyncpg.Connection) -> list[str]:
         "SELECT DISTINCT source_repo FROM wasm_uploads WHERE source_repo IS NOT NULL"
     )
     return sorted({name for row in rows if (name := normalize_repo(row["source_repo"]))})
-
-
-def read_seeds(path: Path) -> list[tuple[str, str]]:
-    return parse_seeds(path.read_text()) if path.exists() else []
