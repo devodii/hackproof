@@ -1,3 +1,4 @@
+import json
 from collections.abc import AsyncIterator
 from urllib.parse import urlparse, urlunparse
 from uuid import uuid4
@@ -16,6 +17,9 @@ async def scratch_db() -> AsyncIterator[asyncpg.Connection]:
     admin = await asyncpg.connect(url)
     await admin.execute(f'CREATE DATABASE "{name}"')
     connection = await asyncpg.connect(urlunparse(urlparse(url)._replace(path=f"/{name}")))
+    await connection.set_type_codec(
+        "jsonb", encoder=json.dumps, decoder=json.loads, schema="pg_catalog"
+    )
     await connection.execute(SCHEMA)
     yield connection
     await connection.close()

@@ -1,56 +1,18 @@
 from datetime import timedelta
 
-import asyncpg
-
-from hackproof.config import get_settings
-from hackproof.hackathon import get_hackathon
 from hackproof.linking.reconcile import MAX_REPOS_PER_ACCOUNT, reconcile
-
-WINDOW = get_hackathon().window
-INSIDE = WINDOW.start + timedelta(hours=3)
-FRIENDBOT = get_settings().friendbot_account
-
-
-async def add_repo(db: asyncpg.Connection, full_name: str, **fields: object) -> None:
-    values = {"url": f"https://github.com/{full_name}", "owner": full_name.split("/")[0], **fields}
-    columns = ", ".join(["full_name", *values])
-    marks = ", ".join(f"${n}" for n in range(1, len(values) + 2))
-    await db.execute(f"INSERT INTO repos ({columns}) VALUES ({marks})", full_name, *values.values())
-
-
-async def add_ref(db: asyncpg.Connection, full_name: str, kind: str, value: str) -> None:
-    await db.execute(
-        "INSERT INTO repo_refs VALUES ($1, $2, $3, 'README.md')", full_name, kind, value
-    )
-
-
-async def add_contract(db: asyncpg.Connection, contract: str, deployer: str, wasm: str) -> None:
-    await db.execute(
-        "INSERT INTO contracts VALUES ($1, $2, $3, $4, 1, $5)",
-        contract, deployer, wasm, f"tx-{contract}", INSIDE,
-    )  # fmt: skip
-
-
-async def add_upload(db: asyncpg.Connection, wasm: str, uploader: str, repo: str | None = None):
-    await db.execute(
-        "INSERT INTO wasm_uploads VALUES ($1, $2, $3, 10, $4, '{}', 1, $5)",
-        f"up-{wasm}-{uploader}", wasm, uploader, repo, INSIDE,
-    )  # fmt: skip
-
-
-async def add_funding(db: asyncpg.Connection, account: str) -> None:
-    await db.execute(
-        "INSERT INTO accounts VALUES ($1, $2, $3, 1, $4)",
-        account,
-        FRIENDBOT,
-        f"fund-{account}",
-        INSIDE,
-    )
-
-
-async def links(db: asyncpg.Connection) -> dict[tuple[str, str, str], str]:
-    rows = await db.fetch("SELECT full_name, subject_kind, subject, method FROM links")
-    return {(r["full_name"], r["subject_kind"], r["subject"]): r["method"] for r in rows}
+from tests.helpers import (
+    INSIDE,
+    STELLAR,
+    WINDOW,
+    add_contract,
+    add_funding,
+    add_ref,
+    add_repo,
+    add_upload,
+    links,
+    tiers,
+)
 
 
 async def test_a_contract_in_a_repo_pulls_in_the_whole_deployer_footprint(scratch_db):
@@ -101,7 +63,7 @@ async def test_a_shared_template_wasm_does_not_merge_unrelated_teams(scratch_db)
 async def test_hacker_accounts_in_a_repo_attach_a_contractless_project(scratch_db):
     db = scratch_db
     await add_repo(db, "team/payments", window_commits=9, mentions_hackathon=True,
-                   dependencies='{"ecosystems": ["js"], "packages": {}}')  # fmt: skip
+                   dependencies={"ecosystems": ["js"], "packages": {}})  # fmt: skip
     await add_funding(db, "GHACKER")
     await add_ref(db, "team/payments", "account", "GHACKER")
     await db.execute(
@@ -137,9 +99,6 @@ async def test_unattributed_deployers_become_account_projects(scratch_db):
     assert await db.fetchval("SELECT project_id FROM projects") == "acct:GLONE"
 
 
-STELLAR = '{"ecosystems": ["js"], "packages": {"@stellar/stellar-sdk": "14.0.0"}}'
-
-
 async def test_older_repos_that_added_stellar_during_the_window_become_projects(scratch_db):
     db = scratch_db
     await add_repo(db, "team/old", stellar_added_in_window=True, dependencies=STELLAR)
@@ -158,11 +117,6 @@ async def test_repos_created_inside_the_window_become_projects(scratch_db):
     await reconcile(db)
 
     assert await db.fetchval("SELECT project_id FROM projects") == "repo:team/new"
-
-
-async def tiers(db: asyncpg.Connection) -> dict[str, str]:
-    rows = await db.fetch("SELECT project_id, tier FROM projects")
-    return {row["project_id"]: row["tier"] for row in rows}
 
 
 async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(scratch_db):
