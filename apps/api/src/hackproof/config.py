@@ -1,7 +1,9 @@
 from functools import lru_cache
 from pathlib import Path
+from typing import Annotated
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field, field_validator
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 ROOT = Path(__file__).resolve().parents[4]
 ROOT_ENV = ROOT / ".env"
@@ -17,8 +19,17 @@ class Settings(BaseSettings):
     hackathon_file: Path = ROOT / "config" / "hackmeridian-2026.yaml"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
-    github_token: str | None = None
+    github_tokens: Annotated[list[str], NoDecode] = Field(
+        default_factory=list, validation_alias="HACKPROOF_GITHUB_TOKEN"
+    )
     cors_origins: list[str] = ["http://localhost:5173"]
+
+    @field_validator("github_tokens", mode="before")
+    @classmethod
+    def split_tokens(cls, value: object) -> object:
+        if isinstance(value, str):
+            return [token.strip() for token in value.split(",") if token.strip()]
+        return value
 
 
 @lru_cache
