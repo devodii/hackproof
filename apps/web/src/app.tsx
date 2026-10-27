@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router'
 
 import { SiteHeader } from '@/components/layout/site-header'
+import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
 import { ProjectPage } from '@/pages/project'
 
@@ -12,6 +13,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/project/*" element={<ProjectPage />} />
+          <Route path="/builder/:address" element={<BuilderPage />} />
         </Routes>
       </main>
     </div>
