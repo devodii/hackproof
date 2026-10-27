@@ -121,8 +121,7 @@ SELECT 'repo:' || r.full_name, r.full_name,
            ELSE 'possible' END,
        COALESCE(cs.contracts, 0), COALESCE(os.classic_ops, 0), COALESCE(ast.assets, 0),
        COALESCE(ws.wasm, 0), COALESCE(fs.failed, 0), COALESCE(cs.builders, 0),
-       COALESCE(cs.first_at, r.pushed_at), COALESCE(cs.last_at, r.pushed_at),
-       EXISTS (SELECT 1 FROM links l WHERE l.full_name = r.full_name)
+       COALESCE(cs.first_at, r.pushed_at), COALESCE(cs.last_at, r.pushed_at)
 FROM repos r
 LEFT JOIN contract_stats cs USING (full_name)
 LEFT JOIN op_stats os USING (full_name)
@@ -173,8 +172,7 @@ SELECT 'acct:' || o.account, NULL,
        (SELECT max(at) FROM (
             SELECT deployed_at AS at FROM contracts WHERE deployer = o.account
             UNION ALL SELECT uploaded_at FROM wasm_uploads WHERE uploader = o.account
-            UNION ALL SELECT occurred_at FROM classic_ops WHERE source_account = o.account) a),
-       FALSE
+            UNION ALL SELECT occurred_at FROM classic_ops WHERE source_account = o.account) a)
 FROM orphans o
 """
 
@@ -183,7 +181,6 @@ class Report(BaseModel):
     links_by_method: dict[str, int]
     projects_by_footprint: dict[str, int]
     projects_by_tier: dict[str, int]
-    linked_projects: int
 
 
 async def _insert_links(
@@ -260,12 +257,10 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
         "SELECT footprint, count(*) AS n FROM projects GROUP BY footprint"
     )
     tiers = await connection.fetch("SELECT tier, count(*) AS n FROM projects GROUP BY tier")
-    linked = await connection.fetchval("SELECT count(DISTINCT full_name) FROM links")
     return Report(
         links_by_method={row["method"]: row["n"] for row in methods},
         projects_by_footprint={row["footprint"]: row["n"] for row in footprints},
         projects_by_tier={row["tier"]: row["n"] for row in tiers},
-        linked_projects=linked,
     )
 
 

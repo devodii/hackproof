@@ -10,7 +10,7 @@ SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.cla
        r.description, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
        r.country, r.dependencies,
        r.window_commits, r.total_commits, r.mentions_hackathon, r.stellar_added_in_window,
-       r.created_at, r.topics, r.discovered_via,
+       r.created_at, r.topics,
        count(*) OVER () AS total
 FROM projects p
 LEFT JOIN repos r ON r.full_name = p.full_name
@@ -22,8 +22,9 @@ WHERE ($1::text IS NULL
        OR p.project_id IN (SELECT project_id FROM account_projects WHERE account = $2))
   AND ($3::text IS NULL OR p.project_id = $3)
   AND ($4::text[] IS NULL OR p.tier = ANY($4))
-ORDER BY p.linked DESC, p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST,
-         p.last_activity DESC
+ORDER BY array_position(
+             ARRAY['verified', 'declared', 'likely', 'possible', 'unattributed'], p.tier),
+         p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
 LIMIT $5 OFFSET $6
 """
 

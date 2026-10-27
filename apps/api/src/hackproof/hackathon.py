@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from functools import lru_cache
 
 import yaml
@@ -11,10 +11,6 @@ class Window(BaseModel):
     start: datetime
     pull_start: datetime
     end: datetime
-
-    @property
-    def duration(self) -> timedelta:
-        return self.end - self.start
 
 
 class Discovery(BaseModel):

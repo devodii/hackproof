@@ -43,6 +43,3 @@ class SorobanRpc:
         else:
             params["startLedger"] = start_ledger
         return await self.call("getTransactions", params)
-
-    async def latest_ledger(self) -> int:
-        return (await self.call("getHealth"))["latestLedger"]
