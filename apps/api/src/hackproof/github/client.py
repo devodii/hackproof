@@ -34,6 +34,7 @@ class GithubClient:
         self._http = http
         self._tokens = [Token(value=value) for value in tokens] or [Token(value=None)]
         self._lock = asyncio.Lock()
+        self._raw_resume_at = 0.0
 
     async def _acquire(self, search: Search | None, resource: Resource) -> Token:
         while True:
@@ -131,13 +132,15 @@ class GithubClient:
     async def raw(self, full_name: str, ref: str, path: str, limit: int = 512_000) -> bytes | None:
         url = f"{RAW}/{full_name}/{ref}/{path}"
         for attempt in range(ATTEMPTS):
+            await asyncio.sleep(max(self._raw_resume_at - time.monotonic(), 0))
             try:
                 response = await self._http.get(url)
             except httpx.TransportError:
                 await asyncio.sleep(2**attempt / 2)
                 continue
             if response.status_code in RETRYABLE:
-                await asyncio.sleep(2**attempt / 2)
+                pause = float(response.headers.get("retry-after", 2 ** (attempt + 1)))
+                self._raw_resume_at = max(self._raw_resume_at, time.monotonic() + pause)
                 continue
             if response.status_code != 200 or len(response.content) > limit:
                 return None
