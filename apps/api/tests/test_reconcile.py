@@ -184,3 +184,18 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
         "repo:d/possible": "possible",
         "repo:e/seeded": "declared",
     }
+
+
+async def test_matches_that_only_touch_the_pre_start_margin_are_not_verified(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/early", window_commits=1)
+    await add_ref(db, "team/early", "contract", "C1")
+    await db.execute(
+        "INSERT INTO contracts VALUES ('C1', 'GEARLY', 'w1', 'tx', 1, $1)",
+        WINDOW.start - timedelta(minutes=30),
+    )
+
+    await reconcile(db)
+
+    assert (await links(db))[("team/early", "contract", "C1")] == "contract_in_repo"
+    assert (await tiers(db))["repo:team/early"] == "possible"

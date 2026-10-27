@@ -108,7 +108,10 @@ SELECT 'repo:' || r.full_name, r.full_name,
             WHEN COALESCE(os.classic_ops, 0) + COALESCE(ast.assets, 0) > 0 THEN 'classic'
             ELSE 'github' END,
        CASE
-           WHEN EXISTS (SELECT 1 FROM links l WHERE l.full_name = r.full_name) THEN 'verified'
+           WHEN EXISTS (SELECT 1 FROM links l WHERE l.full_name = r.full_name)
+                AND COALESCE(cs.contracts, 0) + COALESCE(os.classic_ops, 0)
+                    + COALESCE(ast.assets, 0) + COALESCE(ws.wasm, 0) + COALESCE(fs.failed, 0) > 0
+                THEN 'verified'
            WHEN EXISTS (SELECT 1 FROM unnest(r.discovered_via) via WHERE via LIKE 'seed:%')
                 OR (r.mentions_hackathon AND COALESCE(r.window_commits, 0) > 0) THEN 'declared'
            WHEN jsonb_array_length(r.dependencies -> 'ecosystems') > 0
