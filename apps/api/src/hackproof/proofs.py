@@ -2,8 +2,8 @@ from datetime import datetime
 from typing import Any
 
 from hackproof import queries
-from hackproof.config import get_settings
 from hackproof.db import pool
+from hackproof.hackathon import get_hackathon
 from hackproof.proof import proof_id
 
 ACTIVITY_SQL = """
@@ -58,12 +58,12 @@ async def load_proof(address: str) -> dict[str, Any] | None:
     found = await activity(address)
     if found is None:
         return None
-    settings = get_settings()
+    window = get_hackathon().window
     return {
         **found,
         "proof_id": proof_id(address),
         "address": address,
         "claimed_at": claimed["issued_at"],
-        "window_start": settings.hack_start,
-        "window_end": settings.hack_end,
+        "window_start": window.start,
+        "window_end": window.end,
     }

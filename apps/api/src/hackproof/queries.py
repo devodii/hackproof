@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import Any, Literal
 
-from hackproof.config import get_settings
 from hackproof.db import pool
+from hackproof.hackathon import get_hackathon
 
 PROJECTS_SQL = """
 WITH keyed AS (
@@ -111,8 +111,8 @@ SELECT
 
 
 def window() -> tuple[datetime, datetime]:
-    settings = get_settings()
-    return settings.hack_start, settings.hack_end
+    window = get_hackathon().window
+    return window.start, window.end
 
 
 RESOURCE_SQL = {

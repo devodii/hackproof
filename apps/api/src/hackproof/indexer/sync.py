@@ -8,6 +8,7 @@ import httpx
 
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
+from hackproof.hackathon import get_hackathon
 from hackproof.indexer.horizon import Horizon
 from hackproof.indexer.parser import Deploy, Event, Failure, Upload, parse_transaction
 from hackproof.indexer.rpc import SorobanRpc
@@ -79,8 +80,9 @@ async def run_sync() -> None:
 
         health = await rpc.call("getHealth")
         oldest, latest = health["oldestLedger"], health["latestLedger"]
-        first = await horizon.first_ledger_at_or_after(settings.pull_start, oldest, latest)
-        last = await horizon.first_ledger_at_or_after(settings.hack_end, first, latest) - 1
+        window = get_hackathon().window
+        first = await horizon.first_ledger_at_or_after(window.pull_start, oldest, latest)
+        last = await horizon.first_ledger_at_or_after(window.end, first, latest) - 1
         log.info("syncing ledgers %s to %s", first, last)
 
         starts = list(range(first, last + 1, CHUNK_LEDGERS))

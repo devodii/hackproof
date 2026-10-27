@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 from fastapi.testclient import TestClient
 from stellar_sdk import Keypair
 
-from hackproof.config import get_settings
 from hackproof.db import pool
+from hackproof.hackathon import get_hackathon
 from hackproof.main import app
 from hackproof.proof import SEP53_PREFIX
 
@@ -74,7 +74,7 @@ def test_deployer_can_claim_and_read_back_a_proof():
     keypair = Keypair.random()
     address = keypair.public_key
     with TestClient(app) as client:
-        client.portal.call(seed_deploy, address, get_settings().hack_start + timedelta(hours=1))
+        client.portal.call(seed_deploy, address, get_hackathon().window.start + timedelta(hours=1))
         try:
             message = client.post("/api/proof/challenge", json={"address": address}).json()[
                 "message"

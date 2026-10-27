@@ -1,0 +1,40 @@
+name: HackMeridian 2026
+window:
+  start: "2026-10-25T09:00:00Z"
+  pull_start: "2026-10-25T08:00:00Z"
+  end: "2026-10-26T12:00:00Z"
+discovery:
+  github_queries:
+    - "hackmeridian in:name,description,readme pushed:>=2026-10-24"
+    - "\"hack meridian\" in:readme pushed:>=2026-10-24"
+    - "meridian 2026 stellar in:readme pushed:>=2026-10-24"
+    - "lisbon stellar in:readme pushed:>=2026-10-24"
+    - "stellar pushed:>=2026-10-24 created:>=2026-10-01"
+    - "topic:soroban pushed:>=2026-10-24 created:>=2026-10-01"
+    - "topic:stellar pushed:>=2026-10-24 created:>=2026-10-01"
+  github_code_queries:
+    - "soroban-sdk filename:Cargo.toml"
+    - "@stellar/stellar-sdk filename:package.json"
+    - "@stellar/freighter-api filename:package.json"
+    - "@creit.tech/stellar-wallets-kit filename:package.json"
+    - "stellar-base filename:package.json"
+    - "stellar-sdk filename:requirements.txt"
+    - "stellar-sdk filename:pyproject.toml"
+    - "github.com/stellar/go filename:go.mod"
+    - "Test SDF Network ; September 2015"
+    - "soroban-testnet.stellar.org"
+    - "friendbot.stellar.org"
+  dependency_fingerprints:
+    rust: [soroban-sdk, stellar-xdr, stellar-strkey]
+    js:
+      - "@stellar/stellar-sdk"
+      - "@stellar/stellar-base"
+      - "@stellar/freighter-api"
+      - "@creit.tech/stellar-wallets-kit"
+      - "@stellar/typescript-wallet-sdk"
+      - stellar-sdk
+      - stellar-base
+    python: [stellar-sdk, stellar_sdk]
+    go: [github.com/stellar/go]
+  exclude_owners: [stellar, stellar-expert, soroban, creit-tech, stellar-light]
+  known_infra_accounts: []

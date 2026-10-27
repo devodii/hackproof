@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from hackproof.config import get_settings
 from hackproof.db import close_pool, open_pool
+from hackproof.hackathon import get_hackathon
 from hackproof.proof_routes import router as proof_router
 from hackproof.routes import router
 
@@ -19,10 +20,11 @@ async def health() -> dict[str, str]:
 
 @api.get("/window")
 async def window() -> dict[str, str]:
-    settings = get_settings()
+    hackathon = get_hackathon()
     return {
-        "start": settings.hack_start.isoformat(),
-        "end": settings.hack_end.isoformat(),
+        "name": hackathon.name,
+        "start": hackathon.window.start.isoformat(),
+        "end": hackathon.window.end.isoformat(),
     }
 
 

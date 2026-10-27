@@ -1,10 +1,10 @@
-from datetime import datetime, timedelta
 from functools import lru_cache
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-ROOT_ENV = Path(__file__).resolve().parents[4] / ".env"
+ROOT = Path(__file__).resolve().parents[4]
+ROOT_ENV = ROOT / ".env"
 
 
 class Settings(BaseSettings):
@@ -14,20 +14,11 @@ class Settings(BaseSettings):
     horizon_url: str = "https://horizon-testnet.stellar.org"
     soroban_rpc_url: str = "https://soroban-testnet.stellar.org"
     network_passphrase: str = "Test SDF Network ; September 2015"
-    hack_start: datetime = datetime.fromisoformat("2026-10-25T09:00:00+00:00")
-    hack_duration_hours: int = 27
-    pull_lead_minutes: int = 60
+    hackathon_file: Path = ROOT / "config" / "hackmeridian-2026.yaml"
+    friendbot_account: str = "GBZXN7PIRZGNMHGA7MUUUF4GWPY5AYPV6LY4UV2GL6VJGIQRXFDNMADI"
     rpc_concurrency: int = 6
     github_token: str | None = None
     cors_origins: list[str] = ["http://localhost:5173"]
-
-    @property
-    def pull_start(self) -> datetime:
-        return self.hack_start - timedelta(minutes=self.pull_lead_minutes)
-
-    @property
-    def hack_end(self) -> datetime:
-        return self.hack_start + timedelta(hours=self.hack_duration_hours)
 
 
 @lru_cache

@@ -538,6 +538,7 @@ dependencies = [
     { name = "httpx" },
     { name = "pycountry" },
     { name = "pydantic-settings" },
+    { name = "pyyaml" },
     { name = "stellar-sdk" },
 ]
 
@@ -555,6 +556,7 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "pycountry", specifier = ">=26.2.16" },
     { name = "pydantic-settings", specifier = ">=2.16.1" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "stellar-sdk", specifier = ">=16.1.1" },
 ]
 
