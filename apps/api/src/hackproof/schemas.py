@@ -14,6 +14,7 @@ class Stats(BaseModel):
     linked_projects: int
     contracts: int
     builders: int
+    contributors: int
     countries: int
     wasm_uploads: int
     failed_txs: int
@@ -34,6 +35,9 @@ class Project(BaseModel):
     last_activity: datetime | None
     description: str | None
     stars: int | None
+    forks: int | None
+    language: str | None
+    license: str | None
     owner: str | None
     owner_avatar: str | None
     country: str | None
@@ -45,6 +49,14 @@ class Project(BaseModel):
     created_at: datetime | None
     topics: list[str] | None
     discovered_via: list[str] | None
+
+
+class Contributor(BaseModel):
+    login: str
+    url: str
+    avatar_url: str | None
+    contributions: int
+    country: str | None
 
 
 class Link(BaseModel):
@@ -87,6 +99,7 @@ class FailedTx(BaseModel):
 class ProjectDetail(BaseModel):
     project: Project
     links: list[Link]
+    contributors: list[Contributor]
     contracts: list[Contract]
     wasm_uploads: list[WasmUpload]
     failed_txs: list[FailedTx]

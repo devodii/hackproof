@@ -14,6 +14,7 @@ def test_stats_reports_every_counter():
         "linked_projects",
         "contracts",
         "builders",
+        "contributors",
         "countries",
         "wasm_uploads",
         "failed_txs",

@@ -7,7 +7,8 @@ from hackproof.hackathon import get_hackathon
 PROJECTS_SQL = """
 SELECT p.project_id, p.full_name, r.url, p.footprint, p.contracts, p.classic_ops, p.assets,
        p.builders, p.wasm_uploads, p.failed_txs, p.first_activity, p.last_activity,
-       r.description, r.stars, r.owner, r.owner_avatar, r.country, r.dependencies,
+       r.description, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
+       r.country, r.dependencies,
        r.window_commits, r.total_commits, r.mentions_hackathon, r.stellar_added_in_window,
        r.created_at, r.topics, r.discovered_via,
        count(*) OVER () AS total
@@ -90,8 +91,14 @@ SELECT
         SELECT deployer FROM contracts WHERE deployed_at BETWEEN $1 AND $2
         UNION SELECT uploader FROM wasm_uploads WHERE uploaded_at BETWEEN $1 AND $2
         UNION SELECT subject FROM links WHERE subject_kind = 'account') builders) AS builders,
-    (SELECT count(DISTINCT r.country) FROM projects p
-     JOIN repos r ON r.full_name = p.full_name) AS countries,
+    (SELECT count(DISTINCT c.login) FROM repo_contributors c
+     JOIN projects p ON p.full_name = c.full_name) AS contributors,
+    (SELECT count(DISTINCT country) FROM (
+        SELECT r.country FROM projects p JOIN repos r ON r.full_name = p.full_name
+        UNION SELECT u.country FROM projects p
+            JOIN repo_contributors c ON c.full_name = p.full_name
+            JOIN github_users u ON u.login = c.login) found
+     WHERE country IS NOT NULL) AS countries,
     (SELECT count(*) FROM wasm_uploads WHERE uploaded_at BETWEEN $1 AND $2) AS wasm_uploads,
     (SELECT count(*) FROM failed_txs WHERE created_at BETWEEN $1 AND $2) AS failed_txs
 """
@@ -99,6 +106,14 @@ SELECT
 LINKS_SQL = """
 SELECT subject_kind, subject, method, confidence FROM links
 WHERE full_name = $1 ORDER BY confidence DESC, subject_kind, subject
+"""
+
+CONTRIBUTORS_SQL = """
+SELECT c.login, c.url, c.avatar_url, c.contributions, u.country
+FROM repo_contributors c
+LEFT JOIN github_users u ON u.login = c.login
+WHERE c.full_name = $1
+ORDER BY c.contributions DESC, c.login
 """
 
 RESOURCE_SQL = {
@@ -142,3 +157,8 @@ async def fetch_stats() -> dict[str, int]:
 async def fetch_links(full_name: str) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(LINKS_SQL, full_name)]
+
+
+async def fetch_contributors(full_name: str) -> list[dict[str, Any]]:
+    async with pool().acquire() as connection:
+        return [dict(row) for row in await connection.fetch(CONTRIBUTORS_SQL, full_name)]
