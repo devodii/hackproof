@@ -45,3 +45,17 @@ def test_projects_can_be_filtered_by_tier():
     with TestClient(app) as client:
         body = client.get("/api/projects", params={"tier": ["verified", "declared"], "limit": 100})
     assert {item["tier"] for item in body.json()["items"]} <= {"verified", "declared"}
+
+
+def test_timeline_has_one_point_per_hour_of_the_window():
+    with TestClient(app) as client:
+        points = client.get("/api/timeline").json()
+    assert len(points) == 27
+    assert all(point["contracts"] >= 0 for point in points)
+
+
+def test_countries_are_ranked_by_contributors():
+    with TestClient(app) as client:
+        rows = client.get("/api/countries").json()
+    counts = [row["contributors"] for row in rows]
+    assert counts == sorted(counts, reverse=True)

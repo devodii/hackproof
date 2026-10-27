@@ -144,6 +144,16 @@ class Proof(BaseModel):
     window_end: datetime
 
 
+class TimelinePoint(BaseModel):
+    hour: datetime
+    contracts: int
+
+
+class CountryCount(BaseModel):
+    country: str
+    contributors: int
+
+
 class Page[T](BaseModel):
     items: list[T]
     total: int

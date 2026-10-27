@@ -122,6 +122,26 @@ WHERE c.full_name = $1
 ORDER BY c.contributions DESC, c.login
 """
 
+TIMELINE_SQL = """
+SELECT g.hour, count(c.contract_id) AS contracts
+FROM generate_series($1::timestamptz, $2::timestamptz - interval '1 hour', interval '1 hour')
+     AS g(hour)
+LEFT JOIN contracts c ON c.deployed_at >= g.hour AND c.deployed_at < g.hour + interval '1 hour'
+GROUP BY g.hour
+ORDER BY g.hour
+"""
+
+COUNTRIES_SQL = """
+SELECT u.country, count(DISTINCT c.login) AS contributors
+FROM repo_contributors c
+JOIN projects p ON p.full_name = c.full_name AND p.tier IN ('verified', 'declared', 'likely')
+JOIN github_users u ON u.login = c.login
+WHERE u.country IS NOT NULL
+GROUP BY u.country
+ORDER BY contributors DESC, u.country
+LIMIT $1
+"""
+
 RESOURCE_SQL = {
     "projects": PROJECTS_SQL,
     "contracts": CONTRACTS_SQL,
@@ -172,3 +192,14 @@ async def fetch_links(full_name: str) -> list[dict[str, Any]]:
 async def fetch_contributors(full_name: str) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(CONTRIBUTORS_SQL, full_name)]
+
+
+async def fetch_timeline() -> list[dict[str, Any]]:
+    start, end = window()
+    async with pool().acquire() as connection:
+        return [dict(row) for row in await connection.fetch(TIMELINE_SQL, start, end)]
+
+
+async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:
+    async with pool().acquire() as connection:
+        return [dict(row) for row in await connection.fetch(COUNTRIES_SQL, limit)]

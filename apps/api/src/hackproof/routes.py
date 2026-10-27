@@ -6,12 +6,14 @@ from hackproof import queries
 from hackproof.schemas import (
     Builder,
     Contract,
+    CountryCount,
     FailedTx,
     Page,
     Project,
     ProjectDetail,
     Stats,
     Tier,
+    TimelinePoint,
     WasmUpload,
 )
 
@@ -32,6 +34,16 @@ async def stats() -> Stats:
 async def _page(resource: queries.Resource, q: str | None, limit: int, offset: int) -> Page[Any]:
     items, total = await queries.list_page(resource, q=q, limit=limit, offset=offset)
     return Page(items=items, total=total)
+
+
+@router.get("/timeline")
+async def timeline() -> list[TimelinePoint]:
+    return [TimelinePoint(**point) for point in await queries.fetch_timeline()]
+
+
+@router.get("/countries")
+async def countries() -> list[CountryCount]:
+    return [CountryCount(**row) for row in await queries.fetch_countries()]
 
 
 @router.get("/projects")
