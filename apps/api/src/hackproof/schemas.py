@@ -38,6 +38,7 @@ class Project(BaseModel):
     first_activity: datetime | None
     last_activity: datetime | None
     description: str | None
+    homepage: str | None
     stars: int | None
     forks: int | None
     language: str | None
@@ -67,6 +68,7 @@ class Link(BaseModel):
     subject: str
     method: str
     confidence: float
+    path: str | None
 
 
 class Contract(BaseModel):

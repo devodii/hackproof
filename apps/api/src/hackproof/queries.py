@@ -7,7 +7,7 @@ from hackproof.hackathon import get_hackathon
 PROJECTS_SQL = """
 SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.classic_ops, p.assets,
        p.builders, p.wasm_uploads, p.failed_txs, p.first_activity, p.last_activity,
-       r.description, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
+       r.description, r.homepage, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
        r.country, r.dependencies,
        r.window_commits, r.total_commits, r.mentions_hackathon, r.stellar_added_in_window,
        r.created_at, r.topics,
@@ -110,8 +110,12 @@ SELECT
 """
 
 LINKS_SQL = """
-SELECT subject_kind, subject, method, confidence FROM links
-WHERE full_name = $1 ORDER BY confidence DESC, subject_kind, subject
+SELECT l.subject_kind, l.subject, l.method, l.confidence, r.path
+FROM links l
+LEFT JOIN repo_refs r
+       ON r.full_name = l.full_name AND r.kind = l.subject_kind AND r.value = l.subject
+WHERE l.full_name = $1
+ORDER BY l.confidence DESC, l.subject_kind, l.subject
 """
 
 CONTRIBUTORS_SQL = """
