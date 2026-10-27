@@ -35,11 +35,14 @@ export function ProjectPage() {
   const direct = links.filter((link) => link.method !== 'footprint')
   const derived = links.length - direct.length
   const packages = Object.entries(project.dependencies?.packages ?? {})
-  const signals = [
-    isWithin(project.created_at, hackWindow) && 'Created during the hack',
-    project.stellar_added_in_window && 'Added Stellar during the hack',
-    project.mentions_hackathon && 'Mentions HackMeridian',
-  ].filter(Boolean)
+  const reasons = [
+    isWithin(project.created_at, hackWindow) && 'was created during the hack',
+    project.stellar_added_in_window && 'added Stellar during the hack',
+    project.mentions_hackathon && 'mentions HackMeridian',
+  ].filter(Boolean) as string[]
+  const inclusion = reasons.length
+    ? new Intl.ListFormat('en', { type: 'conjunction' }).format(reasons)
+    : 'has a Stellar dependency and commits during the hack'
 
   return (
     <div className="flex flex-col gap-8">
@@ -102,7 +105,7 @@ export function ProjectPage() {
               <StarIcon className="size-3.5" /> {project.stars}
             </span>
           )}
-          {project.first_activity && project.last_activity && (
+          {project.footprint !== 'github' && project.first_activity && project.last_activity && (
             <span>
               {formatDateTime(project.first_activity)} to {formatDateTime(project.last_activity)}
             </span>
@@ -122,12 +125,8 @@ export function ProjectPage() {
               </a>
             )}
         </div>
-        {signals.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {signals.map((signal) => (
-              <Badge key={String(signal)}>{signal}</Badge>
-            ))}
-          </div>
+        {project.tier !== 'verified' && (
+          <p className="text-sm text-muted-foreground">Included because it {inclusion}.</p>
         )}
         {packages.length > 0 && (
           <div className="flex flex-wrap gap-2">
