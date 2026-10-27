@@ -12,7 +12,7 @@ export function SiteFooter() {
             Methodology
           </Link>
           <a href={REPO_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
-            Source
+            GitHub
           </a>
         </nav>
       </div>
