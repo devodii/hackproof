@@ -10,6 +10,7 @@ interface ResourceTableProps<T> {
   columns: Column<T>[]
   rowKey: (row: T) => string
   empty: string
+  tiers?: readonly string[]
 }
 
 export function ResourceTable<T>({
@@ -18,9 +19,10 @@ export function ResourceTable<T>({
   columns,
   rowKey,
   empty,
+  tiers,
 }: ResourceTableProps<T>) {
   const [page, setPage] = useState(0)
-  const { data, isPending, isError } = usePagedList<T>(resource, search, page)
+  const { data, isPending, isError } = usePagedList<T>(resource, search, page, tiers)
 
   if (isError) {
     return (

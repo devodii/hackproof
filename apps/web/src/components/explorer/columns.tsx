@@ -5,6 +5,7 @@ import {
   expertUrl,
   flagEmoji,
   footprintLabel,
+  tierLabel,
   formatBytes,
   formatDateTime,
   formatLastActivity,
@@ -31,6 +32,14 @@ export const projectColumns: Column<Project>[] = [
           </span>
         )}
       </div>
+    ),
+  },
+  {
+    header: 'Evidence',
+    cell: (row) => (
+      <Badge variant={row.tier === 'verified' ? 'default' : 'secondary'}>
+        {tierLabel[row.tier]}
+      </Badge>
     ),
   },
   {

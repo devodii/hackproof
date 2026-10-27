@@ -9,13 +9,15 @@ export interface HackWindow {
 }
 
 export type Footprint = 'contracts' | 'classic' | 'github'
+export type Tier = 'verified' | 'declared' | 'likely' | 'possible' | 'unattributed'
 
 export interface Stats {
   projects: number
-  contract_projects: number
-  classic_projects: number
-  github_projects: number
-  linked_projects: number
+  verified_projects: number
+  declared_projects: number
+  likely_projects: number
+  possible_projects: number
+  unattributed_accounts: number
   contracts: number
   builders: number
   contributors: number
@@ -34,6 +36,7 @@ export interface Project {
   full_name: string | null
   url: string | null
   footprint: Footprint
+  tier: Tier
   contracts: number
   classic_ops: number
   assets: number

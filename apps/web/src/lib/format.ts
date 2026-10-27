@@ -40,6 +40,16 @@ export function isWithin(iso: string | null, window: { start: string; end: strin
   return time >= new Date(window.start).getTime() && time <= new Date(window.end).getTime()
 }
 
+export const tierLabel = {
+  verified: 'Verified on-chain',
+  declared: 'Declared',
+  likely: 'Likely',
+  possible: 'Possible',
+  unattributed: 'No repo',
+} as const
+
+export const STRICT_TIERS = ['verified', 'declared', 'likely'] as const
+
 export const footprintLabel = {
   contracts: 'Contracts',
   classic: 'Classic ops only',

@@ -34,8 +34,12 @@ export function HomePage() {
         <StatsGrid />
         {stats && (
           <p className="text-sm text-muted-foreground">
-            {formatNumber(stats.projects)} projects found from chain, GitHub and seeds. The official
-            submission list is not public.
+            {formatNumber(stats.projects)} HackMeridian projects:{' '}
+            {formatNumber(stats.verified_projects)} verified on-chain,{' '}
+            {formatNumber(stats.declared_projects)} declared and{' '}
+            {formatNumber(stats.likely_projects)} likely. {formatNumber(stats.possible_projects)}{' '}
+            weaker candidates and {formatNumber(stats.unattributed_accounts)} deploy accounts with
+            no repo are hidden by default. The official submission list is not public.
           </p>
         )}
       </div>

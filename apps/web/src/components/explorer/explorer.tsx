@@ -2,8 +2,10 @@ import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import { Input } from '@/components/ui/input'
+import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useDebouncedValue } from '@/hooks/use-debounced-value'
+import { STRICT_TIERS } from '@/lib/format'
 import type { Contract, FailedTx, Project, WasmUpload } from '@/lib/types'
 
 import { contractColumns, failedColumns, projectColumns, wasmColumns } from './columns'
@@ -11,6 +13,7 @@ import { ResourceTable } from './resource-table'
 
 export function Explorer() {
   const [input, setInput] = useState('')
+  const [strict, setStrict] = useState(true)
   const search = useDebouncedValue(input.trim())
 
   return (
@@ -32,9 +35,14 @@ export function Explorer() {
           />
         </div>
       </div>
-      <TabsContent value="projects">
+      <TabsContent value="projects" className="flex flex-col gap-4">
+        <label className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Switch checked={strict} onCheckedChange={setStrict} />
+          Strict: verified on-chain, declared or likely HackMeridian projects only
+        </label>
         <ResourceTable<Project>
-          key={search}
+          key={`${search}:${strict}`}
+          tiers={strict ? STRICT_TIERS : undefined}
           resource="projects"
           search={search}
           columns={projectColumns}
