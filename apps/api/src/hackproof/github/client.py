@@ -27,19 +27,23 @@ class GithubClient:
         self._lock = asyncio.Lock()
 
     async def _acquire(self, search: Search | None) -> Token:
-        async with self._lock:
-            now = time.monotonic()
-            usable = [t for t in self._tokens if t.blocked_until <= now and t.remaining > 20]
-            if not usable:
-                wake = min(t.blocked_until for t in self._tokens)
-                await asyncio.sleep(max(wake - now, 1))
-                return await self._acquire(search)
-            if search is None:
-                return max(usable, key=lambda t: t.remaining)
-            token = min(usable, key=lambda t: t.next_search_at)
-            await asyncio.sleep(max(token.next_search_at - now, 0))
-            token.next_search_at = time.monotonic() + SEARCH_INTERVAL[search]
-            return token
+        while True:
+            async with self._lock:
+                now = time.monotonic()
+                usable = [t for t in self._tokens if t.blocked_until <= now and t.remaining > 20]
+                if usable and search is None:
+                    return max(usable, key=lambda t: t.remaining)
+                if usable:
+                    token = min(usable, key=lambda t: t.next_search_at)
+                    start = max(token.next_search_at, now)
+                    token.next_search_at = start + SEARCH_INTERVAL[search]
+                    wait = start - now
+                else:
+                    token = None
+                    wait = max(min(t.blocked_until for t in self._tokens) - now, 1)
+            await asyncio.sleep(wait)
+            if token is not None:
+                return token
 
     @staticmethod
     def _record(token: Token, response: httpx.Response) -> None:
