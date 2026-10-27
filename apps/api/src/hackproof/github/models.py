@@ -31,6 +31,8 @@ class Candidate(BaseModel):
     created_at: datetime | None = None
     pushed_at: datetime | None = None
     fork: bool = False
+    window_commits: int | None = None
+    topics: list[str] = Field(default_factory=list)
     discovered_via: set[str] = Field(default_factory=set)
 
 
@@ -41,4 +43,5 @@ class RepoScan(BaseModel):
     window_commits: int | None
     total_commits: int | None
     mentions_hackathon: bool
+    stellar_added_in_window: bool | None
     owner_location: str | None

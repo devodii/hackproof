@@ -2,14 +2,15 @@ import asyncio
 import hashlib
 import re
 from pathlib import PurePosixPath
-from urllib.parse import parse_qs, urlparse
 
 import asyncpg
 import httpx
 
 from hackproof.github.client import GithubClient
+from hackproof.github.commits import count_commits
 from hackproof.github.demo import scan_demo
 from hackproof.github.dependencies import MANIFESTS, fingerprint
+from hackproof.github.history import stellar_added_in_window
 from hackproof.github.models import Candidate, Ref, RepoScan
 from hackproof.github.refs import extract_refs
 from hackproof.hackathon import Discovery, Window
@@ -27,6 +28,7 @@ MAX_WASM_FILES = 5
 MAX_TEXT_BYTES = 512_000
 MAX_WASM_BYTES = 5_000_000
 HACKATHON_MENTION = re.compile(r"hack\s?meridian|meridian\s+2026", re.IGNORECASE)
+HACKATHON_TOPIC = re.compile(r"hack-?meridian", re.IGNORECASE)
 DEMO_URL = re.compile(
     r"https?://[\w.-]+\.(?:vercel\.app|netlify\.app|pages\.dev|github\.io|fly\.dev|onrender\.com)\S*"
 )
@@ -68,16 +70,6 @@ def select_files(entries: list[dict]) -> tuple[list[str], list[str]]:
         ):
             texts.append(path)
     return sorted(texts, key=_priority)[:MAX_TEXT_FILES], wasms[:MAX_WASM_FILES]
-
-
-async def count_commits(github: GithubClient, full_name: str, **params: str) -> int | None:
-    response = await github.get(f"/repos/{full_name}/commits", {"per_page": 1, **params})
-    if response is None:
-        return None
-    last = response.links.get("last")
-    if last:
-        return int(parse_qs(urlparse(last["url"]).query)["page"][0])
-    return len(response.json())
 
 
 class Scanner:
@@ -136,13 +128,22 @@ class Scanner:
         demo = repo.homepage or (match[0] if (match := DEMO_URL.search(readme)) else None)
         if demo:
             refs.extend(await scan_demo(self._http, demo))
+        wanted = self._discovery.dependency_fingerprints
+        dependencies = fingerprint(files, wanted)
+        added = (
+            await stellar_added_in_window(self._github, repo.full_name, files, wanted, self._window)
+            if dependencies.packages
+            else None
+        )
         return RepoScan(
             full_name=repo.full_name,
             refs=list(dict.fromkeys(refs)),
-            dependencies=fingerprint(files, self._discovery.dependency_fingerprints),
+            dependencies=dependencies,
             window_commits=window_commits,
             total_commits=total_commits,
-            mentions_hackathon=bool(HACKATHON_MENTION.search(readme)),
+            mentions_hackathon=bool(HACKATHON_MENTION.search(readme))
+            or any(HACKATHON_TOPIC.search(topic) for topic in repo.topics),
+            stellar_added_in_window=added,
             owner_location=location,
         )
 
@@ -160,7 +161,8 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         await connection.execute(
             """
             UPDATE repos SET dependencies = $2, window_commits = $3, total_commits = $4,
-                mentions_hackathon = $5, owner_location = $6, country = $7, scanned_at = now()
+                mentions_hackathon = $5, stellar_added_in_window = $8, owner_location = $6,
+                country = $7, scanned_at = now()
             WHERE full_name = $1
             """,
             scan.full_name,
@@ -170,4 +172,5 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
             scan.mentions_hackathon,
             scan.owner_location,
             resolve_country(scan.owner_location),
+            scan.stellar_added_in_window,
         )
