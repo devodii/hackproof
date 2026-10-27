@@ -35,18 +35,18 @@ A candidate is only scanned in depth if it has at least one commit inside the wi
 
 ## Linking
 
-Links are exact matches, never fuzzy name matching, and each carries a method and a confidence:
+Links are exact matches, never fuzzy name matching. Each link records the method that produced it, listed here strongest first:
 
-| Method | Confidence | Meaning |
-| --- | --- | --- |
-| `contract_in_repo` | 1.0 | a deployed contract id appears in the repo |
-| `wasm_hash_match` | 1.0 | a wasm committed to the repo has the hash of an uploaded wasm |
-| `wasm_meta` | 1.0 | the deployed wasm names the repo in its contract metadata |
-| `asset_in_repo` | 0.95 | an asset issued inside the window appears in the repo |
-| `deployer_in_repo` | 0.9 | a hacker or deployer account appears in the repo |
-| `footprint` | 0.8 | derived: one linked key pulls in the rest of that account's contracts and assets |
+| Method | Meaning |
+| --- | --- |
+| `contract_in_repo` | a deployed contract id appears in the repo |
+| `wasm_hash_match` | a wasm committed to the repo has the hash of an uploaded wasm |
+| `wasm_meta` | the deployed wasm names the repo in its contract metadata |
+| `asset_in_repo` | an asset issued inside the window appears in the repo |
+| `deployer_in_repo` | a hacker or deployer account appears in the repo |
+| `footprint` | derived: one linked key pulls in the rest of that account's contracts and assets |
 
-Accounts that appear in more than eight repos are treated as shared infrastructure and ignored. Footprint expansion through a wasm only happens when a single account uploaded that wasm, so a shared template does not merge unrelated teams. When a subject has several links the highest confidence wins.
+Accounts that appear in more than eight repos are treated as shared infrastructure and ignored. Footprint expansion through a wasm only happens when a single account uploaded that wasm, so a shared template does not merge unrelated teams. When several repos link the same item, the strongest method wins, then the earliest-created repo.
 
 ## Projects
 
