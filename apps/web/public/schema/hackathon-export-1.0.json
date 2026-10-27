@@ -235,13 +235,6 @@
           "title": "Method",
           "type": "string"
         },
-        "confidence": {
-          "description": "1.0 exact, 0.95 asset, 0.9 account",
-          "maximum": 1,
-          "minimum": 0,
-          "title": "Confidence",
-          "type": "number"
-        },
         "explorerUrl": {
           "anyOf": [
             {
@@ -271,7 +264,6 @@
         "kind",
         "subject",
         "method",
-        "confidence",
         "explorerUrl",
         "repoFileUrl"
       ],
