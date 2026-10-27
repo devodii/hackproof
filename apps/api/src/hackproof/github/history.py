@@ -3,7 +3,6 @@ from pathlib import PurePosixPath
 
 from hackproof.github.client import GithubClient
 from hackproof.github.dependencies import MANIFESTS, fingerprint
-from hackproof.hackathon import Window
 
 
 async def stellar_added_in_window(
@@ -11,17 +10,12 @@ async def stellar_added_in_window(
     full_name: str,
     files: dict[str, str],
     wanted: dict[str, list[str]],
-    window: Window,
+    base_sha: str | None,
 ) -> bool:
-    before = await github.json(
-        f"/repos/{full_name}/commits", {"until": window.start.isoformat(), "per_page": 1}
-    )
-    if not before:
+    if base_sha is None:
         return True
     manifests = [path for path in files if PurePosixPath(path).name in MANIFESTS]
-    contents = await asyncio.gather(
-        *(github.raw(full_name, before[0]["sha"], path) for path in manifests)
-    )
+    contents = await asyncio.gather(*(github.raw(full_name, base_sha, path) for path in manifests))
     earlier = {
         path: content.decode(errors="ignore")
         for path, content in zip(manifests, contents, strict=True)

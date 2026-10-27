@@ -42,31 +42,37 @@ async def run_discover(include_strings: bool) -> None:
 async def run_scan(force: bool) -> None:
     settings, hackathon = get_settings(), get_hackathon()
     await open_pool()
-    async with pool().acquire() as connection:
-        rows = await connection.fetch(
-            """
-            SELECT full_name, url, owner, default_branch, homepage, topics FROM repos
-            WHERE ($1 OR scanned_at IS NULL)
-              AND (COALESCE(window_commits, 0) > 0
-                   OR EXISTS (SELECT 1 FROM unnest(discovered_via) via
-                              WHERE via LIKE 'seed:%' OR via = 'wasm_meta'))
-            ORDER BY pushed_at DESC NULLS LAST
-            """,
-            force,
-        )
-    repos = [Candidate(**row) for row in rows]
-    log.info("scanning %s repos", len(repos))
-
-    gate = asyncio.Semaphore(SCAN_CONCURRENCY)
-    done = 0
-
     limits = httpx.Limits(max_connections=200, max_keepalive_connections=50)
     async with httpx.AsyncClient(timeout=30, limits=limits) as http:
         github = GithubClient(http, settings.github_tokens)
-        refreshed = await fetch_repositories(github, [repo.full_name for repo in repos])
+
         async with pool().acquire() as connection:
+            names = [
+                row["full_name"]
+                for row in await connection.fetch(
+                    "SELECT full_name FROM repos WHERE $1 OR scanned_at IS NULL", force
+                )
+            ]
+            refreshed = await fetch_repositories(github, names, hackathon.window)
             await store_candidates(connection, refreshed)
-        scanner = Scanner(github, http, hackathon.window, hackathon.discovery)
+            rows = await connection.fetch(
+                """
+                SELECT full_name, url, owner, default_branch, homepage, topics, base_sha
+                FROM repos
+                WHERE ($1 OR scanned_at IS NULL)
+                  AND (COALESCE(window_commits, 0) > 0
+                       OR EXISTS (SELECT 1 FROM unnest(discovered_via) via
+                                  WHERE via LIKE 'seed:%' OR via = 'wasm_meta'))
+                ORDER BY pushed_at DESC NULLS LAST
+                """,
+                force,
+            )
+        repos = [Candidate(**row) for row in rows]
+        log.info("scanning %s repos", len(repos))
+
+        scanner = Scanner(github, http, hackathon.discovery)
+        gate = asyncio.Semaphore(SCAN_CONCURRENCY)
+        done = 0
 
         async def scan(repo: Candidate) -> None:
             nonlocal done

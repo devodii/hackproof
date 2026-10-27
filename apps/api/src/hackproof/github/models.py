@@ -35,6 +35,9 @@ class Candidate(BaseModel):
     pushed_at: datetime | None = None
     fork: bool = False
     window_commits: int | None = None
+    total_commits: int | None = None
+    base_sha: str | None = None
+    owner_location: str | None = None
     topics: list[str] = Field(default_factory=list)
     discovered_via: set[str] = Field(default_factory=set)
 
@@ -50,9 +53,6 @@ class RepoScan(BaseModel):
     full_name: str
     refs: list[Ref]
     dependencies: DependencyFingerprint
-    window_commits: int | None
-    total_commits: int | None
     mentions_hackathon: bool
     stellar_added_in_window: bool | None
     contributors: list[Contributor]
-    owner_location: str | None

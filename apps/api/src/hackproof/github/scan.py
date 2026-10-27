@@ -7,14 +7,12 @@ import asyncpg
 import httpx
 
 from hackproof.github.client import GithubClient
-from hackproof.github.commits import count_commits
 from hackproof.github.demo import scan_demo
 from hackproof.github.dependencies import MANIFESTS, fingerprint
 from hackproof.github.history import stellar_added_in_window
 from hackproof.github.models import Candidate, Contributor, Ref, RepoScan
 from hackproof.github.refs import extract_refs
-from hackproof.hackathon import Discovery, Window
-from hackproof.linking.country import resolve_country
+from hackproof.hackathon import Discovery
 
 TEXT_SUFFIXES = {
     ".rs", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".py", ".go", ".toml", ".json",
@@ -73,14 +71,10 @@ def select_files(entries: list[dict]) -> tuple[list[str], list[str]]:
 
 
 class Scanner:
-    def __init__(
-        self, github: GithubClient, http: httpx.AsyncClient, window: Window, discovery: Discovery
-    ) -> None:
+    def __init__(self, github: GithubClient, http: httpx.AsyncClient, discovery: Discovery) -> None:
         self._github = github
         self._http = http
-        self._window = window
         self._discovery = discovery
-        self._locations: dict[str, str | None] = {}
         self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
     async def _text(self, repo: Candidate, branch: str, path: str) -> tuple[str, str]:
@@ -95,12 +89,6 @@ class Scanner:
             return None
         return Ref(kind="wasm", value=hashlib.sha256(content).hexdigest(), path=path)
 
-    async def _owner_location(self, owner: str) -> str | None:
-        if owner not in self._locations:
-            profile = await self._github.json(f"/users/{owner}")
-            self._locations[owner] = profile.get("location") if profile else None
-        return self._locations[owner]
-
     async def scan(self, repo: Candidate) -> RepoScan | None:
         branch = repo.default_branch or "HEAD"
         tree = await self._github.json(
@@ -109,17 +97,9 @@ class Scanner:
         if tree is None:
             return None
         text_paths, wasm_paths = select_files(tree["tree"])
-        texts, wasms, window_commits, total_commits, location, people = await asyncio.gather(
+        texts, wasms, people = await asyncio.gather(
             asyncio.gather(*(self._text(repo, branch, path) for path in text_paths)),
             asyncio.gather(*(self._wasm_ref(repo, branch, path) for path in wasm_paths)),
-            count_commits(
-                self._github,
-                repo.full_name,
-                since=self._window.start.isoformat(),
-                until=self._window.end.isoformat(),
-            ),
-            count_commits(self._github, repo.full_name),
-            self._owner_location(repo.owner),
             self._github.json(f"/repos/{repo.full_name}/contributors", {"per_page": 100}),
         )
         files = dict(texts)
@@ -132,7 +112,9 @@ class Scanner:
         wanted = self._discovery.dependency_fingerprints
         dependencies = fingerprint(files, wanted)
         added = (
-            await stellar_added_in_window(self._github, repo.full_name, files, wanted, self._window)
+            await stellar_added_in_window(
+                self._github, repo.full_name, files, wanted, repo.base_sha
+            )
             if dependencies.packages
             else None
         )
@@ -140,13 +122,10 @@ class Scanner:
             full_name=repo.full_name,
             refs=list(dict.fromkeys(refs)),
             dependencies=dependencies,
-            window_commits=window_commits,
-            total_commits=total_commits,
             mentions_hackathon=bool(HACKATHON_MENTION.search(readme))
             or any(HACKATHON_TOPIC.search(topic) for topic in repo.topics),
             stellar_added_in_window=added,
             contributors=contributors_from(people),
-            owner_location=location,
         )
 
 
@@ -186,17 +165,12 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         )
         await connection.execute(
             """
-            UPDATE repos SET dependencies = $2, window_commits = $3, total_commits = $4,
-                mentions_hackathon = $5, stellar_added_in_window = $8, owner_location = $6,
-                country = $7, scanned_at = now()
+            UPDATE repos SET dependencies = $2, mentions_hackathon = $3,
+                stellar_added_in_window = $4, scanned_at = now()
             WHERE full_name = $1
             """,
             scan.full_name,
             scan.dependencies.model_dump(),
-            scan.window_commits,
-            scan.total_commits,
             scan.mentions_hackathon,
-            scan.owner_location,
-            resolve_country(scan.owner_location),
             scan.stellar_added_in_window,
         )

@@ -8,10 +8,10 @@ from typing import Any
 import asyncpg
 
 from hackproof.github.client import GithubClient, Search
-from hackproof.github.commits import count_commits
 from hackproof.github.models import Candidate
 from hackproof.github.repositories import fetch_repositories
 from hackproof.hackathon import Discovery, Window
+from hackproof.linking.country import resolve_country
 from hackproof.linking.repo_ref import normalize_repo
 
 log = logging.getLogger("hackproof.discovery")
@@ -19,7 +19,6 @@ log = logging.getLogger("hackproof.discovery")
 PAGE_SIZE = 100
 RESULT_CAP = 1000
 SIZE_CEILING = 400_000
-COMMIT_LOOKUPS = 16
 PINNED_PREFIXES = ("seed:", "wasm_meta")
 
 Count = Callable[[int, int], Awaitable[int]]
@@ -144,24 +143,11 @@ async def _resolve(
     discovery: Discovery,
 ) -> list[Candidate]:
     log.info("%s unique repos found, looking them up", len(found))
-    candidates = await fetch_repositories(github, found)
+    candidates = await fetch_repositories(github, found, window)
     for candidate in candidates:
         candidate.discovered_via = found[candidate.full_name.lower()]
     kept = [c for c in candidates if should_keep(c, window, discovery)]
-
-    gate = asyncio.Semaphore(COMMIT_LOOKUPS)
-
-    async def inside_window(candidate: Candidate) -> None:
-        async with gate:
-            candidate.window_commits = await count_commits(
-                github,
-                candidate.full_name,
-                since=window.start.isoformat(),
-                until=window.end.isoformat(),
-            )
-
-    log.info("%s of them pushed recently, counting window commits", len(kept))
-    await asyncio.gather(*(inside_window(c) for c in kept))
+    log.info("%s of them pushed recently", len(kept))
     return kept
 
 
@@ -195,14 +181,18 @@ async def store_candidates(connection: asyncpg.Connection, candidates: list[Cand
         """
         INSERT INTO repos (full_name, url, description, stars, owner, owner_avatar,
                            default_branch, homepage, language, license, forks, created_at,
-                           pushed_at, topics, window_commits, discovered_via)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+                           pushed_at, topics, window_commits, total_commits, base_sha,
+                           owner_location, country, discovered_via)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16,
+                $17, $18, $19, $20)
         ON CONFLICT (full_name) DO UPDATE SET
             description = EXCLUDED.description, stars = EXCLUDED.stars,
             default_branch = EXCLUDED.default_branch, homepage = EXCLUDED.homepage,
             language = EXCLUDED.language, license = EXCLUDED.license, forks = EXCLUDED.forks,
             pushed_at = EXCLUDED.pushed_at, topics = EXCLUDED.topics,
-            window_commits = COALESCE(EXCLUDED.window_commits, repos.window_commits),
+            window_commits = EXCLUDED.window_commits, total_commits = EXCLUDED.total_commits,
+            base_sha = EXCLUDED.base_sha, owner_location = EXCLUDED.owner_location,
+            country = EXCLUDED.country,
             discovered_via = ARRAY(
                 SELECT DISTINCT via FROM unnest(repos.discovered_via || EXCLUDED.discovered_via) via
             )
@@ -224,6 +214,10 @@ async def store_candidates(connection: asyncpg.Connection, candidates: list[Cand
                 c.pushed_at,
                 c.topics,
                 c.window_commits,
+                c.total_commits,
+                c.base_sha,
+                c.owner_location,
+                resolve_country(c.owner_location),
                 sorted(c.discovered_via),
             )
             for c in candidates
