@@ -10,13 +10,15 @@ from stellar_sdk.exceptions import BadSignatureError, Ed25519PublicKeyInvalidErr
 SEP53_PREFIX = b"Stellar Signed Message:\n"
 MESSAGE_TTL = timedelta(minutes=10)
 MESSAGE_PATTERN = re.compile(
-    r"^hackproof\.dev proof of hack\naddress: (?P<address>G[A-Z2-7]{55})\nissued: (?P<issued>\S+)$"
+    r"^hackproof\.vercel\.app proof of hack\n"
+    r"address: (?P<address>G[A-Z2-7]{55})\n"
+    r"issued: (?P<issued>\S+)$"
 )
 
 
 def build_message(address: str, now: datetime) -> str:
     issued = now.astimezone(UTC).isoformat(timespec="seconds")
-    return f"hackproof.dev proof of hack\naddress: {address}\nissued: {issued}"
+    return f"hackproof.vercel.app proof of hack\naddress: {address}\nissued: {issued}"
 
 
 def message_is_fresh(address: str, message: str, now: datetime) -> bool:

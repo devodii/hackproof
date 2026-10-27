@@ -4,7 +4,8 @@ import yaml
 
 from hackproof.export.models import SCHEMA_VERSION, HackathonExport
 
-SCHEMA_ID = f"https://hackproof.dev/schema/hackathon-export-{SCHEMA_VERSION}.json"
+SITE = "https://hackproof.vercel.app"
+SCHEMA_ID = f"{SITE}/schema/hackathon-export-{SCHEMA_VERSION}.json"
 
 
 def to_json(export: HackathonExport) -> str:
