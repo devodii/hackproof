@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 from typing import Any, ClassVar
 
@@ -43,7 +42,7 @@ class Upload(Event):
             self.uploader,
             self.size,
             self.meta.get("source_repo"),
-            json.dumps(self.meta),
+            self.meta,
             self.ledger,
             self.at,
         )

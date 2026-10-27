@@ -158,12 +158,12 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         )
         await connection.execute(
             """
-            UPDATE repos SET dependencies = $2::jsonb, window_commits = $3, total_commits = $4,
+            UPDATE repos SET dependencies = $2, window_commits = $3, total_commits = $4,
                 mentions_hackathon = $5, owner_location = $6, country = $7, scanned_at = now()
             WHERE full_name = $1
             """,
             scan.full_name,
-            scan.dependencies.model_dump_json(),
+            scan.dependencies.model_dump(),
             scan.window_commits,
             scan.total_commits,
             scan.mentions_hackathon,
