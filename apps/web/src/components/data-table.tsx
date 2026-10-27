@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Button } from '@/components/ui/button'
+import { PaginationBar } from '@/components/pagination-bar'
 import { Skeleton } from '@/components/ui/skeleton'
 import {
   Table,
@@ -10,8 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { PAGE_SIZE } from '@/hooks/use-paged-list'
-import { formatNumber } from '@/lib/format'
 import { cn } from '@/lib/utils'
 
 export interface Column<T> {
@@ -41,8 +39,6 @@ export function DataTable<T>({
   isLoading = false,
   empty = 'Nothing here.',
 }: DataTableProps<T>) {
-  const lastPage = Math.max(0, Math.ceil(total / PAGE_SIZE) - 1)
-
   return (
     <div className="flex flex-col gap-3">
       <div className="overflow-x-auto rounded-lg border">
@@ -89,30 +85,7 @@ export function DataTable<T>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-between text-sm text-muted-foreground">
-        <span>{formatNumber(total)} results</span>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={page === 0}
-            onClick={() => onPageChange(page - 1)}
-          >
-            Previous
-          </Button>
-          <span className="tabular-nums">
-            {page + 1} / {lastPage + 1}
-          </span>
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={page >= lastPage}
-            onClick={() => onPageChange(page + 1)}
-          >
-            Next
-          </Button>
-        </div>
-      </div>
+      <PaginationBar total={total} page={page} onPageChange={onPageChange} />
     </div>
   )
 }
