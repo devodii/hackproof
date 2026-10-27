@@ -74,6 +74,34 @@ class Builder(BaseModel):
     failed_txs: list[FailedTx]
 
 
+class ChallengeRequest(BaseModel):
+    address: str
+
+
+class Challenge(BaseModel):
+    message: str
+
+
+class ClaimRequest(BaseModel):
+    address: str
+    message: str
+    signature: str
+
+
+class Proof(BaseModel):
+    proof_id: str
+    address: str
+    claimed_at: datetime
+    projects: int
+    contracts: int
+    wasm_uploads: int
+    failed_txs: int
+    first_activity: datetime
+    last_activity: datetime
+    window_start: datetime
+    window_end: datetime
+
+
 class Page[T](BaseModel):
     items: list[T]
     total: int
