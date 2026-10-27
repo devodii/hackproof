@@ -41,6 +41,9 @@ class Project(BaseModel):
     window_commits: int | None
     total_commits: int | None
     mentions_hackathon: bool | None
+    stellar_added_in_window: bool | None
+    created_at: datetime | None
+    topics: list[str] | None
     discovered_via: list[str] | None
 
 

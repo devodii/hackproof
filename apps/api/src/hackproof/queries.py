@@ -8,7 +8,8 @@ PROJECTS_SQL = """
 SELECT p.project_id, p.full_name, r.url, p.footprint, p.contracts, p.classic_ops, p.assets,
        p.builders, p.wasm_uploads, p.failed_txs, p.first_activity, p.last_activity,
        r.description, r.stars, r.owner, r.owner_avatar, r.country, r.dependencies,
-       r.window_commits, r.total_commits, r.mentions_hackathon, r.discovered_via,
+       r.window_commits, r.total_commits, r.mentions_hackathon, r.stellar_added_in_window,
+       r.created_at, r.topics, r.discovered_via,
        count(*) OVER () AS total
 FROM projects p
 LEFT JOIN repos r ON r.full_name = p.full_name
