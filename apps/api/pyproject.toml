@@ -10,6 +10,7 @@ dependencies = [
     "asyncpg>=0.32.0",
     "fastapi[standard]>=0.162.0",
     "httpx>=0.28.1",
+    "pycountry>=26.2.16",
     "pydantic-settings>=2.16.1",
     "stellar-sdk>=16.1.1",
 ]
