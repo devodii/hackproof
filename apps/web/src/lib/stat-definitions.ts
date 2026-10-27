@@ -27,8 +27,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     key: 'declared_projects',
     label: 'Declared',
     meaning: 'Repos that say they belong to HackMeridian, with work done during the event.',
-    counted:
-      'The readme or a topic names HackMeridian, and at least one commit inside the window.',
+    counted: 'The readme or a topic names HackMeridian, and at least one commit inside the window.',
   },
   {
     key: 'likely_projects',
