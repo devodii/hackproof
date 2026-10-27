@@ -109,7 +109,8 @@ SELECT 'repo:' || r.full_name, r.full_name,
             ELSE 'github' END,
        COALESCE(cs.contracts, 0), COALESCE(os.classic_ops, 0), COALESCE(ast.assets, 0),
        COALESCE(ws.wasm, 0), COALESCE(fs.failed, 0), COALESCE(cs.builders, 0),
-       COALESCE(cs.first_at, r.pushed_at), COALESCE(cs.last_at, r.pushed_at)
+       COALESCE(cs.first_at, r.pushed_at), COALESCE(cs.last_at, r.pushed_at),
+       EXISTS (SELECT 1 FROM links l WHERE l.full_name = r.full_name)
 FROM repos r
 LEFT JOIN contract_stats cs USING (full_name)
 LEFT JOIN op_stats os USING (full_name)
@@ -156,7 +157,8 @@ SELECT 'acct:' || o.account, NULL,
        (SELECT max(at) FROM (
             SELECT deployed_at AS at FROM contracts WHERE deployer = o.account
             UNION ALL SELECT uploaded_at FROM wasm_uploads WHERE uploader = o.account
-            UNION ALL SELECT occurred_at FROM classic_ops WHERE source_account = o.account) a)
+            UNION ALL SELECT occurred_at FROM classic_ops WHERE source_account = o.account) a),
+       FALSE
 FROM orphans o
 """
 

@@ -113,7 +113,8 @@ CREATE TABLE IF NOT EXISTS projects (
     failed_txs INTEGER NOT NULL,
     builders INTEGER NOT NULL,
     first_activity TIMESTAMPTZ,
-    last_activity TIMESTAMPTZ
+    last_activity TIMESTAMPTZ,
+    linked BOOLEAN NOT NULL
 );
 
 CREATE OR REPLACE VIEW attribution AS

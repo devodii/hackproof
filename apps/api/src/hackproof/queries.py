@@ -19,7 +19,8 @@ WHERE ($1::text IS NULL
        OR p.project_id = 'acct:' || $2
        OR p.project_id IN (SELECT project_id FROM account_projects WHERE account = $2))
   AND ($3::text IS NULL OR p.project_id = $3)
-ORDER BY p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
+ORDER BY p.linked DESC, p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST,
+         p.last_activity DESC
 LIMIT $4 OFFSET $5
 """
 
@@ -82,7 +83,7 @@ SELECT
     (SELECT count(*) FROM projects WHERE footprint = 'contracts') AS contract_projects,
     (SELECT count(*) FROM projects WHERE footprint = 'classic') AS classic_projects,
     (SELECT count(*) FROM projects WHERE footprint = 'github') AS github_projects,
-    (SELECT count(DISTINCT full_name) FROM links) AS linked_projects,
+    (SELECT count(*) FROM projects WHERE linked) AS linked_projects,
     (SELECT count(*) FROM contracts WHERE deployed_at BETWEEN $1 AND $2) AS contracts,
     (SELECT count(*) FROM (
         SELECT deployer FROM contracts WHERE deployed_at BETWEEN $1 AND $2
