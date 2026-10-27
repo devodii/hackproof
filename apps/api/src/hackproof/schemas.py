@@ -1,10 +1,16 @@
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel
+
+from hackproof.github.models import DependencyFingerprint
 
 
 class Stats(BaseModel):
     projects: int
+    contract_projects: int
+    classic_projects: int
+    github_projects: int
     linked_projects: int
     contracts: int
     builders: int
@@ -16,17 +22,33 @@ class Stats(BaseModel):
 class Project(BaseModel):
     project_id: str
     full_name: str | None
+    url: str | None
+    footprint: Literal["contracts", "classic", "github"]
     contracts: int
+    classic_ops: int
+    assets: int
     builders: int
     wasm_uploads: int
     failed_txs: int
-    first_deployed_at: datetime
-    last_deployed_at: datetime
+    first_activity: datetime | None
+    last_activity: datetime | None
     description: str | None
     stars: int | None
     owner: str | None
     owner_avatar: str | None
     country: str | None
+    dependencies: DependencyFingerprint | None
+    window_commits: int | None
+    total_commits: int | None
+    mentions_hackathon: bool | None
+    discovered_via: list[str] | None
+
+
+class Link(BaseModel):
+    subject_kind: str
+    subject: str
+    method: str
+    confidence: float
 
 
 class Contract(BaseModel):
@@ -61,6 +83,7 @@ class FailedTx(BaseModel):
 
 class ProjectDetail(BaseModel):
     project: Project
+    links: list[Link]
     contracts: list[Contract]
     wasm_uploads: list[WasmUpload]
     failed_txs: list[FailedTx]

@@ -64,6 +64,7 @@ async def project(project_id: str) -> ProjectDetail:
         raise HTTPException(status_code=404, detail="project not found")
     return ProjectDetail(
         project=found[0],
+        links=await queries.fetch_links(found[0]["full_name"]) if found[0]["full_name"] else [],
         contracts=await _everything("contracts", project_id=project_id),
         wasm_uploads=await _everything("wasm", project_id=project_id),
         failed_txs=await _everything("failed", project_id=project_id),

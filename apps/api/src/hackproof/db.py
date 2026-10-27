@@ -84,12 +84,6 @@ CREATE TABLE IF NOT EXISTS repos (
     scanned_at TIMESTAMPTZ
 );
 
-CREATE TABLE IF NOT EXISTS wasm_repos (
-    wasm_hash TEXT PRIMARY KEY,
-    full_name TEXT NOT NULL,
-    source TEXT NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS repo_refs (
     full_name TEXT NOT NULL,
     kind TEXT NOT NULL,

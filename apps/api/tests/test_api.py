@@ -8,6 +8,9 @@ def test_stats_reports_every_counter():
         body = client.get("/api/stats").json()
     assert set(body) == {
         "projects",
+        "contract_projects",
+        "classic_projects",
+        "github_projects",
         "linked_projects",
         "contracts",
         "builders",
