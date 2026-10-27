@@ -24,7 +24,9 @@ class Token(BaseModel):
     value: str | None
     budget: dict[str, int] = Field(default_factory=lambda: {"core": 5000, "graphql": 5000})
     blocked_until: float = 0.0
-    next_search_at: float = 0.0
+    next_search_at: dict[str, float] = Field(
+        default_factory=lambda: {"code": 0.0, "repositories": 0.0}
+    )
 
 
 class GithubClient:
@@ -43,9 +45,9 @@ class GithubClient:
                 if usable and search is None:
                     return max(usable, key=lambda t: t.budget[resource])
                 if usable:
-                    token = min(usable, key=lambda t: t.next_search_at)
-                    start = max(token.next_search_at, now)
-                    token.next_search_at = start + SEARCH_INTERVAL[search]
+                    token = min(usable, key=lambda t: t.next_search_at[search])
+                    start = max(token.next_search_at[search], now)
+                    token.next_search_at[search] = start + SEARCH_INTERVAL[search]
                     wait = start - now
                 else:
                     token = None
