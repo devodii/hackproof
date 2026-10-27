@@ -28,7 +28,8 @@ MAX_WASM_BYTES = 5_000_000
 HACKATHON_MENTION = re.compile(r"hack\s?meridian|meridian\s+2026", re.IGNORECASE)
 HACKATHON_TOPIC = re.compile(r"hack-?meridian", re.IGNORECASE)
 DEMO_URL = re.compile(
-    r"https?://[\w.-]+\.(?:vercel\.app|netlify\.app|pages\.dev|github\.io|fly\.dev|onrender\.com)\S*"
+    r"https?://[A-Za-z0-9.-]+\.(?:vercel\.app|netlify\.app|pages\.dev|github\.io|fly\.dev|onrender\.com)"
+    r"[A-Za-z0-9/_.~%-]*"
 )
 
 

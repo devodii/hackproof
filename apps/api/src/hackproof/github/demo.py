@@ -15,7 +15,10 @@ TIMEOUT = 8
 
 
 def is_public_http(url: str) -> bool:
-    parsed = urlparse(url)
+    try:
+        parsed = urlparse(url)
+    except ValueError:
+        return False
     if parsed.scheme not in ("http", "https") or not parsed.hostname:
         return False
     if parsed.hostname == "localhost" or parsed.hostname.endswith(".local"):
@@ -32,7 +35,7 @@ async def _fetch_text(http: httpx.AsyncClient, url: str) -> str:
         return ""
     try:
         response = await http.get(url, follow_redirects=False, timeout=TIMEOUT)
-    except httpx.HTTPError:
+    except (httpx.HTTPError, httpx.InvalidURL):
         return ""
     if response.status_code != 200 or len(response.content) > MAX_BYTES:
         return ""

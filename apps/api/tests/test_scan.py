@@ -1,5 +1,5 @@
 from hackproof.github.demo import is_public_http
-from hackproof.github.scan import contributors_from, select_files
+from hackproof.github.scan import DEMO_URL, contributors_from, select_files
 
 
 def blob(path: str, size: int = 100) -> dict:
@@ -53,3 +53,10 @@ def test_contributors_keep_people_and_drop_bots():
     )
     assert [(p.login, p.contributions) for p in people] == [("ana", 12)]
     assert contributors_from(None) == []
+
+
+def test_demo_url_pattern_only_matches_ascii_hosts():
+    assert DEMO_URL.search("see https://my-app.vercel.app/docs for the demo").group() == (
+        "https://my-app.vercel.app/docs"
+    )
+    assert DEMO_URL.search("https://你的用户名.github.io`、`SITE_BASE=") is None
