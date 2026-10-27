@@ -135,3 +135,26 @@ async def test_unattributed_deployers_become_account_projects(scratch_db):
 
     assert report.projects_by_footprint == {"contracts": 1}
     assert await db.fetchval("SELECT project_id FROM projects") == "acct:GLONE"
+
+
+STELLAR = '{"ecosystems": ["js"], "packages": {"@stellar/stellar-sdk": "14.0.0"}}'
+
+
+async def test_older_repos_that_added_stellar_during_the_window_become_projects(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/old", stellar_added_in_window=True, dependencies=STELLAR)
+    await add_repo(db, "team/stale", stellar_added_in_window=False, dependencies=STELLAR)
+
+    await reconcile(db)
+
+    ids = {row["project_id"] for row in await db.fetch("SELECT project_id FROM projects")}
+    assert ids == {"repo:team/old"}
+
+
+async def test_repos_created_inside_the_window_become_projects(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/new", created_at=INSIDE, dependencies=STELLAR)
+
+    await reconcile(db)
+
+    assert await db.fetchval("SELECT project_id FROM projects") == "repo:team/new"

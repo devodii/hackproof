@@ -121,7 +121,9 @@ WHERE r.full_name IN (SELECT full_name FROM links)
    OR EXISTS (
        SELECT 1 FROM unnest(r.discovered_via) via WHERE via LIKE 'seed:%' OR via = 'wasm_meta')
    OR (jsonb_array_length(r.dependencies -> 'ecosystems') > 0
-       AND (r.mentions_hackathon OR COALESCE(r.window_commits, 0) >= $3))
+       AND (r.mentions_hackathon OR COALESCE(r.window_commits, 0) >= $3
+            OR COALESCE(r.stellar_added_in_window, FALSE)
+            OR r.created_at BETWEEN $1 AND $2))
 """
 
 ACCOUNT_PROJECTS = f"""
