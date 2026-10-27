@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from hackproof.config import get_settings
 from hackproof.db import close_pool, open_pool
+from hackproof.proof_routes import router as proof_router
 from hackproof.routes import router
 
 api = APIRouter(prefix="/api")
@@ -40,4 +41,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 api.include_router(router)
+api.include_router(proof_router)
 app.include_router(api)
