@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
+import { MethodologyPage } from '@/pages/methodology'
 import { ProjectPage } from '@/pages/project'
 import { ProofPage } from '@/pages/proof'
 
@@ -16,6 +17,7 @@ export function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/project/*" element={<ProjectPage />} />
           <Route path="/builder/:address" element={<BuilderPage />} />
+          <Route path="/methodology" element={<MethodologyPage />} />
           <Route path="/proof/:address" element={<ProofPage />} />
         </Routes>
       </main>
