@@ -1,4 +1,4 @@
-import { StarIcon } from 'lucide-react'
+import { ExternalLinkIcon, StarIcon } from 'lucide-react'
 import { Link } from 'react-router'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -35,6 +35,17 @@ export function ProjectCard({ project }: { project: Project }) {
             </Badge>
           </div>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open the repo on GitHub"
+              className="relative z-10 text-muted-foreground hover:text-foreground"
+            >
+              <ExternalLinkIcon className="size-4" />
+            </a>
+          )}
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">

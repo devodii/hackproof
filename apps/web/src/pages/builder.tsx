@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from 'lucide-react'
 import { useParams } from 'react-router'
 
 import { ClientTable } from '@/components/client-table'
@@ -5,6 +6,7 @@ import { ActivityTabs } from '@/components/explorer/activity-tabs'
 import { projectColumns } from '@/components/explorer/columns'
 import { DetailError, DetailSkeleton } from '@/components/query-state'
 import { useBuilder } from '@/hooks/use-builder'
+import { expertUrl } from '@/lib/links'
 
 export function BuilderPage() {
   const address = useParams().address ?? ''
@@ -17,7 +19,15 @@ export function BuilderPage() {
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">Builder</h1>
-        <p className="font-mono text-sm break-all text-muted-foreground">{data.address}</p>
+        <a
+          href={expertUrl.account(data.address)}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 font-mono text-sm break-all text-muted-foreground hover:text-foreground"
+        >
+          {data.address}
+          <ExternalLinkIcon className="size-3.5 shrink-0" />
+        </a>
       </header>
       <section className="flex flex-col gap-3">
         <h2 className="text-lg font-medium">Projects</h2>
