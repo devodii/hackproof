@@ -11,10 +11,15 @@ class Settings(BaseSettings):
     horizon_url: str = "https://horizon-testnet.stellar.org"
     soroban_rpc_url: str = "https://soroban-testnet.stellar.org"
     network_passphrase: str = "Test SDF Network ; September 2015"
-    hack_start: datetime = datetime.fromisoformat("2026-01-01T00:00:00+00:00")
+    hack_start: datetime = datetime.fromisoformat("2026-10-25T09:00:00+00:00")
     hack_duration_hours: int = 27
+    pull_lead_minutes: int = 60
     github_token: str | None = None
     cors_origins: list[str] = ["http://localhost:5173"]
+
+    @property
+    def pull_start(self) -> datetime:
+        return self.hack_start - timedelta(minutes=self.pull_lead_minutes)
 
     @property
     def hack_end(self) -> datetime:
