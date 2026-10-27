@@ -6,6 +6,8 @@
     "dev:web": "pnpm --filter web dev",
     "dev:api": "cd apps/api && uv run fastapi dev src/hackproof/main.py",
     "build": "pnpm --filter web build",
-    "lint": "pnpm --filter web lint"
+    "lint": "pnpm --filter web lint",
+    "format": "pnpm --filter web format",
+    "format:check": "pnpm --filter web format:check"
   }
 }

@@ -23,7 +23,9 @@ export function shortId(value: string, head = 6, tail = 4) {
 }
 
 export function flagEmoji(countryCode: string) {
-  return String.fromCodePoint(...[...countryCode.toUpperCase()].map((c) => 0x1f1a5 + c.charCodeAt(0)))
+  return String.fromCodePoint(
+    ...[...countryCode.toUpperCase()].map((c) => 0x1f1a5 + c.charCodeAt(0)),
+  )
 }
 
 export function projectName(projectId: string) {

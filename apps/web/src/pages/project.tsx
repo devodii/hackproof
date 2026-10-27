@@ -23,13 +23,17 @@ export function ProjectPage() {
       <header className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <Avatar>
-            {project.owner_avatar && <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />}
+            {project.owner_avatar && (
+              <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />
+            )}
             <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
         </div>
-        {project.description && <p className="max-w-2xl text-muted-foreground">{project.description}</p>}
+        {project.description && (
+          <p className="max-w-2xl text-muted-foreground">{project.description}</p>
+        )}
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           {project.full_name ? (
             <a
@@ -49,7 +53,8 @@ export function ProjectPage() {
             </span>
           )}
           <span>
-            {formatDateTime(project.first_deployed_at)} to {formatDateTime(project.last_deployed_at)}
+            {formatDateTime(project.first_deployed_at)} to{' '}
+            {formatDateTime(project.last_deployed_at)}
           </span>
         </div>
       </header>

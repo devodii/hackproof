@@ -40,7 +40,9 @@ export const projectColumns: Column<Project>[] = [
 export const contractColumns: Column<Contract>[] = [
   {
     header: 'Contract',
-    cell: (row) => <ExternalId value={row.contract_id} href={expertUrl.contract(row.contract_id)} />,
+    cell: (row) => (
+      <ExternalId value={row.contract_id} href={expertUrl.contract(row.contract_id)} />
+    ),
   },
   { header: 'Deployer', cell: (row) => <BuilderLink value={row.deployer} /> },
   {
@@ -80,7 +82,10 @@ export const wasmColumns: Column<WasmUpload>[] = [
 ]
 
 export const failedColumns: Column<FailedTx>[] = [
-  { header: 'Tx', cell: (row) => <ExternalId value={row.tx_hash} href={expertUrl.tx(row.tx_hash)} /> },
+  {
+    header: 'Tx',
+    cell: (row) => <ExternalId value={row.tx_hash} href={expertUrl.tx(row.tx_hash)} />,
+  },
   { header: 'Source', cell: (row) => <BuilderLink value={row.source_account} /> },
   { header: 'Kind', cell: (row) => <Badge variant="secondary">{row.kind}</Badge> },
   {

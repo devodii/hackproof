@@ -12,7 +12,13 @@ interface ResourceTableProps<T> {
   empty: string
 }
 
-export function ResourceTable<T>({ resource, search, columns, rowKey, empty }: ResourceTableProps<T>) {
+export function ResourceTable<T>({
+  resource,
+  search,
+  columns,
+  rowKey,
+  empty,
+}: ResourceTableProps<T>) {
   const [page, setPage] = useState(0)
   const { data, isPending, isError } = usePagedList<T>(resource, search, page)
 
