@@ -8,8 +8,13 @@ export interface HackWindow {
   end: string
 }
 
+export type Footprint = 'contracts' | 'classic' | 'github'
+
 export interface Stats {
   projects: number
+  contract_projects: number
+  classic_projects: number
+  github_projects: number
   linked_projects: number
   contracts: number
   builders: number
@@ -18,20 +23,41 @@ export interface Stats {
   failed_txs: number
 }
 
+export interface DependencyFingerprint {
+  ecosystems: string[]
+  packages: Record<string, string | null>
+}
+
 export interface Project {
   project_id: string
   full_name: string | null
+  url: string | null
+  footprint: Footprint
   contracts: number
+  classic_ops: number
+  assets: number
   builders: number
   wasm_uploads: number
   failed_txs: number
-  first_deployed_at: string
-  last_deployed_at: string
+  first_activity: string | null
+  last_activity: string | null
   description: string | null
   stars: number | null
   owner: string | null
   owner_avatar: string | null
   country: string | null
+  dependencies: DependencyFingerprint | null
+  window_commits: number | null
+  total_commits: number | null
+  mentions_hackathon: boolean | null
+  discovered_via: string[] | null
+}
+
+export interface Link {
+  subject_kind: string
+  subject: string
+  method: string
+  confidence: number
 }
 
 export interface Contract {
@@ -66,6 +92,7 @@ export interface FailedTx {
 
 export interface ProjectDetail {
   project: Project
+  links: Link[]
   contracts: Contract[]
   wasm_uploads: WasmUpload[]
   failed_txs: FailedTx[]

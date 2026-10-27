@@ -4,12 +4,14 @@ import { Badge } from '@/components/ui/badge'
 import {
   expertUrl,
   flagEmoji,
+  footprintLabel,
   formatBytes,
   formatDateTime,
+  formatLastActivity,
   formatNumber,
   shortId,
 } from '@/lib/format'
-import type { Contract, FailedTx, Project, WasmUpload } from '@/lib/types'
+import type { Contract, FailedTx, Link, Project, WasmUpload } from '@/lib/types'
 
 const numeric = 'text-right tabular-nums'
 
@@ -21,7 +23,7 @@ export const projectColumns: Column<Project>[] = [
         <span className="flex items-center gap-2">
           <ProjectLink projectId={row.project_id} />
           {row.country && <span title={row.country}>{flagEmoji(row.country)}</span>}
-          {!row.full_name && <Badge variant="outline">unlinked</Badge>}
+          {!row.full_name && <Badge variant="outline">no repo</Badge>}
         </span>
         {row.description && (
           <span className="line-clamp-1 max-w-md text-xs text-muted-foreground">
@@ -31,10 +33,15 @@ export const projectColumns: Column<Project>[] = [
       </div>
     ),
   },
+  {
+    header: 'Footprint',
+    cell: (row) => <Badge variant="secondary">{footprintLabel[row.footprint]}</Badge>,
+  },
   { header: 'Contracts', className: numeric, cell: (row) => formatNumber(row.contracts) },
+  { header: 'Classic ops', className: numeric, cell: (row) => formatNumber(row.classic_ops) },
   { header: 'Wasm', className: numeric, cell: (row) => formatNumber(row.wasm_uploads) },
   { header: 'Failed', className: numeric, cell: (row) => formatNumber(row.failed_txs) },
-  { header: 'Last deploy', cell: (row) => formatDateTime(row.last_deployed_at) },
+  { header: 'Last activity', cell: (row) => formatLastActivity(row.last_activity) },
 ]
 
 export const contractColumns: Column<Contract>[] = [
@@ -97,4 +104,14 @@ export const failedColumns: Column<FailedTx>[] = [
     ),
   },
   { header: 'Time', cell: (row) => formatDateTime(row.created_at) },
+]
+
+export const linkColumns: Column<Link>[] = [
+  { header: 'Kind', cell: (row) => <Badge variant="outline">{row.subject_kind}</Badge> },
+  {
+    header: 'Subject',
+    cell: (row) => <span className="font-mono text-xs">{shortId(row.subject, 10, 8)}</span>,
+  },
+  { header: 'Method', cell: (row) => <Badge variant="secondary">{row.method}</Badge> },
+  { header: 'Confidence', className: numeric, cell: (row) => row.confidence.toFixed(2) },
 ]

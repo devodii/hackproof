@@ -34,6 +34,16 @@ export function projectName(projectId: string) {
     : shortId(projectId.slice('acct:'.length), 6, 6)
 }
 
+export const footprintLabel = {
+  contracts: 'Contracts',
+  classic: 'Classic ops only',
+  github: 'GitHub only',
+} as const
+
+export function formatLastActivity(iso: string | null) {
+  return iso ? formatDateTime(iso) : 'none'
+}
+
 const EXPERT = 'https://stellar.expert/explorer/testnet'
 
 export const expertUrl = {
