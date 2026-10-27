@@ -74,6 +74,9 @@ CREATE TABLE IF NOT EXISTS repos (
     country TEXT,
     default_branch TEXT,
     homepage TEXT,
+    language TEXT,
+    license TEXT,
+    forks INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMPTZ,
     pushed_at TIMESTAMPTZ,
     topics TEXT[] NOT NULL DEFAULT '{}',
@@ -84,6 +87,23 @@ CREATE TABLE IF NOT EXISTS repos (
     mentions_hackathon BOOLEAN NOT NULL DEFAULT FALSE,
     stellar_added_in_window BOOLEAN,
     scanned_at TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS repo_contributors (
+    full_name TEXT NOT NULL,
+    login TEXT NOT NULL,
+    url TEXT NOT NULL,
+    avatar_url TEXT,
+    contributions INTEGER NOT NULL,
+    PRIMARY KEY (full_name, login)
+);
+CREATE INDEX IF NOT EXISTS repo_contributors_login ON repo_contributors (login);
+
+CREATE TABLE IF NOT EXISTS github_users (
+    login TEXT PRIMARY KEY,
+    location TEXT,
+    country TEXT,
+    fetched_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS repo_refs (
