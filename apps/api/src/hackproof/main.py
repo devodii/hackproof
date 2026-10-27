@@ -8,7 +8,6 @@ from hackproof.config import get_settings
 from hackproof.db import close_pool, open_pool
 from hackproof.export.routes import router as export_router
 from hackproof.hackathon import get_hackathon
-from hackproof.proof_routes import router as proof_router
 from hackproof.routes import router
 
 api = APIRouter(prefix="/api")
@@ -44,6 +43,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 api.include_router(router)
-api.include_router(proof_router)
 api.include_router(export_router)
 app.include_router(api)

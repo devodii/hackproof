@@ -152,13 +152,6 @@ CREATE OR REPLACE VIEW account_projects AS
 SELECT subject AS account, 'repo:' || full_name AS project_id
 FROM attribution WHERE subject_kind = 'account';
 
-CREATE TABLE IF NOT EXISTS proofs (
-    id TEXT PRIMARY KEY,
-    address TEXT NOT NULL UNIQUE,
-    issued_at TIMESTAMPTZ NOT NULL,
-    signature TEXT NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS sync_state (
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL
