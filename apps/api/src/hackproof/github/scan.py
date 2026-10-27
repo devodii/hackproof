@@ -9,6 +9,7 @@ import httpx
 from hackproof.github.client import GithubClient
 from hackproof.github.demo import scan_demo
 from hackproof.github.dependencies import MANIFESTS, fingerprint
+from hackproof.github.files import fetch_texts
 from hackproof.github.history import stellar_added_in_window
 from hackproof.github.models import Candidate, Contributor, Ref, RepoScan
 from hackproof.github.refs import extract_refs
@@ -78,11 +79,6 @@ class Scanner:
         self._discovery = discovery
         self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
-    async def _text(self, repo: Candidate, branch: str, path: str) -> tuple[str, str]:
-        async with self._files:
-            content = await self._github.raw(repo.full_name, branch, path)
-        return path, content.decode(errors="ignore") if content else ""
-
     async def _wasm_ref(self, repo: Candidate, branch: str, path: str) -> Ref | None:
         async with self._files:
             content = await self._github.raw(repo.full_name, branch, path, limit=MAX_WASM_BYTES)
@@ -99,11 +95,11 @@ class Scanner:
             return None
         text_paths, wasm_paths = select_files(tree["tree"])
         texts, wasms, people = await asyncio.gather(
-            asyncio.gather(*(self._text(repo, branch, path) for path in text_paths)),
+            fetch_texts(self._github, repo.full_name, branch, text_paths),
             asyncio.gather(*(self._wasm_ref(repo, branch, path) for path in wasm_paths)),
             self._github.json(f"/repos/{repo.full_name}/contributors", {"per_page": 100}),
         )
-        files = dict(texts)
+        files = texts
         refs = [ref for path, text in files.items() for ref in extract_refs(text, path)]
         refs.extend(ref for ref in wasms if ref)
         readme = next((text for path, text in files.items() if _is_readme(path)), "")
