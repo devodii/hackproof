@@ -27,6 +27,7 @@ class Discovery(BaseModel):
 
 
 class Hackathon(BaseModel):
+    slug: str
     name: str
     window: Window
     discovery: Discovery
