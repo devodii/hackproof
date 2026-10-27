@@ -1,4 +1,4 @@
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL ?? 'hello@hackproof.dev'
+const CONTACT_EMAIL = 'emmanuelodii80@gmail.com'
 export const REPO_URL = 'https://github.com/devodii/hackproof'
 
 export function optOutHref(projectId: string) {
