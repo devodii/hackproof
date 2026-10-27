@@ -7,6 +7,7 @@ import { HomePage } from '@/pages/home'
 import { MethodologyPage } from '@/pages/methodology'
 import { ProjectPage } from '@/pages/project'
 import { ProofPage } from '@/pages/proof'
+import { SummaryPage } from '@/pages/summary'
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/project/*" element={<ProjectPage />} />
           <Route path="/builder/:address" element={<BuilderPage />} />
+          <Route path="/summary" element={<SummaryPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
           <Route path="/proof/:address" element={<ProofPage />} />
         </Routes>

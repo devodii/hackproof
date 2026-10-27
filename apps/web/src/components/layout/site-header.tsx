@@ -10,9 +10,17 @@ export function SiteHeader() {
   return (
     <header className="border-b">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-6">
-        <Link to="/" className="font-mono text-sm font-semibold tracking-tight">
-          hackproof
-        </Link>
+        <nav className="flex items-center gap-6">
+          <Link to="/" className="font-mono text-sm font-semibold tracking-tight">
+            hackproof
+          </Link>
+          <Link to="/summary" className="text-sm text-muted-foreground hover:text-foreground">
+            Summary
+          </Link>
+          <Link to="/methodology" className="text-sm text-muted-foreground hover:text-foreground">
+            Methodology
+          </Link>
+        </nav>
         <Button
           variant="ghost"
           size="icon"
