@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 
+import { About } from '@/components/layout/about'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
@@ -21,6 +22,7 @@ export function App() {
           <Route path="/methodology" element={<MethodologyPage />} />
         </Routes>
       </main>
+      <About />
       <SiteFooter />
     </div>
   )
