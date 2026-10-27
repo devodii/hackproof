@@ -10,7 +10,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { useHackWindow } from '@/hooks/use-hack-window'
 import { useProject } from '@/hooks/use-project'
-import { optOutHref } from '@/lib/config'
 import { flagEmoji, footprintLabel, formatDateTime, isWithin, projectName } from '@/lib/format'
 
 export function ProjectPage() {
@@ -78,9 +77,6 @@ export function ProjectPage() {
               {project.window_commits} of {project.total_commits} commits inside the window
             </span>
           )}
-          <a href={optOutHref(project.project_id)} className="hover:text-foreground">
-            Opt out
-          </a>
         </div>
         {signals.length > 0 && (
           <div className="flex flex-wrap gap-2">

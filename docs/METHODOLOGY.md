@@ -63,7 +63,7 @@ The home page prints how many projects were found. The official total is not pub
 
 ## Privacy
 
-Only public data is used: chain activity and public GitHub repos and profile fields. Handles are shown, emails are not collected or displayed. To be removed, use the opt out link on a project page; requests are honoured within 24 hours.
+Only public data is used: chain activity and public GitHub repos and profile fields. Handles are shown, emails are not collected or displayed.
 
 ## Reproducing
 
