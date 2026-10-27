@@ -5,6 +5,7 @@ import yaml
 
 from hackproof.export.build import build_export
 from hackproof.export.render import json_schema, to_json, to_yaml
+from hackproof.export.urls import EXPLORER
 from hackproof.hackathon import get_hackathon
 from hackproof.linking.reconcile import reconcile
 from tests.helpers import STELLAR, WINDOW, add_contract, add_ref, add_repo, add_upload
@@ -46,9 +47,16 @@ async def test_export_carries_repo_chain_and_evidence(scratch_db):
     assert project.created_during_hack is True
     assert project.contributors[0].login == "ana" and project.contributors[0].country == "PT"
     assert [c.contract_id for c in project.chain.contracts] == ["CXYZ"]
-    assert project.chain.accounts == ["GDEPLOYER"]
-    assert project.chain.wasm_hashes == ["w1"]
-    assert [(e.method, e.subject) for e in project.chain.evidence] == [("contract_in_repo", "CXYZ")]
+    assert [a.address for a in project.chain.accounts] == ["GDEPLOYER"]
+    assert project.chain.accounts[0].explorer_url == f"{EXPLORER}/account/GDEPLOYER"
+    assert [w.wasm_hash for w in project.chain.wasm_uploads] == ["w1"]
+    [contract] = project.chain.contracts
+    assert contract.explorer_url == f"{EXPLORER}/contract/CXYZ"
+    assert contract.tx_url == f"{EXPLORER}/tx/{contract.tx_hash}"
+    [evidence] = project.chain.evidence
+    assert (evidence.method, evidence.subject) == ("contract_in_repo", "CXYZ")
+    assert evidence.explorer_url == f"{EXPLORER}/contract/CXYZ"
+    assert evidence.repo_file_url == "https://github.com/team/app/blob/HEAD/README.md"
 
 
 async def test_json_and_yaml_exports_validate_against_the_published_schema(scratch_db):

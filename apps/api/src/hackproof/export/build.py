@@ -7,6 +7,7 @@ import asyncpg
 
 from hackproof.export.models import (
     SCHEMA_VERSION,
+    Account,
     Chain,
     Contract,
     Contributor,
@@ -14,8 +15,16 @@ from hackproof.export.models import (
     HackathonExport,
     Owner,
     Project,
+    WasmUpload,
 )
 from hackproof.export.models import Hackathon as ExportedHackathon
+from hackproof.export.urls import (
+    account_url,
+    asset_url,
+    contract_url,
+    repo_file_url,
+    tx_url,
+)
 from hackproof.hackathon import Hackathon
 
 STRICT_TIERS = ("verified", "declared", "likely")
@@ -41,7 +50,7 @@ ORDER BY c.contributions DESC, c.login
 """
 
 CONTRACTS_SQL = """
-SELECT a.full_name, c.contract_id, c.deployer, c.wasm_hash, c.deployed_at
+SELECT a.full_name, c.contract_id, c.deployer, c.wasm_hash, c.deployed_at, c.ledger, c.tx_hash
 FROM contracts c
 JOIN attribution a ON a.subject_kind = 'contract' AND a.subject = c.contract_id
 WHERE a.full_name = ANY($1) AND c.deployed_at BETWEEN $2 AND $3
@@ -55,18 +64,33 @@ ORDER BY subject
 """
 
 WASM_SQL = """
-SELECT DISTINCT a.full_name, w.wasm_hash
+SELECT DISTINCT ON (a.full_name, w.wasm_hash) a.full_name, w.wasm_hash, w.tx_hash
 FROM wasm_uploads w
 JOIN attribution a ON a.subject_kind = 'account' AND a.subject = w.uploader
 WHERE a.full_name = ANY($1) AND w.uploaded_at BETWEEN $2 AND $3
-ORDER BY w.wasm_hash
+ORDER BY a.full_name, w.wasm_hash, w.uploaded_at
 """
 
 EVIDENCE_SQL = """
-SELECT full_name, subject_kind, subject, method, confidence FROM links
-WHERE full_name = ANY($1) AND method <> 'footprint'
-ORDER BY confidence DESC, subject_kind, subject
+SELECT l.full_name, l.subject_kind, l.subject, l.method, l.confidence, r.path
+FROM links l
+LEFT JOIN repo_refs r
+       ON r.full_name = l.full_name AND r.kind = l.subject_kind AND r.value = l.subject
+WHERE l.full_name = ANY($1) AND l.method <> 'footprint'
+ORDER BY l.confidence DESC, l.subject_kind, l.subject
 """
+
+
+def _evidence_url(kind: str, subject: str) -> str | None:
+    match kind:
+        case "contract":
+            return contract_url(subject)
+        case "account":
+            return account_url(subject)
+        case "asset":
+            return asset_url(subject)
+        case _:
+            return None
 
 
 def _group(rows: Iterable[asyncpg.Record], key: str = "full_name") -> dict[str, list[Any]]:
@@ -131,14 +155,28 @@ async def build_export(
                 classic_op_count=row["classic_ops"],
                 asset_count=row["assets"],
                 failed_tx_count=row["failed_txs"],
-                accounts=[a["subject"] for a in accounts[row["full_name"]]],
-                wasm_hashes=[w["wasm_hash"] for w in wasm[row["full_name"]]],
+                accounts=[
+                    Account(address=a["subject"], explorer_url=account_url(a["subject"]))
+                    for a in accounts[row["full_name"]]
+                ],
+                wasm_uploads=[
+                    WasmUpload(
+                        wasm_hash=w["wasm_hash"],
+                        upload_tx=w["tx_hash"],
+                        explorer_url=tx_url(w["tx_hash"]),
+                    )
+                    for w in wasm[row["full_name"]]
+                ],
                 contracts=[
                     Contract(
                         contract_id=c["contract_id"],
                         deployer=c["deployer"],
                         wasm_hash=c["wasm_hash"],
                         deployed_at=c["deployed_at"],
+                        ledger=c["ledger"],
+                        tx_hash=c["tx_hash"],
+                        explorer_url=contract_url(c["contract_id"]),
+                        tx_url=tx_url(c["tx_hash"]),
                     )
                     for c in contracts[row["full_name"]]
                 ],
@@ -148,6 +186,8 @@ async def build_export(
                         subject=e["subject"],
                         method=e["method"],
                         confidence=e["confidence"],
+                        explorer_url=_evidence_url(e["subject_kind"], e["subject"]),
+                        repo_file_url=(repo_file_url(row["url"], e["path"]) if e["path"] else None),
                     )
                     for e in evidence[row["full_name"]]
                 ],

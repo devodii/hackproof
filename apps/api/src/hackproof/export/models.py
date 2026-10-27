@@ -31,11 +31,26 @@ class Contributor(Model):
     )
 
 
+class Account(Model):
+    address: str = Field(description="Stellar account (G...)")
+    explorer_url: str = Field(description="Stellar Expert page for the account on testnet")
+
+
+class WasmUpload(Model):
+    wasm_hash: str = Field(description="sha256 of the contract wasm, hex")
+    upload_tx: str = Field(description="Hash of the transaction that uploaded the wasm")
+    explorer_url: str = Field(description="Stellar Expert page for the upload transaction")
+
+
 class Contract(Model):
     contract_id: str = Field(description="Soroban contract id (C...)")
     deployer: str = Field(description="Stellar account (G...) that deployed the contract")
     wasm_hash: str = Field(description="sha256 of the contract wasm, hex")
     deployed_at: datetime = Field(description="Ledger close time of the deploy, UTC")
+    ledger: int = Field(description="Ledger sequence of the deploy")
+    tx_hash: str = Field(description="Hash of the deploy transaction")
+    explorer_url: str = Field(description="Stellar Expert page for the contract on testnet")
+    tx_url: str = Field(description="Stellar Expert page for the deploy transaction")
 
 
 class Evidence(Model):
@@ -51,6 +66,12 @@ class Evidence(Model):
         "asset_in_repo",
     ] = Field(description="How the match was made; every method is an exact string match")
     confidence: float = Field(description="1.0 exact, 0.95 asset, 0.9 account", ge=0, le=1)
+    explorer_url: str | None = Field(
+        description="Stellar Expert page for the matched item; null for a wasm hash"
+    )
+    repo_file_url: str | None = Field(
+        description="GitHub file where the match was found; null when the evidence is not in a file"
+    )
 
 
 class Chain(Model):
@@ -63,8 +84,8 @@ class Chain(Model):
     failed_tx_count: int = Field(
         description="Failed Soroban transactions by the project's accounts"
     )
-    accounts: list[str] = Field(description="Stellar accounts attributed to the project")
-    wasm_hashes: list[str] = Field(description="Wasm hashes uploaded by the project's accounts")
+    accounts: list[Account] = Field(description="Stellar accounts attributed to the project")
+    wasm_uploads: list[WasmUpload] = Field(description="Wasm uploaded by the project's accounts")
     contracts: list[Contract] = Field(description="Contracts deployed inside the window")
     evidence: list[Evidence] = Field(description="Direct repo-to-chain matches behind the tier")
 
