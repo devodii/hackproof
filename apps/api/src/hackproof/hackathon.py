@@ -20,6 +20,7 @@ class Window(BaseModel):
 class Discovery(BaseModel):
     github_queries: list[str]
     github_code_queries: list[str]
+    github_string_queries: list[str]
     dependency_fingerprints: dict[str, list[str]]
     exclude_owners: list[str]
     known_infra_accounts: list[str]

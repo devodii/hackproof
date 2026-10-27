@@ -12,6 +12,7 @@ WINDOW = Window(
 DISCOVERY = Discovery(
     github_queries=[],
     github_code_queries=[],
+    github_string_queries=[],
     dependency_fingerprints={},
     exclude_owners=["stellar"],
     known_infra_accounts=[],

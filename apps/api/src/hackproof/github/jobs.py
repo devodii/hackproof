@@ -18,23 +18,25 @@ log = logging.getLogger("hackproof.github")
 SCAN_CONCURRENCY = 20
 
 
-async def run_discover() -> None:
+async def run_discover(include_strings: bool) -> None:
     settings, hackathon = get_settings(), get_hackathon()
     await open_pool()
     async with httpx.AsyncClient(timeout=30) as http:
         github = GithubClient(http, settings.github_tokens)
         async with pool().acquire() as connection:
             from_wasm = await wasm_meta_repos(connection)
-        candidates = await discover(
+        stages = discover(
             github,
             hackathon.window,
             hackathon.discovery,
             from_wasm,
             read_seeds(settings.seeds_file),
+            include_strings,
         )
-    async with pool().acquire() as connection:
-        await store_candidates(connection, candidates)
-    log.info("stored %s candidate repos", len(candidates))
+        async for candidates in stages:
+            async with pool().acquire() as connection:
+                await store_candidates(connection, candidates)
+            log.info("stored %s candidate repos", len(candidates))
 
 
 async def run_scan(force: bool) -> None:

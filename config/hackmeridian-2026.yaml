@@ -25,6 +25,7 @@ discovery:
     - "stellar-sdk filename:requirements.txt"
     - "stellar-sdk filename:pyproject.toml"
     - "github.com/stellar/go filename:go.mod"
+  github_string_queries:
     - "Test SDF Network ; September 2015"
     - "soroban-testnet.stellar.org"
     - "friendbot.stellar.org"

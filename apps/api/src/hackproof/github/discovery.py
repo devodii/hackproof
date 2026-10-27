@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from collections.abc import Awaitable, Callable
+from collections.abc import AsyncIterator, Awaitable, Callable
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -106,17 +106,14 @@ async def _hits(github: GithubClient, path: str, query: str, kind: Search) -> li
     return items
 
 
-async def discover(
+async def _collect(
     github: GithubClient,
-    window: Window,
-    discovery: Discovery,
-    wasm_meta_repos: list[str],
-    seeds: list[tuple[str, str]],
-    now: datetime | None = None,
-) -> list[Candidate]:
-    since, until = window.start - timedelta(days=1), now or datetime.now(UTC)
-    found: dict[str, set[str]] = {}
-
+    found: dict[str, set[str]],
+    repository_queries: list[str],
+    code_queries: list[str],
+    since: datetime,
+    until: datetime,
+) -> None:
     def note(name: str, via: str) -> None:
         found.setdefault(name.lower(), set()).add(via)
 
@@ -135,14 +132,17 @@ async def discover(
         log.info("code search done: %s slices, %s", len(slices), query)
 
     await asyncio.gather(
-        *(repository_query(q) for q in discovery.github_queries),
-        *(code_query(q) for q in discovery.github_code_queries),
+        *(repository_query(q) for q in repository_queries),
+        *(code_query(q) for q in code_queries),
     )
-    for name in wasm_meta_repos:
-        note(name, "wasm_meta")
-    for name, tag in seeds:
-        note(name, f"seed:{tag}")
 
+
+async def _resolve(
+    github: GithubClient,
+    found: dict[str, set[str]],
+    window: Window,
+    discovery: Discovery,
+) -> list[Candidate]:
     log.info("%s unique repos found, looking them up", len(found))
     candidates = await fetch_repositories(github, found)
     for candidate in candidates:
@@ -160,9 +160,34 @@ async def discover(
                 until=window.end.isoformat(),
             )
 
-    log.info("%s repos pushed since %s, counting window commits", len(kept), since.date())
+    log.info("%s of them pushed recently, counting window commits", len(kept))
     await asyncio.gather(*(inside_window(c) for c in kept))
     return kept
+
+
+async def discover(
+    github: GithubClient,
+    window: Window,
+    discovery: Discovery,
+    wasm_meta_repos: list[str],
+    seeds: list[tuple[str, str]],
+    include_strings: bool = False,
+    now: datetime | None = None,
+) -> AsyncIterator[list[Candidate]]:
+    since, until = window.start - timedelta(days=1), now or datetime.now(UTC)
+    pinned: dict[str, set[str]] = {}
+    for name in wasm_meta_repos:
+        pinned.setdefault(name.lower(), set()).add("wasm_meta")
+    for name, tag in seeds:
+        pinned.setdefault(name.lower(), set()).add(f"seed:{tag}")
+
+    stages = [(discovery.github_queries, [], pinned), ([], discovery.github_code_queries, {})]
+    if include_strings:
+        stages.append(([], discovery.github_string_queries, {}))
+    for repository_queries, code_queries, extra in stages:
+        found = {name: set(vias) for name, vias in extra.items()}
+        await _collect(github, found, repository_queries, code_queries, since, until)
+        yield await _resolve(github, found, window, discovery)
 
 
 async def store_candidates(connection: asyncpg.Connection, candidates: list[Candidate]) -> None:

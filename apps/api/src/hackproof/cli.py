@@ -11,7 +11,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(prog="hackproof")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("sync", help="index the hack window from testnet")
-    commands.add_parser("discover", help="find candidate repos on github")
+    discover = commands.add_parser("discover", help="find candidate repos on github")
+    discover.add_argument(
+        "--strings", action="store_true", help="also run the network string code queries"
+    )
     scan = commands.add_parser("scan", help="scan discovered repos for chain fingerprints")
     scan.add_argument("--force", action="store_true", help="rescan repos already scanned")
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
@@ -23,7 +26,7 @@ def main() -> None:
         case "sync":
             asyncio.run(run_sync())
         case "discover":
-            asyncio.run(run_discover())
+            asyncio.run(run_discover(args.strings))
         case "scan":
             asyncio.run(run_scan(args.force))
         case "reconcile":
