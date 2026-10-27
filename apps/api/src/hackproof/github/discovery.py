@@ -1,4 +1,5 @@
 import asyncio
+import logging
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -12,6 +13,8 @@ from hackproof.github.models import Candidate
 from hackproof.github.repositories import fetch_repositories
 from hackproof.hackathon import Discovery, Window
 from hackproof.linking.repo_ref import normalize_repo
+
+log = logging.getLogger("hackproof.discovery")
 
 PAGE_SIZE = 100
 RESULT_CAP = 1000
@@ -118,14 +121,18 @@ async def discover(
         found.setdefault(name.lower(), set()).add(via)
 
     async def repository_query(query: str) -> None:
-        for sliced in await repository_slices(github, query, since, until):
+        slices = await repository_slices(github, query, since, until)
+        for sliced in slices:
             for item in await _hits(github, "/search/repositories", sliced, "repositories"):
                 note(item["full_name"], f"search:{query}")
+        log.info("repo search done: %s slices, %s", len(slices), query)
 
     async def code_query(query: str) -> None:
-        for sliced in await code_slices(github, query):
+        slices = await code_slices(github, query)
+        for sliced in slices:
             for item in await _hits(github, "/search/code", sliced, "code"):
                 note(item["repository"]["full_name"], f"code:{query}")
+        log.info("code search done: %s slices, %s", len(slices), query)
 
     await asyncio.gather(
         *(repository_query(q) for q in discovery.github_queries),
@@ -136,6 +143,7 @@ async def discover(
     for name, tag in seeds:
         note(name, f"seed:{tag}")
 
+    log.info("%s unique repos found, looking them up", len(found))
     candidates = await fetch_repositories(github, found)
     for candidate in candidates:
         candidate.discovered_via = found[candidate.full_name.lower()]
@@ -152,6 +160,7 @@ async def discover(
                 until=window.end.isoformat(),
             )
 
+    log.info("%s repos pushed since %s, counting window commits", len(kept), since.date())
     await asyncio.gather(*(inside_window(c) for c in kept))
     return kept
 
