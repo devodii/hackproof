@@ -1,3 +1,5 @@
 dist
 src/components/ui
 pnpm-lock.yaml
+public/data
+public/schema
