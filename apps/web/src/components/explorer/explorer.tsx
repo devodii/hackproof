@@ -1,10 +1,9 @@
 import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
-import { useSearchParams } from 'react-router'
+import { useNavigate, useSearchParams } from 'react-router'
 
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useDebouncedValue } from '@/hooks/use-debounced-value'
 import { STRICT_TIERS } from '@/lib/format'
@@ -18,15 +17,21 @@ export function Explorer() {
   const [params, setParams] = useSearchParams()
   const [input, setInput] = useState(params.get('q') ?? '')
   const [strict, setStrict] = useState(true)
-  const [view, setView] = useState<'cards' | 'table'>('cards')
+  const navigate = useNavigate()
+  const view = params.get('view') === 'table' ? 'table' : 'cards'
   const search = useDebouncedValue(input.trim())
+
+  const setParam = (key: string, value: string) =>
+    setParams((previous) => {
+      const next = new URLSearchParams(previous)
+      next.set(key, value)
+      return next
+    })
 
   return (
     <Tabs
       value={params.get('tab') ?? 'projects'}
-      onValueChange={(tab) =>
-        setParams((previous) => new URLSearchParams({ ...Object.fromEntries(previous), tab }))
-      }
+      onValueChange={(tab) => setParam('tab', tab)}
       className="w-full gap-4"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -52,14 +57,12 @@ export function Explorer() {
             <Switch checked={strict} onCheckedChange={setStrict} />
             Strict: verified on-chain, declared or likely HackMeridian projects only
           </label>
-          <ToggleGroup
-            variant="outline"
-            value={[view]}
-            onValueChange={([next]) => next && setView(next as 'cards' | 'table')}
-          >
-            <ToggleGroupItem value="cards">Cards</ToggleGroupItem>
-            <ToggleGroupItem value="table">Table</ToggleGroupItem>
-          </ToggleGroup>
+          <Tabs value={view} onValueChange={(next) => setParam('view', next)}>
+            <TabsList>
+              <TabsTrigger value="cards">Cards</TabsTrigger>
+              <TabsTrigger value="table">Table</TabsTrigger>
+            </TabsList>
+          </Tabs>
         </div>
         {view === 'cards' ? (
           <ProjectGrid
@@ -76,6 +79,7 @@ export function Explorer() {
             columns={projectColumns}
             rowKey={(row) => row.project_id}
             empty="No projects match."
+            onRowClick={(row) => navigate(`/project/${row.project_id}`)}
           />
         )}
       </TabsContent>
