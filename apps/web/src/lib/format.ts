@@ -75,11 +75,3 @@ export const footprintLabel = {
 export function formatLastActivity(iso: string | null) {
   return iso ? formatDateTime(iso) : 'none'
 }
-
-const EXPERT = 'https://stellar.expert/explorer/testnet'
-
-export const expertUrl = {
-  contract: (id: string) => `${EXPERT}/contract/${id}`,
-  account: (id: string) => `${EXPERT}/account/${id}`,
-  tx: (hash: string) => `${EXPERT}/tx/${hash}`,
-}
