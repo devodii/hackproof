@@ -10,6 +10,22 @@ export function formatDateTime(iso: string) {
   return `${dateTime.format(new Date(iso))} UTC`
 }
 
+const regionNames = new Intl.DisplayNames(['en'], { type: 'region' })
+
+export function countryName(countryCode: string) {
+  return regionNames.of(countryCode) ?? countryCode
+}
+
+const hourOfDay = new Intl.DateTimeFormat('en', {
+  hour: '2-digit',
+  hourCycle: 'h23',
+  timeZone: 'UTC',
+})
+
+export function formatHour(iso: string) {
+  return `${hourOfDay.format(new Date(iso))}:00`
+}
+
 export function formatNumber(value: number) {
   return value.toLocaleString('en')
 }

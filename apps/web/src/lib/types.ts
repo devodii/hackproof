@@ -141,3 +141,13 @@ export interface Proof {
   window_start: string
   window_end: string
 }
+
+export interface TimelinePoint {
+  hour: string
+  contracts: number
+}
+
+export interface CountryCount {
+  country: string
+  contributors: number
+}
