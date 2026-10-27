@@ -8,7 +8,8 @@ from hackproof.github.client import GithubClient
 from hackproof.github.models import Candidate
 
 FIELDS = """
-  nameWithOwner url description stargazerCount isFork createdAt pushedAt homepageUrl
+  nameWithOwner url description stargazerCount forkCount isFork createdAt pushedAt homepageUrl
+  primaryLanguage { name } licenseInfo { spdxId }
   defaultBranchRef { name } owner { login avatarUrl }
   repositoryTopics(first: 20) { nodes { topic { name } } }
 """
@@ -28,6 +29,9 @@ def candidate_from_node(node: dict[str, Any]) -> Candidate:
         owner_avatar=node["owner"]["avatarUrl"],
         default_branch=branch["name"] if branch else None,
         homepage=node["homepageUrl"] or None,
+        language=node["primaryLanguage"]["name"] if node["primaryLanguage"] else None,
+        license=node["licenseInfo"]["spdxId"] if node["licenseInfo"] else None,
+        forks=node["forkCount"],
         created_at=node["createdAt"],
         pushed_at=node["pushedAt"],
         fork=node["isFork"],

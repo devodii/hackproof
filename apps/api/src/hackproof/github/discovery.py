@@ -169,14 +169,15 @@ async def store_candidates(connection: asyncpg.Connection, candidates: list[Cand
     await connection.executemany(
         """
         INSERT INTO repos (full_name, url, description, stars, owner, owner_avatar,
-                           default_branch, homepage, created_at, pushed_at, topics,
-                           window_commits, discovered_via)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+                           default_branch, homepage, language, license, forks, created_at,
+                           pushed_at, topics, window_commits, discovered_via)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
         ON CONFLICT (full_name) DO UPDATE SET
             description = EXCLUDED.description, stars = EXCLUDED.stars,
             default_branch = EXCLUDED.default_branch, homepage = EXCLUDED.homepage,
+            language = EXCLUDED.language, license = EXCLUDED.license, forks = EXCLUDED.forks,
             pushed_at = EXCLUDED.pushed_at, topics = EXCLUDED.topics,
-            window_commits = EXCLUDED.window_commits,
+            window_commits = COALESCE(EXCLUDED.window_commits, repos.window_commits),
             discovered_via = ARRAY(
                 SELECT DISTINCT via FROM unnest(repos.discovered_via || EXCLUDED.discovered_via) via
             )
@@ -191,6 +192,9 @@ async def store_candidates(connection: asyncpg.Connection, candidates: list[Cand
                 c.owner_avatar,
                 c.default_branch,
                 c.homepage,
+                c.language,
+                c.license,
+                c.forks,
                 c.created_at,
                 c.pushed_at,
                 c.topics,
