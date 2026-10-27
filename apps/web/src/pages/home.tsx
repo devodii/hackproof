@@ -4,10 +4,12 @@ import { StatsGrid } from '@/components/stats-grid'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
-import { formatDateTime } from '@/lib/format'
+import { useStats } from '@/hooks/use-stats'
+import { formatDateTime, formatNumber } from '@/lib/format'
 
 export function HomePage() {
   const { data } = useHackWindow()
+  const { data: stats } = useStats()
 
   return (
     <div className="flex flex-col gap-10">
@@ -28,7 +30,15 @@ export function HomePage() {
           <Skeleton className="h-5 w-72" />
         )}
       </section>
-      <StatsGrid />
+      <div className="flex flex-col gap-3">
+        <StatsGrid />
+        {stats && (
+          <p className="text-sm text-muted-foreground">
+            {formatNumber(stats.projects)} projects found from chain, GitHub and seeds. The official
+            submission list is not public.
+          </p>
+        )}
+      </div>
       <ClaimProof />
       <Explorer />
     </div>
