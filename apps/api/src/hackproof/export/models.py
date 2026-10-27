@@ -78,7 +78,7 @@ class Project(Model):
     tier: Tier = Field(
         description=(
             "Evidence strength. verified: exact repo-to-chain match with activity in the window. "
-            "declared: seeded, or readme or topic names the hackathon, with commits in the window. "
+            "declared: readme or topic names the hackathon, with commits in the window. "
             "likely: Stellar dependency and commits in the window, created or Stellar added in the "
             "window. possible: Stellar dependency and at least 3 commits in the window only."
         )

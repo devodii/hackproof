@@ -23,9 +23,8 @@ GitHub caps every search at 1,000 results, so each query is sliced until every s
 - Repository search by name, description, readme and topic (`stellar`, `soroban`, `hackmeridian`, `lisbon stellar` and similar), restricted to repos pushed since 24 October.
 - Code search for Stellar dependencies and endpoints (`soroban-sdk`, `@stellar/stellar-sdk`, wallet kits, the testnet passphrase, friendbot and RPC hosts). Code search has no date filter, so hits are kept only when the repo was pushed since 24 October.
 - Repos named in the `source_repo` entry of a deployed wasm's contract metadata.
-- Manual seeds in `data/seed/<hackathon>/repos.txt`, for example links posted by teams.
 
-A candidate is only scanned in depth if it has at least one commit inside the window, or was pinned by a seed or wasm metadata. The scan then records:
+A candidate is only scanned in depth if it has at least one commit inside the window, or was named in wasm metadata. The scan then records:
 
 - Contract ids, account ids, `CODE:ISSUER` assets and network markers found in text files up to 512 kB, all checked against Stellar checksums.
 - The sha256 of committed `.wasm` files.
@@ -51,7 +50,7 @@ Accounts that appear in more than eight repos are treated as shared infrastructu
 
 ## Projects
 
-A project is a repo with at least one link, a seeded or wasm-metadata repo, or a repo with a Stellar dependency that also shows hackathon activity: it mentions HackMeridian, has several commits in the window, was created in the window, or added its Stellar dependency during the window. Chain activity with no repo stays visible as an unattributed account project. Each project shows its footprint: contracts, classic operations only, or GitHub only.
+A project is a repo with at least one link, a wasm-metadata repo, or a repo with a Stellar dependency that also shows hackathon activity: it mentions HackMeridian, has several commits in the window, was created in the window, or added its Stellar dependency during the window. Chain activity with no repo stays visible as an unattributed account project. Each project shows its footprint: contracts, classic operations only, or GitHub only.
 
 No language model is used in any join.
 

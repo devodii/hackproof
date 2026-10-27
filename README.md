@@ -9,7 +9,6 @@ How the join works, and what it cannot see, is in [docs/METHODOLOGY.md](docs/MET
 - `apps/web`: React, Vite and shadcn/ui
 - `apps/api`: FastAPI, asyncpg and Postgres, managed with uv
 - `config/hackmeridian-2026.yaml`: the window and the discovery queries
-- `data/seed/`: repos added by hand
 
 ## Run it
 
@@ -29,7 +28,7 @@ The pipeline is four idempotent steps. Run them from `apps/api`, or as `docker c
 
 ```sh
 uv run hackproof sync       # chain: deploys, uploads, classic ops, fundings, failures
-uv run hackproof discover   # github: candidate repos from searches, dependencies and seeds
+uv run hackproof discover   # github: candidate repos from searches and dependency queries
 uv run hackproof scan       # github: scan repos for contract ids, accounts, assets, wasm hashes
 uv run hackproof reconcile  # join chain and github into links and projects
 ```

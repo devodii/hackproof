@@ -28,7 +28,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     label: 'Declared',
     meaning: 'Repos that say they belong to HackMeridian, with work done during the event.',
     counted:
-      'Added by hand, or the readme or a topic names HackMeridian, and at least one commit inside the window.',
+      'The readme or a topic names HackMeridian, and at least one commit inside the window.',
   },
   {
     key: 'likely_projects',
@@ -105,7 +105,7 @@ export const TIER_DEFINITIONS: { tier: Tier; label: string; rule: string; strict
   {
     tier: 'declared',
     label: 'Declared',
-    rule: 'Seeded, or the readme or a topic names HackMeridian, with commits inside the window.',
+    rule: 'The readme or a topic names HackMeridian, with commits inside the window.',
     strict: true,
   },
   {
