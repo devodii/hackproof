@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     soroban_rpc_url: str = "https://soroban-testnet.stellar.org"
     network_passphrase: str = "Test SDF Network ; September 2015"
     hackathon_file: Path = ROOT / "config" / "hackmeridian-2026.yaml"
-    friendbot_account: str = "GBZXN7PIRZGNMHGA7MUUUF4GWPY5AYPV6LY4UV2GL6VJGIQRXFDNMADI"
+    friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
     github_token: str | None = None
     cors_origins: list[str] = ["http://localhost:5173"]
