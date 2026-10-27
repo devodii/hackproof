@@ -2,10 +2,10 @@ name: hackproof
 
 x-api: &api
   image: ghcr.io/astral-sh/uv:python3.13-bookworm-slim
-  working_dir: /app
+  working_dir: /repo/apps/api
   volumes:
-    - ./apps/api:/app
-    - api-venv:/app/.venv
+    - ./:/repo
+    - api-venv:/repo/apps/api/.venv
   environment:
     UV_LINK_MODE: copy
     HACKPROOF_DATABASE_URL: postgresql://${POSTGRES_USER:-hackproof}:${POSTGRES_PASSWORD:-hackproof}@db:5432/${POSTGRES_DB:-hackproof}
