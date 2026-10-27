@@ -38,6 +38,29 @@ CREATE TABLE IF NOT EXISTS failed_txs (
 );
 CREATE INDEX IF NOT EXISTS failed_txs_source ON failed_txs (source_account);
 
+CREATE TABLE IF NOT EXISTS accounts (
+    account TEXT PRIMARY KEY,
+    funder TEXT NOT NULL,
+    tx_hash TEXT NOT NULL,
+    ledger BIGINT NOT NULL,
+    funded_at TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX IF NOT EXISTS accounts_funder ON accounts (funder);
+
+CREATE TABLE IF NOT EXISTS classic_ops (
+    tx_hash TEXT NOT NULL,
+    op_index INTEGER NOT NULL,
+    source_account TEXT NOT NULL,
+    op_type TEXT NOT NULL,
+    asset TEXT,
+    counterparty TEXT,
+    ledger BIGINT NOT NULL,
+    occurred_at TIMESTAMPTZ NOT NULL,
+    PRIMARY KEY (tx_hash, op_index)
+);
+CREATE INDEX IF NOT EXISTS classic_ops_source ON classic_ops (source_account);
+CREATE INDEX IF NOT EXISTS classic_ops_asset ON classic_ops (asset) WHERE asset IS NOT NULL;
+
 CREATE TABLE IF NOT EXISTS repos (
     full_name TEXT PRIMARY KEY,
     url TEXT NOT NULL,
@@ -46,7 +69,17 @@ CREATE TABLE IF NOT EXISTS repos (
     owner TEXT NOT NULL,
     owner_avatar TEXT,
     owner_location TEXT,
-    country TEXT
+    country TEXT,
+    default_branch TEXT,
+    homepage TEXT,
+    created_at TIMESTAMPTZ,
+    pushed_at TIMESTAMPTZ,
+    discovered_via TEXT[] NOT NULL DEFAULT '{}',
+    dependencies JSONB NOT NULL DEFAULT '{}',
+    window_commits INTEGER,
+    total_commits INTEGER,
+    mentions_hackathon BOOLEAN NOT NULL DEFAULT FALSE,
+    scanned_at TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS wasm_repos (
@@ -54,6 +87,47 @@ CREATE TABLE IF NOT EXISTS wasm_repos (
     full_name TEXT NOT NULL,
     source TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS repo_refs (
+    full_name TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    value TEXT NOT NULL,
+    path TEXT NOT NULL,
+    PRIMARY KEY (full_name, kind, value)
+);
+CREATE INDEX IF NOT EXISTS repo_refs_value ON repo_refs (kind, value);
+
+CREATE TABLE IF NOT EXISTS links (
+    full_name TEXT NOT NULL,
+    subject_kind TEXT NOT NULL,
+    subject TEXT NOT NULL,
+    method TEXT NOT NULL,
+    confidence REAL NOT NULL,
+    PRIMARY KEY (subject_kind, subject, full_name)
+);
+
+CREATE TABLE IF NOT EXISTS projects (
+    project_id TEXT PRIMARY KEY,
+    full_name TEXT,
+    footprint TEXT NOT NULL,
+    contracts INTEGER NOT NULL,
+    classic_ops INTEGER NOT NULL,
+    assets INTEGER NOT NULL,
+    wasm_uploads INTEGER NOT NULL,
+    failed_txs INTEGER NOT NULL,
+    builders INTEGER NOT NULL,
+    first_activity TIMESTAMPTZ,
+    last_activity TIMESTAMPTZ
+);
+
+CREATE OR REPLACE VIEW attribution AS
+SELECT DISTINCT ON (subject_kind, subject) subject_kind, subject, full_name, method, confidence
+FROM links
+ORDER BY subject_kind, subject, confidence DESC, method;
+
+CREATE OR REPLACE VIEW account_projects AS
+SELECT subject AS account, 'repo:' || full_name AS project_id
+FROM attribution WHERE subject_kind = 'account';
 
 CREATE TABLE IF NOT EXISTS proofs (
     id TEXT PRIMARY KEY,
