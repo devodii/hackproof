@@ -6,7 +6,6 @@ import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
 import { MethodologyPage } from '@/pages/methodology'
 import { ProjectPage } from '@/pages/project'
-import { ProofPage } from '@/pages/proof'
 import { SummaryPage } from '@/pages/summary'
 
 export function App() {
@@ -20,7 +19,6 @@ export function App() {
           <Route path="/builder/:address" element={<BuilderPage />} />
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
-          <Route path="/proof/:address" element={<ProofPage />} />
         </Routes>
       </main>
       <SiteFooter />

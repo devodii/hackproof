@@ -124,24 +124,6 @@ export interface Builder {
   failed_txs: FailedTx[]
 }
 
-export interface Challenge {
-  message: string
-}
-
-export interface Proof {
-  proof_id: string
-  address: string
-  claimed_at: string
-  projects: number
-  contracts: number
-  wasm_uploads: number
-  failed_txs: number
-  first_activity: string
-  last_activity: string
-  window_start: string
-  window_end: string
-}
-
 export interface TimelinePoint {
   hour: string
   contracts: number
