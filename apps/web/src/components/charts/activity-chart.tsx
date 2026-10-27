@@ -12,7 +12,7 @@ import { useTimeline } from '@/hooks/use-timeline'
 import { formatDateTime, formatHour, formatNumber } from '@/lib/format'
 
 const config = {
-  contracts: { label: 'Contracts deployed', color: 'var(--chart-1)' },
+  contracts: { label: 'Contracts deployed', color: 'var(--primary)' },
 } satisfies ChartConfig
 
 export function ActivityChart() {

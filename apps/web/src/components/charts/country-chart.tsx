@@ -12,7 +12,7 @@ import { useCountries } from '@/hooks/use-countries'
 import { countryName, flagEmoji } from '@/lib/format'
 
 const config = {
-  contributors: { label: 'Contributors', color: 'var(--chart-1)' },
+  contributors: { label: 'Contributors', color: 'var(--primary)' },
 } satisfies ChartConfig
 
 const ROW_HEIGHT = 32
@@ -56,7 +56,6 @@ export function CountryChart() {
             <Bar
               dataKey="contributors"
               fill="var(--color-contributors)"
-              radius={[0, 4, 4, 0]}
               barSize={16}
               isAnimationActive={false}
             >
