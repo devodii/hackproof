@@ -1,0 +1,11 @@
+{
+  "name": "hackproof",
+  "private": true,
+  "packageManager": "pnpm@11.18.0",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "cd apps/api && uv run fastapi dev src/hackproof/main.py",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm --filter web lint"
+  }
+}
