@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
 import { ProjectPage } from '@/pages/project'
+import { ProofPage } from '@/pages/proof'
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/project/*" element={<ProjectPage />} />
           <Route path="/builder/:address" element={<BuilderPage />} />
+          <Route path="/proof/:address" element={<ProofPage />} />
         </Routes>
       </main>
     </div>

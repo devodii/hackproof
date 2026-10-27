@@ -1,3 +1,4 @@
+import { ClaimProof } from '@/components/claim-proof'
 import { Explorer } from '@/components/explorer/explorer'
 import { StatsGrid } from '@/components/stats-grid'
 import { Badge } from '@/components/ui/badge'
@@ -28,6 +29,7 @@ export function HomePage() {
         )}
       </section>
       <StatsGrid />
+      <ClaimProof />
       <Explorer />
     </div>
   )
