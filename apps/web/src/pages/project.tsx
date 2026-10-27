@@ -2,6 +2,7 @@ import { ExternalLinkIcon, StarIcon } from 'lucide-react'
 import { useParams } from 'react-router'
 
 import { ClientTable } from '@/components/client-table'
+import { Contributors } from '@/components/contributors'
 import { ActivityTabs } from '@/components/explorer/activity-tabs'
 import { linkColumns } from '@/components/explorer/columns'
 import { DetailError, DetailSkeleton } from '@/components/query-state'
@@ -20,7 +21,7 @@ export function ProjectPage() {
   if (isPending) return <DetailSkeleton />
   if (error) return <DetailError error={error} subject="project" />
 
-  const { project, links, contracts, wasm_uploads, failed_txs } = data
+  const { project, links, contributors, contracts, wasm_uploads, failed_txs } = data
   const name = projectName(project.project_id)
   const packages = Object.entries(project.dependencies?.packages ?? {})
   const signals = [
@@ -59,6 +60,9 @@ export function ProjectPage() {
           ) : (
             <Badge variant="outline">no repo linked</Badge>
           )}
+          {project.language && <span>{project.language}</span>}
+          {project.license && <span>{project.license}</span>}
+          {project.forks !== null && project.forks > 0 && <span>{project.forks} forks</span>}
           {project.stars !== null && (
             <span className="inline-flex items-center gap-1">
               <StarIcon className="size-3.5" /> {project.stars}
@@ -96,6 +100,12 @@ export function ProjectPage() {
           </div>
         )}
       </header>
+      {contributors.length > 0 && (
+        <section className="flex flex-col gap-3">
+          <h2 className="text-lg font-medium">Contributors ({contributors.length})</h2>
+          <Contributors contributors={contributors} />
+        </section>
+      )}
       {links.length > 0 && (
         <section className="flex flex-col gap-3">
           <h2 className="text-lg font-medium">Why this is linked</h2>

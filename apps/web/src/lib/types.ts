@@ -18,6 +18,7 @@ export interface Stats {
   linked_projects: number
   contracts: number
   builders: number
+  contributors: number
   countries: number
   wasm_uploads: number
   failed_txs: number
@@ -43,6 +44,9 @@ export interface Project {
   last_activity: string | null
   description: string | null
   stars: number | null
+  forks: number | null
+  language: string | null
+  license: string | null
   owner: string | null
   owner_avatar: string | null
   country: string | null
@@ -54,6 +58,14 @@ export interface Project {
   created_at: string | null
   topics: string[] | null
   discovered_via: string[] | null
+}
+
+export interface Contributor {
+  login: string
+  url: string
+  avatar_url: string | null
+  contributions: number
+  country: string | null
 }
 
 export interface Link {
@@ -96,6 +108,7 @@ export interface FailedTx {
 export interface ProjectDetail {
   project: Project
   links: Link[]
+  contributors: Contributor[]
   contracts: Contract[]
   wasm_uploads: WasmUpload[]
   failed_txs: FailedTx[]
