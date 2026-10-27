@@ -1,0 +1,68 @@
+name: hackproof
+
+x-api: &api
+  image: ghcr.io/astral-sh/uv:python3.13-bookworm-slim
+  working_dir: /app
+  volumes:
+    - ./apps/api:/app
+    - api-venv:/app/.venv
+  environment:
+    UV_LINK_MODE: copy
+    HACKPROOF_DATABASE_URL: postgresql://${POSTGRES_USER:-hackproof}:${POSTGRES_PASSWORD:-hackproof}@db:5432/${POSTGRES_DB:-hackproof}
+    HACKPROOF_GITHUB_TOKEN: ${HACKPROOF_GITHUB_TOKEN:-}
+    HACKPROOF_CORS_ORIGINS: '["http://localhost:5173"]'
+  depends_on:
+    db:
+      condition: service_healthy
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-hackproof}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hackproof}
+      POSTGRES_DB: ${POSTGRES_DB:-hackproof}
+    ports:
+      - "${POSTGRES_PORT:-5440}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    <<: *api
+    restart: unless-stopped
+    command: uv run fastapi run src/hackproof/main.py --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+
+  indexer:
+    <<: *api
+    profiles: [tools]
+    command: uv run hackproof sync
+
+  web:
+    image: node:24-alpine
+    working_dir: /app
+    restart: unless-stopped
+    command: sh -c "corepack enable && pnpm install --frozen-lockfile && pnpm --filter web dev --host 0.0.0.0"
+    environment:
+      VITE_API_PROXY: http://api:8000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/app
+      - root-node-modules:/app/node_modules
+      - web-node-modules:/app/apps/web/node_modules
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  api-venv:
+  root-node-modules:
+  web-node-modules:
