@@ -34,6 +34,12 @@ export function projectName(projectId: string) {
     : shortId(projectId.slice('acct:'.length), 6, 6)
 }
 
+export function isWithin(iso: string | null, window: { start: string; end: string } | undefined) {
+  if (!iso || !window) return false
+  const time = new Date(iso).getTime()
+  return time >= new Date(window.start).getTime() && time <= new Date(window.end).getTime()
+}
+
 export const footprintLabel = {
   contracts: 'Contracts',
   classic: 'Classic ops only',

@@ -50,6 +50,9 @@ export interface Project {
   window_commits: number | null
   total_commits: number | null
   mentions_hackathon: boolean | null
+  stellar_added_in_window: boolean | null
+  created_at: string | null
+  topics: string[] | null
   discovered_via: string[] | null
 }
 

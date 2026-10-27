@@ -7,13 +7,15 @@ import { linkColumns } from '@/components/explorer/columns'
 import { DetailError, DetailSkeleton } from '@/components/query-state'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
+import { useHackWindow } from '@/hooks/use-hack-window'
 import { useProject } from '@/hooks/use-project'
 import { optOutHref } from '@/lib/config'
-import { flagEmoji, footprintLabel, formatDateTime, projectName } from '@/lib/format'
+import { flagEmoji, footprintLabel, formatDateTime, isWithin, projectName } from '@/lib/format'
 
 export function ProjectPage() {
   const projectId = useParams()['*'] ?? ''
   const { data, isPending, error } = useProject(projectId)
+  const { data: hackWindow } = useHackWindow()
 
   if (isPending) return <DetailSkeleton />
   if (error) return <DetailError error={error} subject="project" />
@@ -21,6 +23,11 @@ export function ProjectPage() {
   const { project, links, contracts, wasm_uploads, failed_txs } = data
   const name = projectName(project.project_id)
   const packages = Object.entries(project.dependencies?.packages ?? {})
+  const signals = [
+    isWithin(project.created_at, hackWindow) && 'Created during the hack',
+    project.stellar_added_in_window && 'Added Stellar during the hack',
+    project.mentions_hackathon && 'Mentions HackMeridian',
+  ].filter(Boolean)
 
   return (
     <div className="flex flex-col gap-8">
@@ -71,6 +78,13 @@ export function ProjectPage() {
             Opt out
           </a>
         </div>
+        {signals.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {signals.map((signal) => (
+              <Badge key={String(signal)}>{signal}</Badge>
+            ))}
+          </div>
+        )}
         {packages.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {packages.map(([pkg, version]) => (
