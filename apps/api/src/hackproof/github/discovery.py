@@ -1,35 +1,25 @@
 import asyncio
-from datetime import timedelta
+from collections.abc import Awaitable, Callable
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
 import asyncpg
 
 from hackproof.github.client import GithubClient, Search
+from hackproof.github.commits import count_commits
 from hackproof.github.models import Candidate
+from hackproof.github.repositories import fetch_repositories
 from hackproof.hackathon import Discovery, Window
 from hackproof.linking.repo_ref import normalize_repo
 
 PAGE_SIZE = 100
-MAX_PAGES = 10
+RESULT_CAP = 1000
+SIZE_CEILING = 400_000
+COMMIT_LOOKUPS = 16
 PINNED_PREFIXES = ("seed:", "wasm_meta")
 
-
-def candidate_from(item: dict[str, Any], vias: set[str]) -> Candidate:
-    return Candidate(
-        full_name=item["full_name"],
-        url=item["html_url"],
-        description=item.get("description"),
-        stars=item.get("stargazers_count", 0),
-        owner=item["owner"]["login"],
-        owner_avatar=item["owner"].get("avatar_url"),
-        default_branch=item.get("default_branch"),
-        homepage=item.get("homepage") or None,
-        created_at=item.get("created_at"),
-        pushed_at=item.get("pushed_at"),
-        fork=item.get("fork", False),
-        discovered_via=vias,
-    )
+Count = Callable[[int, int], Awaitable[int]]
 
 
 def is_pinned(candidate: Candidate) -> bool:
@@ -58,11 +48,51 @@ def parse_seeds(text: str) -> list[tuple[str, str]]:
     return seeds
 
 
-async def _search(
-    github: GithubClient, path: str, query: str, kind: Search
-) -> list[dict[str, Any]]:
+async def split_range(
+    lo: int, hi: int, count: Count, cap: int = RESULT_CAP
+) -> list[tuple[int, int]]:
+    if lo >= hi or await count(lo, hi) <= cap:
+        return [(lo, hi)]
+    middle = (lo + hi) // 2
+    left, right = await asyncio.gather(
+        split_range(lo, middle, count, cap), split_range(middle + 1, hi, count, cap)
+    )
+    return left + right
+
+
+def _stamp(seconds: int) -> str:
+    return datetime.fromtimestamp(seconds, UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+async def _total(github: GithubClient, path: str, query: str, kind: Search) -> int:
+    data = await github.json(path, {"q": query, "per_page": 1}, search=kind)
+    return data["total_count"] if data else 0
+
+
+async def repository_slices(
+    github: GithubClient, query: str, since: datetime, until: datetime
+) -> list[str]:
+    async def count(lo: int, hi: int) -> int:
+        pushed = f"pushed:{_stamp(lo)}..{_stamp(hi)}"
+        return await _total(github, "/search/repositories", f"{query} {pushed}", "repositories")
+
+    ranges = await split_range(int(since.timestamp()), int(until.timestamp()), count)
+    return [f"{query} pushed:{_stamp(lo)}..{_stamp(hi)}" for lo, hi in ranges]
+
+
+async def code_slices(github: GithubClient, query: str) -> list[str]:
+    if await _total(github, "/search/code", query, "code") <= RESULT_CAP:
+        return [query]
+
+    async def count(lo: int, hi: int) -> int:
+        return await _total(github, "/search/code", f"{query} size:{lo}..{hi}", "code")
+
+    return [f"{query} size:{lo}..{hi}" for lo, hi in await split_range(0, SIZE_CEILING, count)]
+
+
+async def _hits(github: GithubClient, path: str, query: str, kind: Search) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
-    for page in range(1, MAX_PAGES + 1):
+    for page in range(1, RESULT_CAP // PAGE_SIZE + 1):
         data = await github.json(
             path, {"q": query, "per_page": PAGE_SIZE, "page": page}, search=kind
         )
@@ -73,63 +103,71 @@ async def _search(
     return items
 
 
-def _add(found: dict[str, Candidate], candidate: Candidate) -> None:
-    existing = found.setdefault(candidate.full_name, candidate)
-    existing.discovered_via |= candidate.discovered_via
-
-
 async def discover(
     github: GithubClient,
     window: Window,
     discovery: Discovery,
     wasm_meta_repos: list[str],
     seeds: list[tuple[str, str]],
+    now: datetime | None = None,
 ) -> list[Candidate]:
-    found: dict[str, Candidate] = {}
-    named: dict[str, set[str]] = {}
+    since, until = window.start - timedelta(days=1), now or datetime.now(UTC)
+    found: dict[str, set[str]] = {}
+
+    def note(name: str, via: str) -> None:
+        found.setdefault(name.lower(), set()).add(via)
 
     async def repository_query(query: str) -> None:
-        for item in await _search(github, "/search/repositories", query, "repositories"):
-            _add(found, candidate_from(item, {f"search:{query}"}))
+        for sliced in await repository_slices(github, query, since, until):
+            for item in await _hits(github, "/search/repositories", sliced, "repositories"):
+                note(item["full_name"], f"search:{query}")
 
     async def code_query(query: str) -> None:
-        for item in await _search(github, "/search/code", query, "code"):
-            named.setdefault(item["repository"]["full_name"], set()).add(f"code:{query}")
+        for sliced in await code_slices(github, query):
+            for item in await _hits(github, "/search/code", sliced, "code"):
+                note(item["repository"]["full_name"], f"code:{query}")
 
     await asyncio.gather(
         *(repository_query(q) for q in discovery.github_queries),
         *(code_query(q) for q in discovery.github_code_queries),
     )
     for name in wasm_meta_repos:
-        named.setdefault(name, set()).add("wasm_meta")
+        note(name, "wasm_meta")
     for name, tag in seeds:
-        named.setdefault(name, set()).add(f"seed:{tag}")
+        note(name, f"seed:{tag}")
 
-    gate = asyncio.Semaphore(8)
+    candidates = await fetch_repositories(github, found)
+    for candidate in candidates:
+        candidate.discovered_via = found[candidate.full_name.lower()]
+    kept = [c for c in candidates if should_keep(c, window, discovery)]
 
-    async def resolve(name: str, vias: set[str]) -> None:
-        if name not in found:
-            async with gate:
-                item = await github.json(f"/repos/{name}")
-            if item is None:
-                return
-            found[name] = candidate_from(item, set())
-        found[name].discovered_via |= vias
+    gate = asyncio.Semaphore(COMMIT_LOOKUPS)
 
-    await asyncio.gather(*(resolve(name, vias) for name, vias in named.items()))
-    return [c for c in found.values() if should_keep(c, window, discovery)]
+    async def inside_window(candidate: Candidate) -> None:
+        async with gate:
+            candidate.window_commits = await count_commits(
+                github,
+                candidate.full_name,
+                since=window.start.isoformat(),
+                until=window.end.isoformat(),
+            )
+
+    await asyncio.gather(*(inside_window(c) for c in kept))
+    return kept
 
 
 async def store_candidates(connection: asyncpg.Connection, candidates: list[Candidate]) -> None:
     await connection.executemany(
         """
         INSERT INTO repos (full_name, url, description, stars, owner, owner_avatar,
-                           default_branch, homepage, created_at, pushed_at, discovered_via)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+                           default_branch, homepage, created_at, pushed_at, topics,
+                           window_commits, discovered_via)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
         ON CONFLICT (full_name) DO UPDATE SET
             description = EXCLUDED.description, stars = EXCLUDED.stars,
             default_branch = EXCLUDED.default_branch, homepage = EXCLUDED.homepage,
-            pushed_at = EXCLUDED.pushed_at,
+            pushed_at = EXCLUDED.pushed_at, topics = EXCLUDED.topics,
+            window_commits = EXCLUDED.window_commits,
             discovered_via = ARRAY(
                 SELECT DISTINCT via FROM unnest(repos.discovered_via || EXCLUDED.discovered_via) via
             )
@@ -146,6 +184,8 @@ async def store_candidates(connection: asyncpg.Connection, candidates: list[Cand
                 c.homepage,
                 c.created_at,
                 c.pushed_at,
+                c.topics,
+                c.window_commits,
                 sorted(c.discovered_via),
             )
             for c in candidates

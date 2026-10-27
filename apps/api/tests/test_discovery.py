@@ -1,6 +1,6 @@
 from datetime import UTC, datetime
 
-from hackproof.github.discovery import is_pinned, parse_seeds, should_keep
+from hackproof.github.discovery import is_pinned, parse_seeds, should_keep, split_range
 from hackproof.github.models import Candidate
 from hackproof.hackathon import Discovery, Window
 
@@ -50,3 +50,32 @@ def test_pinned_repos_bypass_every_filter():
 def test_parse_seeds_reads_urls_and_tags():
     text = "# header\n\nhttps://github.com/a/b discord\ngithub:c/d\nnot a repo\n"
     assert parse_seeds(text) == [("a/b", "discord"), ("c/d", "manual")]
+
+
+async def test_split_range_slices_until_every_range_fits_the_cap():
+    matches = [value for value in range(0, 10_000, 7)]
+
+    async def count(lo: int, hi: int) -> int:
+        return sum(1 for value in matches if lo <= value <= hi)
+
+    ranges = await split_range(0, 10_000, count, cap=100)
+    counts = [await count(lo, hi) for lo, hi in ranges]
+
+    assert max(counts) <= 100
+    assert sum(counts) == len(matches)
+    assert ranges[0][0] == 0 and ranges[-1][1] == 10_000
+    assert all(a[1] + 1 == b[0] for a, b in zip(ranges, ranges[1:], strict=False))
+
+
+async def test_split_range_stops_at_a_single_value_even_when_over_the_cap():
+    async def count(lo: int, hi: int) -> int:
+        return 5_000
+
+    assert await split_range(7, 7, count, cap=10) == [(7, 7)]
+
+
+async def test_split_range_leaves_small_queries_whole():
+    async def count(lo: int, hi: int) -> int:
+        return 3
+
+    assert await split_range(0, 400_000, count) == [(0, 400_000)]

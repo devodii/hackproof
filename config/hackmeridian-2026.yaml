@@ -5,13 +5,17 @@ window:
   end: "2026-10-26T12:00:00Z"
 discovery:
   github_queries:
-    - "hackmeridian in:name,description,readme pushed:>=2026-10-24"
-    - "\"hack meridian\" in:readme pushed:>=2026-10-24"
-    - "meridian 2026 stellar in:readme pushed:>=2026-10-24"
-    - "lisbon stellar in:readme pushed:>=2026-10-24"
-    - "stellar pushed:>=2026-10-24 created:>=2026-10-01"
-    - "topic:soroban pushed:>=2026-10-24 created:>=2026-10-01"
-    - "topic:stellar pushed:>=2026-10-24 created:>=2026-10-01"
+    - hackmeridian in:name,description,readme,topics
+    - '"hack meridian" in:name,description,readme'
+    - meridian 2026 stellar in:readme
+    - lisbon stellar in:readme
+    - stellar in:name,description,readme,topics
+    - soroban in:name,description,readme,topics
+    - stellar-sdk in:readme
+    - freighter in:description,readme
+    - topic:stellar
+    - topic:soroban
+    - topic:hackmeridian
   github_code_queries:
     - "soroban-sdk filename:Cargo.toml"
     - "@stellar/stellar-sdk filename:package.json"

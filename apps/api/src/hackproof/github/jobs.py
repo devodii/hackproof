@@ -5,7 +5,7 @@ import httpx
 
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
-from hackproof.github.client import GithubClient
+from hackproof.github.client import GithubClient, GithubUnavailable
 from hackproof.github.discovery import discover, read_seeds, store_candidates, wasm_meta_repos
 from hackproof.github.models import Candidate
 from hackproof.github.scan import Scanner, store_scan
@@ -41,8 +41,12 @@ async def run_scan(force: bool) -> None:
     async with pool().acquire() as connection:
         rows = await connection.fetch(
             """
-            SELECT full_name, url, owner, default_branch, homepage FROM repos
-            WHERE $1 OR scanned_at IS NULL ORDER BY pushed_at DESC NULLS LAST
+            SELECT full_name, url, owner, default_branch, homepage, topics FROM repos
+            WHERE ($1 OR scanned_at IS NULL)
+              AND (COALESCE(window_commits, 0) > 0
+                   OR EXISTS (SELECT 1 FROM unnest(discovered_via) via
+                              WHERE via LIKE 'seed:%' OR via = 'wasm_meta'))
+            ORDER BY pushed_at DESC NULLS LAST
             """,
             force,
         )
@@ -60,8 +64,12 @@ async def run_scan(force: bool) -> None:
 
         async def scan(repo: Candidate) -> None:
             nonlocal done
-            async with gate:
-                result = await scanner.scan(repo)
+            try:
+                async with gate:
+                    result = await scanner.scan(repo)
+            except GithubUnavailable:
+                log.warning("skipped %s, github unreachable", repo.full_name)
+                result = None
             if result is not None:
                 async with pool().acquire() as connection:
                     await store_scan(connection, result)
