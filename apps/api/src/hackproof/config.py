@@ -1,11 +1,14 @@
 from datetime import datetime, timedelta
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+ROOT_ENV = Path(__file__).resolve().parents[4] / ".env"
+
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_prefix="HACKPROOF_")
+    model_config = SettingsConfigDict(env_file=ROOT_ENV, env_prefix="HACKPROOF_", extra="ignore")
 
     database_url: str = "postgresql://hackproof:hackproof@localhost:5440/hackproof"
     horizon_url: str = "https://horizon-testnet.stellar.org"
