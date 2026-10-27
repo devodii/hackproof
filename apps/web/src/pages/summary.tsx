@@ -25,7 +25,7 @@ export function SummaryPage() {
   return (
     <div className="flex flex-col gap-12">
       <header className="flex max-w-2xl flex-col gap-3">
-        <h1 className="text-4xl font-semibold tracking-tight">Summary</h1>
+        <h1 className="text-6xl leading-none">Summary</h1>
         <p className="text-muted-foreground">
           Every number on this site, what it means and how it is counted. Read{' '}
           <Link to="/methodology" className="underline underline-offset-4">
@@ -36,14 +36,14 @@ export function SummaryPage() {
       </header>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold tracking-tight">The numbers</h2>
+        <h2 className="text-4xl">The numbers</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {STAT_DEFINITIONS.map(({ key, label, meaning, counted, href }) => (
             <Card key={key}>
               <CardHeader>
                 <span className="text-sm text-muted-foreground">{label}</span>
                 {stats ? (
-                  <CardTitle className="text-4xl font-semibold">
+                  <CardTitle className="text-5xl leading-none">
                     {formatNumber(stats[key])}
                   </CardTitle>
                 ) : (
@@ -72,7 +72,7 @@ export function SummaryPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold tracking-tight">How confident we are</h2>
+        <h2 className="text-4xl">How confident we are</h2>
         <p className="max-w-2xl text-muted-foreground">
           Every project gets one evidence tier. The site shows the strict tiers by default.
         </p>
@@ -101,7 +101,7 @@ export function SummaryPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold tracking-tight">What this cannot see</h2>
+        <h2 className="text-4xl">What this cannot see</h2>
         <ul className="ml-5 list-disc space-y-2 text-muted-foreground">
           {LIMITS.map((limit) => (
             <li key={limit}>{limit}</li>
@@ -110,7 +110,7 @@ export function SummaryPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold tracking-tight">Download the data</h2>
+        <h2 className="text-4xl">Download the data</h2>
         <p className="max-w-2xl text-muted-foreground">
           The strict projects with their chain evidence, in a schema built for directories. Every
           file validates against the published JSON Schema.

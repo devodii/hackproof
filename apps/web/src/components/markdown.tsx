@@ -11,8 +11,8 @@ import {
 } from '@/components/ui/table'
 
 const components: Components = {
-  h1: (props) => <h1 className="mb-6 text-4xl font-semibold tracking-tight" {...props} />,
-  h2: (props) => <h2 className="mt-10 mb-3 text-2xl font-semibold tracking-tight" {...props} />,
+  h1: (props) => <h1 className="mb-6 text-6xl leading-[1.05]" {...props} />,
+  h2: (props) => <h2 className="mt-12 mb-3 text-4xl" {...props} />,
   p: (props) => <p className="my-3 leading-7 text-muted-foreground" {...props} />,
   ul: (props) => <ul className="my-3 ml-6 list-disc space-y-2 text-muted-foreground" {...props} />,
   a: (props) => <a className="underline underline-offset-4" {...props} />,

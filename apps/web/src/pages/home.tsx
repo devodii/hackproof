@@ -14,7 +14,7 @@ export function HomePage() {
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
         <Badge variant="secondary">testnet, rebuilt from the chain</Badge>
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="max-w-4xl text-5xl leading-[1.02] sm:text-7xl">
           Every submission to HackMeridian, recovered from the ledger.
         </h1>
         <p className="max-w-2xl text-muted-foreground">
@@ -22,7 +22,7 @@ export function HomePage() {
           upload and every failed transaction inside the 27 hour window.
         </p>
         {data ? (
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {formatDateTime(data.start)} to {formatDateTime(data.end)}
           </p>
         ) : (

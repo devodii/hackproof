@@ -49,7 +49,7 @@ export function ProjectPage() {
             )}
             <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
-          <h1 className="text-3xl font-semibold tracking-tight">{name}</h1>
+          <h1 className="text-5xl leading-none">{name}</h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           <Badge variant={project.tier === 'verified' ? 'default' : 'secondary'}>
             {tierLabel[project.tier]}

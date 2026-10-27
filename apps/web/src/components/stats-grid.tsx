@@ -24,7 +24,7 @@ export function StatsGrid() {
           <CardContent className="flex flex-col gap-1">
             <span className="text-xs text-muted-foreground">{label}</span>
             {data ? (
-              <span className="text-2xl font-semibold tabular-nums">{formatNumber(data[key])}</span>
+              <span className="font-heading text-4xl leading-none">{formatNumber(data[key])}</span>
             ) : (
               <Skeleton className="h-8 w-16" />
             )}
