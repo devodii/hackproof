@@ -13,6 +13,9 @@ import {
 import { PAGE_SIZE } from '@/hooks/use-paged-list'
 import { cn } from '@/lib/utils'
 
+const SKELETON_ROWS = 8
+const SKELETON_WIDTHS = ['w-28', 'w-40', 'w-24', 'w-36', 'w-32']
+
 function isInteractive(target: EventTarget) {
   return target instanceof Element && target.closest('a, button') !== null
 }
@@ -74,11 +77,21 @@ export function DataTable<T>({
           </TableHeader>
           <TableBody>
             {isLoading
-              ? Array.from({ length: 6 }, (_, index) => (
-                  <TableRow key={index}>
-                    {columns.map((column) => (
+              ? Array.from({ length: SKELETON_ROWS }, (_, rowIndex) => (
+                  <TableRow key={rowIndex} className="h-[3.1rem] hover:bg-transparent">
+                    {columns.map((column, columnIndex) => (
                       <TableCell key={column.header}>
-                        <Skeleton className="h-4 w-full max-w-32" />
+                        <Skeleton
+                          className={cn(
+                            'h-4',
+                            column.className?.includes('text-right')
+                              ? 'ml-auto w-10'
+                              : SKELETON_WIDTHS[
+                                  (rowIndex * 2 + columnIndex) % SKELETON_WIDTHS.length
+                                ],
+                          )}
+                          style={{ animationDelay: `${rowIndex * 90 + columnIndex * 40}ms` }}
+                        />
                       </TableCell>
                     ))}
                   </TableRow>
@@ -122,7 +135,7 @@ export function DataTable<T>({
           </TableBody>
         </Table>
       </div>
-      <PaginationBar {...paging} />
+      {!isLoading && <PaginationBar {...paging} />}
     </div>
   )
 }
