@@ -36,10 +36,6 @@ uv run hackproof reconcile
 uv run hackproof export
 ```
 
-## Deploy
-
-The API is a Docker image (`apps/api/Dockerfile`) on Railway, configured with `DATABASE_URL`, `ANTHROPIC_API_KEY` and `HACKPROOF_CORS_ORIGINS`. Pushes to `main` that touch `apps/api` deploy once the `RAILWAY_TOKEN` secret is set. Build the web app with `VITE_API_URL` set to the API url.
-
 ## Checks
 
 ```sh
