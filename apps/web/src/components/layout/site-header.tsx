@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="border-b">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="font-heading text-2xl leading-none">
-          hackproof
+          HackProof
         </Link>
         <div className="flex items-center gap-2">
           <a
