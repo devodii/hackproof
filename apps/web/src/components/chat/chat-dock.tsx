@@ -21,7 +21,7 @@ export function ChatDock() {
           <div className="pointer-events-auto flex w-full max-w-xl items-end gap-2">
             <PromptBox
               className="flex-1 shadow-lg"
-              placeholder="Ask anything about HackMeridian"
+              placeholder="Ask about HackMeridian"
               onSubmit={startChat}
             />
             {sessions.length > 0 && (
