@@ -5,8 +5,9 @@ import pytest
 from fastapi.testclient import TestClient
 
 from hackproof.chat import routes, stream
+from hackproof.chat.prompts import prompt, sections
 from hackproof.chat.ratelimit import RateLimiter
-from hackproof.chat.stream import Message, Part, stream_reply, to_anthropic
+from hackproof.chat.stream import Message, Part, stream_reply, to_anthropic, web_search_events
 from hackproof.chat.tools import TOOL_SPECS, run_tool
 from hackproof.main import app
 
@@ -47,7 +48,7 @@ class FakeClient:
 
 
 def block(**fields):
-    return SimpleNamespace(model_dump=lambda: fields, **fields)
+    return SimpleNamespace(model_dump=lambda **_: fields, **fields)
 
 
 def test_every_tool_has_a_schema():
@@ -165,3 +166,19 @@ def test_chat_passes_the_current_page_to_the_model(monkeypatch):
         assert client.post("/api/chat", json=body).status_code == 200
     assert (seen["page"].kind, seen["page"].id) == ("project", "repo:a/b")
     assert seen["context"] == "on a project page"
+
+
+def test_prompt_file_has_every_section():
+    assert set(sections()) == {"system", "page-home", "page-entity", "page-empty"}
+    text = prompt("system", start="A", end="B", page="ON THE HOME PAGE")
+    assert "A to B UTC" in text and text.endswith("ON THE HOME PAGE")
+    assert "{" not in text
+
+
+def test_web_search_is_reported_as_a_provider_tool():
+    call = SimpleNamespace(type="server_tool_use", id="s1", name="web_search", input={"query": "q"})
+    hit = SimpleNamespace(title="Meridian", url="https://meridian.stellar.org")
+    result = SimpleNamespace(type="web_search_tool_result", tool_use_id="s1", content=[hit])
+    start, done = parse(list(web_search_events(call)) + list(web_search_events(result)))
+    assert start["providerExecuted"] and start["input"] == {"query": "q"}
+    assert done["output"] == [{"title": "Meridian", "url": "https://meridian.stellar.org"}]

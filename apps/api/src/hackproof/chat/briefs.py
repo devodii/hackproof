@@ -5,8 +5,9 @@ from pydantic import BaseModel
 from pydantic_core import to_jsonable_python
 
 from hackproof import queries
+from hackproof.chat.prompts import prompt
 
-HEAVY_FIELDS = {"dependencies", "owner_avatar", "topics"}
+HEAVY_FIELDS = {"dependencies", "owner_avatar"}
 SAMPLE = 8
 
 PageKind = Literal["home", "project", "builder"]
@@ -18,7 +19,17 @@ class Page(BaseModel):
 
 
 def slim(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [{k: v for k, v in item.items() if k not in HEAVY_FIELDS} for item in items]
+    return [
+        {
+            **{k: v for k, v in item.items() if k not in HEAVY_FIELDS},
+            **(
+                {"stack": list((item["dependencies"] or {}).get("packages", {}))}
+                if "dependencies" in item
+                else {}
+            ),
+        }
+        for item in items
+    ]
 
 
 async def project_brief(project_id: str) -> dict[str, Any] | None:
@@ -35,7 +46,6 @@ async def project_brief(project_id: str) -> dict[str, Any] | None:
     return to_jsonable_python(
         {
             "project": slim([project])[0],
-            "stack": list((project["dependencies"] or {}).get("packages", {})),
             "evidence": [
                 {k: link[k] for k in ("subject_kind", "subject", "method", "path")}
                 for link in links
@@ -68,29 +78,22 @@ async def builder_brief(address: str) -> dict[str, Any] | None:
     )
 
 
-HOME = "The user is on the home page: the overview chart and the explorer of all projects."
-
-
 async def describe_page(page: Page | None) -> str:
     if page is None:
         return ""
     if page.kind == "home":
-        return HOME
+        return prompt("page-home")
     if not page.id:
         return ""
 
     if page.kind == "project":
         brief = await project_brief(page.id)
-        subject = f"the project {page.id}"
-        pronoun = "this project"
+        subject, pronoun = f"the project {page.id}", "this project"
     else:
         brief = await builder_brief(page.id)
-        subject = f"the builder {page.id}"
-        pronoun = "this builder"
+        subject, pronoun = f"the builder {page.id}", "this builder"
     if brief is None:
-        return f"The user is on the page for {subject}, which has no data in the hack window."
-    return (
-        f"The user is on the page for {subject}. Read '{pronoun}', 'it' and 'here' as this "
-        f"subject. Its data, already loaded, so do not fetch it again for basic questions:\n"
-        f"{json.dumps(brief, default=str)}"
+        return prompt("page-empty", subject=subject)
+    return prompt(
+        "page-entity", subject=subject, pronoun=pronoun, data=json.dumps(brief, default=str)
     )

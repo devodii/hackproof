@@ -1,5 +1,5 @@
 import json
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Iterator
 from typing import Any
 from uuid import uuid4
 
@@ -7,25 +7,12 @@ from anthropic import AsyncAnthropic
 from pydantic import BaseModel
 
 from hackproof.chat.briefs import Page
-from hackproof.chat.tools import TOOL_SPECS, run_tool
+from hackproof.chat.prompts import prompt
+from hackproof.chat.tools import TOOL_SPECS, WEB_SEARCH, run_tool
 from hackproof.hackathon import get_hackathon
 
 MAX_STEPS = 6
 MAX_TOKENS = 2048
-
-SYSTEM = """You answer questions about HackMeridian 2026, a Stellar hackathon, using data rebuilt \
-from Stellar testnet and linked to GitHub repos by exact matches.
-
-The hack window is {start} to {end} UTC. Projects have an evidence tier: verified (an exact \
-repo-to-chain match plus activity in the window), likely (a Stellar dependency and commits in the \
-window, created or Stellar added during it), possible, and unattributed. The official submission \
-list is not public, so say when a number is a reconstruction.
-
-Always use the tools for facts and numbers; never guess. Be brief and concrete. Link projects as \
-markdown to /project/<project_id> (for example /project/repo:owner/name) and builders to \
-/builder/<address>. Use short lists or tables when comparing.
-
-{page}"""
 
 
 class Part(BaseModel):
@@ -56,11 +43,38 @@ def to_anthropic(messages: list[Message]) -> list[dict[str, Any]]:
     return converted
 
 
+def dump(blocks: list[Any]) -> list[dict[str, Any]]:
+    return [block.model_dump(exclude_none=True) for block in blocks]
+
+
+def web_search_events(block: Any) -> Iterator[str]:
+    if block.type == "server_tool_use":
+        yield event(
+            {
+                "type": "tool-input-available",
+                "toolCallId": block.id,
+                "toolName": block.name,
+                "input": block.input,
+                "providerExecuted": True,
+            }
+        )
+    elif block.type == "web_search_tool_result":
+        found = block.content if isinstance(block.content, list) else []
+        yield event(
+            {
+                "type": "tool-output-available",
+                "toolCallId": block.tool_use_id,
+                "output": [{"title": hit.title, "url": hit.url} for hit in found[:6]],
+                "providerExecuted": True,
+            }
+        )
+
+
 async def stream_reply(
     client: AsyncAnthropic, model: str, messages: list[dict[str, Any]], page: str = ""
 ) -> AsyncIterator[str]:
     window = get_hackathon().window
-    system = SYSTEM.format(start=window.start.isoformat(), end=window.end.isoformat(), page=page)
+    system = prompt("system", start=window.start.isoformat(), end=window.end.isoformat(), page=page)
     yield event({"type": "start", "messageId": uuid4().hex})
 
     try:
@@ -73,7 +87,7 @@ async def stream_reply(
                 model=model,
                 system=system,
                 messages=messages,
-                tools=TOOL_SPECS,
+                tools=[*TOOL_SPECS, WEB_SEARCH],
                 max_tokens=MAX_TOKENS,
             ) as stream:
                 async for chunk in stream:
@@ -93,12 +107,31 @@ async def stream_reply(
                                 "toolName": chunk.content_block.name,
                             }
                         )
+                    elif (
+                        chunk.type == "content_block_start"
+                        and chunk.content_block.type == "server_tool_use"
+                    ):
+                        yield event(
+                            {
+                                "type": "tool-input-start",
+                                "toolCallId": chunk.content_block.id,
+                                "toolName": chunk.content_block.name,
+                                "providerExecuted": True,
+                            }
+                        )
+                    elif chunk.type == "content_block_stop":
+                        for line in web_search_events(chunk.content_block):
+                            yield line
                 final = await stream.get_final_message()
 
             if text_open:
                 yield event({"type": "text-end", "id": text_id})
 
             calls = [block for block in final.content if block.type == "tool_use"]
+            if final.stop_reason == "pause_turn":
+                messages = [*messages, {"role": "assistant", "content": dump(final.content)}]
+                yield event({"type": "finish-step"})
+                continue
             if final.stop_reason != "tool_use" or not calls:
                 yield event({"type": "finish-step"})
                 break
@@ -139,7 +172,7 @@ async def stream_reply(
 
             messages = [
                 *messages,
-                {"role": "assistant", "content": [block.model_dump() for block in final.content]},
+                {"role": "assistant", "content": dump(final.content)},
                 {"role": "user", "content": results},
             ]
             yield event({"type": "finish-step"})

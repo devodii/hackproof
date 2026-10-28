@@ -1,4 +1,5 @@
-from typing import Annotated, Any
+from collections import Counter
+from typing import Annotated, Any, Literal
 
 from pydantic import BaseModel, Field
 from pydantic_core import to_jsonable_python
@@ -7,7 +8,12 @@ from hackproof import queries
 from hackproof.chat.briefs import builder_brief, project_brief, slim
 from hackproof.schemas import Tier
 
+Track = Literal["genesis", "scale"]
+STRICT = ["verified", "likely"]
+WEB_SEARCH = {"type": "web_search_20250305", "name": "web_search", "max_uses": 3}
+
 Limit = Annotated[int, Field(ge=1, le=25, description="Rows to return")]
+Offset = Annotated[int, Field(ge=0, le=5000, description="Rows to skip, for paging")]
 Search = Annotated[
     str | None, Field(max_length=120, description="Case-insensitive text to match, or null")
 ]
@@ -20,7 +26,12 @@ class QueryProjects(BaseModel):
     tiers: list[Tier] | None = Field(
         default=None, description="Evidence tiers to include; null means verified and likely"
     )
+    track: Track | None = Field(
+        default=None,
+        description="genesis (repo created inside the window) or scale (older repo); null for both",
+    )
     limit: Limit = 10
+    offset: Offset = 0
 
 
 class QueryContracts(BaseModel):
@@ -30,6 +41,7 @@ class QueryContracts(BaseModel):
     deployer: str | None = Field(default=None, description="Deploy account (G...)")
     project_id: str | None = Field(default=None, description="A project id such as repo:owner/name")
     limit: Limit = 10
+    offset: Offset = 0
 
 
 class QueryWasm(BaseModel):
@@ -38,6 +50,7 @@ class QueryWasm(BaseModel):
     q: Search = None
     uploader: str | None = Field(default=None, description="Uploading account (G...)")
     limit: Limit = 10
+    offset: Offset = 0
 
 
 class QueryFailed(BaseModel):
@@ -46,6 +59,18 @@ class QueryFailed(BaseModel):
     q: Search = None
     account: str | None = Field(default=None, description="Source account (G...)")
     limit: Limit = 10
+    offset: Offset = 0
+
+
+class SummarizeProjects(BaseModel):
+    """Aggregate every matching project: counts by tier and track, on chain totals, top
+    languages, topics, Stellar packages and countries, plus a sample of descriptions. Use this
+    for any breakdown or "what are they building" question."""
+
+    tiers: list[Tier] | None = Field(
+        default=None, description="Evidence tiers to include; null means verified and likely"
+    )
+    track: Track | None = Field(default=None, description="genesis, scale, or null for both")
 
 
 class GetProject(BaseModel):
@@ -77,6 +102,7 @@ TOOLS: dict[str, type[BaseModel]] = {
     "query_contracts": QueryContracts,
     "query_wasm": QueryWasm,
     "query_failed": QueryFailed,
+    "summarize_projects": SummarizeProjects,
     "get_project": GetProject,
     "get_builder": GetBuilder,
     "get_stats": GetStats,
@@ -94,12 +120,48 @@ TOOL_SPECS = [
 ]
 
 
+def _top(counter: Counter[str], size: int) -> list[dict[str, Any]]:
+    return [{"name": name, "projects": count} for name, count in counter.most_common(size)]
+
+
+async def summarize(args: SummarizeProjects) -> dict[str, Any]:
+    items, total = await queries.list_page(
+        "projects", tiers=args.tiers or STRICT, track=args.track, limit=10_000
+    )
+    topics: Counter[str] = Counter()
+    stack: Counter[str] = Counter()
+    for item in items:
+        topics.update(topic.lower() for topic in item["topics"] or [])
+        stack.update(list((item["dependencies"] or {}).get("packages", {})))
+    return {
+        "total": total,
+        "by_tier": dict(Counter(item["tier"] for item in items)),
+        "by_track": dict(Counter(item["track"] for item in items)),
+        "contracts": sum(item["contracts"] for item in items),
+        "wasm_uploads": sum(item["wasm_uploads"] for item in items),
+        "languages": _top(Counter(item["language"] for item in items if item["language"]), 10),
+        "topics": _top(topics, 20),
+        "stellar_packages": _top(stack, 15),
+        "countries": _top(Counter(item["country"] for item in items if item["country"]), 10),
+        "descriptions": [
+            {"project_id": item["project_id"], "description": item["description"][:140]}
+            for item in items
+            if item["description"]
+        ][:25],
+    }
+
+
 async def run_tool(name: str, raw: dict[str, Any]) -> Any:
     args = TOOLS[name].model_validate(raw)
     match args:
         case QueryProjects():
             items, total = await queries.list_page(
-                "projects", q=args.q, tiers=args.tiers or ["verified", "likely"], limit=args.limit
+                "projects",
+                q=args.q,
+                tiers=args.tiers or STRICT,
+                track=args.track,
+                limit=args.limit,
+                offset=args.offset,
             )
         case QueryContracts():
             items, total = await queries.list_page(
@@ -108,15 +170,18 @@ async def run_tool(name: str, raw: dict[str, Any]) -> Any:
                 account=args.deployer,
                 project_id=args.project_id,
                 limit=args.limit,
+                offset=args.offset,
             )
         case QueryWasm():
             items, total = await queries.list_page(
-                "wasm", q=args.q, account=args.uploader, limit=args.limit
+                "wasm", q=args.q, account=args.uploader, limit=args.limit, offset=args.offset
             )
         case QueryFailed():
             items, total = await queries.list_page(
-                "failed", q=args.q, account=args.account, limit=args.limit
+                "failed", q=args.q, account=args.account, limit=args.limit, offset=args.offset
             )
+        case SummarizeProjects():
+            return to_jsonable_python(await summarize(args))
         case GetProject():
             return await project_brief(args.project_id) or {"error": "project not found"}
         case GetBuilder():
