@@ -1,3 +1,5 @@
+<img src="https://www.hackmeridian.com/assets/event-icon.png" alt="HackMeridian" width="96" />
+
 # hackproof
 
 HackMeridian 2026 submissions, rebuilt from Stellar testnet and linked to their GitHub repos by exact matches. Browse the projects, check each match on Stellar Expert and GitHub, download the data, or ask the chat.
