@@ -4,14 +4,13 @@ from pydantic import BaseModel, Field
 from pydantic_core import to_jsonable_python
 
 from hackproof import queries
+from hackproof.chat.briefs import builder_brief, project_brief, slim
 from hackproof.schemas import Tier
 
 Limit = Annotated[int, Field(ge=1, le=25, description="Rows to return")]
 Search = Annotated[
     str | None, Field(max_length=120, description="Case-insensitive text to match, or null")
 ]
-
-HEAVY_FIELDS = {"dependencies", "owner_avatar", "topics"}
 
 
 class QueryProjects(BaseModel):
@@ -49,6 +48,18 @@ class QueryFailed(BaseModel):
     limit: Limit = 10
 
 
+class GetProject(BaseModel):
+    """Load one project in full: its data, stack, on-chain evidence, contributors and contracts."""
+
+    project_id: str = Field(description="A project id such as repo:owner/name")
+
+
+class GetBuilder(BaseModel):
+    """Load one deploy account in full: its projects, contracts and activity counts."""
+
+    address: str = Field(description="Stellar account (G...)")
+
+
 class GetStats(BaseModel):
     """Headline counts: projects by tier, contracts, builders, contributors, countries."""
 
@@ -66,6 +77,8 @@ TOOLS: dict[str, type[BaseModel]] = {
     "query_contracts": QueryContracts,
     "query_wasm": QueryWasm,
     "query_failed": QueryFailed,
+    "get_project": GetProject,
+    "get_builder": GetBuilder,
     "get_stats": GetStats,
     "get_timeline": GetTimeline,
     "get_countries": GetCountries,
@@ -79,10 +92,6 @@ TOOL_SPECS = [
     }
     for name, model in TOOLS.items()
 ]
-
-
-def _rows(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [{k: v for k, v in item.items() if k not in HEAVY_FIELDS} for item in items]
 
 
 async def run_tool(name: str, raw: dict[str, Any]) -> Any:
@@ -108,10 +117,14 @@ async def run_tool(name: str, raw: dict[str, Any]) -> Any:
             items, total = await queries.list_page(
                 "failed", q=args.q, account=args.account, limit=args.limit
             )
+        case GetProject():
+            return await project_brief(args.project_id) or {"error": "project not found"}
+        case GetBuilder():
+            return await builder_brief(args.address) or {"error": "no activity in the hack window"}
         case GetStats():
             return to_jsonable_python(await queries.fetch_stats())
         case GetTimeline():
             return to_jsonable_python(await queries.fetch_timeline())
         case GetCountries():
             return to_jsonable_python(await queries.fetch_countries())
-    return to_jsonable_python({"total": total, "items": _rows(items)})
+    return to_jsonable_python({"total": total, "items": slim(items)})

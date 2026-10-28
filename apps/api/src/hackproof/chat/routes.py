@@ -2,6 +2,7 @@ from anthropic import AsyncAnthropic
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 
+from hackproof.chat.briefs import describe_page
 from hackproof.chat.ratelimit import RateLimiter
 from hackproof.chat.stream import ChatRequest, stream_reply, to_anthropic
 from hackproof.config import get_settings
@@ -42,7 +43,10 @@ async def chat(body: ChatRequest, request: Request):
 
     return StreamingResponse(
         stream_reply(
-            AsyncAnthropic(api_key=settings.anthropic_api_key), settings.chat_model, messages
+            AsyncAnthropic(api_key=settings.anthropic_api_key),
+            settings.chat_model,
+            messages,
+            await describe_page(body.page),
         ),
         media_type="text/event-stream",
         headers={"x-vercel-ai-ui-message-stream": "v1", "Cache-Control": "no-cache"},

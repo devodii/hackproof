@@ -1,6 +1,8 @@
 import { DefaultChatTransport } from 'ai'
 import { z } from 'zod'
 
+import { currentPage } from '@/components/chat/page'
+
 const rateLimitBody = z.object({
   window: z.enum(['minute', 'hour']),
   limit: z.number(),
@@ -37,6 +39,7 @@ export const transport = new DefaultChatTransport({
   },
   prepareSendMessagesRequest: ({ messages }) => ({
     body: {
+      page: currentPage(),
       messages: messages.map((message) => ({
         role: message.role,
         parts: message.parts.filter((part) => part.type === 'text'),

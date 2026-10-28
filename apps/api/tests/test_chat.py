@@ -138,3 +138,30 @@ def test_chat_is_rate_limited(monkeypatch):
     assert denied.status_code == 429
     assert denied.json()["window"] == "minute"
     assert denied.headers["retry-after"] == str(denied.json()["retryAfter"])
+
+
+def test_chat_passes_the_current_page_to_the_model(monkeypatch):
+    seen = {}
+
+    async def fake_describe(page):
+        seen["page"] = page
+        return "on a project page"
+
+    async def fake_stream(client, model, messages, page=""):
+        seen["context"] = page
+        yield "data: [DONE]\n\n"
+
+    monkeypatch.setattr(routes, "limiter", RateLimiter())
+    monkeypatch.setattr(routes, "describe_page", fake_describe)
+    monkeypatch.setattr(routes, "stream_reply", fake_stream)
+    monkeypatch.setattr(
+        routes, "get_settings", lambda: SimpleNamespace(anthropic_api_key="k", chat_model="m")
+    )
+    body = {
+        "page": {"kind": "project", "id": "repo:a/b"},
+        "messages": [{"role": "user", "parts": [{"type": "text", "text": "hi"}]}],
+    }
+    with TestClient(app) as client:
+        assert client.post("/api/chat", json=body).status_code == 200
+    assert (seen["page"].kind, seen["page"].id) == ("project", "repo:a/b")
+    assert seen["context"] == "on a project page"

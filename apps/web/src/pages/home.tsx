@@ -1,12 +1,16 @@
+import { suggestionsFor } from '@/components/chat/page'
+import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
 import { Overview } from '@/components/overview'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
 import { formatDateTime } from '@/lib/format'
 
 export function HomePage() {
   const { data } = useHackWindow()
+  const { startChat } = useChatPanel()
 
   return (
     <div className="flex flex-col gap-10">
@@ -26,6 +30,19 @@ export function HomePage() {
         ) : (
           <Skeleton className="h-5 w-72" />
         )}
+        <div className="flex flex-wrap gap-2">
+          {suggestionsFor('home').map((suggestion) => (
+            <Button
+              key={suggestion}
+              variant="outline"
+              size="sm"
+              className="h-auto rounded-full px-3 py-1.5 whitespace-normal"
+              onClick={() => startChat(suggestion)}
+            >
+              {suggestion}
+            </Button>
+          ))}
+        </div>
       </section>
       <Overview />
       <Explorer />

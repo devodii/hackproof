@@ -5,7 +5,7 @@ import { ChatError } from '@/components/chat/chat-error'
 import { ChatMessages } from '@/components/chat/chat-messages'
 import { PromptBox } from '@/components/chat/prompt-box'
 import { sessionTitle } from '@/components/chat/session'
-import { SUGGESTIONS } from '@/components/chat/suggestions'
+import { currentPage, suggestionsFor } from '@/components/chat/page'
 import { RateLimitError, transport } from '@/components/chat/transport'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Button } from '@/components/ui/button'
@@ -22,7 +22,7 @@ function EmptyThread({ onPick }: { onPick: (text: string) => void }) {
           </p>
         </div>
         <div className="flex flex-col gap-2">
-          {SUGGESTIONS.map((suggestion) => (
+          {suggestionsFor(currentPage().kind).map((suggestion) => (
             <Button
               key={suggestion}
               variant="outline"

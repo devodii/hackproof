@@ -6,6 +6,7 @@ from uuid import uuid4
 from anthropic import AsyncAnthropic
 from pydantic import BaseModel
 
+from hackproof.chat.briefs import Page
 from hackproof.chat.tools import TOOL_SPECS, run_tool
 from hackproof.hackathon import get_hackathon
 
@@ -22,7 +23,9 @@ list is not public, so say when a number is a reconstruction.
 
 Always use the tools for facts and numbers; never guess. Be brief and concrete. Link projects as \
 markdown to /project/<project_id> (for example /project/repo:owner/name) and builders to \
-/builder/<address>. Use short lists or tables when comparing."""
+/builder/<address>. Use short lists or tables when comparing.
+
+{page}"""
 
 
 class Part(BaseModel):
@@ -37,6 +40,7 @@ class Message(BaseModel):
 
 class ChatRequest(BaseModel):
     messages: list[Message]
+    page: Page | None = None
 
 
 def event(payload: dict[str, Any]) -> str:
@@ -53,10 +57,10 @@ def to_anthropic(messages: list[Message]) -> list[dict[str, Any]]:
 
 
 async def stream_reply(
-    client: AsyncAnthropic, model: str, messages: list[dict[str, Any]]
+    client: AsyncAnthropic, model: str, messages: list[dict[str, Any]], page: str = ""
 ) -> AsyncIterator[str]:
     window = get_hackathon().window
-    system = SYSTEM.format(start=window.start.isoformat(), end=window.end.isoformat())
+    system = SYSTEM.format(start=window.start.isoformat(), end=window.end.isoformat(), page=page)
     yield event({"type": "start", "messageId": uuid4().hex})
 
     try:
