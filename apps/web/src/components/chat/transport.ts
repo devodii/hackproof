@@ -2,6 +2,7 @@ import { DefaultChatTransport } from 'ai'
 import { z } from 'zod'
 
 import { currentPage } from '@/components/chat/page'
+import { API_URL } from '@/lib/config'
 
 const rateLimitBody = z.object({
   window: z.enum(['minute', 'hour']),
@@ -29,7 +30,7 @@ export class UnavailableError extends Error {
 }
 
 export const transport = new DefaultChatTransport({
-  api: '/api/chat',
+  api: `${API_URL}/api/chat`,
   fetch: async (input, init) => {
     const response = await fetch(input, init)
     if (response.status === 429)

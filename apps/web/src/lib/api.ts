@@ -1,3 +1,5 @@
+import { API_URL } from '@/lib/config'
+
 export class ApiError extends Error {
   readonly status: number
 
@@ -8,7 +10,7 @@ export class ApiError extends Error {
 }
 
 export async function apiGet<T>(path: string): Promise<T> {
-  const response = await fetch(`/api${path}`)
+  const response = await fetch(`${API_URL}/api${path}`)
   if (!response.ok) {
     const body = await response.json().catch(() => null)
     throw new ApiError(response.status, body?.detail ?? response.statusText)
