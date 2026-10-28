@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { inject } from '@vercel/analytics'
 import { ThemeProvider } from 'next-themes'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -8,6 +9,8 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 
 import { App } from './app'
 import './index.css'
+
+inject()
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60_000, retry: 1 } },
