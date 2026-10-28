@@ -5,7 +5,8 @@ import { Contributors } from '@/components/contributors'
 import { DataTable } from '@/components/data-table'
 import { ActivitySections } from '@/components/explorer/activity-sections'
 import { linkColumns } from '@/components/explorer/columns'
-import { DetailError, DetailSkeleton } from '@/components/query-state'
+import { ProjectSkeleton } from '@/components/page-skeletons'
+import { DetailError } from '@/components/query-state'
 import { Section } from '@/components/section'
 import { TierBadge } from '@/components/tier-badge'
 import { Accordion } from '@/components/ui/accordion'
@@ -21,7 +22,7 @@ export function ProjectPage() {
   const { data, isPending, error } = useProject(projectId)
   const { data: hackWindow } = useHackWindow()
 
-  if (isPending) return <DetailSkeleton />
+  if (isPending) return <ProjectSkeleton />
   if (error) return <DetailError error={error} subject="project" />
 
   const { project, links, contributors, contracts, wasm_uploads, failed_txs } = data

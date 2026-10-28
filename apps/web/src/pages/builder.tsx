@@ -4,7 +4,8 @@ import { useNavigate, useParams } from 'react-router'
 import { DataTable } from '@/components/data-table'
 import { ActivitySections } from '@/components/explorer/activity-sections'
 import { projectColumns } from '@/components/explorer/columns'
-import { DetailError, DetailSkeleton } from '@/components/query-state'
+import { BuilderSkeleton } from '@/components/page-skeletons'
+import { DetailError } from '@/components/query-state'
 import { Section } from '@/components/section'
 import { Accordion } from '@/components/ui/accordion'
 import { useBuilder } from '@/hooks/use-builder'
@@ -15,7 +16,7 @@ export function BuilderPage() {
   const navigate = useNavigate()
   const { data, isPending, error } = useBuilder(address)
 
-  if (isPending) return <DetailSkeleton />
+  if (isPending) return <BuilderSkeleton />
   if (error) return <DetailError error={error} subject="builder" />
 
   return (
