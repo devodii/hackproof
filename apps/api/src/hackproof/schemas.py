@@ -51,6 +51,7 @@ class Project(BaseModel):
     stellar_added_in_window: bool | None
     created_at: datetime | None
     topics: list[str] | None
+    track: Literal["genesis", "scale"] | None = None
 
 
 class Contributor(BaseModel):
