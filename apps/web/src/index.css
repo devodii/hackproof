@@ -111,6 +111,8 @@
     0 0.25rem 0.5rem 0 hsl(222.2 47.4% 11.2% / 0.1), 0 8px 10px -1px hsl(222.2 47.4% 11.2% / 0.1);
   --shadow-2xl: 0 0.25rem 0.5rem 0 hsl(222.2 47.4% 11.2% / 0.25);
   --tracking-normal: 0em;
+  --skeleton-base: color-mix(in oklab, var(--foreground) 6%, var(--card));
+  --skeleton-glint: color-mix(in oklab, var(--primary) 38%, var(--card));
 }
 
 .dark {
@@ -154,6 +156,34 @@
   --shadow-lg: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.5), 0 4px 6px -1px rgba(0, 0, 0, 0.6);
   --shadow-xl: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.55), 0 8px 10px -1px rgba(0, 0, 0, 0.7);
   --shadow-2xl: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.75);
+  --skeleton-base: color-mix(in oklab, var(--foreground) 8%, var(--card));
+  --skeleton-glint: color-mix(in oklab, var(--primary) 17%, var(--card));
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 160% 0;
+  }
+  to {
+    background-position: -60% 0;
+  }
+}
+
+@utility skeleton-shimmer {
+  background-color: var(--skeleton-base);
+  background-image: linear-gradient(
+    105deg,
+    transparent 30%,
+    var(--skeleton-glint) 50%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-shimmer 1.9s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 
 @layer base {
