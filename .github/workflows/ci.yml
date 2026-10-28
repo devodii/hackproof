@@ -7,7 +7,7 @@ on:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   api:
@@ -55,3 +55,28 @@ jobs:
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm build
+
+  deploy-api:
+    needs: api
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            api:
+              - 'apps/api/**'
+              - 'config/**'
+              - 'railway.json'
+      - if: steps.changes.outputs.api == 'true'
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ]; then
+            echo "::warning::RAILWAY_TOKEN is not set, skipping the deploy"
+            exit 0
+          fi
+          npm install --global @railway/cli
+          railway up --service api --ci
