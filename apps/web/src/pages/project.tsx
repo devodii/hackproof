@@ -41,14 +41,14 @@ export function ProjectPage() {
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <Avatar>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <Avatar className="shrink-0">
             {project.owner_avatar && (
               <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />
             )}
             <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
-          <h1 className="text-5xl leading-none">{name}</h1>
+          <h1 className="min-w-0 text-3xl leading-none wrap-break-word sm:text-5xl">{name}</h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           <TierBadge tier={project.tier} />
           <Badge variant="outline">{footprintLabel[project.footprint]}</Badge>

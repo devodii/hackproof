@@ -14,7 +14,7 @@ interface SectionProps {
 export function Section({ value, title, count, children }: SectionProps) {
   return (
     <AccordionItem value={value}>
-      <AccordionTrigger className="items-center py-4">
+      <AccordionTrigger className="items-center py-4 hover:no-underline">
         <span className="flex items-center gap-3">
           <span className="font-heading text-2xl font-normal">{title}</span>
           {count !== undefined && <Badge variant="outline">{formatNumber(count)}</Badge>}
