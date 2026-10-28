@@ -391,14 +391,22 @@
           "title": "Homepage"
         },
         "tier": {
-          "description": "Evidence strength. verified: exact repo-to-chain match with activity in the window. declared: readme or topic names the hackathon, with commits in the window. likely: Stellar dependency and commits in the window, created or Stellar added in the window. possible: Stellar dependency and at least 3 commits in the window only.",
+          "description": "Evidence strength. verified: exact repo-to-chain match with activity in the window. likely: Stellar dependency and commits in the window, created or Stellar added in the window. possible: Stellar dependency and at least 3 commits in the window only.",
           "enum": [
             "verified",
-            "declared",
             "likely",
             "possible"
           ],
           "title": "Tier",
+          "type": "string"
+        },
+        "track": {
+          "description": "HackMeridian track, inferred from the repo's history. genesis: a product created during the hack. scale: an existing product that predates it.",
+          "enum": [
+            "genesis",
+            "scale"
+          ],
+          "title": "Track",
           "type": "string"
         },
         "language": {
@@ -516,28 +524,6 @@
           "description": "Commits on the default branch",
           "title": "Totalcommits"
         },
-        "createdDuringHack": {
-          "description": "Repo was created inside the window",
-          "title": "Createdduringhack",
-          "type": "boolean"
-        },
-        "stellarAddedDuringHack": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "A Stellar dependency was absent before the window and present after",
-          "title": "Stellaraddedduringhack"
-        },
-        "mentionsHackathon": {
-          "description": "Readme or topics name the hackathon",
-          "title": "Mentionshackathon",
-          "type": "boolean"
-        },
         "owner": {
           "$ref": "#/$defs/Owner"
         },
@@ -559,6 +545,7 @@
         "description",
         "homepage",
         "tier",
+        "track",
         "language",
         "license",
         "stars",
@@ -570,9 +557,6 @@
         "repoLastCommitAt",
         "commitsInWindow",
         "totalCommits",
-        "createdDuringHack",
-        "stellarAddedDuringHack",
-        "mentionsHackathon",
         "owner",
         "contributors",
         "chain"

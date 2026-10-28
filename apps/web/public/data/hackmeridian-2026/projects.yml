@@ -1,5 +1,5 @@
 schemaVersion: '1.0'
-generatedAt: '2026-10-27T23:49:44.579518Z'
+generatedAt: '2026-10-28T00:04:00.776243Z'
 hackathon:
   slug: hackmeridian-2026
   name: HackMeridian 2026
@@ -13,6 +13,7 @@ projects:
   description: null
   homepage: https://findloot.xyz
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -30,9 +31,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:52:36Z'
   commitsInWindow: 87
   totalCommits: 87
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Klorenn
     avatarUrl: https://avatars.githubusercontent.com/u/189268805?v=4
@@ -1024,6 +1022,7 @@ projects:
     checked on-chain on every call.'
   homepage: https://leash-fi.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -1041,9 +1040,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:57Z'
   commitsInWindow: 131
   totalCommits: 131
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: CHAAIISE
     avatarUrl: https://avatars.githubusercontent.com/u/190202299?v=4
@@ -2070,6 +2066,7 @@ projects:
     on testnet'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -2085,9 +2082,6 @@ projects:
   repoLastCommitAt: '2026-10-27T09:20:48Z'
   commitsInWindow: 393
   totalCommits: 400
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: grmkris
     avatarUrl: https://avatars.githubusercontent.com/u/15545195?v=4
@@ -2906,6 +2900,7 @@ projects:
   description: Artifex Soroban contracts (Scale hackathon) — Testnet only
   homepage: null
   tier: verified
+  track: scale
   language: Rust
   license: null
   stars: 0
@@ -2919,9 +2914,6 @@ projects:
   repoLastCommitAt: '2026-10-25T19:10:57Z'
   commitsInWindow: 14
   totalCommits: 22
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: 0xVeraHQ
     avatarUrl: https://avatars.githubusercontent.com/u/288298217?v=4
@@ -3648,6 +3640,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -3665,9 +3658,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:06:11Z'
   commitsInWindow: 43
   totalCommits: 43
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Row-Bear
     avatarUrl: https://avatars.githubusercontent.com/u/60758353?v=4
@@ -4207,6 +4197,7 @@ projects:
     network
   homepage: https://nethermindeth.github.io/stellar-private-payments/
   tier: verified
+  track: scale
   language: Rust
   license: Apache-2.0
   stars: 59
@@ -4234,9 +4225,6 @@ projects:
   repoLastCommitAt: '2026-10-27T09:09:55Z'
   commitsInWindow: 3
   totalCommits: 393
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: NethermindEth
     avatarUrl: https://avatars.githubusercontent.com/u/43478154?v=4
@@ -4841,6 +4829,7 @@ projects:
   description: 'Qafila: halal trade finance on Stellar. HackMeridian 2026.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -4858,9 +4847,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:51:13Z'
   commitsInWindow: 99
   totalCommits: 99
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Ilyes-Ali-Jeridi
     avatarUrl: https://avatars.githubusercontent.com/u/99984348?v=4
@@ -5456,6 +5442,7 @@ projects:
     a Blend credit market, RedStone prices verified on chain.'
   homepage: https://app.agama.finance
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -5473,9 +5460,6 @@ projects:
   repoLastCommitAt: '2026-10-26T19:10:09Z'
   commitsInWindow: 60
   totalCommits: 62
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: agamafinance
     avatarUrl: https://avatars.githubusercontent.com/u/271739153?v=4
@@ -6169,6 +6153,7 @@ projects:
     Stellar in the background. Organizations set their own rules; the account enforces them.
   homepage: https://ancora-gray.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -6186,9 +6171,6 @@ projects:
   repoLastCommitAt: '2026-10-26T17:01:01Z'
   commitsInWindow: 78
   totalCommits: 81
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: raglibol-re
     avatarUrl: https://avatars.githubusercontent.com/u/205229478?v=4
@@ -6608,6 +6590,7 @@ projects:
     human compliance review, and SEP-57 tokens with Soroban investment vaults.'
   homepage: https://launch.tryneko.io/
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -6633,9 +6616,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:47:21Z'
   commitsInWindow: 154
   totalCommits: 154
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Neko-Protocol
     avatarUrl: https://avatars.githubusercontent.com/u/245087170?v=4
@@ -7155,6 +7135,7 @@ projects:
     against tokenized money-market funds, priced off daily NAV, settled with atomic DvP.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -7172,9 +7153,6 @@ projects:
   repoLastCommitAt: '2026-10-27T15:32:08Z'
   commitsInWindow: 341
   totalCommits: 383
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: rcusans-code
     avatarUrl: https://avatars.githubusercontent.com/u/235704533?v=4
@@ -7736,6 +7714,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: MIT
   stars: 0
@@ -7753,9 +7732,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:45:38Z'
   commitsInWindow: 112
   totalCommits: 112
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: kovan-protocol
     avatarUrl: https://avatars.githubusercontent.com/u/347742821?v=4
@@ -8179,6 +8155,7 @@ projects:
   description: null
   homepage: https://merit-sable.vercel.app
   tier: verified
+  track: genesis
   language: HTML
   license: null
   stars: 0
@@ -8194,9 +8171,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:37:41Z'
   commitsInWindow: 53
   totalCommits: 53
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: don-radman
     avatarUrl: https://avatars.githubusercontent.com/u/116534345?v=4
@@ -8585,6 +8559,7 @@ projects:
     get the rest.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -8602,9 +8577,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:28:26Z'
   commitsInWindow: 167
   totalCommits: 167
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: joaointech
     avatarUrl: https://avatars.githubusercontent.com/u/38008727?v=4
@@ -8948,6 +8920,7 @@ projects:
     pools use to cap borrowing. Live on testnet.'
   homepage: https://fathom-b3t.pages.dev
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -8965,9 +8938,6 @@ projects:
   repoLastCommitAt: '2026-10-26T08:11:00Z'
   commitsInWindow: 53
   totalCommits: 53
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: celadari
     avatarUrl: https://avatars.githubusercontent.com/u/17705729?v=4
@@ -9357,6 +9327,7 @@ projects:
     payouts in seconds, cash-out via anchors'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -9374,9 +9345,6 @@ projects:
   repoLastCommitAt: '2026-10-27T21:13:55Z'
   commitsInWindow: 36
   totalCommits: 37
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: fdddf
     avatarUrl: https://avatars.githubusercontent.com/u/2045357?v=4
@@ -9660,6 +9628,7 @@ projects:
   description: Design by acta-team
   homepage: https://gate.acta.build
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -9675,9 +9644,6 @@ projects:
   repoLastCommitAt: '2026-10-26T00:45:59Z'
   commitsInWindow: 44
   totalCommits: 44
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: ACTA-Team
     avatarUrl: https://avatars.githubusercontent.com/u/232433101?v=4
@@ -10012,6 +9978,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -10029,9 +9996,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:49:41Z'
   commitsInWindow: 13
   totalCommits: 53
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Ihlasthetics
     avatarUrl: https://avatars.githubusercontent.com/u/112479499?v=4
@@ -10284,6 +10248,7 @@ projects:
     call simulations.
   homepage: https://keystone-eta-ebon.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -10307,9 +10272,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:01:38Z'
   commitsInWindow: 143
   totalCommits: 146
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Lagouze
     avatarUrl: https://avatars.githubusercontent.com/u/193023511?v=4
@@ -10629,6 +10591,7 @@ projects:
     Blend, and released via a deduction-first waterfall. Built at HackMeridian 2026.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -10648,9 +10611,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:11:12Z'
   commitsInWindow: 22
   totalCommits: 22
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: ddortabencomo
     avatarUrl: https://avatars.githubusercontent.com/u/260120031?v=4
@@ -10886,6 +10846,7 @@ projects:
   description: null
   homepage: https://fistea-hackmeridian.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -10903,9 +10864,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:45:43Z'
   commitsInWindow: 138
   totalCommits: 138
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: ygk94
     avatarUrl: https://avatars.githubusercontent.com/u/187570074?v=4
@@ -11165,6 +11123,7 @@ projects:
     exactly that flow, and install it on an OpenZeppelin smart account
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 0
@@ -11188,9 +11147,6 @@ projects:
   repoLastCommitAt: '2026-10-27T18:03:26Z'
   commitsInWindow: 13
   totalCommits: 223
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: untangledfinance
     avatarUrl: https://avatars.githubusercontent.com/u/69093065?v=4
@@ -11523,6 +11479,7 @@ projects:
   description: null
   homepage: https://trust-meridian.vercel.app
   tier: verified
+  track: genesis
   language: HTML
   license: null
   stars: 0
@@ -11538,9 +11495,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:37:29Z'
   commitsInWindow: 39
   totalCommits: 39
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Wilivms
     avatarUrl: https://avatars.githubusercontent.com/u/233278292?v=4
@@ -11759,6 +11713,7 @@ projects:
     contract, the contract decides and acts, and a scoped policy keeps your funds yours.'
   homepage: https://koul-stellar.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 2
@@ -11774,9 +11729,6 @@ projects:
   repoLastCommitAt: '2026-10-26T02:05:56Z'
   commitsInWindow: 2
   totalCommits: 165
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: atahanyild
     avatarUrl: https://avatars.githubusercontent.com/u/111663792?u=0316f7cc37c659ba036899701a2dd9df7c375fee&v=4
@@ -11955,6 +11907,7 @@ projects:
   description: null
   homepage: https://fermento-iota.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -11970,9 +11923,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:33:01Z'
   commitsInWindow: 41
   totalCommits: 58
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: the-axmc
     avatarUrl: https://avatars.githubusercontent.com/u/171472800?v=4
@@ -12225,6 +12175,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -12242,9 +12193,6 @@ projects:
   repoLastCommitAt: '2026-10-27T20:38:49Z'
   commitsInWindow: 1
   totalCommits: 110
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: arturete58-sys
     avatarUrl: https://avatars.githubusercontent.com/u/254771714?v=4
@@ -12446,6 +12394,7 @@ projects:
     residence gating, USDC dividends to locked holders.'
   homepage: https://dvdnd.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -12469,9 +12418,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:52:37Z'
   commitsInWindow: 114
   totalCommits: 114
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: forever8896
     avatarUrl: https://avatars.githubusercontent.com/u/68512042?v=4
@@ -12728,6 +12674,7 @@ projects:
   description: 'Plataforma de integración de sensores con verificación en blockchian '
   homepage: null
   tier: verified
+  track: scale
   language: Python
   license: null
   stars: 0
@@ -12741,9 +12688,6 @@ projects:
   repoLastCommitAt: '2026-10-27T10:14:14Z'
   commitsInWindow: 84
   totalCommits: 152
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: ParriCode
     avatarUrl: https://avatars.githubusercontent.com/u/90289658?v=4
@@ -12945,6 +12889,7 @@ projects:
   description: Verifiable jury selection for governance on Stellar.
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: MIT
   stars: 0
@@ -12958,9 +12903,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:48:50Z'
   commitsInWindow: 90
   totalCommits: 90
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: ThaisFReis
     avatarUrl: https://avatars.githubusercontent.com/u/75093679?v=4
@@ -13776,6 +13718,7 @@ projects:
     DeFindex vault shares (HackMeridian 2026, testnet)'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -13791,9 +13734,6 @@ projects:
   repoLastCommitAt: '2026-10-26T03:46:38Z'
   commitsInWindow: 12
   totalCommits: 12
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: troqpay
     avatarUrl: https://avatars.githubusercontent.com/u/223028901?v=4
@@ -13959,6 +13899,7 @@ projects:
     Reflector, OpenZeppelin).'
   homepage: https://zepho.pages.dev
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 1
@@ -13978,9 +13919,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:10:40Z'
   commitsInWindow: 43
   totalCommits: 43
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: MohamedDataX
     avatarUrl: https://avatars.githubusercontent.com/u/98733592?v=4
@@ -14169,6 +14107,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -14188,9 +14127,6 @@ projects:
   repoLastCommitAt: '2026-10-26T16:18:44Z'
   commitsInWindow: 232
   totalCommits: 265
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: joshschcom
     avatarUrl: https://avatars.githubusercontent.com/u/84538564?v=4
@@ -14454,6 +14390,7 @@ projects:
   description: null
   homepage: https://hackmeridian-psi.vercel.app
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -14471,9 +14408,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:16Z'
   commitsInWindow: 100
   totalCommits: 100
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: mohamedkhellaf
     avatarUrl: https://avatars.githubusercontent.com/u/185638972?v=4
@@ -14808,6 +14742,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -14825,9 +14760,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:58:31Z'
   commitsInWindow: 118
   totalCommits: 118
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Lendara-Org
     avatarUrl: https://avatars.githubusercontent.com/u/335191355?v=4
@@ -15013,6 +14945,7 @@ projects:
   description: null
   homepage: https://frontend-vert-nu-wlb9kf51l6.vercel.app
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -15030,9 +14963,6 @@ projects:
   repoLastCommitAt: '2026-10-26T09:35:03Z'
   commitsInWindow: 8
   totalCommits: 8
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: infiniteezverse
     avatarUrl: https://avatars.githubusercontent.com/u/175495935?u=2718a0ed681d6fd243a4a32d69049bdd43ab1a87&v=4
@@ -15248,6 +15178,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -15263,9 +15194,6 @@ projects:
   repoLastCommitAt: '2026-10-26T13:11:36Z'
   commitsInWindow: 66
   totalCommits: 68
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: jzelada97
     avatarUrl: https://avatars.githubusercontent.com/u/65199660?v=4
@@ -15461,6 +15389,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -15480,9 +15409,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:33:38Z'
   commitsInWindow: 29
   totalCommits: 29
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: marcocpp
     avatarUrl: https://avatars.githubusercontent.com/u/119238138?v=4
@@ -15625,6 +15551,7 @@ projects:
     on-chain spending limits, contractor-owned vaults, private payments.'
   homepage: https://harsxul.github.io/nomad-vault/
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 2
@@ -15638,9 +15565,6 @@ projects:
   repoLastCommitAt: '2026-10-26T14:10:32Z'
   commitsInWindow: 31
   totalCommits: 36
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: harsxul
     avatarUrl: https://avatars.githubusercontent.com/u/132977870?v=4
@@ -15820,6 +15744,7 @@ projects:
   description: null
   homepage: https://biolicensing.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 1
@@ -15837,9 +15762,6 @@ projects:
   repoLastCommitAt: '2026-10-27T20:08:24Z'
   commitsInWindow: 79
   totalCommits: 128
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: Team-hackmeridian-2026
     avatarUrl: https://avatars.githubusercontent.com/u/340029452?v=4
@@ -16012,6 +15934,7 @@ projects:
   description: null
   homepage: https://fiavel-hack-lisbon.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -16027,9 +15950,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:20:10Z'
   commitsInWindow: 48
   totalCommits: 48
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Rjk3d
     avatarUrl: https://avatars.githubusercontent.com/u/99613730?v=4
@@ -16211,6 +16131,7 @@ projects:
   description: 'QuickChain: presupuesto mensual en USDC para agentes de IA que pagan APIs x402 en Stellar'
   homepage: https://stellar-quickpass.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -16226,9 +16147,6 @@ projects:
   repoLastCommitAt: '2026-10-26T20:54:30Z'
   commitsInWindow: 57
   totalCommits: 129
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: jxsu404
     avatarUrl: https://avatars.githubusercontent.com/u/279814500?v=4
@@ -16431,6 +16349,7 @@ projects:
   description: null
   homepage: https://unlock-shares-x-stellar.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -16448,9 +16367,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:22:10Z'
   commitsInWindow: 32
   totalCommits: 47
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: nelsonalexis
     avatarUrl: https://avatars.githubusercontent.com/u/127190373?v=4
@@ -16604,6 +16520,7 @@ projects:
     on testnet.'
   homepage: https://synt.tech/rebalancing_vault
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -16621,9 +16538,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:42:11Z'
   commitsInWindow: 69
   totalCommits: 69
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: synt-tech
     avatarUrl: https://avatars.githubusercontent.com/u/183994626?v=4
@@ -16812,6 +16726,7 @@ projects:
   description: 'Expenses organizer among friends based on stellar '
   homepage: https://lumensplit.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 1
@@ -16829,9 +16744,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:40:05Z'
   commitsInWindow: 49
   totalCommits: 49
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: manuuvllgs
     avatarUrl: https://avatars.githubusercontent.com/u/108551582?v=4
@@ -16962,6 +16874,7 @@ projects:
   description: null
   homepage: https://x402-stellar-ticket-gating.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -16977,9 +16890,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:01:39Z'
   commitsInWindow: 70
   totalCommits: 71
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: nicolasguasca1
     avatarUrl: https://avatars.githubusercontent.com/u/33971632?v=4
@@ -17217,6 +17127,7 @@ projects:
   description: null
   homepage: https://drainmywallet.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -17236,9 +17147,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:29:06Z'
   commitsInWindow: 58
   totalCommits: 58
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: bilfrux
     avatarUrl: https://avatars.githubusercontent.com/u/233278394?v=4
@@ -17396,6 +17304,7 @@ projects:
   description: HackMeridian team board and library (chief-of-staff)
   homepage: null
   tier: verified
+  track: scale
   language: Python
   license: null
   stars: 0
@@ -17407,9 +17316,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:06:50Z'
   commitsInWindow: 484
   totalCommits: 549
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
   owner:
     login: pwsaragossy
     avatarUrl: https://avatars.githubusercontent.com/u/148293189?v=4
@@ -17577,6 +17483,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 2
@@ -17594,9 +17501,6 @@ projects:
   repoLastCommitAt: '2026-10-26T19:01:13Z'
   commitsInWindow: 8
   totalCommits: 171
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: DevTobis
     avatarUrl: https://avatars.githubusercontent.com/u/232918735?v=4
@@ -17946,6 +17850,7 @@ projects:
     and TTL state archival.
   homepage: https://breakwater.belvast.de
   tier: verified
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 1
@@ -17967,9 +17872,6 @@ projects:
   repoLastCommitAt: '2026-10-27T19:47:37Z'
   commitsInWindow: 29
   totalCommits: 38
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Belvast-Innovation
     avatarUrl: https://avatars.githubusercontent.com/u/84128626?v=4
@@ -18091,6 +17993,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 1
@@ -18108,9 +18011,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:42:08Z'
   commitsInWindow: 32
   totalCommits: 32
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: kotizi
     avatarUrl: https://avatars.githubusercontent.com/u/340638529?v=4
@@ -18249,6 +18149,7 @@ projects:
   description: BLNT v3 migration
   homepage: null
   tier: verified
+  track: scale
   language: Shell
   license: AGPL-3.0
   stars: 0
@@ -18262,9 +18163,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:19:43Z'
   commitsInWindow: 23
   totalCommits: 170
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: BLNT-Protocol
     avatarUrl: https://avatars.githubusercontent.com/u/322974850?v=4
@@ -18411,6 +18309,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -18432,9 +18331,6 @@ projects:
   repoLastCommitAt: '2026-10-27T19:41:18Z'
   commitsInWindow: 80
   totalCommits: 83
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: enzoblain
     avatarUrl: https://avatars.githubusercontent.com/u/39645929?v=4
@@ -18538,6 +18434,7 @@ projects:
   description: 'Lotus on Stellar: yield-bearing receipt token for the SDEX (HackMeridian 2026)'
   homepage: https://lotus-stellar.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -18555,9 +18452,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:59:28Z'
   commitsInWindow: 51
   totalCommits: 51
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: skar8848
     avatarUrl: https://avatars.githubusercontent.com/u/197268665?v=4
@@ -18835,6 +18729,7 @@ projects:
     stamps, buying destination passes, and preparing hotel arrivals
   homepage: https://city-pass-global.vercel.app/es
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -18850,9 +18745,6 @@ projects:
   repoLastCommitAt: '2026-10-25T23:26:56Z'
   commitsInWindow: 8
   totalCommits: 10
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Bran18
     avatarUrl: https://avatars.githubusercontent.com/u/31634868?u=0ca9a5c43e7de0eff3f49a3e0546c2ca54108ae3&v=4
@@ -18971,6 +18863,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -18986,9 +18879,6 @@ projects:
   repoLastCommitAt: '2026-10-26T13:37:35Z'
   commitsInWindow: 88
   totalCommits: 92
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: CaBsCrypto
     avatarUrl: https://avatars.githubusercontent.com/u/235236295?v=4
@@ -19155,6 +19045,7 @@ projects:
   description: null
   homepage: https://www.seyf.app
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -19170,9 +19061,6 @@ projects:
   repoLastCommitAt: '2026-10-27T02:40:22Z'
   commitsInWindow: 98
   totalCommits: 269
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: Seyfert-Labs
     avatarUrl: https://avatars.githubusercontent.com/u/274638126?v=4
@@ -19312,6 +19200,7 @@ projects:
     (HackMeridian 2026, Genesis/Composed)'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -19329,9 +19218,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:01:19Z'
   commitsInWindow: 3
   totalCommits: 4
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: abaresks24
     avatarUrl: https://avatars.githubusercontent.com/u/187433226?v=4
@@ -19505,6 +19391,7 @@ projects:
   description: 'hackathons.defindex.io: build with DeFindex vaults on Stellar testnet'
   homepage: https://defindex-hackathons-landing.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -19516,9 +19403,6 @@ projects:
   repoLastCommitAt: '2026-10-25T15:23:07Z'
   commitsInWindow: 3
   totalCommits: 3
-  createdDuringHack: true
-  stellarAddedDuringHack: null
-  mentionsHackathon: false
   owner:
     login: defindex-io
     avatarUrl: https://avatars.githubusercontent.com/u/270757198?v=4
@@ -19617,6 +19501,7 @@ projects:
   description: null
   homepage: https://shake-lake.vercel.app
   tier: verified
+  track: genesis
   language: HTML
   license: null
   stars: 0
@@ -19632,9 +19517,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:25:38Z'
   commitsInWindow: 102
   totalCommits: 102
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: franciscogfsm
     avatarUrl: https://avatars.githubusercontent.com/u/147647438?v=4
@@ -19759,6 +19641,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -19776,9 +19659,6 @@ projects:
   repoLastCommitAt: '2026-10-26T14:27:37Z'
   commitsInWindow: 14
   totalCommits: 16
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: lmstewart88
     avatarUrl: https://avatars.githubusercontent.com/u/72700973?v=4
@@ -19870,6 +19750,7 @@ projects:
   description: Hackaton Meridian 2026
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -19885,9 +19766,6 @@ projects:
   repoLastCommitAt: '2026-10-26T09:11:13Z'
   commitsInWindow: 23
   totalCommits: 23
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: nina-osk
     avatarUrl: https://avatars.githubusercontent.com/u/14907559?v=4
@@ -20026,6 +19904,7 @@ projects:
   description: UsagePay enables verifiable machine-to-machine payments for metered services on Stellar.
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -20041,9 +19920,6 @@ projects:
   repoLastCommitAt: '2026-10-27T19:25:23Z'
   commitsInWindow: 79
   totalCommits: 81
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: skopolabs
     avatarUrl: https://avatars.githubusercontent.com/u/345754793?v=4
@@ -20127,6 +20003,7 @@ projects:
   description: null
   homepage: https://avocate-harvest-escrow.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -20144,9 +20021,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:46:41Z'
   commitsInWindow: 90
   totalCommits: 90
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Arkessiah
     avatarUrl: https://avatars.githubusercontent.com/u/28997167?v=4
@@ -20269,6 +20143,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: MIT
   stars: 0
@@ -20284,9 +20159,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:29:58Z'
   commitsInWindow: 4
   totalCommits: 5
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: InnokentyB
     avatarUrl: https://avatars.githubusercontent.com/u/62981600?v=4
@@ -20372,6 +20244,7 @@ projects:
     x402 AI appraisal agent, web and mobile marketplace'
   homepage: null
   tier: verified
+  track: genesis
   language: HTML
   license: null
   stars: 0
@@ -20387,9 +20260,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:07:55Z'
   commitsInWindow: 19
   totalCommits: 19
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Lothinnt
     avatarUrl: https://avatars.githubusercontent.com/u/145616639?v=4
@@ -20479,6 +20349,7 @@ projects:
   description: Personalized agent that helps you interact with the Stellar network using natural language
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -20494,9 +20365,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:47:59Z'
   commitsInWindow: 64
   totalCommits: 64
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Nearx-Labs
     avatarUrl: https://avatars.githubusercontent.com/u/305869138?v=4
@@ -20629,6 +20497,7 @@ projects:
   description: null
   homepage: https://monolith-nine-rosy.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -20644,9 +20513,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:39:29Z'
   commitsInWindow: 134
   totalCommits: 134
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Rushyard
     avatarUrl: https://avatars.githubusercontent.com/u/65411594?v=4
@@ -20843,6 +20709,7 @@ projects:
   description: Veilpay — private payroll banking on Stellar (stealth, confidential solvency, Pollar Sandbox)
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -20860,9 +20727,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:03:19Z'
   commitsInWindow: 73
   totalCommits: 73
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: armsves
     avatarUrl: https://avatars.githubusercontent.com/u/113925592?v=4
@@ -20955,6 +20819,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -20970,9 +20835,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:05:21Z'
   commitsInWindow: 1
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: elmersaid
     avatarUrl: https://avatars.githubusercontent.com/u/4759583?v=4
@@ -21048,6 +20910,7 @@ projects:
     customer: Semaphore v4 Groth16 on BN254, Poseidon trees, P-256 and USDC in one Soroban call.'
   homepage: https://stellarbob2026.xyz
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -21075,9 +20938,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:24:53Z'
   commitsInWindow: 301
   totalCommits: 301
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: hustle1hustle
     avatarUrl: https://avatars.githubusercontent.com/u/181977190?v=4
@@ -21182,6 +21042,7 @@ projects:
     don''t have to. '
   homepage: null
   tier: verified
+  track: scale
   language: Rust
   license: Apache-2.0
   stars: 53
@@ -21200,9 +21061,6 @@ projects:
   repoLastCommitAt: '2026-10-27T15:02:08Z'
   commitsInWindow: 6
   totalCommits: 306
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: stellar-scaffold
     avatarUrl: https://avatars.githubusercontent.com/u/286139953?v=4
@@ -21361,6 +21219,7 @@ projects:
     tokens.
   homepage: https://writz.xyz
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 5
@@ -21384,9 +21243,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:24Z'
   commitsInWindow: 42
   totalCommits: 258
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: WritzProtocol
     avatarUrl: https://avatars.githubusercontent.com/u/296057967?v=4
@@ -21479,6 +21335,7 @@ projects:
     in World App.
   homepage: https://humanbond-lisbon-nu.vercel.app/
   tier: verified
+  track: scale
   language: TypeScript
   license: NOASSERTION
   stars: 5
@@ -21503,9 +21360,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:07:00Z'
   commitsInWindow: 12
   totalCommits: 233
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: herbstephens
     avatarUrl: https://avatars.githubusercontent.com/u/11063638?v=4
@@ -21598,6 +21452,7 @@ projects:
     a financial reason to deliver what they advertise.
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 1
@@ -21615,9 +21470,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:25:05Z'
   commitsInWindow: 68
   totalCommits: 68
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: curtismoncoq
     avatarUrl: https://avatars.githubusercontent.com/u/147111716?v=4
@@ -21700,6 +21552,7 @@ projects:
     real-world assets onchain. Live on mainnet.'
   homepage: https://alloy-stellar.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -21717,9 +21570,6 @@ projects:
   repoLastCommitAt: '2026-10-27T14:15:52Z'
   commitsInWindow: 85
   totalCommits: 159
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: 0xDanomite
     avatarUrl: https://avatars.githubusercontent.com/u/10619673?v=4
@@ -21867,6 +21717,7 @@ projects:
     it. HackMeridian 2026.
   homepage: https://payslip-34-m0-r.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -21880,9 +21731,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:28:16Z'
   commitsInWindow: 27
   totalCommits: 27
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: 34m0r
     avatarUrl: https://avatars.githubusercontent.com/u/233278257?v=4
@@ -22016,6 +21864,7 @@ projects:
   description: null
   homepage: https://arqueo-sooty.vercel.app
   tier: verified
+  track: genesis
   language: JavaScript
   license: Apache-2.0
   stars: 0
@@ -22035,9 +21884,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:23:57Z'
   commitsInWindow: 212
   totalCommits: 212
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Dabuca
     avatarUrl: https://avatars.githubusercontent.com/u/60047451?v=4
@@ -22165,6 +22011,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: MIT
   stars: 0
@@ -22182,9 +22029,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:58:23Z'
   commitsInWindow: 19
   totalCommits: 19
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: LucasCariddi
     avatarUrl: https://avatars.githubusercontent.com/u/190208890?v=4
@@ -22344,6 +22188,7 @@ projects:
   description: Project for hackmeridian 2026 Lisbon hackathon
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: NOASSERTION
   stars: 0
@@ -22359,9 +22204,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:55:45Z'
   commitsInWindow: 28
   totalCommits: 28
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: aonishchenko
     avatarUrl: https://avatars.githubusercontent.com/u/4235699?v=4
@@ -22452,6 +22294,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -22469,9 +22312,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:41:58Z'
   commitsInWindow: 20
   totalCommits: 20
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: beaguzman
     avatarUrl: https://avatars.githubusercontent.com/u/244794191?v=4
@@ -22568,6 +22408,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: Shell
   license: null
   stars: 0
@@ -22583,9 +22424,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:35:08Z'
   commitsInWindow: 25
   totalCommits: 25
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: karmainaria
     avatarUrl: https://avatars.githubusercontent.com/u/347816229?v=4
@@ -22674,6 +22512,7 @@ projects:
   description: null
   homepage: https://diversifiapp.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 0
@@ -22693,9 +22532,6 @@ projects:
   repoLastCommitAt: '2026-10-26T16:35:52Z'
   commitsInWindow: 16
   totalCommits: 1350
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: thisyearnofear
     avatarUrl: https://avatars.githubusercontent.com/u/74209106?v=4
@@ -22766,6 +22602,7 @@ projects:
   description: On-chain performance payroll
   homepage: null
   tier: verified
+  track: scale
   language: JavaScript
   license: MIT
   stars: 0
@@ -22781,9 +22618,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:57:07Z'
   commitsInWindow: 4
   totalCommits: 7
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: zelena-tech
     avatarUrl: https://avatars.githubusercontent.com/u/285584163?v=4
@@ -22875,6 +22709,7 @@ projects:
   description: Cloud-Native Stellar Infrastructure Toolkit
   homepage: null
   tier: verified
+  track: scale
   language: Rust
   license: Apache-2.0
   stars: 2
@@ -22888,9 +22723,6 @@ projects:
   repoLastCommitAt: '2026-10-27T06:03:26Z'
   commitsInWindow: 44
   totalCommits: 2608
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: agnesnaomiolim-cloud
     avatarUrl: https://avatars.githubusercontent.com/u/272781012?v=4
@@ -23426,6 +23258,7 @@ projects:
     money
   homepage: https://redsentinel.xyz/
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 2
@@ -23448,9 +23281,6 @@ projects:
   repoLastCommitAt: '2026-10-26T21:23:36Z'
   commitsInWindow: 8
   totalCommits: 1936
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: red-sentinel-ai
     avatarUrl: https://avatars.githubusercontent.com/u/220595621?v=4
@@ -23522,6 +23352,7 @@ projects:
     contract, the contract decides and acts, and a scoped policy keeps your funds yours.'
   homepage: https://koul.me
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 1
@@ -23537,9 +23368,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:37:27Z'
   commitsInWindow: 36
   totalCommits: 254
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: koul-me
     avatarUrl: https://avatars.githubusercontent.com/u/332500171?v=4
@@ -23626,6 +23454,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -23641,9 +23470,6 @@ projects:
   repoLastCommitAt: '2026-10-26T08:40:03Z'
   commitsInWindow: 9
   totalCommits: 16
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: AgroSmart-Contracts
     avatarUrl: https://avatars.githubusercontent.com/u/169287394?v=4
@@ -23704,6 +23530,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -23721,9 +23548,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:48:23Z'
   commitsInWindow: 17
   totalCommits: 17
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: AlbyCosmy99
     avatarUrl: https://avatars.githubusercontent.com/u/72943982?v=4
@@ -23798,6 +23622,7 @@ projects:
   description: Portus — Institutional multi-currency corporate treasury on Stellar
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -23815,9 +23640,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:21:05Z'
   commitsInWindow: 6
   totalCommits: 6
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: AzrielTheHellrazor
     avatarUrl: https://avatars.githubusercontent.com/u/132911026?v=4
@@ -23918,6 +23740,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: Python
   license: null
   stars: 0
@@ -23933,9 +23756,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:33:52Z'
   commitsInWindow: 7
   totalCommits: 7
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Gastaan
     avatarUrl: https://avatars.githubusercontent.com/u/92812991?v=4
@@ -23989,6 +23809,7 @@ projects:
     pages, and a reference fetcher for the haruno.stellar.month/1 snapshot.'
   homepage: null
   tier: verified
+  track: scale
   language: JavaScript
   license: Apache-2.0
   stars: 0
@@ -24004,9 +23825,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:37:10Z'
   commitsInWindow: 27
   totalCommits: 44
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: Inferara
     avatarUrl: https://avatars.githubusercontent.com/u/155560401?v=4
@@ -24098,6 +23916,7 @@ projects:
   description: null
   homepage: https://paradiseandbeyondcr-stellar-daap.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -24115,9 +23934,6 @@ projects:
   repoLastCommitAt: '2026-10-27T19:34:34Z'
   commitsInWindow: 1
   totalCommits: 98
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: Isaac2399
     avatarUrl: https://avatars.githubusercontent.com/u/61569321?v=4
@@ -24179,6 +23995,7 @@ projects:
     & Soroban.
   homepage: https://keylease-security.github.io/keylease-core/
   tier: verified
+  track: scale
   language: Rust
   license: MIT
   stars: 0
@@ -24197,9 +24014,6 @@ projects:
   repoLastCommitAt: '2026-10-25T14:46:22Z'
   commitsInWindow: 3
   totalCommits: 12
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: KeyLease-Security
     avatarUrl: https://avatars.githubusercontent.com/u/339103943?v=4
@@ -24268,6 +24082,7 @@ projects:
     Stellar.
   homepage: https://slasettle-docs.vercel.app
   tier: verified
+  track: scale
   language: Rust
   license: MIT
   stars: 0
@@ -24292,9 +24107,6 @@ projects:
   repoLastCommitAt: '2026-10-26T15:18:42Z'
   commitsInWindow: 1
   totalCommits: 81
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: SLASettleHQ
     avatarUrl: https://avatars.githubusercontent.com/u/330482498?v=4
@@ -24360,6 +24172,7 @@ projects:
   description: A BLE mesh for confidential offline payments on Stellar
   homepage: https://offline.sozu.capital
   tier: verified
+  track: genesis
   language: Kotlin
   license: null
   stars: 0
@@ -24376,9 +24189,6 @@ projects:
   repoLastCommitAt: '2026-10-26T14:14:08Z'
   commitsInWindow: 29
   totalCommits: 29
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Sozu-Capital
     avatarUrl: https://avatars.githubusercontent.com/u/309180954?v=4
@@ -24445,6 +24255,7 @@ projects:
     a Soroban contract, set up by one sentence in Claude Code. HackMeridian 2026.'
   homepage: https://agent-pass-sample.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -24460,9 +24271,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:30:23Z'
   commitsInWindow: 8
   totalCommits: 8
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: berryxmas
     avatarUrl: https://avatars.githubusercontent.com/u/32635200?v=4
@@ -24542,6 +24350,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: JavaScript
   license: null
   stars: 0
@@ -24559,9 +24368,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:45:18Z'
   commitsInWindow: 35
   totalCommits: 40
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
   owner:
     login: karlostoteles
     avatarUrl: https://avatars.githubusercontent.com/u/99805785?v=4
@@ -24632,6 +24438,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 2
@@ -24651,9 +24458,6 @@ projects:
   repoLastCommitAt: '2026-10-27T05:01:15Z'
   commitsInWindow: 4
   totalCommits: 360
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: Dgetsylver
     avatarUrl: https://avatars.githubusercontent.com/u/83276742?v=4
@@ -24784,6 +24588,7 @@ projects:
     Turso SQLite
   homepage: https://rhitta.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 2
@@ -24812,9 +24617,6 @@ projects:
   repoLastCommitAt: '2026-10-26T14:57:28Z'
   commitsInWindow: 12
   totalCommits: 22
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Kaycee276
     avatarUrl: https://avatars.githubusercontent.com/u/144479895?v=4
@@ -24865,6 +24667,7 @@ projects:
     send money across borders, with agent support via x402.
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: MIT
   stars: 1
@@ -24882,9 +24685,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:47:35Z'
   commitsInWindow: 326
   totalCommits: 328
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Michella-stack
     avatarUrl: https://avatars.githubusercontent.com/u/252771412?v=4
@@ -25000,6 +24800,7 @@ projects:
     cualquiera puede comprobar.
   homepage: https://tinkazo.app
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 1
@@ -25017,9 +24818,6 @@ projects:
   repoLastCommitAt: '2026-10-27T01:03:08Z'
   commitsInWindow: 35
   totalCommits: 849
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: nema1502
     avatarUrl: https://avatars.githubusercontent.com/u/70548302?v=4
@@ -25069,6 +24867,7 @@ projects:
   description: Stellar batch contract
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -25082,9 +24881,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:43:32Z'
   commitsInWindow: 2
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: C-payments
     avatarUrl: https://avatars.githubusercontent.com/u/227592993?v=4
@@ -25162,6 +24958,7 @@ projects:
   description: Nomad Vault web app mirror for Vercel deployment
   homepage: https://flying-orion-wcarm0d-54zg5vg42k-7981.vercel.app
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -25175,9 +24972,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:18:52Z'
   commitsInWindow: 13
   totalCommits: 13
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Karinapostemp
     avatarUrl: https://avatars.githubusercontent.com/u/174055448?v=4
@@ -25262,6 +25056,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -25281,9 +25076,6 @@ projects:
   repoLastCommitAt: '2026-10-25T20:03:31Z'
   commitsInWindow: 20
   totalCommits: 20
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: NicoleCarolina
     avatarUrl: https://avatars.githubusercontent.com/u/116591703?v=4
@@ -25328,6 +25120,7 @@ projects:
   description: 'SwiftEx Wallet Recovery via ZK powered email. '
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -25341,9 +25134,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:11:00Z'
   commitsInWindow: 6
   totalCommits: 8
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: SwiftExWallet
     avatarUrl: https://avatars.githubusercontent.com/u/271829634?v=4
@@ -25393,6 +25183,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -25408,9 +25199,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:05:15Z'
   commitsInWindow: 78
   totalCommits: 78
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: developerfred
     avatarUrl: https://avatars.githubusercontent.com/u/57037080?v=4
@@ -25476,6 +25264,7 @@ projects:
   description: GreenLedger — Registro verificable de créditos de carbono en Stellar · CIT Has It All
   homepage: null
   tier: verified
+  track: scale
   language: HTML
   license: Apache-2.0
   stars: 0
@@ -25489,9 +25278,6 @@ projects:
   repoLastCommitAt: '2026-10-26T00:26:41Z'
   commitsInWindow: 1
   totalCommits: 37
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: emprendamosahora2030-sudo
     avatarUrl: https://avatars.githubusercontent.com/u/268990171?v=4
@@ -25552,6 +25338,7 @@ projects:
     Our goal is to make this familiar way of saving clearer and easier for everyone.
   homepage: https://cuotia-fj.vercel.app/
   tier: verified
+  track: scale
   language: JavaScript
   license: null
   stars: 0
@@ -25569,9 +25356,6 @@ projects:
   repoLastCommitAt: '2026-10-26T03:06:01Z'
   commitsInWindow: 6
   totalCommits: 12
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: fredericjasmin
     avatarUrl: https://avatars.githubusercontent.com/u/76606949?v=4
@@ -25617,6 +25401,7 @@ projects:
     withdraw anytime.'
   homepage: https://helasnoussi.github.io/my-stellar-yield-vault/
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -25641,9 +25426,6 @@ projects:
   repoLastCommitAt: '2026-10-27T09:55:27Z'
   commitsInWindow: 11
   totalCommits: 27
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: helasnoussi
     avatarUrl: https://avatars.githubusercontent.com/u/206531261?v=4
@@ -25694,6 +25476,7 @@ projects:
     funds; merchants capture only what’s owed. Built with Soroban.
   homepage: https://latch-ui.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -25711,9 +25494,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:23:43Z'
   commitsInWindow: 33
   totalCommits: 34
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: karagozemin
     avatarUrl: https://avatars.githubusercontent.com/u/136501001?v=4
@@ -25795,6 +25575,7 @@ projects:
   description: null
   homepage: https://frontend-ruddy-theta-23.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -25812,9 +25593,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:18:08Z'
   commitsInWindow: 7
   totalCommits: 7
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: n1n4xyz
     avatarUrl: https://avatars.githubusercontent.com/u/59558519?u=eaed3b724217350de39075499f9ae09401b012d7&v=4
@@ -25868,6 +25646,7 @@ projects:
     pools
   homepage: null
   tier: verified
+  track: genesis
   language: Rust
   license: MIT
   stars: 0
@@ -25888,9 +25667,6 @@ projects:
   repoLastCommitAt: '2026-10-25T18:17:30Z'
   commitsInWindow: 5
   totalCommits: 5
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: polaiLabs
     avatarUrl: https://avatars.githubusercontent.com/u/347858038?v=4
@@ -25940,6 +25716,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -25957,9 +25734,6 @@ projects:
   repoLastCommitAt: '2026-10-26T08:13:45Z'
   commitsInWindow: 7
   totalCommits: 7
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: recentlyhatched
     avatarUrl: https://avatars.githubusercontent.com/u/176615423?v=4
@@ -26037,6 +25811,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -26054,9 +25829,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:36:32Z'
   commitsInWindow: 139
   totalCommits: 160
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: rodrodros
     avatarUrl: https://avatars.githubusercontent.com/u/62129975?v=4
@@ -26132,6 +25904,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -26151,9 +25924,6 @@ projects:
   repoLastCommitAt: '2026-10-26T06:42:41Z'
   commitsInWindow: 9
   totalCommits: 9
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: syncedtoblog
     avatarUrl: https://avatars.githubusercontent.com/u/52607585?v=4
@@ -26199,6 +25969,7 @@ projects:
     delivery is confirmed, and sellers build a verifiable track record. Built on Stellar/Soroban.
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -26214,9 +25985,6 @@ projects:
   repoLastCommitAt: '2026-10-27T11:25:43Z'
   commitsInWindow: 8
   totalCommits: 20
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: vicistar-star
     avatarUrl: https://avatars.githubusercontent.com/u/279370193?v=4
@@ -26258,6 +26026,7 @@ projects:
   description: Bind — DeFi protocol insurance on Stellar
   homepage: https://github.com/wrever/bind
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -26279,9 +26048,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:17:40Z'
   commitsInWindow: 59
   totalCommits: 59
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: wrever
     avatarUrl: https://avatars.githubusercontent.com/u/123417396?v=4
@@ -26384,6 +26150,7 @@ projects:
     (Cavos) + skills para cualquier agente (Claude Code, Codex, Cursor, OpenCode, Copilot, Gemini…)'
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 5
@@ -26413,9 +26180,6 @@ projects:
   repoLastCommitAt: '2026-10-10T20:33:39Z'
   commitsInWindow: 0
   totalCommits: 15
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: bitfalt
     avatarUrl: https://avatars.githubusercontent.com/u/75431447?v=4
@@ -26453,6 +26217,7 @@ projects:
     proving demo. Testnet only.
   homepage: https://stellar-confidential-token-demo.billowing-moon-0c6f.workers.dev/
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 3
@@ -26470,9 +26235,6 @@ projects:
   repoLastCommitAt: '2026-10-25T10:43:21Z'
   commitsInWindow: 1
   totalCommits: 42
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: brozorec
     avatarUrl: https://avatars.githubusercontent.com/u/9572072?u=33adfe1d19dd3b06251fbb1971061ef6a5289ce2&v=4
@@ -26509,6 +26271,7 @@ projects:
   description: Slimepay's Stellar Anchor
   homepage: https://stellar-anchor-production.up.railway.app
   tier: verified
+  track: scale
   language: Go
   license: null
   stars: 2
@@ -26525,9 +26288,6 @@ projects:
   repoLastCommitAt: '2026-10-27T18:03:23Z'
   commitsInWindow: 8
   totalCommits: 26
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: false
   owner:
     login: slimepay
     avatarUrl: https://avatars.githubusercontent.com/u/214399478?v=4
@@ -26568,6 +26328,7 @@ projects:
   description: null
   homepage: https://astros-two.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 1
@@ -26585,9 +26346,6 @@ projects:
   repoLastCommitAt: '2026-10-26T03:50:00Z'
   commitsInWindow: 15
   totalCommits: 61
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: Eco-RV
     avatarUrl: https://avatars.githubusercontent.com/u/72853594?v=4
@@ -26630,6 +26388,7 @@ projects:
     network.
   homepage: https://microvault.shambarecords.com
   tier: verified
+  track: scale
   language: Go
   license: AGPL-3.0
   stars: 1
@@ -26650,9 +26409,6 @@ projects:
   repoLastCommitAt: '2026-10-27T10:19:43Z'
   commitsInWindow: 6
   totalCommits: 727
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: Shamba-Records-Limited
     avatarUrl: https://avatars.githubusercontent.com/u/84320441?v=4
@@ -26694,6 +26450,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -26707,9 +26464,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:16:15Z'
   commitsInWindow: 158
   totalCommits: 160
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: ArturShirokov
     avatarUrl: https://avatars.githubusercontent.com/u/72599811?v=4
@@ -26771,6 +26525,7 @@ projects:
   description: Orloj Stellar — private development mirror of GianfrancoBazzani/orloj-registry
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -26788,9 +26543,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:12:52Z'
   commitsInWindow: 16
   totalCommits: 240
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Deivitto
     avatarUrl: https://avatars.githubusercontent.com/u/26606295?v=4
@@ -26875,6 +26627,7 @@ projects:
   description: null
   homepage: https://nirium-watch.vercel.app
   tier: verified
+  track: genesis
   language: HTML
   license: MIT
   stars: 0
@@ -26888,9 +26641,6 @@ projects:
   repoLastCommitAt: '2026-10-27T21:21:58Z'
   commitsInWindow: 53
   totalCommits: 121
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: Eras256
     avatarUrl: https://avatars.githubusercontent.com/u/219895655?v=4
@@ -26930,6 +26680,7 @@ projects:
     discovery. Apache-2.0.
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -26945,9 +26696,6 @@ projects:
   repoLastCommitAt: '2026-10-25T21:16:34Z'
   commitsInWindow: 7
   totalCommits: 41
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: FTHTrading
     avatarUrl: https://avatars.githubusercontent.com/u/261508212?v=4
@@ -26988,6 +26736,7 @@ projects:
   description: 'GameLock: booking and payment platform for recreational sports games'
   homepage: https://gamelock.lovable.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -27003,9 +26752,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:13:46Z'
   commitsInWindow: 42
   totalCommits: 43
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Innokeshka1
     avatarUrl: https://avatars.githubusercontent.com/u/174308758?v=4
@@ -27056,6 +26802,7 @@ projects:
     asset issuance. HackMeridian 2026.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -27071,9 +26818,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:04:02Z'
   commitsInWindow: 23
   totalCommits: 23
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: NUNRIBHAC
     avatarUrl: https://avatars.githubusercontent.com/u/340403981?v=4
@@ -27135,6 +26879,7 @@ projects:
   description: The first build out for PoolFi entailing the backend, frontend and soroban
   homepage: https://poolfibuild.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -27150,9 +26895,6 @@ projects:
   repoLastCommitAt: '2026-10-27T11:22:31Z'
   commitsInWindow: 1
   totalCommits: 44
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: PoolFi-LTD
     avatarUrl: https://avatars.githubusercontent.com/u/333602513?v=4
@@ -27199,6 +26941,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: MIT
   stars: 0
@@ -27212,9 +26955,6 @@ projects:
   repoLastCommitAt: '2026-10-27T13:14:34Z'
   commitsInWindow: 4
   totalCommits: 21
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: StellarAid-network
     avatarUrl: https://avatars.githubusercontent.com/u/342481985?v=4
@@ -27251,6 +26991,7 @@ projects:
   description: null
   homepage: https://carimbo-six.vercel.app
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -27266,9 +27007,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:48:44Z'
   commitsInWindow: 29
   totalCommits: 29
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: W0lfyo
     avatarUrl: https://avatars.githubusercontent.com/u/233501282?v=4
@@ -27365,6 +27103,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -27384,9 +27123,6 @@ projects:
   repoLastCommitAt: '2026-10-27T10:46:14Z'
   commitsInWindow: 1
   totalCommits: 66
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: arturete58-sys
     avatarUrl: https://avatars.githubusercontent.com/u/254771714?v=4
@@ -27458,6 +27194,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -27471,9 +27208,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:06:45Z'
   commitsInWindow: 32
   totalCommits: 36
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: eduruizhipolito
     avatarUrl: https://avatars.githubusercontent.com/u/128727681?v=4
@@ -27509,6 +27243,7 @@ projects:
     2026.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -27528,9 +27263,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:41Z'
   commitsInWindow: 29
   totalCommits: 29
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: fabian416
     avatarUrl: https://avatars.githubusercontent.com/u/120422146?v=4
@@ -27597,6 +27329,7 @@ projects:
   description: null
   homepage: https://flowpay-henna.vercel.app
   tier: verified
+  track: scale
   language: Dart
   license: MIT
   stars: 0
@@ -27612,9 +27345,6 @@ projects:
   repoLastCommitAt: '2026-10-27T21:08:40Z'
   commitsInWindow: 6
   totalCommits: 292
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: flowpay-bmoni
     avatarUrl: https://avatars.githubusercontent.com/u/324451869?v=4
@@ -27660,6 +27390,7 @@ projects:
   description: null
   homepage: https://forepay-nu.vercel.app
   tier: verified
+  track: scale
   language: TypeScript
   license: AGPL-3.0
   stars: 0
@@ -27677,9 +27408,6 @@ projects:
   repoLastCommitAt: '2026-10-27T12:26:48Z'
   commitsInWindow: 6
   totalCommits: 57
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: forepay-stellar
     avatarUrl: https://avatars.githubusercontent.com/u/337023899?v=4
@@ -27736,6 +27464,7 @@ projects:
   description: null
   homepage: null
   tier: verified
+  track: genesis
   language: HTML
   license: null
   stars: 0
@@ -27749,9 +27478,6 @@ projects:
   repoLastCommitAt: '2026-10-25T22:23:43Z'
   commitsInWindow: 14
   totalCommits: 14
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: infoenzastore-cmd
     avatarUrl: https://avatars.githubusercontent.com/u/328405373?v=4
@@ -27785,6 +27511,7 @@ projects:
   description: 'x402git on Stellar: pay for a software release with x402, in USDT0. MIT.'
   homepage: null
   tier: verified
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -27798,9 +27525,6 @@ projects:
   repoLastCommitAt: '2026-10-25T15:46:16Z'
   commitsInWindow: 4
   totalCommits: 4
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: pcmarts
     avatarUrl: https://avatars.githubusercontent.com/u/53514319?v=4
@@ -27834,6 +27558,7 @@ projects:
   description: Depth-adjusted collateral sizing for Blend lending pools on Stellar
   homepage: null
   tier: verified
+  track: scale
   language: JavaScript
   license: MIT
   stars: 0
@@ -27847,9 +27572,6 @@ projects:
   repoLastCommitAt: '2026-10-25T19:20:37Z'
   commitsInWindow: 13
   totalCommits: 22
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: seekdaseek
     avatarUrl: https://avatars.githubusercontent.com/u/290621456?u=52b334d5b797c684963b0377f2221c868745cbcb&v=4
@@ -27883,6 +27605,7 @@ projects:
   description: 'Pactlane: peer-to-peer Stellar exchange with authenticated bank-payment evidence.'
   homepage: null
   tier: verified
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -27900,9 +27623,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:53:34Z'
   commitsInWindow: 69
   totalCommits: 69
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
   owner:
     login: vmichalik
     avatarUrl: https://avatars.githubusercontent.com/u/12459761?v=4
@@ -27928,2140 +27648,6 @@ projects:
       method: wasm_hash_match
       explorerUrl: null
       repoFileUrl: https://github.com/vmichalik/stellar-p2p/blob/HEAD/contracts/escrow/artifacts/pactlane_escrow.wasm
-- repoFullName: andresanemic/vespi
-  repoUrl: https://github.com/andresanemic/vespi
-  name: vespi
-  description: 'The engine for building apps with AI on Stellar. You drive: bounded authority, a human
-    gate and a receipt anyone can check.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: Apache-2.0
-  stars: 9
-  forks: 0
-  selfTags:
-  - agentic-ai
-  - ai-agents
-  - ai-governance
-  - bounded-authority
-  - build-in-public
-  - human-in-the-loop
-  - multi-agent-systems
-  - open-research
-  - soroban
-  - stellar
-  - x402
-  - verifiable-operations
-  - lore-plugin
-  - lus
-  - continuity
-  - operations
-  - hackmeridian
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': ^16.3.0
-  repoCreatedAt: '2026-09-22T06:20:27Z'
-  repoLastCommitAt: '2026-10-26T10:59:00Z'
-  commitsInWindow: 21
-  totalCommits: 465
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 462
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/lore-plugin
-  repoUrl: https://github.com/andresanemic/lore-plugin
-  name: lore-plugin
-  description: Stop explaining your project to the AI every morning. With your approval, Lore turns lessons
-    into project criteria the AI can use next time. Provider-neutral and local-first.
-  homepage: https://github.com/andresanemic/lore-plugin#readme
-  tier: declared
-  language: JavaScript
-  license: Apache-2.0
-  stars: 7
-  forks: 1
-  selfTags:
-  - lore
-  - lus
-  - context-engineering
-  - human-ai-collaboration
-  - knowledge-management
-  - agent-skills
-  - ai-agents
-  - claude-code
-  - codex
-  - decision-making
-  - project-memory
-  - ai-memory
-  - developer-tools
-  - local-first
-  - spec-driven-development
-  - spec-kit
-  - claude-skills
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-07-05T03:52:48Z'
-  repoLastCommitAt: '2026-10-26T11:00:47Z'
-  commitsInWindow: 12
-  totalCommits: 688
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 666
-    country: CL
-  - login: codex
-    url: https://github.com/codex
-    avatarUrl: https://avatars.githubusercontent.com/u/267193182?v=4
-    contributions: 3
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: Zer0-Knowledge-Hack/puls3
-  repoUrl: https://github.com/Zer0-Knowledge-Hack/puls3
-  name: puls3
-  description: 'The agent hub on Stellar: create AI agents with their own on-chain identity and wallet,
-    find them, and pay them in USDC.'
-  homepage: https://puls3.org
-  tier: declared
-  language: Dart
-  license: Apache-2.0
-  stars: 5
-  forks: 2
-  selfTags:
-  - agentic-payments
-  - ai-agents
-  - dart
-  - flutter
-  - serverpod
-  - soroban
-  - stellar
-  - usdc
-  stack:
-  - soroban-sdk
-  stackVersions:
-    soroban-sdk: null
-  repoCreatedAt: '2026-09-13T12:50:52Z'
-  repoLastCommitAt: '2026-10-27T14:46:14Z'
-  commitsInWindow: 5
-  totalCommits: 144
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: Zer0-Knowledge-Hack
-    avatarUrl: https://avatars.githubusercontent.com/u/309223625?v=4
-    country: null
-  contributors:
-  - login: TOMOKI977
-    url: https://github.com/TOMOKI977
-    avatarUrl: https://avatars.githubusercontent.com/u/39506930?v=4
-    contributions: 43
-    country: BO
-  - login: XxHugheadxX
-    url: https://github.com/XxHugheadxX
-    avatarUrl: https://avatars.githubusercontent.com/u/170156995?v=4
-    contributions: 43
-    country: null
-  - login: moises-cisneros
-    url: https://github.com/moises-cisneros
-    avatarUrl: https://avatars.githubusercontent.com/u/110249336?v=4
-    contributions: 22
-    country: BO
-  - login: Pericena
-    url: https://github.com/Pericena
-    avatarUrl: https://avatars.githubusercontent.com/u/24308878?v=4
-    contributions: 20
-    country: BO
-  - login: fercodes
-    url: https://github.com/fercodes
-    avatarUrl: https://avatars.githubusercontent.com/u/59489587?v=4
-    contributions: 11
-    country: null
-  - login: anahillanos474-max
-    url: https://github.com/anahillanos474-max
-    avatarUrl: https://avatars.githubusercontent.com/u/325463549?v=4
-    contributions: 3
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: CoKeFish/kiba
-  repoUrl: https://github.com/CoKeFish/kiba
-  name: kiba
-  description: Your AI assistant, now with a wallet. Kiba lets any AI assistant discover specialized services
-    and pay for them per call in USDC on Stellar, inside the chat. No sign-ups, no API keys, no subscriptions.
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: MIT
-  stars: 4
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    soroban-sdk: '22'
-    '@stellar/stellar-sdk': ^15.1.0
-    '@creit.tech/stellar-wallets-kit': ^2.5.0
-  repoCreatedAt: '2026-06-24T15:42:25Z'
-  repoLastCommitAt: '2026-10-26T06:39:50Z'
-  commitsInWindow: 57
-  totalCommits: 516
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: CoKeFish
-    avatarUrl: https://avatars.githubusercontent.com/u/37970518?v=4
-    country: CO
-  contributors:
-  - login: andreMD287
-    url: https://github.com/andreMD287
-    avatarUrl: https://avatars.githubusercontent.com/u/150500629?v=4
-    contributions: 281
-    country: null
-  - login: CoKeFish
-    url: https://github.com/CoKeFish
-    avatarUrl: https://avatars.githubusercontent.com/u/37970518?v=4
-    contributions: 228
-    country: CO
-  - login: Ansllxs
-    url: https://github.com/Ansllxs
-    avatarUrl: https://avatars.githubusercontent.com/u/210178668?v=4
-    contributions: 7
-    country: CR
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: pollar-xyz/HackMeridian-2026-Pollar-Studio
-  repoUrl: https://github.com/pollar-xyz/HackMeridian-2026-Pollar-Studio
-  name: HackMeridian-2026-Pollar-Studio
-  description: Describe an app in plain words and get a live Stellar app with login, a seedless wallet,
-    USDC payments and bank cashouts, at its own link. Built at HackMeridian 2026.
-  homepage: https://app.pollar.studio
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 2
-  forks: 0
-  selfTags:
-  - ai-app-builder
-  - hackmeridian
-  - nextjs
-  - no-code
-  - pollar
-  - soroban
-  - stablecoins
-  - stellar
-  - usdc
-  - wallet
-  - x402
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-25T19:55:43Z'
-  repoLastCommitAt: '2026-10-26T13:02:59Z'
-  commitsInWindow: 50
-  totalCommits: 50
-  createdDuringHack: true
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: pollar-xyz
-    avatarUrl: https://avatars.githubusercontent.com/u/260758874?v=4
-    country: null
-  contributors:
-  - login: OscarGauss
-    url: https://github.com/OscarGauss
-    avatarUrl: https://avatars.githubusercontent.com/u/6438307?v=4
-    contributions: 40
-    country: BO
-  - login: aleregex
-    url: https://github.com/aleregex
-    avatarUrl: https://avatars.githubusercontent.com/u/40779741?v=4
-    contributions: 10
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: nas211/stellar-v3
-  repoUrl: https://github.com/nas211/stellar-v3
-  name: stellar-v3
-  description: StealthOS Stellar wallet frontend — powered by Vanta our proprietary privacy technology.
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: NOASSERTION
-  stars: 1
-  forks: 0
-  selfTags: []
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-25T23:24:27Z'
-  repoLastCommitAt: '2026-10-26T08:59:12Z'
-  commitsInWindow: 6
-  totalCommits: 6
-  createdDuringHack: true
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: nas211
-    avatarUrl: https://avatars.githubusercontent.com/u/62300077?v=4
-    country: null
-  contributors:
-  - login: nas211
-    url: https://github.com/nas211
-    avatarUrl: https://avatars.githubusercontent.com/u/62300077?v=4
-    contributions: 6
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: 0xVeraHQ/artifex-overview
-  repoUrl: https://github.com/0xVeraHQ/artifex-overview
-  name: artifex-overview
-  description: Artifex presentation for HackMeridian 2026 (Scale). Product, QA, releases, contracts, and
-    wallets. No source code.
-  homepage: null
-  tier: declared
-  language: Python
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-22T11:46:04Z'
-  repoLastCommitAt: '2026-10-26T08:40:56Z'
-  commitsInWindow: 15
-  totalCommits: 16
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: 0xVeraHQ
-    avatarUrl: https://avatars.githubusercontent.com/u/288298217?v=4
-    country: null
-  contributors:
-  - login: jowy81
-    url: https://github.com/jowy81
-    avatarUrl: https://avatars.githubusercontent.com/u/86975821?v=4
-    contributions: 16
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts:
-    - address: GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
-    wasmUploads: []
-    contracts: []
-    evidence:
-    - kind: contract
-      subject: CATWKQFEW2CGBPDVEUYFMJAC27NRNTLDGAMNQHKVMU3OZ54XHHHRMJMS
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CATWKQFEW2CGBPDVEUYFMJAC27NRNTLDGAMNQHKVMU3OZ54XHHHRMJMS
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CB4G7J4XGFL66CFQT5DUBPIVKLJKRGXKXY25IGDMKFZVIIJVLWMVQSJJ
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CB4G7J4XGFL66CFQT5DUBPIVKLJKRGXKXY25IGDMKFZVIIJVLWMVQSJJ
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CBEVANRZPBH4XJYGMWZUQMPZYAG2TIOYA6MRZGRNHJJNLSIUTRW3RAKT
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBEVANRZPBH4XJYGMWZUQMPZYAG2TIOYA6MRZGRNHJJNLSIUTRW3RAKT
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CBTFT5GZEA4USVKFPYN7YXU3KUXJJL27ATBD5W72PBORU4CRFB6VA47K
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBTFT5GZEA4USVKFPYN7YXU3KUXJJL27ATBD5W72PBORU4CRFB6VA47K
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CBYXLDJXQ4LPA3NX77V6VW4OAVQBZQV6JTNVQ7FZ3VDU7BRTOHSSJLSZ
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBYXLDJXQ4LPA3NX77V6VW4OAVQBZQV6JTNVQ7FZ3VDU7BRTOHSSJLSZ
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CCDVNSOSY3S45UYZH3N7Q24LUZEK77EAYHWDL5ZYX7H4SDXEFK2G2OYJ
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCDVNSOSY3S45UYZH3N7Q24LUZEK77EAYHWDL5ZYX7H4SDXEFK2G2OYJ
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CCEX7WG3M6JW7YWNBSSVP473KIEGWPGMPOP3JFJ6A4BGTBW2UFKQVUDT
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCEX7WG3M6JW7YWNBSSVP473KIEGWPGMPOP3JFJ6A4BGTBW2UFKQVUDT
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CCZMGEYTOCZ56L6U26ZS6KGWQ2NNUC3FNXFO5LDS6YQYJ5KP2DVGULFX
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCZMGEYTOCZ56L6U26ZS6KGWQ2NNUC3FNXFO5LDS6YQYJ5KP2DVGULFX
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: contract
-      subject: CDD2BYHRY7ZCMMHBRETM4X2EGVCTKMAGKNRWSCJYHOTLLCWYK2UZY4CC
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CDD2BYHRY7ZCMMHBRETM4X2EGVCTKMAGKNRWSCJYHOTLLCWYK2UZY4CC
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/CONTRACTS.md
-    - kind: account
-      subject: GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
-      repoFileUrl: https://github.com/0xVeraHQ/artifex-overview/blob/HEAD/WALLETS.md
-- repoFullName: Cseni1/flexipay
-  repoUrl: https://github.com/Cseni1/flexipay
-  name: flexipay
-  description: 'FlexiPay: pay anyone, anywhere. They choose how to get paid. Orchestration over bank,
-    e-wallet and crypto rails, settled in USDC on Stellar testnet (Soroban vault).'
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: Apache-2.0
-  stars: 0
-  forks: 1
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - stellar-xdr
-  - '@stellar/stellar-sdk'
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    soroban-sdk: null
-    stellar-xdr: 26.0.1
-    '@stellar/stellar-sdk': ^16.1.0
-    '@creit.tech/stellar-wallets-kit': ^2.5.0
-  repoCreatedAt: '2026-09-12T15:23:50Z'
-  repoLastCommitAt: '2026-10-26T10:29:21Z'
-  commitsInWindow: 91
-  totalCommits: 312
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: Cseni1
-    avatarUrl: https://avatars.githubusercontent.com/u/199313317?v=4
-    country: null
-  contributors:
-  - login: Cseni1
-    url: https://github.com/Cseni1
-    avatarUrl: https://avatars.githubusercontent.com/u/199313317?v=4
-    contributions: 297
-    country: null
-  - login: elcaminojourney-flexiwork
-    url: https://github.com/elcaminojourney-flexiwork
-    avatarUrl: https://avatars.githubusercontent.com/u/258557014?v=4
-    contributions: 4
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: HackatonWinnners/toolport
-  repoUrl: https://github.com/HackatonWinnners/toolport
-  name: toolport
-  description: One port for every paid tool
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    '@stellar/stellar-sdk': ^16.3.0
-    '@stellar/freighter-api': ^6.0.1
-  repoCreatedAt: '2026-10-25T22:37:08Z'
-  repoLastCommitAt: '2026-10-26T03:09:21Z'
-  commitsInWindow: 45
-  totalCommits: 45
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: HackatonWinnners
-    avatarUrl: https://avatars.githubusercontent.com/u/242439418?v=4
-    country: null
-  contributors:
-  - login: kwiasya
-    url: https://github.com/kwiasya
-    avatarUrl: https://avatars.githubusercontent.com/u/207998749?v=4
-    contributions: 23
-    country: null
-  - login: madvil2
-    url: https://github.com/madvil2
-    avatarUrl: https://avatars.githubusercontent.com/u/16052889?v=4
-    contributions: 14
-    country: null
-  - login: 42navalkrinzhaslattt
-    url: https://github.com/42navalkrinzhaslattt
-    avatarUrl: https://avatars.githubusercontent.com/u/120563003?v=4
-    contributions: 8
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: Paolag93/plan4her-stellar
-  repoUrl: https://github.com/Paolag93/plan4her-stellar
-  name: plan4her-stellar
-  description: Plan4Her – Privacy-first, cycle-aware productivity app with community habit pools powered
-    by Stellar. HackMeridian 2026.
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    '@stellar/stellar-sdk': ^14.6.1
-    '@stellar/freighter-api': ^6.0.1
-  repoCreatedAt: '2026-10-25T21:44:05Z'
-  repoLastCommitAt: '2026-10-26T11:23:05Z'
-  commitsInWindow: 47
-  totalCommits: 47
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: Paolag93
-    avatarUrl: https://avatars.githubusercontent.com/u/112600052?v=4
-    country: null
-  contributors:
-  - login: Paolag93
-    url: https://github.com/Paolag93
-    avatarUrl: https://avatars.githubusercontent.com/u/112600052?v=4
-    contributions: 35
-    country: null
-  - login: claude
-    url: https://github.com/claude
-    avatarUrl: https://avatars.githubusercontent.com/u/81847?v=4
-    contributions: 12
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts:
-    - address: GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
-    - address: GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
-    wasmUploads: []
-    contracts: []
-    evidence:
-    - kind: account
-      subject: GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
-      repoFileUrl: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/docs/HACKMERIDIAN_EVIDENCE.md
-    - kind: account
-      subject: GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
-      repoFileUrl: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/docs/HACKMERIDIAN_EVIDENCE.md
-- repoFullName: PhilipLewellen/cdp-clear
-  repoUrl: https://github.com/PhilipLewellen/cdp-clear
-  name: cdp-clear
-  description: null
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    '@stellar/stellar-sdk': ^17.3.0
-    '@stellar/freighter-api': ^6.0.1
-  repoCreatedAt: '2026-10-25T17:59:37Z'
-  repoLastCommitAt: '2026-10-25T21:34:47Z'
-  commitsInWindow: 179
-  totalCommits: 180
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: PhilipLewellen
-    avatarUrl: https://avatars.githubusercontent.com/u/296170140?v=4
-    country: null
-  contributors:
-  - login: PhilipLewellen
-    url: https://github.com/PhilipLewellen
-    avatarUrl: https://avatars.githubusercontent.com/u/296170140?v=4
-    contributions: 2
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: Robson20019/Vault17
-  repoUrl: https://github.com/Robson20019/Vault17
-  name: Vault17
-  description: null
-  homepage: https://vault17.vercel.app
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    soroban-sdk: null
-    '@stellar/stellar-sdk': ^17.4.0
-    '@creit.tech/stellar-wallets-kit': ^2.7.1
-  repoCreatedAt: '2026-10-25T13:03:59Z'
-  repoLastCommitAt: '2026-10-25T23:03:37Z'
-  commitsInWindow: 3
-  totalCommits: 3
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: Robson20019
-    avatarUrl: https://avatars.githubusercontent.com/u/73843352?v=4
-    country: null
-  contributors:
-  - login: Robson20019
-    url: https://github.com/Robson20019
-    avatarUrl: https://avatars.githubusercontent.com/u/73843352?v=4
-    contributions: 3
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: SendaLabs/SendaBussines
-  repoUrl: https://github.com/SendaLabs/SendaBussines
-  name: SendaBussines
-  description: null
-  homepage: https://senda-bussines.vercel.app
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    soroban-sdk: null
-    '@stellar/stellar-sdk': ^14.1.1
-    '@stellar/freighter-api': ^6.0.1
-  repoCreatedAt: '2026-10-25T18:42:05Z'
-  repoLastCommitAt: '2026-10-26T02:18:24Z'
-  commitsInWindow: 31
-  totalCommits: 31
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: SendaLabs
-    avatarUrl: https://avatars.githubusercontent.com/u/316336073?v=4
-    country: null
-  contributors:
-  - login: Nicobustelo
-    url: https://github.com/Nicobustelo
-    avatarUrl: https://avatars.githubusercontent.com/u/88746672?v=4
-    contributions: 19
-    country: null
-  - login: delfinacorr
-    url: https://github.com/delfinacorr
-    avatarUrl: https://avatars.githubusercontent.com/u/105253541?v=4
-    contributions: 8
-    country: AR
-  - login: mlo-aa
-    url: https://github.com/mlo-aa
-    avatarUrl: https://avatars.githubusercontent.com/u/187245354?v=4
-    contributions: 4
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: alejandragarcia13/Disruption-Agents-
-  repoUrl: https://github.com/alejandragarcia13/Disruption-Agents-
-  name: Disruption-Agents-
-  description: null
-  homepage: null
-  tier: declared
-  language: JavaScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': ^17.4.0
-  repoCreatedAt: '2026-10-26T11:21:56Z'
-  repoLastCommitAt: '2026-10-26T11:27:02Z'
-  commitsInWindow: 1
-  totalCommits: 1
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: alejandragarcia13
-    avatarUrl: https://avatars.githubusercontent.com/u/341670403?v=4
-    country: null
-  contributors:
-  - login: alejandragarcia13
-    url: https://github.com/alejandragarcia13
-    avatarUrl: https://avatars.githubusercontent.com/u/341670403?v=4
-    contributions: 1
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/andresanemic
-  repoUrl: https://github.com/andresanemic/andresanemic
-  name: andresanemic
-  description: Andrés Peña Mellado · LUS, Lore Plugin, Vespi and poetry
-  homepage: https://andresanemic.vercel.app
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-05-24T22:24:59Z'
-  repoLastCommitAt: '2026-10-25T13:58:02Z'
-  commitsInWindow: 2
-  totalCommits: 29
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 29
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/casa-firme
-  repoUrl: https://github.com/andresanemic/casa-firme
-  name: casa-firme
-  description: 'Casa Firme: housing for informal settlements on Vespi, where authority is born in the
-    committee''s assembly.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - community-governance
-  - hackathon
-  - housing
-  - human-in-the-loop
-  - informal-settlements
-  - lore-plugin
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:37:32Z'
-  repoLastCommitAt: '2026-10-26T11:13:31Z'
-  commitsInWindow: 3
-  totalCommits: 38
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 38
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/catedra
-  repoUrl: https://github.com/andresanemic/catedra
-  name: catedra
-  description: 'Catedra: the university on Vespi, with declared AI use, professor-signed grades and verifiable
-    degrees.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - academic-integrity
-  - ai-agents
-  - bounded-authority
-  - credentials
-  - education
-  - hackathon
-  - human-in-the-loop
-  - lore-plugin
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:20:51Z'
-  repoLastCommitAt: '2026-10-26T11:13:40Z'
-  commitsInWindow: 3
-  totalCommits: 37
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 37
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/escribano
-  repoUrl: https://github.com/andresanemic/escribano
-  name: escribano
-  description: 'Escribano: a readable record of every change to a DAO''s governing contract on Vespi:
-    what changed, who authorized it and its receipt.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - audit-trail
-  - bounded-authority
-  - contracts
-  - dao
-  - governance
-  - hackathon
-  - human-in-the-loop
-  - lore-plugin
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T19:54:42Z'
-  repoLastCommitAt: '2026-10-26T11:13:46Z'
-  commitsInWindow: 3
-  totalCommits: 40
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 40
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/farolero
-  repoUrl: https://github.com/andresanemic/farolero
-  name: farolero
-  description: 'Farolero: bounded authority for AI agents on Vespi, where delegation can only narrow.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - agent-authority
-  - ai-agent-safety
-  - ai-agents
-  - bounded-authority
-  - delegation
-  - hackathon
-  - human-in-the-loop
-  - lore-plugin
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:21:12Z'
-  repoLastCommitAt: '2026-10-26T11:13:53Z'
-  commitsInWindow: 4
-  totalCommits: 40
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 40
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/ficha-contigo
-  repoUrl: https://github.com/andresanemic/ficha-contigo
-  name: ficha-contigo
-  description: 'Ficha Contigo: the clinical record on Vespi, where the institution uses only what the
-    patient granted.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - hackathon
-  - health-records
-  - human-in-the-loop
-  - lore-plugin
-  - patient-consent
-  - privacy
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:21:01Z'
-  repoLastCommitAt: '2026-10-26T11:14:00Z'
-  commitsInWindow: 3
-  totalCommits: 38
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 38
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/llavero
-  repoUrl: https://github.com/andresanemic/llavero
-  name: llavero
-  description: 'Llavero: ''my data'' on Vespi, who asks for it, for what, under which permission, and
-    what was refused.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - consent
-  - data-permissions
-  - hackathon
-  - human-in-the-loop
-  - lore-plugin
-  - personal-data
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:41:51Z'
-  repoLastCommitAt: '2026-10-26T11:14:07Z'
-  commitsInWindow: 3
-  totalCommits: 38
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 38
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/marea
-  repoUrl: https://github.com/andresanemic/marea
-  name: marea
-  description: 'Marea: verifying climate commitments between countries on Vespi without counting a reduction
-    twice.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - climate
-  - hackathon
-  - human-in-the-loop
-  - lore-plugin
-  - verifiable-operations
-  - verification
-  - vespi
-  - climate-commitments
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:52:32Z'
-  repoLastCommitAt: '2026-10-26T11:14:14Z'
-  commitsInWindow: 4
-  totalCommits: 36
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 36
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/permamuseum
-  repoUrl: https://github.com/andresanemic/permamuseum
-  name: permamuseum
-  description: 'Permamuseum: Latin American cultural heritage on Stellar with provenance and permissions,
-    on Vespi.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - cultural-heritage
-  - hackathon
-  - human-in-the-loop
-  - latin-america
-  - lore-plugin
-  - provenance
-  - stellar
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': ^16.3.1
-  repoCreatedAt: '2026-10-03T19:23:12Z'
-  repoLastCommitAt: '2026-10-26T11:14:50Z'
-  commitsInWindow: 4
-  totalCommits: 40
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 40
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/queen
-  repoUrl: https://github.com/andresanemic/queen
-  name: queen
-  description: 'Queen: the marketing agency of the Stellar ecosystem on Vespi, with budgets inside a granted
-    ceiling.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - budgets
-  - hackathon
-  - human-in-the-loop
-  - lore-plugin
-  - marketing
-  - spending-limits
-  - stellar
-  - verifiable-operations
-  - vespi
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:20:37Z'
-  repoLastCommitAt: '2026-10-26T11:13:18Z'
-  commitsInWindow: 4
-  totalCommits: 39
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 39
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/temis
-  repoUrl: https://github.com/andresanemic/temis
-  name: temis
-  description: 'TEMIS: verifiable agreements by milestones, anchored on Stellar testnet. Built with the
-    Lore method and designed with Vespi.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - agreements
-  - ai-agents
-  - hackathon
-  - legal-tech
-  - lore-plugin
-  - milestones
-  - stellar
-  - stellar-testnet
-  - verifiable-operations
-  - find-your-way
-  - hackmeridian
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': ^16.3.1
-  repoCreatedAt: '2026-10-03T17:32:23Z'
-  repoLastCommitAt: '2026-10-26T11:14:54Z'
-  commitsInWindow: 5
-  totalCommits: 39
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 39
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: andresanemic/vela
-  repoUrl: https://github.com/andresanemic/vela
-  name: vela
-  description: 'Vela: a legal channel on Vespi that holds publication until verification.'
-  homepage: https://vespi.xyz
-  tier: declared
-  language: JavaScript
-  license: NOASSERTION
-  stars: 0
-  forks: 0
-  selfTags:
-  - ai-agents
-  - bounded-authority
-  - hackathon
-  - human-in-the-loop
-  - legal-tech
-  - lore-plugin
-  - verifiable-operations
-  - verification
-  - vespi
-  - publication-control
-  - find-your-way
-  - hackmeridian
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-03T18:23:29Z'
-  repoLastCommitAt: '2026-10-26T11:14:21Z'
-  commitsInWindow: 3
-  totalCommits: 39
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    country: CL
-  contributors:
-  - login: andresanemic
-    url: https://github.com/andresanemic
-    avatarUrl: https://avatars.githubusercontent.com/u/12744046?v=4
-    contributions: 39
-    country: CL
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: atomsplits/Cosmo
-  repoUrl: https://github.com/atomsplits/Cosmo
-  name: Cosmo
-  description: My solo submission for HackMeridian Lisboa 2026
-  homepage: null
-  tier: declared
-  language: Kotlin
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-25T10:12:48Z'
-  repoLastCommitAt: '2026-10-26T10:53:35Z'
-  commitsInWindow: 45
-  totalCommits: 45
-  createdDuringHack: true
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: atomsplits
-    avatarUrl: https://avatars.githubusercontent.com/u/319958347?v=4
-    country: null
-  contributors:
-  - login: claude
-    url: https://github.com/claude
-    avatarUrl: https://avatars.githubusercontent.com/u/81847?v=4
-    contributions: 37
-    country: null
-  - login: atomsplits
-    url: https://github.com/atomsplits
-    avatarUrl: https://avatars.githubusercontent.com/u/319958347?v=4
-    contributions: 8
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: beto-rocha-blockchain/ficha-stellar
-  repoUrl: https://github.com/beto-rocha-blockchain/ficha-stellar
-  name: ficha-stellar
-  description: 'Pay-per-minute phone charging on Stellar: a keyless station, a Soroban escrow with no
-    admin, and refunds of unused time proved by a hash chain.'
-  homepage: https://ficha-stellar.vercel.app
-  tier: declared
-  language: TypeScript
-  license: MIT
-  stars: 0
-  forks: 0
-  selfTags:
-  - hackathon
-  - hackmeridian
-  - soroban
-  - stellar
-  stack:
-  - soroban-sdk
-  - stellar-sdk
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    soroban-sdk: 28.0.0
-    stellar-sdk: 16.1.1
-    '@stellar/stellar-sdk': ^17.2.1
-    '@stellar/freighter-api': 6.0.1
-  repoCreatedAt: '2026-10-23T11:49:41Z'
-  repoLastCommitAt: '2026-10-26T00:55:37Z'
-  commitsInWindow: 77
-  totalCommits: 80
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: beto-rocha-blockchain
-    avatarUrl: https://avatars.githubusercontent.com/u/177217792?v=4
-    country: BR
-  contributors:
-  - login: beto-rocha-blockchain
-    url: https://github.com/beto-rocha-blockchain
-    avatarUrl: https://avatars.githubusercontent.com/u/177217792?v=4
-    contributions: 80
-    country: BR
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: captain-red-baron/niaa-hackmeridian
-  repoUrl: https://github.com/captain-red-baron/niaa-hackmeridian
-  name: niaa-hackmeridian
-  description: Hackathon
-  homepage: null
-  tier: declared
-  language: null
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-25T21:06:22Z'
-  repoLastCommitAt: '2026-10-25T22:41:51Z'
-  commitsInWindow: 5
-  totalCommits: 5
-  createdDuringHack: true
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: captain-red-baron
-    avatarUrl: https://avatars.githubusercontent.com/u/18538843?v=4
-    country: PT
-  contributors:
-  - login: captain-red-baron
-    url: https://github.com/captain-red-baron
-    avatarUrl: https://avatars.githubusercontent.com/u/18538843?v=4
-    contributions: 5
-    country: PT
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: devodii/hackproof
-  repoUrl: https://github.com/devodii/hackproof
-  name: hackproof
-  description: null
-  homepage: null
-  tier: declared
-  language: Python
-  license: MIT
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - stellar-sdk
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    stellar-sdk: 16.1.1
-    '@creit.tech/stellar-wallets-kit': ^2.7.1
-  repoCreatedAt: '2026-10-26T00:10:40Z'
-  repoLastCommitAt: '2026-10-27T21:26:56Z'
-  commitsInWindow: 1
-  totalCommits: 90
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: devodii
-    avatarUrl: https://avatars.githubusercontent.com/u/113144477?v=4
-    country: null
-  contributors:
-  - login: devodii
-    url: https://github.com/devodii
-    avatarUrl: https://avatars.githubusercontent.com/u/113144477?v=4
-    contributions: 90
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: dilayapici/Joinkarga
-  repoUrl: https://github.com/dilayapici/Joinkarga
-  name: Joinkarga
-  description: null
-  homepage: https://joinkarga.vercel.app
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': ^14.0.0
-  repoCreatedAt: '2026-10-26T11:09:12Z'
-  repoLastCommitAt: '2026-10-26T12:22:39Z'
-  commitsInWindow: 2
-  totalCommits: 6
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: dilayapici
-    avatarUrl: https://avatars.githubusercontent.com/u/71191002?v=4
-    country: null
-  contributors:
-  - login: dilayapici
-    url: https://github.com/dilayapici
-    avatarUrl: https://avatars.githubusercontent.com/u/71191002?v=4
-    contributions: 6
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: elopin42/TaskVault
-  repoUrl: https://github.com/elopin42/TaskVault
-  name: TaskVault
-  description: Hackmeridian
-  homepage: null
-  tier: declared
-  language: Python
-  license: MIT
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - stellar-sdk
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    stellar-sdk: 16.1.1
-    '@stellar/stellar-sdk': 17.3.0
-    '@stellar/freighter-api': 6.0.1
-  repoCreatedAt: '2026-10-24T19:49:26Z'
-  repoLastCommitAt: '2026-10-26T11:08:16Z'
-  commitsInWindow: 39
-  totalCommits: 62
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: elopin42
-    avatarUrl: https://avatars.githubusercontent.com/u/74935224?v=4
-    country: null
-  contributors:
-  - login: elopin42
-    url: https://github.com/elopin42
-    avatarUrl: https://avatars.githubusercontent.com/u/74935224?v=4
-    contributions: 40
-    country: null
-  - login: claude
-    url: https://github.com/claude
-    avatarUrl: https://avatars.githubusercontent.com/u/81847?v=4
-    contributions: 12
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: emirykl/nema
-  repoUrl: https://github.com/emirykl/nema
-  name: nema
-  description: null
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    soroban-sdk: null
-    '@stellar/stellar-sdk': ^17.3.0
-    '@creit.tech/stellar-wallets-kit': ^2.7.1
-  repoCreatedAt: '2026-10-25T22:40:45Z'
-  repoLastCommitAt: '2026-10-26T10:55:17Z'
-  commitsInWindow: 70
-  totalCommits: 70
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: emirykl
-    avatarUrl: https://avatars.githubusercontent.com/u/160465301?v=4
-    country: null
-  contributors:
-  - login: emirykl
-    url: https://github.com/emirykl
-    avatarUrl: https://avatars.githubusercontent.com/u/160465301?v=4
-    contributions: 70
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: hwdeboer1977/Enable_HackMeridian
-  repoUrl: https://github.com/hwdeboer1977/Enable_HackMeridian
-  name: Enable_HackMeridian
-  description: null
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    soroban-sdk: null
-    '@stellar/stellar-sdk': ^17.2.1
-  repoCreatedAt: '2026-10-24T17:07:15Z'
-  repoLastCommitAt: '2026-10-26T11:07:32Z'
-  commitsInWindow: 36
-  totalCommits: 103
-  createdDuringHack: false
-  stellarAddedDuringHack: false
-  mentionsHackathon: true
-  owner:
-    login: hwdeboer1977
-    avatarUrl: https://avatars.githubusercontent.com/u/133354887?v=4
-    country: null
-  contributors:
-  - login: hwdeboer1977
-    url: https://github.com/hwdeboer1977
-    avatarUrl: https://avatars.githubusercontent.com/u/133354887?v=4
-    contributions: 103
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: joinsendr/SendrPay
-  repoUrl: https://github.com/joinsendr/SendrPay
-  name: SendrPay
-  description: Pay like a local, anywhere in the world. Sendr Pay lets you use your USDC wallet to pay
-    local merchants abroad by scanning QR codes without transferring money cross-border to a local bank
-    account.
-  homepage: https://sendrpay.sendr.cash
-  tier: declared
-  language: TypeScript
-  license: MIT
-  stars: 0
-  forks: 0
-  selfTags:
-  - payments
-  - wallet
-  stack:
-  - '@stellar/stellar-sdk'
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    '@stellar/stellar-sdk': ^17.4.0
-    '@creit.tech/stellar-wallets-kit': ^2.7.1
-  repoCreatedAt: '2026-10-25T13:41:20Z'
-  repoLastCommitAt: '2026-10-26T08:10:45Z'
-  commitsInWindow: 17
-  totalCommits: 17
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: joinsendr
-    avatarUrl: https://avatars.githubusercontent.com/u/169680953?v=4
-    country: null
-  contributors:
-  - login: joinsendr
-    url: https://github.com/joinsendr
-    avatarUrl: https://avatars.githubusercontent.com/u/169680953?v=4
-    contributions: 17
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: manuuvllgs/manuuvllgs
-  repoUrl: https://github.com/manuuvllgs/manuuvllgs
-  name: manuuvllgs
-  description: null
-  homepage: null
-  tier: declared
-  language: null
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-26T11:57:44Z'
-  repoLastCommitAt: '2026-10-26T11:59:06Z'
-  commitsInWindow: 2
-  totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: manuuvllgs
-    avatarUrl: https://avatars.githubusercontent.com/u/108551582?v=4
-    country: ES
-  contributors:
-  - login: manuuvllgs
-    url: https://github.com/manuuvllgs
-    avatarUrl: https://avatars.githubusercontent.com/u/108551582?v=4
-    contributions: 2
-    country: ES
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts:
-    - address: GARXWCPKKRVKGJ5D2ESLXF4LZKN5PFTSB5Z6WJK72RBUJV5TB33GP5B2
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GARXWCPKKRVKGJ5D2ESLXF4LZKN5PFTSB5Z6WJK72RBUJV5TB33GP5B2
-    - address: GBD6R4K5CK6NH2AAHZMABLE3DZPK5REOPPECNXZDWAUR3J5FQNHNCGWT
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GBD6R4K5CK6NH2AAHZMABLE3DZPK5REOPPECNXZDWAUR3J5FQNHNCGWT
-    wasmUploads: []
-    contracts: []
-    evidence:
-    - kind: contract
-      subject: CBCRUQ2EQXN6E7YCNM2K3M2NHUU6IZUZWX65PAVROL2VWQC2DCWWYNEX
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBCRUQ2EQXN6E7YCNM2K3M2NHUU6IZUZWX65PAVROL2VWQC2DCWWYNEX
-      repoFileUrl: https://github.com/manuuvllgs/manuuvllgs/blob/HEAD/https://lumensplit.vercel.app/assets/index-OtHtafr0.js
-    - kind: asset
-      subject: EURT:GARXWCPKKRVKGJ5D2ESLXF4LZKN5PFTSB5Z6WJK72RBUJV5TB33GP5B2
-      method: asset_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/asset/EURT-GARXWCPKKRVKGJ5D2ESLXF4LZKN5PFTSB5Z6WJK72RBUJV5TB33GP5B2
-      repoFileUrl: https://github.com/manuuvllgs/manuuvllgs/blob/HEAD/https://lumensplit.vercel.app/assets/index-OtHtafr0.js
-    - kind: account
-      subject: GARXWCPKKRVKGJ5D2ESLXF4LZKN5PFTSB5Z6WJK72RBUJV5TB33GP5B2
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GARXWCPKKRVKGJ5D2ESLXF4LZKN5PFTSB5Z6WJK72RBUJV5TB33GP5B2
-      repoFileUrl: https://github.com/manuuvllgs/manuuvllgs/blob/HEAD/https://lumensplit.vercel.app/assets/index-OtHtafr0.js
-- repoFullName: nseguias/kintsu
-  repoUrl: https://github.com/nseguias/kintsu
-  name: kintsu
-  description: Stellar wallet backed up to 3 NFC tags, with an offline 2FA device approving every payment.
-    HackMeridian 2026.
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': 17.2.1
-  repoCreatedAt: '2026-10-26T09:42:44Z'
-  repoLastCommitAt: '2026-10-26T11:46:03Z'
-  commitsInWindow: 42
-  totalCommits: 42
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: nseguias
-    avatarUrl: https://avatars.githubusercontent.com/u/72363768?v=4
-    country: null
-  contributors:
-  - login: nseguias
-    url: https://github.com/nseguias
-    avatarUrl: https://avatars.githubusercontent.com/u/72363768?v=4
-    contributions: 42
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: siwakadrianna-byte/ghost-proof
-  repoUrl: https://github.com/siwakadrianna-byte/ghost-proof
-  name: ghost-proof
-  description: 'Escrow for freelance designers on Stellar: no more getting ghosted.'
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    '@stellar/stellar-sdk': ^17.4.0
-    '@stellar/freighter-api': ^6.0.0
-  repoCreatedAt: '2026-10-25T14:18:07Z'
-  repoLastCommitAt: '2026-10-26T11:11:34Z'
-  commitsInWindow: 24
-  totalCommits: 24
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: siwakadrianna-byte
-    avatarUrl: https://avatars.githubusercontent.com/u/240194832?v=4
-    country: null
-  contributors:
-  - login: siwakadrianna-byte
-    url: https://github.com/siwakadrianna-byte
-    avatarUrl: https://avatars.githubusercontent.com/u/240194832?v=4
-    contributions: 24
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: sohamtech-uk/cherrypay-wallet
-  repoUrl: https://github.com/sohamtech-uk/cherrypay-wallet
-  name: cherrypay-wallet
-  description: Cherrypay wallet powered by Stellar
-  homepage: null
-  tier: declared
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    '@stellar/stellar-sdk': ^14.0.0
-  repoCreatedAt: '2026-10-25T11:52:27Z'
-  repoLastCommitAt: '2026-10-26T11:32:30Z'
-  commitsInWindow: 350
-  totalCommits: 350
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: sohamtech-uk
-    avatarUrl: https://avatars.githubusercontent.com/u/274770785?v=4
-    country: null
-  contributors:
-  - login: sunil-soham-tech
-    url: https://github.com/sunil-soham-tech
-    avatarUrl: https://avatars.githubusercontent.com/u/284274028?v=4
-    contributions: 209
-    country: GB
-  - login: sohamtechuk
-    url: https://github.com/sohamtechuk
-    avatarUrl: https://avatars.githubusercontent.com/u/274766690?v=4
-    contributions: 141
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: udirobert/jejak
-  repoUrl: https://github.com/udirobert/jejak
-  name: jejak
-  description: Jejak — photo-first supply-chain provenance & cost-split receipt anchored on Stellar Testnet
-    (MEMO_HASH + Horizon verification, passkey smart accounts). Stellar 'Find Your Way' Hackathon.
-  homepage: null
-  tier: declared
-  language: JavaScript
-  license: MIT
-  stars: 0
-  forks: 0
-  selfTags:
-  - hackathon
-  - react
-  - soroban
-  - stellar
-  - stellar-testnet
-  - supply-chain
-  - vite
-  stack: []
-  stackVersions: {}
-  repoCreatedAt: '2026-10-13T23:39:45Z'
-  repoLastCommitAt: '2026-10-26T14:44:13Z'
-  commitsInWindow: 25
-  totalCommits: 92
-  createdDuringHack: false
-  stellarAddedDuringHack: null
-  mentionsHackathon: true
-  owner:
-    login: udirobert
-    avatarUrl: https://avatars.githubusercontent.com/u/211333707?v=4
-    country: null
-  contributors: []
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: vmichalik/pactlane
-  repoUrl: https://github.com/vmichalik/pactlane
-  name: pactlane
-  description: Buy USDC on Stellar with the bank app you already use. HackMeridian 2026.
-  homepage: https://pactlane.io
-  tier: declared
-  language: JavaScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  - '@stellar/freighter-api'
-  stackVersions:
-    soroban-sdk: =29.0.1
-    '@stellar/stellar-sdk': 17.1.0
-    '@stellar/freighter-api': 6.0.1
-  repoCreatedAt: '2026-10-26T10:46:33Z'
-  repoLastCommitAt: '2026-10-26T10:46:40Z'
-  commitsInWindow: 1
-  totalCommits: 1
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: true
-  owner:
-    login: vmichalik
-    avatarUrl: https://avatars.githubusercontent.com/u/12459761?v=4
-    country: null
-  contributors:
-  - login: vmichalik
-    url: https://github.com/vmichalik
-    avatarUrl: https://avatars.githubusercontent.com/u/12459761?v=4
-    contributions: 1
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence:
-    - kind: wasm
-      subject: 8940569853b21a957fc5a81402666e95ed75f054ce2223926231ffc2c0c506dd
-      method: wasm_hash_match
-      explorerUrl: null
-      repoFileUrl: https://github.com/vmichalik/pactlane/blob/HEAD/contracts/escrow/artifacts/pactlane_escrow.wasm
 - repoFullName: up2itnow0822/agent-wallet-sdk
   repoUrl: https://github.com/up2itnow0822/agent-wallet-sdk
   name: agent-wallet-sdk
@@ -30069,6 +27655,7 @@ projects:
     compatible, Base Mainnet.
   homepage: https://www.npmjs.com/package/agentwallet-sdk
   tier: likely
+  track: scale
   language: TypeScript
   license: MIT
   stars: 13
@@ -30088,9 +27675,6 @@ projects:
   repoLastCommitAt: '2026-10-27T12:41:43Z'
   commitsInWindow: 31
   totalCommits: 202
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: up2itnow0822
     avatarUrl: https://avatars.githubusercontent.com/u/220628848?u=253fdf79cb3aadb2c8801989dfff42f7ad55a783&v=4
@@ -30143,6 +27727,7 @@ projects:
     operational status of their deployed smart contracts
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 2
@@ -30156,9 +27741,6 @@ projects:
   repoLastCommitAt: '2026-10-27T11:31:04Z'
   commitsInWindow: 3
   totalCommits: 58
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: abduldayantech
     avatarUrl: https://avatars.githubusercontent.com/u/327401291?v=4
@@ -30205,6 +27787,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: scale
   language: JavaScript
   license: AGPL-3.0
   stars: 1
@@ -30218,9 +27801,6 @@ projects:
   repoLastCommitAt: '2026-10-27T21:15:46Z'
   commitsInWindow: 5
   totalCommits: 229
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Fizzl13
     avatarUrl: https://avatars.githubusercontent.com/u/49376692?v=4
@@ -30248,6 +27828,7 @@ projects:
     SDK, and a merchant example.'
   homepage: https://payloop.websoroban.in
   tier: likely
+  track: genesis
   language: Rust
   license: MIT
   stars: 1
@@ -30267,9 +27848,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:57:22Z'
   commitsInWindow: 26
   totalCommits: 26
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: WebSoroban
     avatarUrl: https://avatars.githubusercontent.com/u/207363068?v=4
@@ -30307,6 +27885,7 @@ projects:
     bill-splitting dApp'
   homepage: null
   tier: likely
+  track: genesis
   language: Move
   license: null
   stars: 1
@@ -30327,9 +27906,6 @@ projects:
   repoLastCommitAt: '2026-10-25T09:10:24Z'
   commitsInWindow: 4
   totalCommits: 64
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: bilalabic
     avatarUrl: https://avatars.githubusercontent.com/u/66368641?v=4
@@ -30377,6 +27953,7 @@ projects:
     written in Rust.
   homepage: https://spectrawallet.org
   tier: likely
+  track: scale
   language: Rust
   license: GPL-3.0
   stars: 1
@@ -30395,9 +27972,6 @@ projects:
   repoLastCommitAt: '2026-10-27T20:52:22Z'
   commitsInWindow: 1
   totalCommits: 246
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: lacklusteradmin
     avatarUrl: https://avatars.githubusercontent.com/u/107175148?v=4
@@ -30425,6 +27999,7 @@ projects:
     potential security problems before deployment.
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 1
@@ -30438,9 +28013,6 @@ projects:
   repoLastCommitAt: '2026-10-27T11:18:58Z'
   commitsInWindow: 1
   totalCommits: 56
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: petermuazu
     avatarUrl: https://avatars.githubusercontent.com/u/307931926?v=4
@@ -30477,6 +28049,7 @@ projects:
   description: null
   homepage: https://keelwatch-five.vercel.app
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -30490,9 +28063,6 @@ projects:
   repoLastCommitAt: '2026-10-25T12:04:15Z'
   commitsInWindow: 4
   totalCommits: 4
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Abhishek-079
     avatarUrl: https://avatars.githubusercontent.com/u/145453378?u=7824349aab6ef62fcea328be37f9c65595aaf959&v=4
@@ -30519,6 +28089,7 @@ projects:
   description: AI-assisted, provider-direct bill support with a Stellar settlement foundation.
   homepage: https://github.com/anasabubakar/settle
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -30542,9 +28113,6 @@ projects:
   repoLastCommitAt: '2026-10-26T16:11:08Z'
   commitsInWindow: 3
   totalCommits: 17
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Anasabubakar
     avatarUrl: https://avatars.githubusercontent.com/u/84817335?v=4
@@ -30571,6 +28139,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -30584,9 +28153,6 @@ projects:
   repoLastCommitAt: '2026-10-27T00:18:40Z'
   commitsInWindow: 13
   totalCommits: 22
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: CityOfZion
     avatarUrl: https://avatars.githubusercontent.com/u/29782569?v=4
@@ -30623,6 +28189,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -30638,9 +28205,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:44:38Z'
   commitsInWindow: 46
   totalCommits: 184
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: CryptoValencia
     avatarUrl: https://avatars.githubusercontent.com/u/123474804?v=4
@@ -30662,6 +28226,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -30681,9 +28246,6 @@ projects:
   repoLastCommitAt: '2026-10-27T19:44:23Z'
   commitsInWindow: 4
   totalCommits: 13
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Guarrail
     avatarUrl: https://avatars.githubusercontent.com/u/335380647?v=4
@@ -30704,6 +28266,58 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: HackatonWinnners/toolport
+  repoUrl: https://github.com/HackatonWinnners/toolport
+  name: toolport
+  description: One port for every paid tool
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  - '@stellar/freighter-api'
+  stackVersions:
+    '@stellar/stellar-sdk': ^16.3.0
+    '@stellar/freighter-api': ^6.0.1
+  repoCreatedAt: '2026-10-25T22:37:08Z'
+  repoLastCommitAt: '2026-10-26T03:09:21Z'
+  commitsInWindow: 45
+  totalCommits: 45
+  owner:
+    login: HackatonWinnners
+    avatarUrl: https://avatars.githubusercontent.com/u/242439418?v=4
+    country: null
+  contributors:
+  - login: kwiasya
+    url: https://github.com/kwiasya
+    avatarUrl: https://avatars.githubusercontent.com/u/207998749?v=4
+    contributions: 23
+    country: null
+  - login: madvil2
+    url: https://github.com/madvil2
+    avatarUrl: https://avatars.githubusercontent.com/u/16052889?v=4
+    contributions: 14
+    country: null
+  - login: 42navalkrinzhaslattt
+    url: https://github.com/42navalkrinzhaslattt
+    avatarUrl: https://avatars.githubusercontent.com/u/120563003?v=4
+    contributions: 8
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: HassanKorey/SoroStream-app
   repoUrl: https://github.com/HassanKorey/SoroStream-app
   name: SoroStream-app
@@ -30711,6 +28325,7 @@ projects:
     CLI deployment scripts (scripts/) for SoroStream
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -30726,9 +28341,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:43:32Z'
   commitsInWindow: 7
   totalCommits: 7
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: HassanKorey
     avatarUrl: https://avatars.githubusercontent.com/u/117786769?u=0632919948ce5efd372d6de30869d91377d954c1&v=4
@@ -30756,6 +28368,7 @@ projects:
     for SoroStream
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: MIT
   stars: 0
@@ -30769,9 +28382,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:34:09Z'
   commitsInWindow: 1
   totalCommits: 1
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: HassanKorey
     avatarUrl: https://avatars.githubusercontent.com/u/117786769?u=0632919948ce5efd372d6de30869d91377d954c1&v=4
@@ -30799,6 +28409,7 @@ projects:
     or x402. Testnet demo.'
   homepage: https://inferit.cc/docs
   tier: likely
+  track: scale
   language: Shell
   license: Apache-2.0
   stars: 0
@@ -30822,9 +28433,6 @@ projects:
   repoLastCommitAt: '2026-10-25T21:39:42Z'
   commitsInWindow: 1
   totalCommits: 2
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: InferitAI
     avatarUrl: https://avatars.githubusercontent.com/u/341992586?v=4
@@ -30851,6 +28459,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -30864,9 +28473,6 @@ projects:
   repoLastCommitAt: '2026-10-25T13:25:56Z'
   commitsInWindow: 2
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Joaco2603
     avatarUrl: https://avatars.githubusercontent.com/u/111933983?v=4
@@ -30895,6 +28501,7 @@ projects:
     digital assets.
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -30914,9 +28521,6 @@ projects:
   repoLastCommitAt: '2026-10-27T10:07:11Z'
   commitsInWindow: 4
   totalCommits: 13
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Lucifer-010
     avatarUrl: https://avatars.githubusercontent.com/u/89004415?v=4
@@ -30945,6 +28549,7 @@ projects:
     lock.
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -30960,9 +28565,6 @@ projects:
   repoLastCommitAt: '2026-10-27T09:30:20Z'
   commitsInWindow: 9
   totalCommits: 19
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: NnamdiCyber
     avatarUrl: https://avatars.githubusercontent.com/u/285641988?v=4
@@ -30983,12 +28585,75 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: Paolag93/plan4her-stellar
+  repoUrl: https://github.com/Paolag93/plan4her-stellar
+  name: plan4her-stellar
+  description: Plan4Her – Privacy-first, cycle-aware productivity app with community habit pools powered
+    by Stellar. HackMeridian 2026.
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  - '@stellar/freighter-api'
+  stackVersions:
+    '@stellar/stellar-sdk': ^14.6.1
+    '@stellar/freighter-api': ^6.0.1
+  repoCreatedAt: '2026-10-25T21:44:05Z'
+  repoLastCommitAt: '2026-10-26T11:23:05Z'
+  commitsInWindow: 47
+  totalCommits: 47
+  owner:
+    login: Paolag93
+    avatarUrl: https://avatars.githubusercontent.com/u/112600052?v=4
+    country: null
+  contributors:
+  - login: Paolag93
+    url: https://github.com/Paolag93
+    avatarUrl: https://avatars.githubusercontent.com/u/112600052?v=4
+    contributions: 35
+    country: null
+  - login: claude
+    url: https://github.com/claude
+    avatarUrl: https://avatars.githubusercontent.com/u/81847?v=4
+    contributions: 12
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts:
+    - address: GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+    - address: GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+    wasmUploads: []
+    contracts: []
+    evidence:
+    - kind: account
+      subject: GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+      repoFileUrl: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/docs/HACKMERIDIAN_EVIDENCE.md
+    - kind: account
+      subject: GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+      repoFileUrl: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/docs/HACKMERIDIAN_EVIDENCE.md
 - repoFullName: Pe4enable/stellar.chat
   repoUrl: https://github.com/Pe4enable/stellar.chat
   name: stellar.chat
   description: AI SMART CONTRACT AUDITS for Stellar
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31002,9 +28667,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:04:37Z'
   commitsInWindow: 15
   totalCommits: 15
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Pe4enable
     avatarUrl: https://avatars.githubusercontent.com/u/5742085?v=4
@@ -31025,6 +28687,48 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: PhilipLewellen/cdp-clear
+  repoUrl: https://github.com/PhilipLewellen/cdp-clear
+  name: cdp-clear
+  description: null
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  - '@stellar/freighter-api'
+  stackVersions:
+    '@stellar/stellar-sdk': ^17.3.0
+    '@stellar/freighter-api': ^6.0.1
+  repoCreatedAt: '2026-10-25T17:59:37Z'
+  repoLastCommitAt: '2026-10-25T21:34:47Z'
+  commitsInWindow: 179
+  totalCommits: 180
+  owner:
+    login: PhilipLewellen
+    avatarUrl: https://avatars.githubusercontent.com/u/296170140?v=4
+    country: null
+  contributors:
+  - login: PhilipLewellen
+    url: https://github.com/PhilipLewellen
+    avatarUrl: https://avatars.githubusercontent.com/u/296170140?v=4
+    contributions: 2
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: Protocol-30/stellar-p30-check
   repoUrl: https://github.com/Protocol-30/stellar-p30-check
   name: stellar-p30-check
@@ -31032,6 +28736,7 @@ projects:
     repositories
   homepage: null
   tier: likely
+  track: genesis
   language: Go
   license: Apache-2.0
   stars: 0
@@ -31062,9 +28767,6 @@ projects:
   repoLastCommitAt: '2026-10-27T18:02:55Z'
   commitsInWindow: 11
   totalCommits: 52
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Protocol-30
     avatarUrl: https://avatars.githubusercontent.com/u/348006429?v=4
@@ -31097,6 +28799,7 @@ projects:
     and Soroban-powered visitor passes, with zero personal data on-chain.
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: MIT
   stars: 0
@@ -31112,9 +28815,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:04:37Z'
   commitsInWindow: 19
   totalCommits: 21
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Pythagoras-x
     avatarUrl: https://avatars.githubusercontent.com/u/337384057?v=4
@@ -31135,12 +28835,57 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: Robson20019/Vault17
+  repoUrl: https://github.com/Robson20019/Vault17
+  name: Vault17
+  description: null
+  homepage: https://vault17.vercel.app
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - soroban-sdk
+  - '@stellar/stellar-sdk'
+  - '@creit.tech/stellar-wallets-kit'
+  stackVersions:
+    soroban-sdk: null
+    '@stellar/stellar-sdk': ^17.4.0
+    '@creit.tech/stellar-wallets-kit': ^2.7.1
+  repoCreatedAt: '2026-10-25T13:03:59Z'
+  repoLastCommitAt: '2026-10-25T23:03:37Z'
+  commitsInWindow: 3
+  totalCommits: 3
+  owner:
+    login: Robson20019
+    avatarUrl: https://avatars.githubusercontent.com/u/73843352?v=4
+    country: null
+  contributors:
+  - login: Robson20019
+    url: https://github.com/Robson20019
+    avatarUrl: https://avatars.githubusercontent.com/u/73843352?v=4
+    contributions: 3
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: RockieRaheem/Devfest_HarambeeOne
   repoUrl: https://github.com/RockieRaheem/Devfest_HarambeeOne
   name: Devfest_HarambeeOne
   description: null
   homepage: null
   tier: likely
+  track: scale
   language: HTML
   license: MIT
   stars: 0
@@ -31156,9 +28901,6 @@ projects:
   repoLastCommitAt: '2026-10-27T18:43:18Z'
   commitsInWindow: 16
   totalCommits: 23
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: RockieRaheem
     avatarUrl: https://avatars.githubusercontent.com/u/134764730?v=4
@@ -31179,6 +28921,60 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: SendaLabs/SendaBussines
+  repoUrl: https://github.com/SendaLabs/SendaBussines
+  name: SendaBussines
+  description: null
+  homepage: https://senda-bussines.vercel.app
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - soroban-sdk
+  - '@stellar/stellar-sdk'
+  - '@stellar/freighter-api'
+  stackVersions:
+    soroban-sdk: null
+    '@stellar/stellar-sdk': ^14.1.1
+    '@stellar/freighter-api': ^6.0.1
+  repoCreatedAt: '2026-10-25T18:42:05Z'
+  repoLastCommitAt: '2026-10-26T02:18:24Z'
+  commitsInWindow: 31
+  totalCommits: 31
+  owner:
+    login: SendaLabs
+    avatarUrl: https://avatars.githubusercontent.com/u/316336073?v=4
+    country: null
+  contributors:
+  - login: Nicobustelo
+    url: https://github.com/Nicobustelo
+    avatarUrl: https://avatars.githubusercontent.com/u/88746672?v=4
+    contributions: 19
+    country: null
+  - login: delfinacorr
+    url: https://github.com/delfinacorr
+    avatarUrl: https://avatars.githubusercontent.com/u/105253541?v=4
+    contributions: 8
+    country: AR
+  - login: mlo-aa
+    url: https://github.com/mlo-aa
+    avatarUrl: https://avatars.githubusercontent.com/u/187245354?v=4
+    contributions: 4
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: Songu3020/keepalive
   repoUrl: https://github.com/Songu3020/keepalive
   name: keepalive
@@ -31186,6 +28982,7 @@ projects:
     that extend them
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -31204,9 +29001,6 @@ projects:
   repoLastCommitAt: '2026-10-27T09:47:29Z'
   commitsInWindow: 5
   totalCommits: 21
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Songu3020
     avatarUrl: https://avatars.githubusercontent.com/u/247524785?v=4
@@ -31233,6 +29027,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -31246,9 +29041,6 @@ projects:
   repoLastCommitAt: '2026-10-27T14:24:52Z'
   commitsInWindow: 7
   totalCommits: 16
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: SoroTTL-Network
     avatarUrl: https://avatars.githubusercontent.com/u/347795022?v=4
@@ -31276,6 +29068,7 @@ projects:
     lifecycles
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -31289,9 +29082,6 @@ projects:
   repoLastCommitAt: '2026-10-26T07:57:22Z'
   commitsInWindow: 21
   totalCommits: 21
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: SoroTTL-Network
     avatarUrl: https://avatars.githubusercontent.com/u/347795022?v=4
@@ -31318,6 +29108,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: MIT
   stars: 0
@@ -31331,9 +29122,6 @@ projects:
   repoLastCommitAt: '2026-10-27T13:14:51Z'
   commitsInWindow: 4
   totalCommits: 21
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: StellarAid-network
     avatarUrl: https://avatars.githubusercontent.com/u/342481985?v=4
@@ -31368,6 +29156,7 @@ projects:
     trade, and play in StellarVille.
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31387,9 +29176,6 @@ projects:
   repoLastCommitAt: '2026-10-26T18:32:13Z'
   commitsInWindow: 1
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: StellarVille
     avatarUrl: https://avatars.githubusercontent.com/u/348184955?v=4
@@ -31417,6 +29203,7 @@ projects:
     games, and governance on Stellar.
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -31436,9 +29223,6 @@ projects:
   repoLastCommitAt: '2026-10-26T18:32:06Z'
   commitsInWindow: 1
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: StellarVille
     avatarUrl: https://avatars.githubusercontent.com/u/348184955?v=4
@@ -31465,6 +29249,7 @@ projects:
   description: null
   homepage: https://streamora-ashy.vercel.app
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -31482,9 +29267,6 @@ projects:
   repoLastCommitAt: '2026-10-26T16:08:45Z'
   commitsInWindow: 12
   totalCommits: 19
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: Strea-mora
     avatarUrl: https://avatars.githubusercontent.com/u/348043902?v=4
@@ -31511,6 +29293,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31528,9 +29311,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:57:38Z'
   commitsInWindow: 3
   totalCommits: 3
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: WebSoroban
     avatarUrl: https://avatars.githubusercontent.com/u/207363068?v=4
@@ -31551,6 +29331,46 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: alejandragarcia13/Disruption-Agents-
+  repoUrl: https://github.com/alejandragarcia13/Disruption-Agents-
+  name: Disruption-Agents-
+  description: null
+  homepage: null
+  tier: likely
+  track: genesis
+  language: JavaScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  stackVersions:
+    '@stellar/stellar-sdk': ^17.4.0
+  repoCreatedAt: '2026-10-26T11:21:56Z'
+  repoLastCommitAt: '2026-10-26T11:27:02Z'
+  commitsInWindow: 1
+  totalCommits: 1
+  owner:
+    login: alejandragarcia13
+    avatarUrl: https://avatars.githubusercontent.com/u/341670403?v=4
+    country: null
+  contributors:
+  - login: alejandragarcia13
+    url: https://github.com/alejandragarcia13
+    avatarUrl: https://avatars.githubusercontent.com/u/341670403?v=4
+    contributions: 1
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: city-pass-global/citypass
   repoUrl: https://github.com/city-pass-global/citypass
   name: citypass
@@ -31558,6 +29378,7 @@ projects:
     stamps, buying destination passes, and preparing hotel arrivals
   homepage: https://city-pass-global.vercel.app/
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31573,9 +29394,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:30:56Z'
   commitsInWindow: 6
   totalCommits: 6
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: city-pass-global
     avatarUrl: https://avatars.githubusercontent.com/u/348030593?v=4
@@ -31645,6 +29463,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -31658,9 +29477,6 @@ projects:
   repoLastCommitAt: '2026-10-25T21:55:40Z'
   commitsInWindow: 3
   totalCommits: 3
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: crossing-finance-org
     avatarUrl: https://avatars.githubusercontent.com/u/348007765?v=4
@@ -31688,6 +29504,7 @@ projects:
     they keep it if they don’t. Built with Soroban.
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: MIT
   stars: 0
@@ -31703,9 +29520,6 @@ projects:
   repoLastCommitAt: '2026-10-27T10:59:05Z'
   commitsInWindow: 7
   totalCommits: 16
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: devOgazi
     avatarUrl: https://avatars.githubusercontent.com/u/295651024?v=4
@@ -31732,6 +29546,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31749,9 +29564,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:03:17Z'
   commitsInWindow: 26
   totalCommits: 26
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: devfelipenunes
     avatarUrl: https://avatars.githubusercontent.com/u/81275678?v=4
@@ -31772,6 +29584,88 @@ projects:
       method: wasm_hash_match
       explorerUrl: null
       repoFileUrl: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/contracts/wasm/confidential_token.wasm
+- repoFullName: devodii/hackproof
+  repoUrl: https://github.com/devodii/hackproof
+  name: hackproof
+  description: null
+  homepage: null
+  tier: likely
+  track: genesis
+  language: Python
+  license: MIT
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - stellar-sdk
+  - '@creit.tech/stellar-wallets-kit'
+  stackVersions:
+    stellar-sdk: 16.1.1
+    '@creit.tech/stellar-wallets-kit': ^2.7.1
+  repoCreatedAt: '2026-10-26T00:10:40Z'
+  repoLastCommitAt: '2026-10-27T21:26:56Z'
+  commitsInWindow: 1
+  totalCommits: 90
+  owner:
+    login: devodii
+    avatarUrl: https://avatars.githubusercontent.com/u/113144477?v=4
+    country: null
+  contributors:
+  - login: devodii
+    url: https://github.com/devodii
+    avatarUrl: https://avatars.githubusercontent.com/u/113144477?v=4
+    contributions: 90
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
+- repoFullName: dilayapici/Joinkarga
+  repoUrl: https://github.com/dilayapici/Joinkarga
+  name: Joinkarga
+  description: null
+  homepage: https://joinkarga.vercel.app
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  stackVersions:
+    '@stellar/stellar-sdk': ^14.0.0
+  repoCreatedAt: '2026-10-26T11:09:12Z'
+  repoLastCommitAt: '2026-10-26T12:22:39Z'
+  commitsInWindow: 2
+  totalCommits: 6
+  owner:
+    login: dilayapici
+    avatarUrl: https://avatars.githubusercontent.com/u/71191002?v=4
+    country: null
+  contributors:
+  - login: dilayapici
+    url: https://github.com/dilayapici
+    avatarUrl: https://avatars.githubusercontent.com/u/71191002?v=4
+    contributions: 6
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: dittonetwork/stellar-automation
   repoUrl: https://github.com/dittonetwork/stellar-automation
   name: stellar-automation
@@ -31779,6 +29673,7 @@ projects:
     plan and implementation status.'
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -31792,9 +29687,6 @@ projects:
   repoLastCommitAt: '2026-10-27T08:33:58Z'
   commitsInWindow: 2
   totalCommits: 3
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: dittonetwork
     avatarUrl: https://avatars.githubusercontent.com/u/127531943?v=4
@@ -31822,6 +29714,7 @@ projects:
     preserving properties at a glance'
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -31837,9 +29730,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:36:25Z'
   commitsInWindow: 61
   totalCommits: 99
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: drank40
     avatarUrl: https://avatars.githubusercontent.com/u/37227238?v=4
@@ -31871,6 +29761,7 @@ projects:
   description: 'Chateaux: cross-border home down-payment rails on Stellar'
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31888,9 +29779,6 @@ projects:
   repoLastCommitAt: '2026-10-25T23:09:40Z'
   commitsInWindow: 5
   totalCommits: 5
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: elszalencia
     avatarUrl: https://avatars.githubusercontent.com/u/271640230?v=4
@@ -31911,12 +29799,57 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: emirykl/nema
+  repoUrl: https://github.com/emirykl/nema
+  name: nema
+  description: null
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - soroban-sdk
+  - '@stellar/stellar-sdk'
+  - '@creit.tech/stellar-wallets-kit'
+  stackVersions:
+    soroban-sdk: null
+    '@stellar/stellar-sdk': ^17.3.0
+    '@creit.tech/stellar-wallets-kit': ^2.7.1
+  repoCreatedAt: '2026-10-25T22:40:45Z'
+  repoLastCommitAt: '2026-10-26T10:55:17Z'
+  commitsInWindow: 70
+  totalCommits: 70
+  owner:
+    login: emirykl
+    avatarUrl: https://avatars.githubusercontent.com/u/160465301?v=4
+    country: null
+  contributors:
+  - login: emirykl
+    url: https://github.com/emirykl
+    avatarUrl: https://avatars.githubusercontent.com/u/160465301?v=4
+    contributions: 70
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: ethan-r13n/nest
   repoUrl: https://github.com/ethan-r13n/nest
   name: nest
   description: Nest — discovery, research, and wallet-approved execution across Stellar DeFi.
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31932,9 +29865,6 @@ projects:
   repoLastCommitAt: '2026-10-26T10:01:39Z'
   commitsInWindow: 89
   totalCommits: 89
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: ethan-r13n
     avatarUrl: https://avatars.githubusercontent.com/u/78349796?v=4
@@ -31963,6 +29893,7 @@ projects:
     passes, and study groups stake on finishing.
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -31976,9 +29907,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:07:42Z'
   commitsInWindow: 2
   totalCommits: 811
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: habi-bah
     avatarUrl: https://avatars.githubusercontent.com/u/275746551?v=4
@@ -32467,6 +30395,7 @@ projects:
     stake behind finishing.
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: MIT
   stars: 0
@@ -32488,9 +30417,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:02:54Z'
   commitsInWindow: 1
   totalCommits: 777
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: habi-bah
     avatarUrl: https://avatars.githubusercontent.com/u/275746551?v=4
@@ -33014,6 +30940,7 @@ projects:
     chat with the community, trade, and ask an AI coach.
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -33027,9 +30954,6 @@ projects:
   repoLastCommitAt: '2026-10-26T19:29:49Z'
   commitsInWindow: 2
   totalCommits: 706
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: habi-bah
     avatarUrl: https://avatars.githubusercontent.com/u/275746551?v=4
@@ -33536,6 +31460,7 @@ projects:
   description: hack_meridian lisbon 2026
   homepage: https://payraast-delta.vercel.app
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -33551,9 +31476,6 @@ projects:
   repoLastCommitAt: '2026-10-26T11:10:53Z'
   commitsInWindow: 7
   totalCommits: 7
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: hakeemullahjan
     avatarUrl: https://avatars.githubusercontent.com/u/42214791?u=a47dc6e33d34ba4ccac81f0cc1ef98fc19d168a2&v=4
@@ -33580,6 +31502,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: HTML
   license: null
   stars: 0
@@ -33593,9 +31516,6 @@ projects:
   repoLastCommitAt: '2026-10-26T13:27:28Z'
   commitsInWindow: 34
   totalCommits: 41
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: infoenzastore-cmd
     avatarUrl: https://avatars.githubusercontent.com/u/328405373?v=4
@@ -33623,6 +31543,52 @@ projects:
       method: deployer_in_repo
       explorerUrl: https://stellar.expert/explorer/testnet/account/GC4WBX5KJPBFPOBXS7RJTKO5ISYDBP7GZY7JJGS6GC7737A7LD6HGKFM
       repoFileUrl: https://github.com/infoenzastore-cmd/enza3.mvmnt1/blob/HEAD/test/server.test.js
+- repoFullName: joinsendr/SendrPay
+  repoUrl: https://github.com/joinsendr/SendrPay
+  name: SendrPay
+  description: Pay like a local, anywhere in the world. Sendr Pay lets you use your USDC wallet to pay
+    local merchants abroad by scanning QR codes without transferring money cross-border to a local bank
+    account.
+  homepage: https://sendrpay.sendr.cash
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: MIT
+  stars: 0
+  forks: 0
+  selfTags:
+  - payments
+  - wallet
+  stack:
+  - '@stellar/stellar-sdk'
+  - '@creit.tech/stellar-wallets-kit'
+  stackVersions:
+    '@stellar/stellar-sdk': ^17.4.0
+    '@creit.tech/stellar-wallets-kit': ^2.7.1
+  repoCreatedAt: '2026-10-25T13:41:20Z'
+  repoLastCommitAt: '2026-10-26T08:10:45Z'
+  commitsInWindow: 17
+  totalCommits: 17
+  owner:
+    login: joinsendr
+    avatarUrl: https://avatars.githubusercontent.com/u/169680953?v=4
+    country: null
+  contributors:
+  - login: joinsendr
+    url: https://github.com/joinsendr
+    avatarUrl: https://avatars.githubusercontent.com/u/169680953?v=4
+    contributions: 17
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: mizukuhiiragi/starpocket
   repoUrl: https://github.com/mizukuhiiragi/starpocket
   name: starpocket
@@ -33630,6 +31596,7 @@ projects:
     for Stellar & Soroban
   homepage: null
   tier: likely
+  track: genesis
   language: JavaScript
   license: null
   stars: 0
@@ -33643,9 +31610,6 @@ projects:
   repoLastCommitAt: '2026-10-27T19:23:50Z'
   commitsInWindow: 10
   totalCommits: 13
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: mizukuhiiragi
     avatarUrl: https://avatars.githubusercontent.com/u/342722414?v=4
@@ -33672,6 +31636,7 @@ projects:
   description: Repository for https://replit.com/@najathammourija/Airlock-Guard-1
   homepage: https://replit.com/@najathammourija/Airlock-Guard-1
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -33687,9 +31652,6 @@ projects:
   repoLastCommitAt: '2026-10-25T20:40:44Z'
   commitsInWindow: 12
   totalCommits: 13
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: najathammouri-prog
     avatarUrl: https://avatars.githubusercontent.com/u/347824338?v=4
@@ -33721,6 +31683,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -33734,9 +31697,6 @@ projects:
   repoLastCommitAt: '2026-10-26T12:13:07Z'
   commitsInWindow: 45
   totalCommits: 46
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: nielslecodeur
     avatarUrl: https://avatars.githubusercontent.com/u/188048354?v=4
@@ -33762,6 +31722,47 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: nseguias/kintsu
+  repoUrl: https://github.com/nseguias/kintsu
+  name: kintsu
+  description: Stellar wallet backed up to 3 NFC tags, with an offline 2FA device approving every payment.
+    HackMeridian 2026.
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  stackVersions:
+    '@stellar/stellar-sdk': 17.2.1
+  repoCreatedAt: '2026-10-26T09:42:44Z'
+  repoLastCommitAt: '2026-10-26T11:46:03Z'
+  commitsInWindow: 42
+  totalCommits: 42
+  owner:
+    login: nseguias
+    avatarUrl: https://avatars.githubusercontent.com/u/72363768?v=4
+    country: null
+  contributors:
+  - login: nseguias
+    url: https://github.com/nseguias
+    avatarUrl: https://avatars.githubusercontent.com/u/72363768?v=4
+    contributions: 42
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: ogaziedaniel80-droid/marketpulse-oracle
   repoUrl: https://github.com/ogaziedaniel80-droid/marketpulse-oracle
   name: marketpulse-oracle
@@ -33769,6 +31770,7 @@ projects:
     prices, fuel, roads, and power reports with commit-reveal consensus and slashing.'
   homepage: null
   tier: likely
+  track: scale
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -33782,9 +31784,6 @@ projects:
   repoLastCommitAt: '2026-10-27T18:41:43Z'
   commitsInWindow: 10
   totalCommits: 26
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: ogaziedaniel80-droid
     avatarUrl: https://avatars.githubusercontent.com/u/285634399?v=4
@@ -33812,6 +31811,7 @@ projects:
     a service needs. Soroban contracts, synthetic data only.
   homepage: null
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -33827,9 +31827,6 @@ projects:
   repoLastCommitAt: '2026-10-27T14:24:59Z'
   commitsInWindow: 6
   totalCommits: 13
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: oneid-ng
     avatarUrl: https://avatars.githubusercontent.com/u/347912477?v=4
@@ -33856,6 +31853,7 @@ projects:
   description: Qrypton Vault — Post-Quantum Institutional Custody On Stellar
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -33872,9 +31870,6 @@ projects:
   repoLastCommitAt: '2026-10-25T20:53:59Z'
   commitsInWindow: 25
   totalCommits: 25
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: osdeniz
     avatarUrl: https://avatars.githubusercontent.com/u/63924986?v=4
@@ -33901,6 +31896,7 @@ projects:
   description: Modern Next.js web client and trading interface for Polai Prediction Markets on Stellar
   homepage: https://polai-sable.vercel.app
   tier: likely
+  track: genesis
   language: TypeScript
   license: MIT
   stars: 0
@@ -33924,9 +31920,6 @@ projects:
   repoLastCommitAt: '2026-10-25T17:47:46Z'
   commitsInWindow: 8
   totalCommits: 8
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: polaiLabs
     avatarUrl: https://avatars.githubusercontent.com/u/347858038?v=4
@@ -33953,6 +31946,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -33966,9 +31960,6 @@ projects:
   repoLastCommitAt: '2026-10-26T06:56:24Z'
   commitsInWindow: 2
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: qasset-labs
     avatarUrl: https://avatars.githubusercontent.com/u/348136510?v=4
@@ -33995,6 +31986,7 @@ projects:
   description: Steller contracts for Red Sentinel
   homepage: null
   tier: likely
+  track: genesis
   language: Rust
   license: null
   stars: 0
@@ -34008,9 +32000,6 @@ projects:
   repoLastCommitAt: '2026-10-26T09:40:26Z'
   commitsInWindow: 1
   totalCommits: 1
-  createdDuringHack: true
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: red-sentinel-ai
     avatarUrl: https://avatars.githubusercontent.com/u/220595621?v=4
@@ -34052,6 +32041,7 @@ projects:
     hours spent on manual reviews.
   homepage: https://auditledgerunisallabs.vercel.app
   tier: likely
+  track: genesis
   language: TypeScript
   license: null
   stars: 0
@@ -34067,9 +32057,6 @@ projects:
   repoLastCommitAt: '2026-10-25T14:26:50Z'
   commitsInWindow: 1
   totalCommits: 2
-  createdDuringHack: true
-  stellarAddedDuringHack: false
-  mentionsHackathon: false
   owner:
     login: rst-angel
     avatarUrl: https://avatars.githubusercontent.com/u/341664756?v=4
@@ -34096,6 +32083,7 @@ projects:
   description: Seidar — DeFi position manager on Stellar (Blend, XOXNO, Peridot)
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -34111,9 +32099,6 @@ projects:
   repoLastCommitAt: '2026-10-27T11:44:38Z'
   commitsInWindow: 30
   totalCommits: 57
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: seidar-hq
     avatarUrl: https://avatars.githubusercontent.com/u/334750090?v=4
@@ -34140,6 +32125,7 @@ projects:
   description: null
   homepage: null
   tier: likely
+  track: scale
   language: TypeScript
   license: null
   stars: 0
@@ -34153,9 +32139,6 @@ projects:
   repoLastCommitAt: '2026-10-26T14:01:07Z'
   commitsInWindow: 2
   totalCommits: 11
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: shieldzk
     avatarUrl: https://avatars.githubusercontent.com/u/343171216?v=4
@@ -34181,12 +32164,100 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: siwakadrianna-byte/ghost-proof
+  repoUrl: https://github.com/siwakadrianna-byte/ghost-proof
+  name: ghost-proof
+  description: 'Escrow for freelance designers on Stellar: no more getting ghosted.'
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  - '@stellar/freighter-api'
+  stackVersions:
+    '@stellar/stellar-sdk': ^17.4.0
+    '@stellar/freighter-api': ^6.0.0
+  repoCreatedAt: '2026-10-25T14:18:07Z'
+  repoLastCommitAt: '2026-10-26T11:11:34Z'
+  commitsInWindow: 24
+  totalCommits: 24
+  owner:
+    login: siwakadrianna-byte
+    avatarUrl: https://avatars.githubusercontent.com/u/240194832?v=4
+    country: null
+  contributors:
+  - login: siwakadrianna-byte
+    url: https://github.com/siwakadrianna-byte
+    avatarUrl: https://avatars.githubusercontent.com/u/240194832?v=4
+    contributions: 24
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
+- repoFullName: sohamtech-uk/cherrypay-wallet
+  repoUrl: https://github.com/sohamtech-uk/cherrypay-wallet
+  name: cherrypay-wallet
+  description: Cherrypay wallet powered by Stellar
+  homepage: null
+  tier: likely
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  stackVersions:
+    '@stellar/stellar-sdk': ^14.0.0
+  repoCreatedAt: '2026-10-25T11:52:27Z'
+  repoLastCommitAt: '2026-10-26T11:32:30Z'
+  commitsInWindow: 350
+  totalCommits: 350
+  owner:
+    login: sohamtech-uk
+    avatarUrl: https://avatars.githubusercontent.com/u/274770785?v=4
+    country: null
+  contributors:
+  - login: sunil-soham-tech
+    url: https://github.com/sunil-soham-tech
+    avatarUrl: https://avatars.githubusercontent.com/u/284274028?v=4
+    contributions: 209
+    country: GB
+  - login: sohamtechuk
+    url: https://github.com/sohamtechuk
+    avatarUrl: https://avatars.githubusercontent.com/u/274766690?v=4
+    contributions: 141
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence: []
 - repoFullName: tradefighters/stellar-integration
   repoUrl: https://github.com/tradefighters/stellar-integration
   name: stellar-integration
   description: null
   homepage: null
   tier: likely
+  track: scale
   language: Rust
   license: MIT
   stars: 0
@@ -34200,9 +32271,6 @@ projects:
   repoLastCommitAt: '2026-10-27T03:44:28Z'
   commitsInWindow: 2
   totalCommits: 7
-  createdDuringHack: false
-  stellarAddedDuringHack: true
-  mentionsHackathon: false
   owner:
     login: tradefighters
     avatarUrl: https://avatars.githubusercontent.com/u/233231310?v=4
@@ -34223,3 +32291,52 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
+- repoFullName: vmichalik/pactlane
+  repoUrl: https://github.com/vmichalik/pactlane
+  name: pactlane
+  description: Buy USDC on Stellar with the bank app you already use. HackMeridian 2026.
+  homepage: https://pactlane.io
+  tier: likely
+  track: genesis
+  language: JavaScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - soroban-sdk
+  - '@stellar/stellar-sdk'
+  - '@stellar/freighter-api'
+  stackVersions:
+    soroban-sdk: =29.0.1
+    '@stellar/stellar-sdk': 17.1.0
+    '@stellar/freighter-api': 6.0.1
+  repoCreatedAt: '2026-10-26T10:46:33Z'
+  repoLastCommitAt: '2026-10-26T10:46:40Z'
+  commitsInWindow: 1
+  totalCommits: 1
+  owner:
+    login: vmichalik
+    avatarUrl: https://avatars.githubusercontent.com/u/12459761?v=4
+    country: null
+  contributors:
+  - login: vmichalik
+    url: https://github.com/vmichalik
+    avatarUrl: https://avatars.githubusercontent.com/u/12459761?v=4
+    contributions: 1
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts: []
+    wasmUploads: []
+    contracts: []
+    evidence:
+    - kind: wasm
+      subject: 8940569853b21a957fc5a81402666e95ed75f054ce2223926231ffc2c0c506dd
+      method: wasm_hash_match
+      explorerUrl: null
+      repoFileUrl: https://github.com/vmichalik/pactlane/blob/HEAD/contracts/escrow/artifacts/pactlane_escrow.wasm
