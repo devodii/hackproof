@@ -124,7 +124,7 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
     await add_repo(db, "a/chain", window_commits=1)
     await add_ref(db, "a/chain", "contract", "C1")
     await add_contract(db, "C1", "GCHAIN", "w1")
-    await add_repo(db, "c/likely", window_commits=2, created_at=INSIDE, dependencies=STELLAR)
+    await add_repo(db, "c/likely", window_commits=5, created_at=INSIDE, dependencies=STELLAR)
     await add_repo(db, "d/possible", window_commits=5, dependencies=STELLAR)
 
     await reconcile(db)
@@ -134,6 +134,15 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
         "repo:c/likely": "likely",
         "repo:d/possible": "possible",
     }
+
+
+async def test_a_new_repo_with_only_a_few_commits_is_not_likely(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/scaffold", window_commits=4, created_at=INSIDE, dependencies=STELLAR)
+
+    await reconcile(db)
+
+    assert await tiers(db) == {"repo:team/scaffold": "possible"}
 
 
 async def test_matches_that_only_touch_the_pre_start_margin_are_not_verified(scratch_db):

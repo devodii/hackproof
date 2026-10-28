@@ -13,6 +13,7 @@ log = logging.getLogger("hackproof.reconcile")
 
 MAX_REPOS_PER_ACCOUNT = 8
 MIN_WINDOW_COMMITS = 3
+MIN_LIKELY_COMMITS = 5
 
 HACKERS = """
 SELECT account FROM accounts WHERE funder = $3 AND funded_at BETWEEN $1 AND $2
@@ -113,7 +114,7 @@ SELECT 'repo:' || r.full_name, r.full_name,
                     + COALESCE(ast.assets, 0) + COALESCE(ws.wasm, 0) + COALESCE(fs.failed, 0) > 0
                 THEN 'verified'
            WHEN jsonb_array_length(r.dependencies -> 'ecosystems') > 0
-                AND COALESCE(r.window_commits, 0) > 0
+                AND COALESCE(r.window_commits, 0) >= $4
                 AND (r.created_at BETWEEN $1 AND $2
                      OR COALESCE(r.stellar_added_in_window, FALSE)) THEN 'likely'
            ELSE 'possible' END,
@@ -244,7 +245,7 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
         for select in FOOTPRINT:
             await _insert_links(connection, LinkMethod.FOOTPRINT, select)
         official = (window.start, window.end)
-        await connection.execute(REPO_PROJECTS, *official, MIN_WINDOW_COMMITS)
+        await connection.execute(REPO_PROJECTS, *official, MIN_WINDOW_COMMITS, MIN_LIKELY_COMMITS)
         await connection.execute(ACCOUNT_PROJECTS, *official, settings.friendbot_account)
 
     methods = await connection.fetch("SELECT method, count(*) AS n FROM links GROUP BY method")
