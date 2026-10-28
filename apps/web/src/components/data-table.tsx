@@ -1,7 +1,7 @@
-import { type ReactNode, useState } from 'react'
+import { Fragment, type ReactNode, useState } from 'react'
 
 import { PaginationBar } from '@/components/pagination-bar'
-import { TableSkeletonRows } from '@/components/table-skeleton'
+import { CardSkeletons, TableSkeletonRows } from '@/components/table-skeleton'
 import {
   Table,
   TableBody,
@@ -40,6 +40,43 @@ interface DataTableProps<T> {
   onRowClick?: (row: T) => void
 }
 
+interface RowCardProps<T> {
+  columns: Column<T>[]
+  row: T
+  onRowClick?: (row: T) => void
+}
+
+function RowCard<T>({ columns, row, onRowClick }: RowCardProps<T>) {
+  const [title, ...details] = columns
+
+  return (
+    <li
+      className={cn(
+        'flex flex-col gap-2.5 rounded-lg border bg-card p-3',
+        onRowClick && 'cursor-pointer active:bg-muted',
+      )}
+      tabIndex={onRowClick ? 0 : undefined}
+      onClick={onRowClick ? (event) => !isInteractive(event.target) && onRowClick(row) : undefined}
+      onKeyDown={
+        onRowClick
+          ? (event) =>
+              event.key === 'Enter' && event.target === event.currentTarget && onRowClick(row)
+          : undefined
+      }
+    >
+      <div className="min-w-0">{title.cell(row)}</div>
+      <dl className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1.5 text-sm">
+        {details.map((column) => (
+          <Fragment key={column.header}>
+            <dt className="text-muted-foreground">{column.header}</dt>
+            <dd className="min-w-0 text-right break-words">{column.cell(row)}</dd>
+          </Fragment>
+        ))}
+      </dl>
+    </li>
+  )
+}
+
 export function DataTable<T>({
   columns,
   rows,
@@ -58,7 +95,7 @@ export function DataTable<T>({
     <div className="flex flex-col gap-3">
       <div
         className={cn(
-          'overflow-x-auto rounded-lg border transition-opacity',
+          'hidden overflow-x-auto rounded-lg border transition-opacity md:block',
           isRefreshing && 'opacity-50',
         )}
       >
@@ -116,6 +153,24 @@ export function DataTable<T>({
           </TableBody>
         </Table>
       </div>
+      <ul
+        className={cn(
+          'flex flex-col gap-2 transition-opacity md:hidden',
+          isRefreshing && 'opacity-50',
+        )}
+      >
+        {isLoading ? (
+          <CardSkeletons rows={columns.length} />
+        ) : visible.length === 0 ? (
+          <li className="rounded-lg border p-6 text-center text-sm text-muted-foreground">
+            {empty}
+          </li>
+        ) : (
+          visible.map((row) => (
+            <RowCard key={rowKey(row)} columns={columns} row={row} onRowClick={onRowClick} />
+          ))
+        )}
+      </ul>
       {!isLoading && <PaginationBar {...paging} />}
     </div>
   )

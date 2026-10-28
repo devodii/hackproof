@@ -41,25 +41,44 @@ export function TableSkeletonRows({ columns, rows = 8 }: TableSkeletonRowsProps)
   ))
 }
 
+export function CardSkeletons({ rows, count = 5 }: { rows: number; count?: number }) {
+  return Array.from({ length: count }, (_, cardIndex) => (
+    <li key={cardIndex} className="flex flex-col gap-3 rounded-lg border bg-card p-3">
+      <Skeleton className="h-4 w-2/5" style={{ animationDelay: `${cardIndex * 90}ms` }} />
+      {Array.from({ length: Math.min(rows - 1, 3) }, (_, rowIndex) => (
+        <div key={rowIndex} className="flex items-center justify-between gap-6">
+          <Skeleton className="h-3.5 w-16" style={{ animationDelay: `${cardIndex * 90}ms` }} />
+          <Skeleton className="h-3.5 w-24" style={{ animationDelay: `${cardIndex * 90}ms` }} />
+        </div>
+      ))}
+    </li>
+  ))
+}
+
 export function TableSkeleton({ columns, rows }: { columns: number; rows?: number }) {
   const placeholders = Array.from({ length: columns }, (_, index) => ({ header: String(index) }))
 
   return (
-    <div className="overflow-hidden rounded-lg border">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {placeholders.map(({ header }) => (
-              <TableHead key={header}>
-                <Skeleton className="h-4 w-16" />
-              </TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableSkeletonRows columns={placeholders} rows={rows} />
-        </TableBody>
-      </Table>
-    </div>
+    <>
+      <ul className="flex flex-col gap-2 md:hidden">
+        <CardSkeletons rows={columns} count={4} />
+      </ul>
+      <div className="hidden overflow-hidden rounded-lg border md:block">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              {placeholders.map(({ header }) => (
+                <TableHead key={header}>
+                  <Skeleton className="h-4 w-16" />
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableSkeletonRows columns={placeholders} rows={rows} />
+          </TableBody>
+        </Table>
+      </div>
+    </>
   )
 }
