@@ -5,13 +5,12 @@ from pydantic import BaseModel
 
 from hackproof.github.models import DependencyFingerprint
 
-Tier = Literal["verified", "declared", "likely", "possible", "unattributed"]
+Tier = Literal["verified", "likely", "possible", "unattributed"]
 
 
 class Stats(BaseModel):
     projects: int
     verified_projects: int
-    declared_projects: int
     likely_projects: int
     possible_projects: int
     unattributed_accounts: int
@@ -49,7 +48,6 @@ class Project(BaseModel):
     dependencies: DependencyFingerprint | None
     window_commits: int | None
     total_commits: int | None
-    mentions_hackathon: bool | None
     stellar_added_in_window: bool | None
     created_at: datetime | None
     topics: list[str] | None

@@ -86,7 +86,6 @@ CREATE TABLE IF NOT EXISTS repos (
     window_commits INTEGER,
     base_sha TEXT,
     total_commits INTEGER,
-    mentions_hackathon BOOLEAN NOT NULL DEFAULT FALSE,
     stellar_added_in_window BOOLEAN,
     scanned_at TIMESTAMPTZ
 );

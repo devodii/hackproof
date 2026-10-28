@@ -9,7 +9,6 @@ def test_stats_reports_every_counter():
     assert set(body) == {
         "projects",
         "verified_projects",
-        "declared_projects",
         "likely_projects",
         "possible_projects",
         "unattributed_accounts",
@@ -43,8 +42,8 @@ def test_unknown_project_and_builder_are_not_found():
 
 def test_projects_can_be_filtered_by_tier():
     with TestClient(app) as client:
-        body = client.get("/api/projects", params={"tier": ["verified", "declared"], "limit": 100})
-    assert {item["tier"] for item in body.json()["items"]} <= {"verified", "declared"}
+        body = client.get("/api/projects", params={"tier": ["verified", "likely"], "limit": 100})
+    assert {item["tier"] for item in body.json()["items"]} <= {"verified", "likely"}
 
 
 def test_timeline_has_one_point_per_hour_of_the_window():

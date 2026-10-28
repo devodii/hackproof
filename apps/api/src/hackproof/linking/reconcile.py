@@ -112,7 +112,6 @@ SELECT 'repo:' || r.full_name, r.full_name,
                 AND COALESCE(cs.contracts, 0) + COALESCE(os.classic_ops, 0)
                     + COALESCE(ast.assets, 0) + COALESCE(ws.wasm, 0) + COALESCE(fs.failed, 0) > 0
                 THEN 'verified'
-           WHEN r.mentions_hackathon AND COALESCE(r.window_commits, 0) > 0 THEN 'declared'
            WHEN jsonb_array_length(r.dependencies -> 'ecosystems') > 0
                 AND COALESCE(r.window_commits, 0) > 0
                 AND (r.created_at BETWEEN $1 AND $2
@@ -129,9 +128,8 @@ LEFT JOIN wasm_stats ws USING (full_name)
 LEFT JOIN failed_stats fs USING (full_name)
 WHERE r.full_name IN (SELECT full_name FROM links)
    OR 'wasm_meta' = ANY(r.discovered_via)
-   OR (r.mentions_hackathon AND COALESCE(r.window_commits, 0) > 0)
    OR (jsonb_array_length(r.dependencies -> 'ecosystems') > 0
-       AND (r.mentions_hackathon OR COALESCE(r.window_commits, 0) >= $3
+       AND (COALESCE(r.window_commits, 0) >= $3
             OR COALESCE(r.stellar_added_in_window, FALSE)
             OR r.created_at BETWEEN $1 AND $2))
 """

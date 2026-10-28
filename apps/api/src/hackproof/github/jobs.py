@@ -56,7 +56,7 @@ async def run_scan(force: bool) -> None:
             await store_candidates(connection, refreshed)
             rows = await connection.fetch(
                 """
-                SELECT full_name, url, owner, default_branch, homepage, topics, base_sha
+                SELECT full_name, url, owner, default_branch, homepage, base_sha
                 FROM repos
                 WHERE ($1 OR scanned_at IS NULL)
                   AND (COALESCE(window_commits, 0) > 0

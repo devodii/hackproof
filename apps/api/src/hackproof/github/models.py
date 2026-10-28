@@ -53,6 +53,5 @@ class RepoScan(BaseModel):
     full_name: str
     refs: list[Ref]
     dependencies: DependencyFingerprint
-    mentions_hackathon: bool
     stellar_added_in_window: bool | None
     contributors: list[Contributor]

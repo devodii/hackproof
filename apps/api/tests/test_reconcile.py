@@ -62,7 +62,7 @@ async def test_a_shared_template_wasm_does_not_merge_unrelated_teams(scratch_db)
 
 async def test_hacker_accounts_in_a_repo_attach_a_contractless_project(scratch_db):
     db = scratch_db
-    await add_repo(db, "team/payments", window_commits=9, mentions_hackathon=True,
+    await add_repo(db, "team/payments", window_commits=9,
                    dependencies={"ecosystems": ["js"], "packages": {}})  # fmt: skip
     await add_funding(db, "GHACKER")
     await add_ref(db, "team/payments", "account", "GHACKER")
@@ -124,7 +124,6 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
     await add_repo(db, "a/chain", window_commits=1)
     await add_ref(db, "a/chain", "contract", "C1")
     await add_contract(db, "C1", "GCHAIN", "w1")
-    await add_repo(db, "b/declared", window_commits=2, mentions_hackathon=True)
     await add_repo(db, "c/likely", window_commits=2, created_at=INSIDE, dependencies=STELLAR)
     await add_repo(db, "d/possible", window_commits=5, dependencies=STELLAR)
 
@@ -132,7 +131,6 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
 
     assert await tiers(db) == {
         "repo:a/chain": "verified",
-        "repo:b/declared": "declared",
         "repo:c/likely": "likely",
         "repo:d/possible": "possible",
     }

@@ -26,8 +26,6 @@ MAX_TEXT_FILES = 60
 MAX_WASM_FILES = 5
 MAX_TEXT_BYTES = 512_000
 MAX_WASM_BYTES = 5_000_000
-HACKATHON_MENTION = re.compile(r"hack\s?meridian|meridian\s+2026", re.IGNORECASE)
-HACKATHON_TOPIC = re.compile(r"hack-?meridian", re.IGNORECASE)
 DEMO_URL = re.compile(
     r"https?://[A-Za-z0-9.-]+\.(?:vercel\.app|netlify\.app|pages\.dev|github\.io|fly\.dev|onrender\.com)"
     r"[A-Za-z0-9/_.~%-]*"
@@ -119,8 +117,6 @@ class Scanner:
             full_name=repo.full_name,
             refs=list(dict.fromkeys(refs)),
             dependencies=dependencies,
-            mentions_hackathon=bool(HACKATHON_MENTION.search(readme))
-            or any(HACKATHON_TOPIC.search(topic) for topic in repo.topics),
             stellar_added_in_window=added,
             contributors=contributors_from(people),
         )
@@ -162,12 +158,10 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         )
         await connection.execute(
             """
-            UPDATE repos SET dependencies = $2, mentions_hackathon = $3,
-                stellar_added_in_window = $4, scanned_at = now()
+            UPDATE repos SET dependencies = $2, stellar_added_in_window = $3, scanned_at = now()
             WHERE full_name = $1
             """,
             scan.full_name,
             scan.dependencies.model_dump(),
-            scan.mentions_hackathon,
             scan.stellar_added_in_window,
         )
