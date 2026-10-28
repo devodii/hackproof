@@ -1,14 +1,12 @@
 import { Explorer } from '@/components/explorer/explorer'
-import { StatsGrid } from '@/components/stats-grid'
+import { Overview } from '@/components/overview'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
-import { useStats } from '@/hooks/use-stats'
-import { formatDateTime, formatNumber } from '@/lib/format'
+import { formatDateTime } from '@/lib/format'
 
 export function HomePage() {
   const { data } = useHackWindow()
-  const { data: stats } = useStats()
 
   return (
     <div className="flex flex-col gap-10">
@@ -29,17 +27,7 @@ export function HomePage() {
           <Skeleton className="h-5 w-72" />
         )}
       </section>
-      <div className="flex flex-col gap-3">
-        <StatsGrid />
-        {stats && (
-          <p className="text-sm text-muted-foreground">
-            {formatNumber(stats.projects)} HackMeridian projects:{' '}
-            {formatNumber(stats.verified_projects)} verified on-chain and{' '}
-            {formatNumber(stats.likely_projects)} likely. The official submission list is not
-            public.
-          </p>
-        )}
-      </div>
+      <Overview />
       <Explorer />
     </div>
   )
