@@ -8,11 +8,11 @@ import {
   LedgerLink,
   ProjectLink,
 } from '@/components/links'
+import { TierBadge } from '@/components/tier-badge'
 import { Badge } from '@/components/ui/badge'
 import {
   flagEmoji,
   footprintLabel,
-  tierLabel,
   formatBytes,
   formatDateTime,
   formatLastActivity,
@@ -44,15 +44,11 @@ export const projectColumns: Column<Project>[] = [
   },
   {
     header: 'Evidence',
-    cell: (row) => (
-      <Badge variant={row.tier === 'verified' ? 'default' : 'secondary'}>
-        {tierLabel[row.tier]}
-      </Badge>
-    ),
+    cell: (row) => <TierBadge tier={row.tier} />,
   },
   {
     header: 'Footprint',
-    cell: (row) => <Badge variant="secondary">{footprintLabel[row.footprint]}</Badge>,
+    cell: (row) => <Badge variant="outline">{footprintLabel[row.footprint]}</Badge>,
   },
   { header: 'Contracts', className: numeric, cell: (row) => formatNumber(row.contracts) },
   { header: 'Classic ops', className: numeric, cell: (row) => formatNumber(row.classic_ops) },
@@ -112,7 +108,7 @@ export const failedColumns: Column<FailedTx>[] = [
     cell: (row) => <ExternalId value={row.tx_hash} href={expertUrl.tx(row.tx_hash)} />,
   },
   { header: 'Source', cell: (row) => <AccountLink address={row.source_account} /> },
-  { header: 'Kind', cell: (row) => <Badge variant="secondary">{row.kind}</Badge> },
+  { header: 'Kind', cell: (row) => <Badge variant="outline">{row.kind}</Badge> },
   {
     header: 'Result',
     cell: (row) => (
@@ -132,7 +128,7 @@ export function linkColumns(fullName: string): Column<Link>[] {
       header: 'Matched',
       cell: (row) => <EvidenceSubject kind={row.subject_kind} subject={row.subject} />,
     },
-    { header: 'Method', cell: (row) => <Badge variant="secondary">{row.method}</Badge> },
+    { header: 'Method', cell: (row) => <Badge variant="outline">{row.method}</Badge> },
     {
       header: 'Found in',
       cell: (row) =>

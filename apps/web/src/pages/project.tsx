@@ -7,19 +7,13 @@ import { ActivitySections } from '@/components/explorer/activity-sections'
 import { linkColumns } from '@/components/explorer/columns'
 import { DetailError, DetailSkeleton } from '@/components/query-state'
 import { Section } from '@/components/section'
+import { TierBadge } from '@/components/tier-badge'
 import { Accordion } from '@/components/ui/accordion'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { useHackWindow } from '@/hooks/use-hack-window'
 import { useProject } from '@/hooks/use-project'
-import {
-  flagEmoji,
-  footprintLabel,
-  formatDateTime,
-  isWithin,
-  projectName,
-  tierLabel,
-} from '@/lib/format'
+import { flagEmoji, footprintLabel, formatDateTime, isWithin, projectName } from '@/lib/format'
 import { githubUrl } from '@/lib/links'
 
 export function ProjectPage() {
@@ -38,7 +32,6 @@ export function ProjectPage() {
   const reasons = [
     isWithin(project.created_at, hackWindow) && 'was created during the hack',
     project.stellar_added_in_window && 'added Stellar during the hack',
-    project.mentions_hackathon && 'mentions HackMeridian',
   ].filter(Boolean) as string[]
   const inclusion = reasons.length
     ? new Intl.ListFormat('en', { type: 'conjunction' }).format(reasons)
@@ -56,9 +49,7 @@ export function ProjectPage() {
           </Avatar>
           <h1 className="text-5xl leading-none">{name}</h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
-          <Badge variant={project.tier === 'verified' ? 'default' : 'secondary'}>
-            {tierLabel[project.tier]}
-          </Badge>
+          <TierBadge tier={project.tier} />
           <Badge variant="outline">{footprintLabel[project.footprint]}</Badge>
         </div>
         {project.description && (

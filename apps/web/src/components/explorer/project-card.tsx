@@ -2,9 +2,10 @@ import { ExternalLinkIcon, StarIcon } from 'lucide-react'
 import { Link } from 'react-router'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { TierBadge } from '@/components/tier-badge'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { flagEmoji, formatNumber, projectName, tierLabel } from '@/lib/format'
+import { flagEmoji, formatNumber, projectName } from '@/lib/format'
 import type { Project } from '@/lib/types'
 
 const VISIBLE_TOPICS = 3
@@ -30,9 +31,7 @@ export function ProjectCard({ project }: { project: Project }) {
             >
               {name}
             </Link>
-            <Badge variant={project.tier === 'verified' ? 'default' : 'secondary'}>
-              {tierLabel[project.tier]}
-            </Badge>
+            <TierBadge tier={project.tier} />
           </div>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           {project.url && (

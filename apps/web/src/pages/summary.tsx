@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { ActivityChart } from '@/components/charts/activity-chart'
 import { CountryChart } from '@/components/charts/country-chart'
-import { Badge } from '@/components/ui/badge'
+import { TierBadge } from '@/components/tier-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -74,7 +74,7 @@ export function SummaryPage() {
       <section className="flex flex-col gap-4">
         <h2 className="text-4xl">How confident we are</h2>
         <p className="max-w-2xl text-muted-foreground">
-          Every project gets one evidence tier. The site shows the strict tiers by default.
+          Every project gets one evidence tier. The site shows the verified and likely tiers.
         </p>
         <div className="overflow-x-auto rounded-lg border">
           <Table>
@@ -82,14 +82,14 @@ export function SummaryPage() {
               <TableRow>
                 <TableHead>Tier</TableHead>
                 <TableHead>What it requires</TableHead>
-                <TableHead>Shown by default</TableHead>
+                <TableHead>Shown on the site</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {TIER_DEFINITIONS.map(({ tier, label, rule, strict }) => (
+              {TIER_DEFINITIONS.map(({ tier, rule, strict }) => (
                 <TableRow key={tier}>
                   <TableCell>
-                    <Badge variant={tier === 'verified' ? 'default' : 'secondary'}>{label}</Badge>
+                    <TierBadge tier={tier} />
                   </TableCell>
                   <TableCell>{rule}</TableCell>
                   <TableCell>{strict ? 'Yes' : 'No'}</TableCell>

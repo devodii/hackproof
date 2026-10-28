@@ -17,7 +17,7 @@ export function Section({ value, title, count, children }: SectionProps) {
       <AccordionTrigger className="items-center py-4">
         <span className="flex items-center gap-3">
           <span className="font-heading text-2xl font-normal">{title}</span>
-          {count !== undefined && <Badge variant="secondary">{formatNumber(count)}</Badge>}
+          {count !== undefined && <Badge variant="outline">{formatNumber(count)}</Badge>}
         </span>
       </AccordionTrigger>
       <AccordionContent className="pt-1 pb-4">{children}</AccordionContent>

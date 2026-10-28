@@ -58,13 +58,12 @@ export function isWithin(iso: string | null, window: { start: string; end: strin
 
 export const tierLabel = {
   verified: 'Verified on-chain',
-  declared: 'Declared',
   likely: 'Likely',
   possible: 'Possible',
   unattributed: 'No repo',
 } as const
 
-export const STRICT_TIERS = ['verified', 'declared', 'likely'] as const
+export const STRICT_TIERS = ['verified', 'likely'] as const
 
 export const footprintLabel = {
   contracts: 'Contracts',

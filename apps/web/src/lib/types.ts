@@ -9,12 +9,11 @@ export interface HackWindow {
 }
 
 export type Footprint = 'contracts' | 'classic' | 'github'
-export type Tier = 'verified' | 'declared' | 'likely' | 'possible' | 'unattributed'
+export type Tier = 'verified' | 'likely' | 'possible' | 'unattributed'
 
 export interface Stats {
   projects: number
   verified_projects: number
-  declared_projects: number
   likely_projects: number
   possible_projects: number
   unattributed_accounts: number
@@ -57,7 +56,6 @@ export interface Project {
   dependencies: DependencyFingerprint | null
   window_commits: number | null
   total_commits: number | null
-  mentions_hackathon: boolean | null
   stellar_added_in_window: boolean | null
   created_at: string | null
   topics: string[] | null

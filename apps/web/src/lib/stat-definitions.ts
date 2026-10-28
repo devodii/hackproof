@@ -14,7 +14,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     label: 'HackMeridian projects',
     meaning:
       'GitHub repos we treat as HackMeridian submissions. This is a reconstruction, not an official total: the real submission list is private.',
-    counted: 'Repos in the verified, declared and likely tiers added together.',
+    counted: 'Repos in the verified and likely tiers added together.',
     href: '/',
   },
   {
@@ -24,13 +24,6 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
       'Repos tied to testnet activity by an exact match, such as a deployed contract id, a wasm hash or a deploy account found in the repo.',
     counted:
       'At least one exact match, and the matched account was active inside the 27 hour window.',
-    href: '/',
-  },
-  {
-    key: 'declared_projects',
-    label: 'Declared',
-    meaning: 'Repos that say they belong to HackMeridian, with work done during the event.',
-    counted: 'The readme or a topic names HackMeridian, and at least one commit inside the window.',
     href: '/',
   },
   {
@@ -46,7 +39,7 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
     key: 'possible_projects',
     label: 'Possible',
     meaning:
-      'Stellar repos with some activity that weekend and no other evidence. Hidden by default because many are ordinary Stellar development.',
+      'Stellar repos with some activity that weekend and no other evidence. Not shown on the site because many are ordinary Stellar development.',
     counted: 'A Stellar dependency and at least 3 commits in the window.',
   },
   {
@@ -102,28 +95,19 @@ export const STAT_DEFINITIONS: StatDefinition[] = [
   },
 ]
 
-export const TIER_DEFINITIONS: { tier: Tier; label: string; rule: string; strict: boolean }[] = [
+export const TIER_DEFINITIONS: { tier: Tier; rule: string; strict: boolean }[] = [
   {
     tier: 'verified',
-    label: 'Verified on-chain',
     rule: 'An exact repo to chain match, with chain activity inside the window.',
     strict: true,
   },
   {
-    tier: 'declared',
-    label: 'Declared',
-    rule: 'The readme or a topic names HackMeridian, with commits inside the window.',
-    strict: true,
-  },
-  {
     tier: 'likely',
-    label: 'Likely',
     rule: 'Stellar dependency and window commits, created or Stellar added during the window.',
     strict: true,
   },
   {
     tier: 'possible',
-    label: 'Possible',
     rule: 'Stellar dependency and at least 3 window commits, nothing else.',
     strict: false,
   },
