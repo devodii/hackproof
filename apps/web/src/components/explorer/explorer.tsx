@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router'
 
 import { Input } from '@/components/ui/input'
-import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useDebouncedValue } from '@/hooks/use-debounced-value'
 import { STRICT_TIERS } from '@/lib/format'
@@ -16,7 +15,6 @@ import { ResourceTable } from './resource-table'
 export function Explorer() {
   const [params, setParams] = useSearchParams()
   const [input, setInput] = useState(params.get('q') ?? '')
-  const [strict, setStrict] = useState(true)
   const navigate = useNavigate()
   const view = params.get('view') === 'table' ? 'table' : 'cards'
   const search = useDebouncedValue(input.trim())
@@ -52,28 +50,18 @@ export function Explorer() {
         </div>
       </div>
       <TabsContent value="projects" className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <label className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Switch checked={strict} onCheckedChange={setStrict} />
-            Strict: verified on-chain, declared or likely HackMeridian projects only
-          </label>
-          <Tabs value={view} onValueChange={(next) => setParam('view', next)}>
-            <TabsList>
-              <TabsTrigger value="cards">Cards</TabsTrigger>
-              <TabsTrigger value="table">Table</TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
+        <Tabs value={view} onValueChange={(next) => setParam('view', next)} className="self-end">
+          <TabsList>
+            <TabsTrigger value="cards">Cards</TabsTrigger>
+            <TabsTrigger value="table">Table</TabsTrigger>
+          </TabsList>
+        </Tabs>
         {view === 'cards' ? (
-          <ProjectGrid
-            key={`${search}:${strict}`}
-            search={search}
-            tiers={strict ? STRICT_TIERS : undefined}
-          />
+          <ProjectGrid key={search} search={search} tiers={STRICT_TIERS} />
         ) : (
           <ResourceTable<Project>
-            key={`${search}:${strict}`}
-            tiers={strict ? STRICT_TIERS : undefined}
+            key={search}
+            tiers={STRICT_TIERS}
             resource="projects"
             search={search}
             columns={projectColumns}
