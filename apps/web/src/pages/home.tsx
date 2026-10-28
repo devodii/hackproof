@@ -2,7 +2,6 @@ import { suggestionsFor } from '@/components/chat/page'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
 import { Overview } from '@/components/overview'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
@@ -15,13 +14,12 @@ export function HomePage() {
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
-        <Badge variant="secondary">testnet, rebuilt from the chain</Badge>
-        <h1 className="max-w-4xl text-5xl leading-[1.02] sm:text-7xl">
-          Every submission to HackMeridian, recovered from the ledger.
+        <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
+          HackMeridian 2026, rebuilt from the chain.
         </h1>
-        <p className="max-w-2xl text-muted-foreground">
-          No public list exists, so we rebuilt it from testnet: every contract deployed, every wasm
-          upload and every failed transaction inside the 27 hour window.
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          The submission list is not public, so we rebuilt it from Stellar testnet. Every project
+          below is matched to on-chain activity you can check yourself.
         </p>
         {data ? (
           <p className="text-sm text-muted-foreground">
