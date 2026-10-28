@@ -12,7 +12,7 @@ import { useCountries } from '@/hooks/use-countries'
 import { countryName, flagEmoji } from '@/lib/format'
 
 const config = {
-  contributors: { label: 'Contributors', color: 'var(--primary)' },
+  contributors: { label: 'Contributors', color: 'var(--chart-2)' },
 } satisfies ChartConfig
 
 const ROW_HEIGHT = 32
