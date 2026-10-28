@@ -29,7 +29,7 @@ A candidate is only scanned in depth if it has at least one commit inside the wi
 - Contract ids, account ids, `CODE:ISSUER` assets and network markers found in text files up to 512 kB, all checked against Stellar checksums.
 - The sha256 of committed `.wasm` files.
 - Dependency manifests (Rust, JS, Python, Go) fingerprinted for Stellar packages.
-- Commits inside the window, and whether the readme or a topic mentions HackMeridian.
+- Commits inside the window.
 - **Dependency history:** the manifests as they were at the last commit before the window are compared with today's. A Stellar package that was absent then and present now was added during the hack, which catches existing projects that built a Stellar integration for the event. A repo with no commit before the window was born inside it.
 - The demo site bundle, when a demo url is known, searched for the same ids.
 
@@ -50,7 +50,17 @@ Accounts that appear in more than eight repos are treated as shared infrastructu
 
 ## Projects
 
-A project is a repo with at least one link, a wasm-metadata repo, or a repo with a Stellar dependency that also shows hackathon activity: it mentions HackMeridian, has several commits in the window, was created in the window, or added its Stellar dependency during the window. Chain activity with no repo stays visible as an unattributed account project. Each project shows its footprint: contracts, classic operations only, or GitHub only.
+A project is a repo with at least one link, a wasm-metadata repo, or a repo with a Stellar dependency that also shows hackathon activity: several commits in the window, creation in the window, or a Stellar dependency added during the window. Chain activity with no repo stays visible as an unattributed account project.
+
+Each project gets one evidence tier:
+
+- **Verified:** an exact repo to chain match, with chain activity inside the window.
+- **Likely:** a Stellar dependency and commits in the window, and the repo was created in the window or added Stellar during it. A signal, not proof.
+- **Possible:** a Stellar dependency and at least three commits in the window, nothing else.
+
+The site lists verified and likely projects.
+
+Each exported project also carries the track it fits, inferred from its history: **genesis** for a product created during the hack, **scale** for an existing product that predates it. Teams were not asked which track they entered, so this is an inference.
 
 No language model is used in any join.
 
