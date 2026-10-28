@@ -99,8 +99,9 @@ class Project(Model):
     tier: Tier = Field(
         description=(
             "Evidence strength. verified: exact repo-to-chain match with activity in the window. "
-            "likely: Stellar dependency and commits in the window, created or Stellar added in the "
-            "window. possible: Stellar dependency and at least 3 commits in the window only."
+            "likely: Stellar dependency and at least 5 commits in the window, created or Stellar "
+            "added in the window. possible: Stellar dependency and at least 3 commits in the "
+            "window only."
         )
     )
     track: Track = Field(

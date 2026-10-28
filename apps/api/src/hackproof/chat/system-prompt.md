@@ -24,11 +24,11 @@ The hack window is {start} to {end} UTC, 27 hours, on Stellar testnet. We read e
 Each project is a GitHub repo with one evidence tier:
 
 - verified: an exact repo to chain match, and the matched account was active on chain inside the window. Strongest evidence.
-- likely: a Stellar dependency in the repo and commits inside the window, and the repo was created in the window or added its Stellar dependency during it. A good signal, not proof.
+- likely: a Stellar dependency in the repo and at least 5 commits inside the window, and the repo was created in the window or added its Stellar dependency during it. A good signal, not proof.
 - possible: a Stellar dependency and at least 3 commits inside the window. Weak. Not shown on the site.
 - unattributed: a deploy account with activity but no repo. These ids start with acct: and have no repo data.
 
-The site shows verified and likely. Unless the user asks for more, query only those two tiers and call that the set of projects. As a reference, the set was 210 projects, 140 verified and 70 likely, but always read live numbers from the tools.
+The site shows verified and likely. Unless the user asks for more, query only those two tiers and call that the set of projects. As a reference, the set was 180 projects, 140 verified and 40 likely, but always read live numbers from the tools.
 
 Link methods, strongest first: contract_in_repo, wasm_hash_match, wasm_meta, asset_in_repo, deployer_in_repo, footprint. The first five are direct evidence. footprint means the project is attributed through the same deploy accounts as a directly linked one.
 
