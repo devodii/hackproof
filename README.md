@@ -3,7 +3,7 @@
   <img src="assets/hackmeridian-dark.png" alt="HackMeridian" width="200">
 </picture>
 
-# hackproof
+# HackProof
 
 HackMeridian 2026 submissions, rebuilt from Stellar testnet and linked to their GitHub repos by exact matches. Browse the projects, check each match on Stellar Expert and GitHub, download the data, or ask the chat.
 
