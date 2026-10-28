@@ -28,14 +28,14 @@ from hackproof.export.urls import (
 from hackproof.hackathon import Hackathon
 from hackproof.linking.methods import METHOD_RANK_SQL
 
-STRICT_TIERS = ("verified", "declared", "likely")
-TIER_ORDER = ("verified", "declared", "likely", "possible")
+STRICT_TIERS = ("verified", "likely")
+TIER_ORDER = ("verified", "likely", "possible")
 
 PROJECTS_SQL = """
 SELECT p.full_name, p.tier, p.contracts, p.classic_ops, p.assets, p.wasm_uploads, p.failed_txs,
        r.url, r.description, r.homepage, r.language, r.license, r.stars, r.forks, r.topics,
        r.dependencies, r.created_at, r.pushed_at, r.window_commits, r.total_commits,
-       r.stellar_added_in_window, r.mentions_hackathon, r.owner, r.owner_avatar, r.country
+       r.owner, r.owner_avatar, r.country
 FROM projects p
 JOIN repos r ON r.full_name = p.full_name
 WHERE p.tier = ANY($1)
@@ -134,11 +134,11 @@ async def build_export(
             repo_last_commit_at=row["pushed_at"],
             commits_in_window=row["window_commits"],
             total_commits=row["total_commits"],
-            created_during_hack=bool(
-                row["created_at"] and window.start <= row["created_at"] <= window.end
+            track=(
+                "genesis"
+                if row["created_at"] and window.start <= row["created_at"] <= window.end
+                else "scale"
             ),
-            stellar_added_during_hack=row["stellar_added_in_window"],
-            mentions_hackathon=row["mentions_hackathon"],
             owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
             contributors=[
                 Contributor(

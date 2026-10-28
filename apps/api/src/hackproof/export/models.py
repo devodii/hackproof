@@ -6,7 +6,8 @@ from pydantic.alias_generators import to_camel
 
 SCHEMA_VERSION = "1.0"
 
-Tier = Literal["verified", "declared", "likely", "possible"]
+Tier = Literal["verified", "likely", "possible"]
+Track = Literal["genesis", "scale"]
 
 
 class Model(BaseModel):
@@ -98,9 +99,14 @@ class Project(Model):
     tier: Tier = Field(
         description=(
             "Evidence strength. verified: exact repo-to-chain match with activity in the window. "
-            "declared: readme or topic names the hackathon, with commits in the window. "
             "likely: Stellar dependency and commits in the window, created or Stellar added in the "
             "window. possible: Stellar dependency and at least 3 commits in the window only."
+        )
+    )
+    track: Track = Field(
+        description=(
+            "HackMeridian track, inferred from the repo's history. genesis: a product created "
+            "during the hack. scale: an existing product that predates it."
         )
     )
     language: str | None = Field(description="Primary language")
@@ -116,11 +122,6 @@ class Project(Model):
     repo_last_commit_at: datetime | None = Field(description="Last push to the repo, UTC")
     commits_in_window: int | None = Field(description="Commits inside the official window")
     total_commits: int | None = Field(description="Commits on the default branch")
-    created_during_hack: bool = Field(description="Repo was created inside the window")
-    stellar_added_during_hack: bool | None = Field(
-        description="A Stellar dependency was absent before the window and present after"
-    )
-    mentions_hackathon: bool = Field(description="Readme or topics name the hackathon")
     owner: Owner
     contributors: list[Contributor]
     chain: Chain
