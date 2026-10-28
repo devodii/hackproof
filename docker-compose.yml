@@ -8,7 +8,7 @@ x-api: &api
     - api-venv:/repo/apps/api/.venv
   environment:
     UV_LINK_MODE: copy
-    HACKPROOF_DATABASE_URL: postgresql://${POSTGRES_USER:-hackproof}:${POSTGRES_PASSWORD:-hackproof}@db:5432/${POSTGRES_DB:-hackproof}
+    DATABASE_URL: postgresql://hackproof:hackproof@db:5432/hackproof
     HACKPROOF_GITHUB_TOKEN: ${HACKPROOF_GITHUB_TOKEN:-}
     HACKPROOF_CORS_ORIGINS: '["http://localhost:5173"]'
   depends_on:
@@ -20,11 +20,11 @@ services:
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-hackproof}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hackproof}
-      POSTGRES_DB: ${POSTGRES_DB:-hackproof}
+      POSTGRES_USER: hackproof
+      POSTGRES_PASSWORD: hackproof
+      POSTGRES_DB: hackproof
     ports:
-      - "${POSTGRES_PORT:-5440}:5432"
+      - "5440:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:

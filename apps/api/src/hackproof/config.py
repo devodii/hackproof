@@ -12,7 +12,10 @@ ROOT_ENV = ROOT / ".env"
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ROOT_ENV, env_prefix="HACKPROOF_", extra="ignore")
 
-    database_url: str = "postgresql://hackproof:hackproof@localhost:5440/hackproof"
+    database_url: str = Field(
+        default="postgresql://hackproof:hackproof@localhost:5440/hackproof",
+        validation_alias=AliasChoices("DATABASE_URL", "HACKPROOF_DATABASE_URL"),
+    )
     horizon_url: str = "https://horizon-testnet.stellar.org"
     soroban_rpc_url: str = "https://soroban-testnet.stellar.org"
     network_passphrase: str = "Test SDF Network ; September 2015"

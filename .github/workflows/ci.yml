@@ -30,7 +30,7 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     env:
-      HACKPROOF_DATABASE_URL: postgresql://hackproof:hackproof@localhost:5432/hackproof
+      DATABASE_URL: postgresql://hackproof:hackproof@localhost:5432/hackproof
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
