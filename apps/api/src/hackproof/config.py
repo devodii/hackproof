@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     hackathon_file: Path = ROOT / "config" / "hackmeridian-2026.yaml"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
+    anthropic_api_key: str | None = None
+    chat_model: str = "claude-sonnet-5-5"
     github_tokens: Annotated[list[str], NoDecode] = Field(
         default_factory=list, validation_alias="HACKPROOF_GITHUB_TOKEN"
     )
