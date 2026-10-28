@@ -1,4 +1,7 @@
-<img src="https://www.hackmeridian.com/assets/event-icon.png" alt="HackMeridian" width="96" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hackmeridian-light.png">
+  <img src="assets/hackmeridian-dark.png" alt="HackMeridian" width="200">
+</picture>
 
 # hackproof
 
