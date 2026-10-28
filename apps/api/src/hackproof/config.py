@@ -2,7 +2,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Annotated
 
-from pydantic import Field, field_validator
+from pydantic import AliasChoices, Field, field_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -19,7 +19,10 @@ class Settings(BaseSettings):
     hackathon_file: Path = ROOT / "config" / "hackmeridian-2026.yaml"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
-    anthropic_api_key: str | None = None
+    anthropic_api_key: str | None = Field(
+        default=None,
+        validation_alias=AliasChoices("HACKPROOF_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"),
+    )
     chat_model: str = "claude-sonnet-5-5"
     github_tokens: Annotated[list[str], NoDecode] = Field(
         default_factory=list, validation_alias="HACKPROOF_GITHUB_TOKEN"
