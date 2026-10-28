@@ -9,9 +9,7 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
-import { MethodologyPage } from '@/pages/methodology'
 import { ProjectPage } from '@/pages/project'
-import { SummaryPage } from '@/pages/summary'
 
 function Shell() {
   const { view } = useChatPanel()
@@ -28,8 +26,6 @@ function Shell() {
             <Route path="/" element={<HomePage />} />
             <Route path="/project/*" element={<ProjectPage />} />
             <Route path="/builder/:address" element={<BuilderPage />} />
-            <Route path="/summary" element={<SummaryPage />} />
-            <Route path="/methodology" element={<MethodologyPage />} />
           </Routes>
         </main>
         <About />

@@ -11,20 +11,9 @@ export function SiteHeader() {
   return (
     <header className="border-b">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
-        <nav className="flex items-center gap-4 sm:gap-6">
-          <Link to="/" className="font-heading text-2xl leading-none">
-            hackproof
-          </Link>
-          <Link to="/summary" className="text-sm text-muted-foreground hover:text-foreground">
-            Summary
-          </Link>
-          <Link
-            to="/methodology"
-            className="hidden text-sm text-muted-foreground hover:text-foreground sm:inline"
-          >
-            Methodology
-          </Link>
-        </nav>
+        <Link to="/" className="font-heading text-2xl leading-none">
+          hackproof
+        </Link>
         <div className="flex items-center gap-2">
           <a
             href={REPO_URL}
