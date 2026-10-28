@@ -27,7 +27,7 @@ export function About() {
         </Avatar>
         <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Hey curious, I'm Odii. A super talented builder passionate about Stellar, I've worked on
-          projects such as <Outbound href={AUTHOR_LINKS.sorokit}>sorokit</Outbound>,{' '}
+          projects such as <Outbound href={AUTHOR_LINKS.sorokit}>Sorokit</Outbound>,{' '}
           <Outbound href={AUTHOR_LINKS.stellarTools}>StellarTools</Outbound> and many more, feel
           free to follow me on <Outbound href={AUTHOR_LINKS.x}>X</Outbound> &amp;{' '}
           <Outbound href={AUTHOR_LINKS.linkedin}>LinkedIn</Outbound>.
