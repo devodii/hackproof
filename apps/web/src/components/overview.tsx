@@ -25,7 +25,9 @@ function ProjectsCard({ stats }: { stats?: Stats }) {
       <CardHeader>
         <CardDescription>Projects</CardDescription>
         {stats ? (
-          <CardTitle className="text-6xl leading-none"><CountUp value={stats.projects} /></CardTitle>
+          <CardTitle className="text-6xl leading-none">
+            <CountUp value={stats.projects} />
+          </CardTitle>
         ) : (
           <Skeleton className="h-14 w-28" />
         )}
@@ -72,7 +74,9 @@ function ActivityCard({ contracts }: { contracts?: number }) {
         {contracts === undefined ? (
           <Skeleton className="h-14 w-28" />
         ) : (
-          <CardTitle className="text-6xl leading-none"><CountUp value={contracts} /></CardTitle>
+          <CardTitle className="text-6xl leading-none">
+            <CountUp value={contracts} />
+          </CardTitle>
         )}
       </CardHeader>
       <CardContent>
