@@ -2,6 +2,7 @@ import { DefaultChatTransport } from 'ai'
 import { z } from 'zod'
 
 import { currentPage } from '@/components/chat/page'
+import { posthog } from '@/lib/analytics'
 import { API_URL } from '@/lib/config'
 
 const rateLimitBody = z.object({
@@ -32,9 +33,12 @@ export class UnavailableError extends Error {
 export const transport = new DefaultChatTransport({
   api: `${API_URL}/api/chat`,
   fetch: async (input, init) => {
+    posthog.capture('chat_message_sent', { page: currentPage().kind })
     const response = await fetch(input, init)
-    if (response.status === 429)
+    if (response.status === 429) {
+      posthog.capture('chat_rate_limited')
       throw new RateLimitError(rateLimitBody.parse(await response.json()))
+    }
     if (response.status === 503) throw new UnavailableError()
     return response
   },

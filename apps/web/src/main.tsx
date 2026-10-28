@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router'
 import { TooltipProvider } from '@/components/ui/tooltip'
 
 import { App } from './app'
+import './lib/analytics'
 import './index.css'
 
 const queryClient = new QueryClient({
