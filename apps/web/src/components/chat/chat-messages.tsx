@@ -1,9 +1,39 @@
 import { isToolUIPart, type ChatStatus, type UIMessage } from 'ai'
-import { useEffect, useRef } from 'react'
+import * as React from 'react'
+import { Link } from 'react-router'
+import { type Components, Streamdown } from 'streamdown'
 
-import { ChatMarkdown } from '@/components/chat/chat-markdown'
 import { ToolCall } from '@/components/chat/tool-call'
+import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Spinner } from '@/components/spinner'
+
+function ChatLink({
+  href,
+  children,
+}: {
+  href?: unknown
+  children?: React.ReactNode
+  node?: unknown
+}) {
+  const { close } = useChatPanel()
+  const to = typeof href === 'string' ? href : ''
+  const className = 'font-medium underline underline-offset-4 wrap-break-word'
+
+  if (to.startsWith('/')) {
+    return (
+      <Link to={to} onClick={close} className={className}>
+        {children}
+      </Link>
+    )
+  }
+  return (
+    <a href={to} target="_blank" rel="noreferrer" className={className}>
+      {children}
+    </a>
+  )
+}
+
+const components: Components = { a: ChatLink }
 
 function isWaiting(messages: UIMessage[], status: ChatStatus) {
   if (status === 'submitted') return true
@@ -12,7 +42,7 @@ function isWaiting(messages: UIMessage[], status: ChatStatus) {
   return last?.role === 'assistant' && last.parts.every((part) => part.type === 'step-start')
 }
 
-function Message({ message }: { message: UIMessage }) {
+function Message({ message, streaming }: { message: UIMessage; streaming: boolean }) {
   if (message.role === 'user') {
     const text = message.parts.map((part) => (part.type === 'text' ? part.text : '')).join('')
     return (
@@ -29,7 +59,15 @@ function Message({ message }: { message: UIMessage }) {
         if (part.type === 'text' && part.text) {
           return (
             <div key={index} className="w-full min-w-0">
-              <ChatMarkdown>{part.text}</ChatMarkdown>
+              <Streamdown
+                components={components}
+                isAnimating={streaming}
+                linkSafety={{ enabled: false }}
+                controls={{ table: false, code: true }}
+                className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+              >
+                {part.text}
+              </Streamdown>
             </div>
           )
         }
@@ -45,10 +83,10 @@ interface ChatMessagesProps {
 }
 
 export function ChatMessages({ messages, status }: ChatMessagesProps) {
-  const container = useRef<HTMLDivElement>(null)
-  const pinned = useRef(true)
+  const container = React.useRef<HTMLDivElement>(null)
+  const pinned = React.useRef(true)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const element = container.current
     if (element && pinned.current) element.scrollTop = element.scrollHeight
   }, [messages, status])
@@ -63,8 +101,12 @@ export function ChatMessages({ messages, status }: ChatMessagesProps) {
       className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
     >
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6">
-        {messages.map((message) => (
-          <Message key={message.id} message={message} />
+        {messages.map((message, index) => (
+          <Message
+            key={message.id}
+            message={message}
+            streaming={status === 'streaming' && index === messages.length - 1}
+          />
         ))}
         {isWaiting(messages, status) && (
           <div className="flex items-center gap-2 text-sm text-muted-foreground" role="status">
