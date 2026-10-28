@@ -1,6 +1,6 @@
 # hackproof
 
-HackMeridian submissions, rebuilt from the chain. No public list exists, so hackproof reads Stellar testnet for every contract deploy, wasm upload, classic operation and failed transaction in the hack window, finds the GitHub repos behind them, and links the two with exact, explainable matches. Builders who deployed during the hack can connect a wallet, sign once and claim a proof.
+HackMeridian submissions, rebuilt from the chain. No public list exists, so hackproof reads Stellar testnet for every contract deploy, wasm upload, classic operation and failed transaction in the hack window, finds the GitHub repos behind them, and links the two with exact, explainable matches.
 
 How the join works, and what it cannot see, is in [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
 
@@ -34,6 +34,12 @@ uv run hackproof reconcile  # join chain and github into links and projects
 ```
 
 `discover` and `scan` need `HACKPROOF_GITHUB_TOKEN`. Several comma separated tokens are rotated.
+
+## Deploy
+
+The API ships as a Docker image (`apps/api/Dockerfile`) and runs on Railway. It reads `DATABASE_URL` (any Postgres), `ANTHROPIC_API_KEY` for the chat and `HACKPROOF_CORS_ORIGINS`, a JSON list of the web origins. Pushes to `main` that touch `apps/api` deploy automatically once the `RAILWAY_TOKEN` repository secret holds a Railway project token.
+
+Host the web app anywhere static and build it with `VITE_API_URL` set to the API's public url.
 
 ## Checks
 
