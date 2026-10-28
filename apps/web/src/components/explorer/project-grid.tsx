@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
 import { ProjectCard } from '@/components/explorer/project-card'
+import { ProjectCardSkeleton } from '@/components/explorer/project-card-skeleton'
 import { PaginationBar } from '@/components/pagination-bar'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { usePagedList } from '@/hooks/use-paged-list'
 import type { Project } from '@/lib/types'
@@ -40,8 +40,11 @@ export function ProjectGrid({ search, tiers }: ProjectGridProps) {
         )}
       >
         {isPending
-          ? Array.from({ length: 6 }, (_, index) => (
-              <Skeleton key={index} className="h-44 w-full rounded-xl" />
+          ? Array.from({ length: 9 }, (_, index) => (
+              <ProjectCardSkeleton
+                key={index}
+                delay={(index % 3) * 140 + Math.floor(index / 3) * 90}
+              />
             ))
           : data.items.map((project) => <ProjectCard key={project.project_id} project={project} />)}
       </div>
