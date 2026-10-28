@@ -21,7 +21,7 @@ export function SiteHeader() {
             rel="noreferrer"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
           >
-            GitHub <ExternalLinkIcon className="size-3.5" />
+            Open Source <ExternalLinkIcon className="size-3.5" />
           </a>
           <Button
             variant="ghost"
