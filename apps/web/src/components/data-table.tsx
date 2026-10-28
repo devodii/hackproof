@@ -1,7 +1,7 @@
 import { type ReactNode, useState } from 'react'
 
 import { PaginationBar } from '@/components/pagination-bar'
-import { Skeleton } from '@/components/ui/skeleton'
+import { TableSkeletonRows } from '@/components/table-skeleton'
 import {
   Table,
   TableBody,
@@ -12,9 +12,6 @@ import {
 } from '@/components/ui/table'
 import { PAGE_SIZE } from '@/hooks/use-paged-list'
 import { cn } from '@/lib/utils'
-
-const SKELETON_ROWS = 8
-const SKELETON_WIDTHS = ['w-28', 'w-40', 'w-24', 'w-36', 'w-32']
 
 function isInteractive(target: EventTarget) {
   return target instanceof Element && target.closest('a, button') !== null
@@ -76,52 +73,36 @@ export function DataTable<T>({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {isLoading
-              ? Array.from({ length: SKELETON_ROWS }, (_, rowIndex) => (
-                  <TableRow key={rowIndex} className="h-[3.1rem] hover:bg-transparent">
-                    {columns.map((column, columnIndex) => (
-                      <TableCell key={column.header}>
-                        <Skeleton
-                          className={cn(
-                            'h-4',
-                            column.className?.includes('text-right')
-                              ? 'ml-auto w-10'
-                              : SKELETON_WIDTHS[
-                                  (rowIndex * 2 + columnIndex) % SKELETON_WIDTHS.length
-                                ],
-                          )}
-                          style={{ animationDelay: `${rowIndex * 90 + columnIndex * 40}ms` }}
-                        />
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
-              : visible.map((row) => (
-                  <TableRow
-                    key={rowKey(row)}
-                    className={cn(onRowClick && 'cursor-pointer')}
-                    tabIndex={onRowClick ? 0 : undefined}
-                    onClick={
-                      onRowClick
-                        ? (event) => !isInteractive(event.target) && onRowClick(row)
-                        : undefined
-                    }
-                    onKeyDown={
-                      onRowClick
-                        ? (event) =>
-                            event.key === 'Enter' &&
-                            event.target === event.currentTarget &&
-                            onRowClick(row)
-                        : undefined
-                    }
-                  >
-                    {columns.map((column) => (
-                      <TableCell key={column.header} className={cn(column.className)}>
-                        {column.cell(row)}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
+            {isLoading ? (
+              <TableSkeletonRows columns={columns} />
+            ) : (
+              visible.map((row) => (
+                <TableRow
+                  key={rowKey(row)}
+                  className={cn(onRowClick && 'cursor-pointer')}
+                  tabIndex={onRowClick ? 0 : undefined}
+                  onClick={
+                    onRowClick
+                      ? (event) => !isInteractive(event.target) && onRowClick(row)
+                      : undefined
+                  }
+                  onKeyDown={
+                    onRowClick
+                      ? (event) =>
+                          event.key === 'Enter' &&
+                          event.target === event.currentTarget &&
+                          onRowClick(row)
+                      : undefined
+                  }
+                >
+                  {columns.map((column) => (
+                    <TableCell key={column.header} className={cn(column.className)}>
+                      {column.cell(row)}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            )}
             {!isLoading && visible.length === 0 && (
               <TableRow>
                 <TableCell
