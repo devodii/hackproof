@@ -2,13 +2,15 @@ import { type DynamicToolUIPart, getToolName, type ToolUIPart } from 'ai'
 import { CheckIcon, TriangleAlertIcon } from 'lucide-react'
 
 import { Spinner } from '@/components/spinner'
-import { formatNumber } from '@/lib/format'
+import { formatNumber, shortId } from '@/lib/format'
 
 const LABELS: Record<string, { running: string; done: string }> = {
   query_projects: { running: 'Searching projects', done: 'Searched projects' },
   query_contracts: { running: 'Looking up contracts', done: 'Looked up contracts' },
   query_wasm: { running: 'Looking up wasm uploads', done: 'Looked up wasm uploads' },
   query_failed: { running: 'Checking failed transactions', done: 'Checked failed transactions' },
+  get_project: { running: 'Loading the project', done: 'Loaded the project' },
+  get_builder: { running: 'Loading the builder', done: 'Loaded the builder' },
   get_stats: { running: 'Reading the headline numbers', done: 'Read the headline numbers' },
   get_timeline: { running: 'Reading the hourly timeline', done: 'Read the hourly timeline' },
   get_countries: {
@@ -24,7 +26,10 @@ function filters(input: unknown) {
   )
   if (entries.length === 0) return null
   return entries
-    .map(([key, value]) => `${key}: ${Array.isArray(value) ? value.join(', ') : String(value)}`)
+    .map(
+      ([key, value]) =>
+        `${key}: ${Array.isArray(value) ? value.join(', ') : shortId(String(value), 10, 6)}`,
+    )
     .join(' · ')
 }
 
