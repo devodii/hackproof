@@ -9,6 +9,8 @@ const LABELS: Record<string, { running: string; done: string }> = {
   query_contracts: { running: 'Looking up contracts', done: 'Looked up contracts' },
   query_wasm: { running: 'Looking up wasm uploads', done: 'Looked up wasm uploads' },
   query_failed: { running: 'Checking failed transactions', done: 'Checked failed transactions' },
+  summarize_projects: { running: 'Summarizing the projects', done: 'Summarized the projects' },
+  web_search: { running: 'Searching the web', done: 'Searched the web' },
   get_project: { running: 'Loading the project', done: 'Loaded the project' },
   get_builder: { running: 'Loading the builder', done: 'Loaded the builder' },
   get_stats: { running: 'Reading the headline numbers', done: 'Read the headline numbers' },
@@ -17,6 +19,10 @@ const LABELS: Record<string, { running: string; done: string }> = {
     running: 'Counting contributors by country',
     done: 'Counted contributors by country',
   },
+}
+
+function compact(value: string) {
+  return /\s/.test(value) ? value : shortId(value, 10, 6)
 }
 
 function filters(input: unknown) {
@@ -28,12 +34,13 @@ function filters(input: unknown) {
   return entries
     .map(
       ([key, value]) =>
-        `${key}: ${Array.isArray(value) ? value.join(', ') : shortId(String(value), 10, 6)}`,
+        `${key}: ${Array.isArray(value) ? value.join(', ') : compact(String(value))}`,
     )
     .join(' · ')
 }
 
 function summary(output: unknown) {
+  if (Array.isArray(output)) return `${output.length} sources`
   if (!output || typeof output !== 'object' || !('items' in output) || !('total' in output)) {
     return null
   }
