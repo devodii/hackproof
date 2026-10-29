@@ -52,6 +52,7 @@ class Project(BaseModel):
     created_at: datetime | None
     topics: list[str] | None
     track: Literal["genesis", "scale"] | None = None
+    integrations: list[str] = []
 
 
 class Contributor(BaseModel):
@@ -119,6 +120,14 @@ class Builder(BaseModel):
 class TimelinePoint(BaseModel):
     hour: datetime
     contracts: int
+
+
+class Integration(BaseModel):
+    slug: str
+    name: str
+    category: str
+    site: str
+    projects: int
 
 
 class CountryCount(BaseModel):

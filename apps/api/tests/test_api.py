@@ -58,3 +58,23 @@ def test_countries_are_ranked_by_contributors():
         rows = client.get("/api/countries").json()
     counts = [row["contributors"] for row in rows]
     assert counts == sorted(counts, reverse=True)
+
+
+def test_integrations_list_every_partner_with_a_project_count():
+    with TestClient(app) as client:
+        body = client.get("/api/integrations").json()
+    assert {"trustless-work", "privy", "stellar-wallets-kit"} <= {row["slug"] for row in body}
+    assert all(row["projects"] >= 0 for row in body)
+
+
+def test_projects_can_be_filtered_by_integration_partner():
+    with TestClient(app) as client:
+        none = client.get("/api/projects", params={"integration": "no-such-partner"}).json()
+        assert none["total"] == 0
+        used = next(
+            (row for row in client.get("/api/integrations").json() if row["projects"]), None
+        )
+        if used:
+            body = client.get("/api/projects", params={"integration": used["slug"]}).json()
+            assert body["total"] >= used["projects"]
+            assert all(used["slug"] in item["integrations"] for item in body["items"])

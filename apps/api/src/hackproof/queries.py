@@ -12,6 +12,8 @@ SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.cla
        r.country, r.dependencies,
        r.window_commits, r.total_commits, r.stellar_added_in_window,
        r.created_at, r.topics, t.track,
+       ARRAY(SELECT i.partner FROM repo_integrations i WHERE i.full_name = p.full_name
+             GROUP BY i.partner ORDER BY i.partner) AS integrations,
        count(*) OVER () AS total
 FROM projects p
 LEFT JOIN repos r ON r.full_name = p.full_name
@@ -28,6 +30,9 @@ WHERE ($1::text IS NULL
   AND ($3::text IS NULL OR p.project_id = $3)
   AND ($4::text[] IS NULL OR p.tier = ANY($4))
   AND ($9::text IS NULL OR t.track = $9)
+  AND ($10::text[] IS NULL OR EXISTS (
+       SELECT 1 FROM repo_integrations i
+       WHERE i.full_name = p.full_name AND i.partner = ANY($10)))
 ORDER BY array_position(
              ARRAY['verified', 'likely', 'possible', 'unattributed'], p.tier),
          p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
@@ -140,6 +145,13 @@ GROUP BY g.hour
 ORDER BY g.hour
 """
 
+INTEGRATIONS_SQL = """
+SELECT i.partner AS slug, count(DISTINCT i.full_name) AS projects
+FROM repo_integrations i
+JOIN projects p ON p.full_name = i.full_name AND p.tier IN ('verified', 'likely')
+GROUP BY i.partner
+"""
+
 COUNTRIES_SQL = """
 SELECT u.country, count(DISTINCT c.login) AS contributors
 FROM repo_contributors c
@@ -174,11 +186,12 @@ async def list_page(
     project_id: str | None = None,
     tiers: list[str] | None = None,
     track: str | None = None,
+    integrations: list[str] | None = None,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
     args = (
-        (q, account, project_id, tiers, limit, offset, *window(), track)
+        (q, account, project_id, tiers, limit, offset, *window(), track, integrations)
         if resource == "projects"
         else (*window(), q, account, project_id, limit, offset)
     )
@@ -208,6 +221,12 @@ async def fetch_timeline() -> list[dict[str, Any]]:
     start, end = window()
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(TIMELINE_SQL, start, end)]
+
+
+async def fetch_integration_counts() -> dict[str, int]:
+    async with pool().acquire() as connection:
+        rows = await connection.fetch(INTEGRATIONS_SQL)
+    return {row["slug"]: row["projects"] for row in rows}
 
 
 async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:

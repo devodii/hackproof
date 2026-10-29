@@ -1,13 +1,15 @@
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, HTTPException, Query
 
 from hackproof import queries
+from hackproof.integrations.catalog import get_catalog
 from hackproof.schemas import (
     Builder,
     Contract,
     CountryCount,
     FailedTx,
+    Integration,
     Page,
     Project,
     ProjectDetail,
@@ -46,12 +48,35 @@ async def countries() -> list[CountryCount]:
     return [CountryCount(**row) for row in await queries.fetch_countries()]
 
 
+@router.get("/integrations")
+async def integrations() -> list[Integration]:
+    counts = await queries.fetch_integration_counts()
+    return [
+        Integration(
+            **partner.model_dump(include={"slug", "name", "category", "site"}),
+            projects=counts.get(partner.slug, 0),
+        )
+        for partner in get_catalog().partners
+    ]
+
+
 @router.get("/projects")
 async def projects(
-    q: Search = None, tier: Tiers = None, limit: Limit = 50, offset: Offset = 0
+    q: Search = None,
+    tier: Tiers = None,
+    track: Annotated[Literal["genesis", "scale"] | None, Query()] = None,
+    integration: Annotated[list[str] | None, Query()] = None,
+    limit: Limit = 50,
+    offset: Offset = 0,
 ) -> Page[Project]:
     items, total = await queries.list_page(
-        "projects", q=q, tiers=list(tier) if tier else None, limit=limit, offset=offset
+        "projects",
+        q=q,
+        tiers=list(tier) if tier else None,
+        track=track,
+        integrations=integration,
+        limit=limit,
+        offset=offset,
     )
     return Page(items=items, total=total)
 
