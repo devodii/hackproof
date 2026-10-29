@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { Contributors } from '@/components/contributors'
 import { DataTable } from '@/components/data-table'
 import { ActivitySections } from '@/components/explorer/activity-sections'
-import { linkColumns } from '@/components/explorer/columns'
+import { integrationColumns, linkColumns } from '@/components/explorer/columns'
 import { ProjectSkeleton } from '@/components/page-skeletons'
 import { DetailError } from '@/components/query-state'
 import { Section } from '@/components/section'
@@ -25,7 +25,8 @@ export function ProjectPage() {
   if (isPending) return <ProjectSkeleton />
   if (error) return <DetailError error={error} subject="project" />
 
-  const { project, links, contributors, contracts, wasm_uploads, failed_txs } = data
+  const { project, links, integration_uses, contributors, contracts, wasm_uploads, failed_txs } =
+    data
   const name = projectName(project.project_id)
   const direct = links.filter((link) => link.method !== 'footprint')
   const derived = links.length - direct.length
@@ -131,7 +132,16 @@ export function ProjectPage() {
           </div>
         )}
       </header>
-      <Accordion multiple defaultValue={['evidence']}>
+      <Accordion multiple defaultValue={['evidence', 'integrations']}>
+        {integration_uses.length > 0 && (
+          <Section value="integrations" title="Integrations" count={integration_uses.length}>
+            <DataTable
+              columns={integrationColumns(project.full_name ?? '')}
+              rows={integration_uses}
+              rowKey={(row) => `${row.slug}:${row.method}:${row.evidence}`}
+            />
+          </Section>
+        )}
         {contributors.length > 0 && (
           <Section value="contributors" title="Contributors" count={contributors.length}>
             <Contributors contributors={contributors} />

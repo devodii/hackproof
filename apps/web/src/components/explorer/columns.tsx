@@ -20,7 +20,7 @@ import {
   shortId,
 } from '@/lib/format'
 import { expertUrl, githubUrl } from '@/lib/links'
-import type { Contract, FailedTx, Link, Project, WasmUpload } from '@/lib/types'
+import type { Contract, FailedTx, IntegrationUse, Link, Project, WasmUpload } from '@/lib/types'
 
 const numeric = 'text-right tabular-nums'
 
@@ -55,6 +55,31 @@ export const projectColumns: Column<Project>[] = [
   { header: 'Wasm', className: numeric, cell: (row) => formatNumber(row.wasm_uploads) },
   { header: 'Failed', className: numeric, cell: (row) => formatNumber(row.failed_txs) },
   { header: 'Last activity', cell: (row) => formatLastActivity(row.last_activity) },
+]
+
+export const integrationColumns = (fullName: string): Column<IntegrationUse>[] => [
+  { header: 'Partner', cell: (row) => <span className="font-medium">{row.name}</span> },
+  {
+    header: 'Found as',
+    cell: (row) => (
+      <Badge variant="outline">{row.method === 'package' ? 'Package' : 'API host'}</Badge>
+    ),
+  },
+  { header: 'Match', cell: (row) => <span className="font-mono text-xs">{row.evidence}</span> },
+  {
+    header: 'File',
+    cell: (row) => (
+      <a
+        href={githubUrl.file(fullName, row.path)}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-1 font-mono text-xs hover:underline"
+      >
+        {row.path}
+        <ExternalLinkIcon className="size-3" />
+      </a>
+    ),
+  },
 ]
 
 export const contractColumns: Column<Contract>[] = [

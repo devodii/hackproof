@@ -116,9 +116,18 @@ export interface FailedTx {
   created_at: string
 }
 
+export interface IntegrationUse {
+  slug: string
+  name: string
+  method: 'package' | 'endpoint'
+  evidence: string
+  path: string
+}
+
 export interface ProjectDetail {
   project: Project
   links: Link[]
+  integration_uses: IntegrationUse[]
   contributors: Contributor[]
   contracts: Contract[]
   wasm_uploads: WasmUpload[]
