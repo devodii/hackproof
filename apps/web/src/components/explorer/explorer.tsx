@@ -1,22 +1,19 @@
 import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router'
+import { useSearchParams } from 'react-router'
 
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useDebouncedValue } from '@/hooks/use-debounced-value'
-import { STRICT_TIERS } from '@/lib/format'
-import type { Contract, FailedTx, Project, WasmUpload } from '@/lib/types'
+import type { Contract, FailedTx, WasmUpload } from '@/lib/types'
 
-import { contractColumns, failedColumns, projectColumns, wasmColumns } from './columns'
-import { ProjectGrid } from './project-grid'
+import { contractColumns, failedColumns, wasmColumns } from './columns'
+import { ProjectExplorer } from './project-explorer'
 import { ResourceTable } from './resource-table'
 
 export function Explorer() {
   const [params, setParams] = useSearchParams()
   const [input, setInput] = useState(params.get('q') ?? '')
-  const navigate = useNavigate()
-  const view = params.get('view') === 'table' ? 'table' : 'cards'
   const search = useDebouncedValue(input.trim())
 
   const setParam = (key: string, value: string) =>
@@ -49,27 +46,8 @@ export function Explorer() {
           />
         </div>
       </div>
-      <TabsContent value="projects" className="flex flex-col gap-4">
-        <Tabs value={view} onValueChange={(next) => setParam('view', next)} className="self-end">
-          <TabsList>
-            <TabsTrigger value="cards">Cards</TabsTrigger>
-            <TabsTrigger value="table">Table</TabsTrigger>
-          </TabsList>
-        </Tabs>
-        {view === 'cards' ? (
-          <ProjectGrid key={search} search={search} tiers={STRICT_TIERS} />
-        ) : (
-          <ResourceTable<Project>
-            key={search}
-            tiers={STRICT_TIERS}
-            resource="projects"
-            search={search}
-            columns={projectColumns}
-            rowKey={(row) => row.project_id}
-            empty="No projects match."
-            onRowClick={(row) => navigate(`/project/${row.project_id}`)}
-          />
-        )}
+      <TabsContent value="projects">
+        <ProjectExplorer search={search.toLowerCase()} />
       </TabsContent>
       <TabsContent value="contracts">
         <ResourceTable<Contract>
