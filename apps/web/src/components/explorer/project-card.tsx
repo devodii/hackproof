@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { TierBadge } from '@/components/tier-badge'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { useIntegrations } from '@/hooks/use-projects'
 import { flagEmoji, formatNumber, projectName } from '@/lib/format'
 import type { Project } from '@/lib/types'
 
@@ -13,6 +14,8 @@ const VISIBLE_TOPICS = 3
 export function ProjectCard({ project }: { project: Project }) {
   const name = projectName(project.project_id)
   const topics = (project.topics ?? []).slice(0, VISIBLE_TOPICS)
+  const { data: integrations = [] } = useIntegrations()
+  const partners = integrations.filter((item) => project.integrations.includes(item.slug))
 
   return (
     <Card size="sm" className="relative h-full transition-colors hover:bg-muted/40">
@@ -60,6 +63,15 @@ export function ProjectCard({ project }: { project: Project }) {
           )}
           {project.contracts > 0 && <span>{formatNumber(project.contracts)} contracts</span>}
         </div>
+        {partners.length > 0 && (
+          <div className="flex flex-wrap gap-1">
+            {partners.map((partner) => (
+              <Badge key={partner.slug} variant="secondary">
+                {partner.name}
+              </Badge>
+            ))}
+          </div>
+        )}
         {topics.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {topics.map((topic) => (
