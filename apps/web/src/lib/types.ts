@@ -59,6 +59,16 @@ export interface Project {
   stellar_added_in_window: boolean | null
   created_at: string | null
   topics: string[] | null
+  track: 'genesis' | 'scale' | null
+  integrations: string[]
+}
+
+export interface Integration {
+  slug: string
+  name: string
+  category: string
+  site: string
+  projects: number
 }
 
 export interface Contributor {
