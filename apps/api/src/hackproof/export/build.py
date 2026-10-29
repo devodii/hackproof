@@ -13,6 +13,8 @@ from hackproof.export.models import (
     Contributor,
     Evidence,
     HackathonExport,
+    IntegrationEvidence,
+    IntegrationPartner,
     Owner,
     Project,
     WasmUpload,
@@ -26,6 +28,7 @@ from hackproof.export.urls import (
     tx_url,
 )
 from hackproof.hackathon import Hackathon
+from hackproof.integrations.catalog import Catalog, get_catalog
 from hackproof.linking.methods import METHOD_RANK_SQL
 
 STRICT_TIERS = ("verified", "likely")
@@ -81,6 +84,13 @@ WHERE l.full_name = ANY($1) AND l.method <> 'footprint'
 ORDER BY {METHOD_RANK_SQL}, l.subject_kind, l.subject
 """
 
+INTEGRATIONS_SQL = """
+SELECT full_name, partner, method, evidence, path
+FROM repo_integrations
+WHERE full_name = ANY($1)
+ORDER BY partner, method, evidence
+"""
+
 
 def _evidence_url(kind: str, subject: str) -> str | None:
     match kind:
@@ -101,6 +111,31 @@ def _group(rows: Iterable[asyncpg.Record], key: str = "full_name") -> dict[str, 
     return grouped
 
 
+def _partners(
+    catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
+) -> list[IntegrationPartner]:
+    found: dict[str, list[IntegrationEvidence]] = defaultdict(list)
+    for row in rows:
+        found[row["partner"]].append(
+            IntegrationEvidence(
+                method=row["method"],
+                detail=row["evidence"],
+                repo_file_url=repo_file_url(repo_url, row["path"]),
+            )
+        )
+    return [
+        IntegrationPartner(
+            slug=partner.slug,
+            name=partner.name,
+            category=partner.category,
+            website=partner.site,
+            evidence=found[partner.slug],
+        )
+        for partner in catalog.partners
+        if partner.slug in found
+    ]
+
+
 async def build_export(
     connection: asyncpg.Connection, hackathon: Hackathon, tiers: Iterable[str] = STRICT_TIERS
 ) -> HackathonExport:
@@ -114,6 +149,8 @@ async def build_export(
     accounts = _group(await connection.fetch(ACCOUNTS_SQL, names))
     wasm = _group(await connection.fetch(WASM_SQL, names, *span))
     evidence = _group(await connection.fetch(EVIDENCE_SQL, names))
+    integrations = _group(await connection.fetch(INTEGRATIONS_SQL, names))
+    catalog = get_catalog()
 
     exported = [
         Project(
@@ -139,6 +176,7 @@ async def build_export(
                 if row["created_at"] and window.start <= row["created_at"] <= window.end
                 else "scale"
             ),
+            integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
             owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
             contributors=[
                 Contributor(

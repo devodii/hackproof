@@ -4,7 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_camel
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "1.1"
 
 Tier = Literal["verified", "likely", "possible"]
 Track = Literal["genesis", "scale"]
@@ -90,6 +90,26 @@ class Chain(Model):
     evidence: list[Evidence] = Field(description="Direct repo-to-chain matches behind the tier")
 
 
+class IntegrationEvidence(Model):
+    method: Literal["package", "endpoint"] = Field(
+        description=(
+            "How the integration was found. package: declared in a dependency manifest. "
+            "endpoint: the partner's API host appears in source or config, which covers raw "
+            "API use without an SDK. A mention in prose never counts."
+        )
+    )
+    detail: str = Field(description="The matched package name or API host")
+    repo_file_url: str = Field(description="GitHub file where it was found")
+
+
+class IntegrationPartner(Model):
+    slug: str = Field(description="Stable partner id, listed in config/integrations.yaml")
+    name: str = Field(description="Partner name")
+    category: str = Field(description="payments, wallets, defi or cross-chain")
+    website: str = Field(description="Partner website")
+    evidence: list[IntegrationEvidence] = Field(description="Where the integration was found")
+
+
 class Project(Model):
     repo_full_name: str = Field(description="GitHub owner/name; the stable key for a project")
     repo_url: str = Field(description="GitHub url")
@@ -123,6 +143,9 @@ class Project(Model):
     repo_last_commit_at: datetime | None = Field(description="Last push to the repo, UTC")
     commits_in_window: int | None = Field(description="Commits inside the official window")
     total_commits: int | None = Field(description="Commits on the default branch")
+    integration_partners: list[IntegrationPartner] = Field(
+        description="Stellar ecosystem partners the repo integrates, from the SCF integration list"
+    )
     owner: Owner
     contributors: list[Contributor]
     chain: Chain

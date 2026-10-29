@@ -92,3 +92,25 @@ async def test_a_repo_created_before_the_window_is_on_the_scale_track(scratch_db
     [project] = (await build_export(db, get_hackathon(), ["likely", "possible"])).projects
 
     assert project.track == "scale"
+
+
+async def test_export_lists_integration_partners_with_their_evidence(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/app", window_commits=7, dependencies=STELLAR)
+    await add_ref(db, "team/app", "contract", "CXYZ")
+    await add_contract(db, "CXYZ", "GDEPLOYER", "w1")
+    await db.executemany(
+        "INSERT INTO repo_integrations VALUES ('team/app', $1, $2, $3, $4)",
+        [
+            ("privy", "package", "@privy-io/node", "package.json"),
+            ("trustless-work", "endpoint", "api.trustlesswork.com", "src/client.go"),
+        ],
+    )
+    await reconcile(db)
+
+    [project] = (await build_export(db, get_hackathon())).projects
+
+    assert [p.slug for p in project.integration_partners] == ["trustless-work", "privy"]
+    [evidence] = project.integration_partners[0].evidence
+    assert (evidence.method, evidence.detail) == ("endpoint", "api.trustlesswork.com")
+    assert evidence.repo_file_url == "https://github.com/team/app/blob/HEAD/src/client.go"
