@@ -30,6 +30,7 @@ partners:
     packages:
       js: ["@privy-io/react-auth", "@privy-io/node", "@privy-io/server-auth"]
     endpoints: [auth.privy.io, api.privy.io]
+    github_owners: [privy-io]
 
   - slug: passkey-kit
     name: Passkey Kit
@@ -62,7 +63,7 @@ partners:
     packages:
       js: ["@defindex/sdk"]
     endpoints: [api.defindex.io]
-    github_owners: [paltalabs]
+    github_owners: [paltalabs, defindex-io]
 
   - slug: blend
     name: Blend
@@ -80,6 +81,7 @@ partners:
     packages:
       js: ["@stellar-broker/client"]
     endpoints: [api.stellar.broker]
+    github_owners: [stellar-broker]
 
   - slug: allbridge
     name: Allbridge
