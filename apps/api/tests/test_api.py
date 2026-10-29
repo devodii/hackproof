@@ -78,3 +78,17 @@ def test_projects_can_be_filtered_by_integration_partner():
             body = client.get("/api/projects", params={"integration": used["slug"]}).json()
             assert body["total"] >= used["projects"]
             assert all(used["slug"] in item["integrations"] for item in body["items"])
+
+
+def test_a_project_page_lists_where_each_integration_was_found():
+    with TestClient(app) as client:
+        used = next(
+            (row for row in client.get("/api/integrations").json() if row["projects"]), None
+        )
+        if used:
+            [first, *_] = client.get(
+                "/api/projects", params={"integration": used["slug"], "limit": 1}
+            ).json()["items"]
+            detail = client.get(f"/api/projects/{first['project_id']}").json()
+            assert used["slug"] in {use["slug"] for use in detail["integration_uses"]}
+            assert {use["method"] for use in detail["integration_uses"]} <= {"package", "endpoint"}

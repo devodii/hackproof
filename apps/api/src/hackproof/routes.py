@@ -101,6 +101,11 @@ async def project(project_id: str) -> ProjectDetail:
     return ProjectDetail(
         project=found[0],
         links=await queries.fetch_links(found[0]["full_name"]) if found[0]["full_name"] else [],
+        integration_uses=(
+            await queries.fetch_integration_uses(found[0]["full_name"])
+            if found[0]["full_name"]
+            else []
+        ),
         contributors=(
             await queries.fetch_contributors(found[0]["full_name"]) if found[0]["full_name"] else []
         ),

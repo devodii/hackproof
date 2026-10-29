@@ -153,6 +153,13 @@ JOIN projects p ON p.full_name = i.full_name AND p.tier IN ('verified', 'likely'
 GROUP BY i.partner
 """
 
+INTEGRATION_USES_SQL = """
+SELECT partner AS slug, method, evidence, path
+FROM repo_integrations
+WHERE full_name = $1
+ORDER BY partner, method, evidence
+"""
+
 COUNTRIES_SQL = """
 SELECT u.country, count(DISTINCT c.login) AS contributors
 FROM repo_contributors c
@@ -222,6 +229,13 @@ async def fetch_timeline() -> list[dict[str, Any]]:
     start, end = window()
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(TIMELINE_SQL, start, end)]
+
+
+async def fetch_integration_uses(full_name: str) -> list[dict[str, Any]]:
+    async with pool().acquire() as connection:
+        rows = await connection.fetch(INTEGRATION_USES_SQL, full_name)
+    names = {partner.slug: partner.name for partner in get_catalog().partners}
+    return [{**row, "name": names[row["slug"]]} for row in map(dict, rows) if row["slug"] in names]
 
 
 async def fetch_integrations() -> list[dict[str, Any]]:

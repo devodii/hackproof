@@ -100,9 +100,18 @@ class FailedTx(BaseModel):
     created_at: datetime
 
 
+class IntegrationUse(BaseModel):
+    slug: str
+    name: str
+    method: Literal["package", "endpoint"]
+    evidence: str
+    path: str
+
+
 class ProjectDetail(BaseModel):
     project: Project
     links: list[Link]
+    integration_uses: list[IntegrationUse]
     contributors: list[Contributor]
     contracts: list[Contract]
     wasm_uploads: list[WasmUpload]
