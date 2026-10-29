@@ -18,6 +18,9 @@ def main() -> None:
     )
     scan = commands.add_parser("scan", help="scan discovered repos for chain fingerprints")
     scan.add_argument("--force", action="store_true", help="rescan repos already scanned")
+    scan.add_argument(
+        "--projects", action="store_true", help="only scan repos that are already projects"
+    )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
     commands.add_parser("export", help="write the json and yaml export and its schema")
     args = parser.parse_args()
@@ -30,7 +33,7 @@ def main() -> None:
         case "discover":
             asyncio.run(run_discover(args.strings))
         case "scan":
-            asyncio.run(run_scan(args.force))
+            asyncio.run(run_scan(args.force, args.projects))
         case "reconcile":
             asyncio.run(run_reconcile())
         case "export":

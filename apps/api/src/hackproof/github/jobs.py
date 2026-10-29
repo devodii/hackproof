@@ -38,7 +38,10 @@ async def run_discover(include_strings: bool) -> None:
             log.info("stored %s candidate repos", len(candidates))
 
 
-async def run_scan(force: bool) -> None:
+PROJECT_REPOS = "full_name IN (SELECT full_name FROM projects WHERE full_name IS NOT NULL)"
+
+
+async def run_scan(force: bool, projects_only: bool = False) -> None:
     settings, hackathon = get_settings(), get_hackathon()
     await open_pool()
     limits = httpx.Limits(max_connections=200, max_keepalive_connections=50)
@@ -49,21 +52,28 @@ async def run_scan(force: bool) -> None:
             names = [
                 row["full_name"]
                 for row in await connection.fetch(
-                    "SELECT full_name FROM repos WHERE $1 OR scanned_at IS NULL", force
+                    f"""
+                    SELECT full_name FROM repos
+                    WHERE ($1 OR scanned_at IS NULL) AND ($2 IS FALSE OR {PROJECT_REPOS})
+                    """,
+                    force,
+                    projects_only,
                 )
             ]
             refreshed = await fetch_repositories(github, names, hackathon.window)
             await store_candidates(connection, refreshed)
             rows = await connection.fetch(
-                """
+                f"""
                 SELECT full_name, url, owner, default_branch, homepage, base_sha
                 FROM repos
                 WHERE ($1 OR scanned_at IS NULL)
+                  AND ($2 IS FALSE OR {PROJECT_REPOS})
                   AND (COALESCE(window_commits, 0) > 0
                        OR 'wasm_meta' = ANY(discovered_via))
                 ORDER BY pushed_at DESC NULLS LAST
                 """,
                 force,
+                projects_only,
             )
         repos = [Candidate(**row) for row in rows]
         log.info("scanning %s repos", len(repos))
