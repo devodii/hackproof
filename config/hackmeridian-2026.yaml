@@ -26,10 +26,40 @@ discovery:
     - "stellar-sdk filename:requirements.txt"
     - "stellar-sdk filename:pyproject.toml"
     - "github.com/stellar/go filename:go.mod"
+    - '"@trustless-work/escrow filename:package.json"'
+    - '"@trustless-work/blocks filename:package.json"'
+    - '"@trustless-work/skill filename:package.json"'
+    - '"@privy-io/react-auth filename:package.json"'
+    - '"@privy-io/node filename:package.json"'
+    - '"@privy-io/server-auth filename:package.json"'
+    - '"passkey-kit filename:package.json"'
+    - '"@dfns/sdk filename:package.json"'
+    - '"@soroswap/sdk filename:package.json"'
+    - '"soroswap-library filename:Cargo.toml"'
+    - '"@defindex/sdk filename:package.json"'
+    - '"@blend-capital/blend-sdk filename:package.json"'
+    - '"blend-contract-sdk filename:Cargo.toml"'
+    - '"@stellar-broker/client filename:package.json"'
+    - '"@allbridge/bridge-core-sdk filename:package.json"'
+    - '"@circle-fin/bridge-kit filename:package.json"'
+    - '"@layerzerolabs/lz-v2-utilities filename:package.json"'
+    - '"@defuse-protocol/intents-sdk filename:package.json"'
+    - '"@defuse-protocol/one-click-sdk-typescript filename:package.json"'
+    - '"@axelar-network/axelarjs-sdk filename:package.json"'
+    - '"stellar-axelar-std filename:Cargo.toml"'
   github_string_queries:
     - "Test SDF Network ; September 2015"
     - "soroban-testnet.stellar.org"
     - "friendbot.stellar.org"
+    - "api.trustlesswork.com"
+    - "dev.api.trustlesswork.com"
+    - "auth.privy.io"
+    - "api.privy.io"
+    - "api.soroswap.finance"
+    - "api.defindex.io"
+    - "api.stellar.broker"
+    - "api.circle.com"
+    - "1click.chaindefuser.com"
   dependency_fingerprints:
     rust: [soroban-sdk, stellar-xdr, stellar-strkey]
     js:
