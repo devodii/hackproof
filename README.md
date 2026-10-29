@@ -14,6 +14,7 @@ Each project has an evidence tier. `verified` means an exact repo to chain match
 - `apps/web`: React, Vite and shadcn/ui
 - `apps/api`: FastAPI, asyncpg and Postgres, managed with uv
 - `apps/api/src/hackproof/chat/system-prompt.md`: the chat prompts
+- `config/integrations.yaml`: the Stellar integration partners and how each is detected, by package in any language or by API host in code
 
 ## Run
 
