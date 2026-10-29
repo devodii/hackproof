@@ -1,5 +1,5 @@
-schemaVersion: '1.0'
-generatedAt: '2026-10-28T01:36:15.922107Z'
+schemaVersion: '1.1'
+generatedAt: '2026-10-29T22:56:12.804427Z'
 hackathon:
   slug: hackmeridian-2026
   name: HackMeridian 2026
@@ -28,9 +28,26 @@ projects:
     '@stellar/stellar-sdk': ^16.0.1
     '@creit.tech/stellar-wallets-kit': ^2.7.1
   repoCreatedAt: '2026-10-25T16:25:37Z'
-  repoLastCommitAt: '2026-10-26T11:52:36Z'
+  repoLastCommitAt: '2026-10-29T12:43:40Z'
   commitsInWindow: 87
-  totalCommits: 87
+  totalCommits: 124
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Klorenn/LOOT/blob/HEAD/app/package.json
+  - slug: passkey-kit
+    name: Passkey Kit
+    category: wallets
+    website: https://github.com/kalepail/passkey-kit
+    evidence:
+    - method: package
+      detail: passkey-kit
+      repoFileUrl: https://github.com/Klorenn/LOOT/blob/HEAD/app/package.json
   owner:
     login: Klorenn
     avatarUrl: https://avatars.githubusercontent.com/u/189268805?v=4
@@ -39,7 +56,7 @@ projects:
   - login: Klorenn
     url: https://github.com/Klorenn
     avatarUrl: https://avatars.githubusercontent.com/u/189268805?v=4
-    contributions: 87
+    contributions: 124
     country: CL
   chain:
     contractCount: 111
@@ -1040,6 +1057,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:57Z'
   commitsInWindow: 131
   totalCommits: 131
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/CHAAIISE/tsuna/blob/HEAD/web/package.json
   owner:
     login: CHAAIISE
     avatarUrl: https://avatars.githubusercontent.com/u/190202299?v=4
@@ -2082,6 +2108,7 @@ projects:
   repoLastCommitAt: '2026-10-27T09:20:48Z'
   commitsInWindow: 393
   totalCommits: 400
+  integrationPartners: []
   owner:
     login: grmkris
     avatarUrl: https://avatars.githubusercontent.com/u/15545195?v=4
@@ -2914,6 +2941,7 @@ projects:
   repoLastCommitAt: '2026-10-25T19:10:57Z'
   commitsInWindow: 14
   totalCommits: 22
+  integrationPartners: []
   owner:
     login: 0xVeraHQ
     avatarUrl: https://avatars.githubusercontent.com/u/288298217?v=4
@@ -3658,6 +3686,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:06:11Z'
   commitsInWindow: 43
   totalCommits: 43
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Row-Bear/sidekey/blob/HEAD/web/package.json
   owner:
     login: Row-Bear
     avatarUrl: https://avatars.githubusercontent.com/u/60758353?v=4
@@ -4200,7 +4237,7 @@ projects:
   track: scale
   language: Rust
   license: Apache-2.0
-  stars: 59
+  stars: 60
   forks: 49
   selfTags:
   - privacy
@@ -4222,9 +4259,18 @@ projects:
     '@stellar/stellar-sdk': ^17.1.0
     '@stellar/freighter-api': ^6.0.1
   repoCreatedAt: '2025-07-28T11:49:19Z'
-  repoLastCommitAt: '2026-10-27T09:09:55Z'
+  repoLastCommitAt: '2026-10-29T13:20:09Z'
   commitsInWindow: 3
-  totalCommits: 393
+  totalCommits: 394
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/NethermindEth/stellar-private-payments/blob/HEAD/app/package.json
   owner:
     login: NethermindEth
     avatarUrl: https://avatars.githubusercontent.com/u/43478154?v=4
@@ -4263,7 +4309,7 @@ projects:
   - login: dkgoutham
     url: https://github.com/dkgoutham
     avatarUrl: https://avatars.githubusercontent.com/u/75137173?v=4
-    contributions: 13
+    contributions: 14
     country: null
   - login: PoulavBhowmick03
     url: https://github.com/PoulavBhowmick03
@@ -4847,6 +4893,26 @@ projects:
   repoLastCommitAt: '2026-10-26T11:51:13Z'
   commitsInWindow: 99
   totalCommits: 99
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: api.trustlesswork.com
+      repoFileUrl: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/apps/web/package.json
   owner:
     login: Ilyes-Ali-Jeridi
     avatarUrl: https://avatars.githubusercontent.com/u/99984348?v=4
@@ -5460,6 +5526,15 @@ projects:
   repoLastCommitAt: '2026-10-26T19:10:09Z'
   commitsInWindow: 60
   totalCommits: 62
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/agamafinance/agama-stellar/blob/HEAD/web/package.json
   owner:
     login: agamafinance
     avatarUrl: https://avatars.githubusercontent.com/u/271739153?v=4
@@ -6168,9 +6243,18 @@ projects:
     '@stellar/stellar-sdk': 16.3.1
     '@creit.tech/stellar-wallets-kit': 2.7.1
   repoCreatedAt: '2026-10-25T12:13:56Z'
-  repoLastCommitAt: '2026-10-26T17:01:01Z'
+  repoLastCommitAt: '2026-10-28T18:13:57Z'
   commitsInWindow: 78
-  totalCommits: 81
+  totalCommits: 100
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/raglibol-re/ancora/blob/HEAD/app/package.json
   owner:
     login: raglibol-re
     avatarUrl: https://avatars.githubusercontent.com/u/205229478?v=4
@@ -6179,7 +6263,7 @@ projects:
   - login: raglibol-re
     url: https://github.com/raglibol-re
     avatarUrl: https://avatars.githubusercontent.com/u/205229478?v=4
-    contributions: 81
+    contributions: 100
     country: null
   chain:
     contractCount: 41
@@ -6616,6 +6700,23 @@ projects:
   repoLastCommitAt: '2026-10-26T10:47:21Z'
   commitsInWindow: 154
   totalCommits: 154
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/apps/admin/package.json
+  - slug: privy
+    name: Privy
+    category: wallets
+    website: https://www.privy.io
+    evidence:
+    - method: package
+      detail: '@privy-io/react-auth'
+      repoFileUrl: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/apps/platform/package.json
   owner:
     login: Neko-Protocol
     avatarUrl: https://avatars.githubusercontent.com/u/245087170?v=4
@@ -7153,6 +7254,15 @@ projects:
   repoLastCommitAt: '2026-10-27T15:32:08Z'
   commitsInWindow: 341
   totalCommits: 383
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/rcusans-code/Caravel/blob/HEAD/app/package.json
   owner:
     login: rcusans-code
     avatarUrl: https://avatars.githubusercontent.com/u/235704533?v=4
@@ -7732,6 +7842,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:45:38Z'
   commitsInWindow: 112
   totalCommits: 112
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/kovan-protocol/kovan/blob/HEAD/dashboard/package.json
   owner:
     login: kovan-protocol
     avatarUrl: https://avatars.githubusercontent.com/u/347742821?v=4
@@ -8171,6 +8290,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:37:41Z'
   commitsInWindow: 53
   totalCommits: 53
+  integrationPartners: []
   owner:
     login: don-radman
     avatarUrl: https://avatars.githubusercontent.com/u/116534345?v=4
@@ -8577,6 +8697,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:28:26Z'
   commitsInWindow: 167
   totalCommits: 167
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/apps/web/package.json
   owner:
     login: joaointech
     avatarUrl: https://avatars.githubusercontent.com/u/38008727?v=4
@@ -8938,6 +9067,15 @@ projects:
   repoLastCommitAt: '2026-10-26T08:11:00Z'
   commitsInWindow: 53
   totalCommits: 53
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/package.json
   owner:
     login: celadari
     avatarUrl: https://avatars.githubusercontent.com/u/17705729?v=4
@@ -9345,6 +9483,15 @@ projects:
   repoLastCommitAt: '2026-10-27T21:13:55Z'
   commitsInWindow: 36
   totalCommits: 37
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/fdddf/clippay/blob/HEAD/web/package.json
   owner:
     login: fdddf
     avatarUrl: https://avatars.githubusercontent.com/u/2045357?v=4
@@ -9644,6 +9791,7 @@ projects:
   repoLastCommitAt: '2026-10-26T00:45:59Z'
   commitsInWindow: 44
   totalCommits: 44
+  integrationPartners: []
   owner:
     login: ACTA-Team
     avatarUrl: https://avatars.githubusercontent.com/u/232433101?v=4
@@ -9996,6 +10144,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:49:41Z'
   commitsInWindow: 13
   totalCommits: 53
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Ihlasthetics/redevice/blob/HEAD/web/package.json
   owner:
     login: Ihlasthetics
     avatarUrl: https://avatars.githubusercontent.com/u/112479499?v=4
@@ -10272,6 +10429,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:01:38Z'
   commitsInWindow: 143
   totalCommits: 146
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Lagouze/keystone/blob/HEAD/app/package.json
   owner:
     login: Lagouze
     avatarUrl: https://avatars.githubusercontent.com/u/193023511?v=4
@@ -10611,6 +10777,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:11:12Z'
   commitsInWindow: 22
   totalCommits: 22
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/ddortabencomo/yield-bearing-rental-deposit/blob/HEAD/app-lib/package.json
   owner:
     login: ddortabencomo
     avatarUrl: https://avatars.githubusercontent.com/u/260120031?v=4
@@ -10848,7 +11023,7 @@ projects:
   tier: verified
   track: genesis
   language: TypeScript
-  license: null
+  license: NOASSERTION
   stars: 0
   forks: 0
   selfTags: []
@@ -10861,9 +11036,18 @@ projects:
     '@stellar/stellar-sdk': 17.4.0
     '@creit.tech/stellar-wallets-kit': 2.7.1
   repoCreatedAt: '2026-10-25T11:49:37Z'
-  repoLastCommitAt: '2026-10-26T11:45:43Z'
+  repoLastCommitAt: '2026-10-28T01:28:09Z'
   commitsInWindow: 138
-  totalCommits: 138
+  totalCommits: 140
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/ygk94/4ward/blob/HEAD/front/package.json
   owner:
     login: ygk94
     avatarUrl: https://avatars.githubusercontent.com/u/187570074?v=4
@@ -10872,7 +11056,7 @@ projects:
   - login: ygk94
     url: https://github.com/ygk94
     avatarUrl: https://avatars.githubusercontent.com/u/187570074?v=4
-    contributions: 94
+    contributions: 96
     country: null
   - login: cda1712
     url: https://github.com/cda1712
@@ -11144,9 +11328,10 @@ projects:
     soroban-sdk: =28.0.0
     '@stellar/stellar-sdk': ^14.4.0
   repoCreatedAt: '2026-08-13T14:38:47Z'
-  repoLastCommitAt: '2026-10-27T18:03:26Z'
+  repoLastCommitAt: '2026-10-29T12:59:27Z'
   commitsInWindow: 13
   totalCommits: 223
+  integrationPartners: []
   owner:
     login: untangledfinance
     avatarUrl: https://avatars.githubusercontent.com/u/69093065?v=4
@@ -11495,6 +11680,31 @@ projects:
   repoLastCommitAt: '2026-10-26T10:37:29Z'
   commitsInWindow: 39
   totalCommits: 39
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    website: https://soroswap.finance
+    evidence:
+    - method: endpoint
+      detail: api.soroswap.finance
+      repoFileUrl: https://github.com/Wilivms/trust-meridian/blob/HEAD/scripts/probe.sh
+  - slug: defindex
+    name: DeFindex
+    category: defi
+    website: https://www.defindex.io
+    evidence:
+    - method: endpoint
+      detail: api.defindex.io
+      repoFileUrl: https://github.com/Wilivms/trust-meridian/blob/HEAD/scripts/probe.sh
   owner:
     login: Wilivms
     avatarUrl: https://avatars.githubusercontent.com/u/233278292?v=4
@@ -11729,6 +11939,7 @@ projects:
   repoLastCommitAt: '2026-10-26T02:05:56Z'
   commitsInWindow: 2
   totalCommits: 165
+  integrationPartners: []
   owner:
     login: atahanyild
     avatarUrl: https://avatars.githubusercontent.com/u/111663792?u=0316f7cc37c659ba036899701a2dd9df7c375fee&v=4
@@ -11923,6 +12134,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:33:01Z'
   commitsInWindow: 41
   totalCommits: 58
+  integrationPartners: []
   owner:
     login: the-axmc
     avatarUrl: https://avatars.githubusercontent.com/u/171472800?v=4
@@ -12190,9 +12402,26 @@ projects:
     '@stellar/stellar-sdk': ^16.3.1
     '@creit.tech/stellar-wallets-kit': ^2.7.1
   repoCreatedAt: '2026-10-16T10:58:56Z'
-  repoLastCommitAt: '2026-10-27T20:38:49Z'
+  repoLastCommitAt: '2026-10-29T13:51:25Z'
   commitsInWindow: 1
-  totalCommits: 110
+  totalCommits: 117
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/app/package.json
+  - slug: passkey-kit
+    name: Passkey Kit
+    category: wallets
+    website: https://github.com/kalepail/passkey-kit
+    evidence:
+    - method: package
+      detail: passkey-kit
+      repoFileUrl: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/app/package.json
   owner:
     login: arturete58-sys
     avatarUrl: https://avatars.githubusercontent.com/u/254771714?v=4
@@ -12201,7 +12430,7 @@ projects:
   - login: arturete58-sys
     url: https://github.com/arturete58-sys
     avatarUrl: https://avatars.githubusercontent.com/u/254771714?v=4
-    contributions: 60
+    contributions: 63
     country: null
   chain:
     contractCount: 14
@@ -12418,6 +12647,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:52:37Z'
   commitsInWindow: 114
   totalCommits: 114
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/forever8896/dvdnd/blob/HEAD/app/package.json
   owner:
     login: forever8896
     avatarUrl: https://avatars.githubusercontent.com/u/68512042?v=4
@@ -12688,6 +12926,7 @@ projects:
   repoLastCommitAt: '2026-10-27T10:14:14Z'
   commitsInWindow: 84
   totalCommits: 152
+  integrationPartners: []
   owner:
     login: ParriCode
     avatarUrl: https://avatars.githubusercontent.com/u/90289658?v=4
@@ -12903,6 +13142,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:48:50Z'
   commitsInWindow: 90
   totalCommits: 90
+  integrationPartners: []
   owner:
     login: ThaisFReis
     avatarUrl: https://avatars.githubusercontent.com/u/75093679?v=4
@@ -13734,6 +13974,15 @@ projects:
   repoLastCommitAt: '2026-10-26T03:46:38Z'
   commitsInWindow: 12
   totalCommits: 12
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/troqpay/private-yield/blob/HEAD/package.json
   owner:
     login: troqpay
     avatarUrl: https://avatars.githubusercontent.com/u/223028901?v=4
@@ -13919,6 +14168,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:10:40Z'
   commitsInWindow: 43
   totalCommits: 43
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/app-lib/package.json
   owner:
     login: MohamedDataX
     avatarUrl: https://avatars.githubusercontent.com/u/98733592?v=4
@@ -14127,6 +14385,23 @@ projects:
   repoLastCommitAt: '2026-10-26T16:18:44Z'
   commitsInWindow: 232
   totalCommits: 265
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/package.json
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/package.json
   owner:
     login: joshschcom
     avatarUrl: https://avatars.githubusercontent.com/u/84538564?v=4
@@ -14408,6 +14683,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:16Z'
   commitsInWindow: 100
   totalCommits: 100
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/frontend/package.json
   owner:
     login: mohamedkhellaf
     avatarUrl: https://avatars.githubusercontent.com/u/185638972?v=4
@@ -14757,9 +15041,18 @@ projects:
     stellar-strkey: 0.0.18
     '@stellar/freighter-api': 6.0.1
   repoCreatedAt: '2026-10-25T20:20:21Z'
-  repoLastCommitAt: '2026-10-26T11:58:31Z'
+  repoLastCommitAt: '2026-10-28T20:45:24Z'
   commitsInWindow: 118
-  totalCommits: 118
+  totalCommits: 127
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/apps/web/package.json
   owner:
     login: Lendara-Org
     avatarUrl: https://avatars.githubusercontent.com/u/335191355?v=4
@@ -14773,7 +15066,7 @@ projects:
   - login: mariaelisaaraya
     url: https://github.com/mariaelisaaraya
     avatarUrl: https://avatars.githubusercontent.com/u/42949801?v=4
-    contributions: 7
+    contributions: 16
     country: null
   - login: barolivera
     url: https://github.com/barolivera
@@ -14963,6 +15256,15 @@ projects:
   repoLastCommitAt: '2026-10-26T09:35:03Z'
   commitsInWindow: 8
   totalCommits: 8
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/infiniteezverse/nova/blob/HEAD/frontend/package.json
   owner:
     login: infiniteezverse
     avatarUrl: https://avatars.githubusercontent.com/u/175495935?u=2718a0ed681d6fd243a4a32d69049bdd43ab1a87&v=4
@@ -15194,6 +15496,7 @@ projects:
   repoLastCommitAt: '2026-10-26T13:11:36Z'
   commitsInWindow: 66
   totalCommits: 68
+  integrationPartners: []
   owner:
     login: jzelada97
     avatarUrl: https://avatars.githubusercontent.com/u/65199660?v=4
@@ -15409,6 +15712,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:33:38Z'
   commitsInWindow: 29
   totalCommits: 29
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/marcocpp/peaje-zbe/blob/HEAD/app-lib/package.json
   owner:
     login: marcocpp
     avatarUrl: https://avatars.githubusercontent.com/u/119238138?v=4
@@ -15565,6 +15877,7 @@ projects:
   repoLastCommitAt: '2026-10-26T14:10:32Z'
   commitsInWindow: 31
   totalCommits: 36
+  integrationPartners: []
   owner:
     login: harsxul
     avatarUrl: https://avatars.githubusercontent.com/u/132977870?v=4
@@ -15741,7 +16054,8 @@ projects:
 - repoFullName: Team-hackmeridian-2026/Hackmeridian2026
   repoUrl: https://github.com/Team-hackmeridian-2026/Hackmeridian2026
   name: Hackmeridian2026
-  description: null
+  description: 'University patent licences on Stellar : funded in EURC, released by milestones, royalties
+    shared automatically'
   homepage: https://biolicensing.vercel.app
   tier: verified
   track: scale
@@ -15749,7 +16063,14 @@ projects:
   license: null
   stars: 1
   forks: 0
-  selfTags: []
+  selfTags:
+  - hackmeridian
+  - soroban
+  - soroban-sdk
+  - soroban-smart-contracts
+  - stellar
+  - stellar-network
+  - xlm
   stack:
   - soroban-sdk
   - '@stellar/stellar-sdk'
@@ -15759,9 +16080,18 @@ projects:
     '@stellar/stellar-sdk': 16.4.1
     '@creit.tech/stellar-wallets-kit': 2.7.1
   repoCreatedAt: '2026-10-09T08:06:22Z'
-  repoLastCommitAt: '2026-10-27T20:08:24Z'
+  repoLastCommitAt: '2026-10-29T13:37:11Z'
   commitsInWindow: 79
-  totalCommits: 128
+  totalCommits: 149
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/frontend/package.json
   owner:
     login: Team-hackmeridian-2026
     avatarUrl: https://avatars.githubusercontent.com/u/340029452?v=4
@@ -15770,7 +16100,7 @@ projects:
   - login: tungstenee
     url: https://github.com/tungstenee
     avatarUrl: https://avatars.githubusercontent.com/u/130217811?v=4
-    contributions: 57
+    contributions: 76
     country: null
   - login: claude
     url: https://github.com/claude
@@ -15950,6 +16280,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:20:10Z'
   commitsInWindow: 48
   totalCommits: 48
+  integrationPartners: []
   owner:
     login: Rjk3d
     avatarUrl: https://avatars.githubusercontent.com/u/99613730?v=4
@@ -16147,6 +16478,7 @@ projects:
   repoLastCommitAt: '2026-10-26T20:54:30Z'
   commitsInWindow: 57
   totalCommits: 129
+  integrationPartners: []
   owner:
     login: jxsu404
     avatarUrl: https://avatars.githubusercontent.com/u/279814500?v=4
@@ -16367,6 +16699,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:22:10Z'
   commitsInWindow: 32
   totalCommits: 47
+  integrationPartners: []
   owner:
     login: nelsonalexis
     avatarUrl: https://avatars.githubusercontent.com/u/127190373?v=4
@@ -16538,6 +16871,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:42:11Z'
   commitsInWindow: 69
   totalCommits: 69
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/web_frontend/package.json
   owner:
     login: synt-tech
     avatarUrl: https://avatars.githubusercontent.com/u/183994626?v=4
@@ -16744,6 +17086,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:40:05Z'
   commitsInWindow: 49
   totalCommits: 49
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/manuuvllgs/LumenSplit/blob/HEAD/frontend/package.json
   owner:
     login: manuuvllgs
     avatarUrl: https://avatars.githubusercontent.com/u/108551582?v=4
@@ -16890,6 +17241,7 @@ projects:
   repoLastCommitAt: '2026-10-26T12:01:39Z'
   commitsInWindow: 70
   totalCommits: 71
+  integrationPartners: []
   owner:
     login: nicolasguasca1
     avatarUrl: https://avatars.githubusercontent.com/u/33971632?v=4
@@ -17147,6 +17499,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:29:06Z'
   commitsInWindow: 58
   totalCommits: 58
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/bilfrux/DrainMyWallet/blob/HEAD/app-lib/package.json
   owner:
     login: bilfrux
     avatarUrl: https://avatars.githubusercontent.com/u/233278394?v=4
@@ -17316,6 +17677,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:06:50Z'
   commitsInWindow: 484
   totalCommits: 549
+  integrationPartners: []
   owner:
     login: pwsaragossy
     avatarUrl: https://avatars.githubusercontent.com/u/148293189?v=4
@@ -17501,6 +17863,15 @@ projects:
   repoLastCommitAt: '2026-10-26T19:01:13Z'
   commitsInWindow: 8
   totalCommits: 171
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/DevTobis/ballast/blob/HEAD/apps/console/package.json
   owner:
     login: DevTobis
     avatarUrl: https://avatars.githubusercontent.com/u/232918735?v=4
@@ -17872,6 +18243,7 @@ projects:
   repoLastCommitAt: '2026-10-27T19:47:37Z'
   commitsInWindow: 29
   totalCommits: 38
+  integrationPartners: []
   owner:
     login: Belvast-Innovation
     avatarUrl: https://avatars.githubusercontent.com/u/84128626?v=4
@@ -18011,6 +18383,26 @@ projects:
   repoLastCommitAt: '2026-10-26T11:42:08Z'
   commitsInWindow: 32
   totalCommits: 32
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/frontend/package.json
+  - slug: privy
+    name: Privy
+    category: wallets
+    website: https://www.privy.io
+    evidence:
+    - method: package
+      detail: '@privy-io/node'
+      repoFileUrl: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/backend/package.json
+    - method: package
+      detail: '@privy-io/react-auth'
+      repoFileUrl: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/frontend/package.json
   owner:
     login: kotizi
     avatarUrl: https://avatars.githubusercontent.com/u/340638529?v=4
@@ -18163,6 +18555,7 @@ projects:
   repoLastCommitAt: '2026-10-26T10:19:43Z'
   commitsInWindow: 23
   totalCommits: 170
+  integrationPartners: []
   owner:
     login: BLNT-Protocol
     avatarUrl: https://avatars.githubusercontent.com/u/322974850?v=4
@@ -18331,6 +18724,15 @@ projects:
   repoLastCommitAt: '2026-10-27T19:41:18Z'
   commitsInWindow: 80
   totalCommits: 83
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/apps/frontend/package.json
   owner:
     login: enzoblain
     avatarUrl: https://avatars.githubusercontent.com/u/39645929?v=4
@@ -18424,10 +18826,35 @@ projects:
       txUrl: https://stellar.expert/explorer/testnet/tx/21c820542d2b5d94cee2a41af83e7fcfbbb51df8ad5c7fa950d97e8f96e58aec
     evidence:
     - kind: contract
+      subject: CABLVEPQP7PN22YFXJJNX42PG7LTP3PPVAFIYE5LFQVDND5SBSTUSQYM
+      method: contract_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CABLVEPQP7PN22YFXJJNX42PG7LTP3PPVAFIYE5LFQVDND5SBSTUSQYM
+      repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+    - kind: contract
       subject: CBVC37MFGWDBTLAEGTEYPTTQDUO7KDVDD5RHWZVYN6BYOY3RTDLBGKRS
       method: contract_in_repo
       explorerUrl: https://stellar.expert/explorer/testnet/contract/CBVC37MFGWDBTLAEGTEYPTTQDUO7KDVDD5RHWZVYN6BYOY3RTDLBGKRS
       repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/README.md
+    - kind: contract
+      subject: CBWGOXIVKPSHNSV5ZTKIY2ZADDO6VGOGK2HM6XU7A24APCWLBCLK4KQM
+      method: contract_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBWGOXIVKPSHNSV5ZTKIY2ZADDO6VGOGK2HM6XU7A24APCWLBCLK4KQM
+      repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+    - kind: contract
+      subject: CBY6HVRKKVMZ7DN4XAJZGLBJ4UYNDJJLPYRDETQ6RAD4LHFBUMX6LZS3
+      method: contract_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBY6HVRKKVMZ7DN4XAJZGLBJ4UYNDJJLPYRDETQ6RAD4LHFBUMX6LZS3
+      repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+    - kind: contract
+      subject: CC63X4XNTSNZ6MONLFYXQ2NH6AH2O3KN653PPEVLQWM4RQVVZFPF3MVH
+      method: contract_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CC63X4XNTSNZ6MONLFYXQ2NH6AH2O3KN653PPEVLQWM4RQVVZFPF3MVH
+      repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+    - kind: contract
+      subject: CD3TP3PL7U63IEEB4LQCEFV2AMZSOWGWQN6JKFLO7KMXGWM7CARSW2EP
+      method: contract_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CD3TP3PL7U63IEEB4LQCEFV2AMZSOWGWQN6JKFLO7KMXGWM7CARSW2EP
+      repoFileUrl: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
 - repoFullName: skar8848/lotus-stellar
   repoUrl: https://github.com/skar8848/lotus-stellar
   name: lotus-stellar
@@ -18452,6 +18879,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:59:28Z'
   commitsInWindow: 51
   totalCommits: 51
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/skar8848/lotus-stellar/blob/HEAD/web/package.json
   owner:
     login: skar8848
     avatarUrl: https://avatars.githubusercontent.com/u/197268665?v=4
@@ -18745,6 +19181,7 @@ projects:
   repoLastCommitAt: '2026-10-25T23:26:56Z'
   commitsInWindow: 8
   totalCommits: 10
+  integrationPartners: []
   owner:
     login: Bran18
     avatarUrl: https://avatars.githubusercontent.com/u/31634868?u=0ca9a5c43e7de0eff3f49a3e0546c2ca54108ae3&v=4
@@ -18879,6 +19316,7 @@ projects:
   repoLastCommitAt: '2026-10-26T13:37:35Z'
   commitsInWindow: 88
   totalCommits: 92
+  integrationPartners: []
   owner:
     login: CaBsCrypto
     avatarUrl: https://avatars.githubusercontent.com/u/235236295?v=4
@@ -19058,9 +19496,40 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': ^14.6.1
   repoCreatedAt: '2026-06-24T17:07:07Z'
-  repoLastCommitAt: '2026-10-27T02:40:22Z'
+  repoLastCommitAt: '2026-10-29T17:33:59Z'
   commitsInWindow: 98
-  totalCommits: 269
+  totalCommits: 286
+  integrationPartners:
+  - slug: privy
+    name: Privy
+    category: wallets
+    website: https://www.privy.io
+    evidence:
+    - method: package
+      detail: '@privy-io/react-auth'
+      repoFileUrl: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    website: https://soroswap.finance
+    evidence:
+    - method: endpoint
+      detail: api.soroswap.finance
+      repoFileUrl: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/.env.example
+    - method: package
+      detail: '@soroswap/sdk'
+      repoFileUrl: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+  - slug: defindex
+    name: DeFindex
+    category: defi
+    website: https://www.defindex.io
+    evidence:
+    - method: endpoint
+      detail: api.defindex.io
+      repoFileUrl: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/.env.example
+    - method: package
+      detail: '@defindex/sdk'
+      repoFileUrl: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
   owner:
     login: Seyfert-Labs
     avatarUrl: https://avatars.githubusercontent.com/u/274638126?v=4
@@ -19069,7 +19538,7 @@ projects:
   - login: MarxMad
     url: https://github.com/MarxMad
     avatarUrl: https://avatars.githubusercontent.com/u/59736596?v=4
-    contributions: 159
+    contributions: 176
     country: null
   - login: IanHerez
     url: https://github.com/IanHerez
@@ -19218,6 +19687,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:01:19Z'
   commitsInWindow: 3
   totalCommits: 4
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/abaresks24/confidential-rwa/blob/HEAD/web/package.json
   owner:
     login: abaresks24
     avatarUrl: https://avatars.githubusercontent.com/u/187433226?v=4
@@ -19403,6 +19881,7 @@ projects:
   repoLastCommitAt: '2026-10-25T15:23:07Z'
   commitsInWindow: 3
   totalCommits: 3
+  integrationPartners: []
   owner:
     login: defindex-io
     avatarUrl: https://avatars.githubusercontent.com/u/270757198?v=4
@@ -19517,6 +19996,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:25:38Z'
   commitsInWindow: 102
   totalCommits: 102
+  integrationPartners: []
   owner:
     login: franciscogfsm
     avatarUrl: https://avatars.githubusercontent.com/u/147647438?v=4
@@ -19659,6 +20139,15 @@ projects:
   repoLastCommitAt: '2026-10-26T14:27:37Z'
   commitsInWindow: 14
   totalCommits: 16
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/lmstewart88/chama/blob/HEAD/web/package.json
   owner:
     login: lmstewart88
     avatarUrl: https://avatars.githubusercontent.com/u/72700973?v=4
@@ -19766,6 +20255,7 @@ projects:
   repoLastCommitAt: '2026-10-26T09:11:13Z'
   commitsInWindow: 23
   totalCommits: 23
+  integrationPartners: []
   owner:
     login: nina-osk
     avatarUrl: https://avatars.githubusercontent.com/u/14907559?v=4
@@ -19920,6 +20410,7 @@ projects:
   repoLastCommitAt: '2026-10-27T19:25:23Z'
   commitsInWindow: 79
   totalCommits: 81
+  integrationPartners: []
   owner:
     login: skopolabs
     avatarUrl: https://avatars.githubusercontent.com/u/345754793?v=4
@@ -19997,6 +20488,11 @@ projects:
       method: contract_in_repo
       explorerUrl: https://stellar.expert/explorer/testnet/contract/CBFRK646MGAOQK5M7ZALES7ATVNNTTF4ULBJ3WQ6Z5FEH4IDBGW7XHKM
       repoFileUrl: https://github.com/skopolabs/usagepay/blob/HEAD/README.md
+    - kind: account
+      subject: GB6XZYHIGRQPG7L7CHZYFM3HFHKSJNBDXQZ5W5ZCDG5QEM32EEBAPOJC
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GB6XZYHIGRQPG7L7CHZYFM3HFHKSJNBDXQZ5W5ZCDG5QEM32EEBAPOJC
+      repoFileUrl: https://github.com/skopolabs/usagepay/blob/HEAD/https://usagepay.vercel.app
 - repoFullName: Arkessiah/avocate-harvest-escrow
   repoUrl: https://github.com/Arkessiah/avocate-harvest-escrow
   name: avocate-harvest-escrow
@@ -20021,6 +20517,23 @@ projects:
   repoLastCommitAt: '2026-10-26T11:46:41Z'
   commitsInWindow: 90
   totalCommits: 90
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/web/package.json
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    website: https://soroswap.finance
+    evidence:
+    - method: endpoint
+      detail: api.soroswap.finance
+      repoFileUrl: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/networks/testnet.json
   owner:
     login: Arkessiah
     avatarUrl: https://avatars.githubusercontent.com/u/28997167?v=4
@@ -20159,6 +20672,7 @@ projects:
   repoLastCommitAt: '2026-10-26T12:29:58Z'
   commitsInWindow: 4
   totalCommits: 5
+  integrationPartners: []
   owner:
     login: InnokentyB
     avatarUrl: https://avatars.githubusercontent.com/u/62981600?v=4
@@ -20260,6 +20774,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:07:55Z'
   commitsInWindow: 19
   totalCommits: 19
+  integrationPartners: []
   owner:
     login: Lothinnt
     avatarUrl: https://avatars.githubusercontent.com/u/145616639?v=4
@@ -20365,6 +20880,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:47:59Z'
   commitsInWindow: 64
   totalCommits: 64
+  integrationPartners: []
   owner:
     login: Nearx-Labs
     avatarUrl: https://avatars.githubusercontent.com/u/305869138?v=4
@@ -20513,6 +21029,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:39:29Z'
   commitsInWindow: 134
   totalCommits: 134
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Rushyard/Monolith/blob/HEAD/app/package.json
   owner:
     login: Rushyard
     avatarUrl: https://avatars.githubusercontent.com/u/65411594?v=4
@@ -20727,6 +21252,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:03:19Z'
   commitsInWindow: 73
   totalCommits: 73
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/armsves/veilpay/blob/HEAD/package.json
   owner:
     login: armsves
     avatarUrl: https://avatars.githubusercontent.com/u/113925592?v=4
@@ -20835,6 +21369,7 @@ projects:
   repoLastCommitAt: '2026-10-26T12:05:21Z'
   commitsInWindow: 1
   totalCommits: 2
+  integrationPartners: []
   owner:
     login: elmersaid
     avatarUrl: https://avatars.githubusercontent.com/u/4759583?v=4
@@ -20935,9 +21470,18 @@ projects:
     '@stellar/stellar-sdk': 17.4.0
     '@stellar/freighter-api': ^6.0.1
   repoCreatedAt: '2026-10-25T12:28:19Z'
-  repoLastCommitAt: '2026-10-26T11:24:53Z'
+  repoLastCommitAt: '2026-10-29T11:35:05Z'
   commitsInWindow: 301
   totalCommits: 301
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/packages/sdk/package.json
   owner:
     login: hustle1hustle
     avatarUrl: https://avatars.githubusercontent.com/u/181977190?v=4
@@ -21046,7 +21590,7 @@ projects:
   language: Rust
   license: Apache-2.0
   stars: 53
-  forks: 39
+  forks: 40
   selfTags:
   - stellar-cli-plugin
   stack:
@@ -21061,6 +21605,7 @@ projects:
   repoLastCommitAt: '2026-10-27T15:02:08Z'
   commitsInWindow: 6
   totalCommits: 306
+  integrationPartners: []
   owner:
     login: stellar-scaffold
     avatarUrl: https://avatars.githubusercontent.com/u/286139953?v=4
@@ -21243,6 +21788,26 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:24Z'
   commitsInWindow: 42
   totalCommits: 258
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/WritzProtocol/writz/blob/HEAD/frontend/app/package.json
+  - slug: defindex
+    name: DeFindex
+    category: defi
+    website: https://www.defindex.io
+    evidence:
+    - method: endpoint
+      detail: api.defindex.io
+      repoFileUrl: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/.env.example
+    - method: package
+      detail: '@defindex/sdk'
+      repoFileUrl: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/package.json
   owner:
     login: WritzProtocol
     avatarUrl: https://avatars.githubusercontent.com/u/296057967?v=4
@@ -21360,6 +21925,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:07:00Z'
   commitsInWindow: 12
   totalCommits: 233
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/herbstephens/Human-Bond/blob/HEAD/miniapp/package.json
   owner:
     login: herbstephens
     avatarUrl: https://avatars.githubusercontent.com/u/11063638?v=4
@@ -21470,6 +22044,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:25:05Z'
   commitsInWindow: 68
   totalCommits: 68
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/curtismoncoq/Middlemate/blob/HEAD/apps/web/package.json
   owner:
     login: curtismoncoq
     avatarUrl: https://avatars.githubusercontent.com/u/147111716?v=4
@@ -21567,9 +22150,18 @@ projects:
     '@stellar/stellar-sdk': 17.2.1
     '@creit.tech/stellar-wallets-kit': 2.7.1
   repoCreatedAt: '2026-10-25T15:32:35Z'
-  repoLastCommitAt: '2026-10-27T14:15:52Z'
+  repoLastCommitAt: '2026-10-28T18:07:22Z'
   commitsInWindow: 85
-  totalCommits: 159
+  totalCommits: 166
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/app/package.json
   owner:
     login: 0xDanomite
     avatarUrl: https://avatars.githubusercontent.com/u/10619673?v=4
@@ -21578,7 +22170,7 @@ projects:
   - login: 0xDanomite
     url: https://github.com/0xDanomite
     avatarUrl: https://avatars.githubusercontent.com/u/10619673?v=4
-    contributions: 159
+    contributions: 166
     country: null
   chain:
     contractCount: 3
@@ -21731,6 +22323,7 @@ projects:
   repoLastCommitAt: '2026-10-26T10:28:16Z'
   commitsInWindow: 27
   totalCommits: 27
+  integrationPartners: []
   owner:
     login: 34m0r
     avatarUrl: https://avatars.githubusercontent.com/u/233278257?v=4
@@ -21884,6 +22477,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:23:57Z'
   commitsInWindow: 212
   totalCommits: 212
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Dabuca/arqueo/blob/HEAD/app-lib/package.json
   owner:
     login: Dabuca
     avatarUrl: https://avatars.githubusercontent.com/u/60047451?v=4
@@ -22029,6 +22631,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:58:23Z'
   commitsInWindow: 19
   totalCommits: 19
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/web/package.json
   owner:
     login: LucasCariddi
     avatarUrl: https://avatars.githubusercontent.com/u/190208890?v=4
@@ -22204,6 +22815,7 @@ projects:
   repoLastCommitAt: '2026-10-26T10:55:45Z'
   commitsInWindow: 28
   totalCommits: 28
+  integrationPartners: []
   owner:
     login: aonishchenko
     avatarUrl: https://avatars.githubusercontent.com/u/4235699?v=4
@@ -22312,6 +22924,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:41:58Z'
   commitsInWindow: 20
   totalCommits: 20
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/beaguzman/pelamandarinas_project/blob/HEAD/frontend/package.json
   owner:
     login: beaguzman
     avatarUrl: https://avatars.githubusercontent.com/u/244794191?v=4
@@ -22424,6 +23045,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:35:08Z'
   commitsInWindow: 25
   totalCommits: 25
+  integrationPartners: []
   owner:
     login: karmainaria
     avatarUrl: https://avatars.githubusercontent.com/u/347816229?v=4
@@ -22532,6 +23154,31 @@ projects:
   repoLastCommitAt: '2026-10-26T16:35:52Z'
   commitsInWindow: 16
   totalCommits: 1350
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json
+  - slug: privy
+    name: Privy
+    category: wallets
+    website: https://www.privy.io
+    evidence:
+    - method: package
+      detail: '@privy-io/react-auth'
+      repoFileUrl: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json
   owner:
     login: thisyearnofear
     avatarUrl: https://avatars.githubusercontent.com/u/74209106?v=4
@@ -22618,6 +23265,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:57:07Z'
   commitsInWindow: 4
   totalCommits: 7
+  integrationPartners: []
   owner:
     login: zelena-tech
     avatarUrl: https://avatars.githubusercontent.com/u/285584163?v=4
@@ -22720,9 +23368,10 @@ projects:
   stackVersions:
     soroban-sdk: '22'
   repoCreatedAt: '2026-04-28T16:41:12Z'
-  repoLastCommitAt: '2026-10-27T06:03:26Z'
-  commitsInWindow: 44
-  totalCommits: 2608
+  repoLastCommitAt: '2026-10-28T15:12:18Z'
+  commitsInWindow: 46
+  totalCommits: 2629
+  integrationPartners: []
   owner:
     login: agnesnaomiolim-cloud
     avatarUrl: https://avatars.githubusercontent.com/u/272781012?v=4
@@ -22736,7 +23385,7 @@ projects:
   - login: agnesnaomiolim-cloud
     url: https://github.com/agnesnaomiolim-cloud
     avatarUrl: https://avatars.githubusercontent.com/u/272781012?v=4
-    contributions: 331
+    contributions: 338
     country: null
   - login: yinkscss
     url: https://github.com/yinkscss
@@ -22858,6 +23507,11 @@ projects:
     avatarUrl: https://avatars.githubusercontent.com/u/190714747?v=4
     contributions: 13
     country: null
+  - login: supreme2580
+    url: https://github.com/supreme2580
+    avatarUrl: https://avatars.githubusercontent.com/u/100731397?v=4
+    contributions: 13
+    country: null
   - login: susanyusuf
     url: https://github.com/susanyusuf
     avatarUrl: https://avatars.githubusercontent.com/u/195124066?v=4
@@ -22893,11 +23547,6 @@ projects:
     avatarUrl: https://avatars.githubusercontent.com/u/202792093?v=4
     contributions: 12
     country: null
-  - login: supreme2580
-    url: https://github.com/supreme2580
-    avatarUrl: https://avatars.githubusercontent.com/u/100731397?v=4
-    contributions: 12
-    country: null
   - login: Creed1759
     url: https://github.com/Creed1759
     avatarUrl: https://avatars.githubusercontent.com/u/278084809?v=4
@@ -22917,6 +23566,11 @@ projects:
     url: https://github.com/Rajkoli145
     avatarUrl: https://avatars.githubusercontent.com/u/183059937?v=4
     contributions: 10
+    country: null
+  - login: Chidi-Dev1
+    url: https://github.com/Chidi-Dev1
+    avatarUrl: https://avatars.githubusercontent.com/u/317017623?v=4
+    contributions: 9
     country: null
   - login: No-bodyq
     url: https://github.com/No-bodyq
@@ -23053,6 +23707,11 @@ projects:
     avatarUrl: https://avatars.githubusercontent.com/u/199161495?v=4
     contributions: 6
     country: null
+  - login: ifygreg01-best
+    url: https://github.com/ifygreg01-best
+    avatarUrl: https://avatars.githubusercontent.com/u/296116811?v=4
+    contributions: 6
+    country: null
   - login: kingksjo
     url: https://github.com/kingksjo
     avatarUrl: https://avatars.githubusercontent.com/u/121252722?v=4
@@ -23073,9 +23732,9 @@ projects:
     avatarUrl: https://avatars.githubusercontent.com/u/181482259?v=4
     contributions: 5
     country: null
-  - login: Chidi-Dev1
-    url: https://github.com/Chidi-Dev1
-    avatarUrl: https://avatars.githubusercontent.com/u/317017623?v=4
+  - login: DanielTobiDev
+    url: https://github.com/DanielTobiDev
+    avatarUrl: https://avatars.githubusercontent.com/u/312201537?v=4
     contributions: 5
     country: null
   - login: Mmesolove
@@ -23101,11 +23760,6 @@ projects:
   - login: doncharlie
     url: https://github.com/doncharlie
     avatarUrl: https://avatars.githubusercontent.com/u/55623959?v=4
-    contributions: 5
-    country: null
-  - login: ifygreg01-best
-    url: https://github.com/ifygreg01-best
-    avatarUrl: https://avatars.githubusercontent.com/u/296116811?v=4
     contributions: 5
     country: null
   - login: sonoflawal
@@ -23278,9 +23932,29 @@ projects:
     '@stellar/stellar-sdk': ^17.4.0
     '@stellar/freighter-api': ^6.0.1
   repoCreatedAt: '2025-05-20T13:43:29Z'
-  repoLastCommitAt: '2026-10-26T21:23:36Z'
-  commitsInWindow: 8
-  totalCommits: 1936
+  repoLastCommitAt: '2026-10-28T07:13:42Z'
+  commitsInWindow: 9
+  totalCommits: 1942
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/package.json
+  - slug: privy
+    name: Privy
+    category: wallets
+    website: https://www.privy.io
+    evidence:
+    - method: endpoint
+      detail: auth.privy.io
+      repoFileUrl: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/next.config.ts
+    - method: package
+      detail: '@privy-io/react-auth'
+      repoFileUrl: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/package.json
   owner:
     login: red-sentinel-ai
     avatarUrl: https://avatars.githubusercontent.com/u/220595621?v=4
@@ -23294,7 +23968,7 @@ projects:
   - login: satyambnsal
     url: https://github.com/satyambnsal
     avatarUrl: https://avatars.githubusercontent.com/u/13951843?v=4
-    contributions: 903
+    contributions: 909
     country: null
   - login: nikiiigoyal
     url: https://github.com/nikiiigoyal
@@ -23345,6 +24019,94 @@ projects:
       method: deployer_in_repo
       explorerUrl: https://stellar.expert/explorer/testnet/account/GBXQBNPJ7QU7APUK2GYAEDO7I4AA4XLN4IS6AU4WMSFPMSTKYC6UUVG4
       repoFileUrl: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/README.md
+- repoFullName: KeyLease-Security/keylease-core
+  repoUrl: https://github.com/KeyLease-Security/keylease-core
+  name: keylease-core
+  description: Time-bound, quota-gated API credential and bandwidth micro-lease smart contracts on Stellar
+    & Soroban.
+  homepage: https://keylease-security.github.io/keylease-core/
+  tier: verified
+  track: scale
+  language: Rust
+  license: MIT
+  stars: 1
+  forks: 0
+  selfTags:
+  - rust
+  - security
+  - soroban
+  - stellar
+  - stellar-network
+  stack:
+  - soroban-sdk
+  stackVersions:
+    soroban-sdk: null
+  repoCreatedAt: '2026-10-07T11:07:03Z'
+  repoLastCommitAt: '2026-10-29T22:07:38Z'
+  commitsInWindow: 3
+  totalCommits: 14
+  integrationPartners: []
+  owner:
+    login: KeyLease-Security
+    avatarUrl: https://avatars.githubusercontent.com/u/339103943?v=4
+    country: null
+  contributors:
+  - login: Oyinkans0la12
+    url: https://github.com/Oyinkans0la12
+    avatarUrl: https://avatars.githubusercontent.com/u/147610565?v=4
+    contributions: 12
+    country: null
+  chain:
+    contractCount: 2
+    wasmUploadCount: 2
+    classicOpCount: 0
+    assetCount: 0
+    failedTxCount: 0
+    accounts:
+    - address: GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+    - address: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+    wasmUploads:
+    - wasmHash: 5362d4cb866a0405f17d1adfe8179e63afaca8a7dc741df3c3b87ee0ab75146a
+      uploadTx: 9416f80d61b4b9047b555ac4fe39a2fcdadfabb2ef03753c996e0480b4097438
+      explorerUrl: https://stellar.expert/explorer/testnet/tx/9416f80d61b4b9047b555ac4fe39a2fcdadfabb2ef03753c996e0480b4097438
+    - wasmHash: d133e28f4202288ea1a54499bd195f0cb5e09523c2166b53db5ba7bae1a454c0
+      uploadTx: c72ced45782351e04c9c38f27630e9188b515e168143fe8244c24107e61aa648
+      explorerUrl: https://stellar.expert/explorer/testnet/tx/c72ced45782351e04c9c38f27630e9188b515e168143fe8244c24107e61aa648
+    contracts:
+    - contractId: CA4B67P4CKEWWNL356QHISXOYBLT3V4JJMV6CBH37OVRTCBXECJTHM3A
+      deployer: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+      wasmHash: d133e28f4202288ea1a54499bd195f0cb5e09523c2166b53db5ba7bae1a454c0
+      deployedAt: '2026-10-25T14:01:17Z'
+      ledger: 5382658
+      txHash: 6706d153bb6868bee5ee0eecfb89e9fceb68b4eb466a90bd6ab1bc316a936d36
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CA4B67P4CKEWWNL356QHISXOYBLT3V4JJMV6CBH37OVRTCBXECJTHM3A
+      txUrl: https://stellar.expert/explorer/testnet/tx/6706d153bb6868bee5ee0eecfb89e9fceb68b4eb466a90bd6ab1bc316a936d36
+    - contractId: CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
+      deployer: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+      wasmHash: 5362d4cb866a0405f17d1adfe8179e63afaca8a7dc741df3c3b87ee0ab75146a
+      deployedAt: '2026-10-25T14:12:07Z'
+      ledger: 5382788
+      txHash: f598d9a2744c4dc87b8a3cfbceca3374008942bbbcdbc950965ca585882f0172
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
+      txUrl: https://stellar.expert/explorer/testnet/tx/f598d9a2744c4dc87b8a3cfbceca3374008942bbbcdbc950965ca585882f0172
+    evidence:
+    - kind: contract
+      subject: CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
+      method: contract_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
+      repoFileUrl: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/README.md
+    - kind: account
+      subject: GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+      repoFileUrl: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/docs/deployments.md
+    - kind: account
+      subject: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+      repoFileUrl: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/change.md
 - repoFullName: koul-me/koul
   repoUrl: https://github.com/koul-me/koul
   name: koul
@@ -23365,9 +24127,10 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': 16.0.1
   repoCreatedAt: '2026-09-22T13:13:38Z'
-  repoLastCommitAt: '2026-10-26T10:37:27Z'
+  repoLastCommitAt: '2026-10-29T07:48:21Z'
   commitsInWindow: 36
-  totalCommits: 254
+  totalCommits: 290
+  integrationPartners: []
   owner:
     login: koul-me
     avatarUrl: https://avatars.githubusercontent.com/u/332500171?v=4
@@ -23376,7 +24139,7 @@ projects:
   - login: keyboord01
     url: https://github.com/keyboord01
     avatarUrl: https://avatars.githubusercontent.com/u/45427966?v=4
-    contributions: 152
+    contributions: 188
     country: null
   - login: atahanyild
     url: https://github.com/atahanyild
@@ -23470,6 +24233,7 @@ projects:
   repoLastCommitAt: '2026-10-26T08:40:03Z'
   commitsInWindow: 9
   totalCommits: 16
+  integrationPartners: []
   owner:
     login: AgroSmart-Contracts
     avatarUrl: https://avatars.githubusercontent.com/u/169287394?v=4
@@ -23548,6 +24312,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:48:23Z'
   commitsInWindow: 17
   totalCommits: 17
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/AlbyCosmy99/lisbon-hackmeridian/blob/HEAD/package.json
   owner:
     login: AlbyCosmy99
     avatarUrl: https://avatars.githubusercontent.com/u/72943982?v=4
@@ -23640,6 +24413,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:21:05Z'
   commitsInWindow: 6
   totalCommits: 6
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/AzrielTheHellrazor/portus/blob/HEAD/package.json
   owner:
     login: AzrielTheHellrazor
     avatarUrl: https://avatars.githubusercontent.com/u/132911026?v=4
@@ -23756,6 +24538,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:33:52Z'
   commitsInWindow: 7
   totalCommits: 7
+  integrationPartners: []
   owner:
     login: Gastaan
     avatarUrl: https://avatars.githubusercontent.com/u/92812991?v=4
@@ -23825,6 +24608,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:37:10Z'
   commitsInWindow: 27
   totalCommits: 44
+  integrationPartners: []
   owner:
     login: Inferara
     avatarUrl: https://avatars.githubusercontent.com/u/155560401?v=4
@@ -23931,9 +24715,18 @@ projects:
     '@stellar/stellar-sdk': ^17.0.1
     '@stellar/freighter-api': ^6.0.1
   repoCreatedAt: '2026-08-28T21:43:51Z'
-  repoLastCommitAt: '2026-10-27T19:34:34Z'
+  repoLastCommitAt: '2026-10-29T19:52:44Z'
   commitsInWindow: 1
-  totalCommits: 98
+  totalCommits: 111
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Isaac2399/Secretspay-stellar-daap/blob/HEAD/package.json
   owner:
     login: Isaac2399
     avatarUrl: https://avatars.githubusercontent.com/u/61569321?v=4
@@ -23942,7 +24735,7 @@ projects:
   - login: Isaac2399
     url: https://github.com/Isaac2399
     avatarUrl: https://avatars.githubusercontent.com/u/61569321?v=4
-    contributions: 96
+    contributions: 109
     country: null
   - login: cursoragent
     url: https://github.com/cursoragent
@@ -23988,93 +24781,6 @@ projects:
       method: deployer_in_repo
       explorerUrl: https://stellar.expert/explorer/testnet/account/GC5YBV7IBI4ESSNHCZBTDCWHVOGSB2IJAHGH4Q4DVJGK6MTQSHI6WPDK
       repoFileUrl: https://github.com/Isaac2399/Secretspay-stellar-daap/blob/HEAD/README.md
-- repoFullName: KeyLease-Security/keylease-core
-  repoUrl: https://github.com/KeyLease-Security/keylease-core
-  name: keylease-core
-  description: Time-bound, quota-gated API credential and bandwidth micro-lease smart contracts on Stellar
-    & Soroban.
-  homepage: https://keylease-security.github.io/keylease-core/
-  tier: verified
-  track: scale
-  language: Rust
-  license: MIT
-  stars: 0
-  forks: 0
-  selfTags:
-  - rust
-  - security
-  - soroban
-  - stellar
-  - stellar-network
-  stack:
-  - soroban-sdk
-  stackVersions:
-    soroban-sdk: null
-  repoCreatedAt: '2026-10-07T11:07:03Z'
-  repoLastCommitAt: '2026-10-25T14:46:22Z'
-  commitsInWindow: 3
-  totalCommits: 12
-  owner:
-    login: KeyLease-Security
-    avatarUrl: https://avatars.githubusercontent.com/u/339103943?v=4
-    country: null
-  contributors:
-  - login: Oyinkans0la12
-    url: https://github.com/Oyinkans0la12
-    avatarUrl: https://avatars.githubusercontent.com/u/147610565?v=4
-    contributions: 12
-    country: null
-  chain:
-    contractCount: 2
-    wasmUploadCount: 2
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts:
-    - address: GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
-    - address: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
-    wasmUploads:
-    - wasmHash: 5362d4cb866a0405f17d1adfe8179e63afaca8a7dc741df3c3b87ee0ab75146a
-      uploadTx: 9416f80d61b4b9047b555ac4fe39a2fcdadfabb2ef03753c996e0480b4097438
-      explorerUrl: https://stellar.expert/explorer/testnet/tx/9416f80d61b4b9047b555ac4fe39a2fcdadfabb2ef03753c996e0480b4097438
-    - wasmHash: d133e28f4202288ea1a54499bd195f0cb5e09523c2166b53db5ba7bae1a454c0
-      uploadTx: c72ced45782351e04c9c38f27630e9188b515e168143fe8244c24107e61aa648
-      explorerUrl: https://stellar.expert/explorer/testnet/tx/c72ced45782351e04c9c38f27630e9188b515e168143fe8244c24107e61aa648
-    contracts:
-    - contractId: CA4B67P4CKEWWNL356QHISXOYBLT3V4JJMV6CBH37OVRTCBXECJTHM3A
-      deployer: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
-      wasmHash: d133e28f4202288ea1a54499bd195f0cb5e09523c2166b53db5ba7bae1a454c0
-      deployedAt: '2026-10-25T14:01:17Z'
-      ledger: 5382658
-      txHash: 6706d153bb6868bee5ee0eecfb89e9fceb68b4eb466a90bd6ab1bc316a936d36
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CA4B67P4CKEWWNL356QHISXOYBLT3V4JJMV6CBH37OVRTCBXECJTHM3A
-      txUrl: https://stellar.expert/explorer/testnet/tx/6706d153bb6868bee5ee0eecfb89e9fceb68b4eb466a90bd6ab1bc316a936d36
-    - contractId: CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
-      deployer: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
-      wasmHash: 5362d4cb866a0405f17d1adfe8179e63afaca8a7dc741df3c3b87ee0ab75146a
-      deployedAt: '2026-10-25T14:12:07Z'
-      ledger: 5382788
-      txHash: f598d9a2744c4dc87b8a3cfbceca3374008942bbbcdbc950965ca585882f0172
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
-      txUrl: https://stellar.expert/explorer/testnet/tx/f598d9a2744c4dc87b8a3cfbceca3374008942bbbcdbc950965ca585882f0172
-    evidence:
-    - kind: contract
-      subject: CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
-      repoFileUrl: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/README.md
-    - kind: account
-      subject: GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
-      repoFileUrl: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/docs/deployments.md
-    - kind: account
-      subject: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
-      repoFileUrl: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/change.md
 - repoFullName: SLASettleHQ/slasettle-vault
   repoUrl: https://github.com/SLASettleHQ/slasettle-vault
   name: slasettle-vault
@@ -24107,6 +24813,7 @@ projects:
   repoLastCommitAt: '2026-10-26T15:18:42Z'
   commitsInWindow: 1
   totalCommits: 81
+  integrationPartners: []
   owner:
     login: SLASettleHQ
     avatarUrl: https://avatars.githubusercontent.com/u/330482498?v=4
@@ -24189,6 +24896,7 @@ projects:
   repoLastCommitAt: '2026-10-26T14:14:08Z'
   commitsInWindow: 29
   totalCommits: 29
+  integrationPartners: []
   owner:
     login: Sozu-Capital
     avatarUrl: https://avatars.githubusercontent.com/u/309180954?v=4
@@ -24271,6 +24979,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:30:23Z'
   commitsInWindow: 8
   totalCommits: 8
+  integrationPartners: []
   owner:
     login: berryxmas
     avatarUrl: https://avatars.githubusercontent.com/u/32635200?v=4
@@ -24368,6 +25077,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:45:18Z'
   commitsInWindow: 35
   totalCommits: 40
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/karlostoteles/QUITS/blob/HEAD/package.json
   owner:
     login: karlostoteles
     avatarUrl: https://avatars.githubusercontent.com/u/99805785?v=4
@@ -24458,6 +25176,26 @@ projects:
   repoLastCommitAt: '2026-10-27T05:01:15Z'
   commitsInWindow: 4
   totalCommits: 360
+  integrationPartners:
+  - slug: blend
+    name: Blend
+    category: defi
+    website: https://www.blend.capital
+    evidence:
+    - method: package
+      detail: blend-contract-sdk
+      repoFileUrl: https://github.com/Dgetsylver/TurboLong/blob/HEAD/Cargo.toml
+  - slug: stellar-broker
+    name: Stellar Broker
+    category: defi
+    website: https://stellar.broker
+    evidence:
+    - method: endpoint
+      detail: api.stellar.broker
+      repoFileUrl: https://github.com/Dgetsylver/TurboLong/blob/HEAD/frontend/.env.example
+    - method: package
+      detail: '@stellar-broker/client'
+      repoFileUrl: https://github.com/Dgetsylver/TurboLong/blob/HEAD/frontend/package.json
   owner:
     login: Dgetsylver
     avatarUrl: https://avatars.githubusercontent.com/u/83276742?v=4
@@ -24617,6 +25355,15 @@ projects:
   repoLastCommitAt: '2026-10-26T14:57:28Z'
   commitsInWindow: 12
   totalCommits: 22
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Kaycee276/Rhitta/blob/HEAD/frontend/package.json
   owner:
     login: Kaycee276
     avatarUrl: https://avatars.githubusercontent.com/u/144479895?v=4
@@ -24685,6 +25432,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:47:35Z'
   commitsInWindow: 326
   totalCommits: 328
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/apps/web/package.json
   owner:
     login: Michella-stack
     avatarUrl: https://avatars.githubusercontent.com/u/252771412?v=4
@@ -24818,6 +25574,15 @@ projects:
   repoLastCommitAt: '2026-10-27T01:03:08Z'
   commitsInWindow: 35
   totalCommits: 849
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/nema1502/tinkazo/blob/HEAD/package.json
   owner:
     login: nema1502
     avatarUrl: https://avatars.githubusercontent.com/u/70548302?v=4
@@ -24881,6 +25646,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:43:32Z'
   commitsInWindow: 2
   totalCommits: 2
+  integrationPartners: []
   owner:
     login: C-payments
     avatarUrl: https://avatars.githubusercontent.com/u/227592993?v=4
@@ -24972,6 +25738,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:18:52Z'
   commitsInWindow: 13
   totalCommits: 13
+  integrationPartners: []
   owner:
     login: Karinapostemp
     avatarUrl: https://avatars.githubusercontent.com/u/174055448?v=4
@@ -25076,6 +25843,15 @@ projects:
   repoLastCommitAt: '2026-10-25T20:03:31Z'
   commitsInWindow: 20
   totalCommits: 20
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/NicoleCarolina/HackMeridian/blob/HEAD/app-lib/package.json
   owner:
     login: NicoleCarolina
     avatarUrl: https://avatars.githubusercontent.com/u/116591703?v=4
@@ -25134,6 +25910,7 @@ projects:
   repoLastCommitAt: '2026-10-26T12:11:00Z'
   commitsInWindow: 6
   totalCommits: 8
+  integrationPartners: []
   owner:
     login: SwiftExWallet
     avatarUrl: https://avatars.githubusercontent.com/u/271829634?v=4
@@ -25199,6 +25976,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:05:15Z'
   commitsInWindow: 78
   totalCommits: 78
+  integrationPartners:
+  - slug: passkey-kit
+    name: Passkey Kit
+    category: wallets
+    website: https://github.com/kalepail/passkey-kit
+    evidence:
+    - method: package
+      detail: passkey-kit
+      repoFileUrl: https://github.com/developerfred/nata-stellar/blob/HEAD/apps/web/package.json
   owner:
     login: developerfred
     avatarUrl: https://avatars.githubusercontent.com/u/57037080?v=4
@@ -25278,6 +26064,7 @@ projects:
   repoLastCommitAt: '2026-10-26T00:26:41Z'
   commitsInWindow: 1
   totalCommits: 37
+  integrationPartners: []
   owner:
     login: emprendamosahora2030-sudo
     avatarUrl: https://avatars.githubusercontent.com/u/268990171?v=4
@@ -25356,6 +26143,15 @@ projects:
   repoLastCommitAt: '2026-10-26T03:06:01Z'
   commitsInWindow: 6
   totalCommits: 12
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/fredericjasmin/cuotia/blob/HEAD/package.json
   owner:
     login: fredericjasmin
     avatarUrl: https://avatars.githubusercontent.com/u/76606949?v=4
@@ -25426,6 +26222,15 @@ projects:
   repoLastCommitAt: '2026-10-27T09:55:27Z'
   commitsInWindow: 11
   totalCommits: 27
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/helasnoussi/my-stellar-yield-vault/blob/HEAD/package.json
   owner:
     login: helasnoussi
     avatarUrl: https://avatars.githubusercontent.com/u/206531261?v=4
@@ -25494,6 +26299,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:23:43Z'
   commitsInWindow: 33
   totalCommits: 34
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/karagozemin/LATCH/blob/HEAD/sites/latch-demo/package.json
   owner:
     login: karagozemin
     avatarUrl: https://avatars.githubusercontent.com/u/136501001?v=4
@@ -25593,6 +26407,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:18:08Z'
   commitsInWindow: 7
   totalCommits: 7
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/n1n4xyz/backstage/blob/HEAD/frontend/package.json
   owner:
     login: n1n4xyz
     avatarUrl: https://avatars.githubusercontent.com/u/59558519?u=eaed3b724217350de39075499f9ae09401b012d7&v=4
@@ -25667,6 +26490,7 @@ projects:
   repoLastCommitAt: '2026-10-25T18:17:30Z'
   commitsInWindow: 5
   totalCommits: 5
+  integrationPartners: []
   owner:
     login: polaiLabs
     avatarUrl: https://avatars.githubusercontent.com/u/347858038?v=4
@@ -25734,6 +26558,15 @@ projects:
   repoLastCommitAt: '2026-10-26T08:13:45Z'
   commitsInWindow: 7
   totalCommits: 7
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/web/package.json
   owner:
     login: recentlyhatched
     avatarUrl: https://avatars.githubusercontent.com/u/176615423?v=4
@@ -25829,6 +26662,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:36:32Z'
   commitsInWindow: 139
   totalCommits: 160
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/frontend-web/packages/core/package.json
   owner:
     login: rodrodros
     avatarUrl: https://avatars.githubusercontent.com/u/62129975?v=4
@@ -25924,6 +26766,15 @@ projects:
   repoLastCommitAt: '2026-10-26T06:42:41Z'
   commitsInWindow: 9
   totalCommits: 9
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/syncedtoblog/meritable/blob/HEAD/pwa/package.json
   owner:
     login: syncedtoblog
     avatarUrl: https://avatars.githubusercontent.com/u/52607585?v=4
@@ -25982,9 +26833,10 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': 13.3.0
   repoCreatedAt: '2026-10-12T04:25:48Z'
-  repoLastCommitAt: '2026-10-27T11:25:43Z'
+  repoLastCommitAt: '2026-10-29T16:44:06Z'
   commitsInWindow: 8
-  totalCommits: 20
+  totalCommits: 27
+  integrationPartners: []
   owner:
     login: vicistar-star
     avatarUrl: https://avatars.githubusercontent.com/u/279370193?v=4
@@ -26048,6 +26900,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:17:40Z'
   commitsInWindow: 59
   totalCommits: 59
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/wrever/bind/blob/HEAD/package.json
   owner:
     login: wrever
     avatarUrl: https://avatars.githubusercontent.com/u/123417396?v=4
@@ -26180,6 +27041,29 @@ projects:
   repoLastCommitAt: '2026-10-10T20:33:39Z'
   commitsInWindow: 0
   totalCommits: 15
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: api.trustlesswork.com
+      repoFileUrl: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/doctor.mjs
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/doctor.mjs
+    - method: package
+      detail: '@trustless-work/escrow'
+      repoFileUrl: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/app/package.json
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/app-lib/package.json
   owner:
     login: bitfalt
     avatarUrl: https://avatars.githubusercontent.com/u/75431447?v=4
@@ -26235,6 +27119,15 @@ projects:
   repoLastCommitAt: '2026-10-25T10:43:21Z'
   commitsInWindow: 1
   totalCommits: 42
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/brozorec/stellar-confidential-token-demo/blob/HEAD/packages/app/package.json
   owner:
     login: brozorec
     avatarUrl: https://avatars.githubusercontent.com/u/9572072?u=33adfe1d19dd3b06251fbb1971061ef6a5289ce2&v=4
@@ -26288,6 +27181,7 @@ projects:
   repoLastCommitAt: '2026-10-27T18:03:23Z'
   commitsInWindow: 8
   totalCommits: 26
+  integrationPartners: []
   owner:
     login: slimepay
     avatarUrl: https://avatars.githubusercontent.com/u/214399478?v=4
@@ -26346,6 +27240,15 @@ projects:
   repoLastCommitAt: '2026-10-26T03:50:00Z'
   commitsInWindow: 15
   totalCommits: 61
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/Eco-RV/AstrOS/blob/HEAD/app-lib/package.json
   owner:
     login: Eco-RV
     avatarUrl: https://avatars.githubusercontent.com/u/72853594?v=4
@@ -26406,9 +27309,10 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': ^17.2.1
   repoCreatedAt: '2026-01-22T12:47:14Z'
-  repoLastCommitAt: '2026-10-27T10:19:43Z'
+  repoLastCommitAt: '2026-10-29T22:12:42Z'
   commitsInWindow: 6
-  totalCommits: 727
+  totalCommits: 750
+  integrationPartners: []
   owner:
     login: Shamba-Records-Limited
     avatarUrl: https://avatars.githubusercontent.com/u/84320441?v=4
@@ -26417,7 +27321,7 @@ projects:
   - login: mugane-dj
     url: https://github.com/mugane-dj
     avatarUrl: https://avatars.githubusercontent.com/u/85606106?v=4
-    contributions: 573
+    contributions: 594
     country: KE
   - login: Wesley534
     url: https://github.com/Wesley534
@@ -26464,6 +27368,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:16:15Z'
   commitsInWindow: 158
   totalCommits: 160
+  integrationPartners: []
   owner:
     login: ArturShirokov
     avatarUrl: https://avatars.githubusercontent.com/u/72599811?v=4
@@ -26543,6 +27448,15 @@ projects:
   repoLastCommitAt: '2026-10-26T12:12:52Z'
   commitsInWindow: 16
   totalCommits: 240
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Deivitto/orloj-stellar/blob/HEAD/packages/stellar-registry/package.json
   owner:
     login: Deivitto
     avatarUrl: https://avatars.githubusercontent.com/u/26606295?v=4
@@ -26638,9 +27552,10 @@ projects:
   stackVersions:
     '@stellar/stellar-sdk': ^16.0.1
   repoCreatedAt: '2026-10-25T22:21:38Z'
-  repoLastCommitAt: '2026-10-27T21:21:58Z'
+  repoLastCommitAt: '2026-10-29T21:45:18Z'
   commitsInWindow: 53
-  totalCommits: 121
+  totalCommits: 215
+  integrationPartners: []
   owner:
     login: Eras256
     avatarUrl: https://avatars.githubusercontent.com/u/219895655?v=4
@@ -26649,7 +27564,7 @@ projects:
   - login: Eras256
     url: https://github.com/Eras256
     avatarUrl: https://avatars.githubusercontent.com/u/219895655?v=4
-    contributions: 104
+    contributions: 197
     country: null
   - login: M0nsxx
     url: https://github.com/M0nsxx
@@ -26696,6 +27611,7 @@ projects:
   repoLastCommitAt: '2026-10-25T21:16:34Z'
   commitsInWindow: 7
   totalCommits: 41
+  integrationPartners: []
   owner:
     login: FTHTrading
     avatarUrl: https://avatars.githubusercontent.com/u/261508212?v=4
@@ -26752,6 +27668,23 @@ projects:
   repoLastCommitAt: '2026-10-26T10:13:46Z'
   commitsInWindow: 42
   totalCommits: 43
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/stable-compat.mjs
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Innokeshka1/gamelock/blob/HEAD/package.json
   owner:
     login: Innokeshka1
     avatarUrl: https://avatars.githubusercontent.com/u/174308758?v=4
@@ -26809,15 +27742,26 @@ projects:
   forks: 0
   selfTags: []
   stack:
+  - soroban-sdk
   - '@stellar/stellar-sdk'
   - '@stellar/freighter-api'
   stackVersions:
+    soroban-sdk: null
     '@stellar/stellar-sdk': ^17.4.0
     '@stellar/freighter-api': ^6.0.1
   repoCreatedAt: '2026-10-25T12:49:58Z'
-  repoLastCommitAt: '2026-10-26T11:04:02Z'
+  repoLastCommitAt: '2026-10-29T22:06:06Z'
   commitsInWindow: 23
-  totalCommits: 23
+  totalCommits: 31
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/frontend/package.json
   owner:
     login: NUNRIBHAC
     avatarUrl: https://avatars.githubusercontent.com/u/340403981?v=4
@@ -26826,8 +27770,13 @@ projects:
   - login: NUNRIBHAC
     url: https://github.com/NUNRIBHAC
     avatarUrl: https://avatars.githubusercontent.com/u/340403981?v=4
-    contributions: 23
+    contributions: 28
     country: null
+  - login: nuno
+    url: https://github.com/nuno
+    avatarUrl: https://avatars.githubusercontent.com/u/38348?v=4
+    contributions: 1
+    country: PT
   chain:
     contractCount: 0
     wasmUploadCount: 0
@@ -26892,9 +27841,10 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': ^17.2.1
   repoCreatedAt: '2026-10-06T18:06:24Z'
-  repoLastCommitAt: '2026-10-27T11:22:31Z'
+  repoLastCommitAt: '2026-10-29T00:14:02Z'
   commitsInWindow: 1
-  totalCommits: 44
+  totalCommits: 45
+  integrationPartners: []
   owner:
     login: PoolFi-LTD
     avatarUrl: https://avatars.githubusercontent.com/u/333602513?v=4
@@ -26903,7 +27853,7 @@ projects:
   - login: thisisbigmike
     url: https://github.com/thisisbigmike
     avatarUrl: https://avatars.githubusercontent.com/u/148421990?v=4
-    contributions: 26
+    contributions: 27
     country: null
   - login: princesssaven
     url: https://github.com/princesssaven
@@ -26952,9 +27902,10 @@ projects:
   stackVersions:
     '@stellar/stellar-sdk': ^16.0.1
   repoCreatedAt: '2026-10-14T11:45:56Z'
-  repoLastCommitAt: '2026-10-27T13:14:34Z'
+  repoLastCommitAt: '2026-10-28T14:09:10Z'
   commitsInWindow: 4
-  totalCommits: 21
+  totalCommits: 25
+  integrationPartners: []
   owner:
     login: StellarAid-network
     avatarUrl: https://avatars.githubusercontent.com/u/342481985?v=4
@@ -26963,7 +27914,7 @@ projects:
   - login: aristotle224
     url: https://github.com/aristotle224
     avatarUrl: https://avatars.githubusercontent.com/u/300070865?v=4
-    contributions: 21
+    contributions: 25
     country: NG
   chain:
     contractCount: 0
@@ -27007,6 +27958,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:48:44Z'
   commitsInWindow: 29
   totalCommits: 29
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
   owner:
     login: W0lfyo
     avatarUrl: https://avatars.githubusercontent.com/u/233501282?v=4
@@ -27120,9 +28080,10 @@ projects:
     stellar-strkey: 0.0.16
     '@stellar/stellar-sdk': ^16.3.1
   repoCreatedAt: '2026-10-06T15:32:44Z'
-  repoLastCommitAt: '2026-10-27T10:46:14Z'
+  repoLastCommitAt: '2026-10-29T11:43:01Z'
   commitsInWindow: 1
-  totalCommits: 66
+  totalCommits: 68
+  integrationPartners: []
   owner:
     login: arturete58-sys
     avatarUrl: https://avatars.githubusercontent.com/u/254771714?v=4
@@ -27208,6 +28169,7 @@ projects:
   repoLastCommitAt: '2026-10-26T12:06:45Z'
   commitsInWindow: 32
   totalCommits: 36
+  integrationPartners: []
   owner:
     login: eduruizhipolito
     avatarUrl: https://avatars.githubusercontent.com/u/128727681?v=4
@@ -27263,6 +28225,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:34:41Z'
   commitsInWindow: 29
   totalCommits: 29
+  integrationPartners: []
   owner:
     login: fabian416
     avatarUrl: https://avatars.githubusercontent.com/u/120422146?v=4
@@ -27342,9 +28305,10 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': 17.2.1
   repoCreatedAt: '2026-09-03T10:43:43Z'
-  repoLastCommitAt: '2026-10-27T21:08:40Z'
+  repoLastCommitAt: '2026-10-29T00:03:24Z'
   commitsInWindow: 6
-  totalCommits: 292
+  totalCommits: 296
+  integrationPartners: []
   owner:
     login: flowpay-bmoni
     avatarUrl: https://avatars.githubusercontent.com/u/324451869?v=4
@@ -27353,7 +28317,7 @@ projects:
   - login: OlayiwolaSherrifSalawu
     url: https://github.com/OlayiwolaSherrifSalawu
     avatarUrl: https://avatars.githubusercontent.com/u/108702346?v=4
-    contributions: 170
+    contributions: 174
     country: null
   - login: Waffiyyi
     url: https://github.com/Waffiyyi
@@ -27405,9 +28369,18 @@ projects:
     '@stellar/stellar-sdk': ^14.6.1
     '@creit.tech/stellar-wallets-kit': ^2.7.1
   repoCreatedAt: '2026-10-04T11:28:04Z'
-  repoLastCommitAt: '2026-10-27T12:26:48Z'
+  repoLastCommitAt: '2026-10-29T20:02:09Z'
   commitsInWindow: 6
-  totalCommits: 57
+  totalCommits: 60
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/forepay-stellar/forepay/blob/HEAD/fe/package.json
   owner:
     login: forepay-stellar
     avatarUrl: https://avatars.githubusercontent.com/u/337023899?v=4
@@ -27416,18 +28389,18 @@ projects:
   - login: Lexirieru
     url: https://github.com/Lexirieru
     avatarUrl: https://avatars.githubusercontent.com/u/160122555?v=4
-    contributions: 28
+    contributions: 29
+    country: ID
+  - login: Lin1er
+    url: https://github.com/Lin1er
+    avatarUrl: https://avatars.githubusercontent.com/u/79788246?v=4
+    contributions: 12
     country: ID
   - login: AncungAulia
     url: https://github.com/AncungAulia
     avatarUrl: https://avatars.githubusercontent.com/u/181460111?v=4
     contributions: 11
     country: null
-  - login: Lin1er
-    url: https://github.com/Lin1er
-    avatarUrl: https://avatars.githubusercontent.com/u/79788246?v=4
-    contributions: 10
-    country: ID
   - login: Nabil-Aufa
     url: https://github.com/Nabil-Aufa
     avatarUrl: https://avatars.githubusercontent.com/u/181296848?v=4
@@ -27478,6 +28451,7 @@ projects:
   repoLastCommitAt: '2026-10-25T22:23:43Z'
   commitsInWindow: 14
   totalCommits: 14
+  integrationPartners: []
   owner:
     login: infoenzastore-cmd
     avatarUrl: https://avatars.githubusercontent.com/u/328405373?v=4
@@ -27525,6 +28499,7 @@ projects:
   repoLastCommitAt: '2026-10-25T15:46:16Z'
   commitsInWindow: 4
   totalCommits: 4
+  integrationPartners: []
   owner:
     login: pcmarts
     avatarUrl: https://avatars.githubusercontent.com/u/53514319?v=4
@@ -27572,6 +28547,23 @@ projects:
   repoLastCommitAt: '2026-10-25T19:20:37Z'
   commitsInWindow: 13
   totalCommits: 22
+  integrationPartners:
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    website: https://soroswap.finance
+    evidence:
+    - method: endpoint
+      detail: api.soroswap.finance
+      repoFileUrl: https://github.com/seekdaseek/sounding/blob/HEAD/test/sampler.test.mjs
+  - slug: stellar-broker
+    name: Stellar Broker
+    category: defi
+    website: https://stellar.broker
+    evidence:
+    - method: endpoint
+      detail: api.stellar.broker
+      repoFileUrl: https://github.com/seekdaseek/sounding/blob/HEAD/src/venues/broker.mjs
   owner:
     login: seekdaseek
     avatarUrl: https://avatars.githubusercontent.com/u/290621456?u=52b334d5b797c684963b0377f2221c868745cbcb&v=4
@@ -27623,6 +28615,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:53:34Z'
   commitsInWindow: 69
   totalCommits: 69
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/vmichalik/stellar-p2p/blob/HEAD/integration/package.json
   owner:
     login: vmichalik
     avatarUrl: https://avatars.githubusercontent.com/u/12459761?v=4
@@ -27675,6 +28676,7 @@ projects:
   repoLastCommitAt: '2026-10-27T12:41:43Z'
   commitsInWindow: 31
   totalCommits: 202
+  integrationPartners: []
   owner:
     login: up2itnow0822
     avatarUrl: https://avatars.githubusercontent.com/u/220628848?u=253fdf79cb3aadb2c8801989dfff42f7ad55a783&v=4
@@ -27737,9 +28739,10 @@ projects:
   stackVersions:
     '@stellar/stellar-sdk': ^16.4.1
   repoCreatedAt: '2026-09-23T12:06:30Z'
-  repoLastCommitAt: '2026-10-27T21:15:46Z'
+  repoLastCommitAt: '2026-10-29T22:03:55Z'
   commitsInWindow: 5
-  totalCommits: 229
+  totalCommits: 236
+  integrationPartners: []
   owner:
     login: Fizzl13
     avatarUrl: https://avatars.githubusercontent.com/u/49376692?v=4
@@ -27748,7 +28751,7 @@ projects:
   - login: Fizzl13
     url: https://github.com/Fizzl13
     avatarUrl: https://avatars.githubusercontent.com/u/49376692?v=4
-    contributions: 229
+    contributions: 235
     country: null
   chain:
     contractCount: 0
@@ -27787,6 +28790,7 @@ projects:
   repoLastCommitAt: '2026-10-26T10:57:22Z'
   commitsInWindow: 26
   totalCommits: 26
+  integrationPartners: []
   owner:
     login: WebSoroban
     avatarUrl: https://avatars.githubusercontent.com/u/207363068?v=4
@@ -27830,13 +28834,16 @@ projects:
   forks: 0
   selfTags: []
   stack:
+  - soroban-sdk
   - '@stellar/stellar-sdk'
   stackVersions:
-    '@stellar/stellar-sdk': ^17.4.0
+    soroban-sdk: =28.0.0
+    '@stellar/stellar-sdk': 16.4.1
   repoCreatedAt: '2026-10-25T17:25:58Z'
-  repoLastCommitAt: '2026-10-27T00:18:40Z'
+  repoLastCommitAt: '2026-10-29T21:57:52Z'
   commitsInWindow: 13
-  totalCommits: 22
+  totalCommits: 26
+  integrationPartners: []
   owner:
     login: CityOfZion
     avatarUrl: https://avatars.githubusercontent.com/u/29782569?v=4
@@ -27847,26 +28854,33 @@ projects:
     avatarUrl: https://avatars.githubusercontent.com/u/62621701?v=4
     contributions: 17
     country: null
+  - login: lllwvlvwlll
+    url: https://github.com/lllwvlvwlll
+    avatarUrl: https://avatars.githubusercontent.com/u/29798928?v=4
+    contributions: 6
+    country: null
   - login: luc10921
     url: https://github.com/luc10921
     avatarUrl: https://avatars.githubusercontent.com/u/49196318?v=4
     contributions: 3
     country: BR
-  - login: lllwvlvwlll
-    url: https://github.com/lllwvlvwlll
-    avatarUrl: https://avatars.githubusercontent.com/u/29798928?v=4
-    contributions: 2
-    country: null
   chain:
     contractCount: 0
     wasmUploadCount: 0
     classicOpCount: 0
     assetCount: 0
     failedTxCount: 0
-    accounts: []
+    accounts:
+    - address: GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
     wasmUploads: []
     contracts: []
-    evidence: []
+    evidence:
+    - kind: account
+      subject: GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+      repoFileUrl: https://github.com/CityOfZion/hackmeridian/blob/HEAD/contracts/p256-verifier/src/transfer_test.rs
 - repoFullName: CryptoValencia/stellar2bitcoin
   repoUrl: https://github.com/CryptoValencia/stellar2bitcoin
   name: stellar2bitcoin
@@ -27889,6 +28903,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:44:38Z'
   commitsInWindow: 46
   totalCommits: 184
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/CryptoValencia/stellar2bitcoin/blob/HEAD/package.json
   owner:
     login: CryptoValencia
     avatarUrl: https://avatars.githubusercontent.com/u/123474804?v=4
@@ -27926,6 +28949,15 @@ projects:
   repoLastCommitAt: '2026-10-26T03:09:21Z'
   commitsInWindow: 45
   totalCommits: 45
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/HackatonWinnners/toolport/blob/HEAD/apps/web/package.json
   owner:
     login: HackatonWinnners
     avatarUrl: https://avatars.githubusercontent.com/u/242439418?v=4
@@ -27979,6 +29011,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:43:32Z'
   commitsInWindow: 7
   totalCommits: 7
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/HassanKorey/SoroStream-app/blob/HEAD/frontend/package.json
   owner:
     login: HassanKorey
     avatarUrl: https://avatars.githubusercontent.com/u/117786769?u=0632919948ce5efd372d6de30869d91377d954c1&v=4
@@ -28020,9 +29061,10 @@ projects:
     soroban-sdk: null
     '@stellar/stellar-sdk': ^16.0.1
   repoCreatedAt: '2026-10-11T20:06:31Z'
-  repoLastCommitAt: '2026-10-27T09:30:20Z'
+  repoLastCommitAt: '2026-10-29T13:13:32Z'
   commitsInWindow: 9
-  totalCommits: 19
+  totalCommits: 26
+  integrationPartners: []
   owner:
     login: NnamdiCyber
     avatarUrl: https://avatars.githubusercontent.com/u/285641988?v=4
@@ -28031,7 +29073,7 @@ projects:
   - login: NnamdiCyber
     url: https://github.com/NnamdiCyber
     avatarUrl: https://avatars.githubusercontent.com/u/285641988?v=4
-    contributions: 19
+    contributions: 26
     country: null
   chain:
     contractCount: 0
@@ -28066,6 +29108,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:23:05Z'
   commitsInWindow: 47
   totalCommits: 47
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/package.json
   owner:
     login: Paolag93
     avatarUrl: https://avatars.githubusercontent.com/u/112600052?v=4
@@ -28125,6 +29176,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:04:37Z'
   commitsInWindow: 15
   totalCommits: 15
+  integrationPartners: []
   owner:
     login: Pe4enable
     avatarUrl: https://avatars.githubusercontent.com/u/5742085?v=4
@@ -28167,6 +29219,15 @@ projects:
   repoLastCommitAt: '2026-10-25T21:34:47Z'
   commitsInWindow: 179
   totalCommits: 180
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/PhilipLewellen/cdp-clear/blob/HEAD/package.json
   owner:
     login: PhilipLewellen
     avatarUrl: https://avatars.githubusercontent.com/u/296170140?v=4
@@ -28222,9 +29283,10 @@ projects:
     '@stellar/stellar-base': 15.0.0
     github.com/stellar/go: v0.0.0-20251210100531-aab2ea4aca88
   repoCreatedAt: '2026-10-25T21:24:45Z'
-  repoLastCommitAt: '2026-10-27T18:02:55Z'
+  repoLastCommitAt: '2026-10-28T18:03:49Z'
   commitsInWindow: 11
-  totalCommits: 52
+  totalCommits: 56
+  integrationPartners: []
   owner:
     login: Protocol-30
     avatarUrl: https://avatars.githubusercontent.com/u/348006429?v=4
@@ -28233,12 +29295,12 @@ projects:
   - login: claude
     url: https://github.com/claude
     avatarUrl: https://avatars.githubusercontent.com/u/81847?v=4
-    contributions: 36
+    contributions: 38
     country: null
   - login: ciscokwiz
     url: https://github.com/ciscokwiz
     avatarUrl: https://avatars.githubusercontent.com/u/43618023?v=4
-    contributions: 14
+    contributions: 16
     country: null
   chain:
     contractCount: 0
@@ -28270,9 +29332,10 @@ projects:
     soroban-sdk: 22.0.11
     '@stellar/stellar-sdk': ^17.4.0
   repoCreatedAt: '2026-10-15T15:40:59Z'
-  repoLastCommitAt: '2026-10-26T12:04:37Z'
+  repoLastCommitAt: '2026-10-28T09:47:02Z'
   commitsInWindow: 19
-  totalCommits: 21
+  totalCommits: 28
+  integrationPartners: []
   owner:
     login: Pythagoras-x
     avatarUrl: https://avatars.githubusercontent.com/u/337384057?v=4
@@ -28281,7 +29344,7 @@ projects:
   - login: Pythagoras-x
     url: https://github.com/Pythagoras-x
     avatarUrl: https://avatars.githubusercontent.com/u/337384057?v=4
-    contributions: 21
+    contributions: 28
     country: NG
   chain:
     contractCount: 0
@@ -28297,7 +29360,7 @@ projects:
   repoUrl: https://github.com/RockieRaheem/Devfest_HarambeeOne
   name: Devfest_HarambeeOne
   description: null
-  homepage: null
+  homepage: https://devfest-harambeeone.vercel.app
   tier: likely
   track: scale
   language: HTML
@@ -28312,9 +29375,10 @@ projects:
     soroban-sdk: =22.0.0
     stellar-sdk: 16.1.1
   repoCreatedAt: '2026-10-24T18:54:02Z'
-  repoLastCommitAt: '2026-10-27T18:43:18Z'
+  repoLastCommitAt: '2026-10-29T20:29:18Z'
   commitsInWindow: 16
-  totalCommits: 23
+  totalCommits: 43
+  integrationPartners: []
   owner:
     login: RockieRaheem
     avatarUrl: https://avatars.githubusercontent.com/u/134764730?v=4
@@ -28323,7 +29387,7 @@ projects:
   - login: RockieRaheem
     url: https://github.com/RockieRaheem
     avatarUrl: https://avatars.githubusercontent.com/u/134764730?v=4
-    contributions: 23
+    contributions: 43
     country: UG
   chain:
     contractCount: 0
@@ -28359,6 +29423,26 @@ projects:
   repoLastCommitAt: '2026-10-26T02:18:24Z'
   commitsInWindow: 31
   totalCommits: 31
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: api.trustlesswork.com
+      repoFileUrl: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/constants.ts
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/web/package.json
   owner:
     login: SendaLabs
     avatarUrl: https://avatars.githubusercontent.com/u/316336073?v=4
@@ -28400,7 +29484,7 @@ projects:
   language: TypeScript
   license: Apache-2.0
   stars: 0
-  forks: 0
+  forks: 1
   selfTags:
   - cli
   - soroban
@@ -28412,9 +29496,10 @@ projects:
   stackVersions:
     '@stellar/stellar-sdk': ^17.4.0
   repoCreatedAt: '2026-10-27T09:40:16Z'
-  repoLastCommitAt: '2026-10-27T09:47:29Z'
+  repoLastCommitAt: '2026-10-28T09:58:17Z'
   commitsInWindow: 5
-  totalCommits: 21
+  totalCommits: 26
+  integrationPartners: []
   owner:
     login: Songu3020
     avatarUrl: https://avatars.githubusercontent.com/u/247524785?v=4
@@ -28423,7 +29508,12 @@ projects:
   - login: Songu3020
     url: https://github.com/Songu3020
     avatarUrl: https://avatars.githubusercontent.com/u/247524785?v=4
-    contributions: 21
+    contributions: 23
+    country: null
+  - login: Techsynx
+    url: https://github.com/Techsynx
+    avatarUrl: https://avatars.githubusercontent.com/u/180408159?v=4
+    contributions: 3
     country: null
   chain:
     contractCount: 0
@@ -28455,6 +29545,7 @@ projects:
   repoLastCommitAt: '2026-10-27T14:24:52Z'
   commitsInWindow: 7
   totalCommits: 16
+  integrationPartners: []
   owner:
     login: SoroTTL-Network
     avatarUrl: https://avatars.githubusercontent.com/u/347795022?v=4
@@ -28496,6 +29587,7 @@ projects:
   repoLastCommitAt: '2026-10-26T07:57:22Z'
   commitsInWindow: 21
   totalCommits: 21
+  integrationPartners: []
   owner:
     login: SoroTTL-Network
     avatarUrl: https://avatars.githubusercontent.com/u/347795022?v=4
@@ -28526,7 +29618,7 @@ projects:
   language: TypeScript
   license: MIT
   stars: 0
-  forks: 0
+  forks: 2
   selfTags: []
   stack:
   - soroban-sdk
@@ -28540,6 +29632,15 @@ projects:
   repoLastCommitAt: '2026-10-26T16:08:45Z'
   commitsInWindow: 12
   totalCommits: 19
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/Strea-mora/Streamora/blob/HEAD/apps/web/package.json
   owner:
     login: Strea-mora
     avatarUrl: https://avatars.githubusercontent.com/u/348043902?v=4
@@ -28560,92 +29661,6 @@ projects:
     wasmUploads: []
     contracts: []
     evidence: []
-- repoFullName: city-pass-global/citypass
-  repoUrl: https://github.com/city-pass-global/citypass
-  name: citypass
-  description: A multilingual travel passport for discovering destinations, collecting verified visit
-    stamps, buying destination passes, and preparing hotel arrivals
-  homepage: https://city-pass-global.vercel.app/
-  tier: likely
-  track: genesis
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - soroban-sdk
-  - '@stellar/stellar-sdk'
-  stackVersions:
-    soroban-sdk: =29.0.1
-    '@stellar/stellar-sdk': 17.2.1
-  repoCreatedAt: '2026-10-25T22:57:17Z'
-  repoLastCommitAt: '2026-10-26T11:30:56Z'
-  commitsInWindow: 6
-  totalCommits: 6
-  owner:
-    login: city-pass-global
-    avatarUrl: https://avatars.githubusercontent.com/u/348030593?v=4
-    country: null
-  contributors:
-  - login: Bran18
-    url: https://github.com/Bran18
-    avatarUrl: https://avatars.githubusercontent.com/u/31634868?v=4
-    contributions: 6
-    country: CR
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts:
-    - address: GB2Z2T6O5RZZG4C7TRA3CX5KXC52XF6X4HSPC3QZP7BDMEWBVFCUDRPB
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GB2Z2T6O5RZZG4C7TRA3CX5KXC52XF6X4HSPC3QZP7BDMEWBVFCUDRPB
-    - address: GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
-    - address: GBBSKBGZIHIRBJLWAU27PUXLMJBJL3D6EYQDEDHJWURWB4FYUEYZ7AGM
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GBBSKBGZIHIRBJLWAU27PUXLMJBJL3D6EYQDEDHJWURWB4FYUEYZ7AGM
-    - address: GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
-    wasmUploads: []
-    contracts: []
-    evidence:
-    - kind: contract
-      subject: CAMNGYB64TCHHHQGYHZZ27ZIRRFDN6PMDMSLIVXMBIZGBBI7YAZMZ54H
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CAMNGYB64TCHHHQGYHZZ27ZIRRFDN6PMDMSLIVXMBIZGBBI7YAZMZ54H
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/IMPLEMENTATION_PLAN.md
-    - kind: contract
-      subject: CBGBZZU72XTXTRPKHJOPPTS3KU45AK25WADRG46TRIPZ5BZT36FC6OSP
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBGBZZU72XTXTRPKHJOPPTS3KU45AK25WADRG46TRIPZ5BZT36FC6OSP
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/ACTIVITY_CONTRACT.md
-    - kind: contract
-      subject: CBIHW5DNMCQDHGJFQRRNBGM5FVQRANLWLJD44APJKVKLK5JBNCTNSPM2
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBIHW5DNMCQDHGJFQRRNBGM5FVQRANLWLJD44APJKVKLK5JBNCTNSPM2
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/VERIFICATION.md
-    - kind: contract
-      subject: CBTPNY2ALTSFDWIUNMVGYOKYLAZT6LWRB4DJWZEL3IKRUFVYQ4ZBR3VS
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBTPNY2ALTSFDWIUNMVGYOKYLAZT6LWRB4DJWZEL3IKRUFVYQ4ZBR3VS
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/ACTIVITY_CONTRACT.md
-    - kind: contract
-      subject: CBU3NMC7UJTHYIHS4HUJAZVVHTQESAYRUV3LMOELAVUZKHTVWGT2DJ2G
-      method: contract_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/contract/CBU3NMC7UJTHYIHS4HUJAZVVHTQESAYRUV3LMOELAVUZKHTVWGT2DJ2G
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/IMPLEMENTATION_PLAN.md
-    - kind: account
-      subject: GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/VERIFICATION.md
-    - kind: account
-      subject: GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
-      method: deployer_in_repo
-      explorerUrl: https://stellar.expert/explorer/testnet/account/GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
-      repoFileUrl: https://github.com/city-pass-global/citypass/blob/HEAD/docs/ACTIVITY_CONTRACT.md
 - repoFullName: devOgazi/Stellar-Postage
   repoUrl: https://github.com/devOgazi/Stellar-Postage
   name: Stellar-Postage
@@ -28666,9 +29681,10 @@ projects:
     soroban-sdk: =29.0.1
     '@stellar/stellar-sdk': 12.3.0
   repoCreatedAt: '2026-10-12T11:04:26Z'
-  repoLastCommitAt: '2026-10-27T10:59:05Z'
+  repoLastCommitAt: '2026-10-29T17:57:13Z'
   commitsInWindow: 7
-  totalCommits: 16
+  totalCommits: 22
+  integrationPartners: []
   owner:
     login: devOgazi
     avatarUrl: https://avatars.githubusercontent.com/u/295651024?v=4
@@ -28677,7 +29693,7 @@ projects:
   - login: devOgazi
     url: https://github.com/devOgazi
     avatarUrl: https://avatars.githubusercontent.com/u/295651024?v=4
-    contributions: 16
+    contributions: 22
     country: null
   chain:
     contractCount: 0
@@ -28713,6 +29729,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:03:17Z'
   commitsInWindow: 26
   totalCommits: 26
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/web/app/package.json
   owner:
     login: devfelipenunes
     avatarUrl: https://avatars.githubusercontent.com/u/81275678?v=4
@@ -28756,6 +29781,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:36:25Z'
   commitsInWindow: 61
   totalCommits: 99
+  integrationPartners: []
   owner:
     login: drank40
     avatarUrl: https://avatars.githubusercontent.com/u/37227238?v=4
@@ -28802,9 +29828,10 @@ projects:
     '@stellar/stellar-sdk': ^17.2.1
     '@stellar/typescript-wallet-sdk': ^5.1.0
   repoCreatedAt: '2026-10-25T14:17:47Z'
-  repoLastCommitAt: '2026-10-25T23:09:40Z'
+  repoLastCommitAt: '2026-10-29T15:59:51Z'
   commitsInWindow: 5
   totalCommits: 5
+  integrationPartners: []
   owner:
     login: elszalencia
     avatarUrl: https://avatars.githubusercontent.com/u/271640230?v=4
@@ -28849,6 +29876,15 @@ projects:
   repoLastCommitAt: '2026-10-26T10:55:17Z'
   commitsInWindow: 70
   totalCommits: 70
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/emirykl/nema/blob/HEAD/frontend/package.json
   owner:
     login: emirykl
     avatarUrl: https://avatars.githubusercontent.com/u/160465301?v=4
@@ -28891,6 +29927,23 @@ projects:
   repoLastCommitAt: '2026-10-26T10:01:39Z'
   commitsInWindow: 89
   totalCommits: 89
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/apps/web/package.json
+  - slug: blend
+    name: Blend
+    category: defi
+    website: https://www.blend.capital
+    evidence:
+    - method: package
+      detail: '@blend-capital/blend-sdk'
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/package.json
   owner:
     login: ethan-r13n
     avatarUrl: https://avatars.githubusercontent.com/u/78349796?v=4
@@ -28933,6 +29986,15 @@ projects:
   repoLastCommitAt: '2026-10-26T11:10:53Z'
   commitsInWindow: 7
   totalCommits: 7
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/hakeemullahjan/payraast/blob/HEAD/apps/web/package.json
   owner:
     login: hakeemullahjan
     avatarUrl: https://avatars.githubusercontent.com/u/42214791?u=a47dc6e33d34ba4ccac81f0cc1ef98fc19d168a2&v=4
@@ -28973,6 +30035,7 @@ projects:
   repoLastCommitAt: '2026-10-26T13:27:28Z'
   commitsInWindow: 34
   totalCommits: 41
+  integrationPartners: []
   owner:
     login: infoenzastore-cmd
     avatarUrl: https://avatars.githubusercontent.com/u/328405373?v=4
@@ -29026,6 +30089,15 @@ projects:
   repoLastCommitAt: '2026-10-26T08:10:45Z'
   commitsInWindow: 17
   totalCommits: 17
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/joinsendr/SendrPay/blob/HEAD/package.json
   owner:
     login: joinsendr
     avatarUrl: https://avatars.githubusercontent.com/u/169680953?v=4
@@ -29064,9 +30136,10 @@ projects:
   stackVersions:
     '@stellar/stellar-sdk': ^17.4.0
   repoCreatedAt: '2026-10-25T18:33:19Z'
-  repoLastCommitAt: '2026-10-27T19:23:50Z'
+  repoLastCommitAt: '2026-10-29T12:59:39Z'
   commitsInWindow: 10
-  totalCommits: 13
+  totalCommits: 62
+  integrationPartners: []
   owner:
     login: mizukuhiiragi
     avatarUrl: https://avatars.githubusercontent.com/u/342722414?v=4
@@ -29075,7 +30148,7 @@ projects:
   - login: mizukuhiiragi
     url: https://github.com/mizukuhiiragi
     avatarUrl: https://avatars.githubusercontent.com/u/342722414?v=4
-    contributions: 13
+    contributions: 62
     country: null
   chain:
     contractCount: 0
@@ -29109,6 +30182,15 @@ projects:
   repoLastCommitAt: '2026-10-25T20:40:44Z'
   commitsInWindow: 12
   totalCommits: 13
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/najathammouri-prog/Airlock-Guard-2/blob/HEAD/artifacts/airlock/package.json
   owner:
     login: najathammouri-prog
     avatarUrl: https://avatars.githubusercontent.com/u/347824338?v=4
@@ -29154,6 +30236,7 @@ projects:
   repoLastCommitAt: '2026-10-26T12:13:07Z'
   commitsInWindow: 45
   totalCommits: 46
+  integrationPartners: []
   owner:
     login: nielslecodeur
     avatarUrl: https://avatars.githubusercontent.com/u/188048354?v=4
@@ -29200,6 +30283,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:46:03Z'
   commitsInWindow: 42
   totalCommits: 42
+  integrationPartners: []
   owner:
     login: nseguias
     avatarUrl: https://avatars.githubusercontent.com/u/72363768?v=4
@@ -29238,9 +30322,10 @@ projects:
   stackVersions:
     soroban-sdk: null
   repoCreatedAt: '2026-10-12T04:56:34Z'
-  repoLastCommitAt: '2026-10-27T18:41:43Z'
+  repoLastCommitAt: '2026-10-28T12:34:02Z'
   commitsInWindow: 10
-  totalCommits: 26
+  totalCommits: 33
+  integrationPartners: []
   owner:
     login: ogaziedaniel80-droid
     avatarUrl: https://avatars.githubusercontent.com/u/285634399?v=4
@@ -29249,7 +30334,7 @@ projects:
   - login: ogaziedaniel80-droid
     url: https://github.com/ogaziedaniel80-droid
     avatarUrl: https://avatars.githubusercontent.com/u/285634399?v=4
-    contributions: 26
+    contributions: 33
     country: null
   chain:
     contractCount: 0
@@ -29281,9 +30366,10 @@ projects:
     soroban-sdk: 21.7.7
     '@stellar/stellar-sdk': ^16.0.1
   repoCreatedAt: '2026-10-25T16:45:29Z'
-  repoLastCommitAt: '2026-10-27T14:24:59Z'
+  repoLastCommitAt: '2026-10-29T19:39:46Z'
   commitsInWindow: 6
-  totalCommits: 13
+  totalCommits: 27
+  integrationPartners: []
   owner:
     login: oneid-ng
     avatarUrl: https://avatars.githubusercontent.com/u/347912477?v=4
@@ -29327,6 +30413,7 @@ projects:
   repoLastCommitAt: '2026-10-25T20:53:59Z'
   commitsInWindow: 25
   totalCommits: 25
+  integrationPartners: []
   owner:
     login: osdeniz
     avatarUrl: https://avatars.githubusercontent.com/u/63924986?v=4
@@ -29377,6 +30464,15 @@ projects:
   repoLastCommitAt: '2026-10-25T17:47:46Z'
   commitsInWindow: 8
   totalCommits: 8
+  integrationPartners:
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/polaiLabs/polai-frontend/blob/HEAD/package.json
   owner:
     login: polaiLabs
     avatarUrl: https://avatars.githubusercontent.com/u/347858038?v=4
@@ -29410,15 +30506,42 @@ projects:
   forks: 0
   selfTags: []
   stack:
+  - soroban-sdk
   - '@stellar/stellar-sdk'
   - '@creit.tech/stellar-wallets-kit'
   stackVersions:
+    soroban-sdk: null
     '@stellar/stellar-sdk': ^16.3.0
     '@creit.tech/stellar-wallets-kit': ^2.7.1
   repoCreatedAt: '2026-09-28T01:41:40Z'
-  repoLastCommitAt: '2026-10-27T11:44:38Z'
+  repoLastCommitAt: '2026-10-29T19:05:58Z'
   commitsInWindow: 30
-  totalCommits: 57
+  totalCommits: 72
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/seidar-hq/seidar/blob/HEAD/apps/app/package.json
+  - slug: blend
+    name: Blend
+    category: defi
+    website: https://www.blend.capital
+    evidence:
+    - method: package
+      detail: '@blend-capital/blend-sdk'
+      repoFileUrl: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
+  - slug: allbridge
+    name: Allbridge
+    category: cross-chain
+    website: https://allbridge.io
+    evidence:
+    - method: package
+      detail: '@allbridge/bridge-core-sdk'
+      repoFileUrl: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
   owner:
     login: seidar-hq
     avatarUrl: https://avatars.githubusercontent.com/u/334750090?v=4
@@ -29427,7 +30550,7 @@ projects:
   - login: kings0x
     url: https://github.com/kings0x
     avatarUrl: https://avatars.githubusercontent.com/u/208822414?v=4
-    contributions: 57
+    contributions: 72
     country: null
   chain:
     contractCount: 0
@@ -29461,6 +30584,32 @@ projects:
   repoLastCommitAt: '2026-10-26T11:11:34Z'
   commitsInWindow: 24
   totalCommits: 24
+  integrationPartners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    website: https://www.trustlesswork.com
+    evidence:
+    - method: endpoint
+      detail: api.trustlesswork.com
+      repoFileUrl: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/providers/TrustlessWork.tsx
+    - method: endpoint
+      detail: dev.api.trustlesswork.com
+      repoFileUrl: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/.env.example
+    - method: package
+      detail: '@trustless-work/blocks'
+      repoFileUrl: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+    - method: package
+      detail: '@trustless-work/escrow'
+      repoFileUrl: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    website: https://www.freighter.app
+    evidence:
+    - method: package
+      detail: '@stellar/freighter-api'
+      repoFileUrl: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
   owner:
     login: siwakadrianna-byte
     avatarUrl: https://avatars.githubusercontent.com/u/240194832?v=4
@@ -29501,6 +30650,7 @@ projects:
   repoLastCommitAt: '2026-10-26T11:32:30Z'
   commitsInWindow: 350
   totalCommits: 350
+  integrationPartners: []
   owner:
     login: sohamtech-uk
     avatarUrl: https://avatars.githubusercontent.com/u/274770785?v=4
