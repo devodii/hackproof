@@ -1,24 +1,11 @@
 import re
 from pathlib import PurePosixPath
-from typing import Literal
-
-from pydantic import BaseModel, ConfigDict
 
 from hackproof.github.dependencies import ECOSYSTEM, PARSERS
 from hackproof.integrations.catalog import Catalog, Partner
+from hackproof.integrations.models import Detection, Method
 
 PROSE_SUFFIXES = {".md", ".txt"}
-
-Method = Literal["package", "endpoint"]
-
-
-class Detection(BaseModel):
-    model_config = ConfigDict(frozen=True)
-
-    slug: str
-    method: Method
-    evidence: str
-    path: str
 
 
 def _normalize(ecosystem: str, name: str) -> str:

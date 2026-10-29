@@ -1,5 +1,6 @@
 from hackproof.integrations.catalog import Catalog, Partner, get_catalog
-from hackproof.integrations.detect import Detection, detect
+from hackproof.integrations.detect import detect
+from hackproof.integrations.models import Detection
 
 CATALOG = Catalog(
     partners=[

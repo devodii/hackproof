@@ -1,5 +1,8 @@
 from hackproof.github.demo import is_public_http
-from hackproof.github.scan import DEMO_URL, contributors_from, select_files
+from hackproof.github.models import DependencyFingerprint, RepoScan
+from hackproof.github.scan import DEMO_URL, contributors_from, select_files, store_scan
+from hackproof.integrations.models import Detection
+from tests.helpers import add_repo
 
 
 def blob(path: str, size: int = 100) -> dict:
@@ -60,3 +63,26 @@ def test_demo_url_pattern_only_matches_ascii_hosts():
         "https://my-app.vercel.app/docs"
     )
     assert DEMO_URL.search("https://你的用户名.github.io`、`SITE_BASE=") is None
+
+
+async def test_a_rescan_replaces_the_stored_integrations(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/app")
+    detection = Detection(slug="privy", method="package", evidence="@privy-io/node", path="a.json")
+
+    def scan(*found: Detection) -> RepoScan:
+        return RepoScan(
+            full_name="team/app",
+            refs=[],
+            dependencies=DependencyFingerprint(),
+            stellar_added_in_window=None,
+            integrations=list(found),
+            contributors=[],
+        )
+
+    await store_scan(db, scan(detection))
+    await store_scan(db, scan(detection))
+    assert await db.fetchval("SELECT count(*) FROM repo_integrations") == 1
+
+    await store_scan(db, scan())
+    assert await db.fetchval("SELECT count(*) FROM repo_integrations") == 0

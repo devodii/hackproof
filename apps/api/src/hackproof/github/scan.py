@@ -14,6 +14,8 @@ from hackproof.github.history import stellar_added_in_window
 from hackproof.github.models import Candidate, Contributor, Ref, RepoScan
 from hackproof.github.refs import extract_refs
 from hackproof.hackathon import Discovery
+from hackproof.integrations.catalog import Catalog, get_catalog
+from hackproof.integrations.detect import detect
 
 TEXT_SUFFIXES = {
     ".rs", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".py", ".go", ".toml", ".json",
@@ -71,10 +73,17 @@ def select_files(entries: list[dict]) -> tuple[list[str], list[str]]:
 
 
 class Scanner:
-    def __init__(self, github: GithubClient, http: httpx.AsyncClient, discovery: Discovery) -> None:
+    def __init__(
+        self,
+        github: GithubClient,
+        http: httpx.AsyncClient,
+        discovery: Discovery,
+        catalog: Catalog | None = None,
+    ) -> None:
         self._github = github
         self._http = http
         self._discovery = discovery
+        self._catalog = catalog or get_catalog()
         self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
     async def _wasm_ref(self, repo: Candidate, branch: str, path: str) -> Ref | None:
@@ -118,6 +127,7 @@ class Scanner:
             refs=list(dict.fromkeys(refs)),
             dependencies=dependencies,
             stellar_added_in_window=added,
+            integrations=detect(files, self._catalog, repo.owner),
             contributors=contributors_from(people),
         )
 
@@ -155,6 +165,13 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
                 (scan.full_name, c.login, c.url, c.avatar_url, c.contributions)
                 for c in scan.contributors
             ],
+        )
+        await connection.execute(
+            "DELETE FROM repo_integrations WHERE full_name = $1", scan.full_name
+        )
+        await connection.executemany(
+            "INSERT INTO repo_integrations VALUES ($1, $2, $3, $4, $5)",
+            [(scan.full_name, i.slug, i.method, i.evidence, i.path) for i in scan.integrations],
         )
         await connection.execute(
             """
