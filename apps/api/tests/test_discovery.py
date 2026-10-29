@@ -1,6 +1,8 @@
 from datetime import UTC, datetime
 
-from hackproof.github.discovery import is_pinned, should_keep, split_range
+from hackproof.github import discovery
+from hackproof.github.client import GithubUnavailable
+from hackproof.github.discovery import is_pinned, patient, should_keep, split_range
 from hackproof.github.models import Candidate
 from hackproof.hackathon import Discovery, Window
 
@@ -75,3 +77,32 @@ async def test_split_range_leaves_small_queries_whole():
         return 3
 
     assert await split_range(0, 400_000, count) == [(0, 400_000)]
+
+
+async def test_a_query_survives_a_connection_outage(monkeypatch):
+    async def instant(_seconds):
+        return None
+
+    monkeypatch.setattr(discovery.asyncio, "sleep", instant)
+    runs: list[str] = []
+
+    async def flaky(query: str) -> None:
+        runs.append(query)
+        if len(runs) < 3:
+            raise GithubUnavailable(query)
+
+    await patient("q", flaky)
+
+    assert runs == ["q", "q", "q"]
+
+
+async def test_a_query_that_never_recovers_is_skipped_not_fatal(monkeypatch):
+    async def instant(_seconds):
+        return None
+
+    monkeypatch.setattr(discovery.asyncio, "sleep", instant)
+
+    async def down(query: str) -> None:
+        raise GithubUnavailable(query)
+
+    await patient("q", down)

@@ -6,7 +6,7 @@ from typing import Any
 
 import asyncpg
 
-from hackproof.github.client import GithubClient, Search
+from hackproof.github.client import GithubClient, GithubUnavailable, Search
 from hackproof.github.models import Candidate
 from hackproof.github.repositories import fetch_repositories
 from hackproof.hackathon import Discovery, Window
@@ -19,6 +19,8 @@ PAGE_SIZE = 100
 RESULT_CAP = 1000
 SIZE_CEILING = 400_000
 PINNED_VIA = "wasm_meta"
+OUTAGE_ROUNDS = 5
+OUTAGE_PAUSE = 60
 
 Count = Callable[[int, int], Awaitable[int]]
 
@@ -92,6 +94,17 @@ async def _hits(github: GithubClient, path: str, query: str, kind: Search) -> li
     return items
 
 
+async def patient(query: str, run: Callable[[str], Awaitable[None]]) -> None:
+    for _ in range(OUTAGE_ROUNDS):
+        try:
+            await run(query)
+            return
+        except GithubUnavailable:
+            log.warning("github unreachable, retrying in %ss: %s", OUTAGE_PAUSE, query)
+            await asyncio.sleep(OUTAGE_PAUSE)
+    log.error("gave up after %s rounds: %s", OUTAGE_ROUNDS, query)
+
+
 async def _collect(
     github: GithubClient,
     found: dict[str, set[str]],
@@ -118,8 +131,8 @@ async def _collect(
         log.info("code search done: %s slices, %s", len(slices), query)
 
     await asyncio.gather(
-        *(repository_query(q) for q in repository_queries),
-        *(code_query(q) for q in code_queries),
+        *(patient(q, repository_query) for q in repository_queries),
+        *(patient(q, code_query) for q in code_queries),
     )
 
 
