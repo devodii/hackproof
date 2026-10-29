@@ -4,14 +4,16 @@ import { useNavigate, useSearchParams } from 'react-router'
 
 import { DataTable } from '@/components/data-table'
 import { PaginationBar } from '@/components/pagination-bar'
+import { ScrollBox } from '@/components/scroll-box'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PAGE_SIZE } from '@/hooks/use-paged-list'
+import { usePaginationMode } from '@/hooks/use-pagination-mode'
 import { useIntegrations, useProjects } from '@/hooks/use-projects'
+import { posthog } from '@/lib/analytics'
 import { formatNumber } from '@/lib/format'
-import { cn } from '@/lib/utils'
 
 import { projectColumns } from './columns'
 import { FilterPanel } from './filter-panel'
@@ -62,7 +64,40 @@ export function ProjectExplorer({ search }: { search: string }) {
       ),
     [projects, selection, needle],
   )
-  const visible = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+  const mode = usePaginationMode()
+  const scrolling = mode === 'scroll'
+  const visible = scrolling
+    ? filtered.slice(0, (page + 1) * PAGE_SIZE)
+    : filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+  const more = (next: number) => {
+    posthog.capture('list_more', { mode, resource: 'projects' })
+    setPage(next)
+  }
+
+  const cards = (
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      {isPending
+        ? Array.from({ length: 9 }, (_, index) => (
+            <ProjectCardSkeleton
+              key={index}
+              delay={(index % 3) * 140 + Math.floor(index / 3) * 90}
+            />
+          ))
+        : visible.map((project) => <ProjectCard key={project.project_id} project={project} />)}
+    </div>
+  )
+
+  const table = (rows: typeof filtered, paginate: boolean) => (
+    <DataTable
+      columns={projectColumns}
+      rows={rows}
+      rowKey={(row) => row.project_id}
+      paginate={paginate}
+      isLoading={isPending}
+      empty="No projects match."
+      onRowClick={(row) => navigate(`/project/${row.project_id}`)}
+    />
+  )
 
   const panel = (
     <FilterPanel
@@ -116,36 +151,38 @@ export function ProjectExplorer({ search }: { search: string }) {
         </div>
         {view === 'cards' ? (
           <div className="flex flex-col gap-4">
-            <div className={cn('grid gap-4 sm:grid-cols-2 xl:grid-cols-3')}>
-              {isPending
-                ? Array.from({ length: 9 }, (_, index) => (
-                    <ProjectCardSkeleton
-                      key={index}
-                      delay={(index % 3) * 140 + Math.floor(index / 3) * 90}
-                    />
-                  ))
-                : visible.map((project) => (
-                    <ProjectCard key={project.project_id} project={project} />
-                  ))}
-            </div>
+            {scrolling ? (
+              <ScrollBox
+                hasMore={visible.length < filtered.length}
+                loading={false}
+                onMore={() => more(page + 1)}
+              >
+                {cards}
+              </ScrollBox>
+            ) : (
+              cards
+            )}
             {!isPending && filtered.length === 0 && (
               <p className="py-12 text-center text-muted-foreground">No projects match.</p>
             )}
-            <PaginationBar
-              total={isPending ? undefined : filtered.length}
-              page={page}
-              onPageChange={setPage}
-            />
+            {!scrolling && (
+              <PaginationBar
+                total={isPending ? undefined : filtered.length}
+                page={page}
+                onPageChange={more}
+              />
+            )}
           </div>
+        ) : scrolling ? (
+          <ScrollBox
+            hasMore={visible.length < filtered.length}
+            loading={false}
+            onMore={() => more(page + 1)}
+          >
+            {table(visible, false)}
+          </ScrollBox>
         ) : (
-          <DataTable
-            columns={projectColumns}
-            rows={filtered}
-            rowKey={(row) => row.project_id}
-            isLoading={isPending}
-            empty="No projects match."
-            onRowClick={(row) => navigate(`/project/${row.project_id}`)}
-          />
+          table(filtered, true)
         )}
       </div>
     </div>

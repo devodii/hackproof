@@ -34,6 +34,7 @@ interface DataTableProps<T> {
   rows: T[]
   rowKey: (row: T) => string
   server?: ServerPaging
+  paginate?: boolean
   isLoading?: boolean
   isRefreshing?: boolean
   empty?: string
@@ -82,6 +83,7 @@ export function DataTable<T>({
   rows,
   rowKey,
   server,
+  paginate = true,
   isLoading = false,
   isRefreshing = false,
   empty = 'Nothing here.',
@@ -89,7 +91,8 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   const [localPage, setLocalPage] = useState(0)
   const paging = server ?? { total: rows.length, page: localPage, onPageChange: setLocalPage }
-  const visible = server ? rows : rows.slice(paging.page * PAGE_SIZE, (paging.page + 1) * PAGE_SIZE)
+  const visible =
+    server || !paginate ? rows : rows.slice(paging.page * PAGE_SIZE, (paging.page + 1) * PAGE_SIZE)
 
   return (
     <div className="flex flex-col gap-3">
@@ -171,7 +174,7 @@ export function DataTable<T>({
           ))
         )}
       </ul>
-      {!isLoading && <PaginationBar {...paging} />}
+      {!isLoading && paginate && <PaginationBar {...paging} />}
     </div>
   )
 }
