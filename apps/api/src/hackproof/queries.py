@@ -3,6 +3,7 @@ from typing import Any, Literal
 
 from hackproof.db import pool
 from hackproof.hackathon import get_hackathon
+from hackproof.integrations.catalog import get_catalog
 from hackproof.linking.methods import METHOD_RANK_SQL
 
 PROJECTS_SQL = """
@@ -223,10 +224,16 @@ async def fetch_timeline() -> list[dict[str, Any]]:
         return [dict(row) for row in await connection.fetch(TIMELINE_SQL, start, end)]
 
 
-async def fetch_integration_counts() -> dict[str, int]:
+async def fetch_integrations() -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
-        rows = await connection.fetch(INTEGRATIONS_SQL)
-    return {row["slug"]: row["projects"] for row in rows}
+        counts = {row["slug"]: row["projects"] for row in await connection.fetch(INTEGRATIONS_SQL)}
+    return [
+        {
+            **partner.model_dump(include={"slug", "name", "category", "site"}),
+            "projects": counts.get(partner.slug, 0),
+        }
+        for partner in get_catalog().partners
+    ]
 
 
 async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:

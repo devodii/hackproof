@@ -30,6 +30,10 @@ class QueryProjects(BaseModel):
         default=None,
         description="genesis (repo created inside the window) or scale (older repo); null for both",
     )
+    integrations: list[str] | None = Field(
+        default=None,
+        description="Partner slugs from get_integrations; keeps projects using any of them",
+    )
     limit: Limit = 10
     offset: Offset = 0
 
@@ -71,6 +75,10 @@ class SummarizeProjects(BaseModel):
         default=None, description="Evidence tiers to include; null means verified and likely"
     )
     track: Track | None = Field(default=None, description="genesis, scale, or null for both")
+    integrations: list[str] | None = Field(
+        default=None,
+        description="Partner slugs from get_integrations; keeps projects using any of them",
+    )
 
 
 class GetProject(BaseModel):
@@ -83,6 +91,12 @@ class GetBuilder(BaseModel):
     """Load one deploy account in full: its projects, contracts and activity counts."""
 
     address: str = Field(description="Stellar account (G...)")
+
+
+class GetIntegrations(BaseModel):
+    """List the Stellar ecosystem partners we detect (slug, name, category) with how many
+    verified and likely projects use each. Detection comes from dependency manifests and API
+    hosts in code, not from READMEs."""
 
 
 class GetStats(BaseModel):
@@ -105,6 +119,7 @@ TOOLS: dict[str, type[BaseModel]] = {
     "summarize_projects": SummarizeProjects,
     "get_project": GetProject,
     "get_builder": GetBuilder,
+    "get_integrations": GetIntegrations,
     "get_stats": GetStats,
     "get_timeline": GetTimeline,
     "get_countries": GetCountries,
@@ -126,13 +141,19 @@ def _top(counter: Counter[str], size: int) -> list[dict[str, Any]]:
 
 async def summarize(args: SummarizeProjects) -> dict[str, Any]:
     items, total = await queries.list_page(
-        "projects", tiers=args.tiers or STRICT, track=args.track, limit=10_000
+        "projects",
+        tiers=args.tiers or STRICT,
+        track=args.track,
+        integrations=args.integrations,
+        limit=10_000,
     )
     topics: Counter[str] = Counter()
     stack: Counter[str] = Counter()
+    partners: Counter[str] = Counter()
     for item in items:
         topics.update(topic.lower() for topic in item["topics"] or [])
         stack.update(list((item["dependencies"] or {}).get("packages", {})))
+        partners.update(item["integrations"])
     return {
         "total": total,
         "by_tier": dict(Counter(item["tier"] for item in items)),
@@ -142,6 +163,7 @@ async def summarize(args: SummarizeProjects) -> dict[str, Any]:
         "languages": _top(Counter(item["language"] for item in items if item["language"]), 10),
         "topics": _top(topics, 20),
         "stellar_packages": _top(stack, 15),
+        "integrations": _top(partners, 15),
         "countries": _top(Counter(item["country"] for item in items if item["country"]), 10),
         "descriptions": [
             {"project_id": item["project_id"], "description": item["description"][:140]}
@@ -160,6 +182,7 @@ async def run_tool(name: str, raw: dict[str, Any]) -> Any:
                 q=args.q,
                 tiers=args.tiers or STRICT,
                 track=args.track,
+                integrations=args.integrations,
                 limit=args.limit,
                 offset=args.offset,
             )
@@ -186,6 +209,8 @@ async def run_tool(name: str, raw: dict[str, Any]) -> Any:
             return await project_brief(args.project_id) or {"error": "project not found"}
         case GetBuilder():
             return await builder_brief(args.address) or {"error": "no activity in the hack window"}
+        case GetIntegrations():
+            return to_jsonable_python(await queries.fetch_integrations())
         case GetStats():
             return to_jsonable_python(await queries.fetch_stats())
         case GetTimeline():

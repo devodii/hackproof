@@ -13,6 +13,10 @@ const LABELS: Record<string, { running: string; done: string }> = {
   web_search: { running: 'Searching the web', done: 'Searched the web' },
   get_project: { running: 'Loading the project', done: 'Loaded the project' },
   get_builder: { running: 'Loading the builder', done: 'Loaded the builder' },
+  get_integrations: {
+    running: 'Listing integration partners',
+    done: 'Listed integration partners',
+  },
   get_stats: { running: 'Reading the headline numbers', done: 'Read the headline numbers' },
   get_timeline: { running: 'Reading the hourly timeline', done: 'Read the hourly timeline' },
   get_countries: {

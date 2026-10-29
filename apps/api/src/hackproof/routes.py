@@ -3,7 +3,6 @@ from typing import Annotated, Any, Literal
 from fastapi import APIRouter, HTTPException, Query
 
 from hackproof import queries
-from hackproof.integrations.catalog import get_catalog
 from hackproof.schemas import (
     Builder,
     Contract,
@@ -50,14 +49,7 @@ async def countries() -> list[CountryCount]:
 
 @router.get("/integrations")
 async def integrations() -> list[Integration]:
-    counts = await queries.fetch_integration_counts()
-    return [
-        Integration(
-            **partner.model_dump(include={"slug", "name", "category", "site"}),
-            projects=counts.get(partner.slug, 0),
-        )
-        for partner in get_catalog().partners
-    ]
+    return [Integration(**row) for row in await queries.fetch_integrations()]
 
 
 @router.get("/projects")

@@ -182,3 +182,11 @@ def test_web_search_is_reported_as_a_provider_tool():
     start, done = parse(list(web_search_events(call)) + list(web_search_events(result)))
     assert start["providerExecuted"] and start["input"] == {"query": "q"}
     assert done["output"] == [{"title": "Meridian", "url": "https://meridian.stellar.org"}]
+
+
+def test_project_tools_can_filter_by_integration_partner():
+    specs = {spec["name"]: spec for spec in TOOL_SPECS}
+
+    assert "get_integrations" in specs
+    for name in ("query_projects", "summarize_projects"):
+        assert "integrations" in specs[name]["input_schema"]["properties"]
