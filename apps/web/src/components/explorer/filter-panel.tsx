@@ -92,6 +92,7 @@ function Group({
         <label key={item.value} className="flex cursor-pointer items-center gap-2 text-sm">
           <Checkbox
             checked={chosen.includes(item.value)}
+            className="border-muted-foreground/60 dark:bg-transparent"
             onCheckedChange={() => onToggle(item.value)}
           />
           <span className="min-w-0 flex-1 truncate">{item.label}</span>
