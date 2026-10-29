@@ -7,7 +7,7 @@ export type Selection = Record<FilterKey, string[]>
 const VALUES: Record<FilterKey, (project: Project) => string[]> = {
   tier: (project) => [project.tier],
   track: (project) => (project.track ? [project.track] : []),
-  partner: (project) => project.integrations,
+  partner: (project) => project.integrations ?? [],
   activity: (project) => [
     ...(project.contracts > 0 ? ['contracts'] : []),
     ...(project.failed_txs > 0 ? ['failed'] : []),

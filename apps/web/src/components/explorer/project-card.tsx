@@ -15,7 +15,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const name = projectName(project.project_id)
   const topics = (project.topics ?? []).slice(0, VISIBLE_TOPICS)
   const { data: integrations = [] } = useIntegrations()
-  const partners = integrations.filter((item) => project.integrations.includes(item.slug))
+  const partners = integrations.filter((item) => project.integrations?.includes(item.slug))
 
   return (
     <Card size="sm" className="relative h-full transition-colors hover:bg-muted/40">
