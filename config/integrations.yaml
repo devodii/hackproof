@@ -1,0 +1,121 @@
+partners:
+  - slug: trustless-work
+    name: Trustless Work
+    category: payments
+    site: https://www.trustlesswork.com
+    packages:
+      js: ["@trustless-work/escrow", "@trustless-work/blocks", "@trustless-work/skill"]
+    endpoints: [api.trustlesswork.com, dev.api.trustlesswork.com]
+    github_owners: [Trustless-Work]
+
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    site: https://stellarwalletskit.dev
+    packages:
+      js: ["@creit.tech/stellar-wallets-kit"]
+    github_owners: [Creit-Tech]
+
+  - slug: freighter
+    name: Freighter
+    category: wallets
+    site: https://www.freighter.app
+    packages:
+      js: ["@stellar/freighter-api"]
+
+  - slug: privy
+    name: Privy
+    category: wallets
+    site: https://www.privy.io
+    packages:
+      js: ["@privy-io/react-auth", "@privy-io/node", "@privy-io/server-auth"]
+    endpoints: [auth.privy.io, api.privy.io]
+
+  - slug: passkey-kit
+    name: Passkey Kit
+    category: wallets
+    site: https://github.com/kalepail/passkey-kit
+    packages:
+      js: [passkey-kit]
+
+  - slug: dfns
+    name: Dfns
+    category: wallets
+    site: https://www.dfns.co
+    packages:
+      js: ["@dfns/sdk"]
+
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    site: https://soroswap.finance
+    packages:
+      js: ["@soroswap/sdk"]
+      rust: [soroswap-library]
+    endpoints: [api.soroswap.finance]
+    github_owners: [soroswap]
+
+  - slug: defindex
+    name: DeFindex
+    category: defi
+    site: https://www.defindex.io
+    packages:
+      js: ["@defindex/sdk"]
+    endpoints: [api.defindex.io]
+    github_owners: [paltalabs]
+
+  - slug: blend
+    name: Blend
+    category: defi
+    site: https://www.blend.capital
+    packages:
+      js: ["@blend-capital/blend-sdk"]
+      rust: [blend-contract-sdk]
+    github_owners: [blend-capital]
+
+  - slug: stellar-broker
+    name: Stellar Broker
+    category: defi
+    site: https://stellar.broker
+    packages:
+      js: ["@stellar-broker/client"]
+    endpoints: [api.stellar.broker]
+
+  - slug: allbridge
+    name: Allbridge
+    category: cross-chain
+    site: https://allbridge.io
+    packages:
+      js: ["@allbridge/bridge-core-sdk"]
+    github_owners: [allbridge-io]
+
+  - slug: circle
+    name: Circle (CCTP)
+    category: cross-chain
+    site: https://www.circle.com
+    packages:
+      js: ["@circle-fin/bridge-kit"]
+    endpoints: [api.circle.com]
+
+  - slug: layerzero
+    name: LayerZero
+    category: cross-chain
+    site: https://layerzero.network
+    packages:
+      js: ["@layerzerolabs/lz-v2-utilities"]
+
+  - slug: near-intents
+    name: NEAR Intents
+    category: cross-chain
+    site: https://docs.near.org/chain-abstraction/intents/overview
+    packages:
+      js: ["@defuse-protocol/intents-sdk", "@defuse-protocol/one-click-sdk-typescript"]
+    endpoints: [1click.chaindefuser.com]
+
+  - slug: axelar
+    name: Axelar
+    category: cross-chain
+    site: https://www.axelar.network
+    packages:
+      js: ["@axelar-network/axelarjs-sdk"]
+      rust: [stellar-axelar-std]
