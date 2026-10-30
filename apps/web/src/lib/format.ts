@@ -58,7 +58,7 @@ export function isWithin(iso: string | null, window: { start: string; end: strin
 
 export const tierLabel = {
   verified: 'Verified on-chain',
-  likely: 'Likely',
+  likely: 'Code only',
   possible: 'Possible',
   unattributed: 'No repo',
 } as const

@@ -24,7 +24,7 @@ The hack window is {start} to {end} UTC, 27 hours, on Stellar testnet. We read e
 Each project is a GitHub repo with one evidence tier:
 
 - verified: an exact repo to chain match, and the matched account was active on chain inside the window. Strongest evidence.
-- likely: a Stellar dependency in the repo and at least 5 commits inside the window, and the repo was created in the window or added its Stellar dependency during it. A good signal, not proof.
+- likely (the site labels it "Code only", meaning no on-chain proof): a Stellar dependency in the repo and at least 5 commits inside the window, and the repo was created in the window or added its Stellar dependency during it. A good signal, not proof.
 - possible: a Stellar dependency and at least 3 commits inside the window. Weak. Not shown on the site.
 - unattributed: a deploy account with activity but no repo. These ids start with acct: and have no repo data.
 

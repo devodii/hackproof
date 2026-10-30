@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Skeleton } from '@/components/ui/skeleton'
 import { useStats } from '@/hooks/use-stats'
 import { useTimeline } from '@/hooks/use-timeline'
-import { formatNumber } from '@/lib/format'
+import { formatNumber, tierLabel } from '@/lib/format'
 import type { Stats } from '@/lib/types'
 
 const SECONDARY: { key: keyof Stats; label: string }[] = [
@@ -53,7 +53,7 @@ function ProjectsCard({ stats }: { stats?: Stats }) {
           <div className="flex items-center justify-between">
             <dt className="flex items-center gap-2 text-muted-foreground">
               <span className="size-2 rounded-full bg-primary/35" />
-              Likely
+              {tierLabel.likely}
             </dt>
             <dd className="tabular-nums">{stats ? formatNumber(stats.likely_projects) : '–'}</dd>
           </div>
