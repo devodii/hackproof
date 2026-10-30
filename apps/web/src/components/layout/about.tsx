@@ -19,7 +19,7 @@ function Outbound({ href, children }: { href: string; children: ReactNode }) {
 
 export function About() {
   return (
-    <section className="border-t">
+    <section id="about" className="border-t">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-6 py-16 sm:flex-row sm:items-center">
         <Avatar className="size-28 shrink-0">
           <AvatarImage src={odii} alt="Odii" />
