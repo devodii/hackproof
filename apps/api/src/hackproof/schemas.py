@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import BaseModel
 
 from hackproof.github.models import DependencyFingerprint
+from hackproof.hackathon import Place
 
 Tier = Literal["verified", "likely", "possible", "unattributed"]
 
@@ -53,6 +54,7 @@ class Project(BaseModel):
     topics: list[str] | None
     track: Literal["genesis", "scale"] | None = None
     integrations: list[str] = []
+    award: Place | None = None
 
 
 class Contributor(BaseModel):

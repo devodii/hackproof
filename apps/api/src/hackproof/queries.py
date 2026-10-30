@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Any, Literal
 
 from hackproof.db import pool
-from hackproof.hackathon import get_hackathon
+from hackproof.hackathon import get_hackathon, places
 from hackproof.integrations.catalog import get_catalog
 from hackproof.linking.methods import METHOD_RANK_SQL
 
@@ -34,6 +34,7 @@ WHERE ($1::text IS NULL
   AND ($10::text[] IS NULL OR EXISTS (
        SELECT 1 FROM repo_integrations i
        WHERE i.full_name = p.full_name AND i.partner = ANY($10)))
+  AND ($11::text[] IS NULL OR p.project_id = ANY($11))
 ORDER BY array_position(
              ARRAY['verified', 'likely', 'possible', 'unattributed'], p.tier),
          p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
@@ -195,18 +196,24 @@ async def list_page(
     tiers: list[str] | None = None,
     track: str | None = None,
     integrations: list[str] | None = None,
+    winners: bool = False,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
+    awards = places()
+    winner_ids = list(awards) if winners else None
     args = (
-        (q, account, project_id, tiers, limit, offset, *window(), track, integrations)
+        (q, account, project_id, tiers, limit, offset, *window(), track, integrations, winner_ids)
         if resource == "projects"
         else (*window(), q, account, project_id, limit, offset)
     )
     async with pool().acquire() as connection:
         rows = await connection.fetch(RESOURCE_SQL[resource], *args)
     total = rows[0]["total"] if rows else 0
-    return [{k: v for k, v in dict(row).items() if k != "total"} for row in rows], total
+    items = [{k: v for k, v in dict(row).items() if k != "total"} for row in rows]
+    if resource == "projects":
+        items = [{**item, "award": awards.get(item["project_id"])} for item in items]
+    return items, total
 
 
 async def fetch_stats() -> dict[str, int]:

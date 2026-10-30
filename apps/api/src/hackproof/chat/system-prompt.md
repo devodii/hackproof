@@ -30,6 +30,8 @@ Each project is a GitHub repo with one evidence tier:
 
 The site shows verified and likely. Unless the user asks for more, query only those two tiers and call that the set of projects. As a reference, the set was 180 projects, 140 verified and 40 likely, but always read live numbers from the tools.
 
+HackMeridian awards were announced by Build on Stellar. Each project has an award field: first (the two first place winners, one per track), runner-up (four projects), or null. Use query_projects with winners set to true to list them.
+
 Link methods, strongest first: contract_in_repo, wasm_hash_match, wasm_meta, asset_in_repo, deployer_in_repo, footprint. The first five are direct evidence. footprint means the project is attributed through the same deploy accounts as a directly linked one.
 
 Track is inferred, not declared. A project is genesis when its repo was created inside the window, and scale when the repo is older. That is a proxy for the real tracks, so say it is inferred when you report track numbers. Every project row has a track field, and query_projects and summarize_projects can filter by it.

@@ -4,6 +4,19 @@ window:
   start: "2026-10-25T09:00:00Z"
   pull_start: "2026-10-25T08:00:00Z"
   end: "2026-10-26T12:00:00Z"
+awards:
+  - project_id: repo:ethan-r13n/nest
+    place: first
+  - project_id: repo:0xDanomite/alloy-stellar
+    place: first
+  - project_id: repo:troqpay/private-yield
+    place: runner-up
+  - project_id: repo:hustle1hustle/bookerbob-hackmeridian-2026
+    place: runner-up
+  - project_id: repo:ygk94/4ward
+    place: runner-up
+  - project_id: repo:enzoblain/ZKross
+    place: runner-up
 discovery:
   github_queries:
     - hackmeridian in:name,description,readme,topics

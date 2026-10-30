@@ -20,7 +20,8 @@ Search = Annotated[
 
 
 class QueryProjects(BaseModel):
-    """Find HackMeridian projects. Ordered by evidence strength, then on-chain activity."""
+    """Find HackMeridian projects. Ordered by evidence strength, then on-chain activity. Each
+    project has an award field: first, runner-up, or null."""
 
     q: Search = None
     tiers: list[Tier] | None = Field(
@@ -33,6 +34,10 @@ class QueryProjects(BaseModel):
     integrations: list[str] | None = Field(
         default=None,
         description="Partner slugs from get_integrations; keeps projects using any of them",
+    )
+    winners: bool = Field(
+        default=False,
+        description="True keeps only the HackMeridian award winners: first place and runner-ups",
     )
     limit: Limit = 10
     offset: Offset = 0
@@ -183,6 +188,7 @@ async def run_tool(name: str, raw: dict[str, Any]) -> Any:
                 tiers=args.tiers or STRICT,
                 track=args.track,
                 integrations=args.integrations,
+                winners=args.winners,
                 limit=args.limit,
                 offset=args.offset,
             )
