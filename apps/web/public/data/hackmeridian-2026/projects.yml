@@ -1,5 +1,5 @@
 schemaVersion: '1.1'
-generatedAt: '2026-10-29T22:56:12.804427Z'
+generatedAt: '2026-10-30T02:49:49.494168Z'
 hackathon:
   slug: hackmeridian-2026
   name: HackMeridian 2026
@@ -28197,6 +28197,88 @@ projects:
       method: deployer_in_repo
       explorerUrl: https://stellar.expert/explorer/testnet/account/GCHFQTSHH7ZMDXEMEEVYCWK2HYXU5VTZDC5XWPJXIR4F73VSF7BBD5ZZ
       repoFileUrl: https://github.com/eduruizhipolito/kado-hackmeridian/blob/HEAD/README.md
+- repoFullName: ethan-r13n/nest
+  repoUrl: https://github.com/ethan-r13n/nest
+  name: nest
+  description: Nest — discovery, research, and wallet-approved execution across Stellar DeFi.
+  homepage: null
+  tier: verified
+  track: genesis
+  language: TypeScript
+  license: null
+  stars: 0
+  forks: 0
+  selfTags: []
+  stack:
+  - '@stellar/stellar-sdk'
+  - '@creit.tech/stellar-wallets-kit'
+  stackVersions:
+    '@stellar/stellar-sdk': 'catalog:'
+    '@creit.tech/stellar-wallets-kit': 'catalog:'
+  repoCreatedAt: '2026-10-25T22:49:21Z'
+  repoLastCommitAt: '2026-10-26T10:01:39Z'
+  commitsInWindow: 89
+  totalCommits: 89
+  integrationPartners:
+  - slug: stellar-wallets-kit
+    name: Stellar Wallets Kit
+    category: wallets
+    website: https://stellarwalletskit.dev
+    evidence:
+    - method: package
+      detail: '@creit.tech/stellar-wallets-kit'
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/apps/web/package.json
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    website: https://soroswap.finance
+    evidence:
+    - method: endpoint
+      detail: api.soroswap.finance
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/test/soroswap-client.test.ts
+  - slug: defindex
+    name: DeFindex
+    category: defi
+    website: https://www.defindex.io
+    evidence:
+    - method: endpoint
+      detail: api.defindex.io
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/test/defindex.test.ts
+  - slug: blend
+    name: Blend
+    category: defi
+    website: https://www.blend.capital
+    evidence:
+    - method: package
+      detail: '@blend-capital/blend-sdk'
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/package.json
+  owner:
+    login: ethan-r13n
+    avatarUrl: https://avatars.githubusercontent.com/u/78349796?v=4
+    country: null
+  contributors:
+  - login: ethan-r13n
+    url: https://github.com/ethan-r13n
+    avatarUrl: https://avatars.githubusercontent.com/u/78349796?v=4
+    contributions: 89
+    country: null
+  chain:
+    contractCount: 0
+    wasmUploadCount: 0
+    classicOpCount: 1
+    assetCount: 0
+    failedTxCount: 0
+    accounts:
+    - address: GBKUH6MHQKKMA3T3DA2PGV67YYM3E3Z7TMMPBZ6QO755EDTSKNREMSFQ
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBKUH6MHQKKMA3T3DA2PGV67YYM3E3Z7TMMPBZ6QO755EDTSKNREMSFQ
+    wasmUploads: []
+    contracts: []
+    evidence:
+    - kind: account
+      subject: GBKUH6MHQKKMA3T3DA2PGV67YYM3E3Z7TMMPBZ6QO755EDTSKNREMSFQ
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBKUH6MHQKKMA3T3DA2PGV67YYM3E3Z7TMMPBZ6QO755EDTSKNREMSFQ
+      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/test/xoxno.test.ts
 - repoFullName: fabian416/witness
   repoUrl: https://github.com/fabian416/witness
   name: witness
@@ -28751,7 +28833,7 @@ projects:
   - login: Fizzl13
     url: https://github.com/Fizzl13
     avatarUrl: https://avatars.githubusercontent.com/u/49376692?v=4
-    contributions: 235
+    contributions: 236
     country: null
   chain:
     contractCount: 0
@@ -29806,7 +29888,12 @@ projects:
     accounts: []
     wasmUploads: []
     contracts: []
-    evidence: []
+    evidence:
+    - kind: wasm
+      subject: c1f4502a757e25c611f5a159bc1ab0eef64085adac6c68123dca66e87faffbc2
+      method: wasm_hash_match
+      explorerUrl: null
+      repoFileUrl: https://github.com/drank40/soroprove/blob/HEAD/lifter/reconstructed/backstop-poc/src/backstop.wasm
 - repoFullName: elszalencia/chateaux-meridian
   repoUrl: https://github.com/elszalencia/chateaux-meridian
   name: chateaux-meridian
@@ -29894,65 +29981,6 @@ projects:
     url: https://github.com/emirykl
     avatarUrl: https://avatars.githubusercontent.com/u/160465301?v=4
     contributions: 70
-    country: null
-  chain:
-    contractCount: 0
-    wasmUploadCount: 0
-    classicOpCount: 0
-    assetCount: 0
-    failedTxCount: 0
-    accounts: []
-    wasmUploads: []
-    contracts: []
-    evidence: []
-- repoFullName: ethan-r13n/nest
-  repoUrl: https://github.com/ethan-r13n/nest
-  name: nest
-  description: Nest — discovery, research, and wallet-approved execution across Stellar DeFi.
-  homepage: null
-  tier: likely
-  track: genesis
-  language: TypeScript
-  license: null
-  stars: 0
-  forks: 0
-  selfTags: []
-  stack:
-  - '@stellar/stellar-sdk'
-  - '@creit.tech/stellar-wallets-kit'
-  stackVersions:
-    '@stellar/stellar-sdk': 'catalog:'
-    '@creit.tech/stellar-wallets-kit': 'catalog:'
-  repoCreatedAt: '2026-10-25T22:49:21Z'
-  repoLastCommitAt: '2026-10-26T10:01:39Z'
-  commitsInWindow: 89
-  totalCommits: 89
-  integrationPartners:
-  - slug: stellar-wallets-kit
-    name: Stellar Wallets Kit
-    category: wallets
-    website: https://stellarwalletskit.dev
-    evidence:
-    - method: package
-      detail: '@creit.tech/stellar-wallets-kit'
-      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/apps/web/package.json
-  - slug: blend
-    name: Blend
-    category: defi
-    website: https://www.blend.capital
-    evidence:
-    - method: package
-      detail: '@blend-capital/blend-sdk'
-      repoFileUrl: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/package.json
-  owner:
-    login: ethan-r13n
-    avatarUrl: https://avatars.githubusercontent.com/u/78349796?v=4
-    country: null
-  contributors:
-  - login: ethan-r13n
-    url: https://github.com/ethan-r13n
-    avatarUrl: https://avatars.githubusercontent.com/u/78349796?v=4
-    contributions: 89
     country: null
   chain:
     contractCount: 0
@@ -30258,10 +30286,38 @@ projects:
     classicOpCount: 0
     assetCount: 0
     failedTxCount: 0
-    accounts: []
+    accounts:
+    - address: GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+    - address: GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+    - address: GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+    - address: GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
     wasmUploads: []
     contracts: []
-    evidence: []
+    evidence:
+    - kind: account
+      subject: GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+      repoFileUrl: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/integration-a.json
+    - kind: account
+      subject: GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+      repoFileUrl: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/agent-invoice-lab.json
+    - kind: account
+      subject: GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+      repoFileUrl: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/integration-a.json
+    - kind: account
+      subject: GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
+      method: deployer_in_repo
+      explorerUrl: https://stellar.expert/explorer/testnet/account/GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
+      repoFileUrl: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/agent-invoice-lab.json
 - repoFullName: nseguias/kintsu
   repoUrl: https://github.com/nseguias/kintsu
   name: kintsu
@@ -30526,6 +30582,22 @@ projects:
     - method: package
       detail: '@creit.tech/stellar-wallets-kit'
       repoFileUrl: https://github.com/seidar-hq/seidar/blob/HEAD/apps/app/package.json
+  - slug: soroswap
+    name: Soroswap
+    category: defi
+    website: https://soroswap.finance
+    evidence:
+    - method: endpoint
+      detail: api.soroswap.finance
+      repoFileUrl: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/swap.ts
+  - slug: defindex
+    name: DeFindex
+    category: defi
+    website: https://www.defindex.io
+    evidence:
+    - method: endpoint
+      detail: api.defindex.io
+      repoFileUrl: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/vaults.ts
   - slug: blend
     name: Blend
     category: defi
@@ -30550,7 +30622,7 @@ projects:
   - login: kings0x
     url: https://github.com/kings0x
     avatarUrl: https://avatars.githubusercontent.com/u/208822414?v=4
-    contributions: 72
+    contributions: 79
     country: null
   chain:
     contractCount: 0
