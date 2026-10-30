@@ -1,5 +1,5 @@
-schemaVersion: '1.1'
-generatedAt: '2026-10-30T02:49:49.494168Z'
+schemaVersion: '1.2'
+generatedAt: '2026-10-30T03:39:55.459127Z'
 hackathon:
   slug: hackmeridian-2026
   name: HackMeridian 2026
@@ -14,6 +14,7 @@ projects:
   homepage: https://findloot.xyz
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -1040,6 +1041,7 @@ projects:
   homepage: https://leash-fi.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -2093,6 +2095,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -2928,6 +2931,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -3669,6 +3673,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -4235,6 +4240,7 @@ projects:
   homepage: https://nethermindeth.github.io/stellar-private-payments/
   tier: verified
   track: scale
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 60
@@ -4876,6 +4882,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -5509,6 +5516,7 @@ projects:
   homepage: https://app.agama.finance
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -6229,6 +6237,7 @@ projects:
   homepage: https://ancora-gray.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -6675,6 +6684,7 @@ projects:
   homepage: https://launch.tryneko.io/
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -7237,6 +7247,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -7825,6 +7836,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: MIT
   stars: 0
@@ -8275,6 +8287,7 @@ projects:
   homepage: https://merit-sable.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: HTML
   license: null
   stars: 0
@@ -8680,6 +8693,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -9050,6 +9064,7 @@ projects:
   homepage: https://fathom-b3t.pages.dev
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -9466,6 +9481,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -9776,6 +9792,7 @@ projects:
   homepage: https://gate.acta.build
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -10127,6 +10144,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -10406,6 +10424,7 @@ projects:
   homepage: https://keystone-eta-ebon.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -10758,6 +10777,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -11022,6 +11042,7 @@ projects:
   homepage: https://fistea-hackmeridian.vercel.app
   tier: verified
   track: genesis
+  award: runner-up
   language: TypeScript
   license: NOASSERTION
   stars: 0
@@ -11308,6 +11329,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -11665,6 +11687,7 @@ projects:
   homepage: https://trust-meridian.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: HTML
   license: null
   stars: 0
@@ -11924,6 +11947,7 @@ projects:
   homepage: https://koul-stellar.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 2
@@ -12119,6 +12143,7 @@ projects:
   homepage: https://fermento-iota.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -12388,6 +12413,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -12624,6 +12650,7 @@ projects:
   homepage: https://dvdnd.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -12913,6 +12940,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: Python
   license: null
   stars: 0
@@ -13129,6 +13157,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: MIT
   stars: 0
@@ -13959,6 +13988,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: runner-up
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -14149,6 +14179,7 @@ projects:
   homepage: https://zepho.pages.dev
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 1
@@ -14366,6 +14397,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -14666,6 +14698,7 @@ projects:
   homepage: https://hackmeridian-psi.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -15027,6 +15060,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -15239,6 +15273,7 @@ projects:
   homepage: https://frontend-vert-nu-wlb9kf51l6.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -15481,6 +15516,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -15693,6 +15729,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -15864,6 +15901,7 @@ projects:
   homepage: https://harsxul.github.io/nomad-vault/
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 2
@@ -16059,6 +16097,7 @@ projects:
   homepage: https://biolicensing.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 1
@@ -16265,6 +16304,7 @@ projects:
   homepage: https://fiavel-hack-lisbon.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -16463,6 +16503,7 @@ projects:
   homepage: https://stellar-quickpass.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -16682,6 +16723,7 @@ projects:
   homepage: https://unlock-shares-x-stellar.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -16854,6 +16896,7 @@ projects:
   homepage: https://synt.tech/rebalancing_vault
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -17069,6 +17112,7 @@ projects:
   homepage: https://lumensplit.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 1
@@ -17226,6 +17270,7 @@ projects:
   homepage: https://x402-stellar-ticket-gating.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -17480,6 +17525,7 @@ projects:
   homepage: https://drainmywallet.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -17666,6 +17712,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: Python
   license: null
   stars: 0
@@ -17846,6 +17893,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 2
@@ -18222,6 +18270,7 @@ projects:
   homepage: https://breakwater.belvast.de
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 1
@@ -18366,6 +18415,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 1
@@ -18542,6 +18592,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: Shell
   license: AGPL-3.0
   stars: 0
@@ -18703,6 +18754,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: runner-up
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -18862,6 +18914,7 @@ projects:
   homepage: https://lotus-stellar.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -19166,6 +19219,7 @@ projects:
   homepage: https://city-pass-global.vercel.app/es
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -19301,6 +19355,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -19484,6 +19539,7 @@ projects:
   homepage: https://www.seyf.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -19670,6 +19726,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -19870,6 +19927,7 @@ projects:
   homepage: https://defindex-hackathons-landing.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -19981,6 +20039,7 @@ projects:
   homepage: https://shake-lake.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: HTML
   license: null
   stars: 0
@@ -20122,6 +20181,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -20240,6 +20300,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -20395,6 +20456,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -20500,6 +20562,7 @@ projects:
   homepage: https://avocate-harvest-escrow.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -20657,6 +20720,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: MIT
   stars: 0
@@ -20759,6 +20823,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: HTML
   license: null
   stars: 0
@@ -20865,6 +20930,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -21014,6 +21080,7 @@ projects:
   homepage: https://monolith-nine-rosy.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -21235,6 +21302,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -21354,6 +21422,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -21446,6 +21515,7 @@ projects:
   homepage: https://stellarbob2026.xyz
   tier: verified
   track: genesis
+  award: runner-up
   language: TypeScript
   license: MIT
   stars: 0
@@ -21587,6 +21657,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 53
@@ -21765,6 +21836,7 @@ projects:
   homepage: https://writz.xyz
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 5
@@ -21901,6 +21973,7 @@ projects:
   homepage: https://humanbond-lisbon-nu.vercel.app/
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: NOASSERTION
   stars: 5
@@ -22027,6 +22100,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 1
@@ -22136,6 +22210,7 @@ projects:
   homepage: https://alloy-stellar.vercel.app
   tier: verified
   track: genesis
+  award: first
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -22310,6 +22385,7 @@ projects:
   homepage: https://payslip-34-m0-r.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -22458,6 +22534,7 @@ projects:
   homepage: https://arqueo-sooty.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: Apache-2.0
   stars: 0
@@ -22614,6 +22691,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: MIT
   stars: 0
@@ -22800,6 +22878,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: NOASSERTION
   stars: 0
@@ -22907,6 +22986,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -23030,6 +23110,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Shell
   license: null
   stars: 0
@@ -23135,6 +23216,7 @@ projects:
   homepage: https://diversifiapp.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -23250,6 +23332,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: JavaScript
   license: MIT
   stars: 0
@@ -23358,6 +23441,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 2
@@ -23913,6 +23997,7 @@ projects:
   homepage: https://redsentinel.xyz/
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 2
@@ -24027,6 +24112,7 @@ projects:
   homepage: https://keylease-security.github.io/keylease-core/
   tier: verified
   track: scale
+  award: null
   language: Rust
   license: MIT
   stars: 1
@@ -24115,6 +24201,7 @@ projects:
   homepage: https://koul.me
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 1
@@ -24218,6 +24305,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -24295,6 +24383,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -24396,6 +24485,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -24523,6 +24613,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Python
   license: null
   stars: 0
@@ -24593,6 +24684,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: JavaScript
   license: Apache-2.0
   stars: 0
@@ -24701,6 +24793,7 @@ projects:
   homepage: https://paradiseandbeyondcr-stellar-daap.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -24789,6 +24882,7 @@ projects:
   homepage: https://slasettle-docs.vercel.app
   tier: verified
   track: scale
+  award: null
   language: Rust
   license: MIT
   stars: 0
@@ -24880,6 +24974,7 @@ projects:
   homepage: https://offline.sozu.capital
   tier: verified
   track: genesis
+  award: null
   language: Kotlin
   license: null
   stars: 0
@@ -24964,6 +25059,7 @@ projects:
   homepage: https://agent-pass-sample.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -25060,6 +25156,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -25157,6 +25254,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 2
@@ -25327,6 +25425,7 @@ projects:
   homepage: https://rhitta.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 2
@@ -25415,6 +25514,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: MIT
   stars: 1
@@ -25557,6 +25657,7 @@ projects:
   homepage: https://tinkazo.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 1
@@ -25633,6 +25734,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -25725,6 +25827,7 @@ projects:
   homepage: https://flying-orion-wcarm0d-54zg5vg42k-7981.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -25824,6 +25927,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -25897,6 +26001,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -25961,6 +26066,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -26051,6 +26157,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: HTML
   license: Apache-2.0
   stars: 0
@@ -26126,6 +26233,7 @@ projects:
   homepage: https://cuotia-fj.vercel.app/
   tier: verified
   track: scale
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -26198,6 +26306,7 @@ projects:
   homepage: https://helasnoussi.github.io/my-stellar-yield-vault/
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -26282,6 +26391,7 @@ projects:
   homepage: https://latch-ui.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -26390,6 +26500,7 @@ projects:
   homepage: https://frontend-ruddy-theta-23.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -26470,6 +26581,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: Rust
   license: MIT
   stars: 0
@@ -26541,6 +26653,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -26645,6 +26758,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -26747,6 +26861,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -26821,6 +26936,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -26879,6 +26995,7 @@ projects:
   homepage: https://github.com/wrever/bind
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -27012,6 +27129,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 5
@@ -27102,6 +27220,7 @@ projects:
   homepage: https://stellar-confidential-token-demo.billowing-moon-0c6f.workers.dev/
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 3
@@ -27165,6 +27284,7 @@ projects:
   homepage: https://stellar-anchor-production.up.railway.app
   tier: verified
   track: scale
+  award: null
   language: Go
   license: null
   stars: 2
@@ -27223,6 +27343,7 @@ projects:
   homepage: https://astros-two.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 1
@@ -27292,6 +27413,7 @@ projects:
   homepage: https://microvault.shambarecords.com
   tier: verified
   track: scale
+  award: null
   language: Go
   license: AGPL-3.0
   stars: 1
@@ -27355,6 +27477,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -27431,6 +27554,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -27542,6 +27666,7 @@ projects:
   homepage: https://nirium-watch.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: HTML
   license: MIT
   stars: 0
@@ -27596,6 +27721,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -27653,6 +27779,7 @@ projects:
   homepage: https://gamelock.lovable.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -27736,6 +27863,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -27829,6 +27957,7 @@ projects:
   homepage: https://poolfibuild.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -27892,6 +28021,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -27943,6 +28073,7 @@ projects:
   homepage: https://carimbo-six.vercel.app
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -28064,6 +28195,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -28156,6 +28288,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -28204,6 +28337,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: first
   language: TypeScript
   license: null
   stars: 0
@@ -28288,6 +28422,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -28375,6 +28510,7 @@ projects:
   homepage: https://flowpay-henna.vercel.app
   tier: verified
   track: scale
+  award: null
   language: Dart
   license: MIT
   stars: 0
@@ -28437,6 +28573,7 @@ projects:
   homepage: https://forepay-nu.vercel.app
   tier: verified
   track: scale
+  award: null
   language: TypeScript
   license: AGPL-3.0
   stars: 0
@@ -28520,6 +28657,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: HTML
   license: null
   stars: 0
@@ -28568,6 +28706,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -28616,6 +28755,7 @@ projects:
   homepage: null
   tier: verified
   track: scale
+  award: null
   language: JavaScript
   license: MIT
   stars: 0
@@ -28680,6 +28820,7 @@ projects:
   homepage: null
   tier: verified
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -28739,6 +28880,7 @@ projects:
   homepage: https://www.npmjs.com/package/agentwallet-sdk
   tier: likely
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 13
@@ -28811,6 +28953,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: JavaScript
   license: AGPL-3.0
   stars: 1
@@ -28853,6 +28996,7 @@ projects:
   homepage: https://payloop.websoroban.in
   tier: likely
   track: genesis
+  award: null
   language: Rust
   license: MIT
   stars: 1
@@ -28910,6 +29054,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -28970,6 +29115,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29016,6 +29162,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29078,6 +29225,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -29131,6 +29279,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -29175,6 +29324,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29245,6 +29395,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29286,6 +29437,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29338,6 +29490,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: Go
   license: Apache-2.0
   stars: 0
@@ -29402,6 +29555,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -29445,6 +29599,7 @@ projects:
   homepage: https://devfest-harambeeone.vercel.app
   tier: likely
   track: scale
+  award: null
   language: HTML
   license: MIT
   stars: 0
@@ -29488,6 +29643,7 @@ projects:
   homepage: https://senda-bussines.vercel.app
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29563,6 +29719,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: TypeScript
   license: Apache-2.0
   stars: 0
@@ -29614,6 +29771,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -29656,6 +29814,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -29697,6 +29856,7 @@ projects:
   homepage: https://streamora-ashy.vercel.app
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -29751,6 +29911,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -29794,6 +29955,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29848,6 +30010,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -29901,6 +30064,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29946,6 +30110,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -29999,6 +30164,7 @@ projects:
   homepage: https://payraast-delta.vercel.app
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -30050,6 +30216,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: HTML
   license: null
   stars: 0
@@ -30100,6 +30267,7 @@ projects:
   homepage: https://sendrpay.sendr.cash
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -30154,6 +30322,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: JavaScript
   license: null
   stars: 0
@@ -30195,6 +30364,7 @@ projects:
   homepage: https://replit.com/@najathammourija/Airlock-Guard-1
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -30251,6 +30421,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -30326,6 +30497,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -30368,6 +30540,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: Rust
   license: Apache-2.0
   stars: 0
@@ -30410,6 +30583,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -30453,6 +30627,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: Rust
   license: null
   stars: 0
@@ -30497,6 +30672,7 @@ projects:
   homepage: https://polai-sable.vercel.app
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: MIT
   stars: 0
@@ -30556,6 +30732,7 @@ projects:
   homepage: null
   tier: likely
   track: scale
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -30641,6 +30818,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0
@@ -30709,6 +30887,7 @@ projects:
   homepage: null
   tier: likely
   track: genesis
+  award: null
   language: TypeScript
   license: null
   stars: 0

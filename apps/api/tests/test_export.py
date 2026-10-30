@@ -6,7 +6,7 @@ import yaml
 from hackproof.export.build import build_export
 from hackproof.export.render import json_schema, to_json, to_yaml
 from hackproof.export.urls import EXPLORER
-from hackproof.hackathon import get_hackathon
+from hackproof.hackathon import Award, get_hackathon
 from hackproof.linking.reconcile import reconcile
 from tests.helpers import STELLAR, WINDOW, add_contract, add_ref, add_repo, add_upload
 
@@ -114,3 +114,20 @@ async def test_export_lists_integration_partners_with_their_evidence(scratch_db)
     [evidence] = project.integration_partners[0].evidence
     assert (evidence.method, evidence.detail) == ("endpoint", "api.trustlesswork.com")
     assert evidence.repo_file_url == "https://github.com/team/app/blob/HEAD/src/client.go"
+
+
+async def test_export_marks_award_winners(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/winner", window_commits=7, dependencies=STELLAR)
+    await add_repo(db, "team/other", window_commits=7, dependencies=STELLAR)
+    await reconcile(db)
+    hackathon = get_hackathon().model_copy(
+        update={"awards": [Award(project_id="repo:team/winner", place="first")]}
+    )
+
+    projects = (await build_export(db, hackathon, ["likely", "possible"])).projects
+
+    assert {p.repo_full_name: p.award for p in projects} == {
+        "team/winner": "first",
+        "team/other": None,
+    }

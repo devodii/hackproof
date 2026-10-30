@@ -4,7 +4,9 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_camel
 
-SCHEMA_VERSION = "1.1"
+from hackproof.hackathon import Place
+
+SCHEMA_VERSION = "1.2"
 
 Tier = Literal["verified", "likely", "possible"]
 Track = Literal["genesis", "scale"]
@@ -129,6 +131,9 @@ class Project(Model):
             "HackMeridian track, inferred from the repo's history. genesis: a product created "
             "during the hack. scale: an existing product that predates it."
         )
+    )
+    award: Place | None = Field(
+        description="HackMeridian award as announced by Build on Stellar: first, runner-up or null"
     )
     language: str | None = Field(description="Primary language")
     license: str | None = Field(description="SPDX license id")

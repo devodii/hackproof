@@ -151,6 +151,7 @@ async def build_export(
     evidence = _group(await connection.fetch(EVIDENCE_SQL, names))
     integrations = _group(await connection.fetch(INTEGRATIONS_SQL, names))
     catalog = get_catalog()
+    awards = {award.project_id: award.place for award in hackathon.awards}
 
     exported = [
         Project(
@@ -160,6 +161,7 @@ async def build_export(
             description=row["description"],
             homepage=row["homepage"],
             tier=row["tier"],
+            award=awards.get(f"repo:{row['full_name']}"),
             language=row["language"],
             license=row["license"],
             stars=row["stars"],
