@@ -2,6 +2,7 @@ import { ChevronDownIcon } from 'lucide-react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 import { Spinner } from '@/components/spinner'
+import { Button } from '@/components/ui/button'
 
 interface ScrollBoxProps {
   hasMore: boolean
@@ -13,6 +14,7 @@ interface ScrollBoxProps {
 const EDGE = 8
 const SWIPE = 24
 const JUMP_MS = 900
+const PAGE_FRACTION = 0.8
 
 export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps) {
   const box = useRef<HTMLDivElement>(null)
@@ -74,8 +76,22 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
         </div>
       </div>
       {(below || hasMore) && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-14 items-end justify-center bg-gradient-to-t from-background to-transparent pb-1">
-          <ChevronDownIcon className="size-5 animate-bounce text-muted-foreground" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-16 items-end justify-center bg-linear-to-t from-background to-transparent pb-1">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            aria-label="Show more"
+            className="pointer-events-auto size-11 rounded-full bg-background"
+            onClick={() =>
+              box.current?.scrollBy({
+                top: box.current.clientHeight * PAGE_FRACTION,
+                behavior: 'smooth',
+              })
+            }
+          >
+            <ChevronDownIcon className="size-5 animate-bounce text-muted-foreground" />
+          </Button>
         </div>
       )}
     </div>
