@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Area, AreaChart, CartesianGrid, ReferenceDot, XAxis, YAxis } from 'recharts'
 
 import {
@@ -20,6 +21,8 @@ interface TimelineAreaProps {
 }
 
 export function TimelineArea({ data, peak, className }: TimelineAreaProps) {
+  const [drawn, setDrawn] = useState(false)
+
   return (
     <ChartContainer config={config} className={className}>
       <AreaChart data={data} margin={{ top: 24, right: 16, left: 0 }}>
@@ -49,23 +52,27 @@ export function TimelineArea({ data, peak, className }: TimelineAreaProps) {
           fill="var(--color-contracts)"
           fillOpacity={0.1}
           dot={false}
-          isAnimationActive={false}
+          animationDuration={1200}
+          animationEasing="ease-out"
+          onAnimationEnd={() => setDrawn(true)}
           activeDot={{ r: 4, stroke: 'var(--background)', strokeWidth: 2 }}
         />
-        <ReferenceDot
-          x={peak.hour}
-          y={peak.contracts}
-          r={4}
-          fill="var(--color-contracts)"
-          stroke="var(--background)"
-          strokeWidth={2}
-          label={{
-            value: `Peak ${formatNumber(peak.contracts)}`,
-            position: 'top',
-            fill: 'var(--foreground)',
-            fontSize: 12,
-          }}
-        />
+        {drawn && (
+          <ReferenceDot
+            x={peak.hour}
+            y={peak.contracts}
+            r={4}
+            fill="var(--color-contracts)"
+            stroke="var(--background)"
+            strokeWidth={2}
+            label={{
+              value: `Peak ${formatNumber(peak.contracts)}`,
+              position: 'top',
+              fill: 'var(--foreground)',
+              fontSize: 12,
+            }}
+          />
+        )}
       </AreaChart>
     </ChartContainer>
   )
