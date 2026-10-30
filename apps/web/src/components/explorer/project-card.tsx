@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { AwardBadge } from '@/components/award-badge'
 import { TierBadge } from '@/components/tier-badge'
+import { TrackBadge } from '@/components/track-badge'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { useIntegrations } from '@/hooks/use-projects'
@@ -38,6 +39,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <div className="flex flex-wrap items-center gap-1">
               <TierBadge tier={project.tier} />
               <AwardBadge place={project.award} />
+              <TrackBadge track={project.track} />
             </div>
           </div>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}

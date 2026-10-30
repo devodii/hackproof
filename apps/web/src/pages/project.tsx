@@ -10,6 +10,7 @@ import { DetailError } from '@/components/query-state'
 import { Section } from '@/components/section'
 import { AwardBadge } from '@/components/award-badge'
 import { TierBadge } from '@/components/tier-badge'
+import { TrackBadge } from '@/components/track-badge'
 import { Accordion } from '@/components/ui/accordion'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
@@ -54,6 +55,7 @@ export function ProjectPage() {
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           <TierBadge tier={project.tier} />
           <AwardBadge place={project.award} />
+          <TrackBadge track={project.track} />
           <Badge variant="outline">{footprintLabel[project.footprint]}</Badge>
         </div>
         {project.description && (

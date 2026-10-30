@@ -9,6 +9,7 @@ export interface HackWindow {
 }
 
 export type Footprint = 'contracts' | 'classic' | 'github'
+export type Track = 'genesis' | 'scale'
 export type Place = 'first' | 'runner-up'
 export type Tier = 'verified' | 'likely' | 'possible' | 'unattributed'
 
@@ -61,7 +62,7 @@ export interface Project {
   stellar_added_in_window: boolean | null
   created_at: string | null
   topics: string[] | null
-  track: 'genesis' | 'scale' | null
+  track: Track | null
   integrations: string[]
 }
 

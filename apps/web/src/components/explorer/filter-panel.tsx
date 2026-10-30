@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { countryName, flagEmoji, placeLabel, tierLabel } from '@/lib/format'
+import { countryName, flagEmoji, placeLabel, tierLabel, trackLabel } from '@/lib/format'
 import type { Integration, Project } from '@/lib/types'
 
 import { countValues, type FilterKey, type Selection, selectedCount } from './filters'
@@ -34,8 +34,8 @@ const FIXED: Record<'award' | 'tier' | 'track' | 'activity', [string, string][]>
     ['likely', tierLabel.likely],
   ],
   track: [
-    ['genesis', 'Genesis'],
-    ['scale', 'Scale'],
+    ['genesis', trackLabel.genesis],
+    ['scale', trackLabel.scale],
   ],
   activity: [
     ['contracts', 'Deployed contracts'],

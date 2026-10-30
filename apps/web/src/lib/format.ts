@@ -63,6 +63,11 @@ export const tierLabel = {
   unattributed: 'No repo',
 } as const
 
+export const trackLabel = {
+  genesis: 'Genesis',
+  scale: 'Scale',
+} as const
+
 export const placeLabel = {
   first: '1st place',
   'runner-up': 'Runner-up',
