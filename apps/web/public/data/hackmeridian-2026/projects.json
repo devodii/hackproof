@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2",
-  "generatedAt": "2026-10-30T03:39:55.459127Z",
+  "generatedAt": "2026-10-30T04:50:08.223692Z",
   "hackathon": {
     "slug": "hackmeridian-2026",
     "name": "HackMeridian 2026",
@@ -2755,7 +2755,21 @@
       "repoLastCommitAt": "2026-10-27T09:20:48Z",
       "commitsInWindow": 393,
       "totalCommits": 400,
-      "integrationPartners": [],
+      "integrationPartners": [
+        {
+          "slug": "near-intents",
+          "name": "NEAR Intents",
+          "category": "cross-chain",
+          "website": "https://docs.near.org/chain-abstraction/intents/overview",
+          "evidence": [
+            {
+              "method": "endpoint",
+              "detail": "1click.chaindefuser.com",
+              "repoFileUrl": "https://github.com/grmkris/hack-meridian-2026/blob/HEAD/evidence/topup/dry-quote-2026-10-25T22-07-19-789Z.json"
+            }
+          ]
+        }
+      ],
       "owner": {
         "login": "grmkris",
         "avatarUrl": "https://avatars.githubusercontent.com/u/15545195?v=4",
@@ -3803,7 +3817,7 @@
       "description": "Artifex Soroban contracts (Scale hackathon) — Testnet only",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": null,
@@ -5486,7 +5500,7 @@
       "description": "Nethermind Privacy Engineering team's implementation of private payments for the Stellar network",
       "homepage": "https://nethermindeth.github.io/stellar-private-payments/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": "Apache-2.0",
@@ -8741,7 +8755,7 @@
       "description": "Neko’s RWA launchpad on Stellar: AI-assisted issuer onboarding, a legal knowledge base, human compliance review, and SEP-57 tokens with Soroban investment vaults.",
       "homepage": "https://launch.tryneko.io/",
       "tier": "verified",
-      "track": "genesis",
+      "track": "scale",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -12920,7 +12934,7 @@
       "description": "Design by acta-team",
       "homepage": "https://gate.acta.build",
       "tier": "verified",
-      "track": "genesis",
+      "track": "scale",
       "award": null,
       "language": "Rust",
       "license": null,
@@ -13395,7 +13409,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -14988,7 +15002,7 @@
       "description": "OZ Policy Builder - record a Soroban transaction, synthesise the minimal policy that permits exactly that flow, and install it on an OpenZeppelin smart account",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -16468,7 +16482,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -17184,7 +17198,7 @@
       "description": "Plataforma de integración de sensores con verificación en blockchian ",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Python",
       "license": null,
@@ -18729,7 +18743,7 @@
       "description": "Private B2B payments on Stellar that keep earning yield: Stellar Private Payments over DeFindex vault shares (HackMeridian 2026, testnet)",
       "homepage": null,
       "tier": "verified",
-      "track": "genesis",
+      "track": "scale",
       "award": "runner-up",
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -19287,12 +19301,14 @@
       "selfTags": [],
       "stack": [
         "soroban-sdk",
+        "stellar-strkey",
         "@stellar/stellar-sdk",
         "@stellar/freighter-api",
         "@creit.tech/stellar-wallets-kit"
       ],
       "stackVersions": {
         "soroban-sdk": null,
+        "stellar-strkey": "0.0.16",
         "@stellar/stellar-sdk": "16.3.1",
         "@stellar/freighter-api": "^6.0.1",
         "@creit.tech/stellar-wallets-kit": "2.7.1"
@@ -21649,7 +21665,7 @@
       "description": "University patent licences on Stellar : funded in EURC, released by milestones, royalties shared automatically",
       "homepage": "https://biolicensing.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -24123,7 +24139,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -25089,7 +25105,7 @@
       "description": "BLNT v3 migration",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Shell",
       "license": "AGPL-3.0",
@@ -29359,7 +29375,7 @@
       "description": "The easiest way to build Stellar apps. One command scaffolds your contracts, a modern frontend, and type-safe clients that connect the two, keeping everything in sync as you build so you don't have to. ",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": "Apache-2.0",
@@ -29793,7 +29809,7 @@
       "description": "The first proof-of-humanity partnership protocol. Live on World Chain. Search HumanBond in World App.",
       "homepage": "https://humanbond-lisbon-nu.vercel.app/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "NOASSERTION",
@@ -30114,7 +30130,7 @@
       "description": "Multi-asset fund tokens on Stellar: create, price, rebalance and redeem portfolios of real-world assets onchain. Live on mainnet.",
       "homepage": "https://alloy-stellar.vercel.app",
       "tier": "verified",
-      "track": "genesis",
+      "track": "scale",
       "award": "first",
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -31538,7 +31554,7 @@
       "description": null,
       "homepage": "https://diversifiapp.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -31595,9 +31611,27 @@
           "website": "https://www.privy.io",
           "evidence": [
             {
+              "method": "endpoint",
+              "detail": "auth.privy.io",
+              "repoFileUrl": "https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/next.config.js"
+            },
+            {
               "method": "package",
               "detail": "@privy-io/react-auth",
               "repoFileUrl": "https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json"
+            }
+          ]
+        },
+        {
+          "slug": "circle",
+          "name": "Circle (CCTP)",
+          "category": "cross-chain",
+          "website": "https://www.circle.com",
+          "evidence": [
+            {
+              "method": "endpoint",
+              "detail": "api.circle.com",
+              "repoFileUrl": "https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/config/index.ts"
             }
           ]
         }
@@ -31699,7 +31733,7 @@
       "description": "On-chain performance payroll",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "JavaScript",
       "license": "MIT",
@@ -31847,7 +31881,7 @@
       "description": "Cloud-Native Stellar Infrastructure Toolkit",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": "Apache-2.0",
@@ -31855,10 +31889,12 @@
       "forks": 72,
       "selfTags": [],
       "stack": [
-        "soroban-sdk"
+        "soroban-sdk",
+        "@stellar/stellar-sdk"
       ],
       "stackVersions": {
-        "soroban-sdk": "22"
+        "soroban-sdk": "28",
+        "@stellar/stellar-sdk": "^17.2.0"
       },
       "repoCreatedAt": "2026-04-28T16:41:12Z",
       "repoLastCommitAt": "2026-10-28T15:12:18Z",
@@ -32618,7 +32654,7 @@
       "description": "AI Agent Battle Arena on Multiple Chains. Break agents with prompts and earn real onchain money",
       "homepage": "https://redsentinel.xyz/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -32777,7 +32813,7 @@
       "description": "Time-bound, quota-gated API credential and bandwidth micro-lease smart contracts on Stellar & Soroban.",
       "homepage": "https://keylease-security.github.io/keylease-core/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": "MIT",
@@ -32811,7 +32847,7 @@
           "login": "Oyinkans0la12",
           "url": "https://github.com/Oyinkans0la12",
           "avatarUrl": "https://avatars.githubusercontent.com/u/147610565?v=4",
-          "contributions": 12,
+          "contributions": 14,
           "country": null
         }
       ],
@@ -33716,7 +33752,7 @@
       "description": null,
       "homepage": "https://paradiseandbeyondcr-stellar-daap.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -33837,7 +33873,7 @@
       "description": "Soroban contracts for bonded service-level agreements with watcher-based settlement on Stellar.",
       "homepage": "https://slasettle-docs.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": "MIT",
@@ -34207,7 +34243,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "JavaScript",
       "license": null,
@@ -34342,7 +34378,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -34580,7 +34616,7 @@
       "description": "Decentralized music streaming platform powered by Stellar, Soroban smart contracts, and Turso SQLite",
       "homepage": "https://rhitta.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -34899,7 +34935,7 @@
       "description": "Draws anyone can check. The list is sealed on Stellar before the random number exists, and a Soroban contract verifies drand's BLS signature on chain. Free to enter, always. · Sorteos que cualquiera puede comprobar.",
       "homepage": "https://tinkazo.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -35596,7 +35632,7 @@
       "description": "GreenLedger — Registro verificable de créditos de carbono en Stellar · CIT Has It All",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "HTML",
       "license": "Apache-2.0",
@@ -35696,7 +35732,7 @@
       "description": "Cuotia helps friends, families, and communities save together through organized savings circles. Members contribute regularly, see the schedule, and take turns receiving the group’s savings. Our goal is to make this familiar way of saving clearer and easier for everyone.",
       "homepage": "https://cuotia-fj.vercel.app/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "JavaScript",
       "license": null,
@@ -35795,7 +35831,7 @@
       "description": "Autonomous XLM yield vault on Stellar: deposit XLM, get svXLM (SEP-41), earn Blend yield, withdraw anytime.",
       "homepage": "https://helasnoussi.github.io/my-stellar-yield-vault/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -35909,7 +35945,7 @@
       "description": "Merchant-bound payment reservations on Stellar. Reserve spending capacity without transferring funds; merchants capture only what’s owed. Built with Soroban.",
       "homepage": "https://latch-ui.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -36668,7 +36704,7 @@
       "description": "Escrow for Instagram and WhatsApp sellers. Buyers pay via a link, funds are held until delivery is confirmed, and sellers build a verifiable track record. Built on Stellar/Soroban.",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -36936,7 +36972,7 @@
       "description": "De idea a dApp con prompts: Scaffold Stellar + escrows de Trustless Work + login con correo/Google (Cavos) + skills para cualquier agente (Claude Code, Codex, Cursor, OpenCode, Copilot, Gemini…)",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -37060,7 +37096,7 @@
       "description": "Confidential tokens on Stellar with on-chain UltraHonk ZK proofs — contracts and in-browser proving demo. Testnet only.",
       "homepage": "https://stellar-confidential-token-demo.billowing-moon-0c6f.workers.dev/",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -37144,7 +37180,7 @@
       "description": "Slimepay's Stellar Anchor",
       "homepage": "https://stellar-anchor-production.up.railway.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Go",
       "license": null,
@@ -37221,7 +37257,7 @@
       "description": null,
       "homepage": "https://astros-two.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -37316,7 +37352,7 @@
       "description": "A headless SEP-0056 tokenized vault standard engine for microlending built on the stellar network.",
       "homepage": "https://microvault.shambarecords.com",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Go",
       "license": "AGPL-3.0",
@@ -37352,7 +37388,7 @@
           "login": "mugane-dj",
           "url": "https://github.com/mugane-dj",
           "avatarUrl": "https://avatars.githubusercontent.com/u/85606106?v=4",
-          "contributions": 594,
+          "contributions": 595,
           "country": "KE"
         },
         {
@@ -37401,7 +37437,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -37418,7 +37454,21 @@
       "repoLastCommitAt": "2026-10-26T11:16:15Z",
       "commitsInWindow": 158,
       "totalCommits": 160,
-      "integrationPartners": [],
+      "integrationPartners": [
+        {
+          "slug": "trustless-work",
+          "name": "Trustless Work",
+          "category": "payments",
+          "website": "https://www.trustlesswork.com",
+          "evidence": [
+            {
+              "method": "endpoint",
+              "detail": "dev.api.trustlesswork.com",
+              "repoFileUrl": "https://github.com/ArturShirokov/hackmeridian/blob/HEAD/src/ledger/trustless-work.ts"
+            }
+          ]
+        }
+      ],
       "owner": {
         "login": "ArturShirokov",
         "avatarUrl": "https://avatars.githubusercontent.com/u/72599811?v=4",
@@ -37541,6 +37591,19 @@
               "method": "package",
               "detail": "@stellar/freighter-api",
               "repoFileUrl": "https://github.com/Deivitto/orloj-stellar/blob/HEAD/packages/stellar-registry/package.json"
+            }
+          ]
+        },
+        {
+          "slug": "defindex",
+          "name": "DeFindex",
+          "category": "defi",
+          "website": "https://www.defindex.io",
+          "evidence": [
+            {
+              "method": "endpoint",
+              "detail": "api.defindex.io",
+              "repoFileUrl": "https://github.com/Deivitto/orloj-stellar/blob/HEAD/packages/stellar-registry/demo-contract/top10-audit/mcp-mainnet-remediation-results.json"
             }
           ]
         }
@@ -37694,7 +37757,7 @@
           "login": "Eras256",
           "url": "https://github.com/Eras256",
           "avatarUrl": "https://avatars.githubusercontent.com/u/219895655?v=4",
-          "contributions": 197,
+          "contributions": 211,
           "country": null
         },
         {
@@ -37737,7 +37800,7 @@
       "description": "Open-source x402 payment facilitator for Stellar (USDC via Soroban auth entries) with Bazaar-style discovery. Apache-2.0.",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -38065,7 +38128,7 @@
       "description": "The first build out for PoolFi entailing the backend, frontend and soroban",
       "homepage": "https://poolfibuild.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,
@@ -38151,7 +38214,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -38400,7 +38463,7 @@
       "description": null,
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -38704,7 +38767,7 @@
       "description": "Proof before payment: a Stellar escrow releases only when the condition is proven. Signed, anchored verdicts from pluggable verifiers (AI reads, code decides). Piggy x Lendoor at HackMeridian 2026.",
       "homepage": null,
       "tier": "verified",
-      "track": "genesis",
+      "track": "scale",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -38728,7 +38791,21 @@
       "repoLastCommitAt": "2026-10-26T11:34:41Z",
       "commitsInWindow": 29,
       "totalCommits": 29,
-      "integrationPartners": [],
+      "integrationPartners": [
+        {
+          "slug": "trustless-work",
+          "name": "Trustless Work",
+          "category": "payments",
+          "website": "https://www.trustlesswork.com",
+          "evidence": [
+            {
+              "method": "endpoint",
+              "detail": "dev.api.trustlesswork.com",
+              "repoFileUrl": "https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts"
+            }
+          ]
+        }
+      ],
       "owner": {
         "login": "fabian416",
         "avatarUrl": "https://avatars.githubusercontent.com/u/120422146?v=4",
@@ -38826,7 +38903,7 @@
       "description": null,
       "homepage": "https://flowpay-henna.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Dart",
       "license": "MIT",
@@ -38910,7 +38987,7 @@
       "description": null,
       "homepage": "https://forepay-nu.vercel.app",
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "AGPL-3.0",
@@ -39154,7 +39231,7 @@
       "description": "Depth-adjusted collateral sizing for Blend lending pools on Stellar",
       "homepage": null,
       "tier": "verified",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "JavaScript",
       "license": "MIT",
@@ -39322,7 +39399,7 @@
       "description": "Non-custodial crypto wallets for AI agents with on-chain spending limits. ERC-6551, x402 compatible, Base Mainnet.",
       "homepage": "https://www.npmjs.com/package/agentwallet-sdk",
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -39415,7 +39492,7 @@
       "description": null,
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "JavaScript",
       "license": "AGPL-3.0",
@@ -39825,7 +39902,7 @@
       "description": "Lease-to-own for motorcycle taxi riders, tricycle drivers & farmers. Daily/weekly payments build ownership via a Soroban smart contract on Stellar, with automatic title transfer and a reversible lock.",
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -40170,7 +40247,7 @@
       "description": "Employee attendance & visitor management on Stellar. Merkle-anchored attendance proofs and Soroban-powered visitor passes, with zero personal data on-chain.",
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -40223,7 +40300,7 @@
       "description": null,
       "homepage": "https://devfest-harambeeone.vercel.app",
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "HTML",
       "license": "MIT",
@@ -40377,7 +40454,7 @@
       "description": "Find Soroban contract storage entries, show how long each has left, and plan the transactions that extend them",
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "Apache-2.0",
@@ -40612,7 +40689,7 @@
       "description": "Spam-proof messaging on Stellar. Stake USDC to reach busy people; get it back if they reply, they keep it if they don’t. Built with Soroban.",
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": "MIT",
@@ -41407,7 +41484,7 @@
       "description": "Crowd-sourced, stake-backed local data oracle for West Africa on Stellar Soroban: staple prices, fuel, roads, and power reports with commit-reveal consensus and slashing.",
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "Rust",
       "license": "Apache-2.0",
@@ -41642,7 +41719,7 @@
       "description": "Seidar — DeFi position manager on Stellar (Blend, XOXNO, Peridot)",
       "homepage": null,
       "tier": "likely",
-      "track": "scale",
+      "track": "genesis",
       "award": null,
       "language": "TypeScript",
       "license": null,

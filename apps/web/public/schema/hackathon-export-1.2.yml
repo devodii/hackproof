@@ -348,8 +348,9 @@ $defs:
         title: Tier
         type: string
       track:
-        description: 'HackMeridian track, inferred from the repo''s history. genesis: a product created
-          during the hack. scale: an existing product that predates it.'
+        description: 'HackMeridian track the team declares in its repo docs. genesis: a new idea or early
+          prototype. scale: an existing product or advanced prototype. Repos that do not declare one are
+          listed as genesis.'
         enum:
         - genesis
         - scale
