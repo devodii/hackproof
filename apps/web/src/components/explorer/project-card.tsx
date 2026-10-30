@@ -2,6 +2,7 @@ import { ExternalLinkIcon, StarIcon } from 'lucide-react'
 import { Link } from 'react-router'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { AwardBadge } from '@/components/award-badge'
 import { TierBadge } from '@/components/tier-badge'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
@@ -34,7 +35,10 @@ export function ProjectCard({ project }: { project: Project }) {
             >
               {name}
             </Link>
-            <TierBadge tier={project.tier} />
+            <div className="flex flex-wrap items-center gap-1">
+              <TierBadge tier={project.tier} />
+              <AwardBadge place={project.award} />
+            </div>
           </div>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           {project.url && (

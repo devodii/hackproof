@@ -1,5 +1,5 @@
 import { SearchIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router'
 
 import { Input } from '@/components/ui/input'
@@ -15,6 +15,12 @@ export function Explorer() {
   const [params, setParams] = useSearchParams()
   const [input, setInput] = useState(params.get('q') ?? '')
   const search = useDebouncedValue(input.trim())
+  const top = useRef<HTMLDivElement>(null)
+  const awards = params.has('award')
+
+  useEffect(() => {
+    if (awards) top.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [awards])
 
   const setParam = (key: string, value: string) =>
     setParams((previous) => {
@@ -29,7 +35,10 @@ export function Explorer() {
       onValueChange={(tab) => setParam('tab', tab)}
       className="w-full gap-4"
     >
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div
+        ref={top}
+        className="flex scroll-mt-4 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+      >
         <TabsList>
           <TabsTrigger value="projects">Projects</TabsTrigger>
           <TabsTrigger value="contracts">Contracts</TabsTrigger>

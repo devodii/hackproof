@@ -63,6 +63,11 @@ export const tierLabel = {
   unattributed: 'No repo',
 } as const
 
+export const placeLabel = {
+  first: '1st place',
+  'runner-up': 'Runner-up',
+} as const
+
 export const STRICT_TIERS = ['verified', 'likely'] as const
 
 export const footprintLabel = {

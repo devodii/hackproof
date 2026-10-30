@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { countryName, flagEmoji, tierLabel } from '@/lib/format'
+import { countryName, flagEmoji, placeLabel, tierLabel } from '@/lib/format'
 import type { Integration, Project } from '@/lib/types'
 
 import { countValues, type FilterKey, type Selection, selectedCount } from './filters'
@@ -24,7 +24,11 @@ interface FilterPanelProps {
   onClear: () => void
 }
 
-const FIXED: Record<'tier' | 'track' | 'activity', [string, string][]> = {
+const FIXED: Record<'award' | 'tier' | 'track' | 'activity', [string, string][]> = {
+  award: [
+    ['first', placeLabel.first],
+    ['runner-up', placeLabel['runner-up']],
+  ],
   tier: [
     ['verified', tierLabel.verified],
     ['likely', tierLabel.likely],
@@ -48,7 +52,7 @@ function options(
   const counts = countValues(projects, selection, key)
   const chosen = new Set(selection[key])
   const labelled: [string, string, string?][] =
-    key === 'tier' || key === 'track' || key === 'activity'
+    key === 'award' || key === 'tier' || key === 'track' || key === 'activity'
       ? FIXED[key].map(([value, label]) => [value, label])
       : key === 'partner'
         ? integrations.map((item) => [item.slug, item.name, item.category])
@@ -65,7 +69,7 @@ function options(
   return labelled
     .map(([value, label, hint]) => ({ value, label, hint, count: counts.get(value) ?? 0 }))
     .filter((option) => option.count > 0 || chosen.has(option.value))
-    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
+    .sort((a, b) => (key in FIXED ? 0 : b.count - a.count || a.label.localeCompare(b.label)))
 }
 
 function Group({
@@ -113,6 +117,7 @@ function Group({
 }
 
 const GROUPS: { key: FilterKey; title: string; collapsible: boolean }[] = [
+  { key: 'award', title: 'Awards', collapsible: false },
   { key: 'tier', title: 'Evidence', collapsible: false },
   { key: 'track', title: 'Track', collapsible: false },
   { key: 'partner', title: 'Integrations', collapsible: true },

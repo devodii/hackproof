@@ -8,6 +8,7 @@ import { integrationColumns, linkColumns } from '@/components/explorer/columns'
 import { ProjectSkeleton } from '@/components/page-skeletons'
 import { DetailError } from '@/components/query-state'
 import { Section } from '@/components/section'
+import { AwardBadge } from '@/components/award-badge'
 import { TierBadge } from '@/components/tier-badge'
 import { Accordion } from '@/components/ui/accordion'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -52,6 +53,7 @@ export function ProjectPage() {
           <h1 className="min-w-0 text-3xl leading-none wrap-break-word sm:text-5xl">{name}</h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           <TierBadge tier={project.tier} />
+          <AwardBadge place={project.award} />
           <Badge variant="outline">{footprintLabel[project.footprint]}</Badge>
         </div>
         {project.description && (

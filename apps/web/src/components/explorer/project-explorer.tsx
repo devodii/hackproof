@@ -21,6 +21,8 @@ import { type FilterKey, matches, readSelection, selectedCount } from './filters
 import { ProjectCard } from './project-card'
 import { ProjectCardSkeleton } from './project-card-skeleton'
 
+const PLACE_RANK = { first: 0, 'runner-up': 1, none: 2 } as const
+
 export function ProjectExplorer({ search }: { search: string }) {
   const [params, setParams] = useSearchParams()
   const [page, setPage] = useState(0)
@@ -55,13 +57,15 @@ export function ProjectExplorer({ search }: { search: string }) {
   const needle = search.toLowerCase()
   const filtered = useMemo(
     () =>
-      (projects ?? []).filter(
-        (project) =>
-          matches(project, selection) &&
-          (!needle ||
-            project.project_id.toLowerCase().includes(needle) ||
-            project.description?.toLowerCase().includes(needle)),
-      ),
+      (projects ?? [])
+        .filter(
+          (project) =>
+            matches(project, selection) &&
+            (!needle ||
+              project.project_id.toLowerCase().includes(needle) ||
+              project.description?.toLowerCase().includes(needle)),
+        )
+        .sort((a, b) => PLACE_RANK[a.award ?? 'none'] - PLACE_RANK[b.award ?? 'none']),
     [projects, selection, needle],
   )
   const mode = usePaginationMode()

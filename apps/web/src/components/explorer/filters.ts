@@ -1,10 +1,19 @@
 import type { Project } from '@/lib/types'
 
-export const FILTER_KEYS = ['tier', 'track', 'partner', 'activity', 'language', 'country'] as const
+export const FILTER_KEYS = [
+  'award',
+  'tier',
+  'track',
+  'partner',
+  'activity',
+  'language',
+  'country',
+] as const
 export type FilterKey = (typeof FILTER_KEYS)[number]
 export type Selection = Record<FilterKey, string[]>
 
 const VALUES: Record<FilterKey, (project: Project) => string[]> = {
+  award: (project) => (project.award ? [project.award] : []),
   tier: (project) => [project.tier],
   track: (project) => (project.track ? [project.track] : []),
   partner: (project) => project.integrations ?? [],

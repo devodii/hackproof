@@ -9,6 +9,7 @@ export interface HackWindow {
 }
 
 export type Footprint = 'contracts' | 'classic' | 'github'
+export type Place = 'first' | 'runner-up'
 export type Tier = 'verified' | 'likely' | 'possible' | 'unattributed'
 
 export interface Stats {
@@ -36,6 +37,7 @@ export interface Project {
   url: string | null
   footprint: Footprint
   tier: Tier
+  award: Place | null
   contracts: number
   classic_ops: number
   assets: number

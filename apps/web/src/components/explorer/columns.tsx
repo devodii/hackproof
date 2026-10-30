@@ -8,6 +8,7 @@ import {
   LedgerLink,
   ProjectLink,
 } from '@/components/links'
+import { AwardBadge } from '@/components/award-badge'
 import { TierBadge } from '@/components/tier-badge'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -44,7 +45,12 @@ export const projectColumns: Column<Project>[] = [
   },
   {
     header: 'Evidence',
-    cell: (row) => <TierBadge tier={row.tier} />,
+    cell: (row) => (
+      <span className="flex flex-wrap items-center gap-1">
+        <TierBadge tier={row.tier} />
+        <AwardBadge place={row.award} />
+      </span>
+    ),
   },
   {
     header: 'Footprint',
