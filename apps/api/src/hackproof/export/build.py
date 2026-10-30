@@ -173,7 +173,7 @@ async def build_export(
             repo_last_commit_at=row["pushed_at"],
             commits_in_window=row["window_commits"],
             total_commits=row["total_commits"],
-            track=row["declared_track"],
+            track=row["declared_track"] or "genesis",
             integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
             owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
             contributors=[

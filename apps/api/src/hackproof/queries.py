@@ -12,7 +12,7 @@ SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.cla
        r.description, r.homepage, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
        r.country, r.dependencies,
        r.window_commits, r.total_commits, r.stellar_added_in_window,
-       r.created_at, r.topics, r.declared_track AS track,
+       r.created_at, r.topics, COALESCE(r.declared_track, 'genesis') AS track,
        ARRAY(SELECT i.partner FROM repo_integrations i WHERE i.full_name = p.full_name
              GROUP BY i.partner ORDER BY i.partner) AS integrations,
        count(*) OVER () AS total
@@ -26,7 +26,7 @@ WHERE ($1::text IS NULL
        OR p.project_id IN (SELECT project_id FROM account_projects WHERE account = $2))
   AND ($3::text IS NULL OR p.project_id = $3)
   AND ($4::text[] IS NULL OR p.tier = ANY($4))
-  AND ($7::text IS NULL OR r.declared_track = $7)
+  AND ($7::text IS NULL OR COALESCE(r.declared_track, 'genesis') = $7)
   AND ($8::text[] IS NULL OR EXISTS (
        SELECT 1 FROM repo_integrations i
        WHERE i.full_name = p.full_name AND i.partner = ANY($8)))
