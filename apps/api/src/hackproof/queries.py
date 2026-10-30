@@ -12,16 +12,12 @@ SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.cla
        r.description, r.homepage, r.stars, r.forks, r.language, r.license, r.owner, r.owner_avatar,
        r.country, r.dependencies,
        r.window_commits, r.total_commits, r.stellar_added_in_window,
-       r.created_at, r.topics, t.track,
+       r.created_at, r.topics, r.declared_track AS track,
        ARRAY(SELECT i.partner FROM repo_integrations i WHERE i.full_name = p.full_name
              GROUP BY i.partner ORDER BY i.partner) AS integrations,
        count(*) OVER () AS total
 FROM projects p
 LEFT JOIN repos r ON r.full_name = p.full_name
-CROSS JOIN LATERAL (
-    SELECT CASE WHEN r.created_at BETWEEN $7::timestamptz AND $8::timestamptz THEN 'genesis'
-                WHEN r.created_at IS NOT NULL THEN 'scale' END AS track
-) t
 WHERE ($1::text IS NULL
        OR p.project_id ILIKE '%' || $1 || '%'
        OR r.description ILIKE '%' || $1 || '%')
@@ -30,11 +26,11 @@ WHERE ($1::text IS NULL
        OR p.project_id IN (SELECT project_id FROM account_projects WHERE account = $2))
   AND ($3::text IS NULL OR p.project_id = $3)
   AND ($4::text[] IS NULL OR p.tier = ANY($4))
-  AND ($9::text IS NULL OR t.track = $9)
-  AND ($10::text[] IS NULL OR EXISTS (
+  AND ($7::text IS NULL OR r.declared_track = $7)
+  AND ($8::text[] IS NULL OR EXISTS (
        SELECT 1 FROM repo_integrations i
-       WHERE i.full_name = p.full_name AND i.partner = ANY($10)))
-  AND ($11::text[] IS NULL OR p.project_id = ANY($11))
+       WHERE i.full_name = p.full_name AND i.partner = ANY($8)))
+  AND ($9::text[] IS NULL OR p.project_id = ANY($9))
 ORDER BY array_position(
              ARRAY['verified', 'likely', 'possible', 'unattributed'], p.tier),
          p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
@@ -203,7 +199,7 @@ async def list_page(
     awards = places()
     winner_ids = list(awards) if winners else None
     args = (
-        (q, account, project_id, tiers, limit, offset, *window(), track, integrations, winner_ids)
+        (q, account, project_id, tiers, limit, offset, track, integrations, winner_ids)
         if resource == "projects"
         else (*window(), q, account, project_id, limit, offset)
     )

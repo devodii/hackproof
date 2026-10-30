@@ -38,7 +38,7 @@ PROJECTS_SQL = """
 SELECT p.full_name, p.tier, p.contracts, p.classic_ops, p.assets, p.wasm_uploads, p.failed_txs,
        r.url, r.description, r.homepage, r.language, r.license, r.stars, r.forks, r.topics,
        r.dependencies, r.created_at, r.pushed_at, r.window_commits, r.total_commits,
-       r.owner, r.owner_avatar, r.country
+       r.owner, r.owner_avatar, r.country, r.declared_track
 FROM projects p
 JOIN repos r ON r.full_name = p.full_name
 WHERE p.tier = ANY($1)
@@ -173,11 +173,7 @@ async def build_export(
             repo_last_commit_at=row["pushed_at"],
             commits_in_window=row["window_commits"],
             total_commits=row["total_commits"],
-            track=(
-                "genesis"
-                if row["created_at"] and window.start <= row["created_at"] <= window.end
-                else "scale"
-            ),
+            track=row["declared_track"],
             integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
             owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
             contributors=[

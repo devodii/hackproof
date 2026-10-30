@@ -44,7 +44,7 @@ async def test_export_carries_repo_chain_and_evidence(scratch_db):
     [project] = export.projects
     assert (project.repo_full_name, project.tier, project.name) == ("team/app", "verified", "app")
     assert project.stack == ["@stellar/stellar-sdk"]
-    assert project.track == "genesis"
+    assert project.track is None
     assert project.contributors[0].login == "ana" and project.contributors[0].country == "PT"
     assert [c.contract_id for c in project.chain.contracts] == ["CXYZ"]
     assert [a.address for a in project.chain.accounts] == ["GDEPLOYER"]
@@ -77,21 +77,32 @@ async def test_weak_tiers_are_left_out_by_default(scratch_db):
     assert [p.repo_full_name for p in everything.projects] == ["weak/repo"]
 
 
-async def test_a_repo_created_before_the_window_is_on_the_scale_track(scratch_db):
+async def test_track_is_the_one_the_repo_declares(scratch_db):
     db = scratch_db
     await add_repo(
         db,
-        "team/older",
+        "team/declared",
         window_commits=4,
         created_at=WINDOW.start - timedelta(days=90),
         stellar_added_in_window=True,
+        declared_track="scale",
+        dependencies=STELLAR,
+    )
+    await add_repo(
+        db,
+        "team/silent",
+        window_commits=4,
+        created_at=WINDOW.start + timedelta(hours=1),
         dependencies=STELLAR,
     )
     await reconcile(db)
 
-    [project] = (await build_export(db, get_hackathon(), ["likely", "possible"])).projects
+    projects = (await build_export(db, get_hackathon(), ["likely", "possible"])).projects
 
-    assert project.track == "scale"
+    assert {p.repo_full_name: p.track for p in projects} == {
+        "team/declared": "scale",
+        "team/silent": None,
+    }
 
 
 async def test_export_lists_integration_partners_with_their_evidence(scratch_db):

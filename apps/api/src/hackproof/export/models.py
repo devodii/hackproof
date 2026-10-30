@@ -6,7 +6,7 @@ from pydantic.alias_generators import to_camel
 
 from hackproof.hackathon import Place
 
-SCHEMA_VERSION = "1.2"
+SCHEMA_VERSION = "1.3"
 
 Tier = Literal["verified", "likely", "possible"]
 Track = Literal["genesis", "scale"]
@@ -126,10 +126,11 @@ class Project(Model):
             "window only."
         )
     )
-    track: Track = Field(
+    track: Track | None = Field(
         description=(
-            "HackMeridian track, inferred from the repo's history. genesis: a product created "
-            "during the hack. scale: an existing product that predates it."
+            "HackMeridian track the team declares in its repo docs. genesis: a new idea or early "
+            "prototype. scale: an existing product or advanced prototype. null when the repo "
+            "does not say."
         )
     )
     award: Place | None = Field(
