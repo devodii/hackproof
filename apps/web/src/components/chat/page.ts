@@ -18,16 +18,17 @@ export function currentPage(): PageContext {
 
 const SUGGESTIONS: Record<PageKind, string[]> = {
   home: [
-    'Which projects deployed the most contracts?',
-    'How many projects are verified on-chain?',
+    'Who won HackMeridian, and what did they build?',
+    'Did the teams that deployed the most contracts win?',
     'When was the busiest hour of the hack?',
-    'Which countries had the most builders?',
+    'Which Stellar tools did most teams build on?',
+    'What can I learn from the winners to prepare for 2027?',
   ],
   project: [
     'Summarize this project',
-    'Why is it linked to the chain?',
-    'Who built it?',
-    'How active was it during the hack?',
+    'What is it built with?',
+    'How does it compare to the winners?',
+    'How do we know it was really built on-chain?',
   ],
   builder: [
     'What has this builder shipped?',
