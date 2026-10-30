@@ -3,6 +3,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from hackproof.github.track import Track
 from hackproof.integrations.models import Detection
 
 RefKind = Literal["contract", "account", "asset", "wasm", "network"]
@@ -53,6 +54,7 @@ class Contributor(BaseModel):
 
 class RepoScan(BaseModel):
     full_name: str
+    declared_track: Track | None = None
     refs: list[Ref]
     dependencies: DependencyFingerprint
     stellar_added_in_window: bool | None

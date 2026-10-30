@@ -87,8 +87,10 @@ CREATE TABLE IF NOT EXISTS repos (
     base_sha TEXT,
     total_commits INTEGER,
     stellar_added_in_window BOOLEAN,
-    scanned_at TIMESTAMPTZ
+    scanned_at TIMESTAMPTZ,
+    declared_track TEXT
 );
+ALTER TABLE repos ADD COLUMN IF NOT EXISTS declared_track TEXT;
 
 CREATE TABLE IF NOT EXISTS repo_contributors (
     full_name TEXT NOT NULL,

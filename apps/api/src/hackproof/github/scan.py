@@ -13,6 +13,7 @@ from hackproof.github.files import fetch_texts
 from hackproof.github.history import stellar_added_in_window
 from hackproof.github.models import Candidate, Contributor, Ref, RepoScan
 from hackproof.github.refs import extract_refs
+from hackproof.github.track import declared_track
 from hackproof.hackathon import Discovery
 from hackproof.integrations.catalog import Catalog, get_catalog
 from hackproof.integrations.detect import detect
@@ -124,6 +125,7 @@ class Scanner:
         )
         return RepoScan(
             full_name=repo.full_name,
+            declared_track=declared_track(files),
             refs=list(dict.fromkeys(refs)),
             dependencies=dependencies,
             stellar_added_in_window=added,
@@ -175,10 +177,12 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         )
         await connection.execute(
             """
-            UPDATE repos SET dependencies = $2, stellar_added_in_window = $3, scanned_at = now()
+            UPDATE repos SET dependencies = $2, stellar_added_in_window = $3,
+                declared_track = $4, scanned_at = now()
             WHERE full_name = $1
             """,
             scan.full_name,
             scan.dependencies.model_dump(),
             scan.stellar_added_in_window,
+            scan.declared_track,
         )
