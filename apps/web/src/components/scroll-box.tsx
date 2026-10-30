@@ -11,6 +11,7 @@ interface ScrollBoxProps {
 }
 
 const EDGE = 8
+const SWIPE = 24
 
 export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps) {
   const box = useRef<HTMLDivElement>(null)
@@ -36,9 +37,11 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
 
   useEffect(measure)
 
-  const release = (event: React.WheelEvent) => {
+  const touchY = useRef(0)
+
+  const release = () => {
     const el = box.current
-    if (!el || hasMore || below || event.deltaY <= 0) return
+    if (!el || hasMore || el.scrollHeight - el.scrollTop - el.clientHeight > EDGE) return
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -47,7 +50,11 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
       <div
         ref={box}
         onScroll={measure}
-        onWheel={release}
+        onWheel={(event) => event.deltaY > 0 && release()}
+        onTouchStart={(event) => {
+          touchY.current = event.touches[0].clientY
+        }}
+        onTouchMove={(event) => touchY.current - event.touches[0].clientY > SWIPE && release()}
         className="max-h-[70svh] overflow-y-auto p-1.5 pr-3"
       >
         {children}
