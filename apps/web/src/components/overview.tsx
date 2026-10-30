@@ -95,6 +95,7 @@ export function Overview() {
 
   return (
     <motion.div
+      id="overview"
       className="flex flex-col gap-4"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}

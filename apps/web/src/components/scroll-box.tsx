@@ -12,6 +12,7 @@ interface ScrollBoxProps {
 
 const EDGE = 8
 const SWIPE = 24
+const JUMP_MS = 900
 
 export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps) {
   const box = useRef<HTMLDivElement>(null)
@@ -38,11 +39,18 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
   useEffect(measure)
 
   const touchY = useRef(0)
+  const lockedUntil = useRef(0)
 
-  const release = () => {
+  const release = (direction: 1 | -1) => {
     const el = box.current
-    if (!el || hasMore || el.scrollHeight - el.scrollTop - el.clientHeight > EDGE) return
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+    if (!el || el.scrollHeight <= el.clientHeight + EDGE || Date.now() < lockedUntil.current) return
+    const atEnd = !hasMore && el.scrollHeight - el.scrollTop - el.clientHeight <= EDGE
+    const atStart = el.scrollTop <= EDGE
+    if (direction > 0 ? !atEnd : !atStart) return
+    lockedUntil.current = Date.now() + JUMP_MS
+    document.getElementById(direction > 0 ? 'about' : 'overview')?.scrollIntoView({
+      behavior: 'smooth',
+    })
   }
 
   return (
@@ -50,11 +58,14 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
       <div
         ref={box}
         onScroll={measure}
-        onWheel={(event) => event.deltaY > 0 && release()}
+        onWheel={(event) => event.deltaY !== 0 && release(event.deltaY > 0 ? 1 : -1)}
         onTouchStart={(event) => {
           touchY.current = event.touches[0].clientY
         }}
-        onTouchMove={(event) => touchY.current - event.touches[0].clientY > SWIPE && release()}
+        onTouchMove={(event) => {
+          const moved = touchY.current - event.touches[0].clientY
+          if (Math.abs(moved) > SWIPE) release(moved > 0 ? 1 : -1)
+        }}
         className="max-h-[70svh] overflow-y-auto p-1.5 pr-3"
       >
         {children}
