@@ -79,10 +79,10 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-16 items-end justify-center bg-linear-to-t from-background to-transparent pb-1">
           <Button
             type="button"
-            variant="outline"
+            variant="ghost"
             size="icon"
             aria-label="Show more"
-            className="pointer-events-auto size-11 rounded-full bg-background"
+            className="pointer-events-auto size-11 hover:bg-transparent aria-expanded:bg-transparent dark:hover:bg-transparent"
             onClick={() =>
               box.current?.scrollBy({
                 top: box.current.clientHeight * PAGE_FRACTION,
