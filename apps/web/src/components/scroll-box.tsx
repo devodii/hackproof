@@ -48,7 +48,7 @@ export function ScrollBox({ hasMore, loading, onMore, children }: ScrollBoxProps
         ref={box}
         onScroll={measure}
         onWheel={release}
-        className="max-h-[70svh] overflow-y-auto pr-1"
+        className="max-h-[70svh] overflow-y-auto p-1.5 pr-3"
       >
         {children}
         <div ref={end} className="flex h-10 items-center justify-center">
