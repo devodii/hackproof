@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@plugin 'tailwind-scrollbar';
 @source '../node_modules/streamdown/dist/*.js';
 
 @custom-variant dark (&:is(.dark *));
@@ -190,6 +191,12 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    --scrollbar-width: 6px;
+    --scrollbar-height: 6px;
+    --scrollbar-thumb: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
+    --scrollbar-thumb-radius: 9999px;
+    --scrollbar-track: transparent;
+    @apply scrollbar;
   }
   body {
     @apply bg-background text-foreground;
