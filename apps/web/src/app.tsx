@@ -10,6 +10,7 @@ import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
 import { ProjectPage } from '@/pages/project'
+import { ToolingPage } from '@/pages/tooling'
 
 function Shell() {
   const { view } = useChatPanel()
@@ -26,6 +27,7 @@ function Shell() {
             <Route path="/" element={<HomePage />} />
             <Route path="/project/*" element={<ProjectPage />} />
             <Route path="/builder/:address" element={<BuilderPage />} />
+            <Route path="/tooling" element={<ToolingPage />} />
           </Routes>
         </main>
         <About />

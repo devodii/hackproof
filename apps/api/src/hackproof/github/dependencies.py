@@ -2,6 +2,7 @@ import json
 import re
 import tomllib
 from pathlib import PurePosixPath
+from typing import Any
 
 from hackproof.github.models import DependencyFingerprint
 
@@ -15,6 +16,29 @@ ECOSYSTEM = {
 }
 REQUIREMENT = re.compile(r"^([A-Za-z0-9_.-]+)\s*(?:[=~<>!]=?\s*([\w.*-]+))?")
 GO_REQUIRE = re.compile(r"^\s*(?:require\s+)?(\S+)\s+(v[\w.+-]+)", re.MULTILINE)
+
+OPENZEPPELIN_PACKAGES = {
+    "stellar-contracts",
+    "openzeppelin-stellar-contracts",
+    "openzeppelin_stellar_contracts",
+    "@openzeppelin/contracts",
+    "@openzeppelin/stellar-contracts",
+}
+
+WALLETS_KIT_PACKAGES = {
+    "@creit.tech/stellar-wallets-kit",
+    "stellar-wallets-kit",
+}
+
+FREIGHTER_PACKAGES = {
+    "@stellar/freighter-api",
+    "freighter-api",
+}
+
+PASSKEY_PACKAGES = {
+    "passkey-kit",
+    "@stellar/passkey-kit",
+}
 
 
 def _cargo(text: str) -> dict[str, str | None]:
@@ -82,3 +106,60 @@ def fingerprint(files: dict[str, str], wanted: dict[str, list[str]]) -> Dependen
                 if ecosystem not in result.ecosystems:
                     result.ecosystems.append(ecosystem)
     return result
+
+
+def detect_openzeppelin(files: dict[str, str]) -> bool:
+    for path, text in files.items():
+        name = PurePosixPath(path).name
+        if name not in PARSERS:
+            continue
+        try:
+            declared = PARSERS[name](text)
+            if any(pkg in declared for pkg in OPENZEPPELIN_PACKAGES):
+                return True
+        except Exception:
+            continue
+    return False
+
+
+def detect_framework(files: dict[str, str]) -> str:
+    for path, text in files.items():
+        if PurePosixPath(path).name == "package.json":
+            try:
+                data = json.loads(text)
+                deps: dict[str, Any] = {}
+                for section in ("dependencies", "devDependencies"):
+                    deps.update(data.get(section, {}))
+                if "next" in deps:
+                    return "Next.js"
+                if "vite" in deps:
+                    return "Vite"
+            except Exception:
+                continue
+    return "Other"
+
+
+def detect_ai_tooling(paths: list[str]) -> list[str]:
+    found = set()
+    for path in paths:
+        normalized = "/" + path.strip("/").lower()
+        parts = PurePosixPath(path).parts
+        name = parts[-1].lower() if parts else ""
+        if name == "claude.md":
+            found.add("CLAUDE.md")
+        elif name == "agents.md":
+            found.add("AGENTS.md")
+        elif name == ".cursorrules" or ".cursor/rules" in normalized or "cursorrules" in name:
+            found.add("Cursor rules")
+        elif "copilot-instructions" in normalized:
+            found.add("Copilot instructions")
+    return sorted(found)
+
+
+def parse_major_version(spec: str | None) -> str:
+    if not spec:
+        return "Unknown"
+    m = re.search(r"(\d+)", spec)
+    if m:
+        return f"v{m.group(1)}"
+    return "Unknown"

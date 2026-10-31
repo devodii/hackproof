@@ -88,9 +88,11 @@ CREATE TABLE IF NOT EXISTS repos (
     total_commits INTEGER,
     stellar_added_in_window BOOLEAN,
     scanned_at TIMESTAMPTZ,
-    declared_track TEXT
+    declared_track TEXT,
+    tooling JSONB NOT NULL DEFAULT '{}'
 );
 ALTER TABLE repos ADD COLUMN IF NOT EXISTS declared_track TEXT;
+ALTER TABLE repos ADD COLUMN IF NOT EXISTS tooling JSONB NOT NULL DEFAULT '{}';
 
 CREATE TABLE IF NOT EXISTS repo_contributors (
     full_name TEXT NOT NULL,

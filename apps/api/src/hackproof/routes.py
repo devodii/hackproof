@@ -15,6 +15,7 @@ from hackproof.schemas import (
     Stats,
     Tier,
     TimelinePoint,
+    ToolingStats,
     WasmUpload,
 )
 
@@ -46,6 +47,12 @@ async def timeline() -> list[TimelinePoint]:
 async def countries() -> list[CountryCount]:
     return [CountryCount(**row) for row in await queries.fetch_countries()]
 
+
+
+
+@router.get("/tooling")
+async def tooling() -> ToolingStats:
+    return ToolingStats(**await queries.fetch_tooling())
 
 @router.get("/integrations")
 async def integrations() -> list[Integration]:

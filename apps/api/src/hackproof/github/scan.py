@@ -8,7 +8,13 @@ import httpx
 
 from hackproof.github.client import GithubClient
 from hackproof.github.demo import scan_demo
-from hackproof.github.dependencies import MANIFESTS, fingerprint
+from hackproof.github.dependencies import (
+    MANIFESTS,
+    detect_ai_tooling,
+    detect_framework,
+    detect_openzeppelin,
+    fingerprint,
+)
 from hackproof.github.files import fetch_texts
 from hackproof.github.history import stellar_added_in_window
 from hackproof.github.models import Candidate, Contributor, Ref, RepoScan
@@ -123,6 +129,12 @@ class Scanner:
             if dependencies.packages
             else None
         )
+        all_paths = [entry.get("path", "") for entry in tree.get("tree", [])]
+        tooling = {
+            "framework": detect_framework(files),
+            "ai": detect_ai_tooling(all_paths),
+            "openzeppelin": detect_openzeppelin(files),
+        }
         return RepoScan(
             full_name=repo.full_name,
             declared_track=declared_track(files),
@@ -131,6 +143,7 @@ class Scanner:
             stellar_added_in_window=added,
             integrations=detect(files, self._catalog, repo.owner),
             contributors=contributors_from(people),
+            tooling=tooling,
         )
 
 
@@ -178,11 +191,12 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         await connection.execute(
             """
             UPDATE repos SET dependencies = $2, stellar_added_in_window = $3,
-                declared_track = $4, scanned_at = now()
+                declared_track = $4, tooling = $5, scanned_at = now()
             WHERE full_name = $1
             """,
             scan.full_name,
             scan.dependencies.model_dump(),
             scan.stellar_added_in_window,
             scan.declared_track,
+            scan.tooling,
         )

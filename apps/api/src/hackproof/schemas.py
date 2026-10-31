@@ -149,3 +149,20 @@ class CountryCount(BaseModel):
 class Page[T](BaseModel):
     items: list[T]
     total: int
+
+
+class ToolingItem(BaseModel):
+    name: str
+    count: int
+    percentage: float
+
+
+class ToolingGroup(BaseModel):
+    category: str
+    description: str
+    items: list[ToolingItem]
+
+
+class ToolingStats(BaseModel):
+    total_projects: int
+    categories: list[ToolingGroup]

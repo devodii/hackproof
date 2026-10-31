@@ -1,8 +1,9 @@
+from collections import Counter
 from datetime import datetime
 from typing import Any, Literal
 
 from hackproof.db import pool
-from hackproof.hackathon import get_hackathon, places
+from hackproof.hackathon import get_hackathon, hidden_ids, places
 from hackproof.integrations.catalog import get_catalog
 from hackproof.linking.methods import METHOD_RANK_SQL
 
@@ -256,3 +257,161 @@ async def fetch_integrations() -> list[dict[str, Any]]:
 async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(COUNTRIES_SQL, limit)]
+
+TOOLING_SQL = """
+SELECT p.project_id, p.full_name, r.dependencies, COALESCE(r.tooling, '{}'::jsonb) AS tooling,
+       ARRAY(SELECT i.partner FROM repo_integrations i
+             WHERE i.full_name = p.full_name) AS integrations
+FROM projects p
+JOIN repos r ON r.full_name = p.full_name
+WHERE p.tier IN ('verified', 'likely')
+  AND ($1::text[] IS NULL OR NOT (p.project_id = ANY($1) OR p.full_name = ANY($1)))
+"""
+
+
+async def fetch_tooling() -> dict[str, Any]:
+    from hackproof.github.dependencies import parse_major_version
+
+    hidden = hidden_ids() or None
+    async with pool().acquire() as connection:
+        rows = await connection.fetch(TOOLING_SQL, hidden)
+
+    total = len(rows)
+
+    oz_count = 0
+    wallets_count = 0
+    freighter_count = 0
+    passkey_count = 0
+
+    soroban_versions: Counter[str] = Counter()
+    stellar_versions: Counter[str] = Counter()
+    framework_counts: Counter[str] = Counter()
+    ai_counts: Counter[str] = Counter()
+
+    for row in rows:
+        deps = row["dependencies"] or {}
+        if isinstance(deps, str):
+            import json
+            deps = json.loads(deps)
+        packages = deps.get("packages", {}) or {}
+        tooling = row["tooling"] or {}
+        if isinstance(tooling, str):
+            import json
+            tooling = json.loads(tooling)
+        integrations = set(row["integrations"] or [])
+
+        # 1. OpenZeppelin Stellar Contracts
+        has_oz = (
+            tooling.get("openzeppelin")
+            or any(
+                p in packages
+                for p in (
+                    "stellar-contracts",
+                    "openzeppelin-stellar-contracts",
+                    "openzeppelin_stellar_contracts",
+                    "@openzeppelin/contracts",
+                    "@openzeppelin/stellar-contracts",
+                )
+            )
+            or "openzeppelin" in integrations
+        )
+        if has_oz:
+            oz_count += 1
+
+        # 2. Stellar Wallets Kit
+        has_wallets = (
+            "@creit.tech/stellar-wallets-kit" in packages
+            or "stellar-wallets-kit" in packages
+            or "stellar-wallets-kit" in integrations
+        )
+        if has_wallets:
+            wallets_count += 1
+
+        # 3. Freighter API
+        has_freighter = (
+            "@stellar/freighter-api" in packages
+            or "freighter" in integrations
+            or "freighter-api" in packages
+        )
+        if has_freighter:
+            freighter_count += 1
+
+        # 4. Passkey Kit
+        has_passkey = (
+            "passkey-kit" in packages
+            or "@stellar/passkey-kit" in packages
+            or "passkey" in integrations
+        )
+        if has_passkey:
+            passkey_count += 1
+
+        # 5. soroban-sdk major versions
+        if "soroban-sdk" in packages:
+            ver = parse_major_version(packages["soroban-sdk"])
+            soroban_versions[ver] += 1
+
+        # 6. stellar-sdk JS versions
+        sdk_spec = packages.get("@stellar/stellar-sdk") or packages.get("stellar-sdk")
+        if sdk_spec:
+            ver = parse_major_version(sdk_spec)
+            stellar_versions[ver] += 1
+
+        # 7. Frameworks
+        fw = tooling.get("framework")
+        if not fw or fw == "Other":
+            if "next" in packages:
+                fw = "Next.js"
+            elif "vite" in packages:
+                fw = "Vite"
+            else:
+                fw = "Other"
+        framework_counts[fw] += 1
+
+        # 8. AI tooling
+        for tool in tooling.get("ai", []):
+            ai_counts[tool] += 1
+
+    def make_items(counter: dict[str, int]) -> list[dict[str, Any]]:
+        items = []
+        for name, count in counter.items():
+            pct = round((count / total * 100), 1) if total > 0 else 0.0
+            items.append({"name": name, "count": count, "percentage": pct})
+        return sorted(items, key=lambda x: x["count"], reverse=True)
+
+    kits_items = make_items({
+        "Stellar Wallets Kit": wallets_count,
+        "Freighter API": freighter_count,
+        "OpenZeppelin Contracts": oz_count,
+        "Passkey Kit": passkey_count,
+    })
+
+    return {
+        "total_projects": total,
+        "categories": [
+            {
+                "category": "Ecosystem Kits & Wallets",
+                "description": "Adoption of official and partner Stellar libraries and kits",
+                "items": kits_items,
+            },
+            {
+                "category": "Soroban SDK Major Versions",
+                "description": "Declared soroban-sdk version in Cargo.toml contracts",
+                "items": make_items(dict(soroban_versions)),
+            },
+            {
+                "category": "Stellar SDK (JS) Versions",
+                "description": "Declared @stellar/stellar-sdk version in web applications",
+                "items": make_items(dict(stellar_versions)),
+            },
+            {
+                "category": "Frontend Frameworks",
+                "description": "Application architecture: Next.js vs Vite vs other",
+                "items": make_items(dict(framework_counts)),
+            },
+            {
+                "category": "AI Tooling & Rules",
+                "description": "Agent instructions, prompts and rules present in repository trees",
+                "items": make_items(dict(ai_counts)),
+            },
+        ],
+    }

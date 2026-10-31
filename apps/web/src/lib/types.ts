@@ -154,3 +154,20 @@ export interface CountryCount {
   country: string
   contributors: number
 }
+
+export interface ToolingItem {
+  name: string
+  count: number
+  percentage: number
+}
+
+export interface ToolingGroup {
+  category: string
+  description: string
+  items: ToolingItem[]
+}
+
+export interface ToolingStats {
+  total_projects: number
+  categories: ToolingGroup[]
+}

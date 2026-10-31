@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -60,3 +60,4 @@ class RepoScan(BaseModel):
     stellar_added_in_window: bool | None
     integrations: list[Detection]
     contributors: list[Contributor]
+    tooling: dict[str, Any] = Field(default_factory=dict)

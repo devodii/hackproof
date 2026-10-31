@@ -36,6 +36,7 @@ class Hackathon(BaseModel):
     window: Window
     awards: list[Award] = []
     discovery: Discovery
+    hidden: list[str] = []
 
 
 @lru_cache
@@ -46,3 +47,14 @@ def get_hackathon() -> Hackathon:
 
 def places() -> dict[str, Place]:
     return {award.project_id: award.place for award in get_hackathon().awards}
+
+
+def hidden_ids() -> list[str]:
+    raw = get_hackathon().hidden
+    ids = set(raw)
+    for item in raw:
+        if item.startswith("repo:"):
+            ids.add(item[5:])
+        elif not item.startswith("acct:"):
+            ids.add(f"repo:{item}")
+    return sorted(ids)
