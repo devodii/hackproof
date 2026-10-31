@@ -31,6 +31,10 @@ class Settings(BaseSettings):
     github_tokens: Annotated[list[str], NoDecode] = Field(
         default_factory=list, validation_alias="HACKPROOF_GITHUB_TOKEN"
     )
+    discord_webhook_url: str | None = Field(
+        default=None,
+        validation_alias=AliasChoices("DISCORD_WEBHOOK_URL", "HACKPROOF_DISCORD_WEBHOOK_URL"),
+    )
     cors_origins: list[str] = ["http://localhost:5173"]
 
     @field_validator("github_tokens", mode="before")
