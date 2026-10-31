@@ -1,8 +1,10 @@
 import argparse
 import asyncio
 import logging
+from pathlib import Path
 
 from hackproof.export.jobs import run_export
+from hackproof.export.judges import run_export_judges
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
 from hackproof.linking.reconcile import run_reconcile
@@ -23,6 +25,21 @@ def main() -> None:
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
     commands.add_parser("export", help="write the json and yaml export and its schema")
+
+    judges_parser = commands.add_parser(
+        "export-judges", help="export submissions to CSV and XLSX for judges"
+    )
+    judges_parser.add_argument(
+        "--csv",
+        type=Path,
+        help="custom path for output CSV file",
+    )
+    judges_parser.add_argument(
+        "--xlsx",
+        type=Path,
+        help="custom path for output XLSX file",
+    )
+
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -38,3 +55,5 @@ def main() -> None:
             asyncio.run(run_reconcile())
         case "export":
             asyncio.run(run_export())
+        case "export-judges":
+            asyncio.run(run_export_judges(args.csv, args.xlsx))

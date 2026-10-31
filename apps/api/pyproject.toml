@@ -11,6 +11,7 @@ dependencies = [
     "asyncpg>=0.32.0",
     "fastapi[standard]>=0.162.0",
     "httpx>=0.28.1",
+    "openpyxl>=3.1.5",
     "pycountry>=26.2.16",
     "pydantic-settings>=2.16.1",
     "pyyaml>=6.0.3",
