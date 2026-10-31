@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "winners": "Winners",
+    "openSource": "Open Source",
+    "toggleTheme": "Toggle theme"
+  },
+  "footer": {
+    "disclaimer": "Independent project, not affiliated with SDF or Guava.",
+    "github": "GitHub",
+    "language": "Language"
+  },
+  "home": {
+    "heroTitle": "HackMeridian 2026, rebuilt from the chain.",
+    "heroSubtitle": "The submission list is not public, so we rebuilt it from Stellar testnet. Every project below is matched to on-chain activity you can check yourself.",
+    "windowTo": "to",
+    "overviewNote": "A reconstruction: the official submission list is not public."
+  },
+  "overview": {
+    "projects": "Projects",
+    "verifiedOnChain": "Verified on-chain",
+    "contractsPerHour": "Contracts deployed, per hour over the 27 hour window",
+    "deployAccounts": "Deploy accounts",
+    "contributors": "Contributors",
+    "countries": "Countries",
+    "wasmUploads": "Wasm uploads",
+    "failedTxs": "Failed txs"
+  },
+  "explorer": {
+    "tabs": {
+      "projects": "Projects",
+      "contracts": "Contracts",
+      "wasm": "Wasm",
+      "failed": "Failed"
+    },
+    "searchPlaceholder": "Search address, hash or repo",
+    "filters": "Filters",
+    "clear": "Clear",
+    "cards": "Cards",
+    "table": "Table",
+    "loadMore": "Load more",
+    "noProjects": "No projects match your filter.",
+    "noContracts": "No contracts match.",
+    "noWasm": "No wasm uploads match.",
+    "noFailed": "No failed transactions match.",
+    "filterGroups": {
+      "award": "Awards",
+      "tier": "Evidence",
+      "track": "Track",
+      "partner": "Integrations",
+      "activity": "On-chain activity",
+      "language": "Language",
+      "country": "Country"
+    },
+    "filterFixed": {
+      "contracts": "Deployed contracts",
+      "failed": "Failed transactions"
+    },
+    "showLess": "Show less",
+    "showAll": "Show all {{count}}"
+  },
+  "project": {
+    "noDescription": "No description",
+    "noRepo": "no repo",
+    "contractsCount": "{{count}} contracts",
+    "commitsInWindow": "{{window}} of {{total}} commits inside the window",
+    "includedBecause": "Included because it {{inclusion}}.",
+    "createdDuringHack": "was created during the hack",
+    "addedStellarDuringHack": "added Stellar during the hack",
+    "defaultInclusion": "has a Stellar dependency and commits during the hack",
+    "sections": {
+      "integrations": "Integrations",
+      "contributors": "Contributors",
+      "evidence": "Why this is linked",
+      "activity": "Activity"
+    },
+    "derivedNotice": "{{count}} more items are attributed through the same deploy accounts.",
+    "onChainMetadata": "on-chain metadata",
+    "commits": "commits",
+    "moreContributors": "+{{count}} more"
+  },
+  "builder": {
+    "title": "Builder",
+    "projects": "Projects"
+  },
+  "table": {
+    "resultsCount": "{{count}} results",
+    "previous": "Previous",
+    "next": "Next",
+    "none": "none",
+    "unreachableTitle": "Could not load {{resource}}",
+    "unreachableDesc": "The API is unreachable. Try again in a moment.",
+    "columns": {
+      "project": "Project",
+      "evidence": "Evidence",
+      "footprint": "Footprint",
+      "contracts": "Contracts",
+      "classicOps": "Classic ops",
+      "stars": "Stars",
+      "commits": "Commits",
+      "lastActivity": "Last activity",
+      "tx": "Tx",
+      "deployer": "Deployer",
+      "ledger": "Ledger",
+      "time": "Time",
+      "wasm": "Wasm",
+      "uploader": "Uploader",
+      "repo": "Repo",
+      "size": "Size",
+      "uploaded": "Uploaded",
+      "source": "Source",
+      "kind": "Kind",
+      "result": "Result",
+      "partner": "Partner",
+      "matched": "Matched",
+      "method": "Method",
+      "foundIn": "Found in"
+    }
+  },
+  "tiers": {
+    "verified": "Verified on-chain",
+    "likely": "Code only",
+    "possible": "Possible",
+    "unattributed": "No repo"
+  },
+  "tracks": {
+    "genesis": "Genesis",
+    "scale": "Scale"
+  },
+  "places": {
+    "first": "1st place",
+    "runnerUp": "Runner-up"
+  },
+  "footprint": {
+    "contracts": "Contracts",
+    "classic": "Classic ops only",
+    "github": "GitHub only"
+  },
+  "about": {
+    "text": "Hey curious, I'm Odii. A super talented builder on Stellar, I've worked on projects such as Sorokit, StellarTools and many more, feel free to follow me on GitHub, X or LinkedIn."
+  }
+}

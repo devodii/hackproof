@@ -1,10 +1,11 @@
 import { ExternalLinkIcon, StarIcon } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { AwardBadge } from '@/components/award-badge'
 import { TierBadge } from '@/components/tier-badge'
 import { TrackBadge } from '@/components/track-badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { useIntegrations } from '@/hooks/use-projects'
@@ -18,6 +19,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const topics = (project.topics ?? []).slice(0, VISIBLE_TOPICS)
   const { data: integrations = [] } = useIntegrations()
   const partners = integrations.filter((item) => project.integrations?.includes(item.slug))
+  const { t } = useTranslation()
 
   return (
     <Card size="sm" className="relative h-full transition-colors hover:bg-muted/40">
@@ -58,7 +60,7 @@ export function ProjectCard({ project }: { project: Project }) {
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
         <p className="line-clamp-2 min-h-10 text-sm text-muted-foreground">
-          {project.description ?? 'No description'}
+          {project.description ?? t('project.noDescription')}
         </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
           {project.language && <span>{project.language}</span>}
@@ -67,7 +69,9 @@ export function ProjectCard({ project }: { project: Project }) {
               <StarIcon className="size-3" /> {formatNumber(project.stars)}
             </span>
           )}
-          {project.contracts > 0 && <span>{formatNumber(project.contracts)} contracts</span>}
+          {project.contracts > 0 && (
+            <span>{t('project.contractsCount', { count: formatNumber(project.contracts) })}</span>
+          )}
         </div>
         {partners.length > 0 && (
           <div className="flex flex-wrap gap-1">

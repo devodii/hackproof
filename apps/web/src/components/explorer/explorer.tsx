@@ -1,5 +1,6 @@
 import { SearchIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router'
 
 import { Input } from '@/components/ui/input'
@@ -17,6 +18,7 @@ export function Explorer() {
   const search = useDebouncedValue(input.trim())
   const top = useRef<HTMLDivElement>(null)
   const awards = params.has('award')
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (awards) top.current?.scrollIntoView({ behavior: 'smooth' })
@@ -40,17 +42,17 @@ export function Explorer() {
         className="flex scroll-mt-4 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
       >
         <TabsList>
-          <TabsTrigger value="projects">Projects</TabsTrigger>
-          <TabsTrigger value="contracts">Contracts</TabsTrigger>
-          <TabsTrigger value="wasm">Wasm</TabsTrigger>
-          <TabsTrigger value="failed">Failed</TabsTrigger>
+          <TabsTrigger value="projects">{t('explorer.tabs.projects')}</TabsTrigger>
+          <TabsTrigger value="contracts">{t('explorer.tabs.contracts')}</TabsTrigger>
+          <TabsTrigger value="wasm">{t('explorer.tabs.wasm')}</TabsTrigger>
+          <TabsTrigger value="failed">{t('explorer.tabs.failed')}</TabsTrigger>
         </TabsList>
         <div className="relative w-full sm:max-w-xs">
           <SearchIcon className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={input}
             onChange={(event) => setInput(event.target.value)}
-            placeholder="Search address, hash or repo"
+            placeholder={t('explorer.searchPlaceholder')}
             className="pl-8"
           />
         </div>
@@ -65,7 +67,7 @@ export function Explorer() {
           search={search}
           columns={contractColumns}
           rowKey={(row) => row.contract_id}
-          empty="No contracts match."
+          empty={t('explorer.noContracts')}
         />
       </TabsContent>
       <TabsContent value="wasm">
@@ -75,7 +77,7 @@ export function Explorer() {
           search={search}
           columns={wasmColumns}
           rowKey={(row) => row.tx_hash}
-          empty="No wasm uploads match."
+          empty={t('explorer.noWasm')}
         />
       </TabsContent>
       <TabsContent value="failed">
@@ -85,7 +87,7 @@ export function Explorer() {
           search={search}
           columns={failedColumns}
           rowKey={(row) => row.tx_hash}
-          empty="No failed transactions match."
+          empty={t('explorer.noFailed')}
         />
       </TabsContent>
     </Tabs>

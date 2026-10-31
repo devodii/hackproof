@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -24,36 +25,38 @@ interface FilterPanelProps {
   onClear: () => void
 }
 
-const FIXED: Record<'award' | 'tier' | 'track' | 'activity', [string, string][]> = {
-  award: [
-    ['first', placeLabel.first],
-    ['runner-up', placeLabel['runner-up']],
-  ],
-  tier: [
-    ['verified', tierLabel.verified],
-    ['likely', tierLabel.likely],
-  ],
-  track: [
-    ['genesis', trackLabel.genesis],
-    ['scale', trackLabel.scale],
-  ],
-  activity: [
-    ['contracts', 'Deployed contracts'],
-    ['failed', 'Failed transactions'],
-  ],
-}
-
 function options(
   key: FilterKey,
   projects: Project[],
   integrations: Integration[],
   selection: Selection,
+  t: (k: string, opts?: Record<string, unknown>) => string,
 ): Option[] {
   const counts = countValues(projects, selection, key)
   const chosen = new Set(selection[key])
+
+  const fixedLabels: Record<'award' | 'tier' | 'track' | 'activity', [string, string][]> = {
+    award: [
+      ['first', t('places.first', { defaultValue: placeLabel.first })],
+      ['runner-up', t('places.runnerUp', { defaultValue: placeLabel['runner-up'] })],
+    ],
+    tier: [
+      ['verified', t('tiers.verified', { defaultValue: tierLabel.verified })],
+      ['likely', t('tiers.likely', { defaultValue: tierLabel.likely })],
+    ],
+    track: [
+      ['genesis', t('tracks.genesis', { defaultValue: trackLabel.genesis })],
+      ['scale', t('tracks.scale', { defaultValue: trackLabel.scale })],
+    ],
+    activity: [
+      ['contracts', t('explorer.filterFixed.contracts')],
+      ['failed', t('explorer.filterFixed.failed')],
+    ],
+  }
+
   const labelled: [string, string, string?][] =
     key === 'award' || key === 'tier' || key === 'track' || key === 'activity'
-      ? FIXED[key].map(([value, label]) => [value, label])
+      ? fixedLabels[key].map(([value, label]) => [value, label])
       : key === 'partner'
         ? integrations.map((item) => [item.slug, item.name, item.category])
         : [
@@ -66,10 +69,12 @@ function options(
             value,
             key === 'country' ? `${flagEmoji(value)} ${countryName(value)}` : value,
           ])
+
+  const isFixed = key in fixedLabels
   return labelled
     .map(([value, label, hint]) => ({ value, label, hint, count: counts.get(value) ?? 0 }))
     .filter((option) => option.count > 0 || chosen.has(option.value))
-    .sort((a, b) => (key in FIXED ? 0 : b.count - a.count || a.label.localeCompare(b.label)))
+    .sort((a, b) => (isFixed ? 0 : b.count - a.count || a.label.localeCompare(b.label)))
 }
 
 function Group({
@@ -78,12 +83,14 @@ function Group({
   chosen,
   onToggle,
   collapsible,
+  t,
 }: {
   title: string
   items: Option[]
   chosen: string[]
   onToggle: (value: string) => void
   collapsible: boolean
+  t: (k: string, opts?: Record<string, unknown>) => string
 }) {
   const [expanded, setExpanded] = useState(false)
   if (items.length === 0) return null
@@ -109,22 +116,12 @@ function Group({
           onClick={() => setExpanded(!expanded)}
           className="self-start text-xs text-muted-foreground hover:text-foreground"
         >
-          {expanded ? 'Show less' : `Show all ${items.length}`}
+          {expanded ? t('explorer.showLess') : t('explorer.showAll', { count: items.length })}
         </button>
       )}
     </fieldset>
   )
 }
-
-const GROUPS: { key: FilterKey; title: string; collapsible: boolean }[] = [
-  { key: 'award', title: 'Awards', collapsible: false },
-  { key: 'tier', title: 'Evidence', collapsible: false },
-  { key: 'track', title: 'Track', collapsible: false },
-  { key: 'partner', title: 'Integrations', collapsible: true },
-  { key: 'activity', title: 'On-chain activity', collapsible: false },
-  { key: 'language', title: 'Language', collapsible: true },
-  { key: 'country', title: 'Country', collapsible: true },
-]
 
 export function FilterPanel({
   projects,
@@ -134,25 +131,37 @@ export function FilterPanel({
   onClear,
 }: FilterPanelProps) {
   const active = selectedCount(selection)
+  const { t } = useTranslation()
+
+  const groups: { key: FilterKey; title: string; collapsible: boolean }[] = [
+    { key: 'award', title: t('explorer.filterGroups.award'), collapsible: false },
+    { key: 'tier', title: t('explorer.filterGroups.tier'), collapsible: false },
+    { key: 'track', title: t('explorer.filterGroups.track'), collapsible: false },
+    { key: 'partner', title: t('explorer.filterGroups.partner'), collapsible: true },
+    { key: 'activity', title: t('explorer.filterGroups.activity'), collapsible: false },
+    { key: 'language', title: t('explorer.filterGroups.language'), collapsible: true },
+    { key: 'country', title: t('explorer.filterGroups.country'), collapsible: true },
+  ]
 
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
-        <h2 className="font-heading text-lg">Filters</h2>
+        <h2 className="font-heading text-lg">{t('explorer.filters')}</h2>
         {active > 0 && (
           <Button variant="ghost" size="sm" onClick={onClear}>
-            Clear {active}
+            {t('explorer.clear')} {active}
           </Button>
         )}
       </div>
-      {GROUPS.map(({ key, title, collapsible }) => (
+      {groups.map(({ key, title, collapsible }) => (
         <Group
           key={key}
           title={title}
-          items={options(key, projects, integrations, selection)}
+          items={options(key, projects, integrations, selection, t)}
           chosen={selection[key]}
           onToggle={(value) => onToggle(key, value)}
           collapsible={collapsible}
+          t={t}
         />
       ))}
     </div>

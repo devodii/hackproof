@@ -11,6 +11,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { App } from './app'
 import { posthog } from './lib/analytics'
 import './index.css'
+import './i18n'
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60_000, retry: 1 } },

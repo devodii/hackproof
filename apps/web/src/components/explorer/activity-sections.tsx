@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { DataTable } from '@/components/data-table'
 import { Section } from '@/components/section'
 import type { Contract, FailedTx, WasmUpload } from '@/lib/types'
@@ -11,20 +13,22 @@ interface ActivitySectionsProps {
 }
 
 export function ActivitySections({ contracts, wasmUploads, failedTxs }: ActivitySectionsProps) {
+  const { t } = useTranslation()
+
   return (
     <>
       {contracts.length > 0 && (
-        <Section value="contracts" title="Contracts" count={contracts.length}>
+        <Section value="contracts" title={t('explorer.tabs.contracts')} count={contracts.length}>
           <DataTable columns={contractColumns} rows={contracts} rowKey={(row) => row.contract_id} />
         </Section>
       )}
       {wasmUploads.length > 0 && (
-        <Section value="wasm" title="Wasm uploads" count={wasmUploads.length}>
+        <Section value="wasm" title={t('overview.wasmUploads')} count={wasmUploads.length}>
           <DataTable columns={wasmColumns} rows={wasmUploads} rowKey={(row) => row.tx_hash} />
         </Section>
       )}
       {failedTxs.length > 0 && (
-        <Section value="failed" title="Failed transactions" count={failedTxs.length}>
+        <Section value="failed" title={t('overview.failedTxs')} count={failedTxs.length}>
           <DataTable columns={failedColumns} rows={failedTxs} rowKey={(row) => row.tx_hash} />
         </Section>
       )}

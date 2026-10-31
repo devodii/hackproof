@@ -1,5 +1,6 @@
 import { SlidersHorizontalIcon } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useSearchParams } from 'react-router'
 
 import { DataTable } from '@/components/data-table'
@@ -32,6 +33,7 @@ export function ProjectExplorer({ search }: { search: string }) {
   const view = params.get('view') === 'table' ? 'table' : 'cards'
   const selection = useMemo(() => readSelection(params), [params])
   const active = selectedCount(selection)
+  const { t } = useTranslation()
 
   const update = (change: (next: URLSearchParams) => void) => {
     setPage(0)
@@ -68,126 +70,130 @@ export function ProjectExplorer({ search }: { search: string }) {
         .sort((a, b) => PLACE_RANK[a.award ?? 'none'] - PLACE_RANK[b.award ?? 'none']),
     [projects, selection, needle],
   )
-  const mode = usePaginationMode()
-  const scrolling = mode === 'scroll'
-  const visible = scrolling
-    ? filtered.slice(0, (page + 1) * PAGE_SIZE)
-    : filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
-  const more = (next: number) => {
-    posthog.capture('list_more', { mode, resource: 'projects' })
-    setPage(next)
-  }
 
-  const cards = (
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-      {isPending
-        ? Array.from({ length: 9 }, (_, index) => (
-            <ProjectCardSkeleton
-              key={index}
-              delay={(index % 3) * 140 + Math.floor(index / 3) * 90}
-            />
-          ))
-        : visible.map((project) => <ProjectCard key={project.project_id} project={project} />)}
-    </div>
-  )
-
-  const table = (rows: typeof filtered, paginate: boolean) => (
-    <DataTable
-      columns={projectColumns}
-      rows={rows}
-      rowKey={(row) => row.project_id}
-      paginate={paginate}
-      isLoading={isPending}
-      empty="No projects match."
-      onRowClick={(row) => navigate(`/project/${row.project_id}`)}
-    />
-  )
-
-  const panel = (
-    <FilterPanel
-      projects={projects ?? []}
-      integrations={integrations}
-      selection={selection}
-      onToggle={toggle}
-      onClear={clear}
-    />
-  )
+  const paginationMode = usePaginationMode()
+  const paged =
+    paginationMode === 'scroll'
+      ? filtered.slice(0, (page + 1) * PAGE_SIZE)
+      : filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 
   if (isError) {
     return (
       <Alert variant="destructive">
-        <AlertTitle>Could not load projects</AlertTitle>
-        <AlertDescription>The API is unreachable. Try again in a moment.</AlertDescription>
+        <AlertTitle>{t('table.unreachableTitle', { resource: t('explorer.tabs.projects') })}</AlertTitle>
+        <AlertDescription>{t('table.unreachableDesc')}</AlertDescription>
       </Alert>
     )
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[15rem_minmax(0,1fr)]">
-      <aside className="hidden lg:block">
-        <div className="sticky top-20 max-h-[calc(100svh-6rem)] overflow-y-auto pr-2">{panel}</div>
-      </aside>
-      <div className="flex min-w-0 flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <Sheet>
-              <SheetTrigger render={<Button variant="outline" size="sm" className="lg:hidden" />}>
-                <SlidersHorizontalIcon />
-                Filters{active > 0 && ` (${active})`}
-              </SheetTrigger>
-              <SheetContent side="left" className="overflow-y-auto p-4">
-                <SheetHeader className="sr-only">
-                  <SheetTitle>Filters</SheetTitle>
-                </SheetHeader>
-                {panel}
-              </SheetContent>
-            </Sheet>
-            <span className="text-sm text-muted-foreground tabular-nums">
-              {isPending ? 'Loading projects' : `${formatNumber(filtered.length)} projects`}
-            </span>
-          </div>
-          <Tabs value={view} onValueChange={(next) => update((p) => p.set('view', next))}>
-            <TabsList>
-              <TabsTrigger value="cards">Cards</TabsTrigger>
-              <TabsTrigger value="table">Table</TabsTrigger>
-            </TabsList>
-          </Tabs>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <Sheet>
+            <SheetTrigger
+              render={
+                <Button variant="outline" size="sm" className="gap-2 lg:hidden">
+                  <SlidersHorizontalIcon className="size-4" />
+                  {t('explorer.filters')} {active > 0 && `(${active})`}
+                </Button>
+              }
+            />
+            <SheetContent side="left" className="w-80 overflow-y-auto">
+              <SheetHeader>
+                <SheetTitle>{t('explorer.filters')}</SheetTitle>
+              </SheetHeader>
+              <div className="py-4">
+                <FilterPanel
+                  projects={projects ?? []}
+                  integrations={integrations}
+                  selection={selection}
+                  onToggle={toggle}
+                  onClear={clear}
+                />
+              </div>
+            </SheetContent>
+          </Sheet>
+          <span className="text-sm text-muted-foreground tabular-nums">
+            {formatNumber(filtered.length)} {t('table.resultsCount', { count: filtered.length }).replace(`${filtered.length} `, '')}
+          </span>
         </div>
-        {view === 'cards' ? (
-          <div className="flex flex-col gap-4">
-            {scrolling ? (
+
+        <Tabs
+          value={view}
+          onValueChange={(next) => update((searchParams) => searchParams.set('view', next))}
+        >
+          <TabsList>
+            <TabsTrigger value="cards">{t('explorer.cards')}</TabsTrigger>
+            <TabsTrigger value="table">{t('explorer.table')}</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+        <aside className="hidden lg:block">
+          <FilterPanel
+            projects={projects ?? []}
+            integrations={integrations}
+            selection={selection}
+            onToggle={toggle}
+            onClear={clear}
+          />
+        </aside>
+
+        <section className="lg:col-span-3">
+          {isPending ? (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {Array.from({ length: 9 }).map((_, index) => (
+                <ProjectCardSkeleton key={index} />
+              ))}
+            </div>
+          ) : filtered.length === 0 ? (
+            <div className="rounded-lg border border-dashed py-16 text-center text-sm text-muted-foreground">
+              {t('explorer.noProjects')}
+            </div>
+          ) : view === 'cards' ? (
+            paginationMode === 'scroll' ? (
               <ScrollBox
-                hasMore={visible.length < filtered.length}
+                hasMore={paged.length < filtered.length}
                 loading={false}
-                onMore={() => more(page + 1)}
+                onMore={() => {
+                  posthog.capture('list_more', { mode: 'scroll', resource: 'projects' })
+                  setPage((p) => p + 1)
+                }}
               >
-                {cards}
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  {paged.map((project) => (
+                    <ProjectCard key={project.project_id} project={project} />
+                  ))}
+                </div>
               </ScrollBox>
             ) : (
-              cards
-            )}
-            {!isPending && filtered.length === 0 && (
-              <p className="py-12 text-center text-muted-foreground">No projects match.</p>
-            )}
-            {!scrolling && (
-              <PaginationBar
-                total={isPending ? undefined : filtered.length}
-                page={page}
-                onPageChange={more}
-              />
-            )}
-          </div>
-        ) : scrolling ? (
-          <ScrollBox
-            hasMore={visible.length < filtered.length}
-            loading={false}
-            onMore={() => more(page + 1)}
-          >
-            {table(visible, false)}
-          </ScrollBox>
-        ) : (
-          table(filtered, true)
-        )}
+              <div className="flex flex-col gap-6">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  {paged.map((project) => (
+                    <ProjectCard key={project.project_id} project={project} />
+                  ))}
+                </div>
+                <PaginationBar
+                  total={filtered.length}
+                  page={page}
+                  onPageChange={(next) => {
+                    posthog.capture('list_more', { mode: 'click', resource: 'projects' })
+                    setPage(next)
+                  }}
+                />
+              </div>
+            )
+          ) : (
+            <DataTable
+              columns={projectColumns}
+              rows={filtered}
+              rowKey={(row) => row.project_id}
+              onRowClick={(row) => navigate(`/project/${row.project_id}`)}
+            />
+          )}
+        </section>
       </div>
     </div>
   )
