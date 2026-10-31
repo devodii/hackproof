@@ -1,7 +1,8 @@
 import { motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 
-import { CountUp } from '@/components/count-up'
 import { TimelineArea } from '@/components/charts/timeline-area'
+import { CountUp } from '@/components/count-up'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useStats } from '@/hooks/use-stats'
@@ -9,21 +10,14 @@ import { useTimeline } from '@/hooks/use-timeline'
 import { formatNumber, tierLabel } from '@/lib/format'
 import type { Stats } from '@/lib/types'
 
-const SECONDARY: { key: keyof Stats; label: string }[] = [
-  { key: 'builders', label: 'Deploy accounts' },
-  { key: 'contributors', label: 'Contributors' },
-  { key: 'countries', label: 'Countries' },
-  { key: 'wasm_uploads', label: 'Wasm uploads' },
-  { key: 'failed_txs', label: 'Failed txs' },
-]
-
 function ProjectsCard({ stats }: { stats?: Stats }) {
+  const { t } = useTranslation()
   const verified = stats ? (stats.verified_projects / stats.projects) * 100 : 0
 
   return (
     <Card>
       <CardHeader>
-        <CardDescription>Projects</CardDescription>
+        <CardDescription>{t('overview.projects')}</CardDescription>
         {stats ? (
           <CardTitle className="text-6xl leading-none">
             <CountUp value={stats.projects} />
@@ -46,14 +40,14 @@ function ProjectsCard({ stats }: { stats?: Stats }) {
           <div className="flex items-center justify-between">
             <dt className="flex items-center gap-2 text-muted-foreground">
               <span className="size-2 rounded-full bg-primary" />
-              Verified on-chain
+              {t('overview.verifiedOnChain')}
             </dt>
             <dd className="tabular-nums">{stats ? formatNumber(stats.verified_projects) : '–'}</dd>
           </div>
           <div className="flex items-center justify-between">
             <dt className="flex items-center gap-2 text-muted-foreground">
               <span className="size-2 rounded-full bg-primary/35" />
-              {tierLabel.likely}
+              {t('tiers.likely', { defaultValue: tierLabel.likely })}
             </dt>
             <dd className="tabular-nums">{stats ? formatNumber(stats.likely_projects) : '–'}</dd>
           </div>
@@ -65,12 +59,13 @@ function ProjectsCard({ stats }: { stats?: Stats }) {
 
 function ActivityCard({ contracts }: { contracts?: number }) {
   const { data } = useTimeline()
+  const { t } = useTranslation()
   const peak = data?.reduce((best, point) => (point.contracts > best.contracts ? point : best))
 
   return (
     <Card className="lg:col-span-2">
       <CardHeader>
-        <CardDescription>Contracts deployed, per hour over the 27 hour window</CardDescription>
+        <CardDescription>{t('overview.contractsPerHour')}</CardDescription>
         {contracts === undefined ? (
           <Skeleton className="h-14 w-28" />
         ) : (
@@ -92,6 +87,15 @@ function ActivityCard({ contracts }: { contracts?: number }) {
 
 export function Overview() {
   const { data: stats } = useStats()
+  const { t } = useTranslation()
+
+  const secondary: { key: keyof Stats; label: string }[] = [
+    { key: 'builders', label: t('overview.deployAccounts') },
+    { key: 'contributors', label: t('overview.contributors') },
+    { key: 'countries', label: t('overview.countries') },
+    { key: 'wasm_uploads', label: t('overview.wasmUploads') },
+    { key: 'failed_txs', label: t('overview.failedTxs') },
+  ]
 
   return (
     <motion.div
@@ -106,7 +110,7 @@ export function Overview() {
         <ProjectsCard stats={stats} />
       </div>
       <dl className="grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl border bg-card px-5 py-4 sm:grid-cols-3 lg:grid-cols-5">
-        {SECONDARY.map(({ key, label }) => (
+        {secondary.map(({ key, label }) => (
           <div key={key} className="flex flex-col gap-1">
             <dt className="text-xs text-muted-foreground">{label}</dt>
             <dd className="font-heading text-3xl leading-none">
@@ -116,7 +120,7 @@ export function Overview() {
         ))}
       </dl>
       <p className="text-sm text-muted-foreground">
-        A reconstruction: the official submission list is not public.
+        {t('home.overviewNote')}
       </p>
     </motion.div>
   )

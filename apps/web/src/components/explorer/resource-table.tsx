@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { type Column, DataTable } from '@/components/data-table'
 import { ScrollBox } from '@/components/scroll-box'
@@ -19,10 +20,11 @@ interface ResourceTableProps<T> {
 }
 
 function Unreachable({ resource }: { resource: string }) {
+  const { t } = useTranslation()
   return (
     <Alert variant="destructive">
-      <AlertTitle>Could not load {resource}</AlertTitle>
-      <AlertDescription>The API is unreachable. Try again in a moment.</AlertDescription>
+      <AlertTitle>{t('table.unreachableTitle', { resource })}</AlertTitle>
+      <AlertDescription>{t('table.unreachableDesc')}</AlertDescription>
     </Alert>
   )
 }

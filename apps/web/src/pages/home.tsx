@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { suggestionsFor } from '@/components/chat/page'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
@@ -10,20 +12,20 @@ import { formatDateTime } from '@/lib/format'
 export function HomePage() {
   const { data } = useHackWindow()
   const { startChat } = useChatPanel()
+  const { t } = useTranslation()
 
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
         <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
-          HackMeridian 2026, rebuilt from the chain.
+          {t('home.heroTitle')}
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          The submission list is not public, so we rebuilt it from Stellar testnet. Every project
-          below is matched to on-chain activity you can check yourself.
+          {t('home.heroSubtitle')}
         </p>
         {data ? (
           <p className="text-sm text-muted-foreground">
-            {formatDateTime(data.start)} to {formatDateTime(data.end)}
+            {formatDateTime(data.start)} {t('home.windowTo')} {formatDateTime(data.end)}
           </p>
         ) : (
           <Skeleton className="h-5 w-72" />

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { Button } from '@/components/ui/button'
 import { PAGE_SIZE } from '@/hooks/use-paged-list'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -10,6 +12,7 @@ interface PaginationBarProps {
 }
 
 export function PaginationBar({ total, page, onPageChange }: PaginationBarProps) {
+  const { t } = useTranslation()
   if (total !== undefined && total <= PAGE_SIZE) return null
 
   const lastPage = Math.max(0, Math.ceil((total ?? 0) / PAGE_SIZE) - 1)
@@ -19,7 +22,7 @@ export function PaginationBar({ total, page, onPageChange }: PaginationBarProps)
       {total === undefined ? (
         <Skeleton className="h-4 w-20" />
       ) : (
-        <span>{formatNumber(total)} results</span>
+        <span>{t('table.resultsCount', { count: formatNumber(total) })}</span>
       )}
       <div className="flex items-center gap-2">
         <Button
@@ -28,7 +31,7 @@ export function PaginationBar({ total, page, onPageChange }: PaginationBarProps)
           disabled={total === undefined || page === 0}
           onClick={() => onPageChange(page - 1)}
         >
-          Previous
+          {t('table.previous')}
         </Button>
         <span className="tabular-nums">
           {page + 1} / {lastPage + 1}
@@ -39,7 +42,7 @@ export function PaginationBar({ total, page, onPageChange }: PaginationBarProps)
           disabled={total === undefined || page >= lastPage}
           onClick={() => onPageChange(page + 1)}
         >
-          Next
+          {t('table.next')}
         </Button>
       </div>
     </div>

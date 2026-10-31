@@ -1,4 +1,5 @@
 import { ExternalLinkIcon } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
 
 import { DataTable } from '@/components/data-table'
@@ -15,14 +16,15 @@ export function BuilderPage() {
   const address = useParams().address ?? ''
   const navigate = useNavigate()
   const { data, isPending, error } = useBuilder(address)
+  const { t } = useTranslation()
 
   if (isPending) return <BuilderSkeleton />
-  if (error) return <DetailError error={error} subject="builder" />
+  if (error) return <DetailError error={error} subject={t('builder.title').toLowerCase()} />
 
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-2">
-        <h1 className="text-5xl">Builder</h1>
+        <h1 className="text-5xl">{t('builder.title')}</h1>
         <a
           href={expertUrl.account(data.address)}
           target="_blank"
@@ -35,7 +37,7 @@ export function BuilderPage() {
       </header>
       <Accordion multiple defaultValue={['projects']}>
         {data.projects.length > 0 && (
-          <Section value="projects" title="Projects" count={data.projects.length}>
+          <Section value="projects" title={t('builder.projects')} count={data.projects.length}>
             <DataTable
               columns={projectColumns}
               rows={data.projects}

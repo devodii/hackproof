@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { flagEmoji } from '@/lib/format'
@@ -6,6 +8,7 @@ import type { Contributor } from '@/lib/types'
 const VISIBLE = 30
 
 export function Contributors({ contributors }: { contributors: Contributor[] }) {
+  const { t } = useTranslation()
   const hidden = contributors.length - VISIBLE
 
   return (
@@ -24,11 +27,15 @@ export function Contributors({ contributors }: { contributors: Contributor[] }) 
           </TooltipTrigger>
           <TooltipContent>
             {person.login}
-            {person.country && ` ${flagEmoji(person.country)}`} · {person.contributions} commits
+            {person.country && ` ${flagEmoji(person.country)}`} · {person.contributions} {t('project.commits')}
           </TooltipContent>
         </Tooltip>
       ))}
-      {hidden > 0 && <span className="text-sm text-muted-foreground">+{hidden} more</span>}
+      {hidden > 0 && (
+        <span className="text-sm text-muted-foreground">
+          {t('project.moreContributors', { count: hidden })}
+        </span>
+      )}
     </div>
   )
 }

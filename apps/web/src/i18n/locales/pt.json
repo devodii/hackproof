@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "winners": "Vencedores",
+    "openSource": "Código Aberto",
+    "toggleTheme": "Alternar tema"
+  },
+  "footer": {
+    "disclaimer": "Projeto independente, não afiliado à SDF ou à Guava.",
+    "github": "GitHub",
+    "language": "Idioma"
+  },
+  "home": {
+    "heroTitle": "HackMeridian 2026, reconstruído a partir da rede.",
+    "heroSubtitle": "A lista oficial de submissões não é pública, por isso reconstruímo-la a partir da testnet Stellar. Cada projeto abaixo está associado a atividade on-chain auditável.",
+    "windowTo": "até",
+    "overviewNote": "Uma reconstrução: a lista oficial de submissões não é pública."
+  },
+  "overview": {
+    "projects": "Projetos",
+    "verifiedOnChain": "Verificado on-chain",
+    "contractsPerHour": "Contratos implementados, por hora durante a janela de 27 horas",
+    "deployAccounts": "Contas de deploy",
+    "contributors": "Contribuidores",
+    "countries": "Países",
+    "wasmUploads": "Uploads Wasm",
+    "failedTxs": "Transações falhadas"
+  },
+  "explorer": {
+    "tabs": {
+      "projects": "Projetos",
+      "contracts": "Contratos",
+      "wasm": "Wasm",
+      "failed": "Falhadas"
+    },
+    "searchPlaceholder": "Pesquisar endereço, hash ou repositório",
+    "filters": "Filtros",
+    "clear": "Limpar",
+    "cards": "Cartões",
+    "table": "Tabela",
+    "loadMore": "Carregar mais",
+    "noProjects": "Nenhum projeto corresponde ao seu filtro.",
+    "noContracts": "Nenhum contrato encontrado.",
+    "noWasm": "Nenhum upload de wasm encontrado.",
+    "noFailed": "Nenhuma transação falhada encontrada.",
+    "filterGroups": {
+      "award": "Prémios",
+      "tier": "Evidência",
+      "track": "Trilha",
+      "partner": "Integrações",
+      "activity": "Atividade on-chain",
+      "language": "Linguagem",
+      "country": "País"
+    },
+    "filterFixed": {
+      "contracts": "Contratos implementados",
+      "failed": "Transações falhadas"
+    },
+    "showLess": "Mostrar menos",
+    "showAll": "Mostrar todos os {{count}}"
+  },
+  "project": {
+    "noDescription": "Sem descrição",
+    "noRepo": "sem repositório",
+    "contractsCount": "{{count}} contratos",
+    "commitsInWindow": "{{window}} de {{total}} commits dentro da janela",
+    "includedBecause": "Incluído porque {{inclusion}}.",
+    "createdDuringHack": "foi criado durante o hackathon",
+    "addedStellarDuringHack": "adicionou Stellar durante o hackathon",
+    "defaultInclusion": "possui dependência Stellar e commits durante o hackathon",
+    "sections": {
+      "integrations": "Integrações",
+      "contributors": "Contribuidores",
+      "evidence": "Porque está associado",
+      "activity": "Atividade"
+    },
+    "derivedNotice": "Mais {{count}} itens são atribuídos através das mesmas contas de deploy.",
+    "onChainMetadata": "metadados on-chain",
+    "commits": "commits",
+    "moreContributors": "+{{count}} outros"
+  },
+  "builder": {
+    "title": "Criador",
+    "projects": "Projetos"
+  },
+  "table": {
+    "resultsCount": "{{count}} resultados",
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "none": "nenhum",
+    "unreachableTitle": "Não foi possível carregar {{resource}}",
+    "unreachableDesc": "A API está inacessível. Tente novamente dentro de instantes.",
+    "columns": {
+      "project": "Projeto",
+      "evidence": "Evidência",
+      "footprint": "Pegada",
+      "contracts": "Contratos",
+      "classicOps": "Ops clássicas",
+      "stars": "Estrelas",
+      "commits": "Commits",
+      "lastActivity": "Última atividade",
+      "tx": "Tx",
+      "deployer": "Criador",
+      "ledger": "Ledger",
+      "time": "Hora",
+      "wasm": "Wasm",
+      "uploader": "Carregador",
+      "repo": "Repositório",
+      "size": "Tamanho",
+      "uploaded": "Carregado",
+      "source": "Origem",
+      "kind": "Tipo",
+      "result": "Resultado",
+      "partner": "Parceiro",
+      "matched": "Correspondido",
+      "method": "Método",
+      "foundIn": "Encontrado em"
+    }
+  },
+  "tiers": {
+    "verified": "Verificado on-chain",
+    "likely": "Apenas código",
+    "possible": "Possível",
+    "unattributed": "Sem repositório"
+  },
+  "tracks": {
+    "genesis": "Génesis",
+    "scale": "Escala"
+  },
+  "places": {
+    "first": "1º lugar",
+    "runnerUp": "Finalista"
+  },
+  "footprint": {
+    "contracts": "Contratos",
+    "classic": "Apenas ops clássicas",
+    "github": "Apenas GitHub"
+  },
+  "about": {
+    "text": "Olá curioso, sou o Odii. Um builder na Stellar, já trabalhei em projetos como Sorokit, StellarTools e muitos outros. Sente-te à vontade para me seguir no GitHub, X ou LinkedIn."
+  }
+}
