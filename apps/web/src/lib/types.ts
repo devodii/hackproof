@@ -154,3 +154,13 @@ export interface CountryCount {
   country: string
   contributors: number
 }
+
+export interface SorobanError {
+  code: string
+  category: string
+  plain_english: string
+  common_cause: string
+  fix: string
+  docs_url: string
+  count: number
+}

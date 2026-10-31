@@ -3,6 +3,7 @@ from typing import Annotated, Any, Literal
 from fastapi import APIRouter, HTTPException, Query
 
 from hackproof import queries
+from hackproof.errors import SorobanError, fetch_soroban_errors
 from hackproof.schemas import (
     Builder,
     Contract,
@@ -50,6 +51,11 @@ async def countries() -> list[CountryCount]:
 @router.get("/integrations")
 async def integrations() -> list[Integration]:
     return [Integration(**row) for row in await queries.fetch_integrations()]
+
+
+@router.get("/errors")
+async def errors() -> list[SorobanError]:
+    return await fetch_soroban_errors()
 
 
 @router.get("/projects")

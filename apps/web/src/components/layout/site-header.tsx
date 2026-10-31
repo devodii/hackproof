@@ -1,4 +1,4 @@
-import { CrownIcon, ExternalLinkIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { AlertTriangleIcon, CrownIcon, ExternalLinkIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Link } from 'react-router'
 
@@ -14,12 +14,18 @@ export function SiteHeader() {
         <Link to="/" className="font-heading text-2xl leading-none">
           HackProof
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <Link
             to="/?award=first&award=runner-up"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
           >
             <CrownIcon className="size-3.5" /> Winners
+          </Link>
+          <Link
+            to="/errors"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <AlertTriangleIcon className="size-3.5" /> Errors
           </Link>
           <a
             href={REPO_URL}

@@ -1,0 +1,146 @@
+- code: TRAPPED
+  category: Execution
+  plain_english: The smart contract panicked or encountered an explicit abort instruction during execution.
+  common_cause: Division by zero, unwrap on None/Err, assertion failure, or invoking panic!() in contract logic.
+  fix: Inspect contract event logs, add error checks, and avoid unwrap() in contract functions.
+  docs_url: https://developers.stellar.org/docs/learn/smart-contract-internals/debugging
+
+- code: INSUFFICIENT_REFUNDABLE_FEE
+  category: Resources & Fees
+  plain_english: The transaction refundable fee budget was too low to cover temporary storage footprints.
+  common_cause: Underestimating the required refundable resource fee during transaction simulation.
+  fix: Re-simulate the transaction against Soroban RPC to fetch updated fee recommendations before submitting.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/fees-metering
+
+- code: RESOURCE_LIMIT_EXCEEDED
+  category: Resources & Fees
+  plain_english: The contract execution exceeded CPU instructions, memory footprint, or ledger read/write limits.
+  common_cause: Unbounded loops, large data structures, or excessive storage accesses within a single invocation.
+  fix: Optimize algorithms, paginate state reads, and inspect cost limits using soroban-cli simulation.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/fees-metering#resource-limits
+
+- code: ENTRY_ARCHIVED
+  category: State & Archival
+  plain_english: A storage entry or instance data required by the contract has expired and been archived.
+  common_cause: Persistent or instance storage TTL expired without being extended (bump_instance/bump_persistent).
+  fix: Restore the archived ledger entry via restore_footprint_op and bump TTL before invoking.
+  docs_url: https://developers.stellar.org/docs/learn/smart-contract-internals/state-archival
+
+- code: MALFORMED
+  category: Validation
+  plain_english: The host function parameters or transaction envelope structure were improperly encoded.
+  common_cause: Invalid XDR serialization, mismatched argument types, or corrupted contract spec.
+  fix: Verify parameter types against the contract specification and regenerate client bindings.
+  docs_url: https://developers.stellar.org/docs/learn/smart-contract-internals/types
+
+- code: SOROBAN_INVALID
+  category: Validation
+  plain_english: Soroban transaction footprint, resource declarations, or authorization credentials were invalid.
+  common_cause: Accessing ledger keys not declared in the read-only or read-write transaction footprint.
+  fix: Run simulation with the latest ledger state to populate an exact, valid footprint.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/transactions#transaction-footprint
+
+- code: FROZEN_KEY_ACCESSED
+  category: State & Archival
+  plain_english: The transaction attempted to access a frozen or restricted ledger key.
+  common_cause: Accessing an asset or entry that has been frozen by administrative policy.
+  fix: Ensure required assets and trustlines are active and not subject to regulatory freeze.
+  docs_url: https://developers.stellar.org/docs/tokens/control-asset-access
+
+- code: FAILED
+  category: Transaction Lifecycle
+  plain_english: One or more operations inside the transaction envelope returned a failure code.
+  common_cause: General operation failure in classic or hybrid operations within the transaction.
+  fix: Inspect individual operation result XDRs to diagnose the underlying operation failure.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/transactions
+
+- code: BAD_AUTH
+  category: Authentication
+  plain_english: The signatures provided do not satisfy the authorization thresholds of the source or contract accounts.
+  common_cause: Missing required signatures, invalid signers, or incorrect signature weights.
+  fix: Verify all required keypairs sign the transaction envelope or contract authorization credentials.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/stellar-data-structures/operations-and-transactions#authorization
+
+- code: BAD_AUTH_EXTRA
+  category: Authentication
+  plain_english: Unnecessary or unrecognized signatures were attached to the transaction envelope.
+  common_cause: Providing extraneous signatures that are not signers on the account.
+  fix: Strip unused signatures from the transaction envelope before submission.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/stellar-data-structures/operations-and-transactions#authorization
+
+- code: BAD_SEQ
+  category: Transaction Lifecycle
+  plain_english: The transaction sequence number does not match the expected source account sequence.
+  common_cause: Submitting transactions out of order or attempting to reuse a consumed sequence number.
+  fix: Fetch the current sequence number from Horizon or RPC and increment by exactly 1.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/stellar-data-structures/accounts#sequence-number
+
+- code: INSUFFICIENT_BALANCE
+  category: Resources & Fees
+  plain_english: The source account does not hold sufficient XLM balance to pay the minimum base fee or reserve.
+  common_cause: Account balance drained below minimum balance reserve (0.5 XLM per subentry + base fees).
+  fix: Fund the source account with additional XLM to cover transaction fees and base reserves.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/fees-metering#minimum-account-balance
+
+- code: INSUFFICIENT_FEE
+  category: Resources & Fees
+  plain_english: The declared base transaction fee is below the network minimum or surged mempool inclusion fee.
+  common_cause: Submitting with a fee lower than 100 stroops or lower than current surge pricing.
+  fix: Increase the maximum fee bid using RPC fee suggestions.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/fees-metering#inclusion-fee
+
+- code: NO_ACCOUNT
+  category: Authentication
+  plain_english: The source account does not exist on the ledger.
+  common_cause: Attempting to submit from an account that has not yet been created or funded with minimum balance.
+  fix: Create and fund the account with a CreateAccount operation or testnet friendbot before submitting.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/stellar-data-structures/accounts
+
+- code: TOO_EARLY
+  category: Transaction Lifecycle
+  plain_english: The transaction time bounds specify a valid after time that has not yet been reached.
+  common_cause: Ledger close time is earlier than the minTime specified in transaction time bounds.
+  fix: Adjust time bounds or wait until the ledger close time advances past minTime.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/transactions#time-bounds
+
+- code: TOO_LATE
+  category: Transaction Lifecycle
+  plain_english: The transaction time bounds maxTime expired before the transaction was closed in a ledger.
+  common_cause: Mempool latency or submission delay after transaction construction.
+  fix: Reconstruct the transaction with a wider maxTime bound or resubmit immediately.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/transactions#time-bounds
+
+- code: MISSING_OPERATION
+  category: Validation
+  plain_english: The transaction envelope contained no operations.
+  common_cause: Submitting an empty transaction envelope.
+  fix: Add at least one valid operation to the transaction envelope.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/stellar-data-structures/operations-and-transactions
+
+- code: INTERNAL_ERROR
+  category: Execution
+  plain_english: Stellar Core encountered an unexpected internal error during transaction consensus.
+  common_cause: Transient node malfunction or node desynchronization.
+  fix: Retry transaction submission through an alternative RPC endpoint or validator.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/networks
+
+- code: NOT_SUPPORTED
+  category: Validation
+  plain_english: The transaction envelope or feature version is not supported by the current network protocol.
+  common_cause: Using newer transaction features on an older network protocol version.
+  fix: Ensure SDK and tooling versions match the active network protocol version.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/networks
+
+- code: BAD_SPONSORSHIP
+  category: Validation
+  plain_english: Sponsorship operations in the transaction were invalid or misconfigured.
+  common_cause: Invalid BeginSponsoringFutureReserves / EndSponsoringFutureReserves nesting.
+  fix: Validate that sponsoring operations properly pair and enclose sponsored subentries.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/stellar-data-structures/operations-and-transactions#sponsored-reserves
+
+- code: BAD_MIN_SEQ_AGE_OR_GAP
+  category: Transaction Lifecycle
+  plain_english: Transaction precondition minSeqAge or minSeqLedgerGap was not satisfied.
+  common_cause: Attempting to submit before the required age or ledger sequence interval has elapsed.
+  fix: Verify sequence preconditions against source account and ledger close timing.
+  docs_url: https://developers.stellar.org/docs/learn/fundamentals/transactions#preconditions

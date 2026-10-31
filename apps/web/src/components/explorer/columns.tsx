@@ -1,4 +1,5 @@
 import { ExternalLinkIcon } from 'lucide-react'
+import { Link as RouterLink } from 'react-router'
 
 import type { Column } from '@/components/data-table'
 import {
@@ -143,9 +144,13 @@ export const failedColumns: Column<FailedTx>[] = [
   {
     header: 'Result',
     cell: (row) => (
-      <span className="font-mono text-xs" title={row.result_code}>
+      <RouterLink
+        to={`/errors#${row.result_code}`}
+        className="font-mono text-xs text-primary underline underline-offset-2 hover:opacity-80"
+        title={`View ${row.result_code} explanation`}
+      >
         {shortId(row.result_code.toLowerCase(), 28, 0)}
-      </span>
+      </RouterLink>
     ),
   },
   { header: 'Ledger', cell: (row) => <LedgerLink sequence={row.ledger} /> },
