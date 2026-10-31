@@ -1,7 +1,9 @@
 import argparse
 import asyncio
 import logging
+from pathlib import Path
 
+from hackproof.digest import run_digest_job
 from hackproof.export.jobs import run_export
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
@@ -23,6 +25,18 @@ def main() -> None:
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
     commands.add_parser("export", help="write the json and yaml export and its schema")
+
+    digest_parser = commands.add_parser("digest", help="render and post weekly digest")
+    digest_parser.add_argument(
+        "--fixture",
+        type=Path,
+        help="path to JSON fixture containing previous and current run snapshots",
+    )
+    digest_parser.add_argument(
+        "--webhook",
+        help="discord webhook url (defaults to DISCORD_WEBHOOK_URL env)",
+    )
+
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -38,3 +52,5 @@ def main() -> None:
             asyncio.run(run_reconcile())
         case "export":
             asyncio.run(run_export())
+        case "digest":
+            asyncio.run(run_digest_job(args.fixture, args.webhook))
