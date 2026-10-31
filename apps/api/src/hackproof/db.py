@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS repos (
     declared_track TEXT
 );
 ALTER TABLE repos ADD COLUMN IF NOT EXISTS declared_track TEXT;
+ALTER TABLE repos ADD COLUMN IF NOT EXISTS first_commit_at TIMESTAMPTZ;
 
 CREATE TABLE IF NOT EXISTS repo_contributors (
     full_name TEXT NOT NULL,

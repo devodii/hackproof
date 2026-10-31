@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Any, Literal
 
 from hackproof.db import pool
-from hackproof.hackathon import get_hackathon, places
+from hackproof.hackathon import get_hackathon, hidden_ids, places
 from hackproof.integrations.catalog import get_catalog
 from hackproof.linking.methods import METHOD_RANK_SQL
 
@@ -256,3 +256,78 @@ async def fetch_integrations() -> list[dict[str, Any]]:
 async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(COUNTRIES_SQL, limit)]
+
+def compute_deploy_histogram(
+    deltas_in_minutes: list[int | float],
+    bucket_size: int = 30,
+) -> tuple[list[dict[str, Any]], float | None]:
+    if not deltas_in_minutes:
+        return [], None
+
+    sorted_deltas = sorted(max(0.0, float(d)) for d in deltas_in_minutes)
+    n = len(sorted_deltas)
+    if n % 2 == 1:
+        median = float(sorted_deltas[n // 2])
+    else:
+        median = float((sorted_deltas[n // 2 - 1] + sorted_deltas[n // 2]) / 2)
+
+    max_val = max(sorted_deltas)
+    max_bucket_idx = int(max_val // bucket_size)
+
+    buckets = []
+    for i in range(max_bucket_idx + 1):
+        start = i * bucket_size
+        end = (i + 1) * bucket_size
+        buckets.append({
+            "bucket_index": i,
+            "min_minutes": start,
+            "max_minutes": end,
+            "label": f"{start}-{end}m",
+            "count": 0,
+        })
+
+    for d in sorted_deltas:
+        idx = min(int(d // bucket_size), max_bucket_idx)
+        buckets[idx]["count"] += 1
+
+    return buckets, round(median, 1)
+
+
+DEPLOY_DELTAS_SQL = """
+WITH first_deploys AS (
+    SELECT COALESCE('repo:' || a.full_name, 'acct:' || c.deployer) AS project_id,
+           min(c.deployed_at) AS first_deployed_at
+    FROM contracts c
+    LEFT JOIN attribution a ON a.subject_kind = 'contract' AND a.subject = c.contract_id
+    WHERE c.deployed_at BETWEEN $1 AND $2
+    GROUP BY COALESCE('repo:' || a.full_name, 'acct:' || c.deployer)
+)
+SELECT p.project_id,
+       fd.first_deployed_at,
+       EXTRACT(EPOCH FROM (fd.first_deployed_at -
+           CASE
+               WHEN r.first_commit_at IS NOT NULL THEN r.first_commit_at
+               WHEN r.created_at IS NOT NULL AND r.created_at >= $1 THEN r.created_at
+               ELSE $1
+           END
+       )) / 60.0 AS delta_minutes
+FROM projects p
+JOIN first_deploys fd ON fd.project_id = p.project_id
+LEFT JOIN repos r ON r.full_name = p.full_name
+WHERE p.tier IN ('verified', 'likely')
+  AND ($3::text[] IS NULL OR NOT (p.project_id = ANY($3) OR p.full_name = ANY($3)))
+"""
+
+
+async def fetch_time_to_deploy() -> dict[str, Any]:
+    start, end = window()
+    hidden = hidden_ids() or None
+    async with pool().acquire() as connection:
+        rows = await connection.fetch(DEPLOY_DELTAS_SQL, start, end, hidden)
+    deltas = [row["delta_minutes"] for row in rows if row["delta_minutes"] is not None]
+    buckets, median = compute_deploy_histogram(deltas)
+    return {
+        "total_projects": len(deltas),
+        "median_minutes": median,
+        "buckets": buckets,
+    }

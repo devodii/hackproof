@@ -1,11 +1,13 @@
 import { motion } from 'motion/react'
 
 import { CountUp } from '@/components/count-up'
+import { Histogram } from '@/components/charts/histogram'
 import { TimelineArea } from '@/components/charts/timeline-area'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useStats } from '@/hooks/use-stats'
 import { useTimeline } from '@/hooks/use-timeline'
+import { useTimeToDeploy } from '@/hooks/use-time-to-deploy'
 import { formatNumber, tierLabel } from '@/lib/format'
 import type { Stats } from '@/lib/types'
 
@@ -90,6 +92,47 @@ function ActivityCard({ contracts }: { contracts?: number }) {
   )
 }
 
+function TimeToDeployCard() {
+  const { data, isPending } = useTimeToDeploy()
+
+  return (
+    <Card className="lg:col-span-3">
+      <CardHeader>
+        <CardDescription>
+          Time from first commit in window to first on-chain deploy (30 min buckets)
+        </CardDescription>
+        <div className="flex flex-wrap items-baseline gap-4">
+          <CardTitle className="text-3xl sm:text-4xl">
+            {isPending ? (
+              <Skeleton className="h-9 w-32" />
+            ) : data?.median_minutes !== null && data?.median_minutes !== undefined ? (
+              <span>Median: {data.median_minutes}m</span>
+            ) : (
+              <span>No deploy data</span>
+            )}
+          </CardTitle>
+          {data && data.total_projects > 0 && (
+            <span className="text-xs text-muted-foreground">
+              across {data.total_projects} projects with deployments
+            </span>
+          )}
+        </div>
+      </CardHeader>
+      <CardContent>
+        {isPending ? (
+          <Skeleton className="h-52 w-full" />
+        ) : data && data.buckets.length > 0 ? (
+          <Histogram buckets={data.buckets} median={data.median_minutes} className="h-52 w-full" />
+        ) : (
+          <div className="flex h-52 items-center justify-center text-sm text-muted-foreground">
+            No deploy timing records available yet.
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  )
+}
+
 export function Overview() {
   const { data: stats } = useStats()
 
@@ -104,6 +147,7 @@ export function Overview() {
       <div className="grid gap-4 lg:grid-cols-3">
         <ActivityCard contracts={stats?.contracts} />
         <ProjectsCard stats={stats} />
+        <TimeToDeployCard />
       </div>
       <dl className="grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl border bg-card px-5 py-4 sm:grid-cols-3 lg:grid-cols-5">
         {SECONDARY.map(({ key, label }) => (

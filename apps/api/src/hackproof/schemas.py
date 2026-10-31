@@ -149,3 +149,17 @@ class CountryCount(BaseModel):
 class Page[T](BaseModel):
     items: list[T]
     total: int
+
+
+class DeployBucket(BaseModel):
+    bucket_index: int
+    min_minutes: int
+    max_minutes: int
+    label: str
+    count: int
+
+
+class TimeToDeployResponse(BaseModel):
+    total_projects: int
+    median_minutes: float | None
+    buckets: list[DeployBucket]

@@ -154,3 +154,17 @@ export interface CountryCount {
   country: string
   contributors: number
 }
+
+export interface DeployBucket {
+  bucket_index: number
+  min_minutes: number
+  max_minutes: number
+  label: string
+  count: number
+}
+
+export interface TimeToDeployData {
+  total_projects: number
+  median_minutes: number | null
+  buckets: DeployBucket[]
+}

@@ -15,6 +15,7 @@ from hackproof.schemas import (
     Stats,
     Tier,
     TimelinePoint,
+    TimeToDeployResponse,
     WasmUpload,
 )
 
@@ -36,6 +37,12 @@ async def _page(resource: queries.Resource, q: str | None, limit: int, offset: i
     items, total = await queries.list_page(resource, q=q, limit=limit, offset=offset)
     return Page(items=items, total=total)
 
+
+
+
+@router.get("/time-to-deploy")
+async def time_to_deploy() -> TimeToDeployResponse:
+    return TimeToDeployResponse(**await queries.fetch_time_to_deploy())
 
 @router.get("/timeline")
 async def timeline() -> list[TimelinePoint]:
