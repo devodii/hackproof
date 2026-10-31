@@ -38,7 +38,11 @@ uv run hackproof discover
 uv run hackproof scan
 uv run hackproof reconcile
 uv run hackproof export
-```
+uv run hackproof export-schemas
+`
+
+All dataset exports and public API response models are versioned and validated against schemas published under [pps/web/public/schema/](apps/web/public/schema/):
+- **[Schema Index](apps/web/public/schema/index.json)**: Complete catalog of dataset export schemas (v1.0, v1.1, v1.2) and public API response schemas.``
 
 ## Checks
 
