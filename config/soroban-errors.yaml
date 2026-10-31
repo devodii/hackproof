@@ -1,0 +1,28 @@
+errors:
+  - code: TRAPPED
+    category: Contract Execution
+    plain_english: The contract encountered an unrecoverable error during execution
+    common_cause: Invalid input parameters or contract code bug
+    fix: Validate inputs and inspect contract logs for specific trap cause
+    docs_url: https://soroban.stellar.org/docs/fundamentals-and-concepts/errors#trapped
+
+  - code: INSUFFICIENT_REFUNDABLE_FEE
+    category: Resource Management
+    plain_english: Transaction fee was too low to cover refundable costs
+    common_cause: Underestimated resource fees for contract operations
+    fix: Increase the transaction fee or optimize contract operations
+    docs_url: https://soroban.stellar.org/docs/fundamentals-and-concepts/fees#insufficient-refundable-fee
+
+  - code: RESOURCE_LIMIT_EXCEEDED
+    category: Resource Management
+    plain_english: Transaction exceeded allowed resource limits
+    common_cause: Complex contract operations or excessive data processing
+    fix: Simplify operations or break into smaller transactions
+    docs_url: https://soroban.stellar.org/docs/fundamentals-and-concepts/limits#resource-limit-exceeded
+
+  - code: ENTRY_ARCHIVED
+    category: Data Availability
+    plain_english: Required ledger entry was archived and unavailable
+    common_cause: Accessing old ledger data beyond retention period
+    fix: Ensure transactions reference recent ledger state
+    docs_url: https://soroban.stellar.org/docs/fundamentals-and-concepts/ledger-entry-archival#entry-archived

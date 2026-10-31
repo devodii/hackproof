@@ -1,0 +1,21 @@
+import yaml
+from hackproof.config import ROOT
+
+def test_error_taxonomy_completeness():
+    """Ensure all possible Soroban result codes are documented"""
+    # Load known Soroban error codes (extend this list as Soroban evolves)
+    soroban_docs = "https://soroban.stellar.org/docs/reference/errors"
+    known_codes = {
+        "TRAPPED",
+        "INSUFFICIENT_REFUNDABLE_FEE",
+        "RESOURCE_LIMIT_EXCEEDED",
+        "ENTRY_ARCHIVED",
+        # Add other known Soroban error codes here
+    }
+    
+    with open(ROOT / "config" / "soroban-errors.yaml") as f:
+        config = yaml.safe_load(f)["errors"]
+        config_codes = {err["code"] for err in config}
+    
+    undocumented = known_codes - config_codes
+    assert not undocumented, f"Undocumented error codes: {undocumented}"
