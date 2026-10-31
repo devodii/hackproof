@@ -8,6 +8,8 @@
     "build": "pnpm --filter web build",
     "lint": "pnpm --filter web lint",
     "format": "pnpm --filter web format",
-    "format:check": "pnpm --filter web format:check"
+    "format:check": "pnpm --filter web format:check",
+    "build:mcp": "pnpm --filter hackproof-mcp build",
+    "test:mcp": "pnpm --filter hackproof-mcp test"
   }
 }
