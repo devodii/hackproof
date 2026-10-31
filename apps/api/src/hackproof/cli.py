@@ -6,6 +6,7 @@ from hackproof.export.jobs import run_export
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
 from hackproof.linking.reconcile import run_reconcile
+from hackproof.scaffold import run_new_hackathon_interactive
 
 
 def main() -> None:
@@ -23,6 +24,23 @@ def main() -> None:
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
     commands.add_parser("export", help="write the json and yaml export and its schema")
+
+    new_hackathon = commands.add_parser(
+        "new-hackathon", help="scaffold configuration for a new hackathon event"
+    )
+    new_hackathon.add_argument("--slug", help="hackathon slug (e.g. hacklisbon-2027)")
+    new_hackathon.add_argument("--name", help="hackathon display name (e.g. HackLisbon 2027)")
+    new_hackathon.add_argument(
+        "--start", help="hack window start datetime (e.g. 2027-04-10T09:00:00Z)"
+    )
+    new_hackathon.add_argument("--end", help="hack window end datetime (e.g. 2027-04-11T18:00:00Z)")
+    new_hackathon.add_argument(
+        "--pull-start", help="optional pull start datetime (default: 1 hour before start)"
+    )
+    new_hackathon.add_argument(
+        "--output", "-o", help="output file path (default: config/{slug}.yaml)"
+    )
+
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -38,3 +56,12 @@ def main() -> None:
             asyncio.run(run_reconcile())
         case "export":
             asyncio.run(run_export())
+        case "new-hackathon":
+            run_new_hackathon_interactive(
+                slug=args.slug,
+                name=args.name,
+                start=args.start,
+                end=args.end,
+                pull_start=args.pull_start,
+                output=args.output,
+            )
