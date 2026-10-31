@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/slimepay/stellar-anchor
+repo_url: https://github.com/slimepay/stellar-anchor
+name: stellar-anchor
+description: Slimepay's Stellar Anchor
+homepage: https://stellar-anchor-production.up.railway.app
+language: Go
+topics:
+- b2b
+- cross-border-payments
+- sep10
+- stellar
+- stellar-network
+created_at: '2026-07-01T08:48:12Z'
+owner: slimepay
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 8
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 6
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBHZJYFAUF3QK47NQQAGWAOUOXFMY6DQ2UUX6IJUDPCKDKKMU4FKTWGE
+  - GDRGQ7VUJSLDK4B5BLR7QPLI2YWDACBSRZ33XHIQOP5KESN72JFFEFJK
+  evidence:
+  - kind: account
+    subject: GBHZJYFAUF3QK47NQQAGWAOUOXFMY6DQ2UUX6IJUDPCKDKKMU4FKTWGE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBHZJYFAUF3QK47NQQAGWAOUOXFMY6DQ2UUX6IJUDPCKDKKMU4FKTWGE
+    file_url: https://github.com/slimepay/stellar-anchor/blob/HEAD/docs/TRANCHE1_EVIDENCE.md
+  - kind: account
+    subject: GDRGQ7VUJSLDK4B5BLR7QPLI2YWDACBSRZ33XHIQOP5KESN72JFFEFJK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDRGQ7VUJSLDK4B5BLR7QPLI2YWDACBSRZ33XHIQOP5KESN72JFFEFJK
+    file_url: https://github.com/slimepay/stellar-anchor/blob/HEAD/docs/TRANCHE1_EVIDENCE.md
+contributors:
+- login: jhmeel
+  contributions: 26

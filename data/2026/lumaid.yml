@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/nielslecodeur/Lumaid
+repo_url: https://github.com/nielslecodeur/Lumaid
+name: Lumaid
+language: TypeScript
+created_at: '2026-10-25T10:50:38Z'
+owner: nielslecodeur
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 45
+stack:
+  '@stellar/stellar-sdk': 16.4.1
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+  - GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+  - GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+  - GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
+  evidence:
+  - kind: account
+    subject: GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBEMLRZI3BWWVG6T3ZZQM2CC2OFGYDD6PJ54IT3HF2JJEEK45UVXUQPA
+    file_url: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/integration-a.json
+  - kind: account
+    subject: GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBUYHRAWUQDYV6OAXGJSL2T7PFAIX4IEKCQYCJMBIZPII2GSYXIIEHQ6
+    file_url: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/agent-invoice-lab.json
+  - kind: account
+    subject: GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCKLD6EHIY4I3CG4HDHSIRS634ATRZUE2VMXSFFT3EPRF4JD7VYNHWMY
+    file_url: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/integration-a.json
+  - kind: account
+    subject: GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDPSK345QY2GXPGJ4QSTKFPLIFIBRTC2CEDWMI7YKR355BJBTUYD4GAP
+    file_url: https://github.com/nielslecodeur/Lumaid/blob/HEAD/evidence/public/agent-invoice-lab.json
+contributors:
+- login: nielslecodeur
+  contributions: 31
+- login: armand418
+  contributions: 15

@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/HassanKorey/SoroStream-app
+repo_url: https://github.com/HassanKorey/SoroStream-app
+name: SoroStream-app
+description: Next.js dApp (frontend/), TypeScript Client SDK (sdk/), FastAPI Indexer (backend/), and CLI deployment scripts
+  (scripts/) for SoroStream
+language: TypeScript
+license: MIT
+created_at: '2026-10-26T10:14:38Z'
+owner: HassanKorey
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 7
+stack:
+  '@stellar/stellar-sdk': ^12.3.0
+  '@stellar/freighter-api': ^2.0.0
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/HassanKorey/SoroStream-app/blob/HEAD/frontend/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: HassanKorey
+  contributions: 7

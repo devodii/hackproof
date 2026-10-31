@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/BLNT-Protocol/blnt-v3-migration
+repo_url: https://github.com/BLNT-Protocol/blnt-v3-migration
+name: blnt-v3-migration
+description: BLNT v3 migration
+language: Shell
+license: AGPL-3.0
+created_at: '2026-07-23T06:34:14Z'
+owner: BLNT-Protocol
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 23
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 6
+  wasm_uploads: 5
+  classic_ops: 0
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GAOGCZLQ6KA2JMS6GJYCSJ6EDMRJPKQPHO37ZBZVR73FQEJVX3G7JV2C
+  evidence:
+  - kind: contract
+    subject: CBAILYRLIW6PCEVM6JHAOUCYQ5TJYIHOR3NKOU6VJVHQTSQYY2QUJJZQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBAILYRLIW6PCEVM6JHAOUCYQ5TJYIHOR3NKOU6VJVHQTSQYY2QUJJZQ
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+  - kind: contract
+    subject: CBDHFIGD22IM5ZGEK3454CRUC4GIERV6YW3ECLRYXIGPTK2SSLIGEITL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBDHFIGD22IM5ZGEK3454CRUC4GIERV6YW3ECLRYXIGPTK2SSLIGEITL
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+  - kind: contract
+    subject: CBTBBB4HIGVUI7BP7VSYM3KG52Q3W6JS2GIVDZXGBXAP3CPAFJB3P52D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTBBB4HIGVUI7BP7VSYM3KG52Q3W6JS2GIVDZXGBXAP3CPAFJB3P52D
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+  - kind: contract
+    subject: CCYAXETLBN2AOIMHXXBKANO3BLMDJOLKQV2RSHIGLMQKU5FQLYJ2VMS2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCYAXETLBN2AOIMHXXBKANO3BLMDJOLKQV2RSHIGLMQKU5FQLYJ2VMS2
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+  - kind: contract
+    subject: CDDQOCMWPEV23DHHQKQVLRGZKB4LEIO7B4OR6TTIDQCTOLVALD2EDDTP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDDQOCMWPEV23DHHQKQVLRGZKB4LEIO7B4OR6TTIDQCTOLVALD2EDDTP
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+  - kind: contract
+    subject: CDYZDX4QBHID3LAJ2WLN7GMM7SOVD6LUX37HZVEMCINNC67KFU63SHCU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDYZDX4QBHID3LAJ2WLN7GMM7SOVD6LUX37HZVEMCINNC67KFU63SHCU
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+  - kind: wasm
+    subject: 31328050548831f63d2b72e37bcfd0bb7371b7907135755dbe09ed434d755ca9
+    method: wasm_hash_match
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployed-artifacts/mainnet/v2-pool-factory.wasm
+  - kind: wasm
+    subject: 438a5528cff17ede6fe515f095c43c5f15727af17d006971485e52462e7e7b89
+    method: wasm_hash_match
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployed-artifacts/mainnet/emitter.wasm
+  - kind: wasm
+    subject: a41fc53d6753b6c04eb15b021c55052366a4c8e0e21bc72700f461264ec1350e
+    method: wasm_hash_match
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployed-artifacts/mainnet/v2-pool.wasm
+  - kind: wasm
+    subject: c1f4502a757e25c611f5a159bc1ab0eef64085adac6c68123dca66e87faffbc2
+    method: wasm_hash_match
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployed-artifacts/mainnet/v2-backstop.wasm
+  - kind: account
+    subject: GAOGCZLQ6KA2JMS6GJYCSJ6EDMRJPKQPHO37ZBZVR73FQEJVX3G7JV2C
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAOGCZLQ6KA2JMS6GJYCSJ6EDMRJPKQPHO37ZBZVR73FQEJVX3G7JV2C
+    file_url: https://github.com/BLNT-Protocol/blnt-v3-migration/blob/HEAD/deployments/testnet-source-verification.json
+contributors:
+- login: levinson
+  contributions: 169

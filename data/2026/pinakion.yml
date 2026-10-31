@@ -1,0 +1,594 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/ThaisFReis/pinakion
+repo_url: https://github.com/ThaisFReis/pinakion
+name: pinakion
+description: Verifiable jury selection for governance on Stellar.
+language: Rust
+license: MIT
+created_at: '2026-10-25T17:36:24Z'
+owner: ThaisFReis
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 90
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 13
+  wasm_uploads: 10
+  classic_ops: 8
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA3MQGZEUNE4PN7YRIHGIQBVLJAKXEGMQSNMMJYI74Y4AUGFLZ4J4KLI
+  - GA4J6PF77US4YZFFCJYSYIP2GXUMSX75BQTFPRZ5FTHLND3525MDAVZY
+  - GA5TABSHKVNCKHJ5LQUJOW5HATA6BJPIWKODQ2Z6XFH22ZQ7W2YMJB7R
+  - GA7YH25GAHKHECESZPAFMNGJARBEU7IITJJTTAYIM7MCHSARH6WUZAKL
+  - GADPPAUIN47RO2PT2GZQSAQCPUKVTU7DQTGBMTE2G4ZISMTP3TE7MI67
+  - GAEQ7IC2GXD6ET62C7FMCIHPNCLBP7NH3F44T4SL2BA7YDL2B5Z4SLPW
+  - GAEZBHTKFRX5JTCWZXKSX6BPT75WSILEV7OEPWU42IRR6ADMLETEKZQY
+  - GAFLWZHYYBVPYZSWXERQY4GD75NTU3GHWQGIZXEMOA3JDUGOJJ3HSM2J
+  - GAGDVLE6NDDYLYGC2PZRHMB6OOA4KQEOWYG6EBHO7PEZNPDK5JECVVX2
+  - GAI2OVOJSOQGQNMVU2OBGUVCUOAEN6BABUHYH26AVDFC2MRZJVNCF3SM
+  - GAJ3UQHSUABDV5GRTJRGOWTVEIRIOFPMMJHBATGYPTE6KH3CMO27VQBJ
+  - GAKV6AV6ZPVLIAGFWOKOBYE7HI6F2SWQXFMVYWF656WIDQJ5K4NZFF7A
+  - GANT5QWCPXLUI2AJPCSTXXWPW65HWODLQHQXCAOXHDNZFEGRV64IROL5
+  - GANUGDZ5DBC3S34G77SYQFIQKQ45UNFGYLOIN66CKO3TU7AIHQ6ZQUJY
+  - GAQDEW5UWVQG24CBCF5M2CNB2VBLB4IS3Z376FIRFUGNJJDOCEO7GMHU
+  - GAQJTWA5LRMW6FU4Z7WJ7XVPNBTT37KLVAWWSZIDHZLNN4MCSFIHZWNA
+  - GATVZIMSK6SRSUZOUXCF3EKQD42QI7IHRPS75LQNIREC7BCHPEC6FHQB
+  - GAVJQRHK5QUA63YTL6GZ2H2B2QRWJJULK33R3LQZEC4CCOUU4FMOZ4A6
+  - GAVVHLZ7CKZ5Z3GRWVSNLESTFGERVMMS3KVL66H2QW2DWAC3HFYJFPT6
+  - GAXBR4NR2PNMIKI7HM5OLPMTE3S4BJQ3CFD7J6RT7Z3GZQ6INGQMDQBA
+  - GAZ2ZK75NQKW2DZN6YLJKQNLGWL7RYCLBJTPTBYVWDYUFZB7OG4EDYWF
+  - GB2Y3HF2WDPXO23S6KKEDJYV4AQFAFAEA3K6CNY4A3J5FUXJ4NCJJFRY
+  - GB2YR4CWH2ZVIGCMEUFWKHJUTI5LWHECKR5QEHSAO4WOCF5MT6DG6BBF
+  - GBA5L2GMGLF4TYQEF2Q4NXGEHVIZAJFEFG65OJAE3XZDDTSCPZUKRYFG
+  - GBAMIBZHR4G44UOTR256LISSNG2YIAJIBFWPVHBG6OMRHPH2AE2DCQJ3
+  - GBARTUOORZELMMGS5ZTX2ZMDMM3S54E5CFJ27KEABNFAGFYV7M5IDEGT
+  - GBAUC7LRXC6GDYKYY55TDHMGTLMNY6OQFZRCE7EU5QQMZU74FKM46XRW
+  - GBBYYQHH4PFXQLCZSBM3JSFLZRBDQSLXQ2NTPX67U7HCTCYSTNTAVVIS
+  - GBFNFE4DXJT7ZL4ER2JHNVORGUDV6UIAWVUQSMV7QSVAUPQYTTD2BYOF
+  - GBGMLVWDPIYZECA7A6N75P7Q33WOCBCGKHN46QUDBFKAV7YJ4KAEJT2Q
+  - GBHH3HSHH2JBIBN2LFYKVEBAQOEPPZUC5XDX6W6KWAEBEFLMVQY2FYWL
+  - GBHJMBVH6HSRFN32KJGCWUJEMFOSC3JKIDDVWVWSBZC3ORBVOSL4I3TV
+  - GBJ5POXZFEOIZWI5XNMRE2EXZNVQWFBWD54OZCH3XNNFGACTA6NINWYB
+  - GBJFU5QFA3XRA2HQVH2MQWH7IJQS5RUOIVYLIYJLNRR7W26G5DCQFREQ
+  - GBKSCY56YSGEQSITTNVEEAN44GV5ZNNQM7NWIOSZ5QU7VRXR5D3SY5OQ
+  - GBMCQ3TIBT35NEKEMH5L4QZFIJ44OXGRD4LZDCEZ3A67V6Y6CKCWK7UN
+  - GBNOU7OD3BJD2P7Y4TLDVWWOFYXBLLO6JIXIVS2PXPZ7LQAMBBCN7HAH
+  - GBNSGLFMQ6KK2L7DEJ4A42A5RSTNH7QG2Y5TYZ3ODZKVPV2V55MJBZYH
+  - GBOZ2ZQY2UL3LQQXEYDXA255EJTGC7VSKJTDJ226MLQVU4A4KY4AVALH
+  - GBPNRRSDAG4VASSNQXDNPCDABVUHWVA3DWQHFQ742ZI2EH7C4O3ZCFJC
+  - GBQLVILUZJJPUTPXEYJTV6QRUI2NAWOQBRHH2GLNSUQIS2PPSKER7H44
+  - GBQTGCNLKCLLK3MHXK23JL7H4DTMI5CAH6HLD3MRLJY6JSPI4W5TRKZ2
+  - GBRL2MHG7PS72TK7PBL6J3YAPKXJIERIYSZTTNDQ3YGSIPGOA5TE46D6
+  - GBRM7MPTHPSG72BUJNATXI42AWGM32UXFXK36GQHWYG4XGNEDRGK4TSM
+  - GBRNGDSAHMWJTT6VYYINHWYJASWGZUOQDP2U54XMRUPLUXED2Q7PSSLC
+  - GBUH2F4QKXVCUVZQAZZ2RFLKCBEKATSZEL2SV2GKTD4NLZKWOUFQ2YXB
+  - GBVD4CGGGNR3H5PHDXL2WNVFDC54XELNDCDMDLTXHPHSOHSG5C5DWE7X
+  - GBXAKOBGO3KI4AK4LDTIITUNGZQP4XBEJGAQSAJMTFI6NHGP26EAI3QT
+  - GBXUX3NVOW7JINWGAXDNQHM6GURMTQXIVWON5QKIDJR45SG2PKGN3QRC
+  - GBYISIRNQJWPPA3LXYS4PG5MVJHFE2GDKDTEKHGNONBOT5IXYPDWXKVJ
+  - GBYL67XF4VUQBKHDZS7X3IO3EBCA5PBMTRMBLHFC7FKEJUG4FJVOIFOM
+  - GBYRDAMCKMCNNNROIMMQWRVYM3VL2BSHEOPNBY2V75R3C6LIF7SKPNDS
+  - GBZGNQ7V3YA4WLHFLX23RWUAOFBBRTSP2ZN65LQZEWXZYLBCVIEPGHKC
+  - GC3JC24U74YAIY26MEQMV6LZLVBDMR6CVF2AOAN6UA5XEGZ6EZOADRBB
+  - GC3UQ3GQFJZFZYVJ6N7VLG6FXONZJNJFY5B3U7M4NHSIENTDIVKSANJK
+  - GC4ACUDKXVRP3AS56G5TSPZ4UBDUMPIWPANZOVPNWEG6CQVZQ5NO25MW
+  - GC5Z55ME4WQPSLT7GIFOOJEGZVKWDUVVGGACXQ4LDVWOLTOJK7KGZXEL
+  - GC6LRLV4T2UJF5CR7EQLKTVJX7U4MQ3I5ONH4N4K4KZTZF2LV5ZBQ6HT
+  - GCGIXRX6TDIDIDJOZWFXHHSIYR22NRBMUHKZKXPSC5JHNNY3G7OVSWZS
+  - GCHTCW6IUVTINWFHMGFSYE2WCIFHHXQHZ2BOETV7GWPNOTDPISKMOEFA
+  - GCM3OZ3T2EPXUMB5RWI2H2KKULYZA7ZOWIXUKTSDAXWKYQBD32W4WEVI
+  - GCOACDGKC5KBPQL7IKBCCX35V2OTNEN2ZWBPEVY6K775EZFPRUB4HW32
+  - GCOEZHYM3AEV5OJNGMXWNTEWGNFBW2RCNZYOJJDERUUGSZTOOUYDCB2A
+  - GCPRH6WT4ATLGCYUTD7V5C2U6YFQ5X5YFGDN4IT3YRSZGJG5D2KC6WRD
+  - GCTB4QAOSTZUQRJLU5YO4EKQK4TABJYTNUVEGUHNGPKEBAG45O5EIUZY
+  - GCU7K7PPGS557IEVJ2KI5UOPPRS7NLTLQI5JGC2GODMGW7KHPCL6TY5D
+  - GCUT6I4FXMGAH3SA4KTLYOZLIC22TFHV4HCF4UI7VXHGQQGLNMZQ7V6D
+  - GCVOCQEVVVEGRQX243AEZJ65RVCRYFSAQAW3A34HBVWM52PTTJPGOK4N
+  - GCYLO4Q2DKJFKVRRJ3775RDCR3MADJASV65BUBI3XA4QXJMKKWSMKPC5
+  - GD3EWFREQTUVAP4US3SSLJG5UMNTIW2EMSZCXNWAMCQND5ZPRMQAN2O3
+  - GD3YOZ4VSPV6M4QV7YFYAV2DTSROY3LM63VGBNWVUC27PMCFZ4ED72YJ
+  - GD4HEIDQTHFF5FOIDUKGZVA3L2DDACUQPIL2NR36QGAG7XEIZJSJ2MIP
+  - GDA4BXEHPVHLDOTF27HN67GTDPSETSO6O5AHQGWFYW5MBL2H2RLZW2IO
+  - GDBVNIPTMVXUGMCZYDG32B64FA4HDP74BHUHUKGTDZKTQMZZHPEA4QQ4
+  - GDFBOJ76RIS5UFXUH4OF2F2A7SXO7OEWVWE6M7CJJKCG4S6Q5LXB3TT4
+  - GDGMDW32OXKLQ24ONZJW5AGZJKKVMVAE5VB4IM4PF2H42RK5VZKAJMGK
+  - GDH2OV3KTUKWYIKGI7BIQHZUZDHFSAQQV5OT6S5JMCFUS7OQO5KAW6CG
+  - GDHJSZACGX5JDBX622S3TSWAF3F6IV7XUB5KCAE6CJROA4YVD23O6XBZ
+  - GDJO7EFV2DFQG6V4L7EWOVFZZE6PZIWEQM2BTT4GBC4RTXPTNZTFCIJ7
+  - GDLOMYKHMV54FSXV5RTYZZ2YR53F4GHXEBDPGOJVSW42SWFUGDX7YHMJ
+  - GDO6DZ7GZ5WGMWIN4GY6RTQBYN5XN2UAVK7SVGRSQWP4IQOMWOFSWOTT
+  - GDR4FVPBTFBRWHQ4BB2PHTZOK77IOLKTRIJRCPMG3MTIOLCVOGDZFYDD
+  - GDT6RNH6KBWFKRETZLOIFMJLWMP7HF6AMDSRXMAPCVDRPCKRD3ZP4HND
+  - GDUA5Y7SWY7KZAFMYRAAJR2NLXHAI7NXC5OZLHFO54FSMW5EIFEXNBDJ
+  - GDUU5QBORBI34S6ZVWP66YQIQU2G7TISP54M4IP5HEGJAEGV7UBM4AZQ
+  - GDYPNNMDA5DIQBIP3J3CEJV5BECKHJV3P4C4VEDNWQPV7P6LXXCLDZNW
+  - GDZLQYUVZ233J7LYLEAWYLQYUQAMLZSI6EQ7VSKX7EUCNZL7N2CJSZRD
+  evidence:
+  - kind: contract
+    subject: CBEX5AEAUDKK4SUZGXQPM26QZHNZZ5X3ELCSIQJ3V6SZKUCQ4B57NI5F
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBEX5AEAUDKK4SUZGXQPM26QZHNZZ5X3ELCSIQJ3V6SZKUCQ4B57NI5F
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: contract
+    subject: CBPHNZLGQIUEC4BEC53ZP7P65LLIBT5JTWTHMZVAMCGZCEN3PSUHTPQN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBPHNZLGQIUEC4BEC53ZP7P65LLIBT5JTWTHMZVAMCGZCEN3PSUHTPQN
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-sorteio.md
+  - kind: contract
+    subject: CBUQU5MH2KWBWDHQEZL53U7CYPMKHLI3USOJOHE544IIOG7PWFQRLSFL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBUQU5MH2KWBWDHQEZL53U7CYPMKHLI3USOJOHE544IIOG7PWFQRLSFL
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-bilhete.md
+  - kind: contract
+    subject: CBVWEEIGMZWLGSK4JG5M5VP6N4DWTZXAN4V2EHVXHZ6B74MNHHH3MIA3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVWEEIGMZWLGSK4JG5M5VP6N4DWTZXAN4V2EHVXHZ6B74MNHHH3MIA3
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-sorteio.md
+  - kind: contract
+    subject: CCICALAV6OQOOE347USWKQUASXFRXY6VTC2JBWA55SJVSSKVPVXPMCE3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCICALAV6OQOOE347USWKQUASXFRXY6VTC2JBWA55SJVSSKVPVXPMCE3
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-spike.md
+  - kind: contract
+    subject: CCRBKLS64WDUSKQSQF4ON4GJF4Q5KPEAF54TQD4RIWDAJ5TOERKU2NVL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCRBKLS64WDUSKQSQF4ON4GJF4Q5KPEAF54TQD4RIWDAJ5TOERKU2NVL
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/README.md
+  - kind: contract
+    subject: CCVLAMSF7SXEVU4EJIHN7P24HHBGKJPKLJ26DXR7DAWPLEG66IYYR6F2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCVLAMSF7SXEVU4EJIHN7P24HHBGKJPKLJ26DXR7DAWPLEG66IYYR6F2
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: contract
+    subject: CCWD4XWB6L5LF3RVL2JHPKPIRIFJ47PCNRCBRJLPEMYGQSPNAZXKZCSH
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCWD4XWB6L5LF3RVL2JHPKPIRIFJ47PCNRCBRJLPEMYGQSPNAZXKZCSH
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-bilhete.md
+  - kind: contract
+    subject: CCX3X4IH5PNELSDAF2WOBR27IJ4PYBQFH5CQPF25YPZU5PBHEYBSEO5Q
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCX3X4IH5PNELSDAF2WOBR27IJ4PYBQFH5CQPF25YPZU5PBHEYBSEO5Q
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: contract
+    subject: CDWBWAHUZ3MC3BJXJIW5O74MNUXH76VCGBIVFQU3XJJFGML3VKFIXQT7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDWBWAHUZ3MC3BJXJIW5O74MNUXH76VCGBIVFQU3XJJFGML3VKFIXQT7
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/SOURCES.md
+  - kind: account
+    subject: GA3MQGZEUNE4PN7YRIHGIQBVLJAKXEGMQSNMMJYI74Y4AUGFLZ4J4KLI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA3MQGZEUNE4PN7YRIHGIQBVLJAKXEGMQSNMMJYI74Y4AUGFLZ4J4KLI
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GA4J6PF77US4YZFFCJYSYIP2GXUMSX75BQTFPRZ5FTHLND3525MDAVZY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA4J6PF77US4YZFFCJYSYIP2GXUMSX75BQTFPRZ5FTHLND3525MDAVZY
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GA5TABSHKVNCKHJ5LQUJOW5HATA6BJPIWKODQ2Z6XFH22ZQ7W2YMJB7R
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA5TABSHKVNCKHJ5LQUJOW5HATA6BJPIWKODQ2Z6XFH22ZQ7W2YMJB7R
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GA7YH25GAHKHECESZPAFMNGJARBEU7IITJJTTAYIM7MCHSARH6WUZAKL
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA7YH25GAHKHECESZPAFMNGJARBEU7IITJJTTAYIM7MCHSARH6WUZAKL
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GADPPAUIN47RO2PT2GZQSAQCPUKVTU7DQTGBMTE2G4ZISMTP3TE7MI67
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GADPPAUIN47RO2PT2GZQSAQCPUKVTU7DQTGBMTE2G4ZISMTP3TE7MI67
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAEQ7IC2GXD6ET62C7FMCIHPNCLBP7NH3F44T4SL2BA7YDL2B5Z4SLPW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAEQ7IC2GXD6ET62C7FMCIHPNCLBP7NH3F44T4SL2BA7YDL2B5Z4SLPW
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAEZBHTKFRX5JTCWZXKSX6BPT75WSILEV7OEPWU42IRR6ADMLETEKZQY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAEZBHTKFRX5JTCWZXKSX6BPT75WSILEV7OEPWU42IRR6ADMLETEKZQY
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-bilhete.md
+  - kind: account
+    subject: GAFLWZHYYBVPYZSWXERQY4GD75NTU3GHWQGIZXEMOA3JDUGOJJ3HSM2J
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAFLWZHYYBVPYZSWXERQY4GD75NTU3GHWQGIZXEMOA3JDUGOJJ3HSM2J
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAGDVLE6NDDYLYGC2PZRHMB6OOA4KQEOWYG6EBHO7PEZNPDK5JECVVX2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAGDVLE6NDDYLYGC2PZRHMB6OOA4KQEOWYG6EBHO7PEZNPDK5JECVVX2
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GAI2OVOJSOQGQNMVU2OBGUVCUOAEN6BABUHYH26AVDFC2MRZJVNCF3SM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAI2OVOJSOQGQNMVU2OBGUVCUOAEN6BABUHYH26AVDFC2MRZJVNCF3SM
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GAJ3UQHSUABDV5GRTJRGOWTVEIRIOFPMMJHBATGYPTE6KH3CMO27VQBJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAJ3UQHSUABDV5GRTJRGOWTVEIRIOFPMMJHBATGYPTE6KH3CMO27VQBJ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAKV6AV6ZPVLIAGFWOKOBYE7HI6F2SWQXFMVYWF656WIDQJ5K4NZFF7A
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAKV6AV6ZPVLIAGFWOKOBYE7HI6F2SWQXFMVYWF656WIDQJ5K4NZFF7A
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GANT5QWCPXLUI2AJPCSTXXWPW65HWODLQHQXCAOXHDNZFEGRV64IROL5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GANT5QWCPXLUI2AJPCSTXXWPW65HWODLQHQXCAOXHDNZFEGRV64IROL5
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GANUGDZ5DBC3S34G77SYQFIQKQ45UNFGYLOIN66CKO3TU7AIHQ6ZQUJY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GANUGDZ5DBC3S34G77SYQFIQKQ45UNFGYLOIN66CKO3TU7AIHQ6ZQUJY
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAQDEW5UWVQG24CBCF5M2CNB2VBLB4IS3Z376FIRFUGNJJDOCEO7GMHU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAQDEW5UWVQG24CBCF5M2CNB2VBLB4IS3Z376FIRFUGNJJDOCEO7GMHU
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-bilhete.md
+  - kind: account
+    subject: GAQJTWA5LRMW6FU4Z7WJ7XVPNBTT37KLVAWWSZIDHZLNN4MCSFIHZWNA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAQJTWA5LRMW6FU4Z7WJ7XVPNBTT37KLVAWWSZIDHZLNN4MCSFIHZWNA
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GATVZIMSK6SRSUZOUXCF3EKQD42QI7IHRPS75LQNIREC7BCHPEC6FHQB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GATVZIMSK6SRSUZOUXCF3EKQD42QI7IHRPS75LQNIREC7BCHPEC6FHQB
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAVJQRHK5QUA63YTL6GZ2H2B2QRWJJULK33R3LQZEC4CCOUU4FMOZ4A6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVJQRHK5QUA63YTL6GZ2H2B2QRWJJULK33R3LQZEC4CCOUU4FMOZ4A6
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAVVHLZ7CKZ5Z3GRWVSNLESTFGERVMMS3KVL66H2QW2DWAC3HFYJFPT6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVVHLZ7CKZ5Z3GRWVSNLESTFGERVMMS3KVL66H2QW2DWAC3HFYJFPT6
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GAXBR4NR2PNMIKI7HM5OLPMTE3S4BJQ3CFD7J6RT7Z3GZQ6INGQMDQBA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAXBR4NR2PNMIKI7HM5OLPMTE3S4BJQ3CFD7J6RT7Z3GZQ6INGQMDQBA
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-aptos.txt
+  - kind: account
+    subject: GAZ2ZK75NQKW2DZN6YLJKQNLGWL7RYCLBJTPTBYVWDYUFZB7OG4EDYWF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAZ2ZK75NQKW2DZN6YLJKQNLGWL7RYCLBJTPTBYVWDYUFZB7OG4EDYWF
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GB2Y3HF2WDPXO23S6KKEDJYV4AQFAFAEA3K6CNY4A3J5FUXJ4NCJJFRY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB2Y3HF2WDPXO23S6KKEDJYV4AQFAFAEA3K6CNY4A3J5FUXJ4NCJJFRY
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-aptos.txt
+  - kind: account
+    subject: GB2YR4CWH2ZVIGCMEUFWKHJUTI5LWHECKR5QEHSAO4WOCF5MT6DG6BBF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB2YR4CWH2ZVIGCMEUFWKHJUTI5LWHECKR5QEHSAO4WOCF5MT6DG6BBF
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBA5L2GMGLF4TYQEF2Q4NXGEHVIZAJFEFG65OJAE3XZDDTSCPZUKRYFG
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBA5L2GMGLF4TYQEF2Q4NXGEHVIZAJFEFG65OJAE3XZDDTSCPZUKRYFG
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBAMIBZHR4G44UOTR256LISSNG2YIAJIBFWPVHBG6OMRHPH2AE2DCQJ3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBAMIBZHR4G44UOTR256LISSNG2YIAJIBFWPVHBG6OMRHPH2AE2DCQJ3
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBARTUOORZELMMGS5ZTX2ZMDMM3S54E5CFJ27KEABNFAGFYV7M5IDEGT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBARTUOORZELMMGS5ZTX2ZMDMM3S54E5CFJ27KEABNFAGFYV7M5IDEGT
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBAUC7LRXC6GDYKYY55TDHMGTLMNY6OQFZRCE7EU5QQMZU74FKM46XRW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBAUC7LRXC6GDYKYY55TDHMGTLMNY6OQFZRCE7EU5QQMZU74FKM46XRW
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBBYYQHH4PFXQLCZSBM3JSFLZRBDQSLXQ2NTPX67U7HCTCYSTNTAVVIS
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBBYYQHH4PFXQLCZSBM3JSFLZRBDQSLXQ2NTPX67U7HCTCYSTNTAVVIS
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBFNFE4DXJT7ZL4ER2JHNVORGUDV6UIAWVUQSMV7QSVAUPQYTTD2BYOF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBFNFE4DXJT7ZL4ER2JHNVORGUDV6UIAWVUQSMV7QSVAUPQYTTD2BYOF
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBGMLVWDPIYZECA7A6N75P7Q33WOCBCGKHN46QUDBFKAV7YJ4KAEJT2Q
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBGMLVWDPIYZECA7A6N75P7Q33WOCBCGKHN46QUDBFKAV7YJ4KAEJT2Q
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBHH3HSHH2JBIBN2LFYKVEBAQOEPPZUC5XDX6W6KWAEBEFLMVQY2FYWL
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBHH3HSHH2JBIBN2LFYKVEBAQOEPPZUC5XDX6W6KWAEBEFLMVQY2FYWL
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBHJMBVH6HSRFN32KJGCWUJEMFOSC3JKIDDVWVWSBZC3ORBVOSL4I3TV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBHJMBVH6HSRFN32KJGCWUJEMFOSC3JKIDDVWVWSBZC3ORBVOSL4I3TV
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBJ5POXZFEOIZWI5XNMRE2EXZNVQWFBWD54OZCH3XNNFGACTA6NINWYB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBJ5POXZFEOIZWI5XNMRE2EXZNVQWFBWD54OZCH3XNNFGACTA6NINWYB
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBJFU5QFA3XRA2HQVH2MQWH7IJQS5RUOIVYLIYJLNRR7W26G5DCQFREQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBJFU5QFA3XRA2HQVH2MQWH7IJQS5RUOIVYLIYJLNRR7W26G5DCQFREQ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBKSCY56YSGEQSITTNVEEAN44GV5ZNNQM7NWIOSZ5QU7VRXR5D3SY5OQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBKSCY56YSGEQSITTNVEEAN44GV5ZNNQM7NWIOSZ5QU7VRXR5D3SY5OQ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBMCQ3TIBT35NEKEMH5L4QZFIJ44OXGRD4LZDCEZ3A67V6Y6CKCWK7UN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBMCQ3TIBT35NEKEMH5L4QZFIJ44OXGRD4LZDCEZ3A67V6Y6CKCWK7UN
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBNOU7OD3BJD2P7Y4TLDVWWOFYXBLLO6JIXIVS2PXPZ7LQAMBBCN7HAH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBNOU7OD3BJD2P7Y4TLDVWWOFYXBLLO6JIXIVS2PXPZ7LQAMBBCN7HAH
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBNSGLFMQ6KK2L7DEJ4A42A5RSTNH7QG2Y5TYZ3ODZKVPV2V55MJBZYH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBNSGLFMQ6KK2L7DEJ4A42A5RSTNH7QG2Y5TYZ3ODZKVPV2V55MJBZYH
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBOZ2ZQY2UL3LQQXEYDXA255EJTGC7VSKJTDJ226MLQVU4A4KY4AVALH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBOZ2ZQY2UL3LQQXEYDXA255EJTGC7VSKJTDJ226MLQVU4A4KY4AVALH
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBPNRRSDAG4VASSNQXDNPCDABVUHWVA3DWQHFQ742ZI2EH7C4O3ZCFJC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBPNRRSDAG4VASSNQXDNPCDABVUHWVA3DWQHFQ742ZI2EH7C4O3ZCFJC
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBQLVILUZJJPUTPXEYJTV6QRUI2NAWOQBRHH2GLNSUQIS2PPSKER7H44
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBQLVILUZJJPUTPXEYJTV6QRUI2NAWOQBRHH2GLNSUQIS2PPSKER7H44
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBQTGCNLKCLLK3MHXK23JL7H4DTMI5CAH6HLD3MRLJY6JSPI4W5TRKZ2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBQTGCNLKCLLK3MHXK23JL7H4DTMI5CAH6HLD3MRLJY6JSPI4W5TRKZ2
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBRL2MHG7PS72TK7PBL6J3YAPKXJIERIYSZTTNDQ3YGSIPGOA5TE46D6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBRL2MHG7PS72TK7PBL6J3YAPKXJIERIYSZTTNDQ3YGSIPGOA5TE46D6
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBRM7MPTHPSG72BUJNATXI42AWGM32UXFXK36GQHWYG4XGNEDRGK4TSM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBRM7MPTHPSG72BUJNATXI42AWGM32UXFXK36GQHWYG4XGNEDRGK4TSM
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBRNGDSAHMWJTT6VYYINHWYJASWGZUOQDP2U54XMRUPLUXED2Q7PSSLC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBRNGDSAHMWJTT6VYYINHWYJASWGZUOQDP2U54XMRUPLUXED2Q7PSSLC
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBUH2F4QKXVCUVZQAZZ2RFLKCBEKATSZEL2SV2GKTD4NLZKWOUFQ2YXB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBUH2F4QKXVCUVZQAZZ2RFLKCBEKATSZEL2SV2GKTD4NLZKWOUFQ2YXB
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBVD4CGGGNR3H5PHDXL2WNVFDC54XELNDCDMDLTXHPHSOHSG5C5DWE7X
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBVD4CGGGNR3H5PHDXL2WNVFDC54XELNDCDMDLTXHPHSOHSG5C5DWE7X
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBXAKOBGO3KI4AK4LDTIITUNGZQP4XBEJGAQSAJMTFI6NHGP26EAI3QT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBXAKOBGO3KI4AK4LDTIITUNGZQP4XBEJGAQSAJMTFI6NHGP26EAI3QT
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBXUX3NVOW7JINWGAXDNQHM6GURMTQXIVWON5QKIDJR45SG2PKGN3QRC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBXUX3NVOW7JINWGAXDNQHM6GURMTQXIVWON5QKIDJR45SG2PKGN3QRC
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GBYISIRNQJWPPA3LXYS4PG5MVJHFE2GDKDTEKHGNONBOT5IXYPDWXKVJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYISIRNQJWPPA3LXYS4PG5MVJHFE2GDKDTEKHGNONBOT5IXYPDWXKVJ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBYL67XF4VUQBKHDZS7X3IO3EBCA5PBMTRMBLHFC7FKEJUG4FJVOIFOM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYL67XF4VUQBKHDZS7X3IO3EBCA5PBMTRMBLHFC7FKEJUG4FJVOIFOM
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-aptos.txt
+  - kind: account
+    subject: GBYRDAMCKMCNNNROIMMQWRVYM3VL2BSHEOPNBY2V75R3C6LIF7SKPNDS
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYRDAMCKMCNNNROIMMQWRVYM3VL2BSHEOPNBY2V75R3C6LIF7SKPNDS
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GBZGNQ7V3YA4WLHFLX23RWUAOFBBRTSP2ZN65LQZEWXZYLBCVIEPGHKC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBZGNQ7V3YA4WLHFLX23RWUAOFBBRTSP2ZN65LQZEWXZYLBCVIEPGHKC
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GC3JC24U74YAIY26MEQMV6LZLVBDMR6CVF2AOAN6UA5XEGZ6EZOADRBB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC3JC24U74YAIY26MEQMV6LZLVBDMR6CVF2AOAN6UA5XEGZ6EZOADRBB
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-bilhete.md
+  - kind: account
+    subject: GC3UQ3GQFJZFZYVJ6N7VLG6FXONZJNJFY5B3U7M4NHSIENTDIVKSANJK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC3UQ3GQFJZFZYVJ6N7VLG6FXONZJNJFY5B3U7M4NHSIENTDIVKSANJK
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GC4ACUDKXVRP3AS56G5TSPZ4UBDUMPIWPANZOVPNWEG6CQVZQ5NO25MW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC4ACUDKXVRP3AS56G5TSPZ4UBDUMPIWPANZOVPNWEG6CQVZQ5NO25MW
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GC5Z55ME4WQPSLT7GIFOOJEGZVKWDUVVGGACXQ4LDVWOLTOJK7KGZXEL
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC5Z55ME4WQPSLT7GIFOOJEGZVKWDUVVGGACXQ4LDVWOLTOJK7KGZXEL
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/README.md
+  - kind: account
+    subject: GC6LRLV4T2UJF5CR7EQLKTVJX7U4MQ3I5ONH4N4K4KZTZF2LV5ZBQ6HT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC6LRLV4T2UJF5CR7EQLKTVJX7U4MQ3I5ONH4N4K4KZTZF2LV5ZBQ6HT
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCGIXRX6TDIDIDJOZWFXHHSIYR22NRBMUHKZKXPSC5JHNNY3G7OVSWZS
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCGIXRX6TDIDIDJOZWFXHHSIYR22NRBMUHKZKXPSC5JHNNY3G7OVSWZS
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCHTCW6IUVTINWFHMGFSYE2WCIFHHXQHZ2BOETV7GWPNOTDPISKMOEFA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCHTCW6IUVTINWFHMGFSYE2WCIFHHXQHZ2BOETV7GWPNOTDPISKMOEFA
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GCM3OZ3T2EPXUMB5RWI2H2KKULYZA7ZOWIXUKTSDAXWKYQBD32W4WEVI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCM3OZ3T2EPXUMB5RWI2H2KKULYZA7ZOWIXUKTSDAXWKYQBD32W4WEVI
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCOACDGKC5KBPQL7IKBCCX35V2OTNEN2ZWBPEVY6K775EZFPRUB4HW32
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCOACDGKC5KBPQL7IKBCCX35V2OTNEN2ZWBPEVY6K775EZFPRUB4HW32
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCOEZHYM3AEV5OJNGMXWNTEWGNFBW2RCNZYOJJDERUUGSZTOOUYDCB2A
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCOEZHYM3AEV5OJNGMXWNTEWGNFBW2RCNZYOJJDERUUGSZTOOUYDCB2A
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GCPRH6WT4ATLGCYUTD7V5C2U6YFQ5X5YFGDN4IT3YRSZGJG5D2KC6WRD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCPRH6WT4ATLGCYUTD7V5C2U6YFQ5X5YFGDN4IT3YRSZGJG5D2KC6WRD
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCTB4QAOSTZUQRJLU5YO4EKQK4TABJYTNUVEGUHNGPKEBAG45O5EIUZY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCTB4QAOSTZUQRJLU5YO4EKQK4TABJYTNUVEGUHNGPKEBAG45O5EIUZY
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCU7K7PPGS557IEVJ2KI5UOPPRS7NLTLQI5JGC2GODMGW7KHPCL6TY5D
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCU7K7PPGS557IEVJ2KI5UOPPRS7NLTLQI5JGC2GODMGW7KHPCL6TY5D
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCUT6I4FXMGAH3SA4KTLYOZLIC22TFHV4HCF4UI7VXHGQQGLNMZQ7V6D
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCUT6I4FXMGAH3SA4KTLYOZLIC22TFHV4HCF4UI7VXHGQQGLNMZQ7V6D
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCVOCQEVVVEGRQX243AEZJ65RVCRYFSAQAW3A34HBVWM52PTTJPGOK4N
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCVOCQEVVVEGRQX243AEZJ65RVCRYFSAQAW3A34HBVWM52PTTJPGOK4N
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GCYLO4Q2DKJFKVRRJ3775RDCR3MADJASV65BUBI3XA4QXJMKKWSMKPC5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCYLO4Q2DKJFKVRRJ3775RDCR3MADJASV65BUBI3XA4QXJMKKWSMKPC5
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GD3EWFREQTUVAP4US3SSLJG5UMNTIW2EMSZCXNWAMCQND5ZPRMQAN2O3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD3EWFREQTUVAP4US3SSLJG5UMNTIW2EMSZCXNWAMCQND5ZPRMQAN2O3
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GD3YOZ4VSPV6M4QV7YFYAV2DTSROY3LM63VGBNWVUC27PMCFZ4ED72YJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD3YOZ4VSPV6M4QV7YFYAV2DTSROY3LM63VGBNWVUC27PMCFZ4ED72YJ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GD4HEIDQTHFF5FOIDUKGZVA3L2DDACUQPIL2NR36QGAG7XEIZJSJ2MIP
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD4HEIDQTHFF5FOIDUKGZVA3L2DDACUQPIL2NR36QGAG7XEIZJSJ2MIP
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDA4BXEHPVHLDOTF27HN67GTDPSETSO6O5AHQGWFYW5MBL2H2RLZW2IO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDA4BXEHPVHLDOTF27HN67GTDPSETSO6O5AHQGWFYW5MBL2H2RLZW2IO
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDBVNIPTMVXUGMCZYDG32B64FA4HDP74BHUHUKGTDZKTQMZZHPEA4QQ4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDBVNIPTMVXUGMCZYDG32B64FA4HDP74BHUHUKGTDZKTQMZZHPEA4QQ4
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDFBOJ76RIS5UFXUH4OF2F2A7SXO7OEWVWE6M7CJJKCG4S6Q5LXB3TT4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDFBOJ76RIS5UFXUH4OF2F2A7SXO7OEWVWE6M7CJJKCG4S6Q5LXB3TT4
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GDGMDW32OXKLQ24ONZJW5AGZJKKVMVAE5VB4IM4PF2H42RK5VZKAJMGK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDGMDW32OXKLQ24ONZJW5AGZJKKVMVAE5VB4IM4PF2H42RK5VZKAJMGK
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDH2OV3KTUKWYIKGI7BIQHZUZDHFSAQQV5OT6S5JMCFUS7OQO5KAW6CG
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDH2OV3KTUKWYIKGI7BIQHZUZDHFSAQQV5OT6S5JMCFUS7OQO5KAW6CG
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDHJSZACGX5JDBX622S3TSWAF3F6IV7XUB5KCAE6CJROA4YVD23O6XBZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDHJSZACGX5JDBX622S3TSWAF3F6IV7XUB5KCAE6CJROA4YVD23O6XBZ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-bilhete.md
+  - kind: account
+    subject: GDJO7EFV2DFQG6V4L7EWOVFZZE6PZIWEQM2BTT4GBC4RTXPTNZTFCIJ7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDJO7EFV2DFQG6V4L7EWOVFZZE6PZIWEQM2BTT4GBC4RTXPTNZTFCIJ7
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDLOMYKHMV54FSXV5RTYZZ2YR53F4GHXEBDPGOJVSW42SWFUGDX7YHMJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDLOMYKHMV54FSXV5RTYZZ2YR53F4GHXEBDPGOJVSW42SWFUGDX7YHMJ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GDR4FVPBTFBRWHQ4BB2PHTZOK77IOLKTRIJRCPMG3MTIOLCVOGDZFYDD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDR4FVPBTFBRWHQ4BB2PHTZOK77IOLKTRIJRCPMG3MTIOLCVOGDZFYDD
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDT6RNH6KBWFKRETZLOIFMJLWMP7HF6AMDSRXMAPCVDRPCKRD3ZP4HND
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDT6RNH6KBWFKRETZLOIFMJLWMP7HF6AMDSRXMAPCVDRPCKRD3ZP4HND
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDUA5Y7SWY7KZAFMYRAAJR2NLXHAI7NXC5OZLHFO54FSMW5EIFEXNBDJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUA5Y7SWY7KZAFMYRAAJR2NLXHAI7NXC5OZLHFO54FSMW5EIFEXNBDJ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GDUU5QBORBI34S6ZVWP66YQIQU2G7TISP54M4IP5HEGJAEGV7UBM4AZQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUU5QBORBI34S6ZVWP66YQIQU2G7TISP54M4IP5HEGJAEGV7UBM4AZQ
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+  - kind: account
+    subject: GDYPNNMDA5DIQBIP3J3CEJV5BECKHJV3P4C4VEDNWQPV7P6LXXCLDZNW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDYPNNMDA5DIQBIP3J3CEJV5BECKHJV3P4C4VEDNWQPV7P6LXXCLDZNW
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-testnet-registro.json
+  - kind: account
+    subject: GDZLQYUVZ233J7LYLEAWYLQYUQAMLZSI6EQ7VSKX7EUCNZL7N2CJSZRD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDZLQYUVZ233J7LYLEAWYLQYUQAMLZSI6EQ7VSKX7EUCNZL7N2CJSZRD
+    file_url: https://github.com/ThaisFReis/pinakion/blob/HEAD/docs/evidencia-processo-registro.json
+contributors:
+- login: ThaisFReis
+  contributions: 86

@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/thisyearnofear/diversify
+repo_url: https://github.com/thisyearnofear/diversify
+name: diversify
+homepage: https://diversifiapp.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-01-14T13:45:05Z'
+owner: thisyearnofear
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 16
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.3.0
+  '@stellar/freighter-api': 6.0.1
+  '@creit.tech/stellar-wallets-kit': 2.5.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json
+- slug: privy
+  name: Privy
+  evidence:
+  - method: endpoint
+    detail: auth.privy.io
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/next.config.js
+  - method: package
+    detail: '@privy-io/react-auth'
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/package.json
+- slug: circle
+  name: Circle (CCTP)
+  evidence:
+  - method: endpoint
+    detail: api.circle.com
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/apps/web/config/index.ts
+chain:
+  contracts: 3
+  wasm_uploads: 1
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAA4KBHRNQEYTINHMCNXAEH3ENGZC6I5HZPTZ7FC6NBY5PCUJPBFXSGT
+  evidence:
+  - kind: contract
+    subject: CBH5NT2HEIQGBMTABOPRPRUJKDNHU3HFIY6STSN7QZSCX7WXSLCOAVC2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBH5NT2HEIQGBMTABOPRPRUJKDNHU3HFIY6STSN7QZSCX7WXSLCOAVC2
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/README.md
+  - kind: contract
+    subject: CDQUT55ICBFEC6JGMZDJEHA47ECWQOAYHLNFHO2ULFLDQVIDNMKL4WT6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDQUT55ICBFEC6JGMZDJEHA47ECWQOAYHLNFHO2ULFLDQVIDNMKL4WT6
+    file_url: https://github.com/thisyearnofear/diversify/blob/HEAD/README.md
+contributors:
+- login: udirobert
+  contributions: 27
+- login: thisyearnofear
+  contributions: 18

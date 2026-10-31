@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/PoolFi-LTD/PoolFi-Build-1
+repo_url: https://github.com/PoolFi-LTD/PoolFi-Build-1
+name: PoolFi-Build-1
+description: The first build out for PoolFi entailing the backend, frontend and soroban
+homepage: https://poolfibuild.vercel.app
+language: TypeScript
+created_at: '2026-10-06T18:06:24Z'
+owner: PoolFi-LTD
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 1
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.2.1
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCQJS3YZ6G75FBHPFAR5HLZE44TY4ZMOAN5JAQUDWN4IAREYA5LVP7ZB
+  evidence:
+  - kind: account
+    subject: GCQJS3YZ6G75FBHPFAR5HLZE44TY4ZMOAN5JAQUDWN4IAREYA5LVP7ZB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCQJS3YZ6G75FBHPFAR5HLZE44TY4ZMOAN5JAQUDWN4IAREYA5LVP7ZB
+    file_url: https://github.com/PoolFi-LTD/PoolFi-Build-1/blob/HEAD/README.md
+contributors:
+- login: thisisbigmike
+  contributions: 27
+- login: princesssaven
+  contributions: 17
+- login: renoschubert
+  contributions: 1

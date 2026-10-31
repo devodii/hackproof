@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Deivitto/orloj-stellar
+repo_url: https://github.com/Deivitto/orloj-stellar
+name: orloj-stellar
+description: Orloj Stellar — private development mirror of GianfrancoBazzani/orloj-registry
+language: TypeScript
+created_at: '2026-10-25T11:02:05Z'
+owner: Deivitto
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 16
+stack:
+  soroban-sdk: =27.0.6
+  '@stellar/stellar-sdk': 17.3.0
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/packages/stellar-registry/package.json
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/packages/stellar-registry/demo-contract/top10-audit/mcp-mainnet-remediation-results.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 20
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GAKOUU3TK4VZQEOKAYCGLGXILNXS2TC43KC63CGFIZDJWPYBS2Y7KPTK
+  - GBSBUPFN5LVHMXIUWOTCD2PQ6NSI27TDS72FNYCNSJQXWFAFCC7DCGZA
+  - GCDFNP5M2C3F5KNZBUICFXEFE5IBKQVSE6HC4FSRONXG56L443MSCX3L
+  - GCLEKFNVDD75POJDCTVNWN7OBZZ2C6MQT5RANBFSEX6HCE6NQ26CUX3S
+  evidence:
+  - kind: asset
+    subject: ORLOJTEST:GCDFNP5M2C3F5KNZBUICFXEFE5IBKQVSE6HC4FSRONXG56L443MSCX3L
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/ORLOJTEST-GCDFNP5M2C3F5KNZBUICFXEFE5IBKQVSE6HC4FSRONXG56L443MSCX3L
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/docs/submission/test-cases.json
+  - kind: account
+    subject: GAKOUU3TK4VZQEOKAYCGLGXILNXS2TC43KC63CGFIZDJWPYBS2Y7KPTK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAKOUU3TK4VZQEOKAYCGLGXILNXS2TC43KC63CGFIZDJWPYBS2Y7KPTK
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/scripts/setup-local-product.mjs
+  - kind: account
+    subject: GBSBUPFN5LVHMXIUWOTCD2PQ6NSI27TDS72FNYCNSJQXWFAFCC7DCGZA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBSBUPFN5LVHMXIUWOTCD2PQ6NSI27TDS72FNYCNSJQXWFAFCC7DCGZA
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/docs/submission/test-cases.json
+  - kind: account
+    subject: GCDFNP5M2C3F5KNZBUICFXEFE5IBKQVSE6HC4FSRONXG56L443MSCX3L
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCDFNP5M2C3F5KNZBUICFXEFE5IBKQVSE6HC4FSRONXG56L443MSCX3L
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/docs/submission/test-cases.json
+  - kind: account
+    subject: GCLEKFNVDD75POJDCTVNWN7OBZZ2C6MQT5RANBFSEX6HCE6NQ26CUX3S
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCLEKFNVDD75POJDCTVNWN7OBZZ2C6MQT5RANBFSEX6HCE6NQ26CUX3S
+    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/docs/submission/test-cases.json
+contributors:
+- login: GianfrancoBazzani
+  contributions: 93
+- login: Ethanol48
+  contributions: 48
+- login: Ynyesto
+  contributions: 41
+- login: ferrabled
+  contributions: 23
+- login: the-axmc
+  contributions: 14
+- login: Deivitto
+  contributions: 2

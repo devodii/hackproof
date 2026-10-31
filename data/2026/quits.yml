@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/karlostoteles/QUITS
+repo_url: https://github.com/karlostoteles/QUITS
+name: QUITS
+language: JavaScript
+created_at: '2026-10-20T14:17:44Z'
+owner: karlostoteles
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 35
+stack:
+  soroban-sdk: 29.0.1
+  '@stellar/stellar-sdk': 17.2.1
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/karlostoteles/QUITS/blob/HEAD/package.json
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCZ36DO3RVQ3RVCHGGF5EWF7SJWWFIN4G46MKY4LHSJIH37HUYWYWR72
+  evidence:
+  - kind: contract
+    subject: CAQOQKI4GOX36MPWTYK27TNJB32I5VRLEHGADOUHOFUBMISUWIUHH5J2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAQOQKI4GOX36MPWTYK27TNJB32I5VRLEHGADOUHOFUBMISUWIUHH5J2
+    file_url: https://github.com/karlostoteles/QUITS/blob/HEAD/README.md
+  - kind: contract
+    subject: CCWBDAO2NT7KLBYPWNPAPCG7DSYSRW7P3QIPYLO2PI4J43W57FTN5RNK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCWBDAO2NT7KLBYPWNPAPCG7DSYSRW7P3QIPYLO2PI4J43W57FTN5RNK
+    file_url: https://github.com/karlostoteles/QUITS/blob/HEAD/contracts/deployments/testnet.json
+  - kind: account
+    subject: GCZ36DO3RVQ3RVCHGGF5EWF7SJWWFIN4G46MKY4LHSJIH37HUYWYWR72
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCZ36DO3RVQ3RVCHGGF5EWF7SJWWFIN4G46MKY4LHSJIH37HUYWYWR72
+    file_url: https://github.com/karlostoteles/QUITS/blob/HEAD/contracts/deployments/testnet.json
+contributors:
+- login: carlosdelafi
+  contributions: 35
+- login: karlostoteles
+  contributions: 5

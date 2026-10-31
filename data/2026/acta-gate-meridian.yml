@@ -1,0 +1,119 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/ACTA-Team/acta-gate-meridian
+repo_url: https://github.com/ACTA-Team/acta-gate-meridian
+name: acta-gate-meridian
+description: Design by acta-team
+homepage: https://gate.acta.build
+language: Rust
+created_at: '2026-10-25T11:32:30Z'
+owner: ACTA-Team
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 44
+stack:
+  soroban-sdk: 23.4.0
+  '@stellar/stellar-sdk': ^16.3.1
+chain:
+  contracts: 22
+  wasm_uploads: 9
+  classic_ops: 4
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAP42IZPZPXM3IKJYQNBN4XBGCUQAWVZTSYLHUEN6O2Q2CJUTQ4KGEOY
+  - GAT3IATJNNJD44UVBD32LCUJAHV7MHNIA4H7OSQ2PMSD42D265WAGBR7
+  - GAVCFGDUIOIKK3BH7ECG45M5QZQH46P3CCBLUPAX5MJCFBOFDQSA5VP4
+  - GC662RXLB3UPX76ITPJGMM4HTQTY6YCCPGYSY5L3CWEGRKIADAJYHWLA
+  - GC7INDGAMCG522TIOWRH7TPVENROPFROKOXWYAFEFQCAFZNA2U2EEFA6
+  evidence:
+  - kind: contract
+    subject: CAFMLGTKEZAPPSKMQE75M7OT4JQTVOSETZE5BFWOSZZHSM5RYVNVCFVL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAFMLGTKEZAPPSKMQE75M7OT4JQTVOSETZE5BFWOSZZHSM5RYVNVCFVL
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: contract
+    subject: CANAF2JQGMRTNPAXOLOJ5TIZC4M3XXYRNKYJOJNUFPY5ZCWR5IK5ORA5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CANAF2JQGMRTNPAXOLOJ5TIZC4M3XXYRNKYJOJNUFPY5ZCWR5IK5ORA5
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: contract
+    subject: CANBOQLEQANRSRXZHELRWVECMJ6YZCUTF6YY7VH2YDVHIN2LBWTZLJHF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CANBOQLEQANRSRXZHELRWVECMJ6YZCUTF6YY7VH2YDVHIN2LBWTZLJHF
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/IDEA.md
+  - kind: contract
+    subject: CAZUHZRKTGYD2DSIQCTKX5KO3HS4FI565D256HFY5YWAJGLD367GBEAN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAZUHZRKTGYD2DSIQCTKX5KO3HS4FI565D256HFY5YWAJGLD367GBEAN
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: contract
+    subject: CBHPFHOBDDDHP2PFVWGSFOI4THVPQF5I5RZMHCSBZ362FYWJYZ4RWNSE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBHPFHOBDDDHP2PFVWGSFOI4THVPQF5I5RZMHCSBZ362FYWJYZ4RWNSE
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: contract
+    subject: CBNICQYB5VOIWYPS4WF27OAKCKEALW54SYGFETN63UYF6537KCQZEH66
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBNICQYB5VOIWYPS4WF27OAKCKEALW54SYGFETN63UYF6537KCQZEH66
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: contract
+    subject: CC2CIJ6L6CA6ZWPK4DUQEI2M3IQIC4XV5WWTURGOHJE2LZYXJO6UAINA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC2CIJ6L6CA6ZWPK4DUQEI2M3IQIC4XV5WWTURGOHJE2LZYXJO6UAINA
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/IDEA.md
+  - kind: contract
+    subject: CCGVBGVF5V4L7N6QNHBZQLZ6LY7W6ZUFR4JCPWCUKATQWUFBX5TS3OWZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCGVBGVF5V4L7N6QNHBZQLZ6LY7W6ZUFR4JCPWCUKATQWUFBX5TS3OWZ
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/IDEA.md
+  - kind: contract
+    subject: CCJACTUKEMDSICCWLUFF4GWLD3H2KZRWXUTUC7342JZ7FNDGHMYXYHIJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCJACTUKEMDSICCWLUFF4GWLD3H2KZRWXUTUC7342JZ7FNDGHMYXYHIJ
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: contract
+    subject: CCPEKQVBJP5XK4WLJS3XOVJFH2Q2IQPJK4DAYKUS3NGMCGWMXUJU5TKU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCPEKQVBJP5XK4WLJS3XOVJFH2Q2IQPJK4DAYKUS3NGMCGWMXUJU5TKU
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/IDEA.md
+  - kind: contract
+    subject: CDC6ADAFNM2FSNWM7IG5OJNT7ENTGXGHIAZZWEQW6H5N545ADGGNUAG7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDC6ADAFNM2FSNWM7IG5OJNT7ENTGXGHIAZZWEQW6H5N545ADGGNUAG7
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/IDEA.md
+  - kind: contract
+    subject: CDNCAGEI3OCL5G6NL7UVKYR7Q34UPBGPO4SZB3YKOHCPKU5U33LN5UOD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDNCAGEI3OCL5G6NL7UVKYR7Q34UPBGPO4SZB3YKOHCPKU5U33LN5UOD
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: account
+    subject: GAT3IATJNNJD44UVBD32LCUJAHV7MHNIA4H7OSQ2PMSD42D265WAGBR7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAT3IATJNNJD44UVBD32LCUJAHV7MHNIA4H7OSQ2PMSD42D265WAGBR7
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: account
+    subject: GAVCFGDUIOIKK3BH7ECG45M5QZQH46P3CCBLUPAX5MJCFBOFDQSA5VP4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVCFGDUIOIKK3BH7ECG45M5QZQH46P3CCBLUPAX5MJCFBOFDQSA5VP4
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: account
+    subject: GC662RXLB3UPX76ITPJGMM4HTQTY6YCCPGYSY5L3CWEGRKIADAJYHWLA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC662RXLB3UPX76ITPJGMM4HTQTY6YCCPGYSY5L3CWEGRKIADAJYHWLA
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+  - kind: account
+    subject: GC7INDGAMCG522TIOWRH7TPVENROPFROKOXWYAFEFQCAFZNA2U2EEFA6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC7INDGAMCG522TIOWRH7TPVENROPFROKOXWYAFEFQCAFZNA2U2EEFA6
+    file_url: https://github.com/ACTA-Team/acta-gate-meridian/blob/HEAD/docs/deployments/acta-gate-testnet.md
+contributors:
+- login: JosueBrenes
+  contributions: 16
+- login: DanielCotoJ
+  contributions: 13
+- login: aguilar1x
+  contributions: 12
+- login: MenaSebas
+  contributions: 1

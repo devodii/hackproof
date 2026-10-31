@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/infiniteezverse/nova
+repo_url: https://github.com/infiniteezverse/nova
+name: nova
+homepage: https://frontend-vert-nu-wlb9kf51l6.vercel.app
+language: Rust
+created_at: '2026-10-25T23:00:09Z'
+owner: infiniteezverse
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 8
+stack:
+  soroban-sdk: 29.0.1
+  '@stellar/stellar-sdk': 17.4.0
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/frontend/package.json
+chain:
+  contracts: 10
+  wasm_uploads: 9
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GABW3E5FDCCM7Q2BBIBHE5LFXR4KOO5FUC7LGWWUPVTV4WQJANDIBV5T
+  evidence:
+  - kind: contract
+    subject: CBAIS4UEFI4YC6K7CRE2XAFSKR3FDT7KCDA5A3SNXIN4H3DDF44MY7D2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBAIS4UEFI4YC6K7CRE2XAFSKR3FDT7KCDA5A3SNXIN4H3DDF44MY7D2
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CBGRV2MJHBM2U3SNWGBGITJLKCTI7PBROUTI7HWQGD2RPPT4TLEXBHQY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBGRV2MJHBM2U3SNWGBGITJLKCTI7PBROUTI7HWQGD2RPPT4TLEXBHQY
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CBUXWJUFVOYJ4TQGXDOHBN7EZFG52CGVZVGWE5E4QCOY2Y5EVLEVEYV4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBUXWJUFVOYJ4TQGXDOHBN7EZFG52CGVZVGWE5E4QCOY2Y5EVLEVEYV4
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CCJ7PJWGNO26P3YL76F2SUXCNV6EOBM6JS6PN5MAUQEZSLBHXPCBLCWY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCJ7PJWGNO26P3YL76F2SUXCNV6EOBM6JS6PN5MAUQEZSLBHXPCBLCWY
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CCKDS3RAH5T2XYCZWVRPVK7MXYODB4ZGBZX7MNLOQEIWZNHOXOF4JUS4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCKDS3RAH5T2XYCZWVRPVK7MXYODB4ZGBZX7MNLOQEIWZNHOXOF4JUS4
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/testnet/deployment-v1-superseded.json
+  - kind: contract
+    subject: CCMVZHUOGXOOM6ANLESIDX4S3KRQHKQQOIPIXIXS7UCQJFGOXJQYEV2N
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCMVZHUOGXOOM6ANLESIDX4S3KRQHKQQOIPIXIXS7UCQJFGOXJQYEV2N
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CD6TISZMHSGNIUZXCESUIGZHXRLOY6QMCLT34ZS66LDLLRFUH2IYJIJR
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD6TISZMHSGNIUZXCESUIGZHXRLOY6QMCLT34ZS66LDLLRFUH2IYJIJR
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CDESIITZRCATXVFJS4DQOFY47457EEFWUQVXHPS6LTNWJUKO2SIPWCHS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDESIITZRCATXVFJS4DQOFY47457EEFWUQVXHPS6LTNWJUKO2SIPWCHS
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CDFD6WZN5JP4O62SSTX6J4X322BNGLBBLGQSAYEOU36MK7OGOYJOVXEY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDFD6WZN5JP4O62SSTX6J4X322BNGLBBLGQSAYEOU36MK7OGOYJOVXEY
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: contract
+    subject: CDSN2U5SG3YU27YPNKMKHJEPVFVPVA2BYOWDBYRTC72QPG3HYOVHK5ME
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDSN2U5SG3YU27YPNKMKHJEPVFVPVA2BYOWDBYRTC72QPG3HYOVHK5ME
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/README.md
+  - kind: wasm
+    subject: 10087b14ce9a90b2c3cdfd25d637e95e3f752386918b125a8c5416b186701d7a
+    method: wasm_hash_match
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/integration/wasm/nova_vault.wasm
+  - kind: wasm
+    subject: 1326810a1a29e938bca44420e28dbc77c909f86c5523078bf397ec75907f1b29
+    method: wasm_hash_match
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/integration/wasm/soroswap_factory.wasm
+  - kind: wasm
+    subject: 3ff3f4e1c05e78fde751ef86dffbbf53f6eb52b29f66cc61df8d7acf85a7e4d7
+    method: wasm_hash_match
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/integration/wasm/nova_sba.wasm
+  - kind: wasm
+    subject: 75fdda43ab566b5eaebdb7a902b9fd4bad200b89c22b6614c0c6e753db972e9f
+    method: wasm_hash_match
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/integration/wasm/soroswap_adapter.wasm
+  - kind: wasm
+    subject: 7bc8129bab3a1743fc31854aeffe10e8a20365091c12f64122578e04a0c5137d
+    method: wasm_hash_match
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/integration/wasm/soroswap_pair.wasm
+  - kind: account
+    subject: GABW3E5FDCCM7Q2BBIBHE5LFXR4KOO5FUC7LGWWUPVTV4WQJANDIBV5T
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GABW3E5FDCCM7Q2BBIBHE5LFXR4KOO5FUC7LGWWUPVTV4WQJANDIBV5T
+    file_url: https://github.com/infiniteezverse/nova/blob/HEAD/testnet/deployment-v1-superseded.json
+contributors:
+- login: infiniteezverse
+  contributions: 8

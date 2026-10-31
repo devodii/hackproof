@@ -1,0 +1,119 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/forever8896/dvdnd
+repo_url: https://github.com/forever8896/dvdnd
+name: dvdnd
+description: 'Tokenized private equity on Stellar: fixed-price raises for profitable businesses, ZK residence gating, USDC
+  dividends to locked holders.'
+homepage: https://dvdnd.app
+language: TypeScript
+license: MIT
+topics:
+- hackathon
+- private-equity
+- rwa
+- soroban
+- stellar
+- zero-knowledge
+created_at: '2026-10-25T12:01:48Z'
+owner: forever8896
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 114
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.3.0
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/app/package.json
+chain:
+  contracts: 14
+  wasm_uploads: 13
+  classic_ops: 8
+  assets: 0
+  failed_txs: 3
+  accounts:
+  - GA2TYYT6HJ76EFLHAL5CXSDYAX3VND6XBTB6HLXHGQ4S3SMDWZYWDGS4
+  - GAS3HWOIZHRBYTQMRSHH2KYODGA323TOJB426DM7RVELK7LJEJBVZWVV
+  evidence:
+  - kind: contract
+    subject: CAJSMXTDKZSBM5KH745LCPF6LCPWR2CHFSTSIKD7RRBXBBBHRQJCYNOL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAJSMXTDKZSBM5KH745LCPF6LCPWR2CHFSTSIKD7RRBXBBBHRQJCYNOL
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/testnet.env
+  - kind: contract
+    subject: CB5EJPS7K33FE3IGEFW6VINJD5MBL3HJ32I2JOAN34AMICBW73MZED3L
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB5EJPS7K33FE3IGEFW6VINJD5MBL3HJ32I2JOAN34AMICBW73MZED3L
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/evidence.md
+  - kind: contract
+    subject: CBF7CRLLMXVZIUB5PHHPWLOBQHC7FB6OHENFV23T46LRZM72E36GVC7Q
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBF7CRLLMXVZIUB5PHHPWLOBQHC7FB6OHENFV23T46LRZM72E36GVC7Q
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/testnet.env
+  - kind: contract
+    subject: CBPU52XUHU4UQ3MUBOXITFNHQMOON3SDEWN2IVKPGRCZSQTRTCLGDB7N
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBPU52XUHU4UQ3MUBOXITFNHQMOON3SDEWN2IVKPGRCZSQTRTCLGDB7N
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/README.md
+  - kind: contract
+    subject: CBWDBHPVZ435XL4UVUIXO4PFUEA7S4XENSKVUDI7XSXA2C3DZOBQWHWC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBWDBHPVZ435XL4UVUIXO4PFUEA7S4XENSKVUDI7XSXA2C3DZOBQWHWC
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/evidence.md
+  - kind: contract
+    subject: CCBMO6FN53CBZILJ6PBU4DODLRYK27RQH5ESWVDPMNPVH5VILUZV4E5C
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCBMO6FN53CBZILJ6PBU4DODLRYK27RQH5ESWVDPMNPVH5VILUZV4E5C
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/evidence.md
+  - kind: contract
+    subject: CCHX6UXEPIXLRALJIK2JZWCQ3OLQER7HYOGFVYYYSOP2UJERLEEEGCGZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCHX6UXEPIXLRALJIK2JZWCQ3OLQER7HYOGFVYYYSOP2UJERLEEEGCGZ
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/README.md
+  - kind: contract
+    subject: CCJCRABWLOEOXVDRHSJXLS5HDOCUCZWY2X2N27NUP24H62N6DKYISX5P
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCJCRABWLOEOXVDRHSJXLS5HDOCUCZWY2X2N27NUP24H62N6DKYISX5P
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/README.md
+  - kind: contract
+    subject: CCL5K3BT7EKT47SLRIHL23AMKELXPY34WATWMRLKGW2ZWYOALE66Y2TZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCL5K3BT7EKT47SLRIHL23AMKELXPY34WATWMRLKGW2ZWYOALE66Y2TZ
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/README.md
+  - kind: contract
+    subject: CCTY5CZFMXTBH4EPWKFHRVWDEHOFVEEWE3EPOGJEPKR65AJIG5CFLWX4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCTY5CZFMXTBH4EPWKFHRVWDEHOFVEEWE3EPOGJEPKR65AJIG5CFLWX4
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/evidence.md
+  - kind: contract
+    subject: CDJYRHBPWYU4C5WMJXHBG4UOUGUH562EXRGZ3ORZFA5VJKFO4BBPQ2X5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDJYRHBPWYU4C5WMJXHBG4UOUGUH562EXRGZ3ORZFA5VJKFO4BBPQ2X5
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/testnet.env
+  - kind: contract
+    subject: CDU5CGRWVSMFKQWRNJLP5XAKHQAF624QTLUNCONHJ4GQHOZOVAQROHKM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDU5CGRWVSMFKQWRNJLP5XAKHQAF624QTLUNCONHJ4GQHOZOVAQROHKM
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/README.md
+  - kind: contract
+    subject: CDWUC63EYRCEVQISAN7MZNAAOMT76VW6PTSVIUXTX3PDPXWJBNWJFJXY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDWUC63EYRCEVQISAN7MZNAAOMT76VW6PTSVIUXTX3PDPXWJBNWJFJXY
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/evidence.md
+  - kind: account
+    subject: GAS3HWOIZHRBYTQMRSHH2KYODGA323TOJB426DM7RVELK7LJEJBVZWVV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAS3HWOIZHRBYTQMRSHH2KYODGA323TOJB426DM7RVELK7LJEJBVZWVV
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/deployments/testnet.env
+contributors:
+- login: forever8896
+  contributions: 111
+- login: KirstenPomales
+  contributions: 3

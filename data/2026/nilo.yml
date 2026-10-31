@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Nearx-Labs/nilo
+repo_url: https://github.com/Nearx-Labs/nilo
+name: nilo
+description: Personalized agent that helps you interact with the Stellar network using natural language
+language: TypeScript
+created_at: '2026-10-25T10:43:54Z'
+owner: Nearx-Labs
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 64
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.3.0
+chain:
+  contracts: 4
+  wasm_uploads: 4
+  classic_ops: 90
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA3LXZFTBW6PQQUKAK26MPY3A3TV4MNMWDC3MUCLTHXAFQJ6NDJSMCGZ
+  - GAIPUSVC33UMX62K3D2YZSHPTFIMBH5WGKOOPUAHVB2S7KX3X2BTMOUZ
+  - GBYYZ3KQ2GS7EMP3MSIPWHWZ2OVCMJOP3BJFT5WROEVOXJHCOQ6PO2ZK
+  - GCXQPCJYM5LUEXO73XMJQ26U2FNVF7PRAVBJGHSBSTIUO3YCRRKYP7O4
+  - GD7LWBTRWHXZ3WHZEGZTLG6CQDL7YBGJNS5A2PI6T3UDJJQ4S4ZOB4VJ
+  - GDWUV4FJC7KZLQJKD5WA5GWUXLMKC24UB6NC4IUCTZIIU5SQFET2BWUP
+  evidence:
+  - kind: contract
+    subject: CDDWGI7BZMRP4H4NREJVGO56RWIZISX6BARK5T3MZGHLK5JAXW2R7YZJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDDWGI7BZMRP4H4NREJVGO56RWIZISX6BARK5T3MZGHLK5JAXW2R7YZJ
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
+  - kind: account
+    subject: GA3LXZFTBW6PQQUKAK26MPY3A3TV4MNMWDC3MUCLTHXAFQJ6NDJSMCGZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA3LXZFTBW6PQQUKAK26MPY3A3TV4MNMWDC3MUCLTHXAFQJ6NDJSMCGZ
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
+  - kind: account
+    subject: GAIPUSVC33UMX62K3D2YZSHPTFIMBH5WGKOOPUAHVB2S7KX3X2BTMOUZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAIPUSVC33UMX62K3D2YZSHPTFIMBH5WGKOOPUAHVB2S7KX3X2BTMOUZ
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/packages/core/src/demo.json
+  - kind: account
+    subject: GBYYZ3KQ2GS7EMP3MSIPWHWZ2OVCMJOP3BJFT5WROEVOXJHCOQ6PO2ZK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYYZ3KQ2GS7EMP3MSIPWHWZ2OVCMJOP3BJFT5WROEVOXJHCOQ6PO2ZK
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/packages/core/src/demo.json
+  - kind: account
+    subject: GCXQPCJYM5LUEXO73XMJQ26U2FNVF7PRAVBJGHSBSTIUO3YCRRKYP7O4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCXQPCJYM5LUEXO73XMJQ26U2FNVF7PRAVBJGHSBSTIUO3YCRRKYP7O4
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
+  - kind: account
+    subject: GD7LWBTRWHXZ3WHZEGZTLG6CQDL7YBGJNS5A2PI6T3UDJJQ4S4ZOB4VJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD7LWBTRWHXZ3WHZEGZTLG6CQDL7YBGJNS5A2PI6T3UDJJQ4S4ZOB4VJ
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/packages/core/src/demo.json
+  - kind: account
+    subject: GDWUV4FJC7KZLQJKD5WA5GWUXLMKC24UB6NC4IUCTZIIU5SQFET2BWUP
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDWUV4FJC7KZLQJKD5WA5GWUXLMKC24UB6NC4IUCTZIIU5SQFET2BWUP
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/packages/core/src/demo.json
+contributors:
+- login: Dione-b
+  contributions: 55
+- login: pedro-pelicioni
+  contributions: 6
+- login: adilsonoj
+  contributions: 2
+- login: cursoragent
+  contributions: 1

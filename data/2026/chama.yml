@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/lmstewart88/chama
+repo_url: https://github.com/lmstewart88/chama
+name: chama
+language: TypeScript
+created_at: '2026-10-25T20:29:38Z'
+owner: lmstewart88
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 14
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/lmstewart88/chama/blob/HEAD/web/package.json
+chain:
+  contracts: 5
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 1
+  failed_txs: 0
+  accounts:
+  - GCYOCSBGS44KKOYOX5OKRLJ2HAUCH4IMQP6US5BRQJZJ7P6A5V3H3MBR
+  evidence:
+  - kind: contract
+    subject: CAL5JXN7KJYLMBB3ZEIGRQXWIIGBOG3636T3OSHTB6CCREVFCB3SWZOM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAL5JXN7KJYLMBB3ZEIGRQXWIIGBOG3636T3OSHTB6CCREVFCB3SWZOM
+    file_url: https://github.com/lmstewart88/chama/blob/HEAD/packages/bindings/README.md
+  - kind: contract
+    subject: CCIN5YYNDCAKI5L25MVCXUX3N4ROHI6ZPJUPWDYUFF2KBEL6NHOVKCRE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCIN5YYNDCAKI5L25MVCXUX3N4ROHI6ZPJUPWDYUFF2KBEL6NHOVKCRE
+    file_url: https://github.com/lmstewart88/chama/blob/HEAD/.env.example
+contributors:
+- login: lmstewart88
+  contributions: 8
+- login: AprilSevenWalker
+  contributions: 4
+- login: renoschubert
+  contributions: 4

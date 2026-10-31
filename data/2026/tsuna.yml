@@ -1,0 +1,195 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/CHAAIISE/tsuna
+repo_url: https://github.com/CHAAIISE/tsuna
+name: tsuna
+description: 'Tsuna: DeFi vaults on Stellar where AI agents propose and the contract enforces the limits, checked on-chain
+  on every call.'
+homepage: https://leash-fi.vercel.app
+language: TypeScript
+created_at: '2026-10-26T00:47:19Z'
+owner: CHAAIISE
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 131
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/web/package.json
+chain:
+  contracts: 92
+  wasm_uploads: 29
+  classic_ops: 7
+  assets: 0
+  failed_txs: 160
+  accounts:
+  - GARIZVNLXADIURNHHVZBYLNEKCKQ3ESEUBYXO2INLOTDEYP4TMXNRYBU
+  - GAXK2P6IE7STS2OERVNCO6U4Q3EMUAJELP3VEXOJYKHKKVCPJTYZHMFD
+  - GAZGKGTVG2FW7XYNNRRCIZU3P7ZKSQ7EHBN7X626TDLFU7DC2JVQTUGZ
+  - GAZNZHH557AR4CL3XKNVSG542UT7DQGETHS64BRYMXHY3LRLPYCM53MV
+  - GBC3U2JJ677OKCASFTOAKFPGGBYLBNNJJPEOOXGXN3WRLDGNO2SZP7OF
+  - GBGCKGX62M6LMEDAWAFXYYNSVI62HSO3UZJQR7JTHUVFQX7N5RAVUSBW
+  - GBNXA6OSM6LOTW76WJLZGOK47JRWEWCA3QFXQ2NSN4OFD4KR5LTYI5U4
+  - GC3ZQQ23T23WOLCCYNFZ3TG3OZHF6KWIAO2WBP6LS3YQZEFWE4C2RINQ
+  - GCCUZXGZ4UZXL2PTXRNGQCQYKDIDL3JGHNSHEOE3X2JPCJ3CUVOOJBT4
+  - GCDI23VZNGUPCM62542ML4SOC3BKCLA3XGOOU5FY3LMDXOXYTY55SKU3
+  - GCIVCMY5U64B225RVDLC4B6OJK47UFLNIQNZUQ7JMRYCYSGIUOX5ZI5V
+  - GCKPR4GY7OVWNN56FU52QU33EBV3WV3VP4N3AMLZ4H2PN252QNHX246W
+  - GCNAX2DH52MFMP35OTEPRZDOFZVR5XTGLTOE34UTLLL4HMXJWT3TJPQ3
+  - GCXBB523F537E6TN5FCNST5TGAWHBGDYRVFA52SCNPRKP6P7XFBRFJ2Y
+  - GD5D4APVLEXKHBSODTNP477ODUGS6CJF6HP7XSHMNPSVKEQEUQSNGIRI
+  - GDJIUYOIRA6SEHNNCA7Y67CPCUR7UDHLCIAIWW7NOZG5ARTZZ5SYHNBG
+  - GDPULB67CZGL6FAELASLBJVARN2FAYWR544HI2AP7JGK4QZSAYK5GKTD
+  - GDYWE52NU2RBSW6X6FYE6LZJ3QBZUQY3J4CBZDA5RFCUCZ5ST3U3PIVY
+  evidence:
+  - kind: contract
+    subject: CAC2HRI4PWFA2AIT257O4QFYE2PPMKORTNSR7OFLXZ4G3SDEOQD4JOYK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAC2HRI4PWFA2AIT257O4QFYE2PPMKORTNSR7OFLXZ4G3SDEOQD4JOYK
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/passkey.testnet.json
+  - kind: contract
+    subject: CAFCIHI5SO5AC46AYRVPFXSEKS4QNVWHRXD67PJNVQ55TT3NLVL2DFDN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAFCIHI5SO5AC46AYRVPFXSEKS4QNVWHRXD67PJNVQ55TT3NLVL2DFDN
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+  - kind: contract
+    subject: CATM5LOHXN7CPSAA4AYLRSI2RY2TIWIZOJFYLGOHP2H5AYOUQR2R4JLW
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CATM5LOHXN7CPSAA4AYLRSI2RY2TIWIZOJFYLGOHP2H5AYOUQR2R4JLW
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/pay.testnet.json
+  - kind: contract
+    subject: CAU563FCQGGON3Q4GG4Z4UBPGY2542GJNJJE2PHJTMA5STYNSRRGYW6F
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAU563FCQGGON3Q4GG4Z4UBPGY2542GJNJJE2PHJTMA5STYNSRRGYW6F
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+  - kind: contract
+    subject: CAWPWRQVRDWXSYV3Q3ERRVGZR3JQZKS5YSON3QWPT7SV37A7S4AENVMX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAWPWRQVRDWXSYV3Q3ERRVGZR3JQZKS5YSON3QWPT7SV37A7S4AENVMX
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/fleet.testnet.json
+  - kind: contract
+    subject: CBANZEDTXPSMYO2SSV67LVF3LHKT5NKUD4KAA6V5VNISCHYU5XCRWSRL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBANZEDTXPSMYO2SSV67LVF3LHKT5NKUD4KAA6V5VNISCHYU5XCRWSRL
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+  - kind: contract
+    subject: CBGBW4I4FS4FDJDNLEXOQD3MRBBLBQRWZJV6JATSRKZOAF2UVCFVRO26
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBGBW4I4FS4FDJDNLEXOQD3MRBBLBQRWZJV6JATSRKZOAF2UVCFVRO26
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+  - kind: contract
+    subject: CCQRAXUEY5ZBNZUV3AODG2KKRBC3CSXQISS75XWBMAHRQLHCXHMUI6YD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCQRAXUEY5ZBNZUV3AODG2KKRBC3CSXQISS75XWBMAHRQLHCXHMUI6YD
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/pay.testnet.json
+  - kind: contract
+    subject: CCQW2UW5BDDKQYJXGXFGLDQOSBHTVWRNNRJTYYE52RKI7MS7GXGAYN4G
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCQW2UW5BDDKQYJXGXFGLDQOSBHTVWRNNRJTYYE52RKI7MS7GXGAYN4G
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/agent.testnet.json
+  - kind: contract
+    subject: CD7SXLZ72H3C3ZKIOAZYUCVOGX2PJHZC7IQ6DNHFTPIMYWKOYERQBHVI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD7SXLZ72H3C3ZKIOAZYUCVOGX2PJHZC7IQ6DNHFTPIMYWKOYERQBHVI
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/cctp.testnet.json
+  - kind: contract
+    subject: CDCFBQKZPACXNWPY362GEJZCBVHQTHMET67QSQ6K4WUMTIFEEZVSKKPL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDCFBQKZPACXNWPY362GEJZCBVHQTHMET67QSQ6K4WUMTIFEEZVSKKPL
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+  - kind: account
+    subject: GARIZVNLXADIURNHHVZBYLNEKCKQ3ESEUBYXO2INLOTDEYP4TMXNRYBU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GARIZVNLXADIURNHHVZBYLNEKCKQ3ESEUBYXO2INLOTDEYP4TMXNRYBU
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAXK2P6IE7STS2OERVNCO6U4Q3EMUAJELP3VEXOJYKHKKVCPJTYZHMFD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAXK2P6IE7STS2OERVNCO6U4Q3EMUAJELP3VEXOJYKHKKVCPJTYZHMFD
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAZGKGTVG2FW7XYNNRRCIZU3P7ZKSQ7EHBN7X626TDLFU7DC2JVQTUGZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAZGKGTVG2FW7XYNNRRCIZU3P7ZKSQ7EHBN7X626TDLFU7DC2JVQTUGZ
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/cctp.testnet.json
+  - kind: account
+    subject: GAZNZHH557AR4CL3XKNVSG542UT7DQGETHS64BRYMXHY3LRLPYCM53MV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAZNZHH557AR4CL3XKNVSG542UT7DQGETHS64BRYMXHY3LRLPYCM53MV
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/agent.testnet.json
+  - kind: account
+    subject: GBC3U2JJ677OKCASFTOAKFPGGBYLBNNJJPEOOXGXN3WRLDGNO2SZP7OF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBC3U2JJ677OKCASFTOAKFPGGBYLBNNJJPEOOXGXN3WRLDGNO2SZP7OF
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/agent.testnet.json
+  - kind: account
+    subject: GBGCKGX62M6LMEDAWAFXYYNSVI62HSO3UZJQR7JTHUVFQX7N5RAVUSBW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBGCKGX62M6LMEDAWAFXYYNSVI62HSO3UZJQR7JTHUVFQX7N5RAVUSBW
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/passkey.testnet.json
+  - kind: account
+    subject: GBNXA6OSM6LOTW76WJLZGOK47JRWEWCA3QFXQ2NSN4OFD4KR5LTYI5U4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBNXA6OSM6LOTW76WJLZGOK47JRWEWCA3QFXQ2NSN4OFD4KR5LTYI5U4
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/sdk.testnet.json
+  - kind: account
+    subject: GC3ZQQ23T23WOLCCYNFZ3TG3OZHF6KWIAO2WBP6LS3YQZEFWE4C2RINQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC3ZQQ23T23WOLCCYNFZ3TG3OZHF6KWIAO2WBP6LS3YQZEFWE4C2RINQ
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/pay.testnet.json
+  - kind: account
+    subject: GCCUZXGZ4UZXL2PTXRNGQCQYKDIDL3JGHNSHEOE3X2JPCJ3CUVOOJBT4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCCUZXGZ4UZXL2PTXRNGQCQYKDIDL3JGHNSHEOE3X2JPCJ3CUVOOJBT4
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/sdk.testnet.json
+  - kind: account
+    subject: GCDI23VZNGUPCM62542ML4SOC3BKCLA3XGOOU5FY3LMDXOXYTY55SKU3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCDI23VZNGUPCM62542ML4SOC3BKCLA3XGOOU5FY3LMDXOXYTY55SKU3
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/sdk.testnet.json
+  - kind: account
+    subject: GCIVCMY5U64B225RVDLC4B6OJK47UFLNIQNZUQ7JMRYCYSGIUOX5ZI5V
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCIVCMY5U64B225RVDLC4B6OJK47UFLNIQNZUQ7JMRYCYSGIUOX5ZI5V
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/agent.testnet.json
+  - kind: account
+    subject: GCKPR4GY7OVWNN56FU52QU33EBV3WV3VP4N3AMLZ4H2PN252QNHX246W
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCKPR4GY7OVWNN56FU52QU33EBV3WV3VP4N3AMLZ4H2PN252QNHX246W
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/pay.testnet.json
+  - kind: account
+    subject: GCNAX2DH52MFMP35OTEPRZDOFZVR5XTGLTOE34UTLLL4HMXJWT3TJPQ3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCNAX2DH52MFMP35OTEPRZDOFZVR5XTGLTOE34UTLLL4HMXJWT3TJPQ3
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/pay.testnet.json
+  - kind: account
+    subject: GCXBB523F537E6TN5FCNST5TGAWHBGDYRVFA52SCNPRKP6P7XFBRFJ2Y
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCXBB523F537E6TN5FCNST5TGAWHBGDYRVFA52SCNPRKP6P7XFBRFJ2Y
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/passkey.testnet.json
+  - kind: account
+    subject: GD5D4APVLEXKHBSODTNP477ODUGS6CJF6HP7XSHMNPSVKEQEUQSNGIRI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD5D4APVLEXKHBSODTNP477ODUGS6CJF6HP7XSHMNPSVKEQEUQSNGIRI
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/cctp.testnet.json
+  - kind: account
+    subject: GDPULB67CZGL6FAELASLBJVARN2FAYWR544HI2AP7JGK4QZSAYK5GKTD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDPULB67CZGL6FAELASLBJVARN2FAYWR544HI2AP7JGK4QZSAYK5GKTD
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/fleet.testnet.json
+  - kind: account
+    subject: GDYWE52NU2RBSW6X6FYE6LZJ3QBZUQY3J4CBZDA5RFCUCZ5ST3U3PIVY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDYWE52NU2RBSW6X6FYE6LZJ3QBZUQY3J4CBZDA5RFCUCZ5ST3U3PIVY
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/agent.testnet.json
+contributors:
+- login: CHAAIISE
+  contributions: 131

@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/joinsendr/SendrPay
+repo_url: https://github.com/joinsendr/SendrPay
+name: SendrPay
+description: Pay like a local, anywhere in the world. Sendr Pay lets you use your USDC wallet to pay local merchants abroad
+  by scanning QR codes without transferring money cross-border to a local bank account.
+homepage: https://sendrpay.sendr.cash
+language: TypeScript
+license: MIT
+topics:
+- payments
+- wallet
+created_at: '2026-10-25T13:41:20Z'
+owner: joinsendr
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 17
+stack:
+  '@stellar/stellar-sdk': ^17.4.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/joinsendr/SendrPay/blob/HEAD/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: joinsendr
+  contributions: 17

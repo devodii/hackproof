@@ -1,0 +1,260 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$defs:
+  FileChain:
+    additionalProperties: false
+    properties:
+      contracts:
+        title: Contracts
+        type: integer
+      wasm_uploads:
+        title: Wasm Uploads
+        type: integer
+      classic_ops:
+        title: Classic Ops
+        type: integer
+      assets:
+        title: Assets
+        type: integer
+      failed_txs:
+        title: Failed Txs
+        type: integer
+      accounts:
+        items:
+          type: string
+        title: Accounts
+        type: array
+      evidence:
+        items:
+          $ref: '#/$defs/FileEvidence'
+        title: Evidence
+        type: array
+    required:
+    - contracts
+    - wasm_uploads
+    - classic_ops
+    - assets
+    - failed_txs
+    - accounts
+    - evidence
+    title: FileChain
+    type: object
+  FileContributor:
+    additionalProperties: false
+    properties:
+      login:
+        title: Login
+        type: string
+      contributions:
+        title: Contributions
+        type: integer
+    required:
+    - login
+    - contributions
+    title: FileContributor
+    type: object
+  FileEvidence:
+    additionalProperties: false
+    properties:
+      kind:
+        enum:
+        - contract
+        - wasm
+        - account
+        - asset
+        title: Kind
+        type: string
+      subject:
+        title: Subject
+        type: string
+      method:
+        enum:
+        - contract_in_repo
+        - wasm_hash_match
+        - wasm_meta
+        - deployer_in_repo
+        - asset_in_repo
+        title: Method
+        type: string
+      explorer_url:
+        anyOf:
+        - type: string
+        - type: 'null'
+        default: null
+        title: Explorer Url
+      file_url:
+        anyOf:
+        - type: string
+        - type: 'null'
+        default: null
+        title: File Url
+    required:
+    - kind
+    - subject
+    - method
+    title: FileEvidence
+    type: object
+  FileIntegration:
+    additionalProperties: false
+    properties:
+      slug:
+        title: Slug
+        type: string
+      name:
+        title: Name
+        type: string
+      evidence:
+        items:
+          $ref: '#/$defs/FileIntegrationEvidence'
+        title: Evidence
+        type: array
+    required:
+    - slug
+    - name
+    - evidence
+    title: FileIntegration
+    type: object
+  FileIntegrationEvidence:
+    additionalProperties: false
+    properties:
+      method:
+        enum:
+        - package
+        - endpoint
+        title: Method
+        type: string
+      detail:
+        title: Detail
+        type: string
+      file_url:
+        title: File Url
+        type: string
+    required:
+    - method
+    - detail
+    - file_url
+    title: FileIntegrationEvidence
+    type: object
+additionalProperties: false
+properties:
+  event:
+    description: Hackathon slug
+    title: Event
+    type: string
+  canonical_id:
+    description: pkg:github/<owner>/<repo>, the join key for repos
+    title: Canonical Id
+    type: string
+  repo_url:
+    title: Repo Url
+    type: string
+  name:
+    description: Repository name
+    title: Name
+    type: string
+  description:
+    anyOf:
+    - type: string
+    - type: 'null'
+    default: null
+    title: Description
+  homepage:
+    anyOf:
+    - type: string
+    - type: 'null'
+    default: null
+    title: Homepage
+  language:
+    anyOf:
+    - type: string
+    - type: 'null'
+    default: null
+    title: Language
+  license:
+    anyOf:
+    - type: string
+    - type: 'null'
+    default: null
+    title: License
+  topics:
+    description: Tags the team set on the repo
+    items:
+      type: string
+    title: Topics
+    type: array
+  created_at:
+    anyOf:
+    - format: date-time
+      type: string
+    - type: 'null'
+    default: null
+    description: Repo creation time, UTC
+    title: Created At
+  owner:
+    description: GitHub login of the repo owner
+    title: Owner
+    type: string
+  track:
+    enum:
+    - genesis
+    - scale
+    title: Track
+    type: string
+  track_declared:
+    description: True when the team states its track itself, false when track is the default
+    title: Track Declared
+    type: boolean
+  award:
+    anyOf:
+    - enum:
+      - first
+      - runner-up
+      type: string
+    - type: 'null'
+    default: null
+    title: Award
+  evidence_tier:
+    enum:
+    - verified
+    - likely
+    - possible
+    title: Evidence Tier
+    type: string
+  commits_in_window:
+    anyOf:
+    - type: integer
+    - type: 'null'
+    default: null
+    title: Commits In Window
+  stack:
+    additionalProperties:
+      anyOf:
+      - type: string
+      - type: 'null'
+    description: Stellar package to declared version, null when unknown
+    title: Stack
+    type: object
+  integrations:
+    items:
+      $ref: '#/$defs/FileIntegration'
+    title: Integrations
+    type: array
+  chain:
+    $ref: '#/$defs/FileChain'
+  contributors:
+    items:
+      $ref: '#/$defs/FileContributor'
+    title: Contributors
+    type: array
+required:
+- event
+- canonical_id
+- repo_url
+- name
+- owner
+- track
+- track_declared
+- evidence_tier
+- chain
+- contributors
+title: ProjectFile
+type: object

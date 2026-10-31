@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/SoroTTL-Network/sorottl-sdk
+repo_url: https://github.com/SoroTTL-Network/sorottl-sdk
+name: sorottl-sdk
+description: TypeScript SDK for inspecting and managing Stellar Soroban contract state TTL and archival lifecycles
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T12:17:50Z'
+owner: SoroTTL-Network
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 21
+stack:
+  '@stellar/stellar-sdk': ^17.4.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: Stanley471
+  contributions: 21

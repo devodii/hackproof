@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Sozu-Capital/sozu-offline
+repo_url: https://github.com/Sozu-Capital/sozu-offline
+name: sozu-offline
+description: A BLE mesh for confidential offline payments on Stellar
+homepage: https://offline.sozu.capital
+language: Kotlin
+topics:
+- offline-payments
+created_at: '2026-10-25T15:49:05Z'
+owner: Sozu-Capital
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 29
+stack:
+  soroban-sdk: =27.0.6
+  '@stellar/stellar-sdk': ^17.4.0
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 2
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAQXQ25TOGPOG5YNDRM74YOAPJE5ZOEPLNBA6BRIVS3RA67JUXQHE75I
+  evidence:
+  - kind: contract
+    subject: CDSCQSVWKTYR7EUJK5EQXIFI4L2C4LCPQOIUYP6PMG6KW4O2BZGCRLLV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDSCQSVWKTYR7EUJK5EQXIFI4L2C4LCPQOIUYP6PMG6KW4O2BZGCRLLV
+    file_url: https://github.com/Sozu-Capital/sozu-offline/blob/HEAD/README.md
+contributors:
+- login: blessedux
+  contributions: 18
+- login: viniciorm
+  contributions: 9
+- login: DNO8
+  contributions: 1

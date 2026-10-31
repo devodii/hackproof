@@ -1,0 +1,202 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/skar8848/lotus-stellar
+repo_url: https://github.com/skar8848/lotus-stellar
+name: lotus-stellar
+description: 'Lotus on Stellar: yield-bearing receipt token for the SDEX (HackMeridian 2026)'
+homepage: https://lotus-stellar.vercel.app
+language: TypeScript
+created_at: '2026-10-25T20:46:08Z'
+owner: skar8848
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 51
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/web/package.json
+chain:
+  contracts: 6
+  wasm_uploads: 5
+  classic_ops: 13758
+  assets: 3
+  failed_txs: 5
+  accounts:
+  - GAAVS42C7H4566QE6R4LVBSEFCDGLJLS24TLJJCIQZXAVJHNEALNHTJE
+  - GAEC3F4ZKGYV4QPTBKN2TTRNQ5SEUAZRNE7AXFQPB4UWMWC4JYW36SI7
+  - GAHIAT6QRODPMJ3KJ4LPGVOYXCEOUM7EDRXFSJOZ6SSOSQWT7RER3A7N
+  - GANIQO23R5TLEYAGHCARVGXSLFI4ET27R4TCIOHC7MDQAWZB3LDRCMBH
+  - GAQWKGZ3XGFFU3TF5HKBC3JHY4OF4XSLXSPGXMAKC66POM3JC6PQ26XI
+  - GARJTMBHMNJCFQO5XFWGGJJAIV36GT6SQTZHIEZU3QD7IWUV5EJLBZZU
+  - GATZCJW4Q3O6DGJIZ5PRF3MBXX7BDEK4PLFQXTN6XSFGWTBO6KTPGUGB
+  - GB2OF2GQJZ3HRZRH5XCKSHBROGHRAVMMF5ZS45IFBQL5TMEEUFHAKVDR
+  - GB6ES7XBQNYO2GABLPBJYORTXPWRTKEJJCJYH6GXG7BBS5ULMKPUXH4D
+  - GBBBCE5XIN3KPPNETITZF4ZEC6NG4MZZ3I2CYIQGGGY4GN4DJO73GDL6
+  - GBP5MOETKFQIYOCQGD676LQTV73MKZVDGNGL44QO2DGMFO7RBI5RAYBW
+  - GBYDRBOEKE53G42GZQLLDSQL6DOVZKFWETPC37TMXVWMDBDLUGVX42XI
+  - GBYSVY5KIILGBMZKIP2LGUY23OYXABA6IQZ5AZ22MUZP4JPROTH6WXWJ
+  - GC37RNVBTHXKRT7GYPXXKAUW6BK2JWKGU36SSEC7XQUGEEJCJYCNTLY5
+  - GC6ESRSGOI3IOJOUQLMU7A5HH4UKISBBDDXXBDRIFAVRGHIZNRE65STI
+  - GC7QBZD2LMPZZ3BT4ZLKPYUR23GJKT47BLYJKMXUY523M7HMUGT64TVO
+  - GCJUR67CI37SF5QD3AYRVARR3SVFTINQHBSFGICSZEHXDZV2BZEQ46RV
+  - GCMNI332OEZL2AVBKJVDZ2IPREWMEYRENGFFVEGXS4JVXUWJEIAT5EQF
+  - GCNPUYYI4MGJJ2MTEXYDEFQR5QG5B2L5DSMWCABL24NEOB2IQMNC7R5V
+  - GD3C4UM4SXUGPYRVAUQA4M33BSF2FEZODRL7UBAID6XXIELUBMXGGUZX
+  - GD5UIZDBCBFKRESNOXR6SGLZKMU62TT6UWL2MHN546QQJNDUM3IYZZQM
+  evidence:
+  - kind: contract
+    subject: CA5JHSNNGRX3QLLNRLOTDCXYGAYVC3ZRHXX6IWXQAD6YLILZ7TL2AHG6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA5JHSNNGRX3QLLNRLOTDCXYGAYVC3ZRHXX6IWXQAD6YLILZ7TL2AHG6
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CC264FOWPI5R5FG4276ZIPGJ5OG5AP3IZ4RZNMC2KQNJDA7LQSFQ3SEI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC264FOWPI5R5FG4276ZIPGJ5OG5AP3IZ4RZNMC2KQNJDA7LQSFQ3SEI
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CCCZ6XUDCWTOKZS6AYNECY3QPOFBICGMBBZXM63U4WZQD4EBFYFW2QKG
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCCZ6XUDCWTOKZS6AYNECY3QPOFBICGMBBZXM63U4WZQD4EBFYFW2QKG
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CCE2ISQKVWZJAZL6FRW227WDVWXODWUZ75ZQXGPKJWXERRW64NHS4CA3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCE2ISQKVWZJAZL6FRW227WDVWXODWUZ75ZQXGPKJWXERRW64NHS4CA3
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CDNG7T2KSDQ7ZYXHSDAM63RLLVPCQ5V6T5GRTXOOX47EZEMU636ZFPNG
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDNG7T2KSDQ7ZYXHSDAM63RLLVPCQ5V6T5GRTXOOX47EZEMU636ZFPNG
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CDOXTKGMK7MHEIOVXN5OBETMFUQATRQCB5NHFBFKCVUF5OUHQHVTN6CF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDOXTKGMK7MHEIOVXN5OBETMFUQATRQCB5NHFBFKCVUF5OUHQHVTN6CF
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.pool.json
+  - kind: asset
+    subject: LBOND:GCMNI332OEZL2AVBKJVDZ2IPREWMEYRENGFFVEGXS4JVXUWJEIAT5EQF
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/LBOND-GCMNI332OEZL2AVBKJVDZ2IPREWMEYRENGFFVEGXS4JVXUWJEIAT5EQF
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/contracts/lotus_pool/README.md
+  - kind: asset
+    subject: lUSDCb:GC7QBZD2LMPZZ3BT4ZLKPYUR23GJKT47BLYJKMXUY523M7HMUGT64TVO
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/lUSDCb-GC7QBZD2LMPZZ3BT4ZLKPYUR23GJKT47BLYJKMXUY523M7HMUGT64TVO
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/README.md
+  - kind: account
+    subject: GAAVS42C7H4566QE6R4LVBSEFCDGLJLS24TLJJCIQZXAVJHNEALNHTJE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAAVS42C7H4566QE6R4LVBSEFCDGLJLS24TLJJCIQZXAVJHNEALNHTJE
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.json
+  - kind: account
+    subject: GAEC3F4ZKGYV4QPTBKN2TTRNQ5SEUAZRNE7AXFQPB4UWMWC4JYW36SI7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAEC3F4ZKGYV4QPTBKN2TTRNQ5SEUAZRNE7AXFQPB4UWMWC4JYW36SI7
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/scripts/README.md
+  - kind: account
+    subject: GAHIAT6QRODPMJ3KJ4LPGVOYXCEOUM7EDRXFSJOZ6SSOSQWT7RER3A7N
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAHIAT6QRODPMJ3KJ4LPGVOYXCEOUM7EDRXFSJOZ6SSOSQWT7RER3A7N
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.json
+  - kind: account
+    subject: GANIQO23R5TLEYAGHCARVGXSLFI4ET27R4TCIOHC7MDQAWZB3LDRCMBH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GANIQO23R5TLEYAGHCARVGXSLFI4ET27R4TCIOHC7MDQAWZB3LDRCMBH
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/scripts/README.md
+  - kind: account
+    subject: GAQWKGZ3XGFFU3TF5HKBC3JHY4OF4XSLXSPGXMAKC66POM3JC6PQ26XI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAQWKGZ3XGFFU3TF5HKBC3JHY4OF4XSLXSPGXMAKC66POM3JC6PQ26XI
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.bot.json
+  - kind: account
+    subject: GARJTMBHMNJCFQO5XFWGGJJAIV36GT6SQTZHIEZU3QD7IWUV5EJLBZZU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GARJTMBHMNJCFQO5XFWGGJJAIV36GT6SQTZHIEZU3QD7IWUV5EJLBZZU
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.bot.json
+  - kind: account
+    subject: GATZCJW4Q3O6DGJIZ5PRF3MBXX7BDEK4PLFQXTN6XSFGWTBO6KTPGUGB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GATZCJW4Q3O6DGJIZ5PRF3MBXX7BDEK4PLFQXTN6XSFGWTBO6KTPGUGB
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.bot.json
+  - kind: account
+    subject: GB2OF2GQJZ3HRZRH5XCKSHBROGHRAVMMF5ZS45IFBQL5TMEEUFHAKVDR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB2OF2GQJZ3HRZRH5XCKSHBROGHRAVMMF5ZS45IFBQL5TMEEUFHAKVDR
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.json
+  - kind: account
+    subject: GB6ES7XBQNYO2GABLPBJYORTXPWRTKEJJCJYH6GXG7BBS5ULMKPUXH4D
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB6ES7XBQNYO2GABLPBJYORTXPWRTKEJJCJYH6GXG7BBS5ULMKPUXH4D
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.pool.json
+  - kind: account
+    subject: GBBBCE5XIN3KPPNETITZF4ZEC6NG4MZZ3I2CYIQGGGY4GN4DJO73GDL6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBBBCE5XIN3KPPNETITZF4ZEC6NG4MZZ3I2CYIQGGGY4GN4DJO73GDL6
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GBP5MOETKFQIYOCQGD676LQTV73MKZVDGNGL44QO2DGMFO7RBI5RAYBW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBP5MOETKFQIYOCQGD676LQTV73MKZVDGNGL44QO2DGMFO7RBI5RAYBW
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.v1.json
+  - kind: account
+    subject: GBYDRBOEKE53G42GZQLLDSQL6DOVZKFWETPC37TMXVWMDBDLUGVX42XI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYDRBOEKE53G42GZQLLDSQL6DOVZKFWETPC37TMXVWMDBDLUGVX42XI
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.json
+  - kind: account
+    subject: GBYSVY5KIILGBMZKIP2LGUY23OYXABA6IQZ5AZ22MUZP4JPROTH6WXWJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYSVY5KIILGBMZKIP2LGUY23OYXABA6IQZ5AZ22MUZP4JPROTH6WXWJ
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.json
+  - kind: account
+    subject: GC37RNVBTHXKRT7GYPXXKAUW6BK2JWKGU36SSEC7XQUGEEJCJYCNTLY5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC37RNVBTHXKRT7GYPXXKAUW6BK2JWKGU36SSEC7XQUGEEJCJYCNTLY5
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.bot.json
+  - kind: account
+    subject: GC6ESRSGOI3IOJOUQLMU7A5HH4UKISBBDDXXBDRIFAVRGHIZNRE65STI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC6ESRSGOI3IOJOUQLMU7A5HH4UKISBBDDXXBDRIFAVRGHIZNRE65STI
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.v1.json
+  - kind: account
+    subject: GC7QBZD2LMPZZ3BT4ZLKPYUR23GJKT47BLYJKMXUY523M7HMUGT64TVO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC7QBZD2LMPZZ3BT4ZLKPYUR23GJKT47BLYJKMXUY523M7HMUGT64TVO
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GCJUR67CI37SF5QD3AYRVARR3SVFTINQHBSFGICSZEHXDZV2BZEQ46RV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCJUR67CI37SF5QD3AYRVARR3SVFTINQHBSFGICSZEHXDZV2BZEQ46RV
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/scripts/README.md
+  - kind: account
+    subject: GCMNI332OEZL2AVBKJVDZ2IPREWMEYRENGFFVEGXS4JVXUWJEIAT5EQF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCMNI332OEZL2AVBKJVDZ2IPREWMEYRENGFFVEGXS4JVXUWJEIAT5EQF
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GCNPUYYI4MGJJ2MTEXYDEFQR5QG5B2L5DSMWCABL24NEOB2IQMNC7R5V
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCNPUYYI4MGJJ2MTEXYDEFQR5QG5B2L5DSMWCABL24NEOB2IQMNC7R5V
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/scripts/README.md
+  - kind: account
+    subject: GD3C4UM4SXUGPYRVAUQA4M33BSF2FEZODRL7UBAID6XXIELUBMXGGUZX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD3C4UM4SXUGPYRVAUQA4M33BSF2FEZODRL7UBAID6XXIELUBMXGGUZX
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.json
+  - kind: account
+    subject: GD5UIZDBCBFKRESNOXR6SGLZKMU62TT6UWL2MHN546QQJNDUM3IYZZQM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD5UIZDBCBFKRESNOXR6SGLZKMU62TT6UWL2MHN546QQJNDUM3IYZZQM
+    file_url: https://github.com/skar8848/lotus-stellar/blob/HEAD/deployments/testnet.contract.v1.json
+contributors:
+- login: skar8848
+  contributions: 51

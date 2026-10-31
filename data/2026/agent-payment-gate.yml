@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/InnokentyB/agent-payment-gate
+repo_url: https://github.com/InnokentyB/agent-payment-gate
+name: agent-payment-gate
+language: JavaScript
+license: MIT
+created_at: '2026-10-26T10:05:40Z'
+owner: InnokentyB
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 4
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+chain:
+  contracts: 4
+  wasm_uploads: 4
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GB2LSCTW4PBIM3R7WARSUVVKVDVIWWE34YTKVBEUI5KZRPYAHTC5PH3U
+  - GD65MLT2TBIDOWBDNQ4QBLF4N7FGPT777EL27T4AGXZAJLZYBY3VMXRZ
+  evidence:
+  - kind: contract
+    subject: CBVSDZ7SP7FHB4FFXVX57WYNYFUG6GSENPBKDTDAZ2MJM2N6CPR3QG3N
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVSDZ7SP7FHB4FFXVX57WYNYFUG6GSENPBKDTDAZ2MJM2N6CPR3QG3N
+    file_url: https://github.com/InnokentyB/agent-payment-gate/blob/HEAD/docs/TESTNET-ACCEPTANCE-2026-10-25.md
+  - kind: account
+    subject: GD65MLT2TBIDOWBDNQ4QBLF4N7FGPT777EL27T4AGXZAJLZYBY3VMXRZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD65MLT2TBIDOWBDNQ4QBLF4N7FGPT777EL27T4AGXZAJLZYBY3VMXRZ
+    file_url: https://github.com/InnokentyB/agent-payment-gate/blob/HEAD/docs/TESTNET-ACCEPTANCE-2026-10-25.md
+contributors:
+- login: InnokentyB
+  contributions: 5

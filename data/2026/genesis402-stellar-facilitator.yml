@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/FTHTrading/genesis402-stellar-facilitator
+repo_url: https://github.com/FTHTrading/genesis402-stellar-facilitator
+name: genesis402-stellar-facilitator
+description: Open-source x402 payment facilitator for Stellar (USDC via Soroban auth entries) with Bazaar-style discovery.
+  Apache-2.0.
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-23T14:44:42Z'
+owner: FTHTrading
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 7
+stack:
+  soroban-sdk: 29.0.1
+  '@stellar/stellar-sdk': ^17.3.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 13
+  assets: 1
+  failed_txs: 0
+  accounts:
+  - GBBGYXEO4DFKSLWT2GHPWZUTH6BDP4V4Z5RZMWNKRXOHMGJ6V2IDHRDY
+  - GDJIYLQDNCT4QFW7SEBE4KUIQA6KLYHNNUUD2RBOUCLZPYTJSIT6ZSMJ
+  evidence:
+  - kind: account
+    subject: GBBGYXEO4DFKSLWT2GHPWZUTH6BDP4V4Z5RZMWNKRXOHMGJ6V2IDHRDY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBBGYXEO4DFKSLWT2GHPWZUTH6BDP4V4Z5RZMWNKRXOHMGJ6V2IDHRDY
+    file_url: https://github.com/FTHTrading/genesis402-stellar-facilitator/blob/HEAD/apps/faucet/testnet-asset.json
+  - kind: account
+    subject: GDJIYLQDNCT4QFW7SEBE4KUIQA6KLYHNNUUD2RBOUCLZPYTJSIT6ZSMJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDJIYLQDNCT4QFW7SEBE4KUIQA6KLYHNNUUD2RBOUCLZPYTJSIT6ZSMJ
+    file_url: https://github.com/FTHTrading/genesis402-stellar-facilitator/blob/HEAD/apps/faucet/DEPLOY.md
+contributors:
+- login: FTHTrading
+  contributions: 41

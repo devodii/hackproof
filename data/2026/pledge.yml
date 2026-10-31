@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/jzelada97/Pledge
+repo_url: https://github.com/jzelada97/Pledge
+name: Pledge
+language: TypeScript
+created_at: '2026-10-25T14:48:48Z'
+owner: jzelada97
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 66
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.4.1
+chain:
+  contracts: 10
+  wasm_uploads: 5
+  classic_ops: 12
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+  - GAO7MHQHL6LAGUSFGTSDVMISV4UILI33PGOSJEBBR5XB5OXBXKJDR3C2
+  - GBKASLNH25VETEB5MGCLPIX5DG7SY5PLFOBKMIWMTRFJVQNNJAOHXYQ7
+  - GBNOMT2VMMNGWPENBY2FP66ASRMUVSJRCJZWIZ2ENZ45OYJKSL67L4N7
+  - GBOU7MO3OBXF6HHFL2NIJLM7TJ426JR376ODUJ37MEF6K47RQ3EEN2T2
+  - GDHIKULVY3XBBWE53GZNMABKZIHO6G6TLKMUQLY4ODQ2BHFRKWBFYDC3
+  - GDQQBJ4Y6V24VOROSCFZQXKA7IAIG5HETIQMLC36GQ3KF6KAIHP4PRLX
+  evidence:
+  - kind: contract
+    subject: CBHM2LC6ERMGRDVTYW4NNX5S2DVZPPYEVPC4AIUM426J5CME6MZCCRYU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBHM2LC6ERMGRDVTYW4NNX5S2DVZPPYEVPC4AIUM426J5CME6MZCCRYU
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBTENJ2ATPZTN5ZE5LMAQVX64DF3OMNZHVIUSMB7CQSEK2R6EN4ZGEJI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTENJ2ATPZTN5ZE5LMAQVX64DF3OMNZHVIUSMB7CQSEK2R6EN4ZGEJI
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/README.md
+  - kind: contract
+    subject: CC3QA5DN37DBUFLFFOLXZYXRL4MZ2GAKQ5OTJDG2AQ7DMGRGCKV5W2IL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC3QA5DN37DBUFLFFOLXZYXRL4MZ2GAKQ5OTJDG2AQ7DMGRGCKV5W2IL
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAO7MHQHL6LAGUSFGTSDVMISV4UILI33PGOSJEBBR5XB5OXBXKJDR3C2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAO7MHQHL6LAGUSFGTSDVMISV4UILI33PGOSJEBBR5XB5OXBXKJDR3C2
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBKASLNH25VETEB5MGCLPIX5DG7SY5PLFOBKMIWMTRFJVQNNJAOHXYQ7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBKASLNH25VETEB5MGCLPIX5DG7SY5PLFOBKMIWMTRFJVQNNJAOHXYQ7
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBNOMT2VMMNGWPENBY2FP66ASRMUVSJRCJZWIZ2ENZ45OYJKSL67L4N7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBNOMT2VMMNGWPENBY2FP66ASRMUVSJRCJZWIZ2ENZ45OYJKSL67L4N7
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/README.md
+  - kind: account
+    subject: GDHIKULVY3XBBWE53GZNMABKZIHO6G6TLKMUQLY4ODQ2BHFRKWBFYDC3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDHIKULVY3XBBWE53GZNMABKZIHO6G6TLKMUQLY4ODQ2BHFRKWBFYDC3
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDQQBJ4Y6V24VOROSCFZQXKA7IAIG5HETIQMLC36GQ3KF6KAIHP4PRLX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDQQBJ4Y6V24VOROSCFZQXKA7IAIG5HETIQMLC36GQ3KF6KAIHP4PRLX
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/deployments/testnet.json
+contributors:
+- login: jzelada97
+  contributions: 24
+- login: CarlosJX7
+  contributions: 23
+- login: RicardoMatosR
+  contributions: 13
+- login: Diego-Matoss
+  contributions: 8

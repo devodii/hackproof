@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/0xDanomite/alloy-stellar
+repo_url: https://github.com/0xDanomite/alloy-stellar
+name: alloy-stellar
+description: 'Multi-asset fund tokens on Stellar: create, price, rebalance and redeem portfolios of real-world assets onchain.
+  Live on mainnet.'
+homepage: https://alloy-stellar.vercel.app
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-25T15:32:35Z'
+owner: 0xDanomite
+track: scale
+track_declared: true
+award: first
+evidence_tier: verified
+commits_in_window: 85
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/app/package.json
+chain:
+  contracts: 3
+  wasm_uploads: 7
+  classic_ops: 18
+  assets: 6
+  failed_txs: 0
+  accounts:
+  - GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+  - GBEOBHDJ6NK5RRNBWHDK6MWJETIXKCNTLCFNLOCW4C6756H2G5Q5ZCCQ
+  - GBQMIVPBVDVZFCK6MQVSNC7I3HJQ5PYES27NJVKZKS7EUVDQZ2MY6QJX
+  - GCF2HC2QMY5IHNCFDKWO4RA5GHICS5EPH53DU36HZ7CE7AN5P3NORSPO
+  - GDFSSEIBQAQCO5IXHWVGBDIGSTSMPEIC47UT25QBWJT7JTNENZW72P77
+  evidence:
+  - kind: contract
+    subject: CAZJIYK3WGFJPNSB3TSUIPDZ4AP5MFRS6SHWVUY7QJONB3BNTI4IP75B
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAZJIYK3WGFJPNSB3TSUIPDZ4AP5MFRS6SHWVUY7QJONB3BNTI4IP75B
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: wasm
+    subject: 32677e1a2abdbfb57c0f2da513aeed864aa081d604b192cde062f859ff4c446d
+    method: wasm_meta
+  - kind: asset
+    subject: DEMOMMF:GDFSSEIBQAQCO5IXHWVGBDIGSTSMPEIC47UT25QBWJT7JTNENZW72P77
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/DEMOMMF-GDFSSEIBQAQCO5IXHWVGBDIGSTSMPEIC47UT25QBWJT7JTNENZW72P77
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: asset
+    subject: TBILL:GCF2HC2QMY5IHNCFDKWO4RA5GHICS5EPH53DU36HZ7CE7AN5P3NORSPO
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/TBILL-GCF2HC2QMY5IHNCFDKWO4RA5GHICS5EPH53DU36HZ7CE7AN5P3NORSPO
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: asset
+    subject: tCETES:GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/tCETES-GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: asset
+    subject: tUSDC:GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/tUSDC-GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: asset
+    subject: tUSDY:GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/tUSDY-GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: asset
+    subject: tUSTRY:GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/tUSTRY-GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAU5QXB2N53WHMFUDFWZ3BBJU7WFQDHRE3CDPPJW27JHUOI3D5SQARDZ
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBEOBHDJ6NK5RRNBWHDK6MWJETIXKCNTLCFNLOCW4C6756H2G5Q5ZCCQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBEOBHDJ6NK5RRNBWHDK6MWJETIXKCNTLCFNLOCW4C6756H2G5Q5ZCCQ
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBQMIVPBVDVZFCK6MQVSNC7I3HJQ5PYES27NJVKZKS7EUVDQZ2MY6QJX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBQMIVPBVDVZFCK6MQVSNC7I3HJQ5PYES27NJVKZKS7EUVDQZ2MY6QJX
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCF2HC2QMY5IHNCFDKWO4RA5GHICS5EPH53DU36HZ7CE7AN5P3NORSPO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCF2HC2QMY5IHNCFDKWO4RA5GHICS5EPH53DU36HZ7CE7AN5P3NORSPO
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDFSSEIBQAQCO5IXHWVGBDIGSTSMPEIC47UT25QBWJT7JTNENZW72P77
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDFSSEIBQAQCO5IXHWVGBDIGSTSMPEIC47UT25QBWJT7JTNENZW72P77
+    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/deployments/testnet.json
+contributors:
+- login: 0xDanomite
+  contributions: 166

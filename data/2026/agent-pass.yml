@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/berryxmas/agent-pass
+repo_url: https://github.com/berryxmas/agent-pass
+name: agent-pass
+description: 'Let AI agents pay to use any Express app: USDC on Stellar over MPP, a pass recorded in a Soroban contract, set
+  up by one sentence in Claude Code. HackMeridian 2026.'
+homepage: https://agent-pass-sample.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-10-26T00:42:41Z'
+owner: berryxmas
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 8
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^15.1.0
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 9
+  assets: 0
+  failed_txs: 1
+  accounts:
+  - GAIKLUWDHJ63562M5Q56D4ZBEE7TN4XVZJCX7KP2OFMW2D5SJALROIPM
+  - GC3DF7VPQD6BLUYPGWVAT363AG3QORHCRY3OK4XTET6HDTMQ6MXLUNHD
+  - GCIZIWMQKFGCSH7MIQW2EVJKAO5TWUDLXCGYVCQ2F4UY3XUE7BTMEIYI
+  evidence:
+  - kind: contract
+    subject: CAELB5AVBEO7V5RIDQBYCXU7466AEFYUNYU7JCSIELYUWBNR4XU6KSE3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAELB5AVBEO7V5RIDQBYCXU7466AEFYUNYU7JCSIELYUWBNR4XU6KSE3
+    file_url: https://github.com/berryxmas/agent-pass/blob/HEAD/docs/deploy.md
+  - kind: contract
+    subject: CDLR2ABHIPQ7SNWJKT3S5EE7DFTZ2VB2FJLISODIFNLYCRUCZKBFYJKU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDLR2ABHIPQ7SNWJKT3S5EE7DFTZ2VB2FJLISODIFNLYCRUCZKBFYJKU
+    file_url: https://github.com/berryxmas/agent-pass/blob/HEAD/README.md
+  - kind: account
+    subject: GAIKLUWDHJ63562M5Q56D4ZBEE7TN4XVZJCX7KP2OFMW2D5SJALROIPM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAIKLUWDHJ63562M5Q56D4ZBEE7TN4XVZJCX7KP2OFMW2D5SJALROIPM
+    file_url: https://github.com/berryxmas/agent-pass/blob/HEAD/docs/deploy.md
+  - kind: account
+    subject: GC3DF7VPQD6BLUYPGWVAT363AG3QORHCRY3OK4XTET6HDTMQ6MXLUNHD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC3DF7VPQD6BLUYPGWVAT363AG3QORHCRY3OK4XTET6HDTMQ6MXLUNHD
+    file_url: https://github.com/berryxmas/agent-pass/blob/HEAD/README.md
+  - kind: account
+    subject: GCIZIWMQKFGCSH7MIQW2EVJKAO5TWUDLXCGYVCQ2F4UY3XUE7BTMEIYI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCIZIWMQKFGCSH7MIQW2EVJKAO5TWUDLXCGYVCQ2F4UY3XUE7BTMEIYI
+    file_url: https://github.com/berryxmas/agent-pass/blob/HEAD/README.md
+contributors:
+- login: nicko-ai
+  contributions: 8

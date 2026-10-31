@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/curtismoncoq/Middlemate
+repo_url: https://github.com/curtismoncoq/Middlemate
+name: Middlemate
+description: Middlemate lets people and AI agents buy inference and APIs per request, while giving providers a financial reason
+  to deliver what they advertise.
+language: TypeScript
+created_at: '2026-10-25T12:02:53Z'
+owner: curtismoncoq
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 68
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.4.1
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/curtismoncoq/Middlemate/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 3
+  wasm_uploads: 3
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GDQVQOQWJ2C6OONG5NDA3GLV2BRHNQNYTWLX3A3C35V5L34HNPYVRTFW
+  evidence:
+  - kind: contract
+    subject: CAHJN3HANWQVJUPQO43PXLCCK4ZAA2Y2EOJYTI7WJAO4WYWFB34GSH2D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAHJN3HANWQVJUPQO43PXLCCK4ZAA2Y2EOJYTI7WJAO4WYWFB34GSH2D
+    file_url: https://github.com/curtismoncoq/Middlemate/blob/HEAD/README.md
+  - kind: contract
+    subject: CCRBI5SWFCRIFPTJPEEWRO3I6U7DYULTXZXLZFYKOZCWZAGFTPDWEUXT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCRBI5SWFCRIFPTJPEEWRO3I6U7DYULTXZXLZFYKOZCWZAGFTPDWEUXT
+    file_url: https://github.com/curtismoncoq/Middlemate/blob/HEAD/.env.example
+  - kind: contract
+    subject: CCW4UFJ7MSNSWOQWZWG3XOF2IVVWVRINK3YCEROH6PDO4LW5ZPA6ELUA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCW4UFJ7MSNSWOQWZWG3XOF2IVVWVRINK3YCEROH6PDO4LW5ZPA6ELUA
+    file_url: https://github.com/curtismoncoq/Middlemate/blob/HEAD/README.md
+contributors:
+- login: curtismoncoq
+  contributions: 64
+- login: mathieubest
+  contributions: 4

@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/karagozemin/LATCH
+repo_url: https://github.com/karagozemin/LATCH
+name: LATCH
+description: Merchant-bound payment reservations on Stellar. Reserve spending capacity without transferring funds; merchants
+  capture only what’s owed. Built with Soroban.
+homepage: https://latch-ui.vercel.app
+language: TypeScript
+created_at: '2026-10-19T13:22:19Z'
+owner: karagozemin
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 33
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/sites/latch-demo/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 0
+  classic_ops: 4
+  assets: 1
+  failed_txs: 0
+  accounts:
+  - GALVERHC6WKDTR26C2NITTFFVFFBTGABAA4OUHJRKR7JWPCVA3VJYREW
+  - GB3BWHP3JCEQOFJCWFMI3RJFM3SVS5VHXAAKQ4FFHKAGS6BOHFW7OAVM
+  - GBUK63E4OP5QQARICDBYM374FACMZBZPQPMAD7YQRYJO4W7JDHMMLISN
+  - GC4FCQ5VYSJL2DMPXAQ6NT6AGSTNPRFEKJOXEJ7UR5F25YCAQ3MFVDT2
+  - GCAWWLTGRMKK4URCQ6L27JZUE5LAGOACNVK7F7B6J3CF4J2DV64G5I6I
+  - GCGAFHDDCZR4VCRMSKSRI6INDT7IFUFPCQZX4ECJ3NNFBV322ETSKJA7
+  evidence:
+  - kind: contract
+    subject: CCPQ2PBP7CYUP5FPKHJPOBGGI6WQZ7VOWKJY4HYWO2FTRU2TMGJ4JPWU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCPQ2PBP7CYUP5FPKHJPOBGGI6WQZ7VOWKJY4HYWO2FTRU2TMGJ4JPWU
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/README.md
+  - kind: account
+    subject: GALVERHC6WKDTR26C2NITTFFVFFBTGABAA4OUHJRKR7JWPCVA3VJYREW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GALVERHC6WKDTR26C2NITTFFVFFBTGABAA4OUHJRKR7JWPCVA3VJYREW
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GB3BWHP3JCEQOFJCWFMI3RJFM3SVS5VHXAAKQ4FFHKAGS6BOHFW7OAVM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB3BWHP3JCEQOFJCWFMI3RJFM3SVS5VHXAAKQ4FFHKAGS6BOHFW7OAVM
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBUK63E4OP5QQARICDBYM374FACMZBZPQPMAD7YQRYJO4W7JDHMMLISN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBUK63E4OP5QQARICDBYM374FACMZBZPQPMAD7YQRYJO4W7JDHMMLISN
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GC4FCQ5VYSJL2DMPXAQ6NT6AGSTNPRFEKJOXEJ7UR5F25YCAQ3MFVDT2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC4FCQ5VYSJL2DMPXAQ6NT6AGSTNPRFEKJOXEJ7UR5F25YCAQ3MFVDT2
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCAWWLTGRMKK4URCQ6L27JZUE5LAGOACNVK7F7B6J3CF4J2DV64G5I6I
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCAWWLTGRMKK4URCQ6L27JZUE5LAGOACNVK7F7B6J3CF4J2DV64G5I6I
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCGAFHDDCZR4VCRMSKSRI6INDT7IFUFPCQZX4ECJ3NNFBV322ETSKJA7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCGAFHDDCZR4VCRMSKSRI6INDT7IFUFPCQZX4ECJ3NNFBV322ETSKJA7
+    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/deployments/testnet.json
+contributors:
+- login: karagozemin
+  contributions: 34

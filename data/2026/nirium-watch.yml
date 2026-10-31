@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Eras256/nirium-watch
+repo_url: https://github.com/Eras256/nirium-watch
+name: nirium-watch
+homepage: https://nirium-watch.vercel.app
+language: HTML
+license: MIT
+created_at: '2026-10-25T22:21:38Z'
+owner: Eras256
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 53
+stack:
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBGDRJC4XNYSIF27LQE3QE2R6S76KSR73FCG44XZLJ4IXP2P7PJ363FG
+  evidence:
+  - kind: account
+    subject: GBGDRJC4XNYSIF27LQE3QE2R6S76KSR73FCG44XZLJ4IXP2P7PJ363FG
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBGDRJC4XNYSIF27LQE3QE2R6S76KSR73FCG44XZLJ4IXP2P7PJ363FG
+    file_url: https://github.com/Eras256/nirium-watch/blob/HEAD/agentsmith-seller/api/index.mjs
+contributors:
+- login: Eras256
+  contributions: 211
+- login: M0nsxx
+  contributions: 16

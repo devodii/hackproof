@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Paolag93/plan4her-stellar
+repo_url: https://github.com/Paolag93/plan4her-stellar
+name: plan4her-stellar
+description: Plan4Her – Privacy-first, cycle-aware productivity app with community habit pools powered by Stellar. HackMeridian
+  2026.
+language: TypeScript
+created_at: '2026-10-25T21:44:05Z'
+owner: Paolag93
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 47
+stack:
+  '@stellar/stellar-sdk': ^14.6.1
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+  - GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+  evidence:
+  - kind: account
+    subject: GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCTVW7VYEJAKVWI6RP7IVED62BNXVEFZVWBADHZM7P7NDEO5K2QNM4IE
+    file_url: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/docs/HACKMERIDIAN_EVIDENCE.md
+  - kind: account
+    subject: GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD7ZEYR5K6JJKSAYVY2UMXHP7G2OTS7CKW3KGQPYVYGKDX6XEG2YNG5D
+    file_url: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/docs/HACKMERIDIAN_EVIDENCE.md
+contributors:
+- login: Paolag93
+  contributions: 35
+- login: claude
+  contributions: 12

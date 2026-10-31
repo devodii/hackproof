@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Rjk3d/Fiavel_Hack_Lisbon
+repo_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon
+name: Fiavel_Hack_Lisbon
+homepage: https://fiavel-hack-lisbon.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T10:08:06Z'
+owner: Rjk3d
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 48
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 9
+  wasm_uploads: 7
+  classic_ops: 20
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCMBZ4WJZMDGS44OSAA7NJKXQXTSLJR2NYAQK2AWHRRQSFUPXSGJSHJF
+  - GD3LQMJGYUQEBW6PIAMT5U7NWO6JCSA5PIHJVI6Q2KL65LE3PAQ7X6MX
+  - GD3QDTEWVXCX73E327I4BIIFKX3BT4W7O6QKM3QACX2ZSZPPA4IQUNZ5
+  - GDE5Q3ELQRGRDMLG5CDK2XKQTYFCJD2YDRE5ZTIOK56OPAIQCIP5T5BJ
+  - GDM4NEO3I42MMLXSNEEI5LCF7ZZ55D2IKUZLDOW47KJKTHEMW45XGV4K
+  - GDXTWZEYHCONIRTQV6ZUBK2E3D6XXUZQIVEYAGANQZOO7MBZGDRDD2H7
+  evidence:
+  - kind: contract
+    subject: CA4U4VVURIG54YYGN5SJUQZT3GZIRRTPQM3NUGEP4YKIGGHA3ZQGKJX5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA4U4VVURIG54YYGN5SJUQZT3GZIRRTPQM3NUGEP4YKIGGHA3ZQGKJX5
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/README.md
+  - kind: contract
+    subject: CB3RTZPIIKNJFNR6S5DUY37RUPBTEWFLFCHO5Y7YORPSAC5EDFYWH3JO
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB3RTZPIIKNJFNR6S5DUY37RUPBTEWFLFCHO5Y7YORPSAC5EDFYWH3JO
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/README.md
+  - kind: account
+    subject: GCMBZ4WJZMDGS44OSAA7NJKXQXTSLJR2NYAQK2AWHRRQSFUPXSGJSHJF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCMBZ4WJZMDGS44OSAA7NJKXQXTSLJR2NYAQK2AWHRRQSFUPXSGJSHJF
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GD3LQMJGYUQEBW6PIAMT5U7NWO6JCSA5PIHJVI6Q2KL65LE3PAQ7X6MX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD3LQMJGYUQEBW6PIAMT5U7NWO6JCSA5PIHJVI6Q2KL65LE3PAQ7X6MX
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GD3QDTEWVXCX73E327I4BIIFKX3BT4W7O6QKM3QACX2ZSZPPA4IQUNZ5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD3QDTEWVXCX73E327I4BIIFKX3BT4W7O6QKM3QACX2ZSZPPA4IQUNZ5
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDE5Q3ELQRGRDMLG5CDK2XKQTYFCJD2YDRE5ZTIOK56OPAIQCIP5T5BJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDE5Q3ELQRGRDMLG5CDK2XKQTYFCJD2YDRE5ZTIOK56OPAIQCIP5T5BJ
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDM4NEO3I42MMLXSNEEI5LCF7ZZ55D2IKUZLDOW47KJKTHEMW45XGV4K
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDM4NEO3I42MMLXSNEEI5LCF7ZZ55D2IKUZLDOW47KJKTHEMW45XGV4K
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDXTWZEYHCONIRTQV6ZUBK2E3D6XXUZQIVEYAGANQZOO7MBZGDRDD2H7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDXTWZEYHCONIRTQV6ZUBK2E3D6XXUZQIVEYAGANQZOO7MBZGDRDD2H7
+    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/deployments/testnet.json
+contributors:
+- login: Rjk3d
+  contributions: 27
+- login: claude
+  contributions: 11
+- login: yacineghn
+  contributions: 7

@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Michella-stack/Stellar-Split
+repo_url: https://github.com/Michella-stack/Stellar-Split
+name: Stellar-Split
+description: Split shared expenses and settle in USDC on Stellar. Built for families and workers who send money across borders,
+  with agent support via x402.
+language: JavaScript
+license: MIT
+created_at: '2026-10-25T12:14:35Z'
+owner: Michella-stack
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 326
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 0
+  classic_ops: 24
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAEZ2AG5C5IDBB5NMXG5L5GLKFX6AVUFTI2SU362UHNY7A7FCIK5K2GG
+  - GAKRFWETUDUHETI2OKTE35YCZPGXBXDUIHQK42CNIOHKQKKRXDZKKIHD
+  - GAZ2D6UYGDFFORAS3PXOEIZQLVS7ME6VYRANQJNLEELMYIAOUB4PY7NY
+  - GCCEP6MCOGHOWGFHMHGB3LAJVTB7ZFDPGYBUI6BFCOUH3NPVM7RZNZZX
+  - GDEBONNUTQF2DKF5UX7KPHG6GUJRFBPYNPVXXDKM7APPB3L4X56KBU7V
+  - GDNTRR7T5BS22ULN2YHYIRPLYJWZ7EIPWG5BWBWN2TC52UVYGONEXXLC
+  - GDU3ZDIIX7TS4KTMJAUHZFLHW634PQNQYENJU6257GZXG4YWMVUX7MPL
+  evidence:
+  - kind: contract
+    subject: CDEJ3M45EYOPSTZISTUC7NIHKJ22IXWY4CZJLIED3LM5WJ4TSBIQMU43
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDEJ3M45EYOPSTZISTUC7NIHKJ22IXWY4CZJLIED3LM5WJ4TSBIQMU43
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GAEZ2AG5C5IDBB5NMXG5L5GLKFX6AVUFTI2SU362UHNY7A7FCIK5K2GG
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAEZ2AG5C5IDBB5NMXG5L5GLKFX6AVUFTI2SU362UHNY7A7FCIK5K2GG
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GAKRFWETUDUHETI2OKTE35YCZPGXBXDUIHQK42CNIOHKQKKRXDZKKIHD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAKRFWETUDUHETI2OKTE35YCZPGXBXDUIHQK42CNIOHKQKKRXDZKKIHD
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GAZ2D6UYGDFFORAS3PXOEIZQLVS7ME6VYRANQJNLEELMYIAOUB4PY7NY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAZ2D6UYGDFFORAS3PXOEIZQLVS7ME6VYRANQJNLEELMYIAOUB4PY7NY
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GCCEP6MCOGHOWGFHMHGB3LAJVTB7ZFDPGYBUI6BFCOUH3NPVM7RZNZZX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCCEP6MCOGHOWGFHMHGB3LAJVTB7ZFDPGYBUI6BFCOUH3NPVM7RZNZZX
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GDEBONNUTQF2DKF5UX7KPHG6GUJRFBPYNPVXXDKM7APPB3L4X56KBU7V
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDEBONNUTQF2DKF5UX7KPHG6GUJRFBPYNPVXXDKM7APPB3L4X56KBU7V
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GDNTRR7T5BS22ULN2YHYIRPLYJWZ7EIPWG5BWBWN2TC52UVYGONEXXLC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDNTRR7T5BS22ULN2YHYIRPLYJWZ7EIPWG5BWBWN2TC52UVYGONEXXLC
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+  - kind: account
+    subject: GDU3ZDIIX7TS4KTMJAUHZFLHW634PQNQYENJU6257GZXG4YWMVUX7MPL
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDU3ZDIIX7TS4KTMJAUHZFLHW634PQNQYENJU6257GZXG4YWMVUX7MPL
+    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/README.md
+contributors:
+- login: vestival
+  contributions: 155
+- login: damcb1
+  contributions: 110
+- login: alvi103-png
+  contributions: 13
+- login: Michella-stack
+  contributions: 12
+- login: SofiiaVarich
+  contributions: 11
+- login: claude
+  contributions: 3

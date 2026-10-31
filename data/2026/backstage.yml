@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/n1n4xyz/backstage
+repo_url: https://github.com/n1n4xyz/backstage
+name: backstage
+homepage: https://frontend-ruddy-theta-23.vercel.app
+language: TypeScript
+created_at: '2026-10-26T10:22:06Z'
+owner: n1n4xyz
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 7
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.4.0
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/n1n4xyz/backstage/blob/HEAD/frontend/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GDSA677ALNKNBSGWL6NW7TBUDKBDVGOLZRPHAPDAR6YC42R7QQGISKDJ
+  evidence:
+  - kind: contract
+    subject: CDP3UFFH6PG5BICR4VKRTVG4LULNLOSLQYJ5KAZ2NRO536HH5SC7JXVR
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDP3UFFH6PG5BICR4VKRTVG4LULNLOSLQYJ5KAZ2NRO536HH5SC7JXVR
+    file_url: https://github.com/n1n4xyz/backstage/blob/HEAD/README.md
+  - kind: account
+    subject: GDSA677ALNKNBSGWL6NW7TBUDKBDVGOLZRPHAPDAR6YC42R7QQGISKDJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDSA677ALNKNBSGWL6NW7TBUDKBDVGOLZRPHAPDAR6YC42R7QQGISKDJ
+    file_url: https://github.com/n1n4xyz/backstage/blob/HEAD/frontend/src/App.tsx
+contributors:
+- login: n1n4xyz
+  contributions: 7

@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/ParriCode/phonedo
+repo_url: https://github.com/ParriCode/phonedo
+name: phonedo
+description: 'Plataforma de integración de sensores con verificación en blockchian '
+language: Python
+created_at: '2026-10-23T18:23:34Z'
+owner: ParriCode
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 84
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 13
+  wasm_uploads: 4
+  classic_ops: 4
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBBO4ZD2YNV3ZBUIBIQAH3VK73Y2RHTSMURUR5LYEK5JMXACK24YN3BC
+  - GBZCQXYSSUK5ELUXKWQBBNCSIAOBHPGG36THG35QJLSBLF3BBVGKEMGJ
+  evidence:
+  - kind: contract
+    subject: CACUZG5V45NPFFB5JSLHMTF6NHEP5GMGZ5QJKJPET4ZIRTWOW6VS2VQS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CACUZG5V45NPFFB5JSLHMTF6NHEP5GMGZ5QJKJPET4ZIRTWOW6VS2VQS
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/README.md
+  - kind: contract
+    subject: CAPZ2O7LPTRGJ2Q7TTHMCHOKRZ4T7KU5I4E74M2U3YUTC3XONIQDOP2D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAPZ2O7LPTRGJ2Q7TTHMCHOKRZ4T7KU5I4E74M2U3YUTC3XONIQDOP2D
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/README.md
+  - kind: contract
+    subject: CBF2MBQ6W4S6LD3JSIM3NNZET5KBUKOADRZSKIYZRZBAXRM6OJZCNSFI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBF2MBQ6W4S6LD3JSIM3NNZET5KBUKOADRZSKIYZRZBAXRM6OJZCNSFI
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/README.md
+  - kind: contract
+    subject: CCLQFKRWBLRSPLVAFWBLG22LPRGP3GEV47CGXA6C3VAGPQ2QITE3DNYL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCLQFKRWBLRSPLVAFWBLG22LPRGP3GEV47CGXA6C3VAGPQ2QITE3DNYL
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/README.md
+  - kind: contract
+    subject: CD3ZLDTB7QKJLMAIBSCL75TRHE6IUZ27RW5FLWNB4F3GUQENZZZSM45H
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD3ZLDTB7QKJLMAIBSCL75TRHE6IUZ27RW5FLWNB4F3GUQENZZZSM45H
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/README.md
+  - kind: contract
+    subject: CDH7PZQYQCYBCRO56F4WJP5BMEFPIBAEAQUAHKENXRYHZCTZPEH6UW3E
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDH7PZQYQCYBCRO56F4WJP5BMEFPIBAEAQUAHKENXRYHZCTZPEH6UW3E
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/apps/publisher/config.json
+  - kind: contract
+    subject: CDNPBN6HZP4PZKRFOOA2PYC772KF4THXTJNKHBS5Y33HCAVDWCVO5SRE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDNPBN6HZP4PZKRFOOA2PYC772KF4THXTJNKHBS5Y33HCAVDWCVO5SRE
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/README.md
+  - kind: account
+    subject: GBZCQXYSSUK5ELUXKWQBBNCSIAOBHPGG36THG35QJLSBLF3BBVGKEMGJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBZCQXYSSUK5ELUXKWQBBNCSIAOBHPGG36THG35QJLSBLF3BBVGKEMGJ
+    file_url: https://github.com/ParriCode/phonedo/blob/HEAD/apps/publisher/config.json
+contributors:
+- login: alexSerranoR
+  contributions: 42
+- login: mmp00158
+  contributions: 10
+- login: cmc00150
+  contributions: 3
+- login: lst00013-sys
+  contributions: 2

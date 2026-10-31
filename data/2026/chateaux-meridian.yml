@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/elszalencia/chateaux-meridian
+repo_url: https://github.com/elszalencia/chateaux-meridian
+name: chateaux-meridian
+description: 'Chateaux: cross-border home down-payment rails on Stellar'
+language: TypeScript
+created_at: '2026-10-25T14:17:47Z'
+owner: elszalencia
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 5
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.2.1
+  '@stellar/typescript-wallet-sdk': ^5.1.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: elszalencia
+  contributions: 5

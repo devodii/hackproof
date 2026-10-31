@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/joshschcom/peridot-markets
+repo_url: https://github.com/joshschcom/peridot-markets
+name: peridot-markets
+language: Rust
+created_at: '2026-10-25T12:43:30Z'
+owner: joshschcom
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 232
+stack:
+  soroban-sdk: null
+  stellar-strkey: 0.0.16
+  '@stellar/stellar-sdk': 16.3.1
+  '@stellar/freighter-api': ^6.0.1
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/package.json
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/package.json
+chain:
+  contracts: 11
+  wasm_uploads: 44
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBZ7C3N43KURCM3DWN4LOOKR5XWHNU6EZEJQT5VGRLHKUUQQYL7UXFMJ
+  evidence:
+  - kind: wasm
+    subject: aab4c9e060086d8928459dd4efe16c1ecc381b3eb9abdf55d363b9914965a550
+    method: wasm_hash_match
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/build/mainnet/launchpad_token.wasm
+  - kind: wasm
+    subject: b371a8c37cb6a9cabd74b28c899f86114efa7a85e955042085f78c3261ee6d62
+    method: wasm_hash_match
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/build/mainnet/launchpad_factory_v2.wasm
+  - kind: wasm
+    subject: bdde6afcccaafe445652294c3b03d382cfdc905a4fc7a25534a6daf6bb16420c
+    method: wasm_hash_match
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/build/mainnet/launchpad_curve.wasm
+contributors:
+- login: joshschcom
+  contributions: 265

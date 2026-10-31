@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/NicoleCarolina/HackMeridian
+repo_url: https://github.com/NicoleCarolina/HackMeridian
+name: HackMeridian
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-25T14:41:36Z'
+owner: NicoleCarolina
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 20
+stack:
+  soroban-sdk: null
+  stellar-xdr: 26.0.1
+  '@stellar/stellar-sdk': ^16.1.0
+  '@creit.tech/stellar-wallets-kit': ^2.5.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/NicoleCarolina/HackMeridian/blob/HEAD/app-lib/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GDJFJJ6VIA34HTUUQ7GVXQAU5OHKMS5T6M7OSLZ4SUSQBRDPFFYAEFS3
+  evidence:
+  - kind: contract
+    subject: CCCT7ERFARCNHA2TSAL2LQLLYUTPICWHSQL7KQBC43AHUORAEHJACQHS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCCT7ERFARCNHA2TSAL2LQLLYUTPICWHSQL7KQBC43AHUORAEHJACQHS
+    file_url: https://github.com/NicoleCarolina/HackMeridian/blob/HEAD/README.md
+contributors:
+- login: NicoleCarolina
+  contributions: 20

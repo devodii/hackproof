@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Dabuca/arqueo
+repo_url: https://github.com/Dabuca/arqueo
+name: arqueo
+homepage: https://arqueo-sooty.vercel.app
+language: JavaScript
+license: Apache-2.0
+created_at: '2026-10-25T10:25:46Z'
+owner: Dabuca
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 212
+stack:
+  soroban-sdk: null
+  stellar-xdr: null
+  '@stellar/stellar-sdk': ^16.4.1
+  '@creit.tech/stellar-wallets-kit': ^2.5.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/app-lib/package.json
+chain:
+  contracts: 3
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAYWZ6RFP2XD4WPJFVPBGCXEQMEHMZXELDFFI2XQ2AP5VFLP4FNDMA6Z
+  - GBHX3Z3BW27ORH4VFKVP36FGRJGAEADYDWCIW3HGXQQGPWC6LEUCYIGK
+  - GBUPNSDMZS3GDTBG3AXA347M3YXTGKQOY22OAQFNBACBYGUB5XLE5BI2
+  - GCOAUKV2W7NBFZP63CTMQEV66BPGFGDXF2EYKCM7I7BQHYHJ4JBAC6E2
+  - GCSYGJ52S64VUEZPPWVJ56PXNO2TFFQVDO5WBJSZ4ZNBWZEW53OVOJWX
+  - GDATKZYV7GHROFDIA4ED3DDY6IH37T2KP6Z6XJOSDKHUXX6AOPLCM3CW
+  - GDUFOAGKAFX4IUCAYJHEXPNMOVX6NPVCWCXH2HPZNRGKEOQMZO5MH3YC
+  - GDYJ6G2GK47E26WR72LPB5ASDHTVGPYGS7UYJ3JK4WVWJDVQGDQGW73Z
+  evidence:
+  - kind: contract
+    subject: CBPCC6AT3756K43DGTRKLIZFOY5TODHZXGBJS4X4KZ64TFWUQDPEWU4L
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBPCC6AT3756K43DGTRKLIZFOY5TODHZXGBJS4X4KZ64TFWUQDPEWU4L
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/app/.env.example
+  - kind: contract
+    subject: CBUNXLPEKPDGZOEJB4PRBZHXTZ6JOXCH7RAVW6LJTDY62BI2G2LXMUH6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBUNXLPEKPDGZOEJB4PRBZHXTZ6JOXCH7RAVW6LJTDY62BI2G2LXMUH6
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/docs/evidence-R17-settings.md
+  - kind: contract
+    subject: CCTQZ3T7OGITLMSWRCQU5KVVHM2C6ST4JCX6ZY6C35ZU4Y2A2GFZMIT4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCTQZ3T7OGITLMSWRCQU5KVVHM2C6ST4JCX6ZY6C35ZU4Y2A2GFZMIT4
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/app/.env.example
+  - kind: account
+    subject: GAYWZ6RFP2XD4WPJFVPBGCXEQMEHMZXELDFFI2XQ2AP5VFLP4FNDMA6Z
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAYWZ6RFP2XD4WPJFVPBGCXEQMEHMZXELDFFI2XQ2AP5VFLP4FNDMA6Z
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/https://arqueo-sooty.vercel.app/assets/index-C2-IfmsK.js
+  - kind: account
+    subject: GBHX3Z3BW27ORH4VFKVP36FGRJGAEADYDWCIW3HGXQQGPWC6LEUCYIGK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBHX3Z3BW27ORH4VFKVP36FGRJGAEADYDWCIW3HGXQQGPWC6LEUCYIGK
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/docs/evidence-R6-scene3.md
+  - kind: account
+    subject: GCOAUKV2W7NBFZP63CTMQEV66BPGFGDXF2EYKCM7I7BQHYHJ4JBAC6E2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCOAUKV2W7NBFZP63CTMQEV66BPGFGDXF2EYKCM7I7BQHYHJ4JBAC6E2
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/docs/evidence-R6-scene3.md
+  - kind: account
+    subject: GDATKZYV7GHROFDIA4ED3DDY6IH37T2KP6Z6XJOSDKHUXX6AOPLCM3CW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDATKZYV7GHROFDIA4ED3DDY6IH37T2KP6Z6XJOSDKHUXX6AOPLCM3CW
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/https://arqueo-sooty.vercel.app/assets/index-C2-IfmsK.js
+  - kind: account
+    subject: GDUFOAGKAFX4IUCAYJHEXPNMOVX6NPVCWCXH2HPZNRGKEOQMZO5MH3YC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUFOAGKAFX4IUCAYJHEXPNMOVX6NPVCWCXH2HPZNRGKEOQMZO5MH3YC
+    file_url: https://github.com/Dabuca/arqueo/blob/HEAD/docs/evidence-R17-settings.md
+contributors:
+- login: carlosvelz
+  contributions: 92
+- login: Dabuca
+  contributions: 56
+- login: jesssussito
+  contributions: 36
+- login: DDaaviidd
+  contributions: 28

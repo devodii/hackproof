@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/bitfalt/scaffold-stellar-agentic
+repo_url: https://github.com/bitfalt/scaffold-stellar-agentic
+name: scaffold-stellar-agentic
+description: 'De idea a dApp con prompts: Scaffold Stellar + escrows de Trustless Work + login con correo/Google (Cavos) +
+  skills para cualquier agente (Claude Code, Codex, Cursor, OpenCode, Copilot, Gemini…)'
+language: TypeScript
+license: Apache-2.0
+topics:
+- agent-skills
+- agents-md
+- ai-agents
+- dapp-template
+- escrow
+- soroban
+- stellar
+- trustless-work
+- workshop
+- scaffold-stellar
+- cavos
+- embedded-wallets
+created_at: '2026-10-10T03:43:47Z'
+owner: bitfalt
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 0
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+  '@creit.tech/stellar-wallets-kit': ^2.3.0
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: endpoint
+    detail: api.trustlesswork.com
+    file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/doctor.mjs
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/doctor.mjs
+  - method: package
+    detail: '@trustless-work/escrow'
+    file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/app/package.json
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/app-lib/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA7G47AJNWMM5ASDZX6FVRGWPWCBM6RVULJSRIVXO5TSEPXW3OQ5VJ65
+  evidence:
+  - kind: wasm
+    subject: a871f0412b6304bb285759176c18ae1b61ccfdb1358ed41fb766062fc6854e9d
+    method: wasm_meta
+contributors:
+- login: bitfalt
+  contributions: 15

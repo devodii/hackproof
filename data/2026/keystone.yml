@@ -1,0 +1,155 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Lagouze/keystone
+repo_url: https://github.com/Lagouze/keystone
+name: keystone
+description: Tokenized money market fund collateral on Stellar — Soroban contracts, keeper and margin call simulations.
+homepage: https://keystone-eta-ebon.vercel.app
+language: TypeScript
+topics:
+- collateral-management
+- hackmeridian
+- rust
+- soroban
+- stellar
+- typescript
+created_at: '2026-10-25T10:46:06Z'
+owner: Lagouze
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 143
+stack:
+  soroban-sdk: =29.0.1
+  '@stellar/stellar-sdk': ^16.0.1
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/app/package.json
+chain:
+  contracts: 20
+  wasm_uploads: 2
+  classic_ops: 9
+  assets: 3
+  failed_txs: 0
+  accounts:
+  - GAUHK4ZBP2W5VSKLJOTTKKHWUB2MGFXBMHYLSH3EERTVYYMVPWSR7W6C
+  - GB2W46GBK43HTMNXV7EW2WIRMRA3PZNBA4NXEUW6IDK4ECXPDARQV2CO
+  - GCSLY4AQALFG657K5WHJITP7IXTXKCGTRDMRGFMGQWVMZXTMBJJTVW35
+  - GD372X3Z5AVVZPNHZELJSRPF4GAKT2BL5J7AT22TDM5WD4I5INX4KDUH
+  - GDGUJHZGU57RU4RHARM37GU2IDX4KV7V23XVFORDWRYIBWIIQ6U7G4TO
+  - GDQ6AWAXZWIOCBHDSFIIKCWV3PQ6ZJE6BBC4VJCWA3SCFB4G7A2TMQOY
+  - GDUEISWWPXLJDIU4UAH3AFFT6DLJOUVIKN34X464TPFEESI4TUOBX3MZ
+  - GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+  evidence:
+  - kind: contract
+    subject: CA6OA3I4EPINUCZAVFTPHCQCBH4IQLCYZNHGNJBDWFEQP7IL23PSJV7D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA6OA3I4EPINUCZAVFTPHCQCBH4IQLCYZNHGNJBDWFEQP7IL23PSJV7D
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CALNED2G3Y2XLDMGZMFR2KR7RIWSL3FN36QAL4TNC27233AC5BJNLV4H
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CALNED2G3Y2XLDMGZMFR2KR7RIWSL3FN36QAL4TNC27233AC5BJNLV4H
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CALYRUMGT3J3P32NHBDTRDWJD3JU2AEIXEKRCFDNZ7I6GHKU5DBBKFWA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CALYRUMGT3J3P32NHBDTRDWJD3JU2AEIXEKRCFDNZ7I6GHKU5DBBKFWA
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CAPZEIRJMFSSXN34DG3XV35H6STUEQZOFAH3MCXYJQ3VSRI4EVGDMFX2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAPZEIRJMFSSXN34DG3XV35H6STUEQZOFAH3MCXYJQ3VSRI4EVGDMFX2
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CARBSCRLX2DJKMGYB3TPJ7WEAWZZ5HSIOE4CXY4PG6ZGR3Y5HZLON226
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CARBSCRLX2DJKMGYB3TPJ7WEAWZZ5HSIOE4CXY4PG6ZGR3Y5HZLON226
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CATMOIWU2FMO43TGLWH4A6SHCIMVHQ5YYXCV2VUN6ZSQMHHKUJRXDC5B
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CATMOIWU2FMO43TGLWH4A6SHCIMVHQ5YYXCV2VUN6ZSQMHHKUJRXDC5B
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CBL4SMJNYNXAFWGBKXMNA5U23PBSAFZ2OUDRD2EALCSCA5Y3GG4GIERD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBL4SMJNYNXAFWGBKXMNA5U23PBSAFZ2OUDRD2EALCSCA5Y3GG4GIERD
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CCLE3RBDYNMRMBVTAPXLQ5JRWQOGR3RHOQYCMH43N6VYY6T2OGSZCB2N
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCLE3RBDYNMRMBVTAPXLQ5JRWQOGR3RHOQYCMH43N6VYY6T2OGSZCB2N
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CD3MAB27BM57BM5SVGAIM5CTBDJPAVSUHFCKDHNZHBHBMNGI6KX7QAC7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD3MAB27BM57BM5SVGAIM5CTBDJPAVSUHFCKDHNZHBHBMNGI6KX7QAC7
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: contract
+    subject: CDL5GRMUQGDTCFVRKJPXKUUIXYLICZOPQP54WYODPGN2XLIVHKWGTQA2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDL5GRMUQGDTCFVRKJPXKUUIXYLICZOPQP54WYODPGN2XLIVHKWGTQA2
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: asset
+    subject: KBOND:GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/KBOND-GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: asset
+    subject: KMMF:GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/KMMF-GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: account
+    subject: GAUHK4ZBP2W5VSKLJOTTKKHWUB2MGFXBMHYLSH3EERTVYYMVPWSR7W6C
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAUHK4ZBP2W5VSKLJOTTKKHWUB2MGFXBMHYLSH3EERTVYYMVPWSR7W6C
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: account
+    subject: GB2W46GBK43HTMNXV7EW2WIRMRA3PZNBA4NXEUW6IDK4ECXPDARQV2CO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB2W46GBK43HTMNXV7EW2WIRMRA3PZNBA4NXEUW6IDK4ECXPDARQV2CO
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/contracts/keystone_vault/testnet-c2.json
+  - kind: account
+    subject: GCSLY4AQALFG657K5WHJITP7IXTXKCGTRDMRGFMGQWVMZXTMBJJTVW35
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCSLY4AQALFG657K5WHJITP7IXTXKCGTRDMRGFMGQWVMZXTMBJJTVW35
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/contracts/keystone_vault/testnet-c2.json
+  - kind: account
+    subject: GD372X3Z5AVVZPNHZELJSRPF4GAKT2BL5J7AT22TDM5WD4I5INX4KDUH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD372X3Z5AVVZPNHZELJSRPF4GAKT2BL5J7AT22TDM5WD4I5INX4KDUH
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/contracts/keystone_vault/testnet-c1.json
+  - kind: account
+    subject: GDGUJHZGU57RU4RHARM37GU2IDX4KV7V23XVFORDWRYIBWIIQ6U7G4TO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDGUJHZGU57RU4RHARM37GU2IDX4KV7V23XVFORDWRYIBWIIQ6U7G4TO
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: account
+    subject: GDQ6AWAXZWIOCBHDSFIIKCWV3PQ6ZJE6BBC4VJCWA3SCFB4G7A2TMQOY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDQ6AWAXZWIOCBHDSFIIKCWV3PQ6ZJE6BBC4VJCWA3SCFB4G7A2TMQOY
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+  - kind: account
+    subject: GDUEISWWPXLJDIU4UAH3AFFT6DLJOUVIKN34X464TPFEESI4TUOBX3MZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUEISWWPXLJDIU4UAH3AFFT6DLJOUVIKN34X464TPFEESI4TUOBX3MZ
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/contracts/keystone_vault/testnet-c2.json
+  - kind: account
+    subject: GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDWMFOSV4L2O66PDZ4BL4K5HEJJLGMGXXWLHUJNJ4N4ZICSUSBGTGNGX
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/README.md
+contributors:
+- login: Lagouze
+  contributions: 90
+- login: user-asus
+  contributions: 31
+- login: Liel2201
+  contributions: 25

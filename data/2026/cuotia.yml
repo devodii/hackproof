@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/fredericjasmin/cuotia
+repo_url: https://github.com/fredericjasmin/cuotia
+name: cuotia
+description: Cuotia helps friends, families, and communities save together through organized savings circles. Members contribute
+  regularly, see the schedule, and take turns receiving the group’s savings. Our goal is to make this familiar way of saving
+  clearer and easier for everyone.
+homepage: https://cuotia-fj.vercel.app/
+language: JavaScript
+created_at: '2026-10-24T03:03:29Z'
+owner: fredericjasmin
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 6
+stack:
+  soroban-sdk: 28.0.0
+  '@stellar/stellar-sdk': ^17.3.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/fredericjasmin/cuotia/blob/HEAD/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAAAAQA57NLZJWRDG7USYJEAIOQCV773YBKX76CN7LEHPJCGJYRMHZPY
+  evidence:
+  - kind: contract
+    subject: CBNPB3S542LAA7BC6X23DFSPI5LJPFRXV6ZEAMIOWLYGPUC6S5YGGF4M
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBNPB3S542LAA7BC6X23DFSPI5LJPFRXV6ZEAMIOWLYGPUC6S5YGGF4M
+    file_url: https://github.com/fredericjasmin/cuotia/blob/HEAD/docs/ideathon/entrega-ideathon.md
+contributors:
+- login: fredericjasmin
+  contributions: 12

@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/nicolasguasca1/x402-stellar-ticket-gating
+repo_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating
+name: x402-stellar-ticket-gating
+homepage: https://x402-stellar-ticket-gating.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T10:40:49Z'
+owner: nicolasguasca1
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 70
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.2.1
+chain:
+  contracts: 8
+  wasm_uploads: 5
+  classic_ops: 6
+  assets: 0
+  failed_txs: 1
+  accounts:
+  - GAAJFKX4HUHCNVBZIKTMKFDNOMQIAG32AROQBTINCAHHOFG6JMYN3GI7
+  - GAVNYETGN7O2FDM4QZOO4IBXFSDQ7BTLE7LI5B3EAXRKTXE4QB2MUEJS
+  - GBUEK5AJBCVUN27D7ALQA74PDZI2FD27E6EYHUTQJ6IOQ6CSQB3UAYNA
+  - GBVINWIZEYLBNWZJGNMSEEA7B4Q65IPYDWN2SMLQ5KT7J36WBQM3W2L6
+  - GBXIZFO2HY7ZM6LX4UQ2K4XPKWF252RJTSLKTBFXLA6ZE4OLQ25XO7K5
+  - GCLCK44ADIJYFKVU2XE24BLKKEGXKWQXF2ASR2ELPDN3TTBN35WU2SS2
+  - GCLS7HPO2S44435UBEPUE7HUP3DFT5M34HGFBVPXFIEL2REQ6CII33KD
+  - GCTXATFVRO2TNTUD2ZOREFO4WIGNOH7GUNRYZAUP777BXZX7R6WSB4UM
+  - GD6PBXBN5BEITE2UNCNFH7LZ64BZIRWDFJZEPWJXHMK2CYKPH4Z2ZAKJ
+  - GDOKD3IAA7NM2Z3OXOBVGDJKQGPOSP63AELCCCLLXQUHTTSUBITBO3UF
+  - GDQDQBGEM6V37HC5IC34XMMIRMOFR5A36GWELI3X5W5IOQXOMAEB2W7H
+  evidence:
+  - kind: contract
+    subject: CA37T6644HTO62QQD6OXZ2ELTDWOQBTD3FQUBWLQMFARUWARWXM3MHNI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA37T6644HTO62QQD6OXZ2ELTDWOQBTD3FQUBWLQMFARUWARWXM3MHNI
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet-usdt0.json
+  - kind: contract
+    subject: CAOF7S5D2NTACRFYRH77DANIFFNF2AV63DRCXN5PLXVWEHBSJZUWOV46
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAOF7S5D2NTACRFYRH77DANIFFNF2AV63DRCXN5PLXVWEHBSJZUWOV46
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/README.md
+  - kind: contract
+    subject: CAOWGQF4ZAB5O2NYVFDUWC4Q5A2YCEDRMA2JVG2PJAXOJRIO2PH5WBZV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAOWGQF4ZAB5O2NYVFDUWC4Q5A2YCEDRMA2JVG2PJAXOJRIO2PH5WBZV
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CATGCUIDR7CODETGFNOKKOOHD4RXICO6GGUNID66GDTJKJSNR5FZJIUS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CATGCUIDR7CODETGFNOKKOOHD4RXICO6GGUNID66GDTJKJSNR5FZJIUS
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAWCIEQYK6HPPFJSH5F7EQLEDW7OOHE4R2UH6TK6F5HQYS2QFRZRXS3Y
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAWCIEQYK6HPPFJSH5F7EQLEDW7OOHE4R2UH6TK6F5HQYS2QFRZRXS3Y
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CB2IW264XIZW3OOQMOKLPHPOQPOILVUTX2GTLQ2S6ZKGZ6UACDLCGIYM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB2IW264XIZW3OOQMOKLPHPOQPOILVUTX2GTLQ2S6ZKGZ6UACDLCGIYM
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBAPSXWKER5Z6IVU5O4BISWFMB5XR4K32MXFFE3CGJ5YCL6WUN5JQ6VV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBAPSXWKER5Z6IVU5O4BISWFMB5XR4K32MXFFE3CGJ5YCL6WUN5JQ6VV
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBVH7JFYZ6MBCVSX2U26Y2YTY3ETHFFNXV7WNF6W27DQMQ2HCJ3UGVRJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVH7JFYZ6MBCVSX2U26Y2YTY3ETHFFNXV7WNF6W27DQMQ2HCJ3UGVRJ
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: wasm
+    subject: 1f54a196078a661e594e4bf23e5b57f397609a1b1e7cb43868326f8284224ab8
+    method: wasm_meta
+  - kind: wasm
+    subject: 5269bc8b1b1f3871633f549418f6b8b01da3a5f231907f884ec606d5bcc67c93
+    method: wasm_meta
+  - kind: wasm
+    subject: 89d1f2aee7906d1870a356f07b0ac16c0a1a8c3e5092d4740901c02b36c9db16
+    method: wasm_meta
+  - kind: wasm
+    subject: c96b79a90b5d02032ad20ac263bd8bfd5a7c7d32763f8e173a5062906df0e77e
+    method: wasm_meta
+  - kind: wasm
+    subject: d4ef0587d95713190ea333b9ba29d374a8bd2b3f602684daebf9e83e6c16c8f3
+    method: wasm_meta
+  - kind: account
+    subject: GAAJFKX4HUHCNVBZIKTMKFDNOMQIAG32AROQBTINCAHHOFG6JMYN3GI7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAAJFKX4HUHCNVBZIKTMKFDNOMQIAG32AROQBTINCAHHOFG6JMYN3GI7
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBUEK5AJBCVUN27D7ALQA74PDZI2FD27E6EYHUTQJ6IOQ6CSQB3UAYNA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBUEK5AJBCVUN27D7ALQA74PDZI2FD27E6EYHUTQJ6IOQ6CSQB3UAYNA
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBVINWIZEYLBNWZJGNMSEEA7B4Q65IPYDWN2SMLQ5KT7J36WBQM3W2L6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBVINWIZEYLBNWZJGNMSEEA7B4Q65IPYDWN2SMLQ5KT7J36WBQM3W2L6
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBXIZFO2HY7ZM6LX4UQ2K4XPKWF252RJTSLKTBFXLA6ZE4OLQ25XO7K5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBXIZFO2HY7ZM6LX4UQ2K4XPKWF252RJTSLKTBFXLA6ZE4OLQ25XO7K5
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet-usdt0.json
+  - kind: account
+    subject: GCLCK44ADIJYFKVU2XE24BLKKEGXKWQXF2ASR2ELPDN3TTBN35WU2SS2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCLCK44ADIJYFKVU2XE24BLKKEGXKWQXF2ASR2ELPDN3TTBN35WU2SS2
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCLS7HPO2S44435UBEPUE7HUP3DFT5M34HGFBVPXFIEL2REQ6CII33KD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCLS7HPO2S44435UBEPUE7HUP3DFT5M34HGFBVPXFIEL2REQ6CII33KD
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet-usdt0.json
+  - kind: account
+    subject: GD6PBXBN5BEITE2UNCNFH7LZ64BZIRWDFJZEPWJXHMK2CYKPH4Z2ZAKJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD6PBXBN5BEITE2UNCNFH7LZ64BZIRWDFJZEPWJXHMK2CYKPH4Z2ZAKJ
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDOKD3IAA7NM2Z3OXOBVGDJKQGPOSP63AELCCCLLXQUHTTSUBITBO3UF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDOKD3IAA7NM2Z3OXOBVGDJKQGPOSP63AELCCCLLXQUHTTSUBITBO3UF
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet-usdt0.json
+  - kind: account
+    subject: GDQDQBGEM6V37HC5IC34XMMIRMOFR5A36GWELI3X5W5IOQXOMAEB2W7H
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDQDQBGEM6V37HC5IC34XMMIRMOFR5A36GWELI3X5W5IOQXOMAEB2W7H
+    file_url: https://github.com/nicolasguasca1/x402-stellar-ticket-gating/blob/HEAD/deployments/testnet-usdt0.json
+contributors:
+- login: claude
+  contributions: 71

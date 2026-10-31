@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Inferara/stablecoin-close
+repo_url: https://github.com/Inferara/stablecoin-close
+name: stablecoin-close
+description: 'Stablecoin settlement and report anchoring on Stellar: Soroban contracts, payer and verifier pages, and a reference
+  fetcher for the haruno.stellar.month/1 snapshot.'
+language: JavaScript
+license: Apache-2.0
+created_at: '2026-10-20T15:03:41Z'
+owner: Inferara
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 27
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 7
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAZ5ZBS7GWA2XPAIQPCQHDZBKO6IL3QCYRY3QJPDPWFJVJRH3FQ4COVW
+  - GCGZQQKKI6TXHX5V4MRMDUXLXIR5FI3OG2FHUGOTAH3V5JORRCTBRIDU
+  - GD2HID4AHAGP3ELHAROKJU4PAHZT2PCTBIDODI5MWPDFPKDMBAAZJH4Q
+  - GDUIDEFLT36VYS6CCPHRROKLLDR56MGBCNL5QOYPYN6V2BZ5KIGTXOH5
+  evidence:
+  - kind: contract
+    subject: CAU56RULWM446LJCYIRMWIJSBL4NE5DBLTHJ4GPXTKUVQ7BUYTQAZ2CS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAU56RULWM446LJCYIRMWIJSBL4NE5DBLTHJ4GPXTKUVQ7BUYTQAZ2CS
+    file_url: https://github.com/Inferara/stablecoin-close/blob/HEAD/README.md
+  - kind: contract
+    subject: CB4SGMUT56YKMYQWOQN2T3FTBZOJBZHYUYYV6QTVTJGGCYLWIIDOBPWB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB4SGMUT56YKMYQWOQN2T3FTBZOJBZHYUYYV6QTVTJGGCYLWIIDOBPWB
+    file_url: https://github.com/Inferara/stablecoin-close/blob/HEAD/README.md
+  - kind: account
+    subject: GAZ5ZBS7GWA2XPAIQPCQHDZBKO6IL3QCYRY3QJPDPWFJVJRH3FQ4COVW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAZ5ZBS7GWA2XPAIQPCQHDZBKO6IL3QCYRY3QJPDPWFJVJRH3FQ4COVW
+    file_url: https://github.com/Inferara/stablecoin-close/blob/HEAD/docs/examples/lisbon-coffee-roasters-2026-10.json
+  - kind: account
+    subject: GCGZQQKKI6TXHX5V4MRMDUXLXIR5FI3OG2FHUGOTAH3V5JORRCTBRIDU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCGZQQKKI6TXHX5V4MRMDUXLXIR5FI3OG2FHUGOTAH3V5JORRCTBRIDU
+    file_url: https://github.com/Inferara/stablecoin-close/blob/HEAD/docs/examples/lisbon-coffee-roasters-2026-10.json
+  - kind: account
+    subject: GD2HID4AHAGP3ELHAROKJU4PAHZT2PCTBIDODI5MWPDFPKDMBAAZJH4Q
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD2HID4AHAGP3ELHAROKJU4PAHZT2PCTBIDODI5MWPDFPKDMBAAZJH4Q
+    file_url: https://github.com/Inferara/stablecoin-close/blob/HEAD/README.md
+contributors:
+- login: SurfingBowser
+  contributions: 29
+- login: AndreyKerchin
+  contributions: 14
+- login: AKercha1
+  contributions: 1

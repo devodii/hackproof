@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/ogaziedaniel80-droid/marketpulse-oracle
+repo_url: https://github.com/ogaziedaniel80-droid/marketpulse-oracle
+name: marketpulse-oracle
+description: 'Crowd-sourced, stake-backed local data oracle for West Africa on Stellar Soroban: staple prices, fuel, roads,
+  and power reports with commit-reveal consensus and slashing.'
+language: Rust
+license: Apache-2.0
+created_at: '2026-10-12T04:56:34Z'
+owner: ogaziedaniel80-droid
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 10
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: ogaziedaniel80-droid
+  contributions: 33

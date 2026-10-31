@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/oneid-ng/oneid
+repo_url: https://github.com/oneid-ng/oneid
+name: oneid
+description: Reusable, consent-based KYC for Nigeria on Stellar. Verify once, share only the claims a service needs. Soroban
+  contracts, synthetic data only.
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T16:45:29Z'
+owner: oneid-ng
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 6
+stack:
+  soroban-sdk: 21.7.7
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: legend-esc
+  contributions: 2

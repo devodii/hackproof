@@ -1,0 +1,147 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/celadari/fathom-hack-meridian-2026
+repo_url: https://github.com/celadari/fathom-hack-meridian-2026
+name: fathom-hack-meridian-2026
+description: 'Fathom: sealed RWA auctions on Stellar that work as a liquidity oracle, built for HackMeridian Lisbon 2026 (Genesis
+  track). Orders are sealed in the browser (Poseidon commitments, Noir proofs) and cleared at one uniform price. Results publish
+  as SEP-40 price plus locked-money depth that lending pools use to cap borrowing. Live on testnet.'
+homepage: https://fathom-b3t.pages.dev
+language: TypeScript
+created_at: '2026-10-26T02:55:26Z'
+owner: celadari
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 53
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.4.0
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/package.json
+chain:
+  contracts: 25
+  wasm_uploads: 16
+  classic_ops: 579
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GBC4AUOIA4FTFEDY2QZAYIOW52CXG7TTDSDMN3XDZCAIUKOHIAYH5VA5
+  - GDSK6TCBLJJBAK4KG5BHKTSOZTMIONTJAOCTSHZM6U55M7J4S3OQB3SF
+  evidence:
+  - kind: contract
+    subject: CA2FYHX4E5MQZB7RJOQR7P6CJZS57GGMP7NTGOA4R4VZPFQHEZQRPYAU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA2FYHX4E5MQZB7RJOQR7P6CJZS57GGMP7NTGOA4R4VZPFQHEZQRPYAU
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/.env.production
+  - kind: contract
+    subject: CAD4UVA3IBEQIWCGABQS72TXKNE3ICOKU3ESRFFXAEU5PCQKPFGUVVVZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAD4UVA3IBEQIWCGABQS72TXKNE3ICOKU3ESRFFXAEU5PCQKPFGUVVVZ
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/.env.production
+  - kind: contract
+    subject: CAI3KKLOO5L6J3DGTNK7BASTWD67CNE7YMCOUFDNZOEQ3PW77MWMDOAV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAI3KKLOO5L6J3DGTNK7BASTWD67CNE7YMCOUFDNZOEQ3PW77MWMDOAV
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/.env.production
+  - kind: contract
+    subject: CB2XYQYVE5ZQEJSKFXNB47HKHNKW5WP2PCPMYRGVSZ2PKMBW5HCGGQ5P
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB2XYQYVE5ZQEJSKFXNB47HKHNKW5WP2PCPMYRGVSZ2PKMBW5HCGGQ5P
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CBP2U65323GODHUBALNCZSQZZJBYEM6EB37GQGY5JPVKWEAOADQLJOYN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBP2U65323GODHUBALNCZSQZZJBYEM6EB37GQGY5JPVKWEAOADQLJOYN
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CCFQPYDC7JKJPEIR6PQLT2VF4U2GRYGIK5QCNEUTRUVBGU6L63GRKFTA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCFQPYDC7JKJPEIR6PQLT2VF4U2GRYGIK5QCNEUTRUVBGU6L63GRKFTA
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CCHVIQYCZZXVHSEXRLHV53GIGACOLENCFNHJNBICS4JYJMZBDEYKS5PS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCHVIQYCZZXVHSEXRLHV53GIGACOLENCFNHJNBICS4JYJMZBDEYKS5PS
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CCKQ7A3LPDOC75PCWMIIVG6YBUUFZSJEGTFOHYTHNFPTBGTBVRFMMHQ4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCKQ7A3LPDOC75PCWMIIVG6YBUUFZSJEGTFOHYTHNFPTBGTBVRFMMHQ4
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/.env.production
+  - kind: contract
+    subject: CCRMWYI4NHQMPYGVTL5MSBS5SJUZYPYEX52KJ4RXLT6S7LNY5Y7R24F6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCRMWYI4NHQMPYGVTL5MSBS5SJUZYPYEX52KJ4RXLT6S7LNY5Y7R24F6
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CCUGEO27VXVN3EEISUZ2HNGOA4BNAM427ABIEMAPIWBJXGA3KDY7PG4B
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCUGEO27VXVN3EEISUZ2HNGOA4BNAM427ABIEMAPIWBJXGA3KDY7PG4B
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CD66PTNIW7PY32N4OUKRFQJXHVDW5FBD2UZQG6AFHUTQVOU24QXE5GEM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD66PTNIW7PY32N4OUKRFQJXHVDW5FBD2UZQG6AFHUTQVOU24QXE5GEM
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CDALVDWVEQI56NRDAFO2GU5YD77KFNNWNFEMLWSAZYVPWBBNIMLZU7AM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDALVDWVEQI56NRDAFO2GU5YD77KFNNWNFEMLWSAZYVPWBBNIMLZU7AM
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CDASZDGFIAKR3Q443BLI67IMG7OZKQYFABZBEO5ZO3BC4RQ5OYHD4ZTE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDASZDGFIAKR3Q443BLI67IMG7OZKQYFABZBEO5ZO3BC4RQ5OYHD4ZTE
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CDJNBL45S4OZABEBIH7ERSMXCSNE5QDIBGE35KIEIKOCHUBOVGQOFPQG
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDJNBL45S4OZABEBIH7ERSMXCSNE5QDIBGE35KIEIKOCHUBOVGQOFPQG
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CDLLGJQUQ2SNV6267S7TSLS3IU6ASGOQP6MKCLMUEHC4D7DFLVNDFDEI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDLLGJQUQ2SNV6267S7TSLS3IU6ASGOQP6MKCLMUEHC4D7DFLVNDFDEI
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/.env.production
+  - kind: contract
+    subject: CDLLSBQXPVPRT4DM3MVOLAPQRJ72T44YWM2HSHVSEWKCDJGD37NU2E5T
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDLLSBQXPVPRT4DM3MVOLAPQRJ72T44YWM2HSHVSEWKCDJGD37NU2E5T
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CDVMYAYRRQC2QJDBGNHUD54SA2DMJJQJR2W5IAFVQGA3SDPZ4I3O6LXY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDVMYAYRRQC2QJDBGNHUD54SA2DMJJQJR2W5IAFVQGA3SDPZ4I3O6LXY
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/app/.env.production
+  - kind: wasm
+    subject: 2e9b1e586ce975a2012fc9c476bac33ed80e76ee81bd0ae45518fd20d3a08e79
+    method: wasm_hash_match
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/vendor/openzeppelin-confidential/confidential_vanilla_token_example.wasm
+  - kind: wasm
+    subject: 32546d5c2eb4964a63500c3420cb08fdde824a46e2cdacece17f6ad2e51686bc
+    method: wasm_hash_match
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/vendor/openzeppelin-confidential/confidential_auditor_example.wasm
+  - kind: wasm
+    subject: 3f9019f354f72176f03b137c13fe5204ef906a48bbeb876e4d520172f1a0c248
+    method: wasm_hash_match
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/vendor/openzeppelin-confidential/confidential_verifier_example.wasm
+  - kind: account
+    subject: GBC4AUOIA4FTFEDY2QZAYIOW52CXG7TTDSDMN3XDZCAIUKOHIAYH5VA5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBC4AUOIA4FTFEDY2QZAYIOW52CXG7TTDSDMN3XDZCAIUKOHIAYH5VA5
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/deployments/testnet-confidential.json
+  - kind: account
+    subject: GDSK6TCBLJJBAK4KG5BHKTSOZTMIONTJAOCTSHZM6U55M7J4S3OQB3SF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDSK6TCBLJJBAK4KG5BHKTSOZTMIONTJAOCTSHZM6U55M7J4S3OQB3SF
+    file_url: https://github.com/celadari/fathom-hack-meridian-2026/blob/HEAD/README.md
+contributors:
+- login: celadari
+  contributions: 52

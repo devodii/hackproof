@@ -1,0 +1,185 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/DevTobis/ballast
+repo_url: https://github.com/DevTobis/ballast
+name: ballast
+language: TypeScript
+license: MIT
+created_at: '2026-09-16T16:03:28Z'
+owner: DevTobis
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 8
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.2.1
+  '@stellar/freighter-api': ^3.0.0
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/apps/console/package.json
+chain:
+  contracts: 6
+  wasm_uploads: 0
+  classic_ops: 5
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GA3YANYKKYCKMSCM4PFYCMCXVTEOH3B32JYASL4HD2R7NFBH3FSOKIAV
+  - GAOI6H4AJLDZEBUD22HYRCBNI2QDGK2MLTEUCMAMAIXD4FS4WAZP676S
+  - GAQNMORYSOQYHWE7P3RILQFQTUCIHL737XKN46GZ6KPRTG7LO3OHFZYA
+  - GAVT5OW47GEEZU65ON7HLHFIGSYZXFYIT322JCWRLZBFDAWLONXYJPUF
+  - GCANB2464OSE2EHJAXV5YI4QRCQMQY7XZURWFHHIP5QJNXJCRCO24GWU
+  - GCUSWVAGRM7FAZBNU3LBYMWNBOKDITRC3YAREM3WJCLW2M7AGZCG3LVN
+  - GDABQNIQCVFK23VBSPO4DAGUMZMSB4O5K25DZ7IX5O4GTIKMRSB3WZ73
+  evidence:
+  - kind: contract
+    subject: CAHPYY7EP2D4BWDAMBOIKIFNRTT7XQOZQURCOWXSFJGBETKMVP2YKHAZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAHPYY7EP2D4BWDAMBOIKIFNRTT7XQOZQURCOWXSFJGBETKMVP2YKHAZ
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: contract
+    subject: CANHFCUCG6J2LH5VIZ4SISREO6B6LSJ2NPDW3HVNGZMG2Z7ZSHP67FZ4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CANHFCUCG6J2LH5VIZ4SISREO6B6LSJ2NPDW3HVNGZMG2Z7ZSHP67FZ4
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: contract
+    subject: CC6AJECLP7JW33XIGEYZMFQKMK3FSCFGMMWO7IMAIBY6UU222HENYORI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6AJECLP7JW33XIGEYZMFQKMK3FSCFGMMWO7IMAIBY6UU222HENYORI
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: contract
+    subject: CCSIO64AJEN3ITER7QXLTETSG5LZ2EIQWO5ON2TEVPOOKHBFR2ZVYUOP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCSIO64AJEN3ITER7QXLTETSG5LZ2EIQWO5ON2TEVPOOKHBFR2ZVYUOP
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: contract
+    subject: CD4XXUTHU3YOXZKAZGYLIMG5CTRDIYA3A4BSJF4MJIT3KEY7TZGL4IOT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD4XXUTHU3YOXZKAZGYLIMG5CTRDIYA3A4BSJF4MJIT3KEY7TZGL4IOT
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: contract
+    subject: CDAY4DLXRG4QRZQ222PLAANXT3O2HUWXUNFHFN4B6CQYFJ26FRXQOTNW
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDAY4DLXRG4QRZQ222PLAANXT3O2HUWXUNFHFN4B6CQYFJ26FRXQOTNW
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GA3YANYKKYCKMSCM4PFYCMCXVTEOH3B32JYASL4HD2R7NFBH3FSOKIAV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA3YANYKKYCKMSCM4PFYCMCXVTEOH3B32JYASL4HD2R7NFBH3FSOKIAV
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GAOI6H4AJLDZEBUD22HYRCBNI2QDGK2MLTEUCMAMAIXD4FS4WAZP676S
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAOI6H4AJLDZEBUD22HYRCBNI2QDGK2MLTEUCMAMAIXD4FS4WAZP676S
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GAQNMORYSOQYHWE7P3RILQFQTUCIHL737XKN46GZ6KPRTG7LO3OHFZYA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAQNMORYSOQYHWE7P3RILQFQTUCIHL737XKN46GZ6KPRTG7LO3OHFZYA
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GAVT5OW47GEEZU65ON7HLHFIGSYZXFYIT322JCWRLZBFDAWLONXYJPUF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVT5OW47GEEZU65ON7HLHFIGSYZXFYIT322JCWRLZBFDAWLONXYJPUF
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GCANB2464OSE2EHJAXV5YI4QRCQMQY7XZURWFHHIP5QJNXJCRCO24GWU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCANB2464OSE2EHJAXV5YI4QRCQMQY7XZURWFHHIP5QJNXJCRCO24GWU
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GCUSWVAGRM7FAZBNU3LBYMWNBOKDITRC3YAREM3WJCLW2M7AGZCG3LVN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCUSWVAGRM7FAZBNU3LBYMWNBOKDITRC3YAREM3WJCLW2M7AGZCG3LVN
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+  - kind: account
+    subject: GDABQNIQCVFK23VBSPO4DAGUMZMSB4O5K25DZ7IX5O4GTIKMRSB3WZ73
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDABQNIQCVFK23VBSPO4DAGUMZMSB4O5K25DZ7IX5O4GTIKMRSB3WZ73
+    file_url: https://github.com/DevTobis/ballast/blob/HEAD/TESTNET_DEPLOYMENT.md
+contributors:
+- login: DevTobis
+  contributions: 71
+- login: manchesternews98-jpg
+  contributions: 9
+- login: Hussman256
+  contributions: 4
+- login: Ipramking
+  contributions: 4
+- login: Lazyartist1
+  contributions: 4
+- login: Mamavee001
+  contributions: 4
+- login: Miracle656
+  contributions: 4
+- login: Otfrugger
+  contributions: 4
+- login: Salmatcre8
+  contributions: 4
+- login: chizzy0011
+  contributions: 4
+- login: collinsezedike
+  contributions: 4
+- login: dxfareed
+  contributions: 4
+- login: escaprt
+  contributions: 4
+- login: kelvinokwudili52-stack
+  contributions: 4
+- login: kiikky
+  contributions: 4
+- login: I-frenzy
+  contributions: 3
+- login: Joshua-echu
+  contributions: 3
+- login: Quadri-wire
+  contributions: 3
+- login: ejiromowarin
+  contributions: 3
+- login: kaylachi
+  contributions: 3
+- login: lankeethebeast
+  contributions: 3
+- login: ibochivincent-lang
+  contributions: 2
+- login: ntttttbl123-blip
+  contributions: 2
+- login: Ajibola6921
+  contributions: 1
+- login: Akinloluwa20
+  contributions: 1
+- login: Anambraboi-1
+  contributions: 1
+- login: Codex723
+  contributions: 1
+- login: DEV-CHIDIOFFICIAL
+  contributions: 1
+- login: Dgbangba
+  contributions: 1
+- login: Glorious21
+  contributions: 1
+- login: MorsH14
+  contributions: 1
+- login: Ratanlavate
+  contributions: 1
+- login: Simbabi
+  contributions: 1
+- login: chi797
+  contributions: 1
+- login: eswart627
+  contributions: 1
+- login: kaiser-dev777
+  contributions: 1
+- login: mahilsaily306-max
+  contributions: 1
+- login: shouburu
+  contributions: 1
+- login: startupcompliancekit
+  contributions: 1
+- login: wonderwhoman3-source
+  contributions: 1

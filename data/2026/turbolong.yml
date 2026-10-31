@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Dgetsylver/TurboLong
+repo_url: https://github.com/Dgetsylver/TurboLong
+name: TurboLong
+language: TypeScript
+created_at: '2026-03-11T17:22:09Z'
+owner: Dgetsylver
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 4
+stack:
+  soroban-sdk: 25.3.0
+  stellar-xdr: '25'
+  stellar-strkey: 0.0.8
+  '@stellar/stellar-sdk': ^14.6.1
+integrations:
+- slug: blend
+  name: Blend
+  evidence:
+  - method: package
+    detail: blend-contract-sdk
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/Cargo.toml
+- slug: stellar-broker
+  name: Stellar Broker
+  evidence:
+  - method: endpoint
+    detail: api.stellar.broker
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/frontend/.env.example
+  - method: package
+    detail: '@stellar-broker/client'
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/frontend/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 1
+  assets: 0
+  failed_txs: 14
+  accounts:
+  - GBKC77KT5S3ZKLDQSKBPMRKFDNFOU4OMFFS73ZX65LB2R633X6JJZYKN
+  evidence:
+  - kind: wasm
+    subject: 438a5528cff17ede6fe515f095c43c5f15727af17d006971485e52462e7e7b89
+    method: wasm_hash_match
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/vendor/blend-contract-sdk/wasm/emitter.wasm
+  - kind: wasm
+    subject: a41fc53d6753b6c04eb15b021c55052366a4c8e0e21bc72700f461264ec1350e
+    method: wasm_hash_match
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/vendor/blend-contract-sdk/wasm/pool.wasm
+  - kind: wasm
+    subject: bf7adb09076853eb3aa569278754111d86e161e35e7dc6a984ecde2b9d6700ae
+    method: wasm_hash_match
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/vendor/blend-contract-sdk/wasm/comet_factory.wasm
+  - kind: wasm
+    subject: c1f4502a757e25c611f5a159bc1ab0eef64085adac6c68123dca66e87faffbc2
+    method: wasm_hash_match
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/vendor/blend-contract-sdk/wasm/backstop.wasm
+  - kind: account
+    subject: GBKC77KT5S3ZKLDQSKBPMRKFDNFOU4OMFFS73ZX65LB2R633X6JJZYKN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBKC77KT5S3ZKLDQSKBPMRKFDNFOU4OMFFS73ZX65LB2R633X6JJZYKN
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/scripts/deploy_strategy.ts
+contributors:
+- login: Dgetsylver
+  contributions: 228
+- login: hugo-heer
+  contributions: 105
+- login: OluRemiFour
+  contributions: 4
+- login: elcabasa
+  contributions: 4
+- login: vicistar-star
+  contributions: 3
+- login: Bigdaddyobamo
+  contributions: 2
+- login: NnamdiCyber
+  contributions: 2
+- login: BeneficialVast1048
+  contributions: 1
+- login: Escelit
+  contributions: 1
+- login: cybermax4200
+  contributions: 1
+- login: djcdz4
+  contributions: 1
+- login: legend-esc
+  contributions: 1
+- login: misrasamuelisiguzor-oss
+  contributions: 1
+- login: yunus-dev-codecrafter
+  contributions: 1

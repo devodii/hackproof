@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/enzoblain/ZKross
+repo_url: https://github.com/enzoblain/ZKross
+name: ZKross
+language: Rust
+license: Apache-2.0
+created_at: '2026-10-25T16:30:57Z'
+owner: enzoblain
+track: genesis
+track_declared: false
+award: runner-up
+evidence_tier: verified
+commits_in_window: 80
+stack:
+  soroban-sdk: null
+  stellar-xdr: 28.0.0
+  stellar-strkey: 0.0.18
+  '@stellar/stellar-sdk': ^17.1.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/apps/frontend/package.json
+chain:
+  contracts: 6
+  wasm_uploads: 4
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCHZUJRQXEJIT65L7MVXHX5EBXV6ZKWLNQZSKEAD6AYABQSDXQVBX3MU
+  evidence:
+  - kind: contract
+    subject: CABLVEPQP7PN22YFXJJNX42PG7LTP3PPVAFIYE5LFQVDND5SBSTUSQYM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CABLVEPQP7PN22YFXJJNX42PG7LTP3PPVAFIYE5LFQVDND5SBSTUSQYM
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+  - kind: contract
+    subject: CBVC37MFGWDBTLAEGTEYPTTQDUO7KDVDD5RHWZVYN6BYOY3RTDLBGKRS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVC37MFGWDBTLAEGTEYPTTQDUO7KDVDD5RHWZVYN6BYOY3RTDLBGKRS
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/README.md
+  - kind: contract
+    subject: CBWGOXIVKPSHNSV5ZTKIY2ZADDO6VGOGK2HM6XU7A24APCWLBCLK4KQM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBWGOXIVKPSHNSV5ZTKIY2ZADDO6VGOGK2HM6XU7A24APCWLBCLK4KQM
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+  - kind: contract
+    subject: CBY6HVRKKVMZ7DN4XAJZGLBJ4UYNDJJLPYRDETQ6RAD4LHFBUMX6LZS3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBY6HVRKKVMZ7DN4XAJZGLBJ4UYNDJJLPYRDETQ6RAD4LHFBUMX6LZS3
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+  - kind: contract
+    subject: CC63X4XNTSNZ6MONLFYXQ2NH6AH2O3KN653PPEVLQWM4RQVVZFPF3MVH
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC63X4XNTSNZ6MONLFYXQ2NH6AH2O3KN653PPEVLQWM4RQVVZFPF3MVH
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+  - kind: contract
+    subject: CD3TP3PL7U63IEEB4LQCEFV2AMZSOWGWQN6JKFLO7KMXGWM7CARSW2EP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD3TP3PL7U63IEEB4LQCEFV2AMZSOWGWQN6JKFLO7KMXGWM7CARSW2EP
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/https://zkross.pages.dev/assets/index-Zi1DV6ON.js
+contributors:
+- login: EminBgA
+  contributions: 39
+- login: enzoblain
+  contributions: 31
+- login: romainduale
+  contributions: 13

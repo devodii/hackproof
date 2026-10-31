@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/nseguias/kintsu
+repo_url: https://github.com/nseguias/kintsu
+name: kintsu
+description: Stellar wallet backed up to 3 NFC tags, with an offline 2FA device approving every payment. HackMeridian 2026.
+language: TypeScript
+created_at: '2026-10-26T09:42:44Z'
+owner: nseguias
+track: genesis
+track_declared: true
+evidence_tier: likely
+commits_in_window: 42
+stack:
+  '@stellar/stellar-sdk': 17.2.1
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: nseguias
+  contributions: 42

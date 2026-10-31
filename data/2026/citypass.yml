@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Bran18/citypass
+repo_url: https://github.com/Bran18/citypass
+name: citypass
+description: A multilingual travel passport for discovering destinations, collecting verified visit stamps, buying destination
+  passes, and preparing hotel arrivals
+homepage: https://city-pass-global.vercel.app/es
+language: TypeScript
+created_at: '2026-10-25T19:26:30Z'
+owner: Bran18
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 8
+stack:
+  soroban-sdk: =29.0.1
+  '@stellar/stellar-sdk': 17.2.1
+chain:
+  contracts: 5
+  wasm_uploads: 3
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GB2Z2T6O5RZZG4C7TRA3CX5KXC52XF6X4HSPC3QZP7BDMEWBVFCUDRPB
+  - GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
+  - GBBSKBGZIHIRBJLWAU27PUXLMJBJL3D6EYQDEDHJWURWB4FYUEYZ7AGM
+  - GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
+  evidence:
+  - kind: contract
+    subject: CAMNGYB64TCHHHQGYHZZ27ZIRRFDN6PMDMSLIVXMBIZGBBI7YAZMZ54H
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAMNGYB64TCHHHQGYHZZ27ZIRRFDN6PMDMSLIVXMBIZGBBI7YAZMZ54H
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/IMPLEMENTATION_PLAN.md
+  - kind: contract
+    subject: CBGBZZU72XTXTRPKHJOPPTS3KU45AK25WADRG46TRIPZ5BZT36FC6OSP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBGBZZU72XTXTRPKHJOPPTS3KU45AK25WADRG46TRIPZ5BZT36FC6OSP
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/ACTIVITY_CONTRACT.md
+  - kind: contract
+    subject: CBIHW5DNMCQDHGJFQRRNBGM5FVQRANLWLJD44APJKVKLK5JBNCTNSPM2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBIHW5DNMCQDHGJFQRRNBGM5FVQRANLWLJD44APJKVKLK5JBNCTNSPM2
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/VERIFICATION.md
+  - kind: contract
+    subject: CBTPNY2ALTSFDWIUNMVGYOKYLAZT6LWRB4DJWZEL3IKRUFVYQ4ZBR3VS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTPNY2ALTSFDWIUNMVGYOKYLAZT6LWRB4DJWZEL3IKRUFVYQ4ZBR3VS
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/ACTIVITY_CONTRACT.md
+  - kind: contract
+    subject: CBU3NMC7UJTHYIHS4HUJAZVVHTQESAYRUV3LMOELAVUZKHTVWGT2DJ2G
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBU3NMC7UJTHYIHS4HUJAZVVHTQESAYRUV3LMOELAVUZKHTVWGT2DJ2G
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/IMPLEMENTATION_PLAN.md
+  - kind: account
+    subject: GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB5YIP5CO7573MYUDX4EMWZMPXY5L4NORJIDRB3O6FYT3PYT5V4XBTHK
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/VERIFICATION.md
+  - kind: account
+    subject: GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCKLQUFDIXAGOHNS6VIRLLCJP6JGMHCN7Q645GSS2MR73PA7B3KJ3XUM
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/docs/ACTIVITY_CONTRACT.md
+contributors:
+- login: Bran18
+  contributions: 10

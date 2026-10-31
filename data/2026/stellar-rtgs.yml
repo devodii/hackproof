@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/rodrodros/stellar-rtgs
+repo_url: https://github.com/rodrodros/stellar-rtgs
+name: stellar-rtgs
+language: TypeScript
+created_at: '2026-10-26T01:36:38Z'
+owner: rodrodros
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 139
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 'catalog:'
+  '@creit.tech/stellar-wallets-kit': 'catalog:'
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/frontend-web/packages/core/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 22
+  assets: 1
+  failed_txs: 31
+  accounts:
+  - GAIEALGQ7YRV24WJP3SAB6I4RPFZGAEM3U7RMTPNNCSRTUS4SVLT7B33
+  - GBOOXVXVQHGTC2KMI27BDAJKYXLIZWRIGEHLNWJYPLBRVWRDENBWC5R2
+  - GCFVWTJJK3OK3MSQY5AG27TPO4GG5P2R65UJFN3GZWT3PL3JZMU5QNC2
+  - GD2EBIAJXFJZKJJBLZZTO3KTRWAQR3R6DHYD7USH2CLNNT2HIRWDYCE7
+  evidence:
+  - kind: contract
+    subject: CD7EJAEIR5TZMF2B3WFPPTI4MXYR33Y7XSP6QOT6WDVYXTZ65CYWSNE7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD7EJAEIR5TZMF2B3WFPPTI4MXYR33Y7XSP6QOT6WDVYXTZ65CYWSNE7
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/README.md
+  - kind: wasm
+    subject: 48cc8ea3efc9eeeede31ae2097da5459a14293d6e31ebb396de4f822a24acef7
+    method: wasm_hash_match
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/frontend-web/packages/core/wasm/settlement.wasm
+  - kind: account
+    subject: GAIEALGQ7YRV24WJP3SAB6I4RPFZGAEM3U7RMTPNNCSRTUS4SVLT7B33
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAIEALGQ7YRV24WJP3SAB6I4RPFZGAEM3U7RMTPNNCSRTUS4SVLT7B33
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/README.md
+  - kind: account
+    subject: GBOOXVXVQHGTC2KMI27BDAJKYXLIZWRIGEHLNWJYPLBRVWRDENBWC5R2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBOOXVXVQHGTC2KMI27BDAJKYXLIZWRIGEHLNWJYPLBRVWRDENBWC5R2
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/README.md
+  - kind: account
+    subject: GCFVWTJJK3OK3MSQY5AG27TPO4GG5P2R65UJFN3GZWT3PL3JZMU5QNC2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCFVWTJJK3OK3MSQY5AG27TPO4GG5P2R65UJFN3GZWT3PL3JZMU5QNC2
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/README.md
+  - kind: account
+    subject: GD2EBIAJXFJZKJJBLZZTO3KTRWAQR3R6DHYD7USH2CLNNT2HIRWDYCE7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD2EBIAJXFJZKJJBLZZTO3KTRWAQR3R6DHYD7USH2CLNNT2HIRWDYCE7
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/README.md
+contributors:
+- login: rodrodros
+  contributions: 160

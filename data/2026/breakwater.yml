@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Belvast-Innovation/Breakwater
+repo_url: https://github.com/Belvast-Innovation/Breakwater
+name: Breakwater
+description: Foundry-style invariant fuzzing for Soroban, with attack packs for smart-account policies and TTL state archival.
+homepage: https://breakwater.belvast.de
+language: Rust
+license: Apache-2.0
+topics:
+- fuzzing
+- hackmeridian
+- property-testing
+- rust
+- security
+- smart-contracts
+- soroban
+- stellar
+created_at: '2026-10-25T10:45:42Z'
+owner: Belvast-Innovation
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 29
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 6
+  wasm_uploads: 5
+  classic_ops: 0
+  assets: 1
+  failed_txs: 0
+  accounts:
+  - GB2T434AEXEWZPGB2E63CLJ4NTAI6UB57NPBNBSS2JJBJIICFKTDT66E
+  evidence:
+  - kind: contract
+    subject: CA7UFPQ3MHRQGIOHG6B5TPBJZLZL6HCNCYNWPILVDDC6AHOMM5BJ5OJN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA7UFPQ3MHRQGIOHG6B5TPBJZLZL6HCNCYNWPILVDDC6AHOMM5BJ5OJN
+    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/README.md
+  - kind: contract
+    subject: CBKDNENFLCLUE3U4NH55T5N5JIX6S6WS2FFDXCPWMXJM7ZQGPXVH3HJI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBKDNENFLCLUE3U4NH55T5N5JIX6S6WS2FFDXCPWMXJM7ZQGPXVH3HJI
+    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/README.md
+  - kind: contract
+    subject: CBS6AO2L5RKKLHIC2FJOH66UIL2OHCPSSO6GAUCYNXMMI3RRQLG3D5KP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBS6AO2L5RKKLHIC2FJOH66UIL2OHCPSSO6GAUCYNXMMI3RRQLG3D5KP
+    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/README.md
+  - kind: contract
+    subject: CC2N5OKRJ5MA2SEVIUSRSMPRODN73Z2OH6CYZ7YHIZVAVD72N6K4PSCB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC2N5OKRJ5MA2SEVIUSRSMPRODN73Z2OH6CYZ7YHIZVAVD72N6K4PSCB
+    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/README.md
+  - kind: contract
+    subject: CC6Z5UZYWG5CR43YYGUZCMOGQHO2NEQZIU7M4MBR2NG3ELZQN7G2RRD7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6Z5UZYWG5CR43YYGUZCMOGQHO2NEQZIU7M4MBR2NG3ELZQN7G2RRD7
+    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/README.md
+  - kind: contract
+    subject: CCIEVOGO6RZSCHN6COE3NLMDT3WOXSPTDPYDJMPVSULFREACAJ6CS247
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCIEVOGO6RZSCHN6COE3NLMDT3WOXSPTDPYDJMPVSULFREACAJ6CS247
+    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/README.md
+contributors:
+- login: hannesgao
+  contributions: 38

@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Lendara-Org/lendara-shield
+repo_url: https://github.com/Lendara-Org/lendara-shield
+name: lendara-shield
+language: Rust
+license: Apache-2.0
+created_at: '2026-10-25T20:20:21Z'
+owner: Lendara-Org
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 118
+stack:
+  stellar-xdr: =28.0.0
+  stellar-strkey: 0.0.18
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 10
+  wasm_uploads: 2
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAABX6R4F4UBYOHKFXFKKAWOGELDS3WFYGVQUYECOE5NTBYWY7J5WWMS
+  - GBJ3H74T4LB23V3WKE46BSWMZVOH4YWX2P5ZLQTY4EZXH3YAZZUCPFWY
+  - GC5VXVUOU6OHZVZ3KZNFK5CJNOEDQUMOOZI32VHYHYV64GBHVCPTEHPQ
+  - GCCWXZJTF7XMEISC2CXLO6SWETJHE4YBBNVXSMRYOWH7RUOEN2YGGVTE
+  evidence:
+  - kind: contract
+    subject: CBGH7D7JZ3FRJ6ILEDRABBUWTEEV42CKBWTPQQWMHNF7H3OXWREEOAFA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBGH7D7JZ3FRJ6ILEDRABBUWTEEV42CKBWTPQQWMHNF7H3OXWREEOAFA
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/docs/spikes/spp.md
+  - kind: contract
+    subject: CBXCTA27XVLULCT4O5LCE2ETKW7A6PXEOFXOKHHFP4JCPRT72T7HBQLL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBXCTA27XVLULCT4O5LCE2ETKW7A6PXEOFXOKHHFP4JCPRT72T7HBQLL
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/docs/spikes/spp.md
+  - kind: contract
+    subject: CCAEA4MKORUJV3G3V47SKWLJKQZBYGGFU42JSCXNUIJIZMNN2MSDLFMO
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCAEA4MKORUJV3G3V47SKWLJKQZBYGGFU42JSCXNUIJIZMNN2MSDLFMO
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/docs/spikes/spp.md
+  - kind: contract
+    subject: CCETAQARCUMNMCLJKQM6UNY2QJDOJZYGI54MXA3FMPJY4VJDMN2L26GB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCETAQARCUMNMCLJKQM6UNY2QJDOJZYGI54MXA3FMPJY4VJDMN2L26GB
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/README.md
+  - kind: contract
+    subject: CCQWHSMUF35HFOLUV5PTUVDMV55MTIZM7CD66AEC5KWPGHINGHACFC7Z
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCQWHSMUF35HFOLUV5PTUVDMV55MTIZM7CD66AEC5KWPGHINGHACFC7Z
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/docs/spikes/spp.md
+  - kind: contract
+    subject: CCWU7V5HXV6NKPJ3UEZMTGFWK3V35YO42AQTPSXPN2GSDK3RXLICNLKT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCWU7V5HXV6NKPJ3UEZMTGFWK3V35YO42AQTPSXPN2GSDK3RXLICNLKT
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/README.md
+  - kind: contract
+    subject: CDD66GL3HT5JLRIB5BHAV36XFSEAGRXMGRJJ4VK747ODBXEJ77YAC7OF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDD66GL3HT5JLRIB5BHAV36XFSEAGRXMGRJJ4VK747ODBXEJ77YAC7OF
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/README.md
+  - kind: contract
+    subject: CDKEJFD2TJGJ5TL2COAA6ULRDCO55EPBCYB2LZD2QKSR4MAO6NPRRMWL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDKEJFD2TJGJ5TL2COAA6ULRDCO55EPBCYB2LZD2QKSR4MAO6NPRRMWL
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/docs/spikes/spp.md
+  - kind: account
+    subject: GBJ3H74T4LB23V3WKE46BSWMZVOH4YWX2P5ZLQTY4EZXH3YAZZUCPFWY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBJ3H74T4LB23V3WKE46BSWMZVOH4YWX2P5ZLQTY4EZXH3YAZZUCPFWY
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/openapi.yaml
+  - kind: account
+    subject: GC5VXVUOU6OHZVZ3KZNFK5CJNOEDQUMOOZI32VHYHYV64GBHVCPTEHPQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC5VXVUOU6OHZVZ3KZNFK5CJNOEDQUMOOZI32VHYHYV64GBHVCPTEHPQ
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/README.md
+  - kind: account
+    subject: GCCWXZJTF7XMEISC2CXLO6SWETJHE4YBBNVXSMRYOWH7RUOEN2YGGVTE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCCWXZJTF7XMEISC2CXLO6SWETJHE4YBBNVXSMRYOWH7RUOEN2YGGVTE
+    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/README.md
+contributors:
+- login: AnoukRImola
+  contributions: 110
+- login: mariaelisaaraya
+  contributions: 16
+- login: barolivera
+  contributions: 1

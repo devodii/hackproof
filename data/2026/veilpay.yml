@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/armsves/veilpay
+repo_url: https://github.com/armsves/veilpay
+name: veilpay
+description: Veilpay — private payroll banking on Stellar (stealth, confidential solvency, Pollar Sandbox)
+language: JavaScript
+created_at: '2026-10-25T20:21:39Z'
+owner: armsves
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 73
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.4.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/armsves/veilpay/blob/HEAD/package.json
+chain:
+  contracts: 4
+  wasm_uploads: 4
+  classic_ops: 9
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCWCP6UXP7XCZYZML5XEF26FL7HUCRONBO6PTPELKERARB2DS4D6VFEC
+  evidence:
+  - kind: contract
+    subject: CASPCMOFIJCPSYLXR5CUOPMM5RKBUDK6UB5LH6RBCYLTFSHDDBCCI4MF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CASPCMOFIJCPSYLXR5CUOPMM5RKBUDK6UB5LH6RBCYLTFSHDDBCCI4MF
+    file_url: https://github.com/armsves/veilpay/blob/HEAD/.env.example
+  - kind: contract
+    subject: CBUOT3ETCV4R6AVGXBVNIWHWE64AWOH3GV53AEUGCTPBS73YIM7LFNE7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBUOT3ETCV4R6AVGXBVNIWHWE64AWOH3GV53AEUGCTPBS73YIM7LFNE7
+    file_url: https://github.com/armsves/veilpay/blob/HEAD/.env.example
+  - kind: contract
+    subject: CCTW4FGYDGE7EEIFAPRNPMZPZXZWU6A7FT5ZFUTNT2LUYKTBI6A6WVC4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCTW4FGYDGE7EEIFAPRNPMZPZXZWU6A7FT5ZFUTNT2LUYKTBI6A6WVC4
+    file_url: https://github.com/armsves/veilpay/blob/HEAD/.env.example
+  - kind: account
+    subject: GCWCP6UXP7XCZYZML5XEF26FL7HUCRONBO6PTPELKERARB2DS4D6VFEC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCWCP6UXP7XCZYZML5XEF26FL7HUCRONBO6PTPELKERARB2DS4D6VFEC
+    file_url: https://github.com/armsves/veilpay/blob/HEAD/.env.example
+contributors:
+- login: armsves
+  contributions: 73

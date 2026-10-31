@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/red-sentinel-ai/red-sentinal
+repo_url: https://github.com/red-sentinel-ai/red-sentinal
+name: red-sentinal
+description: AI Agent Battle Arena on Multiple Chains. Break agents with prompts and earn real onchain money
+homepage: https://redsentinel.xyz/
+language: TypeScript
+topics:
+- ai
+- blockchain
+- sui
+- tee
+- evm
+- redteam
+- solana
+created_at: '2025-05-20T13:43:29Z'
+owner: red-sentinel-ai
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 9
+stack:
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/package.json
+- slug: privy
+  name: Privy
+  evidence:
+  - method: endpoint
+    detail: auth.privy.io
+    file_url: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/next.config.ts
+  - method: package
+    detail: '@privy-io/react-auth'
+    file_url: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/package.json
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBXQBNPJ7QU7APUK2GYAEDO7I4AA4XLN4IS6AU4WMSFPMSTKYC6UUVG4
+  evidence:
+  - kind: contract
+    subject: CBJ6XDS76GYHL6KJCE2W5V7Z4ZFW2TSPL5BE7WDNKMQ4VDVLLBJIOMFM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBJ6XDS76GYHL6KJCE2W5V7Z4ZFW2TSPL5BE7WDNKMQ4VDVLLBJIOMFM
+    file_url: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/.env.example
+  - kind: account
+    subject: GBXQBNPJ7QU7APUK2GYAEDO7I4AA4XLN4IS6AU4WMSFPMSTKYC6UUVG4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBXQBNPJ7QU7APUK2GYAEDO7I4AA4XLN4IS6AU4WMSFPMSTKYC6UUVG4
+    file_url: https://github.com/red-sentinel-ai/red-sentinal/blob/HEAD/README.md
+contributors:
+- login: yassmittal
+  contributions: 976
+- login: satyambnsal
+  contributions: 909
+- login: nikiiigoyal
+  contributions: 49

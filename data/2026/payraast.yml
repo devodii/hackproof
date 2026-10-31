@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/hakeemullahjan/payraast
+repo_url: https://github.com/hakeemullahjan/payraast
+name: payraast
+description: hack_meridian lisbon 2026
+homepage: https://payraast-delta.vercel.app
+language: TypeScript
+created_at: '2026-10-25T17:10:56Z'
+owner: hakeemullahjan
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 7
+stack:
+  '@stellar/stellar-sdk': ^13.1.0
+  '@stellar/freighter-api': ^6.0.0
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/hakeemullahjan/payraast/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: hakeemullahjan
+  contributions: 7

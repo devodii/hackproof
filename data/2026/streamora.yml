@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Strea-mora/Streamora
+repo_url: https://github.com/Strea-mora/Streamora
+name: Streamora
+homepage: https://streamora-ashy.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T23:45:32Z'
+owner: Strea-mora
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 12
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^14.6.1
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Strea-mora/Streamora/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: rossydefi
+  contributions: 19

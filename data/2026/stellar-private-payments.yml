@@ -1,0 +1,119 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/NethermindEth/stellar-private-payments
+repo_url: https://github.com/NethermindEth/stellar-private-payments
+name: stellar-private-payments
+description: Nethermind Privacy Engineering team's implementation of private payments for the Stellar network
+homepage: https://nethermindeth.github.io/stellar-private-payments/
+language: Rust
+license: Apache-2.0
+topics:
+- privacy
+- soroban
+- stellar
+- zk
+- payments
+- nethermind
+created_at: '2025-07-28T11:49:19Z'
+owner: NethermindEth
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 3
+stack:
+  soroban-sdk: null
+  stellar-xdr: 28.0.0
+  stellar-strkey: 0.0.18
+  '@stellar/stellar-sdk': ^17.1.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/NethermindEth/stellar-private-payments/blob/HEAD/app/package.json
+chain:
+  contracts: 49
+  wasm_uploads: 8
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBCXOVKPOJ4C4FQNLDS6TO3EWL6JZ24LOFHM7LVEN5ENQWNYMRGHEX3S
+  evidence:
+  - kind: wasm
+    subject: 03439655c44aab12de1cd6daed0737d880739fb89a3273386784226c11404aa6
+    method: wasm_meta
+  - kind: wasm
+    subject: 4ef352d4135b64d5ea0f36c165e62e1a85d0b46e8fbfe70903316434cec02982
+    method: wasm_meta
+  - kind: wasm
+    subject: 6adbc0bcd458dc6c8ffc1bc4b24d5581b62b9893052c491a9a47147410f48fc3
+    method: wasm_meta
+  - kind: wasm
+    subject: 74b8cc1381a5a195c11211d1f5f4900e31420822eb2837b88b9f9fe3a5f54d0e
+    method: wasm_meta
+  - kind: wasm
+    subject: 836f96fd612f39fe2937514ba9af6f0abab8bfbb5b9bcfa1ea1c93b9c884c987
+    method: wasm_meta
+  - kind: wasm
+    subject: 8370ac4755b85addfbc2022d4de9282042084926e3c86fb5db7897aa7eeb545e
+    method: wasm_meta
+  - kind: wasm
+    subject: b6a97ceade63d38982dda4f82eac8f95420c54d012db53d5029d8ce1f2a98dc5
+    method: wasm_meta
+  - kind: wasm
+    subject: e313458253d45c92308eef52e8a6400956cd49f70cf9bb9ff656f9e87b1c83d7
+    method: wasm_meta
+contributors:
+- login: v0-e
+  contributions: 130
+- login: Fantoni0
+  contributions: 63
+- login: cupicmarko
+  contributions: 53
+- login: NiDimi
+  contributions: 28
+- login: maksimryndin
+  contributions: 27
+- login: WiseMrMusa
+  contributions: 21
+- login: dkgoutham
+  contributions: 14
+- login: PoulavBhowmick03
+  contributions: 8
+- login: Oghma
+  contributions: 7
+- login: zexoverz
+  contributions: 7
+- login: Patrick-Ehimen
+  contributions: 5
+- login: 1sgtpepper
+  contributions: 3
+- login: AdamSonja
+  contributions: 2
+- login: AngeYobo
+  contributions: 2
+- login: Galmanus
+  contributions: 2
+- login: adityaNth
+  contributions: 2
+- login: uttkarzsh
+  contributions: 2
+- login: Gerson2102
+  contributions: 1
+- login: IshaanXCoder
+  contributions: 1
+- login: RajeshRk18
+  contributions: 1
+- login: avozda
+  contributions: 1
+- login: karar189
+  contributions: 1
+- login: thinktanktom
+  contributions: 1
+- login: tomerweller
+  contributions: 1
+- login: wenn-id
+  contributions: 1

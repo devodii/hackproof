@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Ihlasthetics/redevice
+repo_url: https://github.com/Ihlasthetics/redevice
+name: redevice
+language: TypeScript
+created_at: '2026-07-25T13:01:47Z'
+owner: Ihlasthetics
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 13
+stack:
+  soroban-sdk: =29.0.1
+  '@stellar/stellar-sdk': 17.3.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/web/package.json
+chain:
+  contracts: 20
+  wasm_uploads: 3
+  classic_ops: 0
+  assets: 0
+  failed_txs: 2
+  accounts:
+  - GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+  - GBYKDBAWYNIVU24MVH2ENOYFLSU7LXRNHFWJ7WOPF3Q76C3MDV5SWCLD
+  - GD4EBGIWGRWV53KWC5UVLCKDIXTGLFDJKRBEATB7B3SUXJWNWT2KYLJT
+  evidence:
+  - kind: contract
+    subject: CBR76DY4ZIRCB2CK5A2V7CC4I4UF7SQ5ULUHT6HMP4ZWN3R32BWAOIQP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBR76DY4ZIRCB2CK5A2V7CC4I4UF7SQ5ULUHT6HMP4ZWN3R32BWAOIQP
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/README.md
+  - kind: contract
+    subject: CBT2G6GG5BYRV7DFCECIOVZXHAVH3UQWK2KSYUA7CXZY34H7TQ74N3OM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBT2G6GG5BYRV7DFCECIOVZXHAVH3UQWK2KSYUA7CXZY34H7TQ74N3OM
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/web/src/stellar/client.ts
+  - kind: contract
+    subject: CCHXDDGMOZNABGIYGBOIWCFHD3RECIKI2UWJKMOGRBCSSIL6YACCX6WJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCHXDDGMOZNABGIYGBOIWCFHD3RECIKI2UWJKMOGRBCSSIL6YACCX6WJ
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/scripts/passkey-spike-policy.test.mjs
+  - kind: contract
+    subject: CDSP64KAEVFZ5QU3U2AMTNFWWF3CHEXRCFBSXWDESF6QSR3SHU2CWZCT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDSP64KAEVFZ5QU3U2AMTNFWWF3CHEXRCFBSXWDESF6QSR3SHU2CWZCT
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/scripts/passkey-vercel.test.mjs
+  - kind: wasm
+    subject: 583425b1943ce3656c5a0ada771911a7b4522151c799bc8cbc723b6fdd1a812e
+    method: wasm_hash_match
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/web/public/contract/redevice_stellar.wasm
+  - kind: account
+    subject: GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/api/_passkey-policy.mjs
+  - kind: account
+    subject: GBYKDBAWYNIVU24MVH2ENOYFLSU7LXRNHFWJ7WOPF3Q76C3MDV5SWCLD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYKDBAWYNIVU24MVH2ENOYFLSU7LXRNHFWJ7WOPF3Q76C3MDV5SWCLD
+    file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/README.md
+contributors:
+- login: Ihlasthetics
+  contributions: 29
+- login: codex
+  contributions: 11
+- login: akifbyldrm
+  contributions: 10
+- login: 1MrWrong0
+  contributions: 3

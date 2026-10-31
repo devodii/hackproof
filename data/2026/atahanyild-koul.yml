@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/atahanyild/koul
+repo_url: https://github.com/atahanyild/koul
+name: koul
+description: 'Conditional execution on Stellar: your rules become contract state, a keeper pokes the contract, the contract
+  decides and acts, and a scoped policy keeps your funds yours.'
+homepage: https://koul-stellar.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-09-20T00:28:00Z'
+owner: atahanyild
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 2
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.0.1
+chain:
+  contracts: 15
+  wasm_uploads: 2
+  classic_ops: 2
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAFHZTSL63YZYU35SCHDOGOMXQ25266DBQYG7KETG6HC2AHBIZMGXP6U
+  - GBCXWBNZZQ742GWKIRRYHUIWD5EELKSSG6HNGGCQW6K24UJZQWJODHFO
+  - GCCIYVPBXI32GMYEHOVSELTNUKVKXKC37ACZJQ3HKJQAG4WOQEHLBYG4
+  evidence:
+  - kind: contract
+    subject: CAKEUMCIW4KBQZI5OJMFHFGM5VHDZHWIXAO7JOKTBRPR63IHIEP7KKNZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAKEUMCIW4KBQZI5OJMFHFGM5VHDZHWIXAO7JOKTBRPR63IHIEP7KKNZ
+    file_url: https://github.com/atahanyild/koul/blob/HEAD/.github/workflows/keeper.yml
+  - kind: contract
+    subject: CD5VSBUXQ4OQIVYI55CFF4C4YKSFQUY4OTFIOFJRNC6TUILMNN7MAO2D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD5VSBUXQ4OQIVYI55CFF4C4YKSFQUY4OTFIOFJRNC6TUILMNN7MAO2D
+    file_url: https://github.com/atahanyild/koul/blob/HEAD/.github/workflows/keeper.yml
+  - kind: account
+    subject: GAFHZTSL63YZYU35SCHDOGOMXQ25266DBQYG7KETG6HC2AHBIZMGXP6U
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAFHZTSL63YZYU35SCHDOGOMXQ25266DBQYG7KETG6HC2AHBIZMGXP6U
+    file_url: https://github.com/atahanyild/koul/blob/HEAD/README.md
+contributors:
+- login: keyboord01
+  contributions: 92
+- login: atahanyild
+  contributions: 73

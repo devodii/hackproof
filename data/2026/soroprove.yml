@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/drank40/soroprove
+repo_url: https://github.com/drank40/soroprove
+name: soroprove
+description: 'Formal verification is hard: we want teams on Stellar to be able to verify important fund preserving properties
+  at a glance'
+language: Rust
+created_at: '2026-10-26T11:30:50Z'
+owner: drank40
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 61
+stack:
+  soroban-sdk: '25'
+  stellar-xdr: =30.0.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence:
+  - kind: wasm
+    subject: c1f4502a757e25c611f5a159bc1ab0eef64085adac6c68123dca66e87faffbc2
+    method: wasm_hash_match
+    file_url: https://github.com/drank40/soroprove/blob/HEAD/lifter/reconstructed/backstop-poc/src/backstop.wasm
+contributors:
+- login: renato-osec
+  contributions: 97
+- login: konchunas
+  contributions: 2

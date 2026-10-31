@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Wilivms/trust-meridian
+repo_url: https://github.com/Wilivms/trust-meridian
+name: trust-meridian
+homepage: https://trust-meridian.vercel.app
+language: HTML
+created_at: '2026-10-25T11:57:13Z'
+owner: Wilivms
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 39
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.4.1
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+- slug: soroswap
+  name: Soroswap
+  evidence:
+  - method: endpoint
+    detail: api.soroswap.finance
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/scripts/probe.sh
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/scripts/probe.sh
+chain:
+  contracts: 16
+  wasm_uploads: 8
+  classic_ops: 89
+  assets: 0
+  failed_txs: 1
+  accounts:
+  - GCC7BKVO2CK7ICJD75GFK4S5CBLJBDAPWNJAWJBJFXL5CLNESSIWHI7W
+  - GD32J74ZOBFTAFUPALP5NWXT2AIZR7WW5D7IHOCBXX2C2Z2VUKTXWB7Z
+  evidence:
+  - kind: contract
+    subject: CBRLDAQIKYQZQM5V2D5JZLZ5GA4JB4VNNGS5YGCZW56XPGZ7OVW22GQD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBRLDAQIKYQZQM5V2D5JZLZ5GA4JB4VNNGS5YGCZW56XPGZ7OVW22GQD
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/README.md
+  - kind: contract
+    subject: CCRU56E3WHFFGEQ7LZ4HEEL6MWVZE7BBHB36H4F6Y27T6GGY4SCR2FMM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCRU56E3WHFFGEQ7LZ4HEEL6MWVZE7BBHB36H4F6Y27T6GGY4SCR2FMM
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/README.md
+  - kind: contract
+    subject: CCVRSMT42L5SPEQWYTXUO5NY5B7GQSKRC4YDWYV36XBHU6AORGREQWPM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCVRSMT42L5SPEQWYTXUO5NY5B7GQSKRC4YDWYV36XBHU6AORGREQWPM
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/README.md
+  - kind: contract
+    subject: CCXSVXARY5NY2GN5XRJF37SYFKHPH7I3H7BNWB5WSGMK5AW3LCEEDT3R
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCXSVXARY5NY2GN5XRJF37SYFKHPH7I3H7BNWB5WSGMK5AW3LCEEDT3R
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/README.md
+  - kind: account
+    subject: GCC7BKVO2CK7ICJD75GFK4S5CBLJBDAPWNJAWJBJFXL5CLNESSIWHI7W
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCC7BKVO2CK7ICJD75GFK4S5CBLJBDAPWNJAWJBJFXL5CLNESSIWHI7W
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GD32J74ZOBFTAFUPALP5NWXT2AIZR7WW5D7IHOCBXX2C2Z2VUKTXWB7Z
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD32J74ZOBFTAFUPALP5NWXT2AIZR7WW5D7IHOCBXX2C2Z2VUKTXWB7Z
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/deployments/testnet.json
+contributors:
+- login: claude
+  contributions: 31
+- login: Wilivms
+  contributions: 3

@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/siwakadrianna-byte/ghost-proof
+repo_url: https://github.com/siwakadrianna-byte/ghost-proof
+name: ghost-proof
+description: 'Escrow for freelance designers on Stellar: no more getting ghosted.'
+language: TypeScript
+created_at: '2026-10-25T14:18:07Z'
+owner: siwakadrianna-byte
+track: genesis
+track_declared: true
+evidence_tier: likely
+commits_in_window: 24
+stack:
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.0
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: endpoint
+    detail: api.trustlesswork.com
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/providers/TrustlessWork.tsx
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/.env.example
+  - method: package
+    detail: '@trustless-work/blocks'
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: package
+    detail: '@trustless-work/escrow'
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: siwakadrianna-byte
+  contributions: 24

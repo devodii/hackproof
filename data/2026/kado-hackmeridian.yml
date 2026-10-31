@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/eduruizhipolito/kado-hackmeridian
+repo_url: https://github.com/eduruizhipolito/kado-hackmeridian
+name: kado-hackmeridian
+language: TypeScript
+created_at: '2026-10-25T18:21:13Z'
+owner: eduruizhipolito
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 32
+stack:
+  '@stellar/stellar-sdk': 17.2.1
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 73
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCHFQTSHH7ZMDXEMEEVYCWK2HYXU5VTZDC5XWPJXIR4F73VSF7BBD5ZZ
+  evidence:
+  - kind: account
+    subject: GCHFQTSHH7ZMDXEMEEVYCWK2HYXU5VTZDC5XWPJXIR4F73VSF7BBD5ZZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCHFQTSHH7ZMDXEMEEVYCWK2HYXU5VTZDC5XWPJXIR4F73VSF7BBD5ZZ
+    file_url: https://github.com/eduruizhipolito/kado-hackmeridian/blob/HEAD/README.md
+contributors:
+- login: eduruizhipolito
+  contributions: 36

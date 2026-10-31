@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Team-hackmeridian-2026/Hackmeridian2026
+repo_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026
+name: Hackmeridian2026
+description: 'University patent licences on Stellar : funded in EURC, released by milestones, royalties shared automatically'
+homepage: https://biolicensing.vercel.app
+language: TypeScript
+topics:
+- hackmeridian
+- soroban
+- soroban-sdk
+- soroban-smart-contracts
+- stellar
+- stellar-network
+- xlm
+created_at: '2026-10-09T08:06:22Z'
+owner: Team-hackmeridian-2026
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 79
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.4.1
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/frontend/package.json
+chain:
+  contracts: 9
+  wasm_uploads: 3
+  classic_ops: 5
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA2KN3QOYYU7SWDPLAZ6HQ7GS3CFXVLPAQFDSWIUEGOVC2DJLNM6KCVD
+  - GA5VVZ5YYKUTCW6B3DEU6AK45QQVFEX2PFMJ6FMLKEMLSQ2CE7766XUL
+  - GBJL53EHJXAUAVLCDJNNX333BJFP4ZKMRMMMXHPAX3JEHIXA3KHLRM7Q
+  - GDOYMOOM7COVCCD4MGNHYNFOKRX2GHTUMBQ5YLNRAEQO3CILHIWROUM7
+  - GDREHWU6C7XZXEEYNEISEDIBZPTVSESBUPB5APUBNUSQ6TZ2ZNCY7I3T
+  evidence:
+  - kind: contract
+    subject: CA27S6FTSNZVVRYGYPMLSKXXR5LDGSK44ENN6HAEIZDSU5UZRPWGIGEZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA27S6FTSNZVVRYGYPMLSKXXR5LDGSK44ENN6HAEIZDSU5UZRPWGIGEZ
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CBTTMKLJKBIMOJCLG3KBZFDKEH5OJMAGZR2NCHE2GF7NN5TPFJ5B4FIB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTTMKLJKBIMOJCLG3KBZFDKEH5OJMAGZR2NCHE2GF7NN5TPFJ5B4FIB
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CDONN5PWL4UWU4H5QUE7LBWC3MPIR3GSVGTQHLKB7LHF2OOWVJBKVK5P
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDONN5PWL4UWU4H5QUE7LBWC3MPIR3GSVGTQHLKB7LHF2OOWVJBKVK5P
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+  - kind: account
+    subject: GA2KN3QOYYU7SWDPLAZ6HQ7GS3CFXVLPAQFDSWIUEGOVC2DJLNM6KCVD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA2KN3QOYYU7SWDPLAZ6HQ7GS3CFXVLPAQFDSWIUEGOVC2DJLNM6KCVD
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+  - kind: account
+    subject: GA5VVZ5YYKUTCW6B3DEU6AK45QQVFEX2PFMJ6FMLKEMLSQ2CE7766XUL
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA5VVZ5YYKUTCW6B3DEU6AK45QQVFEX2PFMJ6FMLKEMLSQ2CE7766XUL
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+  - kind: account
+    subject: GBJL53EHJXAUAVLCDJNNX333BJFP4ZKMRMMMXHPAX3JEHIXA3KHLRM7Q
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBJL53EHJXAUAVLCDJNNX333BJFP4ZKMRMMMXHPAX3JEHIXA3KHLRM7Q
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+  - kind: account
+    subject: GDOYMOOM7COVCCD4MGNHYNFOKRX2GHTUMBQ5YLNRAEQO3CILHIWROUM7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDOYMOOM7COVCCD4MGNHYNFOKRX2GHTUMBQ5YLNRAEQO3CILHIWROUM7
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/frontend/src/deployment.json
+  - kind: account
+    subject: GDREHWU6C7XZXEEYNEISEDIBZPTVSESBUPB5APUBNUSQ6TZ2ZNCY7I3T
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDREHWU6C7XZXEEYNEISEDIBZPTVSESBUPB5APUBNUSQ6TZ2ZNCY7I3T
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/README.md
+contributors:
+- login: tungstenee
+  contributions: 76
+- login: claude
+  contributions: 54
+- login: Azizfassinou
+  contributions: 15
+- login: Hyus0
+  contributions: 1

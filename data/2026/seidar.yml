@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/seidar-hq/seidar
+repo_url: https://github.com/seidar-hq/seidar
+name: seidar
+description: Seidar — DeFi position manager on Stellar (Blend, XOXNO, Peridot)
+language: TypeScript
+created_at: '2026-09-28T01:41:40Z'
+owner: seidar-hq
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 30
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.3.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/apps/app/package.json
+- slug: soroswap
+  name: Soroswap
+  evidence:
+  - method: endpoint
+    detail: api.soroswap.finance
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/swap.ts
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/vaults.ts
+- slug: blend
+  name: Blend
+  evidence:
+  - method: package
+    detail: '@blend-capital/blend-sdk'
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
+- slug: allbridge
+  name: Allbridge
+  evidence:
+  - method: package
+    detail: '@allbridge/bridge-core-sdk'
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: kings0x
+  contributions: 79

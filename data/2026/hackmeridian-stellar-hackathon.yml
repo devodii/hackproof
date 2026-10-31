@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/MohamedDataX/HackMeridian-stellar-Hackathon
+repo_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon
+name: HackMeridian-stellar-Hackathon
+description: 'Zepho: EUR/USD forward hedging for supply chains, settled in USDC on Stellar (Soroban, Reflector, OpenZeppelin).'
+homepage: https://zepho.pages.dev
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T10:43:20Z'
+owner: MohamedDataX
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 43
+stack:
+  soroban-sdk: null
+  stellar-xdr: 28.0.0
+  '@stellar/stellar-sdk': ^16.4.1
+  '@creit.tech/stellar-wallets-kit': ^2.5.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/app-lib/package.json
+chain:
+  contracts: 11
+  wasm_uploads: 7
+  classic_ops: 6
+  assets: 1
+  failed_txs: 4
+  accounts:
+  - GA46XQ6LNPJWOMLTLOTIWHJJCVCBR4DFO2GTUIX3DOGPZTA52BART5OR
+  - GAVFGU5H7H76TOT4HHV6VBVI4XISGQSFKL4ICIJNVSJ7ODKLWL7EWKPS
+  - GCREY2LQAWTN7SN4E2AYF4OZMHRLFHZ6TASCQVFK7L2IQ66G3LM4P7EB
+  - GDE7X6OVNHDTAIDWQ3K7KT6CXF2DET7DQA52SDY6Q3Q6ICNFHXJM2B34
+  evidence:
+  - kind: contract
+    subject: CBRJ6VSKB44BSCCJVMYT3CFDXHAEGJUXQFBPSGAW76W6IZCJEZRVR2VH
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBRJ6VSKB44BSCCJVMYT3CFDXHAEGJUXQFBPSGAW76W6IZCJEZRVR2VH
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/README.md
+  - kind: contract
+    subject: CBZTPM7A6HJWRMVNLBUQ3C7VSXT2ZMWX5PAWSIC7XAQ72TWIKP332SYJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBZTPM7A6HJWRMVNLBUQ3C7VSXT2ZMWX5PAWSIC7XAQ72TWIKP332SYJ
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/README.md
+  - kind: contract
+    subject: CDBSXHPF5DYJUUFLLQK2JWRNLBBV7TFYKFTJUPTDTKEAJXFJ7E6ZOTHI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDBSXHPF5DYJUUFLLQK2JWRNLBBV7TFYKFTJUPTDTKEAJXFJ7E6ZOTHI
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/README.md
+  - kind: asset
+    subject: TUSDC:GAVFGU5H7H76TOT4HHV6VBVI4XISGQSFKL4ICIJNVSJ7ODKLWL7EWKPS
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/TUSDC-GAVFGU5H7H76TOT4HHV6VBVI4XISGQSFKL4ICIJNVSJ7ODKLWL7EWKPS
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GA46XQ6LNPJWOMLTLOTIWHJJCVCBR4DFO2GTUIX3DOGPZTA52BART5OR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA46XQ6LNPJWOMLTLOTIWHJJCVCBR4DFO2GTUIX3DOGPZTA52BART5OR
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAVFGU5H7H76TOT4HHV6VBVI4XISGQSFKL4ICIJNVSJ7ODKLWL7EWKPS
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVFGU5H7H76TOT4HHV6VBVI4XISGQSFKL4ICIJNVSJ7ODKLWL7EWKPS
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCREY2LQAWTN7SN4E2AYF4OZMHRLFHZ6TASCQVFK7L2IQ66G3LM4P7EB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCREY2LQAWTN7SN4E2AYF4OZMHRLFHZ6TASCQVFK7L2IQ66G3LM4P7EB
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDE7X6OVNHDTAIDWQ3K7KT6CXF2DET7DQA52SDY6Q3Q6ICNFHXJM2B34
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDE7X6OVNHDTAIDWQ3K7KT6CXF2DET7DQA52SDY6Q3Q6ICNFHXJM2B34
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/deployments/testnet.json
+contributors:
+- login: MohamedDataX
+  contributions: 41
+- login: LisaMoula
+  contributions: 2

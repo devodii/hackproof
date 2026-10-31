@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/polaiLabs/polai-contracts
+repo_url: https://github.com/polaiLabs/polai-contracts
+name: polai-contracts
+description: Decentralized binary prediction market smart contracts on Stellar Soroban with parimutuel pools
+language: Rust
+license: MIT
+topics:
+- defi
+- drips-wave
+- prediction-market
+- rust
+- smart-contracts
+- soroban
+- stellar
+created_at: '2026-10-25T14:44:06Z'
+owner: polaiLabs
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 5
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCBC42NQP56ZHPWYFR3GRET2B4ATHMK3UJPVP7ETVHJ73XFJVNEB24PM
+  evidence:
+  - kind: contract
+    subject: CALWZ24CPYSPTZ3ID2LTDLBQWDJBUUL4UG4E77M6ZU4GAL7AYD67NZZP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CALWZ24CPYSPTZ3ID2LTDLBQWDJBUUL4UG4E77M6ZU4GAL7AYD67NZZP
+    file_url: https://github.com/polaiLabs/polai-contracts/blob/HEAD/README.md
+  - kind: account
+    subject: GCBC42NQP56ZHPWYFR3GRET2B4ATHMK3UJPVP7ETVHJ73XFJVNEB24PM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCBC42NQP56ZHPWYFR3GRET2B4ATHMK3UJPVP7ETVHJ73XFJVNEB24PM
+    file_url: https://github.com/polaiLabs/polai-contracts/blob/HEAD/README.md
+contributors:
+- login: git-gudess
+  contributions: 5

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/vicistar-star/Holdfast
+repo_url: https://github.com/vicistar-star/Holdfast
+name: Holdfast
+description: Escrow for Instagram and WhatsApp sellers. Buyers pay via a link, funds are held until delivery is confirmed,
+  and sellers build a verifiable track record. Built on Stellar/Soroban.
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-12T04:25:48Z'
+owner: vicistar-star
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 8
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 13.3.0
+chain:
+  contracts: 1
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCFGKLCBV5IGJYGRR7FJNU53HFV5674PMQNNJT6HRAFGUAHZ7V3ZELXR
+  evidence:
+  - kind: contract
+    subject: CCXJ2656ZTAWW7QBZSXZFO6ZLU54I4RU2ND3Q3O454QYKVIAU3EP43B6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCXJ2656ZTAWW7QBZSXZFO6ZLU54I4RU2ND3Q3O454QYKVIAU3EP43B6
+    file_url: https://github.com/vicistar-star/Holdfast/blob/HEAD/docs/contract-spec.md
+contributors:
+- login: vicistar-star
+  contributions: 4

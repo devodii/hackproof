@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/pwsaragossy/hackmeridian-cos
+repo_url: https://github.com/pwsaragossy/hackmeridian-cos
+name: hackmeridian-cos
+description: HackMeridian team board and library (chief-of-staff)
+language: Python
+created_at: '2026-10-24T22:38:38Z'
+owner: pwsaragossy
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 484
+chain:
+  contracts: 7
+  wasm_uploads: 2
+  classic_ops: 6
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GAKTDHZIKXNSO7TIAQJAZPZBDLPKYONHDZYQBPYORQPYAH5UYAE7OAHZ
+  - GAUKDWMR5EZWVG46O7OREZQ7ZY37NSHTFMT3US3RYICYT3HOJL4UCEFR
+  - GAVDGEJFRQ4O2XQD7RTDJ5UJWDQ252ZFP6FIBFOV4PE3CM4GBYPH5UTZ
+  - GBDDWKHPC7HEWFOYOMTC64BCVUPYCA4WPWH5FGSUJAK3AHSEMILXB3CH
+  - GBZK6XVGVHV4CMPE3SSG3GCSKBJKNW2DY4C7VDR2E4PITFBFWDDX4LNX
+  - GC5ZEZIZ6L4O666WKGH54LJDCVNSYYGDWWN45OPSQUN4ARNBWKRWNDVP
+  - GCOFS2CFUHQVZXRNCMNOQFFQJ4XGEKV4Z2SYNRZALOJWDC6DUAXIASXN
+  - GD54SSZGLU6QXILEBQMJZ5F5IW35UELJN3FEKC77ZE23BXK5BHPV2CO4
+  - GDWNU6TTJCZOQ3ZQI5NYALATL7IVMHR4PWEP5E3TXEK7EKOJNDORTPPW
+  evidence:
+  - kind: contract
+    subject: CALNJB6DW5BCMHVGMZIDNLQ2GHA4HW5EP3Q2F26NAGVBFSAHOM2NX5JK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CALNJB6DW5BCMHVGMZIDNLQ2GHA4HW5EP3Q2F26NAGVBFSAHOM2NX5JK
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/Leo contract and testnet proofs.md
+  - kind: contract
+    subject: CBOM5ZZR65EFXF4E7L7GF5F5AES3DSYBYNZHHXJYPDGZTSDFKGVPZM7U
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBOM5ZZR65EFXF4E7L7GF5F5AES3DSYBYNZHHXJYPDGZTSDFKGVPZM7U
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/Leo contract and testnet proofs.md
+  - kind: contract
+    subject: CCBJVXMJYWPHTDJHDFPRGKPGXGEP24JOPJAMUS5C3BMZJTRTWR2H4LII
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCBJVXMJYWPHTDJHDFPRGKPGXGEP24JOPJAMUS5C3BMZJTRTWR2H4LII
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/Leo contract and testnet proofs.md
+  - kind: contract
+    subject: CD7BUCY3DC7GTHRWFRBHNOFPMGVCHFDL4LHKXZNGEJISSGHI24KSNH3F
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD7BUCY3DC7GTHRWFRBHNOFPMGVCHFDL4LHKXZNGEJISSGHI24KSNH3F
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/Leo contract and testnet proofs.md
+  - kind: contract
+    subject: CDDWEENF6DKM4AHFWDBHQTYPLC3STMVFPXHXYDORLD53WDZM3FF3KJX4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDDWEENF6DKM4AHFWDBHQTYPLC3STMVFPXHXYDORLD53WDZM3FF3KJX4
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/knowledge/notes/multi-company-chain-proof-on-testnet-672b.md
+  - kind: account
+    subject: GAUKDWMR5EZWVG46O7OREZQ7ZY37NSHTFMT3US3RYICYT3HOJL4UCEFR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAUKDWMR5EZWVG46O7OREZQ7ZY37NSHTFMT3US3RYICYT3HOJL4UCEFR
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/HackMeridian rail.md
+  - kind: account
+    subject: GAVDGEJFRQ4O2XQD7RTDJ5UJWDQ252ZFP6FIBFOV4PE3CM4GBYPH5UTZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVDGEJFRQ4O2XQD7RTDJ5UJWDQ252ZFP6FIBFOV4PE3CM4GBYPH5UTZ
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/Leo contract and testnet proofs.md
+  - kind: account
+    subject: GD54SSZGLU6QXILEBQMJZ5F5IW35UELJN3FEKC77ZE23BXK5BHPV2CO4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD54SSZGLU6QXILEBQMJZ5F5IW35UELJN3FEKC77ZE23BXK5BHPV2CO4
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/Leo contract and testnet proofs.md
+  - kind: account
+    subject: GDWNU6TTJCZOQ3ZQI5NYALATL7IVMHR4PWEP5E3TXEK7EKOJNDORTPPW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDWNU6TTJCZOQ3ZQI5NYALATL7IVMHR4PWEP5E3TXEK7EKOJNDORTPPW
+    file_url: https://github.com/pwsaragossy/hackmeridian-cos/blob/HEAD/board/HackMeridian rail.md
+contributors:
+- login: pwsaragossy
+  contributions: 443
+- login: leo-schlanger
+  contributions: 89
+- login: vhendala
+  contributions: 17

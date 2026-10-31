@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Klorenn/LOOT
+repo_url: https://github.com/Klorenn/LOOT
+name: LOOT
+homepage: https://findloot.xyz
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T16:25:37Z'
+owner: Klorenn
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 87
+stack:
+  soroban-sdk: 27.0.1
+  '@stellar/stellar-sdk': ^16.0.1
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/app/package.json
+- slug: passkey-kit
+  name: Passkey Kit
+  evidence:
+  - method: package
+    detail: passkey-kit
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/app/package.json
+chain:
+  contracts: 111
+  wasm_uploads: 10
+  classic_ops: 1
+  assets: 1
+  failed_txs: 1
+  accounts:
+  - GAKD2FSFFNLBVTUB4JHFYVUUMTKKEEJO2TG77BHV2KCZTDPUB64JU7E2
+  - GARFH3HJYR3WNKWI7EJD6BE7EG3L762TWOBANDT3YCVENOQM2A65BQAR
+  - GAVLW5IKB7VFBRJ3EHBE4BRZ5OX3AOW3ICMLMB6KVKCQDO6WJ2SPHDN3
+  evidence:
+  - kind: contract
+    subject: CC6Q4V6QVAG5EQTIYX6E34YFWKDLEWMVXSOZRT4DVUE3O24JODIU4YOT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6Q4V6QVAG5EQTIYX6E34YFWKDLEWMVXSOZRT4DVUE3O24JODIU4YOT
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/audits/kuyfi-report-kyf-20261025T114353Z-f5ab2e63.json
+  - kind: contract
+    subject: CCOIK76OU7VHRK5PCE3RKQUDO6C6I7YMBHM3G24FVMZJ2I2ZESBGPHYZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCOIK76OU7VHRK5PCE3RKQUDO6C6I7YMBHM3G24FVMZJ2I2ZESBGPHYZ
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/README.md
+  - kind: contract
+    subject: CCUF6M5Y6B6VR5HB72M7VFBHLC7ILBBKAGF6TI76PZ5YUOI6Q72HXTIE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCUF6M5Y6B6VR5HB72M7VFBHLC7ILBBKAGF6TI76PZ5YUOI6Q72HXTIE
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/README.md
+  - kind: contract
+    subject: CDMYX46WAU66OOAVXLBPTVXZ7EZF5NTS3X3T6S2AKSOADEBZD7OGEXCA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDMYX46WAU66OOAVXLBPTVXZ7EZF5NTS3X3T6S2AKSOADEBZD7OGEXCA
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/README.md
+  - kind: wasm
+    subject: 8df17eda8f2f901a9636804e0e173586723420d38af6407974218b53f98905b5
+    method: wasm_hash_match
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/.build-mainnet-registry/chestzk_verifier.wasm
+  - kind: wasm
+    subject: ddf6ce56a88681e821eeb1d7ae410687b89996a93ff7f1c266fe74a0b631b967
+    method: wasm_hash_match
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/.build-mainnet-registry/chestzk_chest.wasm
+  - kind: account
+    subject: GAKD2FSFFNLBVTUB4JHFYVUUMTKKEEJO2TG77BHV2KCZTDPUB64JU7E2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAKD2FSFFNLBVTUB4JHFYVUUMTKKEEJO2TG77BHV2KCZTDPUB64JU7E2
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/bot/attack.mjs
+  - kind: account
+    subject: GAVLW5IKB7VFBRJ3EHBE4BRZ5OX3AOW3ICMLMB6KVKCQDO6WJ2SPHDN3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAVLW5IKB7VFBRJ3EHBE4BRZ5OX3AOW3ICMLMB6KVKCQDO6WJ2SPHDN3
+    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/bot/attack.mjs
+contributors:
+- login: Klorenn
+  contributions: 124

@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/vmichalik/stellar-p2p
+repo_url: https://github.com/vmichalik/stellar-p2p
+name: stellar-p2p
+description: 'Pactlane: peer-to-peer Stellar exchange with authenticated bank-payment evidence.'
+language: JavaScript
+created_at: '2026-10-25T10:27:23Z'
+owner: vmichalik
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 69
+stack:
+  soroban-sdk: =29.0.1
+  '@stellar/stellar-sdk': 17.1.0
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/vmichalik/stellar-p2p/blob/HEAD/integration/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence:
+  - kind: wasm
+    subject: 8940569853b21a957fc5a81402666e95ed75f054ce2223926231ffc2c0c506dd
+    method: wasm_hash_match
+    file_url: https://github.com/vmichalik/stellar-p2p/blob/HEAD/contracts/escrow/artifacts/pactlane_escrow.wasm
+contributors:
+- login: vmichalik
+  contributions: 69

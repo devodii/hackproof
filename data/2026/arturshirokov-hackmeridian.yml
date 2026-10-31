@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/ArturShirokov/hackmeridian
+repo_url: https://github.com/ArturShirokov/hackmeridian
+name: hackmeridian
+language: TypeScript
+created_at: '2026-10-25T08:33:16Z'
+owner: ArturShirokov
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 158
+stack:
+  '@stellar/stellar-sdk': ^17.3.0
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/src/ledger/trustless-work.ts
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 33
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GB3MFT5NHPLN2TJK7EHGZ7KFYH24HOO36ZPEZGHILHQ6XF25VXIOG362
+  - GB5QYOD56IOJBI5LK6BZCI2CYSUIVLSSDUJBYKCZAAQLVCSTMEBS4R55
+  - GBFFXTX63YSTX3TVYHFVMR4V7FCBIJDRWBYG6LGJPGMSCEPQKR7AF4IX
+  - GDO3MCOXQWZ3SGL7PGWRRWTDAABV4DCSX2XNW7CGYPEJQ6G2HCCEG3CK
+  - GDRALGICZP7N5TC7KMXN5CKDLNUQMJOLWDU6PYOIDNCZSS2OQIP36LAB
+  evidence:
+  - kind: account
+    subject: GB3MFT5NHPLN2TJK7EHGZ7KFYH24HOO36ZPEZGHILHQ6XF25VXIOG362
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB3MFT5NHPLN2TJK7EHGZ7KFYH24HOO36ZPEZGHILHQ6XF25VXIOG362
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/wallets/README.md
+  - kind: account
+    subject: GB5QYOD56IOJBI5LK6BZCI2CYSUIVLSSDUJBYKCZAAQLVCSTMEBS4R55
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB5QYOD56IOJBI5LK6BZCI2CYSUIVLSSDUJBYKCZAAQLVCSTMEBS4R55
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/wallets/README.md
+  - kind: account
+    subject: GBFFXTX63YSTX3TVYHFVMR4V7FCBIJDRWBYG6LGJPGMSCEPQKR7AF4IX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBFFXTX63YSTX3TVYHFVMR4V7FCBIJDRWBYG6LGJPGMSCEPQKR7AF4IX
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/wallets/README.md
+  - kind: account
+    subject: GDO3MCOXQWZ3SGL7PGWRRWTDAABV4DCSX2XNW7CGYPEJQ6G2HCCEG3CK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDO3MCOXQWZ3SGL7PGWRRWTDAABV4DCSX2XNW7CGYPEJQ6G2HCCEG3CK
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/wallets/README.md
+  - kind: account
+    subject: GDRALGICZP7N5TC7KMXN5CKDLNUQMJOLWDU6PYOIDNCZSS2OQIP36LAB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDRALGICZP7N5TC7KMXN5CKDLNUQMJOLWDU6PYOIDNCZSS2OQIP36LAB
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/wallets/README.md
+contributors:
+- login: ArturShirokov
+  contributions: 160

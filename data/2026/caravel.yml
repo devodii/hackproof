@@ -1,0 +1,204 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/rcusans-code/Caravel
+repo_url: https://github.com/rcusans-code/Caravel
+name: Caravel
+description: 'On-chain term repo for tokenized Treasuries on Stellar: fixed-term, fixed-rate USDC loans against tokenized
+  money-market funds, priced off daily NAV, settled with atomic DvP.'
+language: TypeScript
+created_at: '2026-10-25T12:06:51Z'
+owner: rcusans-code
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 341
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.4.1
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/app/package.json
+chain:
+  contracts: 35
+  wasm_uploads: 20
+  classic_ops: 41
+  assets: 1
+  failed_txs: 39
+  accounts:
+  - GAHGAD7PMXNHT6DBXSX4BIBGNBTXPVXKN35OUGEHZNPAEJXK4UHWDG55
+  - GAIEBYTK2T7JM4F4HINB6QZJCPTMU74SKLBRTI3SBLXXXFMDOTC3FVT3
+  - GAWPUXBFQ4R4FWHPER66YMQ2JDGNPTAYV4JGCXL27G2DB6QPUD4OFNYR
+  - GB44DXOHWG7EPMCPRJA4J5276BPBUAAIKMCWTMPO3ESY6NGS55CDCL7H
+  - GBSIQYB4SCV3DWKDQANJCOW5VI3WZQRLNZ5HL5OUHBLJR6COKBKQOBFB
+  - GBVV6MTKM5CJQCCCDAZZOMZHEZHBGGKRE33A4H7FJPNZP62WDAUEAFTD
+  - GCPY6373DEZGZFVQ4O2FOUDGKI2NNZEN6TOHOJLU4S7KGX4LM7HYODZH
+  - GD5XWUD6PO2EFWPDRVRNWLKJUNOENBG4D5LA3FAYNKKGMPGBSE72JNOO
+  - GDE5NX3RLR5UWZLPI4SB4ORYGBPRHKR53WTD3HXFXU2OAK6AOY6UJ3HU
+  - GDFLRCV4EYFJVYFSFKWUCQK5P7EERFREW7HDLBRLAUFR5DCCU6ZKDP2L
+  evidence:
+  - kind: contract
+    subject: CAMV2PZKNGQDNR6XZHN6P2H5QA4H25OFE5HNZUG3YHVBVZWBU6V6WDJS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAMV2PZKNGQDNR6XZHN6P2H5QA4H25OFE5HNZUG3YHVBVZWBU6V6WDJS
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAPUQPL7K5ZNCQRYQ5UNZMG5B3NVK7B6J7JFIVLSBLR7X4U4WHUY5ORK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAPUQPL7K5ZNCQRYQ5UNZMG5B3NVK7B6J7JFIVLSBLR7X4U4WHUY5ORK
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAUH5JJNNRHRSQAYY6EODFNNXCP7FHDCK6CTXQMNMZ27JQ7JUAXTADXR
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAUH5JJNNRHRSQAYY6EODFNNXCP7FHDCK6CTXQMNMZ27JQ7JUAXTADXR
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAUXSFOLHKHIVYB75JZVQPOSNIEWMUZ6GRSC7XSXCX5SKFC7DYC5CND5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAUXSFOLHKHIVYB75JZVQPOSNIEWMUZ6GRSC7XSXCX5SKFC7DYC5CND5
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBGLMWL7FETVMAD6H73BV7H6WT3EY5BXKZOAFJGKVVWYIIKVS4Y4APNJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBGLMWL7FETVMAD6H73BV7H6WT3EY5BXKZOAFJGKVVWYIIKVS4Y4APNJ
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBJGKHDVAJE3PZMV6XPPSMMGWICPW2VMNFZYKEEUHWWUOXX2WCIWYPYF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBJGKHDVAJE3PZMV6XPPSMMGWICPW2VMNFZYKEEUHWWUOXX2WCIWYPYF
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBPMOBTTYFPQ2C2GWVXZ3T3CJP3G6H3AJT6ZATBSE3CINWYIZ23HR6CY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBPMOBTTYFPQ2C2GWVXZ3T3CJP3G6H3AJT6ZATBSE3CINWYIZ23HR6CY
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBVZDOKRSBI7DKSH7XX5XZ5JM2AIINYU4PIFHAYJLMHB3QJDYCDZ2A4S
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVZDOKRSBI7DKSH7XX5XZ5JM2AIINYU4PIFHAYJLMHB3QJDYCDZ2A4S
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: contract
+    subject: CBWTB23F5PQTGX2QYOA3FJB3M6ZHDRCTT33XFKHXFD5SJJFTJEA7YTD6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBWTB23F5PQTGX2QYOA3FJB3M6ZHDRCTT33XFKHXFD5SJJFTJEA7YTD6
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBZOHBJ6CSLXD4HTW5KCYU5KLE7O3ZLYAZDLPUKOOUCZ6IV6FQKJKOU2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBZOHBJ6CSLXD4HTW5KCYU5KLE7O3ZLYAZDLPUKOOUCZ6IV6FQKJKOU2
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: contract
+    subject: CCFP3L7TZ6BLCN7FYHFVYF3JXJDZ47QKSIAKMXV6AYVBDFWJNZJ3DP53
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCFP3L7TZ6BLCN7FYHFVYF3JXJDZ47QKSIAKMXV6AYVBDFWJNZJ3DP53
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCLJQE4O6EZX3IRLPNDTEP63VAEME2J77AXH7J4LRSOFP7CAY2X3XRVC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCLJQE4O6EZX3IRLPNDTEP63VAEME2J77AXH7J4LRSOFP7CAY2X3XRVC
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CD4Q2QTOIRJOUPKK46N5MZMTRQXZVOO6N5FRXHK3BEBBPDSXQNQMK6YN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD4Q2QTOIRJOUPKK46N5MZMTRQXZVOO6N5FRXHK3BEBBPDSXQNQMK6YN
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDCYRLASS44B6UUZNUJCXTYIJUXJOWG4LBECAD66S3467SAKWY6PBO5I
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDCYRLASS44B6UUZNUJCXTYIJUXJOWG4LBECAD66S3467SAKWY6PBO5I
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDLNYC24T5VFUMRLHAJ4FKIKATJNWB6ZD4H4BV475B2Q4FI7SGX5T7ZL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDLNYC24T5VFUMRLHAJ4FKIKATJNWB6ZD4H4BV475B2Q4FI7SGX5T7ZL
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDMLJAW5C6L5S66TMBHOOMJBR5PVWNJ7VABEMMOYSKH2ZJ7Y4AFZ5JEX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDMLJAW5C6L5S66TMBHOOMJBR5PVWNJ7VABEMMOYSKH2ZJ7Y4AFZ5JEX
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDVVWEKOW3J24B4YBE4RFKSGKGUN5PMZ6VN2QH7EFBZGVL7IZ64F242R
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDVVWEKOW3J24B4YBE4RFKSGKGUN5PMZ6VN2QH7EFBZGVL7IZ64F242R
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/deployments/testnet.json
+  - kind: wasm
+    subject: 0191a9027d38e5080ba0f3209cc09adf13153d185e0f42eeb25e899df163c401
+    method: wasm_meta
+  - kind: wasm
+    subject: 39a208f3879cb750b14ef7d9239ab8d6288ed78a401dd385bde06c56271f4cbf
+    method: wasm_meta
+  - kind: wasm
+    subject: 8431e951e1c49bbe3f913c5a870d80a5e7c385dc86a8869aca338268eb2a899e
+    method: wasm_meta
+  - kind: wasm
+    subject: c0b4cf586142fb5e0a39d94bf4872017a283400e9bfd32b6f655ab0e8758df6d
+    method: wasm_meta
+  - kind: asset
+    subject: tBENJI:GD5XWUD6PO2EFWPDRVRNWLKJUNOENBG4D5LA3FAYNKKGMPGBSE72JNOO
+    method: asset_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/asset/tBENJI-GD5XWUD6PO2EFWPDRVRNWLKJUNOENBG4D5LA3FAYNKKGMPGBSE72JNOO
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GAHGAD7PMXNHT6DBXSX4BIBGNBTXPVXKN35OUGEHZNPAEJXK4UHWDG55
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAHGAD7PMXNHT6DBXSX4BIBGNBTXPVXKN35OUGEHZNPAEJXK4UHWDG55
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GAIEBYTK2T7JM4F4HINB6QZJCPTMU74SKLBRTI3SBLXXXFMDOTC3FVT3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAIEBYTK2T7JM4F4HINB6QZJCPTMU74SKLBRTI3SBLXXXFMDOTC3FVT3
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GAWPUXBFQ4R4FWHPER66YMQ2JDGNPTAYV4JGCXL27G2DB6QPUD4OFNYR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAWPUXBFQ4R4FWHPER66YMQ2JDGNPTAYV4JGCXL27G2DB6QPUD4OFNYR
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GB44DXOHWG7EPMCPRJA4J5276BPBUAAIKMCWTMPO3ESY6NGS55CDCL7H
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB44DXOHWG7EPMCPRJA4J5276BPBUAAIKMCWTMPO3ESY6NGS55CDCL7H
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GBSIQYB4SCV3DWKDQANJCOW5VI3WZQRLNZ5HL5OUHBLJR6COKBKQOBFB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBSIQYB4SCV3DWKDQANJCOW5VI3WZQRLNZ5HL5OUHBLJR6COKBKQOBFB
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GBVV6MTKM5CJQCCCDAZZOMZHEZHBGGKRE33A4H7FJPNZP62WDAUEAFTD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBVV6MTKM5CJQCCCDAZZOMZHEZHBGGKRE33A4H7FJPNZP62WDAUEAFTD
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GCPY6373DEZGZFVQ4O2FOUDGKI2NNZEN6TOHOJLU4S7KGX4LM7HYODZH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCPY6373DEZGZFVQ4O2FOUDGKI2NNZEN6TOHOJLU4S7KGX4LM7HYODZH
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GD5XWUD6PO2EFWPDRVRNWLKJUNOENBG4D5LA3FAYNKKGMPGBSE72JNOO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD5XWUD6PO2EFWPDRVRNWLKJUNOENBG4D5LA3FAYNKKGMPGBSE72JNOO
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GDE5NX3RLR5UWZLPI4SB4ORYGBPRHKR53WTD3HXFXU2OAK6AOY6UJ3HU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDE5NX3RLR5UWZLPI4SB4ORYGBPRHKR53WTD3HXFXU2OAK6AOY6UJ3HU
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+  - kind: account
+    subject: GDFLRCV4EYFJVYFSFKWUCQK5P7EERFREW7HDLBRLAUFR5DCCU6ZKDP2L
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDFLRCV4EYFJVYFSFKWUCQK5P7EERFREW7HDLBRLAUFR5DCCU6ZKDP2L
+    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
+contributors:
+- login: nichoga
+  contributions: 25
+- login: claude
+  contributions: 7
+- login: curiositypilot
+  contributions: 5
+- login: rcusans-code
+  contributions: 3

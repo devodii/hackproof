@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/herbstephens/Human-Bond
+repo_url: https://github.com/herbstephens/Human-Bond
+name: Human-Bond
+description: The first proof-of-humanity partnership protocol. Live on World Chain. Search HumanBond in World App.
+homepage: https://humanbond-lisbon-nu.vercel.app/
+language: TypeScript
+license: NOASSERTION
+topics:
+- 0g
+- ai-agents
+- ens
+- ethglobal
+- partnership
+- world-chain
+- world-id
+created_at: '2026-04-22T19:08:03Z'
+owner: herbstephens
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 12
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+  '@creit.tech/stellar-wallets-kit': 2.7.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/herbstephens/Human-Bond/blob/HEAD/miniapp/package.json
+chain:
+  contracts: 3
+  wasm_uploads: 0
+  classic_ops: 2
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCFBJ4N37BUUJ3J6KFGBLY4B3VABDUW6ATAZRKLGDCQOYEBAQP7MI7YI
+  - GCJYYWTPBIZTNTJ75IEQO3Y2DUZWJHZ5O2QLPEKWI3FHCRBG5XPWTIYX
+  - GDQE2IURJZXUQCM57YNXA3BLVS57HYMPBGG3US5EU5AKAAF3HDAGM56C
+  evidence:
+  - kind: contract
+    subject: CARYG72V3VODNIIQS4ZR6TKBDVFGELRXXBEAYK65LZWFUAQ4OFA27OQ7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CARYG72V3VODNIIQS4ZR6TKBDVFGELRXXBEAYK65LZWFUAQ4OFA27OQ7
+    file_url: https://github.com/herbstephens/Human-Bond/blob/HEAD/HACKMERIDIAN.md
+  - kind: contract
+    subject: CCPRUNAVZNPAQJ7XOLO6D23GLWIDS3TZX3YIQ3YDMUTVVAFF5RSZOB6E
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCPRUNAVZNPAQJ7XOLO6D23GLWIDS3TZX3YIQ3YDMUTVVAFF5RSZOB6E
+    file_url: https://github.com/herbstephens/Human-Bond/blob/HEAD/HACKMERIDIAN.md
+  - kind: contract
+    subject: CCWG6L5SPDXV2K7URGZQPDTEH2A4UBBFGHCLODGULVA6FOTNB4WTKEBQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCWG6L5SPDXV2K7URGZQPDTEH2A4UBBFGHCLODGULVA6FOTNB4WTKEBQ
+    file_url: https://github.com/herbstephens/Human-Bond/blob/HEAD/HACKMERIDIAN.md
+contributors:
+- login: Beno-Lunsen
+  contributions: 108
+- login: herbstephens
+  contributions: 76
+- login: FrancoAmicone
+  contributions: 27
+- login: mishabunte
+  contributions: 12
+- login: thefranceway
+  contributions: 1

@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/up2itnow0822/agent-wallet-sdk
+repo_url: https://github.com/up2itnow0822/agent-wallet-sdk
+name: agent-wallet-sdk
+description: Non-custodial crypto wallets for AI agents with on-chain spending limits. ERC-6551, x402 compatible, Base Mainnet.
+homepage: https://www.npmjs.com/package/agentwallet-sdk
+language: TypeScript
+license: MIT
+topics:
+- agent-wallet
+- ai-agents
+- payments
+- sdk
+- typescript
+- x402
+created_at: '2026-02-18T04:53:41Z'
+owner: up2itnow0822
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 31
+stack:
+  '@stellar/stellar-sdk': '>=14.0.0'
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: up2itnow0822
+  contributions: 148
+- login: claude
+  contributions: 28
+- login: cursoragent
+  contributions: 16
+- login: up2itnow
+  contributions: 3
+- login: endgegnerbert-tech
+  contributions: 1
+- login: samsamtrum
+  contributions: 1

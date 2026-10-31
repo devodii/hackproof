@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/WritzProtocol/writz
+repo_url: https://github.com/WritzProtocol/writz
+name: writz
+description: Trustless Bitcoin DeFi on Stellar - zk private BTC collateral lending. Native BTC via Bitcoin Script + SPV on
+  Soroban, positions hidden behind Groth16 proofs. No bridge, no custodian, no wrapped tokens.
+homepage: https://writz.xyz
+language: TypeScript
+license: Apache-2.0
+topics:
+- bitcoin
+- defi
+- lending
+- soroban
+- stellar
+- zero-knowledge-proofs
+created_at: '2026-06-23T05:32:39Z'
+owner: WritzProtocol
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 42
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.4.1
+  '@creit.tech/stellar-wallets-kit': ^2.4.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/frontend/app/package.json
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/.env.example
+  - method: package
+    detail: '@defindex/sdk'
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/package.json
+chain:
+  contracts: 3
+  wasm_uploads: 3
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GB2BSYQS3FRJ5LZSSIDF3ZCSG5MKWJT5SZ3OZO4QRCAMCR357YAVPTWT
+  evidence:
+  - kind: contract
+    subject: CABF7VK7F25ZGDLV6EWSAU3NYQYKDQNDSJIISDMDZAUASMSXUADSHZGG
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CABF7VK7F25ZGDLV6EWSAU3NYQYKDQNDSJIISDMDZAUASMSXUADSHZGG
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/README.md
+  - kind: contract
+    subject: CBX23YKCCJMAMBMSCNP6YVKEXUIYK2CTKSR4TQ3RVBPAFYZFVCW7W4EO
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBX23YKCCJMAMBMSCNP6YVKEXUIYK2CTKSR4TQ3RVBPAFYZFVCW7W4EO
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/README.md
+  - kind: account
+    subject: GB2BSYQS3FRJ5LZSSIDF3ZCSG5MKWJT5SZ3OZO4QRCAMCR357YAVPTWT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB2BSYQS3FRJ5LZSSIDF3ZCSG5MKWJT5SZ3OZO4QRCAMCR357YAVPTWT
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/README.md
+contributors:
+- login: salazarsebas
+  contributions: 106
+- login: miguelnietoa
+  contributions: 101
+- login: Josue19-08
+  contributions: 36
+- login: KevinMB0220
+  contributions: 15

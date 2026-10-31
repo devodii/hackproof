@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/devfelipenunes/CMI-hackthon-meridian
+repo_url: https://github.com/devfelipenunes/CMI-hackthon-meridian
+name: CMI-hackthon-meridian
+language: TypeScript
+created_at: '2026-10-25T11:59:19Z'
+owner: devfelipenunes
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 26
+stack:
+  soroban-sdk: 26.0.1
+  '@stellar/stellar-sdk': 14.6.1
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/web/app/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence:
+  - kind: wasm
+    subject: 74b6978c0519e6a1807f54a9677c47555a7f696a3d336603a79b63773f4fb6d8
+    method: wasm_hash_match
+    file_url: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/contracts/wasm/confidential_token.wasm
+contributors: []

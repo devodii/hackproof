@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/emprendamosahora2030-sudo/greenledger
+repo_url: https://github.com/emprendamosahora2030-sudo/greenledger
+name: greenledger
+description: GreenLedger — Registro verificable de créditos de carbono en Stellar · CIT Has It All
+language: HTML
+license: Apache-2.0
+created_at: '2026-09-25T12:27:30Z'
+owner: emprendamosahora2030-sudo
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 1
+stack:
+  soroban-sdk: 22.0.0
+chain:
+  contracts: 1
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBB2ZR3CTQ2T66SGEIXSHOMEAZQUJ3DKU7MHAD34SS24H3ORDL22BIQO
+  - GCBEDXXZVOYHUI4CNZK3UJLBVTY4HUDBQODJHZRYULD4H75U4HB2ICY4
+  evidence:
+  - kind: contract
+    subject: CA72AAWIMDYI6243USZRHPSKF3JJMN3P67LMUYVLGOCR3PVH2XYRH7V7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA72AAWIMDYI6243USZRHPSKF3JJMN3P67LMUYVLGOCR3PVH2XYRH7V7
+    file_url: https://github.com/emprendamosahora2030-sudo/greenledger/blob/HEAD/docs/DEMO.md
+  - kind: account
+    subject: GBB2ZR3CTQ2T66SGEIXSHOMEAZQUJ3DKU7MHAD34SS24H3ORDL22BIQO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBB2ZR3CTQ2T66SGEIXSHOMEAZQUJ3DKU7MHAD34SS24H3ORDL22BIQO
+    file_url: https://github.com/emprendamosahora2030-sudo/greenledger/blob/HEAD/docs/DEMO.md
+  - kind: account
+    subject: GCBEDXXZVOYHUI4CNZK3UJLBVTY4HUDBQODJHZRYULD4H75U4HB2ICY4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCBEDXXZVOYHUI4CNZK3UJLBVTY4HUDBQODJHZRYULD4H75U4HB2ICY4
+    file_url: https://github.com/emprendamosahora2030-sudo/greenledger/blob/HEAD/docs/DEMO.md
+contributors:
+- login: emprendamosahora2030-sudo
+  contributions: 19
+- login: claude
+  contributions: 18

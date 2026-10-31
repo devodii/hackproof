@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Kaycee276/Rhitta
+repo_url: https://github.com/Kaycee276/Rhitta
+name: Rhitta
+description: Decentralized music streaming platform powered by Stellar, Soroban smart contracts, and Turso SQLite
+homepage: https://rhitta.vercel.app
+language: TypeScript
+license: MIT
+topics:
+- music-streaming
+- prisma
+- react
+- rust
+- smart-contracts
+- soroban
+- stellar
+- turso
+- typescript
+- web3
+- decentralized-music
+created_at: '2025-11-12T12:26:45Z'
+owner: Kaycee276
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 12
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Kaycee276/Rhitta/blob/HEAD/frontend/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBELXTVUSO745SBIL6OINE3FR3YB4BTXKOL5BY7LK6GC5AOQJCZOVMBX
+  evidence:
+  - kind: contract
+    subject: CBQU2AB6ZEGNCMMXPPXOMGCHFXEBGU3EL7OC2PSLDTI4JKE5GT6XCPDC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBQU2AB6ZEGNCMMXPPXOMGCHFXEBGU3EL7OC2PSLDTI4JKE5GT6XCPDC
+    file_url: https://github.com/Kaycee276/Rhitta/blob/HEAD/README.md
+  - kind: account
+    subject: GBELXTVUSO745SBIL6OINE3FR3YB4BTXKOL5BY7LK6GC5AOQJCZOVMBX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBELXTVUSO745SBIL6OINE3FR3YB4BTXKOL5BY7LK6GC5AOQJCZOVMBX
+    file_url: https://github.com/Kaycee276/Rhitta/blob/HEAD/README.md
+contributors:
+- login: Kaycee276
+  contributions: 22

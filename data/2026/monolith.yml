@@ -1,0 +1,142 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Rushyard/Monolith
+repo_url: https://github.com/Rushyard/Monolith
+name: Monolith
+homepage: https://monolith-nine-rosy.vercel.app
+language: TypeScript
+created_at: '2026-10-25T10:48:23Z'
+owner: Rushyard
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 134
+stack:
+  '@stellar/stellar-sdk': ^14.2.0
+  '@stellar/freighter-api': ^4.1.0
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/app/package.json
+chain:
+  contracts: 4
+  wasm_uploads: 3
+  classic_ops: 16
+  assets: 0
+  failed_txs: 28
+  accounts:
+  - GA5HRQORQCUWGG6ACM6SMLWJO75Q7BWFGERVOBLR4FVSSQGZPPHE5NJH
+  - GAJDU7KW7ZZ7DOOTEHV5WILNF2CPBAWJE332I7PEAFLSU7LIVIVDUD33
+  - GAZ2FGMNVWXPFYNH52J62YFGATZYXI7QZ27R2PS7MPL6ZFZJZQE4A4EM
+  - GB7OT6KYOLWATWCNEPDTZZIP6CHI3L4X3YXH6BX7IVCPY2ENMPKIIKXP
+  - GBCQZMHQWCIQJRCQJHAI7L2GS56A3EVY5E2E26DU2RX5SRSU4Y5B32GV
+  - GBYIYBD6U4VSXD4AVXGTLVPK2PW5YQZKX6QN4RTBV27BDIFTMEQ3AOBW
+  - GC6C2LR643VOW2VDXNZ2UOUHQS3H5GKMIGNGNMSNHAWQQ4WXAPBW3D34
+  - GCIFXLBRK2CHODLILPTZIPEAK36TOS3MG4QRZGCTJ7PA52PAOP75RS7B
+  - GD46SGQRPKDSWAS665C7OWIPY6TBWRMSSNZLAHZJDFBDAMPBRCYLRLAB
+  - GD74JAC6YD6OFRVCNFSUVLX6UJKWSTWWO3WSZ7IROZQWLZ25F2XRZIA5
+  - GDTMYTVUVK24YS33DC7LH2LXF6C4TKOYLPBWZNKKJIIRSAKRJZLSXPH3
+  - GDY5SERGYNGQF2R4SRZ4AHQPJ7HQOLEPLAFISMD37CM2XCTGW4KUBXH6
+  evidence:
+  - kind: contract
+    subject: CAOT4RM7SYJPLT5XQVPYDEX6HKQOZFODZE6KQVUQJZUSVJY6HBWUVGHQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAOT4RM7SYJPLT5XQVPYDEX6HKQOZFODZE6KQVUQJZUSVJY6HBWUVGHQ
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/README.md
+  - kind: contract
+    subject: CB5YIDSUCNESNOJK2UFFJA6E3O5BGAPYEQ6F353WGNM4UBGGX3H45IGQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB5YIDSUCNESNOJK2UFFJA6E3O5BGAPYEQ6F353WGNM4UBGGX3H45IGQ
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/README.md
+  - kind: contract
+    subject: CBBDHCHRKXP2EROB5JN3EMCMZ4VOOIXSOKDNVPJKY4KIJXZ53ZDC3ZVB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBBDHCHRKXP2EROB5JN3EMCMZ4VOOIXSOKDNVPJKY4KIJXZ53ZDC3ZVB
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/README.md
+  - kind: contract
+    subject: CC5D2NUS2GXAWMTK2DMSNJHVRGRH5GBEZNUMEPIOPBPQQJN6GDLO43KA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC5D2NUS2GXAWMTK2DMSNJHVRGRH5GBEZNUMEPIOPBPQQJN6GDLO43KA
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/README.md
+  - kind: wasm
+    subject: 1647f1db6a5fb0a5b1c992f351193dd82633619490ca6a8df094326a6561b898
+    method: wasm_hash_match
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/contracts/wasm/multisig_ed25519_verifier_example.wasm
+  - kind: wasm
+    subject: 997649dfe07b8bf76a6f90123a56a3cb1a5f145ed29b3b3415e3603089f0fbfb
+    method: wasm_hash_match
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/contracts/wasm/multisig_spending_limit_policy_example.wasm
+  - kind: wasm
+    subject: a22a4bf78858e965ae4c2676c974157e340f8acf99d2552bc9d3390b29e25201
+    method: wasm_hash_match
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/contracts/wasm/multisig_account_example.wasm
+  - kind: account
+    subject: GA5HRQORQCUWGG6ACM6SMLWJO75Q7BWFGERVOBLR4FVSSQGZPPHE5NJH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA5HRQORQCUWGG6ACM6SMLWJO75Q7BWFGERVOBLR4FVSSQGZPPHE5NJH
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+  - kind: account
+    subject: GAJDU7KW7ZZ7DOOTEHV5WILNF2CPBAWJE332I7PEAFLSU7LIVIVDUD33
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAJDU7KW7ZZ7DOOTEHV5WILNF2CPBAWJE332I7PEAFLSU7LIVIVDUD33
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+  - kind: account
+    subject: GAZ2FGMNVWXPFYNH52J62YFGATZYXI7QZ27R2PS7MPL6ZFZJZQE4A4EM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAZ2FGMNVWXPFYNH52J62YFGATZYXI7QZ27R2PS7MPL6ZFZJZQE4A4EM
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/deployments/auditor.json
+  - kind: account
+    subject: GB7OT6KYOLWATWCNEPDTZZIP6CHI3L4X3YXH6BX7IVCPY2ENMPKIIKXP
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB7OT6KYOLWATWCNEPDTZZIP6CHI3L4X3YXH6BX7IVCPY2ENMPKIIKXP
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/deployments/testnet-e2e.json
+  - kind: account
+    subject: GBCQZMHQWCIQJRCQJHAI7L2GS56A3EVY5E2E26DU2RX5SRSU4Y5B32GV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBCQZMHQWCIQJRCQJHAI7L2GS56A3EVY5E2E26DU2RX5SRSU4Y5B32GV
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/deployments/testnet-e2e.json
+  - kind: account
+    subject: GBYIYBD6U4VSXD4AVXGTLVPK2PW5YQZKX6QN4RTBV27BDIFTMEQ3AOBW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYIYBD6U4VSXD4AVXGTLVPK2PW5YQZKX6QN4RTBV27BDIFTMEQ3AOBW
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/deployments/testnet-v1-shared-auditor.json
+  - kind: account
+    subject: GC6C2LR643VOW2VDXNZ2UOUHQS3H5GKMIGNGNMSNHAWQQ4WXAPBW3D34
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC6C2LR643VOW2VDXNZ2UOUHQS3H5GKMIGNGNMSNHAWQQ4WXAPBW3D34
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+  - kind: account
+    subject: GCIFXLBRK2CHODLILPTZIPEAK36TOS3MG4QRZGCTJ7PA52PAOP75RS7B
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCIFXLBRK2CHODLILPTZIPEAK36TOS3MG4QRZGCTJ7PA52PAOP75RS7B
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+  - kind: account
+    subject: GD46SGQRPKDSWAS665C7OWIPY6TBWRMSSNZLAHZJDFBDAMPBRCYLRLAB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD46SGQRPKDSWAS665C7OWIPY6TBWRMSSNZLAHZJDFBDAMPBRCYLRLAB
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+  - kind: account
+    subject: GD74JAC6YD6OFRVCNFSUVLX6UJKWSTWWO3WSZ7IROZQWLZ25F2XRZIA5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD74JAC6YD6OFRVCNFSUVLX6UJKWSTWWO3WSZ7IROZQWLZ25F2XRZIA5
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+  - kind: account
+    subject: GDTMYTVUVK24YS33DC7LH2LXF6C4TKOYLPBWZNKKJIIRSAKRJZLSXPH3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDTMYTVUVK24YS33DC7LH2LXF6C4TKOYLPBWZNKKJIIRSAKRJZLSXPH3
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/app/lib/names.ts
+  - kind: account
+    subject: GDY5SERGYNGQF2R4SRZ4AHQPJ7HQOLEPLAFISMD37CM2XCTGW4KUBXH6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDY5SERGYNGQF2R4SRZ4AHQPJ7HQOLEPLAFISMD37CM2XCTGW4KUBXH6
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/docs/architecture.md
+contributors:
+- login: sylanejawadi-commits
+  contributions: 65
+- login: Rushyard
+  contributions: 42
+- login: claude
+  contributions: 27

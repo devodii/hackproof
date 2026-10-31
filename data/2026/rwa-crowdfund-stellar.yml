@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/NUNRIBHAC/rwa-crowdfund-stellar
+repo_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar
+name: rwa-crowdfund-stellar
+description: 'RWA crowdfunding platform on Stellar testnet: fraction real-world assets using native asset issuance. HackMeridian
+  2026.'
+language: TypeScript
+created_at: '2026-10-25T12:49:58Z'
+owner: NUNRIBHAC
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 23
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/frontend/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 55
+  assets: 6
+  failed_txs: 0
+  accounts:
+  - GA2HE7NF6W5CK67X5BOSP2SSDFPDJ772ENOOYEDNYFBYLDBRZFQ7QUWY
+  - GAFMHEPPLG34JEMHZVVXL3PPMYWLUEBUGVC2CL6LNYXEKSHZU6DV7TW6
+  - GCYIL3FJ42V3VYGDJSPON3VWIAHEZXJZVU7HFL6DQ3FOVB4E35O6VUTI
+  - GDEN5H2LZVPFWWQTFZTOLCI2BCVXQG2QUMG5QQV2LVFOY6FSVUPBDWUM
+  - GDYY4VT5DI5QGBXBKJRCZGCEFJWEJNGTBLSFJF355Z53MI5QAHNJYUO7
+  evidence:
+  - kind: account
+    subject: GA2HE7NF6W5CK67X5BOSP2SSDFPDJ772ENOOYEDNYFBYLDBRZFQ7QUWY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA2HE7NF6W5CK67X5BOSP2SSDFPDJ772ENOOYEDNYFBYLDBRZFQ7QUWY
+    file_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GAFMHEPPLG34JEMHZVVXL3PPMYWLUEBUGVC2CL6LNYXEKSHZU6DV7TW6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAFMHEPPLG34JEMHZVVXL3PPMYWLUEBUGVC2CL6LNYXEKSHZU6DV7TW6
+    file_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GCYIL3FJ42V3VYGDJSPON3VWIAHEZXJZVU7HFL6DQ3FOVB4E35O6VUTI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCYIL3FJ42V3VYGDJSPON3VWIAHEZXJZVU7HFL6DQ3FOVB4E35O6VUTI
+    file_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GDEN5H2LZVPFWWQTFZTOLCI2BCVXQG2QUMG5QQV2LVFOY6FSVUPBDWUM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDEN5H2LZVPFWWQTFZTOLCI2BCVXQG2QUMG5QQV2LVFOY6FSVUPBDWUM
+    file_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GDYY4VT5DI5QGBXBKJRCZGCEFJWEJNGTBLSFJF355Z53MI5QAHNJYUO7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDYY4VT5DI5QGBXBKJRCZGCEFJWEJNGTBLSFJF355Z53MI5QAHNJYUO7
+    file_url: https://github.com/NUNRIBHAC/rwa-crowdfund-stellar/blob/HEAD/README.md
+contributors:
+- login: NUNRIBHAC
+  contributions: 28
+- login: nuno
+  contributions: 1

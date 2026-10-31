@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/fdddf/clippay
+repo_url: https://github.com/fdddf/clippay
+name: clippay
+description: 'Pay-per-view creator bounties on Stellar: budgets escrowed in Soroban, passkey wallets, payouts in seconds,
+  cash-out via anchors'
+language: TypeScript
+created_at: '2026-10-25T17:53:38Z'
+owner: fdddf
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 36
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ~16.3.1
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/web/package.json
+chain:
+  contracts: 24
+  wasm_uploads: 5
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA32FPOXI3Z4V3HSDFGLNSSJFAHL3OPCGOWSSH2LOQ6NXRTOO6ANFLOW
+  - GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+  - GAMO4HPHHKVCX327AGSJILACAEUEJR5VPMTSRCIZONZAU3MYQSWROE6M
+  - GCBQ55XIHJZGOJGSJHUWIL7CZL7DDYWBZXB6AFW226JV52MN4374MLQ7
+  - GCDOZOD74VZJB7FPKYPGEWK5V4QDIPKPRR5CWNMEHARVQCSNDVVOER6I
+  evidence:
+  - kind: contract
+    subject: CAH4SE2CYMGWWTEY4HKJOQ2XAYFEJLC64DR4VZBWX2YBFEC3IVYNGAR2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAH4SE2CYMGWWTEY4HKJOQ2XAYFEJLC64DR4VZBWX2YBFEC3IVYNGAR2
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+  - kind: contract
+    subject: CBYEMM7I4OXD5DTWGKCKT7NDLRB357W5Q32ZUX3Z7E5MQP37UQQYWVXT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBYEMM7I4OXD5DTWGKCKT7NDLRB357W5Q32ZUX3Z7E5MQP37UQQYWVXT
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+  - kind: contract
+    subject: CCAN5IDEZ3A3AZ5BH7BTETJOSWIHMSIIFXC2ZE53IALQOFZIO6D6LP2W
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCAN5IDEZ3A3AZ5BH7BTETJOSWIHMSIIFXC2ZE53IALQOFZIO6D6LP2W
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+  - kind: account
+    subject: GA32FPOXI3Z4V3HSDFGLNSSJFAHL3OPCGOWSSH2LOQ6NXRTOO6ANFLOW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA32FPOXI3Z4V3HSDFGLNSSJFAHL3OPCGOWSSH2LOQ6NXRTOO6ANFLOW
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+  - kind: account
+    subject: GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAAH4OT36RRCCAGKARGPN2HLHT2NOBVFHO4GUHA6CF7UKQ4MMV24WQ4N
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GAMO4HPHHKVCX327AGSJILACAEUEJR5VPMTSRCIZONZAU3MYQSWROE6M
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAMO4HPHHKVCX327AGSJILACAEUEJR5VPMTSRCIZONZAU3MYQSWROE6M
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+  - kind: account
+    subject: GCBQ55XIHJZGOJGSJHUWIL7CZL7DDYWBZXB6AFW226JV52MN4374MLQ7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCBQ55XIHJZGOJGSJHUWIL7CZL7DDYWBZXB6AFW226JV52MN4374MLQ7
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+  - kind: account
+    subject: GCDOZOD74VZJB7FPKYPGEWK5V4QDIPKPRR5CWNMEHARVQCSNDVVOER6I
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCDOZOD74VZJB7FPKYPGEWK5V4QDIPKPRR5CWNMEHARVQCSNDVVOER6I
+    file_url: https://github.com/fdddf/clippay/blob/HEAD/README.md
+contributors:
+- login: fdddf
+  contributions: 37

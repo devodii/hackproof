@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/pcmarts/x402git-stellar
+repo_url: https://github.com/pcmarts/x402git-stellar
+name: x402git-stellar
+description: 'x402git on Stellar: pay for a software release with x402, in USDT0. MIT.'
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T13:47:31Z'
+owner: pcmarts
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 4
+stack:
+  '@stellar/stellar-sdk': 16.4.1
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 5
+  assets: 1
+  failed_txs: 0
+  accounts:
+  - GDJSXY37UYEOBH4RM77NVLBYN5NGWXE6B52YBCJUOKCJFPPPZI3CZE2M
+  evidence:
+  - kind: account
+    subject: GDJSXY37UYEOBH4RM77NVLBYN5NGWXE6B52YBCJUOKCJFPPPZI3CZE2M
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDJSXY37UYEOBH4RM77NVLBYN5NGWXE6B52YBCJUOKCJFPPPZI3CZE2M
+    file_url: https://github.com/pcmarts/x402git-stellar/blob/HEAD/src/assets.ts
+contributors:
+- login: pcmarts
+  contributions: 4

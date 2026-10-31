@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/arturete58-sys/kyros2.0
+repo_url: https://github.com/arturete58-sys/kyros2.0
+name: kyros2.0
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-16T10:58:56Z'
+owner: arturete58-sys
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 1
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.3.1
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/app/package.json
+- slug: passkey-kit
+  name: Passkey Kit
+  evidence:
+  - method: package
+    detail: passkey-kit
+    file_url: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/app/package.json
+chain:
+  contracts: 14
+  wasm_uploads: 5
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBSIOLRKBRAK4MFCGDGUFT25KERT6OEMUFJIBIW2ESBJDT72GUKE43ZA
+  evidence:
+  - kind: wasm
+    subject: 31328050548831f63d2b72e37bcfd0bb7371b7907135755dbe09ed434d755ca9
+    method: wasm_hash_match
+    file_url: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/contracts/vendor/blend/pool_factory.wasm
+  - kind: wasm
+    subject: 438a5528cff17ede6fe515f095c43c5f15727af17d006971485e52462e7e7b89
+    method: wasm_hash_match
+    file_url: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/contracts/vendor/blend/emitter.wasm
+  - kind: wasm
+    subject: a41fc53d6753b6c04eb15b021c55052366a4c8e0e21bc72700f461264ec1350e
+    method: wasm_hash_match
+    file_url: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/contracts/vendor/blend/pool.wasm
+  - kind: wasm
+    subject: c1f4502a757e25c611f5a159bc1ab0eef64085adac6c68123dca66e87faffbc2
+    method: wasm_hash_match
+    file_url: https://github.com/arturete58-sys/kyros2.0/blob/HEAD/contracts/vendor/blend/backstop.wasm
+  - kind: wasm
+    subject: 0e11540519e125978cf8492ec7f4463d81a3445bb58bc22e194f0249457e8752
+    method: wasm_meta
+  - kind: wasm
+    subject: 2a95f5b258cb096884f2c069e9451d4c6e8e4834e0503e643002ccf1964e1bac
+    method: wasm_meta
+  - kind: wasm
+    subject: 371c82ffddb46674d62e3c8f584dbaa50917bf7bdd077aa414886af41810645a
+    method: wasm_meta
+  - kind: wasm
+    subject: e0e614d579bb5672ecec5b117ebfc0cd42a9a7bfc4d71b073c7905f126ce4fd9
+    method: wasm_meta
+  - kind: wasm
+    subject: e7035a0cbd6cbdd27b68048d644d3ed36cc90939fad10f9c174bfecfe56d5614
+    method: wasm_meta
+contributors:
+- login: arturete58-sys
+  contributions: 63

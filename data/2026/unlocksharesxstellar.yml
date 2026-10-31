@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/nelsonalexis/UnlockSharesXStellar
+repo_url: https://github.com/nelsonalexis/UnlockSharesXStellar
+name: UnlockSharesXStellar
+homepage: https://unlock-shares-x-stellar.vercel.app
+language: TypeScript
+created_at: '2026-10-25T10:32:25Z'
+owner: nelsonalexis
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 32
+stack:
+  soroban-sdk: '27'
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.1
+chain:
+  contracts: 9
+  wasm_uploads: 8
+  classic_ops: 2
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GA2XNSLFBFRJRG4ILAMYBISJ7TSIPZYGP4BNVB3UCD25VOSGWIZKKQMF
+  - GCF74H5XTGOI7XCEKJGY3YSBWJKUSFUUFOEICZETDTAMBBBGQOKNOJSO
+  evidence:
+  - kind: contract
+    subject: CAQTJG3HZJPXGDV2WCXNYDXI7EDFHI6XTN6ZN2WJFGTHJTYHTRBJNZNG
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAQTJG3HZJPXGDV2WCXNYDXI7EDFHI6XTN6ZN2WJFGTHJTYHTRBJNZNG
+    file_url: https://github.com/nelsonalexis/UnlockSharesXStellar/blob/HEAD/unlockshares-frontend/src/services/lending.ts
+  - kind: contract
+    subject: CC6G43TN5GTSSSX4K5XMYPJOAU5XB7V6J7L5BGX4GDIM4MNOHFA5OETB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6G43TN5GTSSSX4K5XMYPJOAU5XB7V6J7L5BGX4GDIM4MNOHFA5OETB
+    file_url: https://github.com/nelsonalexis/UnlockSharesXStellar/blob/HEAD/unlockshares-frontend/src/services/stellarRisk.ts
+  - kind: account
+    subject: GA2XNSLFBFRJRG4ILAMYBISJ7TSIPZYGP4BNVB3UCD25VOSGWIZKKQMF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA2XNSLFBFRJRG4ILAMYBISJ7TSIPZYGP4BNVB3UCD25VOSGWIZKKQMF
+    file_url: https://github.com/nelsonalexis/UnlockSharesXStellar/blob/HEAD/unlockshares-frontend/src/services/lending.ts
+  - kind: account
+    subject: GCF74H5XTGOI7XCEKJGY3YSBWJKUSFUUFOEICZETDTAMBBBGQOKNOJSO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCF74H5XTGOI7XCEKJGY3YSBWJKUSFUUFOEICZETDTAMBBBGQOKNOJSO
+    file_url: https://github.com/nelsonalexis/UnlockSharesXStellar/blob/HEAD/unlockshares-frontend/tests/lending.test.ts
+contributors:
+- login: nelsonalexis
+  contributions: 46
+- login: abbeslina-create
+  contributions: 1

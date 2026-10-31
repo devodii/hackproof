@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Protocol-30/stellar-p30-check
+repo_url: https://github.com/Protocol-30/stellar-p30-check
+name: stellar-p30-check
+description: Offline, read-only scanner for Stellar Protocol 30 compatibility risks in Go and JS/TS repositories
+language: Go
+license: Apache-2.0
+topics:
+- ci
+- cli
+- compatibility
+- compatibility-layer
+- golang
+- soroban
+- static-analysis
+- static-analysis-tool
+- stellar
+- xdr
+- protocol-30
+- soroban-tooling
+- stellar-protocol
+created_at: '2026-10-25T21:24:45Z'
+owner: Protocol-30
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 11
+stack:
+  '@stellar/stellar-sdk': ^16.0.0
+  '@stellar/stellar-base': 15.0.0
+  github.com/stellar/go: v0.0.0-20251210100531-aab2ea4aca88
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: claude
+  contributions: 38
+- login: ciscokwiz
+  contributions: 16

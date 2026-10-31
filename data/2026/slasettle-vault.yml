@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/SLASettleHQ/slasettle-vault
+repo_url: https://github.com/SLASettleHQ/slasettle-vault
+name: slasettle-vault
+description: Soroban contracts for bonded service-level agreements with watcher-based settlement on Stellar.
+homepage: https://slasettle-docs.vercel.app
+language: Rust
+license: MIT
+topics:
+- rust
+- smart-contracts
+- soroban
+- stellar
+- blockchain
+- drips
+- wasm
+- monitoring
+- service-level-agreement
+- settlement
+- sla
+created_at: '2026-09-17T21:46:55Z'
+owner: SLASettleHQ
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 1
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GDYEG7QH3EC2OEOHLJHQOVGZEDDBMHMGF7XAEZ3FSO4KWB7OXDS47MSC
+  evidence:
+  - kind: contract
+    subject: CA5R7V5IGMYOBRSAMP4R5MWURSNTY6565NSKEEVR6626PLC3VM2A3EZ2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA5R7V5IGMYOBRSAMP4R5MWURSNTY6565NSKEEVR6626PLC3VM2A3EZ2
+    file_url: https://github.com/SLASettleHQ/slasettle-vault/blob/HEAD/README.md
+  - kind: contract
+    subject: CDTIVQ6I77EMFP42522RIFKMSMJID3BDLNR5LPLJEGVAS4Q2DJDMN3DY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDTIVQ6I77EMFP42522RIFKMSMJID3BDLNR5LPLJEGVAS4Q2DJDMN3DY
+    file_url: https://github.com/SLASettleHQ/slasettle-vault/blob/HEAD/README.md
+contributors:
+- login: Hollujay
+  contributions: 40
+- login: ZeePearl56
+  contributions: 15

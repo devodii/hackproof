@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/the-axmc/Fermento
+repo_url: https://github.com/the-axmc/Fermento
+name: Fermento
+homepage: https://fermento-iota.vercel.app
+language: TypeScript
+license: Apache-2.0
+created_at: '2025-08-21T08:24:56Z'
+owner: the-axmc
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 41
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 15
+  wasm_uploads: 23
+  classic_ops: 5
+  assets: 0
+  failed_txs: 1
+  accounts:
+  - GBJDBO3D4OD7KGFEBNIR4H2GFAJEABNX6HP237664RHI66U3M7XV24RA
+  evidence:
+  - kind: contract
+    subject: CAM52GOAFA6XF3JAZKTUIXZSRTELLRQBNXRUGNHOCYE33BSKV4LNOMAQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAM52GOAFA6XF3JAZKTUIXZSRTELLRQBNXRUGNHOCYE33BSKV4LNOMAQ
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/deploy/testnet.env
+  - kind: contract
+    subject: CCAEAGUXEF2ME43WREP2QBDEMQ332LIMNITN7KJ4B3WIMLDAO6DKN43M
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCAEAGUXEF2ME43WREP2QBDEMQ332LIMNITN7KJ4B3WIMLDAO6DKN43M
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/.env.example
+  - kind: contract
+    subject: CD6LRJ3HQKWTLYMKTFQWSCH6FEZM636JFK54534QR3WUMBISRJZQBZ5J
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD6LRJ3HQKWTLYMKTFQWSCH6FEZM636JFK54534QR3WUMBISRJZQBZ5J
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/deploy/testnet.env
+  - kind: contract
+    subject: CD6WW2WZBEUMA6HOQ5VCEQ2VCKBILR34XQ5Y7FO6FD7SQ5LQOIGFPADC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD6WW2WZBEUMA6HOQ5VCEQ2VCKBILR34XQ5Y7FO6FD7SQ5LQOIGFPADC
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/deploy/testnet.env
+  - kind: contract
+    subject: CDBVC4Z3DZMIDK4XO55WSJU3BLLBDFMR6QK2BNX4HTPYIU7T66N6TQLT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDBVC4Z3DZMIDK4XO55WSJU3BLLBDFMR6QK2BNX4HTPYIU7T66N6TQLT
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/environments.toml
+  - kind: wasm
+    subject: c77ac818ab3af1a2b9cdbc54964d68070f106fb72c9172ba4fff186995704cfd
+    method: wasm_hash_match
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/contracts/confidential_token/confidential_token.wasm
+  - kind: account
+    subject: GBJDBO3D4OD7KGFEBNIR4H2GFAJEABNX6HP237664RHI66U3M7XV24RA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBJDBO3D4OD7KGFEBNIR4H2GFAJEABNX6HP237664RHI66U3M7XV24RA
+    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/deploy/testnet.env
+contributors:
+- login: the-axmc
+  contributions: 57

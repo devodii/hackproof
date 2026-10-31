@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/brozorec/stellar-confidential-token-demo
+repo_url: https://github.com/brozorec/stellar-confidential-token-demo
+name: stellar-confidential-token-demo
+description: Confidential tokens on Stellar with on-chain UltraHonk ZK proofs — contracts and in-browser proving demo. Testnet
+  only.
+homepage: https://stellar-confidential-token-demo.billowing-moon-0c6f.workers.dev/
+language: TypeScript
+created_at: '2026-06-12T09:02:49Z'
+owner: brozorec
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 1
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^14.2.0
+  '@stellar/freighter-api': ^4.1.0
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/brozorec/stellar-confidential-token-demo/blob/HEAD/packages/app/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence:
+  - kind: wasm
+    subject: 0975f6507ee9d96c2bfaed95d2660ffe9f040820de8812d4d87f4c3e80982437
+    method: wasm_hash_match
+    file_url: https://github.com/brozorec/stellar-confidential-token-demo/blob/HEAD/contracts/factory/testdata/confidential_vanilla_token_example.wasm
+  - kind: wasm
+    subject: d6e83e94389ac10ea5efb55845448b3430e4eb28defc684b707ca0578d38c0e4
+    method: wasm_hash_match
+    file_url: https://github.com/brozorec/stellar-confidential-token-demo/blob/HEAD/contracts/factory/testdata/confidential_allowlist_policy_example.wasm
+contributors:
+- login: brozorec
+  contributions: 42

@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/kotizi/kotizi-stellar-meridian
+repo_url: https://github.com/kotizi/kotizi-stellar-meridian
+name: kotizi-stellar-meridian
+language: TypeScript
+created_at: '2026-10-25T13:29:47Z'
+owner: kotizi
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 32
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.2.1
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/frontend/package.json
+- slug: privy
+  name: Privy
+  evidence:
+  - method: package
+    detail: '@privy-io/node'
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/backend/package.json
+  - method: package
+    detail: '@privy-io/react-auth'
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/frontend/package.json
+chain:
+  contracts: 6
+  wasm_uploads: 5
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBG2Y3PQC4HI4WGFJPRIOLN7DF7PVEFXKTCQV3SZ7CB4E3JZGUDGCIRP
+  - GCUX6WIX4TGI3ABH4EHL72EZ34KYRH6KESR7KG6QGEIZKJ5ZQTQ7MLLW
+  evidence:
+  - kind: contract
+    subject: CA3LSTPIZWLX3DXRZMZMQPS63OWJ3FR3ZUW4VVH3J5ZR4YWKEAUBIZJV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA3LSTPIZWLX3DXRZMZMQPS63OWJ3FR3ZUW4VVH3J5ZR4YWKEAUBIZJV
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: contract
+    subject: CADKFUPE2RCG4RUD5C4JHIE5DBZ27AT7KFAIZSLMTJO4NNHWTITLIGHK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CADKFUPE2RCG4RUD5C4JHIE5DBZ27AT7KFAIZSLMTJO4NNHWTITLIGHK
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: contract
+    subject: CAJMDP3KW22MHPDYM22JOUNDKXO34RG6PLI4325JY6QFQP37JGZJWJZ7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAJMDP3KW22MHPDYM22JOUNDKXO34RG6PLI4325JY6QFQP37JGZJWJZ7
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: contract
+    subject: CAT65NQ3OYCX6EOAZRNU5JM6IMXQ5I6KJMNJRDIOF5WQKOYVNJ43MD5G
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAT65NQ3OYCX6EOAZRNU5JM6IMXQ5I6KJMNJRDIOF5WQKOYVNJ43MD5G
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: contract
+    subject: CC4VXKV4PXLGJDKFXPRHSO527JSWWRPBWRYTO3UBIXXVGVF67MD5ZXUB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC4VXKV4PXLGJDKFXPRHSO527JSWWRPBWRYTO3UBIXXVGVF67MD5ZXUB
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: contract
+    subject: CDLG5PWRFTSLQNCWGFEBU4AEHKPMQCI5O4KXB3RGINP4Q2AY5BTQVFCR
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDLG5PWRFTSLQNCWGFEBU4AEHKPMQCI5O4KXB3RGINP4Q2AY5BTQVFCR
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: account
+    subject: GBG2Y3PQC4HI4WGFJPRIOLN7DF7PVEFXKTCQV3SZ7CB4E3JZGUDGCIRP
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBG2Y3PQC4HI4WGFJPRIOLN7DF7PVEFXKTCQV3SZ7CB4E3JZGUDGCIRP
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+  - kind: account
+    subject: GCUX6WIX4TGI3ABH4EHL72EZ34KYRH6KESR7KG6QGEIZKJ5ZQTQ7MLLW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCUX6WIX4TGI3ABH4EHL72EZ34KYRH6KESR7KG6QGEIZKJ5ZQTQ7MLLW
+    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/DEPLOYMENTS.md
+contributors:
+- login: Josh-Alot
+  contributions: 20
+- login: neylanxyz
+  contributions: 12

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/SwiftExWallet/swiftex_recovery_contracts
+repo_url: https://github.com/SwiftExWallet/swiftex_recovery_contracts
+name: swiftex_recovery_contracts
+description: 'SwiftEx Wallet Recovery via ZK powered email. '
+language: Rust
+license: Apache-2.0
+created_at: '2026-10-25T17:03:35Z'
+owner: SwiftExWallet
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 6
+stack:
+  soroban-sdk: 27.0.1
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBGV3GJA62QZV5NKOZQSJGV3ATEJSGYOT4AYSDSHXTV3JFHJIKBP4EJP
+  evidence:
+  - kind: contract
+    subject: CDT5MXYHAZK6YPTWFBKPECHGPCBQFINME6WJCONXCT73RKJRDIJ2HYJK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDT5MXYHAZK6YPTWFBKPECHGPCBQFINME6WJCONXCT73RKJRDIJ2HYJK
+    file_url: https://github.com/SwiftExWallet/swiftex_recovery_contracts/blob/HEAD/README.md
+contributors:
+- login: SwiftExWallet
+  contributions: 6
+- login: rohan-sethi
+  contributions: 2

@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/marcocpp/peaje-zbe
+repo_url: https://github.com/marcocpp/peaje-zbe
+name: peaje-zbe
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-25T10:48:19Z'
+owner: marcocpp
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 29
+stack:
+  soroban-sdk: null
+  stellar-xdr: 28.0.0
+  '@stellar/stellar-sdk': ^16.4.1
+  '@creit.tech/stellar-wallets-kit': ^2.5.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/marcocpp/peaje-zbe/blob/HEAD/app-lib/package.json
+chain:
+  contracts: 10
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GBT7HY27IZWIJMV6I4I5ZY5BYNN2XLOYM4545PW77IWUPAMMAT4FK66P
+  - GCZOAUXEADLK2HZHETB2U7VA3BWBPLNA4ICZJCHR6P7QPADOSVYMU5F5
+  evidence:
+  - kind: contract
+    subject: CBVQ4A2P662QNLTL6SZMZUIXK6WALFHL5S7AJXYAG7HY4WIBRJWW5BX7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVQ4A2P662QNLTL6SZMZUIXK6WALFHL5S7AJXYAG7HY4WIBRJWW5BX7
+    file_url: https://github.com/marcocpp/peaje-zbe/blob/HEAD/PROGRESS.md
+  - kind: contract
+    subject: CCC7DQXGQIQJ735OJT6UXL2OTB3UF23A6YGMPOYXEIAETM5OYPWGVYPQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCC7DQXGQIQJ735OJT6UXL2OTB3UF23A6YGMPOYXEIAETM5OYPWGVYPQ
+    file_url: https://github.com/marcocpp/peaje-zbe/blob/HEAD/README.md
+  - kind: contract
+    subject: CD3R2MSNY6JQ5UB2AKRMYVUX2TTP6UWZX2S5JXZNOLH2MQ3KSJAAFPVQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD3R2MSNY6JQ5UB2AKRMYVUX2TTP6UWZX2S5JXZNOLH2MQ3KSJAAFPVQ
+    file_url: https://github.com/marcocpp/peaje-zbe/blob/HEAD/README.md
+  - kind: contract
+    subject: CD5JL5TEAH2D2UV6RGT4MQL4R43B3ESQ7KX4VKZEKY2JCIRGIWVBI5QQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD5JL5TEAH2D2UV6RGT4MQL4R43B3ESQ7KX4VKZEKY2JCIRGIWVBI5QQ
+    file_url: https://github.com/marcocpp/peaje-zbe/blob/HEAD/PROGRESS.md
+contributors:
+- login: marcocpp
+  contributions: 17
+- login: JoseMValeroPalomares
+  contributions: 12

@@ -1,0 +1,155 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Neko-Protocol/neko-tokenization-hackmeridian
+repo_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian
+name: neko-tokenization-hackmeridian
+description: 'Neko’s RWA launchpad on Stellar: AI-assisted issuer onboarding, a legal knowledge base, human compliance review,
+  and SEP-57 tokens with Soroban investment vaults.'
+homepage: https://launch.tryneko.io/
+language: TypeScript
+license: MIT
+topics:
+- private-equity
+- real-estate
+- rwa
+- rwa-core
+- rwa-tokenization
+- tokenization
+created_at: '2026-10-25T13:57:59Z'
+owner: Neko-Protocol
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 154
+stack:
+  soroban-sdk: null
+  stellar-strkey: 0.0.16
+  '@stellar/stellar-sdk': ^14.5.0
+  '@creit.tech/stellar-wallets-kit': ^2.1.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/apps/admin/package.json
+- slug: privy
+  name: Privy
+  evidence:
+  - method: package
+    detail: '@privy-io/react-auth'
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/apps/platform/package.json
+chain:
+  contracts: 39
+  wasm_uploads: 18
+  classic_ops: 45
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GBVWIOKZYZKW4MLKF6TOWF4SQKEOISG7HURLYP2EKFRRCYMH2GTIGDF6
+  - GBZAOV4COU66FHO2P7THQOXOAVQ2YQMYLVR5DTYZOGCV3JKEP6W6E4JB
+  - GC6KXTKOPEZJEVPZZT37GAIYFYX5WVQVC5NJWOHMCOLWSSOFFT6NZNS3
+  - GCIGYUUEMKNORCMFDITYQDTFUHMGFFBKQ7PALRKDVGB2YLRUX2P5BH55
+  - GCQ6NGJY742A5JH5O22VANN5VI3WFRFXRVT57XTVTLMHGHPPX3QKGZ7X
+  - GCTQESAL4HOR54NWKTFU5FLZ2HMWWSFBDZUXFZF7EWJ7SXOQUEHLMVIA
+  - GD5ZWOZOJ7TK275FJMWBPAEGPBVA4NULBHJMA2OIK3HVTWQN5KUHHIJV
+  - GDEQD7CITHS4AINJTA4VSACHOXK6ZOY6WTFUNLRHXTCLZXZ5TI4Y7Y5X
+  evidence:
+  - kind: contract
+    subject: CALYW5WW5YYUHWRVXYCZ3F4XRQZ5SBV76USFKHX754BW4V6WDMIJTHAL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CALYW5WW5YYUHWRVXYCZ3F4XRQZ5SBV76USFKHX754BW4V6WDMIJTHAL
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CASQETGMSXSJR6V5FAUITYU36HVNA7EI5O2H2ZEWDXEIMXVLV2LE5XFY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CASQETGMSXSJR6V5FAUITYU36HVNA7EI5O2H2ZEWDXEIMXVLV2LE5XFY
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBR537B4JXILAX7CGDYTTHDBJZSPYMABADDDK4DTNF4RZ62F2XRMMTYI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBR537B4JXILAX7CGDYTTHDBJZSPYMABADDDK4DTNF4RZ62F2XRMMTYI
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBYUESUTVUB4NV7PV63DYZYVK2DUIWASUKK55RBG7BVQLOZ2YCEJ76T4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBYUESUTVUB4NV7PV63DYZYVK2DUIWASUKK55RBG7BVQLOZ2YCEJ76T4
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBZ6CLFDKALOASYTVL36KLBWMFJXTFN77BK5HO5GVP37MKO5ZNCEUI63
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBZ6CLFDKALOASYTVL36KLBWMFJXTFN77BK5HO5GVP37MKO5ZNCEUI63
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CC2PULZW3YW3ZRE2Z43RJ5HQDO6L4KAJTDDI5CFMV65662VFAR7F45PC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC2PULZW3YW3ZRE2Z43RJ5HQDO6L4KAJTDDI5CFMV65662VFAR7F45PC
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCXYSLXVY3SIKTIKLP2FB5BHLGMKCV6YHQAWMZZUN5HKJA5OSFE4EC2S
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCXYSLXVY3SIKTIKLP2FB5BHLGMKCV6YHQAWMZZUN5HKJA5OSFE4EC2S
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDHKGCJE6UEWQC6HM22XSQDAWITTV3KR4FARYLXS7JJ3OE667X36GC3X
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDHKGCJE6UEWQC6HM22XSQDAWITTV3KR4FARYLXS7JJ3OE667X36GC3X
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDVJ7VI3QWP7CC7SLZ3BVXDOOSAZBNKQNFK7HU5CX2EZCOC2I34ELROV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDVJ7VI3QWP7CC7SLZ3BVXDOOSAZBNKQNFK7HU5CX2EZCOC2I34ELROV
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBVWIOKZYZKW4MLKF6TOWF4SQKEOISG7HURLYP2EKFRRCYMH2GTIGDF6
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBVWIOKZYZKW4MLKF6TOWF4SQKEOISG7HURLYP2EKFRRCYMH2GTIGDF6
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBZAOV4COU66FHO2P7THQOXOAVQ2YQMYLVR5DTYZOGCV3JKEP6W6E4JB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBZAOV4COU66FHO2P7THQOXOAVQ2YQMYLVR5DTYZOGCV3JKEP6W6E4JB
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GC6KXTKOPEZJEVPZZT37GAIYFYX5WVQVC5NJWOHMCOLWSSOFFT6NZNS3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC6KXTKOPEZJEVPZZT37GAIYFYX5WVQVC5NJWOHMCOLWSSOFFT6NZNS3
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCIGYUUEMKNORCMFDITYQDTFUHMGFFBKQ7PALRKDVGB2YLRUX2P5BH55
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCIGYUUEMKNORCMFDITYQDTFUHMGFFBKQ7PALRKDVGB2YLRUX2P5BH55
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCQ6NGJY742A5JH5O22VANN5VI3WFRFXRVT57XTVTLMHGHPPX3QKGZ7X
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCQ6NGJY742A5JH5O22VANN5VI3WFRFXRVT57XTVTLMHGHPPX3QKGZ7X
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GCTQESAL4HOR54NWKTFU5FLZ2HMWWSFBDZUXFZF7EWJ7SXOQUEHLMVIA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCTQESAL4HOR54NWKTFU5FLZ2HMWWSFBDZUXFZF7EWJ7SXOQUEHLMVIA
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GD5ZWOZOJ7TK275FJMWBPAEGPBVA4NULBHJMA2OIK3HVTWQN5KUHHIJV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD5ZWOZOJ7TK275FJMWBPAEGPBVA4NULBHJMA2OIK3HVTWQN5KUHHIJV
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GDEQD7CITHS4AINJTA4VSACHOXK6ZOY6WTFUNLRHXTCLZXZ5TI4Y7Y5X
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDEQD7CITHS4AINJTA4VSACHOXK6ZOY6WTFUNLRHXTCLZXZ5TI4Y7Y5X
+    file_url: https://github.com/Neko-Protocol/neko-tokenization-hackmeridian/blob/HEAD/deployments/testnet.json
+contributors:
+- login: FabianSanchezD
+  contributions: 71
+- login: Villarley
+  contributions: 35
+- login: aguilar1x
+  contributions: 21
+- login: KevinLatino
+  contributions: 20
+- login: OppiaLabsAdmin
+  contributions: 5
+- login: claude
+  contributions: 2

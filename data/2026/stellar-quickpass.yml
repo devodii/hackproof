@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/jxsu404/stellar-quickpass
+repo_url: https://github.com/jxsu404/stellar-quickpass
+name: stellar-quickpass
+description: 'QuickChain: presupuesto mensual en USDC para agentes de IA que pagan APIs x402 en Stellar'
+homepage: https://stellar-quickpass.vercel.app
+language: TypeScript
+created_at: '2026-10-26T02:14:44Z'
+owner: jxsu404
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 57
+stack:
+  soroban-sdk: '22'
+  '@stellar/stellar-sdk': ^16.4.1
+chain:
+  contracts: 9
+  wasm_uploads: 1
+  classic_ops: 10
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA4OOAEAL2IW7XBJQCWEPZIH5VABUGOO7TV3JDKNEWNY4HJNW62D6WVC
+  - GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S
+  - GA77J54NR5HCEHRLI7G65G4S5QGUILXSAKM4M73Y56CZSS5SZMB4CTFA
+  - GAAIYNFO2GRAVDWMR2LBF7X4RMAUDVMFU3FEU7Z2JIA3USRULOZF2REM
+  - GBMD67Q5BGRX6IIR6LL5VDBCZMSPSLEGUDO7EAMLUNWO2BFUIEKJ5KXT
+  - GBNVOAMUT7X72IHY2K4ZQQKG43FSPMSMW65OHBEKBLNR3EDX7AWPD75P
+  - GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3
+  - GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D
+  evidence:
+  - kind: contract
+    subject: CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/corrida-q10.json
+  - kind: contract
+    subject: CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/docs/DEMO.md
+  - kind: contract
+    subject: CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/README.md
+  - kind: contract
+    subject: CCKZ7XID33B73EMO2O3BBYKLVEHOJIQ7WVYJEV5TPIICEQXIDG3B7YKJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCKZ7XID33B73EMO2O3BBYKLVEHOJIQ7WVYJEV5TPIICEQXIDG3B7YKJ
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/docs/COSTOS.md
+  - kind: contract
+    subject: CDPWYHPERIW2RU7TPUE3ZGRQWHS7VPC5SY2V3SEHSPGCVMBHAGQWJYSE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDPWYHPERIW2RU7TPUE3ZGRQWHS7VPC5SY2V3SEHSPGCVMBHAGQWJYSE
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/pruebas-q1.json
+  - kind: account
+    subject: GA4OOAEAL2IW7XBJQCWEPZIH5VABUGOO7TV3JDKNEWNY4HJNW62D6WVC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA4OOAEAL2IW7XBJQCWEPZIH5VABUGOO7TV3JDKNEWNY4HJNW62D6WVC
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/pruebas-q1.json
+  - kind: account
+    subject: GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/corrida-q10.json
+  - kind: account
+    subject: GA77J54NR5HCEHRLI7G65G4S5QGUILXSAKM4M73Y56CZSS5SZMB4CTFA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA77J54NR5HCEHRLI7G65G4S5QGUILXSAKM4M73Y56CZSS5SZMB4CTFA
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/corrida-q10.json
+  - kind: account
+    subject: GAAIYNFO2GRAVDWMR2LBF7X4RMAUDVMFU3FEU7Z2JIA3USRULOZF2REM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAAIYNFO2GRAVDWMR2LBF7X4RMAUDVMFU3FEU7Z2JIA3USRULOZF2REM
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBMD67Q5BGRX6IIR6LL5VDBCZMSPSLEGUDO7EAMLUNWO2BFUIEKJ5KXT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBMD67Q5BGRX6IIR6LL5VDBCZMSPSLEGUDO7EAMLUNWO2BFUIEKJ5KXT
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBNVOAMUT7X72IHY2K4ZQQKG43FSPMSMW65OHBEKBLNR3EDX7AWPD75P
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBNVOAMUT7X72IHY2K4ZQQKG43FSPMSMW65OHBEKBLNR3EDX7AWPD75P
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/testnet.json
+  - kind: account
+    subject: GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/pruebas-q1.json
+  - kind: account
+    subject: GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/deployments/pruebas-q1.json
+contributors:
+- login: jxsu404
+  contributions: 99
+- login: Milasur
+  contributions: 15
+- login: josedanielm0202-droid
+  contributions: 10
+- login: claude
+  contributions: 3
+- login: julissb51-cell
+  contributions: 2

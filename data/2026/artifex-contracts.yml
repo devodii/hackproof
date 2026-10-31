@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/0xVeraHQ/artifex-contracts
+repo_url: https://github.com/0xVeraHQ/artifex-contracts
+name: artifex-contracts
+description: Artifex Soroban contracts (Scale hackathon) — Testnet only
+language: Rust
+created_at: '2026-10-20T16:52:37Z'
+owner: 0xVeraHQ
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 14
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 76
+  wasm_uploads: 10
+  classic_ops: 5
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
+  evidence:
+  - kind: contract
+    subject: CATWKQFEW2CGBPDVEUYFMJAC27NRNTLDGAMNQHKVMU3OZ54XHHHRMJMS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CATWKQFEW2CGBPDVEUYFMJAC27NRNTLDGAMNQHKVMU3OZ54XHHHRMJMS
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/v3-fee-cert.json
+  - kind: contract
+    subject: CAYPH6ZSYAQGI67IPJYCNH752VY77O63IGZQOCDSG7STFVNXY6ISFP55
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAYPH6ZSYAQGI67IPJYCNH752VY77O63IGZQOCDSG7STFVNXY6ISFP55
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CB4G7J4XGFL66CFQT5DUBPIVKLJKRGXKXY25IGDMKFZVIIJVLWMVQSJJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB4G7J4XGFL66CFQT5DUBPIVKLJKRGXKXY25IGDMKFZVIIJVLWMVQSJJ
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/v3-fee-cert.json
+  - kind: contract
+    subject: CBEVANRZPBH4XJYGMWZUQMPZYAG2TIOYA6MRZGRNHJJNLSIUTRW3RAKT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBEVANRZPBH4XJYGMWZUQMPZYAG2TIOYA6MRZGRNHJJNLSIUTRW3RAKT
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBTFT5GZEA4USVKFPYN7YXU3KUXJJL27ATBD5W72PBORU4CRFB6VA47K
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTFT5GZEA4USVKFPYN7YXU3KUXJJL27ATBD5W72PBORU4CRFB6VA47K
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBYXLDJXQ4LPA3NX77V6VW4OAVQBZQV6JTNVQ7FZ3VDU7BRTOHSSJLSZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBYXLDJXQ4LPA3NX77V6VW4OAVQBZQV6JTNVQ7FZ3VDU7BRTOHSSJLSZ
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCDVNSOSY3S45UYZH3N7Q24LUZEK77EAYHWDL5ZYX7H4SDXEFK2G2OYJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCDVNSOSY3S45UYZH3N7Q24LUZEK77EAYHWDL5ZYX7H4SDXEFK2G2OYJ
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCEX7WG3M6JW7YWNBSSVP473KIEGWPGMPOP3JFJ6A4BGTBW2UFKQVUDT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCEX7WG3M6JW7YWNBSSVP473KIEGWPGMPOP3JFJ6A4BGTBW2UFKQVUDT
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCI7MXOSMYMDSTJOFPZZND4Q2IV2PRGHNF2OXF5ILLU2HGFXCZIL2REH
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCI7MXOSMYMDSTJOFPZZND4Q2IV2PRGHNF2OXF5ILLU2HGFXCZIL2REH
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCZMGEYTOCZ56L6U26ZS6KGWQ2NNUC3FNXFO5LDS6YQYJ5KP2DVGULFX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCZMGEYTOCZ56L6U26ZS6KGWQ2NNUC3FNXFO5LDS6YQYJ5KP2DVGULFX
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDD2BYHRY7ZCMMHBRETM4X2EGVCTKMAGKNRWSCJYHOTLLCWYK2UZY4CC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDD2BYHRY7ZCMMHBRETM4X2EGVCTKMAGKNRWSCJYHOTLLCWYK2UZY4CC
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/v4-cert-living.json
+  - kind: account
+    subject: GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBYYRWRRF4PNJJMZGE2Q5HUOCPSU3Y4WCTWJ3BQFFNUO3YIPOAD7A357
+    file_url: https://github.com/0xVeraHQ/artifex-contracts/blob/HEAD/deployments/testnet.json
+contributors:
+- login: jowy81
+  contributions: 22

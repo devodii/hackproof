@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/joaointech/explorador-agent-loan-stellar
+repo_url: https://github.com/joaointech/explorador-agent-loan-stellar
+name: explorador-agent-loan-stellar
+description: 'Explorador is an AI-native real estate agency with an Uber-like field agent network. When a CPCV is signed,
+  we issue a ZK proof of the agent’s commission. Agents submit it to a Stellar Soroban pool for an instant EURC/USDC advance
+  from LPs. At closing, we repay the pool: LPs earn yield, agents get the rest.'
+language: TypeScript
+created_at: '2026-10-25T13:35:38Z'
+owner: joaointech
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 167
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 30
+  wasm_uploads: 3
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GADMCAK3SSHGRAL7JS3XUQID7UZLAY4A57UR4W5VOY7TKTNARVHB3RWW
+  - GBFQEQE53VWHFAKMRQAOV73UJM7FLK4WAEWYFZHRHULX4TCYKKZGAPV2
+  - GBHXOJV74WLYOGNZIF7HLVETM5N25BEBUZETUEDGF2ZDMSL4PYSAFR26
+  - GCB6ZCYKURRWI2PLVYLDCFPIEIZLQPFCXVFI2NWBCHLGASKE7MAPSML3
+  - GCFYLJU6KPEWZNKVTRYN3P6QRLTR7BYGTXE2JCXD2N7NXDHB6SZTWBH4
+  evidence:
+  - kind: contract
+    subject: CALF4P2BE6RO5NH4N4W5MG7TUAR4VFEBTQ2EIWRPQHTB3K5NGWFWJYEO
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CALF4P2BE6RO5NH4N4W5MG7TUAR4VFEBTQ2EIWRPQHTB3K5NGWFWJYEO
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CAXL6SAKTREO7QOEHIRGTPHHL34MUNGXK5RN4PS3TKMGFWF4ZSXWV3Q5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAXL6SAKTREO7QOEHIRGTPHHL34MUNGXK5RN4PS3TKMGFWF4ZSXWV3Q5
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CB4L4OXWRN5NWQSIZXYS6XWKZ4GEUJAJXRINATC6W2SOSCMUI44L2JDY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB4L4OXWRN5NWQSIZXYS6XWKZ4GEUJAJXRINATC6W2SOSCMUI44L2JDY
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CBQQEQODRNHROVAHL5QUL26PLXT74N6KMQJMXLOBVLMY5FSTGYSXZY7D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBQQEQODRNHROVAHL5QUL26PLXT74N6KMQJMXLOBVLMY5FSTGYSXZY7D
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/ACCEPTANCE.md
+  - kind: contract
+    subject: CDFJVCQ2WDUJP6ORSXNBQVLUYC6AKHRXTDTJ4BWIC4JSAMRPYH6ZUKCV
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDFJVCQ2WDUJP6ORSXNBQVLUYC6AKHRXTDTJ4BWIC4JSAMRPYH6ZUKCV
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/ACCEPTANCE.md
+  - kind: contract
+    subject: CDIC77RM7LO2VLD7RJQGYBTDZW5ALUR6RNJ52QL3TZE5HPMWCNBNAWKD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDIC77RM7LO2VLD7RJQGYBTDZW5ALUR6RNJ52QL3TZE5HPMWCNBNAWKD
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/ACCEPTANCE.md
+  - kind: account
+    subject: GBFQEQE53VWHFAKMRQAOV73UJM7FLK4WAEWYFZHRHULX4TCYKKZGAPV2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBFQEQE53VWHFAKMRQAOV73UJM7FLK4WAEWYFZHRHULX4TCYKKZGAPV2
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GBHXOJV74WLYOGNZIF7HLVETM5N25BEBUZETUEDGF2ZDMSL4PYSAFR26
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBHXOJV74WLYOGNZIF7HLVETM5N25BEBUZETUEDGF2ZDMSL4PYSAFR26
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GCB6ZCYKURRWI2PLVYLDCFPIEIZLQPFCXVFI2NWBCHLGASKE7MAPSML3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCB6ZCYKURRWI2PLVYLDCFPIEIZLQPFCXVFI2NWBCHLGASKE7MAPSML3
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+  - kind: account
+    subject: GCFYLJU6KPEWZNKVTRYN3P6QRLTR7BYGTXE2JCXD2N7NXDHB6SZTWBH4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCFYLJU6KPEWZNKVTRYN3P6QRLTR7BYGTXE2JCXD2N7NXDHB6SZTWBH4
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/README.md
+contributors:
+- login: joaointech
+  contributions: 166
+- login: gastaosf
+  contributions: 1

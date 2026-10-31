@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/koul-me/koul
+repo_url: https://github.com/koul-me/koul
+name: koul
+description: 'Conditional execution on Stellar: your rules become contract state, a keeper pokes the contract, the contract
+  decides and acts, and a scoped policy keeps your funds yours.'
+homepage: https://koul.me
+language: TypeScript
+license: MIT
+created_at: '2026-09-22T13:13:38Z'
+owner: koul-me
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 36
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.0.1
+chain:
+  contracts: 2
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAFHZTSL63YZYU35SCHDOGOMXQ25266DBQYG7KETG6HC2AHBIZMGXP6U
+  - GBCXWBNZZQ742GWKIRRYHUIWD5EELKSSG6HNGGCQW6K24UJZQWJODHFO
+  - GCCIYVPBXI32GMYEHOVSELTNUKVKXKC37ACZJQ3HKJQAG4WOQEHLBYG4
+  evidence:
+  - kind: contract
+    subject: CAKEUMCIW4KBQZI5OJMFHFGM5VHDZHWIXAO7JOKTBRPR63IHIEP7KKNZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAKEUMCIW4KBQZI5OJMFHFGM5VHDZHWIXAO7JOKTBRPR63IHIEP7KKNZ
+    file_url: https://github.com/koul-me/koul/blob/HEAD/README.md
+  - kind: contract
+    subject: CD5VSBUXQ4OQIVYI55CFF4C4YKSFQUY4OTFIOFJRNC6TUILMNN7MAO2D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD5VSBUXQ4OQIVYI55CFF4C4YKSFQUY4OTFIOFJRNC6TUILMNN7MAO2D
+    file_url: https://github.com/koul-me/koul/blob/HEAD/README.md
+  - kind: contract
+    subject: CDDVMGPWRMI4RRLQQ7R255SA3GKHA4C7E6N37EIZFQEUX7EYKP4YEOJN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDDVMGPWRMI4RRLQQ7R255SA3GKHA4C7E6N37EIZFQEUX7EYKP4YEOJN
+    file_url: https://github.com/koul-me/koul/blob/HEAD/docs/build-log.md
+  - kind: contract
+    subject: CDWXYQFKEUHRWAPKPN3RSWFU5FLMU2NXLHR5YUCBUSZ2Q3KGBSUJME3S
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDWXYQFKEUHRWAPKPN3RSWFU5FLMU2NXLHR5YUCBUSZ2Q3KGBSUJME3S
+    file_url: https://github.com/koul-me/koul/blob/HEAD/docs/build-log.md
+  - kind: account
+    subject: GAFHZTSL63YZYU35SCHDOGOMXQ25266DBQYG7KETG6HC2AHBIZMGXP6U
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAFHZTSL63YZYU35SCHDOGOMXQ25266DBQYG7KETG6HC2AHBIZMGXP6U
+    file_url: https://github.com/koul-me/koul/blob/HEAD/README.md
+  - kind: account
+    subject: GCCIYVPBXI32GMYEHOVSELTNUKVKXKC37ACZJQ3HKJQAG4WOQEHLBYG4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCCIYVPBXI32GMYEHOVSELTNUKVKXKC37ACZJQ3HKJQAG4WOQEHLBYG4
+    file_url: https://github.com/koul-me/koul/blob/HEAD/docs/build-log.md
+contributors:
+- login: keyboord01
+  contributions: 188
+- login: atahanyild
+  contributions: 102

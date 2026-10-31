@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/hustle1hustle/bookerbob-hackmeridian-2026
+repo_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026
+name: bookerbob-hackmeridian-2026
+description: 'BookerBob: Google for agentic commerce. Agents rank and buy on zero-knowledge proof of customer: Semaphore v4
+  Groth16 on BN254, Poseidon trees, P-256 and USDC in one Soroban call.'
+homepage: https://stellarbob2026.xyz
+language: TypeScript
+license: MIT
+topics:
+- agentic-commerce
+- bn254
+- groth16
+- hackmeridian
+- poseidon
+- semaphore
+- soroban
+- stellar
+- usdc
+- zero-knowledge
+created_at: '2026-10-25T12:28:19Z'
+owner: hustle1hustle
+track: genesis
+track_declared: true
+award: runner-up
+evidence_tier: verified
+commits_in_window: 301
+stack:
+  soroban-sdk: 28.0.0
+  '@stellar/stellar-sdk': 17.4.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/packages/sdk/package.json
+chain:
+  contracts: 4
+  wasm_uploads: 5
+  classic_ops: 0
+  assets: 1
+  failed_txs: 0
+  accounts:
+  - GAJNOSKNP6DPOBXKQVJ7I3KS6EJKDAO73NQNK5LQVMOLWNLR3XJKARHU
+  - GC3PFGU6Y5P3CNQGCWZ7GF27V53ZX5GD7D3UNF33QPAKUYXSUP65A2US
+  evidence:
+  - kind: contract
+    subject: CBEGVNZFDZMOBKYVP27D5Q6Y7OHKWC2P3DAKQNC3MGTO5OW5JHAL5EBY
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBEGVNZFDZMOBKYVP27D5Q6Y7OHKWC2P3DAKQNC3MGTO5OW5JHAL5EBY
+    file_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/README.md
+  - kind: contract
+    subject: CBZ7I3VOQEMK5LKDZLCUJ4VU6KQX5WT747XN4KLGM23EIUCISTDX5MTL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBZ7I3VOQEMK5LKDZLCUJ4VU6KQX5WT747XN4KLGM23EIUCISTDX5MTL
+    file_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/docs/bench.md
+  - kind: contract
+    subject: CCSGYUKTZ54IE3U5YP3JEZ2AXMP5SE63CBWGX6MKW4ZVKX24MQCCSGTD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCSGYUKTZ54IE3U5YP3JEZ2AXMP5SE63CBWGX6MKW4ZVKX24MQCCSGTD
+    file_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/docs/testnet.md
+  - kind: contract
+    subject: CDRKD65UBKOVLOABILPJTSZYB7JXWZQOLCJGD4FHQ37EXEPGHEFIPYWN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDRKD65UBKOVLOABILPJTSZYB7JXWZQOLCJGD4FHQ37EXEPGHEFIPYWN
+    file_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/docs/testnet.md
+  - kind: account
+    subject: GAJNOSKNP6DPOBXKQVJ7I3KS6EJKDAO73NQNK5LQVMOLWNLR3XJKARHU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAJNOSKNP6DPOBXKQVJ7I3KS6EJKDAO73NQNK5LQVMOLWNLR3XJKARHU
+    file_url: https://github.com/hustle1hustle/bookerbob-hackmeridian-2026/blob/HEAD/ucp/.env.example
+contributors:
+- login: hustle1hustle
+  contributions: 276

@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/LucasCariddi/Passport-pay
+repo_url: https://github.com/LucasCariddi/Passport-pay
+name: Passport-pay
+language: JavaScript
+license: MIT
+created_at: '2026-10-26T11:33:50Z'
+owner: LucasCariddi
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 19
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/web/package.json
+chain:
+  contracts: 3
+  wasm_uploads: 5
+  classic_ops: 7
+  assets: 0
+  failed_txs: 48
+  accounts:
+  - GADD2GBK36CBQ2Y57OKJRYBQPDI6ZL65IVDSDOLETJ3TMXVDD42RPD6Z
+  - GAH4LSOXBLWVTB24L77L3RB3P5S5AUPLW472O2RWPZS7A77ZS62VIBDF
+  - GB5GPZXHW47MWLSHUYKRMGM7JKCQXUEL3YHP6QBZGDNLNIY4YSJQJYIE
+  - GBODV2SCY4HAJIAZOUZGRF2PIANS4XLYTEFRZLPRB6GZ5DHTXTT5K36J
+  - GCCZXNV7U6MY6APDCWFXLAUTUOB63N6LTXZEMJ2Y4JJUJVGFEXQ7SNIN
+  - GCIXZHMPEZAZIOTNHOK66TIGSR2TEHW2EG3TQH4UBS7HBRHGMDILQP2N
+  - GCLNNJKDE7YK5BYOCIW3SOZW7NBPBCKPKXONLRYVUQRO5VZCGLVCVPPJ
+  - GCOUE3GGBYALIY2XHMJ6DS52FDXVGQMSN363TN2D44OXXXGFDBH4LQJE
+  - GCSNRR57ZTUN7HI7YLFGSDV2MMJS4BF3OZIY3NXO2AKPFQKFFRFC3DFO
+  - GCTAWGDLELL4VWAV7L57GVIL472CX6NMLFDRQ67EZ4LTSJFDN7UCSJYT
+  - GDEWNT3JIHXQ2XVIHDY5V44FOBCNP2HDV4KXNZCPA3XV3DHUZK5ER7EN
+  - GDNCWBPBDQH4OQ4EHLXVRONZSEBR776JVPI3J5EAZZ3Q5VVYXHWNHRVT
+  evidence:
+  - kind: contract
+    subject: CBIRF3XX45F2I356XLDDALKSKQWRXMUNFVBF7A65TRSEWXVXHRYP56VS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBIRF3XX45F2I356XLDDALKSKQWRXMUNFVBF7A65TRSEWXVXHRYP56VS
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/docs/ARCHITECTURE.md
+  - kind: contract
+    subject: CDJKAFUYH6WE6OWLP3BPMUDLKHQTCENLZSKIMHBMH436F6DGSVJN26TJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDJKAFUYH6WE6OWLP3BPMUDLKHQTCENLZSKIMHBMH436F6DGSVJN26TJ
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/.env.example
+  - kind: account
+    subject: GADD2GBK36CBQ2Y57OKJRYBQPDI6ZL65IVDSDOLETJ3TMXVDD42RPD6Z
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GADD2GBK36CBQ2Y57OKJRYBQPDI6ZL65IVDSDOLETJ3TMXVDD42RPD6Z
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/docs/ARCHITECTURE.md
+  - kind: account
+    subject: GAH4LSOXBLWVTB24L77L3RB3P5S5AUPLW472O2RWPZS7A77ZS62VIBDF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAH4LSOXBLWVTB24L77L3RB3P5S5AUPLW472O2RWPZS7A77ZS62VIBDF
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/deploy/demo-public.json
+  - kind: account
+    subject: GB5GPZXHW47MWLSHUYKRMGM7JKCQXUEL3YHP6QBZGDNLNIY4YSJQJYIE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB5GPZXHW47MWLSHUYKRMGM7JKCQXUEL3YHP6QBZGDNLNIY4YSJQJYIE
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/docs/ARCHITECTURE.md
+  - kind: account
+    subject: GBODV2SCY4HAJIAZOUZGRF2PIANS4XLYTEFRZLPRB6GZ5DHTXTT5K36J
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBODV2SCY4HAJIAZOUZGRF2PIANS4XLYTEFRZLPRB6GZ5DHTXTT5K36J
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/.env.example
+  - kind: account
+    subject: GCCZXNV7U6MY6APDCWFXLAUTUOB63N6LTXZEMJ2Y4JJUJVGFEXQ7SNIN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCCZXNV7U6MY6APDCWFXLAUTUOB63N6LTXZEMJ2Y4JJUJVGFEXQ7SNIN
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/scenario/README.md
+  - kind: account
+    subject: GCIXZHMPEZAZIOTNHOK66TIGSR2TEHW2EG3TQH4UBS7HBRHGMDILQP2N
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCIXZHMPEZAZIOTNHOK66TIGSR2TEHW2EG3TQH4UBS7HBRHGMDILQP2N
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/docs/ARCHITECTURE.md
+  - kind: account
+    subject: GCLNNJKDE7YK5BYOCIW3SOZW7NBPBCKPKXONLRYVUQRO5VZCGLVCVPPJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCLNNJKDE7YK5BYOCIW3SOZW7NBPBCKPKXONLRYVUQRO5VZCGLVCVPPJ
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/README.es.md
+  - kind: account
+    subject: GCOUE3GGBYALIY2XHMJ6DS52FDXVGQMSN363TN2D44OXXXGFDBH4LQJE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCOUE3GGBYALIY2XHMJ6DS52FDXVGQMSN363TN2D44OXXXGFDBH4LQJE
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/docs/ARCHITECTURE.md
+  - kind: account
+    subject: GCSNRR57ZTUN7HI7YLFGSDV2MMJS4BF3OZIY3NXO2AKPFQKFFRFC3DFO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCSNRR57ZTUN7HI7YLFGSDV2MMJS4BF3OZIY3NXO2AKPFQKFFRFC3DFO
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/docs/ARCHITECTURE.md
+  - kind: account
+    subject: GCTAWGDLELL4VWAV7L57GVIL472CX6NMLFDRQ67EZ4LTSJFDN7UCSJYT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCTAWGDLELL4VWAV7L57GVIL472CX6NMLFDRQ67EZ4LTSJFDN7UCSJYT
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/deploy/demo-public.json
+  - kind: account
+    subject: GDEWNT3JIHXQ2XVIHDY5V44FOBCNP2HDV4KXNZCPA3XV3DHUZK5ER7EN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDEWNT3JIHXQ2XVIHDY5V44FOBCNP2HDV4KXNZCPA3XV3DHUZK5ER7EN
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/deploy/demo-public.json
+  - kind: account
+    subject: GDNCWBPBDQH4OQ4EHLXVRONZSEBR776JVPI3J5EAZZ3Q5VVYXHWNHRVT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDNCWBPBDQH4OQ4EHLXVRONZSEBR776JVPI3J5EAZZ3Q5VVYXHWNHRVT
+    file_url: https://github.com/LucasCariddi/Passport-pay/blob/HEAD/deploy/demo-payees.json
+contributors:
+- login: LucasCariddi
+  contributions: 19

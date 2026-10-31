@@ -1,0 +1,118 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/kovan-protocol/kovan
+repo_url: https://github.com/kovan-protocol/kovan
+name: kovan
+language: JavaScript
+license: MIT
+created_at: '2026-10-25T10:04:06Z'
+owner: kovan-protocol
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 112
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 16.4.1
+  '@stellar/freighter-api': 6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/dashboard/package.json
+chain:
+  contracts: 32
+  wasm_uploads: 14
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAVJRSHNQOD7JNG4PRGMRSZPQ3DHEQSUYM7LZHKY6VZIKRAHL5FO6PB6
+  - GBPS6MZFZBCOSDZ75HCL3QN3DSK5APBIN7UXYH7JGUSYKMUJZUFIJITC
+  - GCLKOJQR3YC66E3OYB7JEWGDX4VOK6AFOJ3PTO67KPPCTPJTLDZHR5YP
+  - GCNN4XIU3KU3QA6B3ENL752Q4J6ZBPOERRT54WV2P2N7GBLHCBNMHBOC
+  - GD32J74ZOBFTAFUPALP5NWXT2AIZR7WW5D7IHOCBXX2C2Z2VUKTXWB7Z
+  - GDDL4JWGIHZVRRLWS2KNKB5PJIMP52IT3GZST56UC7JKP3ZO4CJ4S2LC
+  - GDX5REVP5JGY4HMN6WFA4CD5NPKHTRQA4ZSAD3F4W3O5CR2OW3NSZQ7T
+  evidence:
+  - kind: contract
+    subject: CA2NXNPDGZ674K467K3K2IXV342BTPJ7YJRLVZPT4LCSJS5GHLVSMEN7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA2NXNPDGZ674K467K3K2IXV342BTPJ7YJRLVZPT4LCSJS5GHLVSMEN7
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/README.md
+  - kind: contract
+    subject: CA3UJGOTLFZG46SL565IDQTYFAPD7ZU6P7C63MTBSUOY7FDWCHFPGXWP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA3UJGOTLFZG46SL565IDQTYFAPD7ZU6P7C63MTBSUOY7FDWCHFPGXWP
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/docs/MANDATES.md
+  - kind: contract
+    subject: CAEU4VYRTV4ZDHFGCRYQNPN6URDOYLP4TS4OMRAJX5RD7AMLWBTYW6G4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAEU4VYRTV4ZDHFGCRYQNPN6URDOYLP4TS4OMRAJX5RD7AMLWBTYW6G4
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/README.md
+  - kind: contract
+    subject: CAQAHBSHKEUQCXUMFCD65GNRTKDNE5A7HOHA7XVOKVKTV4H4O63OWJYB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAQAHBSHKEUQCXUMFCD65GNRTKDNE5A7HOHA7XVOKVKTV4H4O63OWJYB
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/deployments/mandate-release-74c5789668a69ca5.json
+  - kind: contract
+    subject: CAS7ARNTLTRAD4WLYGIXC5EVMFZBETIQROJ2UWOJGU4QQY5XQT3K2LKJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAS7ARNTLTRAD4WLYGIXC5EVMFZBETIQROJ2UWOJGU4QQY5XQT3K2LKJ
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/README.md
+  - kind: contract
+    subject: CAU7NRSW3YNW44J7XPC5PCM2TSWONADW27DYRXXFB4BWY433SFPRBF7A
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAU7NRSW3YNW44J7XPC5PCM2TSWONADW27DYRXXFB4BWY433SFPRBF7A
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/docs/SDK.md
+  - kind: contract
+    subject: CBOOAYAVDNAKBAH2OE57O4FDQW4OKCTDJDNJ6MGYM5AP2L46VTGBCON6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBOOAYAVDNAKBAH2OE57O4FDQW4OKCTDJDNJ6MGYM5AP2L46VTGBCON6
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/README.md
+  - kind: contract
+    subject: CC4CBCZ6MDBWBHXDG2CJV6QDRBLRE6GM3V5EWKY27E7X7UKXXRRL76XM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC4CBCZ6MDBWBHXDG2CJV6QDRBLRE6GM3V5EWKY27E7X7UKXXRRL76XM
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/docs/MANDATES.md
+  - kind: contract
+    subject: CCRU56E3WHFFGEQ7LZ4HEEL6MWVZE7BBHB36H4F6Y27T6GGY4SCR2FMM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCRU56E3WHFFGEQ7LZ4HEEL6MWVZE7BBHB36H4F6Y27T6GGY4SCR2FMM
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/docs/YIELD_DEMO_RESEARCH.md
+  - kind: contract
+    subject: CDEQUCR4OHOQHWPIP5RONRR46G7DTJMFZKNKRIQJCLYACDDZGWKAISD2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDEQUCR4OHOQHWPIP5RONRR46G7DTJMFZKNKRIQJCLYACDDZGWKAISD2
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/README.md
+  - kind: contract
+    subject: CDP6UNP5YZ6NIMJ2XVQGYLBUAA5RP2LD7SPIRBP4VTVZLKPKCHFX42BR
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDP6UNP5YZ6NIMJ2XVQGYLBUAA5RP2LD7SPIRBP4VTVZLKPKCHFX42BR
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/README.md
+  - kind: contract
+    subject: CDY2C6TLNPDNETNU5Z6764MJ7WXOX7EB77YGH6HT73XCWA6ANFZJDXIF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDY2C6TLNPDNETNU5Z6764MJ7WXOX7EB77YGH6HT73XCWA6ANFZJDXIF
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/docs/YIELD.md
+  - kind: account
+    subject: GCLKOJQR3YC66E3OYB7JEWGDX4VOK6AFOJ3PTO67KPPCTPJTLDZHR5YP
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCLKOJQR3YC66E3OYB7JEWGDX4VOK6AFOJ3PTO67KPPCTPJTLDZHR5YP
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/deployments/fresh-pool-20261026-recovery-v1.json
+  - kind: account
+    subject: GCNN4XIU3KU3QA6B3ENL752Q4J6ZBPOERRT54WV2P2N7GBLHCBNMHBOC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCNN4XIU3KU3QA6B3ENL752Q4J6ZBPOERRT54WV2P2N7GBLHCBNMHBOC
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/deployments/fresh-pool-20261026-recovery-v1.json
+contributors:
+- login: r0bops
+  contributions: 92
+- login: cursoragent
+  contributions: 11
+- login: Psybre
+  contributions: 8
+- login: Cbiux
+  contributions: 1

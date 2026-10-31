@@ -1,0 +1,170 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/untangledfinance/oz-policy-builder
+repo_url: https://github.com/untangledfinance/oz-policy-builder
+name: oz-policy-builder
+description: OZ Policy Builder - record a Soroban transaction, synthesise the minimal policy that permits exactly that flow,
+  and install it on an OpenZeppelin smart account
+language: TypeScript
+license: MIT
+topics:
+- mcp-server
+- openzeppelin
+- policy
+- rust
+- smart-account
+- soroban
+- stellar
+- typescript
+created_at: '2026-08-13T14:38:47Z'
+owner: untangledfinance
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 13
+stack:
+  soroban-sdk: =28.0.0
+  '@stellar/stellar-sdk': ^14.4.0
+chain:
+  contracts: 17
+  wasm_uploads: 7
+  classic_ops: 0
+  assets: 0
+  failed_txs: 14
+  accounts:
+  - GBB4254IPISHQCABNEJJWIZYKFNXU3IHR4TS3PV3L62XS42VJBIXYQVE
+  - GBBX2RRWZAJBRINWXTJAR6V2CN2RUQECDAAI364OIJNPB2C5OALOVBIM
+  - GBOGHAQV7B54TFQFL7SAGHRQWJDDDMXABTNPVPVK3ZO2OLMBNNB5AHQO
+  - GBZWFB2H56WEQKEAQIEGMQGYWR7OW3KRO7X5TKZOEA2IQ5IZ4FVOBNQN
+  - GC3GR5E6NMJHRQ6W3ARNBCNBW5RAKMX6J4TH5XDOUIFLUEKSSV2QSO45
+  - GCKHNIGPLB4VTICW3MWYDDLYNWUIYNERYQU36NT4RQ5UPH5KZ4XM4XZV
+  - GCYY5FLA7M7GIO52QGF6HFGOJM5RONV3DLZOVLDM6OOMJSVQ6CG6UQD5
+  - GD2E56CRMM3EJEPYJ6K46SQ3QGICL4Y22UZ4TMLIC5JPYOUCTX6LP2AI
+  - GDIKIQX6ZROMGWQIVTTMBAKEC6V7BPQRYR5TAQ7HTC42AA5KKDSBE35Y
+  - GDJVFOIKPX7CSTVPXSYF6CVNSRN6GNH4SB45MRQTK73AYPBU74VGNAYD
+  - GDUG3YGASOJQMLXSL4MW3NK4DUMBDRIKYPXMLF7AGHKDRM2E6QLILX43
+  - GDYGWMSRLLBK4PUMF3A6WJ5MYVFQXYFHAMLXJYL7N5XMBAX5LGTM3LMN
+  evidence:
+  - kind: contract
+    subject: CA5MWCXW6OGLT2XDA3KQQXGNK2SF6Y3OXEVWP4YS5SIE2N5B6E5QA7Y2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CA5MWCXW6OGLT2XDA3KQQXGNK2SF6Y3OXEVWP4YS5SIE2N5B6E5QA7Y2
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+  - kind: contract
+    subject: CAOYMIDLDE7S24V5YJEZ674AKMTOKUQZD5CI6SI7YUEKNLLCSKJTRVSK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAOYMIDLDE7S24V5YJEZ674AKMTOKUQZD5CI6SI7YUEKNLLCSKJTRVSK
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: contract
+    subject: CAVG5SVS7WD572AMLNRR7PNCKTDKMB3JANTYBAE4RHIDGNJHEOFXV6LT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAVG5SVS7WD572AMLNRR7PNCKTDKMB3JANTYBAE4RHIDGNJHEOFXV6LT
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+  - kind: contract
+    subject: CBUPVBXZMYAUH6VJ5Z7N7GSVA5ECQ4EGM5RE4VVS3IDNL356YWKAANPS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBUPVBXZMYAUH6VJ5Z7N7GSVA5ECQ4EGM5RE4VVS3IDNL356YWKAANPS
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: contract
+    subject: CCJXAUHAQ3H7Y7P2OE5J5ODY6HAI4UA6TNV3WOFGFLIJYXIXZOAJ65TL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCJXAUHAQ3H7Y7P2OE5J5ODY6HAI4UA6TNV3WOFGFLIJYXIXZOAJ65TL
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/deployments/oz-policies.json
+  - kind: contract
+    subject: CCPD7TFSYGMTJFCGDBVHKFZJKHF2CHB3J5W3IBQ2CAUEQQZ5SUKFTNI3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCPD7TFSYGMTJFCGDBVHKFZJKHF2CHB3J5W3IBQ2CAUEQQZ5SUKFTNI3
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/deployments/oz-accounts.json
+  - kind: contract
+    subject: CCPZW4322JUETOYDKYUFB2AZ2SZVWFV3IATZ3TG4QXZKQXBEOIQM2JQ4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCPZW4322JUETOYDKYUFB2AZ2SZVWFV3IATZ3TG4QXZKQXBEOIQM2JQ4
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/CHANGELOG.md
+  - kind: contract
+    subject: CCRCBH3MX43U6WNUL4NSLIAVNISNHSZTZZ7VCQYSGRELZJB67G6JHSWW
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCRCBH3MX43U6WNUL4NSLIAVNISNHSZTZZ7VCQYSGRELZJB67G6JHSWW
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/deployments/oz-policies.json
+  - kind: contract
+    subject: CDER6P73JWMIVD3X6TGGOQIDAH3DLU7OKRTLT4ULPTZ3QJJ3QUGTK7CM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDER6P73JWMIVD3X6TGGOQIDAH3DLU7OKRTLT4ULPTZ3QJJ3QUGTK7CM
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/README.md
+  - kind: contract
+    subject: CDJGXDL7I2E7FYTFOT6KFSWVXGSNFWM3SGYEYVOPMYPJ73IL3444POCH
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDJGXDL7I2E7FYTFOT6KFSWVXGSNFWM3SGYEYVOPMYPJ73IL3444POCH
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+  - kind: contract
+    subject: CDS2W673EV22FDZX7FB6PDSTPJ7MMPONVXAGITNC2ABBVJ65TGA2ACUL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDS2W673EV22FDZX7FB6PDSTPJ7MMPONVXAGITNC2ABBVJ65TGA2ACUL
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/deployments/oz-accounts.json
+  - kind: wasm
+    subject: 8286422f205951f37f4249401b403471fc432340dde6925432d31bb8a90cce27
+    method: wasm_hash_match
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/contracts/stellar/policy-interpreter/tests/fixtures/oz_0_8_0_multisig_account_example.wasm
+  - kind: wasm
+    subject: 91a2cd56ba1a75d78eeb8ddc5d1841c5d439b7726a140bc84c850f73396298a9
+    method: wasm_hash_match
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/contracts/stellar/policy-interpreter/tests/fixtures/multisig_account_example.wasm
+  - kind: account
+    subject: GBB4254IPISHQCABNEJJWIZYKFNXU3IHR4TS3PV3L62XS42VJBIXYQVE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBB4254IPISHQCABNEJJWIZYKFNXU3IHR4TS3PV3L62XS42VJBIXYQVE
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: account
+    subject: GBBX2RRWZAJBRINWXTJAR6V2CN2RUQECDAAI364OIJNPB2C5OALOVBIM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBBX2RRWZAJBRINWXTJAR6V2CN2RUQECDAAI364OIJNPB2C5OALOVBIM
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: account
+    subject: GBOGHAQV7B54TFQFL7SAGHRQWJDDDMXABTNPVPVK3ZO2OLMBNNB5AHQO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBOGHAQV7B54TFQFL7SAGHRQWJDDDMXABTNPVPVK3ZO2OLMBNNB5AHQO
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: account
+    subject: GBZWFB2H56WEQKEAQIEGMQGYWR7OW3KRO7X5TKZOEA2IQ5IZ4FVOBNQN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBZWFB2H56WEQKEAQIEGMQGYWR7OW3KRO7X5TKZOEA2IQ5IZ4FVOBNQN
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: account
+    subject: GC3GR5E6NMJHRQ6W3ARNBCNBW5RAKMX6J4TH5XDOUIFLUEKSSV2QSO45
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC3GR5E6NMJHRQ6W3ARNBCNBW5RAKMX6J4TH5XDOUIFLUEKSSV2QSO45
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+  - kind: account
+    subject: GCKHNIGPLB4VTICW3MWYDDLYNWUIYNERYQU36NT4RQ5UPH5KZ4XM4XZV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCKHNIGPLB4VTICW3MWYDDLYNWUIYNERYQU36NT4RQ5UPH5KZ4XM4XZV
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+  - kind: account
+    subject: GD2E56CRMM3EJEPYJ6K46SQ3QGICL4Y22UZ4TMLIC5JPYOUCTX6LP2AI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD2E56CRMM3EJEPYJ6K46SQ3QGICL4Y22UZ4TMLIC5JPYOUCTX6LP2AI
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+  - kind: account
+    subject: GDIKIQX6ZROMGWQIVTTMBAKEC6V7BPQRYR5TAQ7HTC42AA5KKDSBE35Y
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDIKIQX6ZROMGWQIVTTMBAKEC6V7BPQRYR5TAQ7HTC42AA5KKDSBE35Y
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: account
+    subject: GDJVFOIKPX7CSTVPXSYF6CVNSRN6GNH4SB45MRQTK73AYPBU74VGNAYD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDJVFOIKPX7CSTVPXSYF6CVNSRN6GNH4SB45MRQTK73AYPBU74VGNAYD
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/deployments/execution-testnet.json
+  - kind: account
+    subject: GDUG3YGASOJQMLXSL4MW3NK4DUMBDRIKYPXMLF7AGHKDRM2E6QLILX43
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUG3YGASOJQMLXSL4MW3NK4DUMBDRIKYPXMLF7AGHKDRM2E6QLILX43
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/shared-rule-probe.json
+  - kind: account
+    subject: GDYGWMSRLLBK4PUMF3A6WJ5MYVFQXYFHAMLXJYL7N5XMBAX5LGTM3LMN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDYGWMSRLLBK4PUMF3A6WJ5MYVFQXYFHAMLXJYL7N5XMBAX5LGTM3LMN
+    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/evidence/e38-probe.json
+contributors:
+- login: credio-agent
+  contributions: 189
+- login: Tuanm
+  contributions: 33

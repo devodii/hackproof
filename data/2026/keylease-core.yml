@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/KeyLease-Security/keylease-core
+repo_url: https://github.com/KeyLease-Security/keylease-core
+name: keylease-core
+description: Time-bound, quota-gated API credential and bandwidth micro-lease smart contracts on Stellar & Soroban.
+homepage: https://keylease-security.github.io/keylease-core/
+language: Rust
+license: MIT
+topics:
+- rust
+- security
+- soroban
+- stellar
+- stellar-network
+created_at: '2026-10-07T11:07:03Z'
+owner: KeyLease-Security
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 3
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 2
+  wasm_uploads: 2
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+  - GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+  evidence:
+  - kind: contract
+    subject: CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCEZYHUJUICXVPLH6UC2OFZL2RG23QQ7EMZOWE32WVQPT25DCTIAFH62
+    file_url: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/README.md
+  - kind: account
+    subject: GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GALF2TZRNCJWY7I2AHI2ORNZMDYFPRDNZXDV2DIALRLGDM6JZT35HPRY
+    file_url: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/docs/deployments.md
+  - kind: account
+    subject: GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBDHDKBXURVBLAJNGBSAH4AHXRI2R3GFCEU5PCP6LI34SCETSBBLMUUT
+    file_url: https://github.com/KeyLease-Security/keylease-core/blob/HEAD/change.md
+contributors:
+- login: Oyinkans0la12
+  contributions: 14

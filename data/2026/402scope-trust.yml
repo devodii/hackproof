@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/arturete58-sys/402scope-trust
+repo_url: https://github.com/arturete58-sys/402scope-trust
+name: 402scope-trust
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-06T15:32:44Z'
+owner: arturete58-sys
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 1
+stack:
+  soroban-sdk: null
+  stellar-sdk: '13.1'
+  stellar-strkey: 0.0.16
+  '@stellar/stellar-sdk': ^16.3.1
+chain:
+  contracts: 0
+  wasm_uploads: 8
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence:
+  - kind: wasm
+    subject: 03a91d8e4728bde1698d5ae4ecb53c785e8675dac06f55e890617908583dda67
+    method: wasm_meta
+  - kind: wasm
+    subject: 29f0d861ce114cd914277a4c1ad5da98b66483d103e905e22f11adefd197b73c
+    method: wasm_meta
+  - kind: wasm
+    subject: 5d58e062d3bf8352bdb7d5da5dcc247f1b9d5bb68793751057bdb3482abc94d6
+    method: wasm_meta
+  - kind: wasm
+    subject: 6cde580309a81caf3505464360d2fcb02709c4a3c93b7fa645730f4c4ba6e4c3
+    method: wasm_meta
+  - kind: wasm
+    subject: 7767d19fdfc5deb18f438c76ee468a7b76637f36c96ff8c5cec3c5b42c12aa9a
+    method: wasm_meta
+  - kind: wasm
+    subject: 865c414f96ce1a8af998542e3d38048cf14e134c7605c9230f4cc4d8e964737a
+    method: wasm_meta
+  - kind: wasm
+    subject: f13c4c52d7bf5b206072de040e97ba72a650b294a3293b88e3af94f180f01c78
+    method: wasm_meta
+  - kind: wasm
+    subject: f95a43ea64dbe6a07f583a8265b7476df3706729861b15aa15a50a2265e11ad4
+    method: wasm_meta
+contributors:
+- login: arturete58-sys
+  contributions: 21
+- login: claude
+  contributions: 11

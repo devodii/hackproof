@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/W0lfyo/carimbo
+repo_url: https://github.com/W0lfyo/carimbo
+name: carimbo
+homepage: https://carimbo-six.vercel.app
+language: TypeScript
+license: MIT
+created_at: '2026-10-25T16:49:25Z'
+owner: W0lfyo
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 29
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 260
+  assets: 10
+  failed_txs: 0
+  accounts:
+  - GACTLR4RG6NWVFOA6AWO7GSEEVEEYMXKDM4NYES3RHO2KJ4OLMZCL5QH
+  - GAERIXHJVCRREBD36TDWAKZ6HWEWIRBIFIJDMLVXABX4C4P4XYXXLJWZ
+  - GAES72GCJQZ4H5YAFPO6AQPP7OTAF2HYIJLE2O3F6EDBNG2ML2BXQKMD
+  - GAYSK5GXB2YJJRYJSMXB6SLVZV7RX6MGCAYBPTRRRT5PMBDEJXLJ7ZWK
+  - GBHEL52NNUONBCXPYRBS2H5USLHMZBMQAG4AKMTSPSUNFB36QM67VRXS
+  - GCTOUT37XBH54CKDY4LMDSSGMUIHC2RPM5WAS5ILUERDV6HOC433L4QO
+  - GDBE3247ZMOC2EIHFP2IM6JM2W4XQNP56R4H6FBDMJLXLVGUZNJAK3LG
+  - GDK5HA6POIHRIIWX3HYJYCRDYG35MVP5Y7UHXYMRVISU3QVU5CFZA4LU
+  - GDOYUFNJIUEWLM3RY6JIAGJW3Z5MDYU67G2PVSZSBE5S66PTQWCWD3OO
+  - GDUTP6VOOUEN4CBRO7RFVM7PKLJBSGI24MVESN7QIQVBRU273UMQRKI4
+  evidence:
+  - kind: account
+    subject: GACTLR4RG6NWVFOA6AWO7GSEEVEEYMXKDM4NYES3RHO2KJ4OLMZCL5QH
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GACTLR4RG6NWVFOA6AWO7GSEEVEEYMXKDM4NYES3RHO2KJ4OLMZCL5QH
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GAERIXHJVCRREBD36TDWAKZ6HWEWIRBIFIJDMLVXABX4C4P4XYXXLJWZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAERIXHJVCRREBD36TDWAKZ6HWEWIRBIFIJDMLVXABX4C4P4XYXXLJWZ
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GAES72GCJQZ4H5YAFPO6AQPP7OTAF2HYIJLE2O3F6EDBNG2ML2BXQKMD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAES72GCJQZ4H5YAFPO6AQPP7OTAF2HYIJLE2O3F6EDBNG2ML2BXQKMD
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GAYSK5GXB2YJJRYJSMXB6SLVZV7RX6MGCAYBPTRRRT5PMBDEJXLJ7ZWK
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAYSK5GXB2YJJRYJSMXB6SLVZV7RX6MGCAYBPTRRRT5PMBDEJXLJ7ZWK
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GBHEL52NNUONBCXPYRBS2H5USLHMZBMQAG4AKMTSPSUNFB36QM67VRXS
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBHEL52NNUONBCXPYRBS2H5USLHMZBMQAG4AKMTSPSUNFB36QM67VRXS
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GCTOUT37XBH54CKDY4LMDSSGMUIHC2RPM5WAS5ILUERDV6HOC433L4QO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCTOUT37XBH54CKDY4LMDSSGMUIHC2RPM5WAS5ILUERDV6HOC433L4QO
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GDBE3247ZMOC2EIHFP2IM6JM2W4XQNP56R4H6FBDMJLXLVGUZNJAK3LG
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDBE3247ZMOC2EIHFP2IM6JM2W4XQNP56R4H6FBDMJLXLVGUZNJAK3LG
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GDK5HA6POIHRIIWX3HYJYCRDYG35MVP5Y7UHXYMRVISU3QVU5CFZA4LU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDK5HA6POIHRIIWX3HYJYCRDYG35MVP5Y7UHXYMRVISU3QVU5CFZA4LU
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GDOYUFNJIUEWLM3RY6JIAGJW3Z5MDYU67G2PVSZSBE5S66PTQWCWD3OO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDOYUFNJIUEWLM3RY6JIAGJW3Z5MDYU67G2PVSZSBE5S66PTQWCWD3OO
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+  - kind: account
+    subject: GDUTP6VOOUEN4CBRO7RFVM7PKLJBSGI24MVESN7QIQVBRU273UMQRKI4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUTP6VOOUEN4CBRO7RFVM7PKLJBSGI24MVESN7QIQVBRU273UMQRKI4
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/README.md
+contributors:
+- login: nicolasfelemez
+  contributions: 29

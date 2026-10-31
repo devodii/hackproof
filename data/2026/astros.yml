@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Eco-RV/AstrOS
+repo_url: https://github.com/Eco-RV/AstrOS
+name: AstrOS
+homepage: https://astros-two.vercel.app
+language: TypeScript
+license: Apache-2.0
+created_at: '2026-10-14T05:29:04Z'
+owner: Eco-RV
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 15
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+  '@creit.tech/stellar-wallets-kit': ^2.3.0
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/app-lib/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBD4BE67JX4WMH2COPATPLJJ5ILG6YL7JVL7MF66VRWT5H5NEAJFMW4K
+  evidence:
+  - kind: account
+    subject: GBD4BE67JX4WMH2COPATPLJJ5ILG6YL7JVL7MF66VRWT5H5NEAJFMW4K
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBD4BE67JX4WMH2COPATPLJJ5ILG6YL7JVL7MF66VRWT5H5NEAJFMW4K
+    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/Versionamiento/1.0.0/00_despliegue_inicial.md
+contributors:
+- login: Eco-RV
+  contributions: 46
+- login: bitfalt
+  contributions: 15

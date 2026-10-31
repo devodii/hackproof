@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Gastaan/Stelleye
+repo_url: https://github.com/Gastaan/Stelleye
+name: Stelleye
+language: Python
+created_at: '2026-10-26T06:16:11Z'
+owner: Gastaan
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 7
+stack:
+  soroban-sdk: null
+  stellar-sdk: 16.1.1
+chain:
+  contracts: 2
+  wasm_uploads: 1
+  classic_ops: 2
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GC3NWJ6M3QKUIXHK2O3PGYVDLVQZEB32HNG3RILL64ROVUCKFLFOIZK4
+  evidence:
+  - kind: contract
+    subject: CAYXBP4DF3SG2J3224M6HA7X3OXVUCL2XLP3EWPPJ6LTX6UPFMBVUPTP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAYXBP4DF3SG2J3224M6HA7X3OXVUCL2XLP3EWPPJ6LTX6UPFMBVUPTP
+    file_url: https://github.com/Gastaan/Stelleye/blob/HEAD/README.md
+contributors:
+- login: Gastaan
+  contributions: 7

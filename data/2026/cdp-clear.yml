@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/PhilipLewellen/cdp-clear
+repo_url: https://github.com/PhilipLewellen/cdp-clear
+name: cdp-clear
+language: TypeScript
+created_at: '2026-10-25T17:59:37Z'
+owner: PhilipLewellen
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 179
+stack:
+  '@stellar/stellar-sdk': ^17.3.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/PhilipLewellen/cdp-clear/blob/HEAD/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: PhilipLewellen
+  contributions: 2

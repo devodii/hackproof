@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Seyfert-Labs/SEYF-P
+repo_url: https://github.com/Seyfert-Labs/SEYF-P
+name: SEYF-P
+homepage: https://www.seyf.app
+language: TypeScript
+created_at: '2026-06-24T17:07:07Z'
+owner: Seyfert-Labs
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 98
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^14.6.1
+integrations:
+- slug: privy
+  name: Privy
+  evidence:
+  - method: package
+    detail: '@privy-io/react-auth'
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+- slug: soroswap
+  name: Soroswap
+  evidence:
+  - method: endpoint
+    detail: api.soroswap.finance
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/.env.example
+  - method: package
+    detail: '@soroswap/sdk'
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/.env.example
+  - method: package
+    detail: '@defindex/sdk'
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+chain:
+  contracts: 5
+  wasm_uploads: 5
+  classic_ops: 8
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAENUW4LPKMBV7O3B35VZNA4L3IUCMSTG75NSMTL4GIU22HQQWRRT6UN
+  - GB7JUBAV4VK3P44AIAFGQO2NHRNJLA6VXB3N22GOEXZFPONTVH6XZS5M
+  - GC53GWNEEMF4IGTAZICPYZI6OAA46VM2DZFC6R6PBM4RSM7LIGXWLSRS
+  - GCLRKRTWHTSWK5RWOF5P2RS7NLDTG7RJEMZ653QMWMESEJNHZXQPNGZL
+  - GDCSGJSN7KOXKX3FNH7A6IFHPMHZOOTRIKTS2YQ2XKJW3L3UT46H3C4R
+  - GDUWZ6K5XRXN3ZO3Z7N635UIO2J5Z4NVT44F6CSVIHOUD2HVMNSJJUJ2
+  evidence:
+  - kind: contract
+    subject: CABH4NNGEVFHEJLASJRSULT3YYRK3FYPZDZKTMZMSWPF3JEYQWYALS2Q
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CABH4NNGEVFHEJLASJRSULT3YYRK3FYPZDZKTMZMSWPF3JEYQWYALS2Q
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: contract
+    subject: CASAU3YCJQYXAVKNUTSHTH5F2DJVES7BM3QOVN4RD2NVAVLD2DRUM7ZI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CASAU3YCJQYXAVKNUTSHTH5F2DJVES7BM3QOVN4RD2NVAVLD2DRUM7ZI
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/contracts.md
+  - kind: contract
+    subject: CC5CLKMAJU7KHMUUJWXM7RJ6E7OCN6LPI66GPL26LJMH7YDTAU6XQ6BZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC5CLKMAJU7KHMUUJWXM7RJ6E7OCN6LPI66GPL26LJMH7YDTAU6XQ6BZ
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/hackmeridian-plan.md
+  - kind: contract
+    subject: CCLC3HRPL2GYXTGOFFNKITQGPYLZXQG4TO7OV6M533PGXZ3ZQBOGEGTZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCLC3HRPL2GYXTGOFFNKITQGPYLZXQG4TO7OV6M533PGXZ3ZQBOGEGTZ
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: contract
+    subject: CDG5V5GRD7KYJBREQXRVDEUSJCGCUZSI3EXD5ZHF2WDM7WKZLU5I75XB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDG5V5GRD7KYJBREQXRVDEUSJCGCUZSI3EXD5ZHF2WDM7WKZLU5I75XB
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: account
+    subject: GAENUW4LPKMBV7O3B35VZNA4L3IUCMSTG75NSMTL4GIU22HQQWRRT6UN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAENUW4LPKMBV7O3B35VZNA4L3IUCMSTG75NSMTL4GIU22HQQWRRT6UN
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: account
+    subject: GDCSGJSN7KOXKX3FNH7A6IFHPMHZOOTRIKTS2YQ2XKJW3L3UT46H3C4R
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDCSGJSN7KOXKX3FNH7A6IFHPMHZOOTRIKTS2YQ2XKJW3L3UT46H3C4R
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+contributors:
+- login: MarxMad
+  contributions: 176
+- login: IanHerez
+  contributions: 70
+- login: SegFaultPapi
+  contributions: 40

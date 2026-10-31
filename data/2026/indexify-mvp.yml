@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/recentlyhatched/indexify-mvp
+repo_url: https://github.com/recentlyhatched/indexify-mvp
+name: indexify-mvp
+language: TypeScript
+created_at: '2026-10-25T13:32:34Z'
+owner: recentlyhatched
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 7
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/web/package.json
+chain:
+  contracts: 1
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAGYXHI7SEPITYE5NKJVIUAID3TH3FTFCIK4NP54JG4ZZ6EYVKXQU2IE
+  - GBWP7NA2OHXQJDBFPSDB4KFSUTZ7CJSLKWGCPTGQZP7FFCHQDA6XKEJY
+  - GD4VJVJF4RP54AAKXCGXM5TDCJCZGXHHAMAMXYTMC3TYOKHHBK3D2IGO
+  - GD72CVZGWJOFW7Q5CTETD7X3WG7G6DIMVBHJLF5KVMGHY4BDEHPPASEO
+  - GDUC64NXNM7F7XHSLFUYWBEZHCICGVKMAV7UU7ZIFSFVHGB5FNS27MVO
+  evidence:
+  - kind: contract
+    subject: CCZMYMCF5DUSV37J3TGXSLUUG7UAV6ZSL5PJI4TVAISJQUK3TXJHUXFU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCZMYMCF5DUSV37J3TGXSLUUG7UAV6ZSL5PJI4TVAISJQUK3TXJHUXFU
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/README.md
+  - kind: account
+    subject: GAGYXHI7SEPITYE5NKJVIUAID3TH3FTFCIK4NP54JG4ZZ6EYVKXQU2IE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAGYXHI7SEPITYE5NKJVIUAID3TH3FTFCIK4NP54JG4ZZ6EYVKXQU2IE
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/README.md
+  - kind: account
+    subject: GBWP7NA2OHXQJDBFPSDB4KFSUTZ7CJSLKWGCPTGQZP7FFCHQDA6XKEJY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBWP7NA2OHXQJDBFPSDB4KFSUTZ7CJSLKWGCPTGQZP7FFCHQDA6XKEJY
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/README.md
+  - kind: account
+    subject: GD4VJVJF4RP54AAKXCGXM5TDCJCZGXHHAMAMXYTMC3TYOKHHBK3D2IGO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD4VJVJF4RP54AAKXCGXM5TDCJCZGXHHAMAMXYTMC3TYOKHHBK3D2IGO
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/README.md
+  - kind: account
+    subject: GD72CVZGWJOFW7Q5CTETD7X3WG7G6DIMVBHJLF5KVMGHY4BDEHPPASEO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GD72CVZGWJOFW7Q5CTETD7X3WG7G6DIMVBHJLF5KVMGHY4BDEHPPASEO
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/README.md
+  - kind: account
+    subject: GDUC64NXNM7F7XHSLFUYWBEZHCICGVKMAV7UU7ZIFSFVHGB5FNS27MVO
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUC64NXNM7F7XHSLFUYWBEZHCICGVKMAV7UU7ZIFSFVHGB5FNS27MVO
+    file_url: https://github.com/recentlyhatched/indexify-mvp/blob/HEAD/web/.env.example
+contributors:
+- login: Malika7188
+  contributions: 7

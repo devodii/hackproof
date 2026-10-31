@@ -1,0 +1,311 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/agamafinance/agama-stellar
+repo_url: https://github.com/agamafinance/agama-stellar
+name: agama-stellar
+description: 'Make tokenized assets productive on Stellar: deposit the stock, get more of it back. Soroban, a Blend credit
+  market, RedStone prices verified on chain.'
+homepage: https://app.agama.finance
+language: Rust
+created_at: '2026-10-25T14:45:06Z'
+owner: agamafinance
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 60
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.4.1
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/web/package.json
+chain:
+  contracts: 43
+  wasm_uploads: 12
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA3K7DVV6T77AD6A2CFPFJW2BDTHM2NV7DO73ZYJNMCQFQNDKSEJHL4Q
+  - GAA4CX7FG7NLFIUZNIUFSFD45QERCYN7IEGYWAL4CN2GVIE325F3UREB
+  - GAELN4RPZ5RVSFQ5ZITLJ23PFDUM2PZETM4J4D7YCFB2CR4QH7N6SZIR
+  - GBLCCGCWOJ6QFZ3K6RKWOKWQNUF42UGGHPVOXHD3MMFHLH7KVQA5JXXX
+  - GBRTAI652CMHCAFC6GCYXASWFM2GR7DNRF5QUYA643YGUT3FUAK6GXE4
+  - GDMPEO45L57UEWUKNTNVJLBRL2QIRI5UA4KUU2G2NJGFUITRXHLQPUJW
+  - GDO5A2RQWMG7JEEYS75HSG7RUKCZ5DJ2FTJEQATZKYQWBW5XDWPCKE5C
+  - GDXWD3Q3VZ7RYQLFNPEZWENOLSVOSEQGB4AYFYLP7WKJXCLEFFHKVVRF
+  evidence:
+  - kind: contract
+    subject: CAE44AI7UDNLTBZZJXJGFMZL25VWNTSWCMTD4BQLKAK2ZRU47ROV2X4K
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAE44AI7UDNLTBZZJXJGFMZL25VWNTSWCMTD4BQLKAK2ZRU47ROV2X4K
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAFX42KAN2FIS4ZUR6PZD53ZSGPDME4TLBVMDVBQOUG6VTHWPOOBVY53
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAFX42KAN2FIS4ZUR6PZD53ZSGPDME4TLBVMDVBQOUG6VTHWPOOBVY53
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAH4TV2YO3SQ4KEVEQEUKFDDHHDCVDWBGLBGXFF6C5ZPYF7HH5GXVE4Y
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAH4TV2YO3SQ4KEVEQEUKFDDHHDCVDWBGLBGXFF6C5ZPYF7HH5GXVE4Y
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CAJWQP6AK2LDCYVOVSBEJO4S3DWB65YFMMGAZHMNKB2FSHTYQFLUXJRJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAJWQP6AK2LDCYVOVSBEJO4S3DWB65YFMMGAZHMNKB2FSHTYQFLUXJRJ
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CAM5ATFUBP3M5DEWZM5XXZ4N7MZCEWYDEAGZ3OUCFRHHPWAGR3CL2TOA
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAM5ATFUBP3M5DEWZM5XXZ4N7MZCEWYDEAGZ3OUCFRHHPWAGR3CL2TOA
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CANWFYTMGRBRWDS65CY3CLHC5YHMLJPPSHNUOXWL5R76A6WSCJV6EOEI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CANWFYTMGRBRWDS65CY3CLHC5YHMLJPPSHNUOXWL5R76A6WSCJV6EOEI
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAODLZQTURUJXONHROU3Y4YOUMWPZQDSO4ZXNFPNYJKCW2YGQK7JUKIS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAODLZQTURUJXONHROU3Y4YOUMWPZQDSO4ZXNFPNYJKCW2YGQK7JUKIS
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CASS56APDOL6RPC46QBK72SMAVZ3CMV3U4RQL74LXO5K3KHXXHQG23K6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CASS56APDOL6RPC46QBK72SMAVZ3CMV3U4RQL74LXO5K3KHXXHQG23K6
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CAT7PIXJBRPMANBDGJTYHJL3VERMBZN4LRJUEFCUUVI75SPL3RB2BOSN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAT7PIXJBRPMANBDGJTYHJL3VERMBZN4LRJUEFCUUVI75SPL3RB2BOSN
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAV7BDKUZYUHURG2XXWFAFCKCIXUJFKCGIPYK2GBWM4H4L456YXLK3XJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAV7BDKUZYUHURG2XXWFAFCKCIXUJFKCGIPYK2GBWM4H4L456YXLK3XJ
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CAVD2C3UY2VA34DHIBURFNWURRNH6TJAVWXE7DMJ25W6OBLTTGTQBVXP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAVD2C3UY2VA34DHIBURFNWURRNH6TJAVWXE7DMJ25W6OBLTTGTQBVXP
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CAZ7NGALDYHZYPFJGSVWSTQWGCI7ESFJWWXQRCYHR4CDVFINGLXTKM5U
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAZ7NGALDYHZYPFJGSVWSTQWGCI7ESFJWWXQRCYHR4CDVFINGLXTKM5U
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CB2OIETJJCENDYJPSSLQTQ7T2HLME2ZB4VYFMBKQBDOFQWKOJKELVT4L
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB2OIETJJCENDYJPSSLQTQ7T2HLME2ZB4VYFMBKQBDOFQWKOJKELVT4L
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBGAXN64LLWVSRKA5DKMYPGFVS5IFD6MGPCXJYSMSKE2AITQR6YOUUJC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBGAXN64LLWVSRKA5DKMYPGFVS5IFD6MGPCXJYSMSKE2AITQR6YOUUJC
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBHO3BGY7E3JJDARJ5NLSA2VXXH27XB5QKYEVQMR3RQITNTVAVVB23DI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBHO3BGY7E3JJDARJ5NLSA2VXXH27XB5QKYEVQMR3RQITNTVAVVB23DI
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBI4Z3PHV6EIM4HD7APIUCKDPCXSGFJEMGQNXLBN7SCQIBU77TPORN73
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBI4Z3PHV6EIM4HD7APIUCKDPCXSGFJEMGQNXLBN7SCQIBU77TPORN73
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBII6GNCM77NSQXNZS2XM3K6MNQYTAINJ3MMKNJBFIHY6SNLVODUDYZB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBII6GNCM77NSQXNZS2XM3K6MNQYTAINJ3MMKNJBFIHY6SNLVODUDYZB
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBJJL3Q6PJXOCS2DMX2MNT2FFLS27NVFNVWT3O4KKJLPAH7QA6NNKVY2
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBJJL3Q6PJXOCS2DMX2MNT2FFLS27NVFNVWT3O4KKJLPAH7QA6NNKVY2
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CBK5PMPDKBQASODDINEG2N5GZ2BMZH6RH2M4F4WPVV4ZNOHJAQULZAVC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBK5PMPDKBQASODDINEG2N5GZ2BMZH6RH2M4F4WPVV4ZNOHJAQULZAVC
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CBLTILNRY6UYM6SHOXLJ26IR7BA3FMLL3ASF5IQV24NZAM4NASNEUULK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBLTILNRY6UYM6SHOXLJ26IR7BA3FMLL3ASF5IQV24NZAM4NASNEUULK
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CBT6PZFSMT7D6K7L25QRFXACF7U5EHZA7II7KIOR7FREF3XB2SAZYAFD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBT6PZFSMT7D6K7L25QRFXACF7U5EHZA7II7KIOR7FREF3XB2SAZYAFD
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CBTNXB4KM4UKW25Z6UF22FOABSYS6AFJP34Y4DXBCLIQNYVPK255PJ6M
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTNXB4KM4UKW25Z6UF22FOABSYS6AFJP34Y4DXBCLIQNYVPK255PJ6M
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CBVYYQLKB2AZHH26LV4YPH4IWMHR64C7SKA2LP4N32JT23OSXFOA4IU7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBVYYQLKB2AZHH26LV4YPH4IWMHR64C7SKA2LP4N32JT23OSXFOA4IU7
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CC6JB2YE4Y44RY3DUTSBNQDA4FEZ4ZUK5PGQCI3O3TQNMG2BZTH6TG47
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6JB2YE4Y44RY3DUTSBNQDA4FEZ4ZUK5PGQCI3O3TQNMG2BZTH6TG47
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CC6PTYWO3RUIIW6N2PEQNUKJN5G4VNYTUTON5ACDVQKGTKAN5ZXEEFN5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6PTYWO3RUIIW6N2PEQNUKJN5G4VNYTUTON5ACDVQKGTKAN5ZXEEFN5
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCCCRA67FLW75ZXB3TCPKIHCVU4EMX2OW6B62ZQWZIY6ZF4VY4IUPRIJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCCCRA67FLW75ZXB3TCPKIHCVU4EMX2OW6B62ZQWZIY6ZF4VY4IUPRIJ
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCCKJXVYH7WWICFN4LGTWBEGTHCM7DPNSD4APEEF23DGWTI5M3BKA4HP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCCKJXVYH7WWICFN4LGTWBEGTHCM7DPNSD4APEEF23DGWTI5M3BKA4HP
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CCCYGJTBIXYUYEPHHKHPRBW7WDGKDGCKNYZXLLRZ5BDL7ZMU7VHB6VHS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCCYGJTBIXYUYEPHHKHPRBW7WDGKDGCKNYZXLLRZ5BDL7ZMU7VHB6VHS
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCEJQFQMNSEFASLS2FQ7HMRLNBI72U54AHF343UGI45Y22S2NHHH2CJ3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCEJQFQMNSEFASLS2FQ7HMRLNBI72U54AHF343UGI45Y22S2NHHH2CJ3
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCO3ULVRN2JJNXMOMUJPXHL4GUNFO62PKQCQGM7RWKKZX4DII6IYTGUJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCO3ULVRN2JJNXMOMUJPXHL4GUNFO62PKQCQGM7RWKKZX4DII6IYTGUJ
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCVVFPL5ZUTBEKJYS4AGRPFHLOO42TPTUMACHXBQPUW3YTZ23AIAE5GF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCVVFPL5ZUTBEKJYS4AGRPFHLOO42TPTUMACHXBQPUW3YTZ23AIAE5GF
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CCZGRSNKOU5W43HJZLO3KN6B4U5QIQ6IET6DT3MSL7MGYFPQAD7AG22O
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCZGRSNKOU5W43HJZLO3KN6B4U5QIQ6IET6DT3MSL7MGYFPQAD7AG22O
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CCZKFKOXZINGQG7W7R6USJS3SPUSDCJHIX74NWCWC7KIO7DWLF4NSTTN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCZKFKOXZINGQG7W7R6USJS3SPUSDCJHIX74NWCWC7KIO7DWLF4NSTTN
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CD5IKHINGOCVAOZPWD4R5R7FVAAZBCZOVQJVGIGI7XMYESK3CVGUVDSL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD5IKHINGOCVAOZPWD4R5R7FVAAZBCZOVQJVGIGI7XMYESK3CVGUVDSL
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/README.md
+  - kind: contract
+    subject: CDBRLCTAU5LT75EV5YZPXZZYRSR264243YRBXSEVCUIOYEK7LIVYA3B7
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDBRLCTAU5LT75EV5YZPXZZYRSR264243YRBXSEVCUIOYEK7LIVYA3B7
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDFZ5K3DOCZDVYRPCPHBGWFL5R35JL6K7ZEUYA4KCS762ZZXOHIA2ALP
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDFZ5K3DOCZDVYRPCPHBGWFL5R35JL6K7ZEUYA4KCS762ZZXOHIA2ALP
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDKPMO4HEI3SHTJRHGRPWKEQL4ZO7MPLNYHLBPV4VYK3MSMZAB2Y57OS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDKPMO4HEI3SHTJRHGRPWKEQL4ZO7MPLNYHLBPV4VYK3MSMZAB2Y57OS
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDUE6CG3LCSFIYXKWDT5CEAEL6AGVLUYYGTBZ23VJ5BIT7O2OAX3GHPC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDUE6CG3LCSFIYXKWDT5CEAEL6AGVLUYYGTBZ23VJ5BIT7O2OAX3GHPC
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDVH5VMW2F26KOTHHHSSW7LDZP7JWOXOE2IEUCIMWVHUNCHMI4VZEOHB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDVH5VMW2F26KOTHHHSSW7LDZP7JWOXOE2IEUCIMWVHUNCHMI4VZEOHB
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDVOLTKASKFLTMZEDN6KSTZZV2UZOOPL5CDLLNK573OO77IP6THMNAG3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDVOLTKASKFLTMZEDN6KSTZZV2UZOOPL5CDLLNK573OO77IP6THMNAG3
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDXKPKXETWJP7ZQCAQD7BKVE36A6L3O52WEMZE37FTME7UL2XHPVIIGX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDXKPKXETWJP7ZQCAQD7BKVE36A6L3O52WEMZE37FTME7UL2XHPVIIGX
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDYMFEFFPNJM4AT5CNUYJP3BYD2TX24MEU3QG4OWOL6QNK2XSLP2ZBUM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDYMFEFFPNJM4AT5CNUYJP3BYD2TX24MEU3QG4OWOL6QNK2XSLP2ZBUM
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: contract
+    subject: CDYXU3O3K3F57TY757RWPXTFJ7PJKPCOEHB57VVOO4PYI4THXZPIBZD5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDYXU3O3K3F57TY757RWPXTFJ7PJKPCOEHB57VVOO4PYI4THXZPIBZD5
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/testnet.json
+  - kind: wasm
+    subject: 31328050548831f63d2b72e37bcfd0bb7371b7907135755dbe09ed434d755ca9
+    method: wasm_hash_match
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/vendor/blend_pool_factory.wasm
+  - kind: wasm
+    subject: a41fc53d6753b6c04eb15b021c55052366a4c8e0e21bc72700f461264ec1350e
+    method: wasm_hash_match
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/vendor/blend_pool.wasm
+  - kind: wasm
+    subject: bf7adb09076853eb3aa569278754111d86e161e35e7dc6a984ecde2b9d6700ae
+    method: wasm_hash_match
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/vendor/comet_factory.wasm
+  - kind: wasm
+    subject: c1f4502a757e25c611f5a159bc1ab0eef64085adac6c68123dca66e87faffbc2
+    method: wasm_hash_match
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/vendor/backstop.wasm
+  - kind: account
+    subject: GA3K7DVV6T77AD6A2CFPFJW2BDTHM2NV7DO73ZYJNMCQFQNDKSEJHL4Q
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA3K7DVV6T77AD6A2CFPFJW2BDTHM2NV7DO73ZYJNMCQFQNDKSEJHL4Q
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+  - kind: account
+    subject: GAA4CX7FG7NLFIUZNIUFSFD45QERCYN7IEGYWAL4CN2GVIE325F3UREB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAA4CX7FG7NLFIUZNIUFSFD45QERCYN7IEGYWAL4CN2GVIE325F3UREB
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+  - kind: account
+    subject: GAELN4RPZ5RVSFQ5ZITLJ23PFDUM2PZETM4J4D7YCFB2CR4QH7N6SZIR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAELN4RPZ5RVSFQ5ZITLJ23PFDUM2PZETM4J4D7YCFB2CR4QH7N6SZIR
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+  - kind: account
+    subject: GBLCCGCWOJ6QFZ3K6RKWOKWQNUF42UGGHPVOXHD3MMFHLH7KVQA5JXXX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBLCCGCWOJ6QFZ3K6RKWOKWQNUF42UGGHPVOXHD3MMFHLH7KVQA5JXXX
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+  - kind: account
+    subject: GDMPEO45L57UEWUKNTNVJLBRL2QIRI5UA4KUU2G2NJGFUITRXHLQPUJW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDMPEO45L57UEWUKNTNVJLBRL2QIRI5UA4KUU2G2NJGFUITRXHLQPUJW
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+  - kind: account
+    subject: GDO5A2RQWMG7JEEYS75HSG7RUKCZ5DJ2FTJEQATZKYQWBW5XDWPCKE5C
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDO5A2RQWMG7JEEYS75HSG7RUKCZ5DJ2FTJEQATZKYQWBW5XDWPCKE5C
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+  - kind: account
+    subject: GDXWD3Q3VZ7RYQLFNPEZWENOLSVOSEQGB4AYFYLP7WKJXCLEFFHKVVRF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDXWD3Q3VZ7RYQLFNPEZWENOLSVOSEQGB4AYFYLP7WKJXCLEFFHKVVRF
+    file_url: https://github.com/agamafinance/agama-stellar/blob/HEAD/deployments/positions.json
+contributors:
+- login: dyonisos100
+  contributions: 62

@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Pythagoras-x/GateFlow
+repo_url: https://github.com/Pythagoras-x/GateFlow
+name: GateFlow
+description: Employee attendance & visitor management on Stellar. Merkle-anchored attendance proofs and Soroban-powered visitor
+  passes, with zero personal data on-chain.
+language: TypeScript
+license: MIT
+created_at: '2026-10-15T15:40:59Z'
+owner: Pythagoras-x
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 19
+stack:
+  soroban-sdk: 22.0.11
+  '@stellar/stellar-sdk': ^17.4.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: Pythagoras-x
+  contributions: 28

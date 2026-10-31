@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/infoenzastore-cmd/enza
+repo_url: https://github.com/infoenzastore-cmd/enza
+name: enza
+language: HTML
+created_at: '2026-10-25T15:04:51Z'
+owner: infoenzastore-cmd
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 14
+stack:
+  '@stellar/stellar-sdk': ^16.0.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 1
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GC4WBX5KJPBFPOBXS7RJTKO5ISYDBP7GZY7JJGS6GC7737A7LD6HGKFM
+  evidence:
+  - kind: account
+    subject: GC4WBX5KJPBFPOBXS7RJTKO5ISYDBP7GZY7JJGS6GC7737A7LD6HGKFM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC4WBX5KJPBFPOBXS7RJTKO5ISYDBP7GZY7JJGS6GC7737A7LD6HGKFM
+    file_url: https://github.com/infoenzastore-cmd/enza/blob/HEAD/test/server.test.js
+contributors:
+- login: infoenzastore-cmd
+  contributions: 14

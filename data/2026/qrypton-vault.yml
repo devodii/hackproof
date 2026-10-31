@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/osdeniz/qrypton-vault
+repo_url: https://github.com/osdeniz/qrypton-vault
+name: qrypton-vault
+description: Qrypton Vault — Post-Quantum Institutional Custody On Stellar
+language: Rust
+topics:
+- custody
+- post-quantum-cryptography
+- stellar
+created_at: '2026-10-25T20:04:07Z'
+owner: osdeniz
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 25
+stack:
+  soroban-sdk: null
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: osdeniz
+  contributions: 25

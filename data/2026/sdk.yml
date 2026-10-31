@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/StellarAid-network/sdk
+repo_url: https://github.com/StellarAid-network/sdk
+name: sdk
+language: TypeScript
+license: MIT
+created_at: '2026-10-14T11:45:56Z'
+owner: StellarAid-network
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 4
+stack:
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCFGKLCBV5IGJYGRR7FJNU53HFV5674PMQNNJT6HRAFGUAHZ7V3ZELXR
+  evidence:
+  - kind: account
+    subject: GCFGKLCBV5IGJYGRR7FJNU53HFV5674PMQNNJT6HRAFGUAHZ7V3ZELXR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCFGKLCBV5IGJYGRR7FJNU53HFV5674PMQNNJT6HRAFGUAHZ7V3ZELXR
+    file_url: https://github.com/StellarAid-network/sdk/blob/HEAD/test/contracts.test.ts
+contributors:
+- login: aristotle224
+  contributions: 25

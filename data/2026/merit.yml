@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/don-radman/merit
+repo_url: https://github.com/don-radman/merit
+name: merit
+homepage: https://merit-sable.vercel.app
+language: HTML
+created_at: '2026-10-26T02:56:45Z'
+owner: don-radman
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 53
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 30
+  wasm_uploads: 8
+  classic_ops: 54
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GA7NPGYR5C2ZP4XM4RPQXSCWO2XRFAPH3YFJUIJAAMWG3WJO6GUXT4YZ
+  - GCJWYYAIFV2OMODQRXO5N3DUOZYNSTM2DKWVYVU5DL357AKNFXKBUFI4
+  - GCNFZPZIV2OFKLKM3G7CO7G4X4NXTYCX3ZPLM3C325FE7DDVIHZBXRCR
+  - GCPV3HCDPSVLNAJ6JD4SBWMW6CAS65FLSEQXOC5IQ7WPLS76SZDYMYBC
+  - GDWFHBUTHVKK4REH4Y5WGW7JKXKSWHZRSV66TXSPINBZUCOIKAMNMFEB
+  evidence:
+  - kind: contract
+    subject: CAGT434JHKHHBVENOHNB4FX6NYUMDHTWUPJGK3VDPGATC5PBAYHKFBKU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAGT434JHKHHBVENOHNB4FX6NYUMDHTWUPJGK3VDPGATC5PBAYHKFBKU
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/NOTES.md
+  - kind: contract
+    subject: CAX3QU5ZIJG4KZSDJRRXGJDX2252DVMJ27673XYTNTTO334XJYP25ONS
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAX3QU5ZIJG4KZSDJRRXGJDX2252DVMJ27673XYTNTTO334XJYP25ONS
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: contract
+    subject: CB45BGTIVC256HCUFHY2D42UI3XA2TG2HH3HUTIBZH56SNRWCSEZJWU4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB45BGTIVC256HCUFHY2D42UI3XA2TG2HH3HUTIBZH56SNRWCSEZJWU4
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: contract
+    subject: CBG7RUBLJTIDEY2CQNW2OV2NRRL2LNUQ753DH7IHLHAVVDZTPFMDVQQC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBG7RUBLJTIDEY2CQNW2OV2NRRL2LNUQ753DH7IHLHAVVDZTPFMDVQQC
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/NOTES.md
+  - kind: contract
+    subject: CC6RQUT2FCWQS26ESG3TL4MG2TPPXGUTTSCPV4KOVBRD3OCCOG7FRA7C
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6RQUT2FCWQS26ESG3TL4MG2TPPXGUTTSCPV4KOVBRD3OCCOG7FRA7C
+    file_url: https://github.com/don-radman/merit/blob/HEAD/src/bindings/introducer-rails/README.md
+  - kind: contract
+    subject: CCDOLC5SK5IUSSLBRKQEPMDUGTWU4M35CRV25PHSJ4NC6MSBDH5UUTCM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCDOLC5SK5IUSSLBRKQEPMDUGTWU4M35CRV25PHSJ4NC6MSBDH5UUTCM
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/NOTES.md
+  - kind: contract
+    subject: CCXDZXDL6KHPB2EBTK7COJ2DFLCYOGE3B2IA5K4RCPW7UZ7DIT4EOTUW
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCXDZXDL6KHPB2EBTK7COJ2DFLCYOGE3B2IA5K4RCPW7UZ7DIT4EOTUW
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: contract
+    subject: CD55RTP347AHOKTC57QRHNTTXDIST7Q3UITD5VEJXWTWX73DD6Y2TEGH
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD55RTP347AHOKTC57QRHNTTXDIST7Q3UITD5VEJXWTWX73DD6Y2TEGH
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: contract
+    subject: CDENXKDNNRLQ7F3C7VI3EWFPJBUMO5L6BDV2CZE6LSCP47G5JUGTPJT4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDENXKDNNRLQ7F3C7VI3EWFPJBUMO5L6BDV2CZE6LSCP47G5JUGTPJT4
+    file_url: https://github.com/don-radman/merit/blob/HEAD/DEMO.md
+  - kind: contract
+    subject: CDHJYRAMWXJXNSSA36YIZFSMPWRBDN2KLLEY5KWLOS2P2JXKXIDSN3YX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDHJYRAMWXJXNSSA36YIZFSMPWRBDN2KLLEY5KWLOS2P2JXKXIDSN3YX
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: account
+    subject: GA7NPGYR5C2ZP4XM4RPQXSCWO2XRFAPH3YFJUIJAAMWG3WJO6GUXT4YZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA7NPGYR5C2ZP4XM4RPQXSCWO2XRFAPH3YFJUIJAAMWG3WJO6GUXT4YZ
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: account
+    subject: GCJWYYAIFV2OMODQRXO5N3DUOZYNSTM2DKWVYVU5DL357AKNFXKBUFI4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCJWYYAIFV2OMODQRXO5N3DUOZYNSTM2DKWVYVU5DL357AKNFXKBUFI4
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/NOTES.md
+  - kind: account
+    subject: GCNFZPZIV2OFKLKM3G7CO7G4X4NXTYCX3ZPLM3C325FE7DDVIHZBXRCR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCNFZPZIV2OFKLKM3G7CO7G4X4NXTYCX3ZPLM3C325FE7DDVIHZBXRCR
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: account
+    subject: GCPV3HCDPSVLNAJ6JD4SBWMW6CAS65FLSEQXOC5IQ7WPLS76SZDYMYBC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCPV3HCDPSVLNAJ6JD4SBWMW6CAS65FLSEQXOC5IQ7WPLS76SZDYMYBC
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+  - kind: account
+    subject: GDWFHBUTHVKK4REH4Y5WGW7JKXKSWHZRSV66TXSPINBZUCOIKAMNMFEB
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDWFHBUTHVKK4REH4Y5WGW7JKXKSWHZRSV66TXSPINBZUCOIKAMNMFEB
+    file_url: https://github.com/don-radman/merit/blob/HEAD/contracts/SPIKE.md
+contributors:
+- login: Yomanz
+  contributions: 34
+- login: don-radman
+  contributions: 18
+- login: claude
+  contributions: 1

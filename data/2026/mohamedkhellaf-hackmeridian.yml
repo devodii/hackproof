@@ -1,0 +1,194 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/mohamedkhellaf/hackmeridian
+repo_url: https://github.com/mohamedkhellaf/hackmeridian
+name: hackmeridian
+homepage: https://hackmeridian-psi.vercel.app
+language: Rust
+created_at: '2026-10-25T10:00:47Z'
+owner: mohamedkhellaf
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 100
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.3.0
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/frontend/package.json
+chain:
+  contracts: 11
+  wasm_uploads: 9
+  classic_ops: 77
+  assets: 4
+  failed_txs: 0
+  accounts:
+  - GAE6ONGU5S3JHDBR5Z3BUVXCL4WLEHQVLBDNTCKHKOYFBYBPBW4IARFS
+  - GAJ2RZUNJM6VEZWBZJRZWQ5ZG5OCN7LKN2CJMKE2MJRER52IF2UAVC7G
+  - GAP7GDJ372IX2VTGCBIYAS3H3YIGGKH623FGLWCFPSD6INFBFQUB4VPA
+  - GAXXQZK5RJRZZH3QDMVWFBRWL45CWHZZZXI4PQSAVPAWKILQJYHBJAR5
+  - GB4DQXEYIHCDLOU7AAVC42LWYVGOC5QFN3X43UJ4AOWUVV5M36UUUUCF
+  - GBMOPIHIXTPORA3HFGBKQKTZLJWTUYALVSN3QXH647UQFJIOQ3KSZO44
+  - GBSSG6NHV3DCGYYHPUYWVVZSHADIAU2BXQ6YYRXKAAUXXGVWTZXLC646
+  - GBVPEL6MT4IZ4XL5J7TTMB3GND7TPRS54KOJTUFCUOVFVFPZKE5HDA73
+  - GC27F4643RPJT6WCZUD5AFC3PCXRZNE3FGNOBCBOSTGFC37IVVSD55ZE
+  - GC7ZMEB7HIPST7PWNQLIG6I5N3VZD3UG7VFOOPCZBJ7JWKCENCEK5NAY
+  - GCNWQR5OA24X7LPTCXUEL4V4ZLSIFKUNIEZEO3UVCVXECPPGX7ERFDGM
+  - GCUCZAJCRKM6GQSLH5K26YGQZLORAQLRK7VO3YPN45IGDUWKHCRJSYU2
+  - GDNPA7N3WIUJLR6TJ2Z2EO3MXFWWZPN4D6P2L4YHSX3M4PZVTKMWDJCI
+  - GDY257DGQREP4NLM2DF2YUS5M2VHRW3JNDK2YYHZP55SMW3FMAUHZUVN
+  evidence:
+  - kind: contract
+    subject: CAIKMS2B4ATWKOKW7BLWQB7Z4JASPZC4EKZ3XL72N7OYSSKKHKW4GKY6
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAIKMS2B4ATWKOKW7BLWQB7Z4JASPZC4EKZ3XL72N7OYSSKKHKW4GKY6
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/README.md
+  - kind: contract
+    subject: CAJ2WJP4CUM2GGRB2A5P2M2H5GI45CTZSECV7SL3RTQMGYEKZ7ZDGBAX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAJ2WJP4CUM2GGRB2A5P2M2H5GI45CTZSECV7SL3RTQMGYEKZ7ZDGBAX
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-abi.md
+  - kind: contract
+    subject: CAMY4ZKY7JLKZMONDOTVHDSXWLMDSLERFS7YJEH5JYZDIKV5HOAT2KRJ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAMY4ZKY7JLKZMONDOTVHDSXWLMDSLERFS7YJEH5JYZDIKV5HOAT2KRJ
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-abi.md
+  - kind: contract
+    subject: CBASUA3LJEZ6G66V2JTB4OHQCHUIH5EK2ZPMLY73GTIBBDZ6JLRMJUEE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBASUA3LJEZ6G66V2JTB4OHQCHUIH5EK2ZPMLY73GTIBBDZ6JLRMJUEE
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-abi.md
+  - kind: contract
+    subject: CBRTUM4NF5P5ENYSPPOTT3NMRCPT65QSKMD2BB3AJPLU2C4YCFOCMSQC
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBRTUM4NF5P5ENYSPPOTT3NMRCPT65QSKMD2BB3AJPLU2C4YCFOCMSQC
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-abi.md
+  - kind: contract
+    subject: CBZNS63L23N3Y3GHU6H57AU6OVZ3FOAPM7Z54ATDRC472Q5DWV6UVKCN
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBZNS63L23N3Y3GHU6H57AU6OVZ3FOAPM7Z54ATDRC472Q5DWV6UVKCN
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/README.md
+  - kind: contract
+    subject: CC6AI7AKKEVSXH3QQF7HBXZNIBS4ACFP2UQLXG3WOAZ5VDFCTXVFPWNK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC6AI7AKKEVSXH3QQF7HBXZNIBS4ACFP2UQLXG3WOAZ5VDFCTXVFPWNK
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-abi.md
+  - kind: contract
+    subject: CCLESNOFSQRXIURARMBB35F6DVOQHW2LX5OUABQTWWJWLPY2D5UUAAIW
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCLESNOFSQRXIURARMBB35F6DVOQHW2LX5OUABQTWWJWLPY2D5UUAAIW
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: contract
+    subject: CDFMHZYILFD7O7G2JWVHR222WWFVA5DSSZDOJY7RIXX674WKQV2NSDKT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDFMHZYILFD7O7G2JWVHR222WWFVA5DSSZDOJY7RIXX674WKQV2NSDKT
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: contract
+    subject: CDRS3BBFHUTB66OBP6Z3744QM7C7XDXLV5ZJ5URSFTAQMBJQCMZTL673
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDRS3BBFHUTB66OBP6Z3744QM7C7XDXLV5ZJ5URSFTAQMBJQCMZTL673
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-abi.md
+  - kind: wasm
+    subject: 074a4ed4d7eb3e52011edaad8297f2cd95083decad2a9d37aa74c1e9a8837071
+    method: wasm_meta
+  - kind: wasm
+    subject: 437de9d56a05c84774bcb0811252c3b62980c1abe82b3a37fa2fd26566ef4e57
+    method: wasm_meta
+  - kind: wasm
+    subject: 5f3d6a6ce82a6a2d7fe910aa5ca6f6edce993d2678b2f2245b52207aff3a5a2b
+    method: wasm_meta
+  - kind: wasm
+    subject: 64ab726516d9dff13921dacb197f786dca1aa64f6ae62f33f10f902fcea62de8
+    method: wasm_meta
+  - kind: wasm
+    subject: 8778dc772bcde8e5727d58d4db0e02c73cded318af8a599dec47e68ba1de422f
+    method: wasm_meta
+  - kind: wasm
+    subject: acecb2f278e27d7366c47d73e35d2bcbe923185cd0669765f1f594d7499a354b
+    method: wasm_meta
+  - kind: wasm
+    subject: fdd6fc161533586d07779b4455dfd4f33cd17b21ecff282e63236a84f59697e6
+    method: wasm_meta
+  - kind: account
+    subject: GAE6ONGU5S3JHDBR5Z3BUVXCL4WLEHQVLBDNTCKHKOYFBYBPBW4IARFS
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAE6ONGU5S3JHDBR5Z3BUVXCL4WLEHQVLBDNTCKHKOYFBYBPBW4IARFS
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/README.md
+  - kind: account
+    subject: GAJ2RZUNJM6VEZWBZJRZWQ5ZG5OCN7LKN2CJMKE2MJRER52IF2UAVC7G
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAJ2RZUNJM6VEZWBZJRZWQ5ZG5OCN7LKN2CJMKE2MJRER52IF2UAVC7G
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+  - kind: account
+    subject: GAP7GDJ372IX2VTGCBIYAS3H3YIGGKH623FGLWCFPSD6INFBFQUB4VPA
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAP7GDJ372IX2VTGCBIYAS3H3YIGGKH623FGLWCFPSD6INFBFQUB4VPA
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: account
+    subject: GAXXQZK5RJRZZH3QDMVWFBRWL45CWHZZZXI4PQSAVPAWKILQJYHBJAR5
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAXXQZK5RJRZZH3QDMVWFBRWL45CWHZZZXI4PQSAVPAWKILQJYHBJAR5
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: account
+    subject: GB4DQXEYIHCDLOU7AAVC42LWYVGOC5QFN3X43UJ4AOWUVV5M36UUUUCF
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB4DQXEYIHCDLOU7AAVC42LWYVGOC5QFN3X43UJ4AOWUVV5M36UUUUCF
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+  - kind: account
+    subject: GBMOPIHIXTPORA3HFGBKQKTZLJWTUYALVSN3QXH647UQFJIOQ3KSZO44
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBMOPIHIXTPORA3HFGBKQKTZLJWTUYALVSN3QXH647UQFJIOQ3KSZO44
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+  - kind: account
+    subject: GBSSG6NHV3DCGYYHPUYWVVZSHADIAU2BXQ6YYRXKAAUXXGVWTZXLC646
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBSSG6NHV3DCGYYHPUYWVVZSHADIAU2BXQ6YYRXKAAUXXGVWTZXLC646
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+  - kind: account
+    subject: GBVPEL6MT4IZ4XL5J7TTMB3GND7TPRS54KOJTUFCUOVFVFPZKE5HDA73
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBVPEL6MT4IZ4XL5J7TTMB3GND7TPRS54KOJTUFCUOVFVFPZKE5HDA73
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+  - kind: account
+    subject: GC27F4643RPJT6WCZUD5AFC3PCXRZNE3FGNOBCBOSTGFC37IVVSD55ZE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC27F4643RPJT6WCZUD5AFC3PCXRZNE3FGNOBCBOSTGFC37IVVSD55ZE
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: account
+    subject: GC7ZMEB7HIPST7PWNQLIG6I5N3VZD3UG7VFOOPCZBJ7JWKCENCEK5NAY
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GC7ZMEB7HIPST7PWNQLIG6I5N3VZD3UG7VFOOPCZBJ7JWKCENCEK5NAY
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+  - kind: account
+    subject: GCNWQR5OA24X7LPTCXUEL4V4ZLSIFKUNIEZEO3UVCVXECPPGX7ERFDGM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCNWQR5OA24X7LPTCXUEL4V4ZLSIFKUNIEZEO3UVCVXECPPGX7ERFDGM
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/README.md
+  - kind: account
+    subject: GCUCZAJCRKM6GQSLH5K26YGQZLORAQLRK7VO3YPN45IGDUWKHCRJSYU2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCUCZAJCRKM6GQSLH5K26YGQZLORAQLRK7VO3YPN45IGDUWKHCRJSYU2
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: account
+    subject: GDNPA7N3WIUJLR6TJ2Z2EO3MXFWWZPN4D6P2L4YHSX3M4PZVTKMWDJCI
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDNPA7N3WIUJLR6TJ2Z2EO3MXFWWZPN4D6P2L4YHSX3M4PZVTKMWDJCI
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/docs/contract-testnet-evidence.md
+  - kind: account
+    subject: GDY257DGQREP4NLM2DF2YUS5M2VHRW3JNDK2YYHZP55SMW3FMAUHZUVN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDY257DGQREP4NLM2DF2YUS5M2VHRW3JNDK2YYHZP55SMW3FMAUHZUVN
+    file_url: https://github.com/mohamedkhellaf/hackmeridian/blob/HEAD/AGENTS.md
+contributors:
+- login: mohamedkhellaf
+  contributions: 47
+- login: Ayoub-fct
+  contributions: 44
+- login: mehdifddl
+  contributions: 9

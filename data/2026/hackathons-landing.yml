@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/defindex-io/hackathons-landing
+repo_url: https://github.com/defindex-io/hackathons-landing
+name: hackathons-landing
+description: 'hackathons.defindex.io: build with DeFindex vaults on Stellar testnet'
+homepage: https://defindex-hackathons-landing.vercel.app
+language: TypeScript
+created_at: '2026-10-25T12:32:40Z'
+owner: defindex-io
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 3
+chain:
+  contracts: 5
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBPS6MZFZBCOSDZ75HCL3QN3DSK5APBIN7UXYH7JGUSYKMUJZUFIJITC
+  evidence:
+  - kind: contract
+    subject: CAS2JNLFCUSS4QPL6323CFPRQETRGJEF5OIROE4P5IBG5VXOP7HJF23P
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAS2JNLFCUSS4QPL6323CFPRQETRGJEF5OIROE4P5IBG5VXOP7HJF23P
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/src/data.ts
+  - kind: contract
+    subject: CATJO4RHEMHZ5A3PV3KNZMCBQGTGWYKG5AQQ4A6FYFV5PN4QQE6ZRIAT
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CATJO4RHEMHZ5A3PV3KNZMCBQGTGWYKG5AQQ4A6FYFV5PN4QQE6ZRIAT
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/src/data.ts
+  - kind: contract
+    subject: CAV2UD4OIEZFICBDMIKCRMDSOEAFGUNBOIJDLBCLV5FZDEMIJILKOLBU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAV2UD4OIEZFICBDMIKCRMDSOEAFGUNBOIJDLBCLV5FZDEMIJILKOLBU
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/src/data.ts
+  - kind: contract
+    subject: CBTZLEHSQYEIR3WAGBCTPKFIIX2HGD7PJPFJDOHX5W7P3SFVGJYFZJ7D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBTZLEHSQYEIR3WAGBCTPKFIIX2HGD7PJPFJDOHX5W7P3SFVGJYFZJ7D
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/src/data.ts
+  - kind: contract
+    subject: CCYY7E4WPMS2FPPDI35T74CP2U3LJDAKA4UIXP2LN3TN5TXOJRNE67YM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCYY7E4WPMS2FPPDI35T74CP2U3LJDAKA4UIXP2LN3TN5TXOJRNE67YM
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/src/data.ts
+  - kind: contract
+    subject: CDY2C6TLNPDNETNU5Z6764MJ7WXOX7EB77YGH6HT73XCWA6ANFZJDXIF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDY2C6TLNPDNETNU5Z6764MJ7WXOX7EB77YGH6HT73XCWA6ANFZJDXIF
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/src/data.ts
+contributors:
+- login: yripper
+  contributions: 3

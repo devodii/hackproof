@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/harsxul/nomad-vault
+repo_url: https://github.com/harsxul/nomad-vault
+name: nomad-vault
+description: 'Hire anywhere. Pay without borders. USDC payroll on Stellar: smart-account treasury with on-chain spending limits,
+  contractor-owned vaults, private payments.'
+homepage: https://harsxul.github.io/nomad-vault/
+language: JavaScript
+created_at: '2026-10-25T17:42:35Z'
+owner: harsxul
+track: genesis
+track_declared: true
+evidence_tier: verified
+commits_in_window: 31
+stack:
+  '@stellar/stellar-sdk': ^14.6.1
+chain:
+  contracts: 9
+  wasm_uploads: 0
+  classic_ops: 10
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBJFVQGHKEXSQPNSGWZOJSE5SE3WGSTY5KIIXCPXTUEQMIZVIMGXF6WO
+  - GBR5APX6F6VVWAEL5MUADEJKUYCFA74KSKUFVUBTI5A737SZN5CMQRQQ
+  - GCCRJN4B4CEZOMVLU4XCSPHKJ3RFKGVQXKI5FV6OTYU4M2CRK5TI35OE
+  - GCVNTNIK7LVP7ZV26D4O6IFQCSPMVC42YLVPABAWXJOHEWE4YMY5D63A
+  - GCXG5QK5XSPCIQW2D3LDJ3IEJHJ7JFUV3T3PH6URRUCBXO3657LASJR3
+  - GDCM2KIZBRXUQJTJN4OFIPTG72XXF53BIGBABGKHRXJUMGP55WYKQHJD
+  - GDSSQ2ESYOSGZXYKIU5ZLV6MRGIFSIVUTENCXKP5CRU4MHKOFH4ZSRR4
+  - GDUXYP3FXU4TN6Z27ZIQBBP3SIAXE5H5JYTE2GXDGE2VB3IWRR5HWKVR
+  evidence:
+  - kind: contract
+    subject: CAL4OMZXICKRSDJA3SFNJMXWFYQCNGF5UXYAYNHSD5APOLYH6APDWSEQ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAL4OMZXICKRSDJA3SFNJMXWFYQCNGF5UXYAYNHSD5APOLYH6APDWSEQ
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/config/deployments.testnet.json
+  - kind: contract
+    subject: CBN3QXLCAC22MQYPGQW5UKLWQBQGVG7RMJKAEDH7GQNOTFQCCHHARQL4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBN3QXLCAC22MQYPGQW5UKLWQBQGVG7RMJKAEDH7GQNOTFQCCHHARQL4
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/config/deployments.testnet.json
+  - kind: contract
+    subject: CBQEGC3W3LQYOXVDGZOBNY2TCYPDALNXDBREUVLW4FTS7FOL352KHMBX
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBQEGC3W3LQYOXVDGZOBNY2TCYPDALNXDBREUVLW4FTS7FOL352KHMBX
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/README.md
+  - kind: contract
+    subject: CCBW5GLO53X2K5H6ACMQDNWHWJXPCWTJGE5YW6EZVVRIP3AE6QP27X22
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCBW5GLO53X2K5H6ACMQDNWHWJXPCWTJGE5YW6EZVVRIP3AE6QP27X22
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/README.md
+  - kind: contract
+    subject: CDOTGUOHQIZMIRA7WEKW4NMXH23LPPTPTOWLP6WA7ZV2AMQDUQRIME6X
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDOTGUOHQIZMIRA7WEKW4NMXH23LPPTPTOWLP6WA7ZV2AMQDUQRIME6X
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/config/deployments.testnet.json
+  - kind: account
+    subject: GBR5APX6F6VVWAEL5MUADEJKUYCFA74KSKUFVUBTI5A737SZN5CMQRQQ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBR5APX6F6VVWAEL5MUADEJKUYCFA74KSKUFVUBTI5A737SZN5CMQRQQ
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/server/demo-data.json
+  - kind: account
+    subject: GCCRJN4B4CEZOMVLU4XCSPHKJ3RFKGVQXKI5FV6OTYU4M2CRK5TI35OE
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCCRJN4B4CEZOMVLU4XCSPHKJ3RFKGVQXKI5FV6OTYU4M2CRK5TI35OE
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/server/demo-data.json
+  - kind: account
+    subject: GCVNTNIK7LVP7ZV26D4O6IFQCSPMVC42YLVPABAWXJOHEWE4YMY5D63A
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCVNTNIK7LVP7ZV26D4O6IFQCSPMVC42YLVPABAWXJOHEWE4YMY5D63A
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/web/src/lib/snapshot.json
+  - kind: account
+    subject: GCXG5QK5XSPCIQW2D3LDJ3IEJHJ7JFUV3T3PH6URRUCBXO3657LASJR3
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCXG5QK5XSPCIQW2D3LDJ3IEJHJ7JFUV3T3PH6URRUCBXO3657LASJR3
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/server/demo-data.json
+  - kind: account
+    subject: GDCM2KIZBRXUQJTJN4OFIPTG72XXF53BIGBABGKHRXJUMGP55WYKQHJD
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDCM2KIZBRXUQJTJN4OFIPTG72XXF53BIGBABGKHRXJUMGP55WYKQHJD
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/server/demo-data.json
+  - kind: account
+    subject: GDSSQ2ESYOSGZXYKIU5ZLV6MRGIFSIVUTENCXKP5CRU4MHKOFH4ZSRR4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDSSQ2ESYOSGZXYKIU5ZLV6MRGIFSIVUTENCXKP5CRU4MHKOFH4ZSRR4
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/server/demo-data.json
+  - kind: account
+    subject: GDUXYP3FXU4TN6Z27ZIQBBP3SIAXE5H5JYTE2GXDGE2VB3IWRR5HWKVR
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDUXYP3FXU4TN6Z27ZIQBBP3SIAXE5H5JYTE2GXDGE2VB3IWRR5HWKVR
+    file_url: https://github.com/harsxul/nomad-vault/blob/HEAD/server/demo-data.json
+contributors:
+- login: harsxul
+  contributions: 26
+- login: Karinapostemp
+  contributions: 10

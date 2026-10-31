@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/forepay-stellar/forepay
+repo_url: https://github.com/forepay-stellar/forepay
+name: forepay
+homepage: https://forepay-nu.vercel.app
+language: TypeScript
+license: AGPL-3.0
+created_at: '2026-10-04T11:28:04Z'
+owner: forepay-stellar
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 6
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^14.6.1
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/forepay-stellar/forepay/blob/HEAD/fe/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA2CD6PMHMBTCFAQDO3R22BSZN5ZSVTAKVNOKXL2SONZBLGRAYIOWWH2
+  evidence:
+  - kind: wasm
+    subject: 481e7f163ba3867b0e9bf48a36a983650a28a216f45c314fb21c94e9c4186696
+    method: wasm_meta
+  - kind: account
+    subject: GA2CD6PMHMBTCFAQDO3R22BSZN5ZSVTAKVNOKXL2SONZBLGRAYIOWWH2
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA2CD6PMHMBTCFAQDO3R22BSZN5ZSVTAKVNOKXL2SONZBLGRAYIOWWH2
+    file_url: https://github.com/forepay-stellar/forepay/blob/HEAD/docs/deployments.md
+contributors:
+- login: Lexirieru
+  contributions: 29
+- login: Lin1er
+  contributions: 12
+- login: AncungAulia
+  contributions: 11
+- login: Nabil-Aufa
+  contributions: 8

@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/SendaLabs/SendaBussines
+repo_url: https://github.com/SendaLabs/SendaBussines
+name: SendaBussines
+homepage: https://senda-bussines.vercel.app
+language: TypeScript
+created_at: '2026-10-25T18:42:05Z'
+owner: SendaLabs
+track: genesis
+track_declared: true
+evidence_tier: likely
+commits_in_window: 31
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^14.1.1
+  '@stellar/freighter-api': ^6.0.1
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: endpoint
+    detail: api.trustlesswork.com
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/constants.ts
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/web/package.json
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: Nicobustelo
+  contributions: 19
+- login: delfinacorr
+  contributions: 8
+- login: mlo-aa
+  contributions: 4

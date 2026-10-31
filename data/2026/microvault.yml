@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Shamba-Records-Limited/microvault
+repo_url: https://github.com/Shamba-Records-Limited/microvault
+name: microvault
+description: A headless SEP-0056 tokenized vault standard engine for microlending built on the stellar network.
+homepage: https://microvault.shambarecords.com
+language: Go
+license: AGPL-3.0
+topics:
+- golang
+- rust
+- stellar
+- sep-0056
+- typescript
+created_at: '2026-01-22T12:47:14Z'
+owner: Shamba-Records-Limited
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 6
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.2.1
+chain:
+  contracts: 0
+  wasm_uploads: 1
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GCUUFSK3P7YMFMYVA3L7LVQ7TCWJK7WUOFMXLX2HYSRCFB37ZGZD4CCX
+  evidence:
+  - kind: account
+    subject: GCUUFSK3P7YMFMYVA3L7LVQ7TCWJK7WUOFMXLX2HYSRCFB37ZGZD4CCX
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCUUFSK3P7YMFMYVA3L7LVQ7TCWJK7WUOFMXLX2HYSRCFB37ZGZD4CCX
+    file_url: https://github.com/Shamba-Records-Limited/microvault/blob/HEAD/scripts/upgrade-vault-share-pricing.sh
+contributors:
+- login: mugane-dj
+  contributions: 595
+- login: Wesley534
+  contributions: 2

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Songu3020/keepalive
+repo_url: https://github.com/Songu3020/keepalive
+name: keepalive
+description: Find Soroban contract storage entries, show how long each has left, and plan the transactions that extend them
+language: TypeScript
+license: Apache-2.0
+topics:
+- cli
+- soroban
+- state-archival
+- stellar
+- typescript
+created_at: '2026-10-27T09:40:16Z'
+owner: Songu3020
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 5
+stack:
+  '@stellar/stellar-sdk': ^17.4.0
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: Songu3020
+  contributions: 23
+- login: Techsynx
+  contributions: 3

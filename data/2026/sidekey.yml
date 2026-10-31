@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Row-Bear/sidekey
+repo_url: https://github.com/Row-Bear/sidekey
+name: sidekey
+language: TypeScript
+created_at: '2026-10-26T06:27:34Z'
+owner: Row-Bear
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 43
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.4.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Row-Bear/sidekey/blob/HEAD/web/package.json
+chain:
+  contracts: 58
+  wasm_uploads: 9
+  classic_ops: 5
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GBCIX4QSYNOWSRIONC2P63WDRQBOF3HFULSDTMPFJRTEQNOGHV3G5XXN
+  - GBLZNHTGSEEIBWUBMPJJMCCQE2ZNCCH3LSK3LZJDRHQGUWAI72Y2KKBH
+  - GDFSJ7OFK7CFF6YOSRGKQU435BXEBW5ODEU5SMD4VUNCHTQDTSPPXIVZ
+  evidence:
+  - kind: contract
+    subject: CAXEX3UHU7VQBWVPO7XVWSVQBOFNJO4HA7VUML2WWI6IH7H43WSCXXSB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAXEX3UHU7VQBWVPO7XVWSVQBOFNJO4HA7VUML2WWI6IH7H43WSCXXSB
+    file_url: https://github.com/Row-Bear/sidekey/blob/HEAD/README.md
+  - kind: contract
+    subject: CDG2EA4B67V4F3D2W2TCWCOFBKZ5IVSLXTOHTEKIEWZZLYRSHMOAV2G5
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDG2EA4B67V4F3D2W2TCWCOFBKZ5IVSLXTOHTEKIEWZZLYRSHMOAV2G5
+    file_url: https://github.com/Row-Bear/sidekey/blob/HEAD/web/src/api.test.ts
+  - kind: contract
+    subject: CDGOE4WK2MAL2U2VFIFPVGIAWNZU5A2KJ5FJTJ7GMXVNS2GGWK4N33DL
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDGOE4WK2MAL2U2VFIFPVGIAWNZU5A2KJ5FJTJ7GMXVNS2GGWK4N33DL
+    file_url: https://github.com/Row-Bear/sidekey/blob/HEAD/.env.example
+  - kind: account
+    subject: GDFSJ7OFK7CFF6YOSRGKQU435BXEBW5ODEU5SMD4VUNCHTQDTSPPXIVZ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDFSJ7OFK7CFF6YOSRGKQU435BXEBW5ODEU5SMD4VUNCHTQDTSPPXIVZ
+    file_url: https://github.com/Row-Bear/sidekey/blob/HEAD/web/src/api.test.ts
+contributors: []

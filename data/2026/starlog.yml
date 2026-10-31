@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/nina-osk/Starlog
+repo_url: https://github.com/nina-osk/Starlog
+name: Starlog
+description: Hackaton Meridian 2026
+language: TypeScript
+created_at: '2026-10-25T14:41:06Z'
+owner: nina-osk
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 23
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.0.1
+chain:
+  contracts: 5
+  wasm_uploads: 5
+  classic_ops: 4
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GA536WS7HR6SZPOOMK7TMJ5BPTBYOGLXA2Z6BJKAGCFFOAWKMMMIV7CW
+  - GAKMO2MGYQOR5ICOACHRB7MYBMSA6YO3H4MCULGD7HRKOSBGZNQ45NGJ
+  - GBVYHWLSCHBBTZ32QUBAW5SOR3SQVNL24FPI7RVUDCESXAQS2XTFPAET
+  - GBWB3GYU4PUW3JYG5QA26ZIXQZGLFG652HTVA2QQSOVWOTLHKVYYS7WV
+  - GCH5SH5QOEBKOX2PWNP2B6ABPVRG2S7Y7JPIZNUNLZPGLYW5RI4HYA4A
+  - GDC46GXLZ5OJ4UX6ZCIHHGPMGQ3RQGUZJQJRHIBEPJGFZO6N6DQSBFN7
+  evidence:
+  - kind: contract
+    subject: CB6ENR37I5ZIGRAWHTYBTWI4ZCOTZKK2I75CLLHCDIUTP3QG4VO2WL6S
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB6ENR37I5ZIGRAWHTYBTWI4ZCOTZKK2I75CLLHCDIUTP3QG4VO2WL6S
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/packages/estela-pass/README.md
+  - kind: contract
+    subject: CBOIYZWJMSMNET35AO2ZVJXGP5BM3HQVTLIH4TZCOCUC35N6BRS2CPIE
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBOIYZWJMSMNET35AO2ZVJXGP5BM3HQVTLIH4TZCOCUC35N6BRS2CPIE
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/PLAN.md
+  - kind: contract
+    subject: CDQQ7PKXRNOYZUW47USR6OJCODKPH45OCYRODEMYHO7LJZDO7Y2HF7ZD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDQQ7PKXRNOYZUW47USR6OJCODKPH45OCYRODEMYHO7LJZDO7Y2HF7ZD
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/packages/estela-stamps/README.md
+  - kind: contract
+    subject: CDUARFKLW2YDKWIUZAAFY2BQCWOJU46H6NVY4ZKHRPLTSDTHYPZAHCTD
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDUARFKLW2YDKWIUZAAFY2BQCWOJU46H6NVY4ZKHRPLTSDTHYPZAHCTD
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/packages/estela-escrow/README.md
+  - kind: account
+    subject: GA536WS7HR6SZPOOMK7TMJ5BPTBYOGLXA2Z6BJKAGCFFOAWKMMMIV7CW
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GA536WS7HR6SZPOOMK7TMJ5BPTBYOGLXA2Z6BJKAGCFFOAWKMMMIV7CW
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/deploy/testnet.json
+  - kind: account
+    subject: GAKMO2MGYQOR5ICOACHRB7MYBMSA6YO3H4MCULGD7HRKOSBGZNQ45NGJ
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAKMO2MGYQOR5ICOACHRB7MYBMSA6YO3H4MCULGD7HRKOSBGZNQ45NGJ
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/deploy/testnet.json
+  - kind: account
+    subject: GBVYHWLSCHBBTZ32QUBAW5SOR3SQVNL24FPI7RVUDCESXAQS2XTFPAET
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBVYHWLSCHBBTZ32QUBAW5SOR3SQVNL24FPI7RVUDCESXAQS2XTFPAET
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/deploy/testnet.json
+  - kind: account
+    subject: GBWB3GYU4PUW3JYG5QA26ZIXQZGLFG652HTVA2QQSOVWOTLHKVYYS7WV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBWB3GYU4PUW3JYG5QA26ZIXQZGLFG652HTVA2QQSOVWOTLHKVYYS7WV
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/deploy/testnet.json
+  - kind: account
+    subject: GDC46GXLZ5OJ4UX6ZCIHHGPMGQ3RQGUZJQJRHIBEPJGFZO6N6DQSBFN7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDC46GXLZ5OJ4UX6ZCIHHGPMGQ3RQGUZJQJRHIBEPJGFZO6N6DQSBFN7
+    file_url: https://github.com/nina-osk/Starlog/blob/HEAD/deploy/testnet.json
+contributors:
+- login: nina-osk
+  contributions: 23

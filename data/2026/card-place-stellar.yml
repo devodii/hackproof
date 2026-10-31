@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Lothinnt/card-place-stellar
+repo_url: https://github.com/Lothinnt/card-place-stellar
+name: card-place-stellar
+description: 'A safer way to buy and sell trading cards: escrow and vault contracts on Stellar (Soroban), x402 AI appraisal
+  agent, web and mobile marketplace'
+language: HTML
+created_at: '2026-10-26T00:25:38Z'
+owner: Lothinnt
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 19
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^17.2.1
+chain:
+  contracts: 4
+  wasm_uploads: 4
+  classic_ops: 8
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75
+  - GDSMQRA65ZTZBFP57USVK6QNFZNZTCAPCTEDUYUKXEMSOIZAGKI4ZUPM
+  evidence:
+  - kind: contract
+    subject: CC2NP5O5E5L4463WLWTEPXOR3KEBYY7FMQMZT56TYLBJUVCP3DJHLG2O
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC2NP5O5E5L4463WLWTEPXOR3KEBYY7FMQMZT56TYLBJUVCP3DJHLG2O
+    file_url: https://github.com/Lothinnt/card-place-stellar/blob/HEAD/README.fr.md
+  - kind: account
+    subject: GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75
+    file_url: https://github.com/Lothinnt/card-place-stellar/blob/HEAD/README.fr.md
+  - kind: account
+    subject: GDSMQRA65ZTZBFP57USVK6QNFZNZTCAPCTEDUYUKXEMSOIZAGKI4ZUPM
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDSMQRA65ZTZBFP57USVK6QNFZNZTCAPCTEDUYUKXEMSOIZAGKI4ZUPM
+    file_url: https://github.com/Lothinnt/card-place-stellar/blob/HEAD/README.fr.md
+contributors:
+- login: Lothinnt
+  contributions: 19

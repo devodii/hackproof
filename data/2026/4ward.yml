@@ -1,0 +1,85 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/ygk94/4ward
+repo_url: https://github.com/ygk94/4ward
+name: 4ward
+homepage: https://fistea-hackmeridian.vercel.app
+language: TypeScript
+license: NOASSERTION
+created_at: '2026-10-25T11:49:37Z'
+owner: ygk94
+track: genesis
+track_declared: true
+award: runner-up
+evidence_tier: verified
+commits_in_window: 138
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.4.0
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/front/package.json
+chain:
+  contracts: 18
+  wasm_uploads: 10
+  classic_ops: 133
+  assets: 2
+  failed_txs: 0
+  accounts:
+  - GAP7FCBUGQUV7I3I4M7IBMSIQLGMRQ7MREHPJZ3LHVLMXJ7K7LYWRWR4
+  - GB2IM2JZIS4AZX5ONUDFHFC5YSQQVYGYYQXFTPABX3SYHA4LHUGXCC5M
+  - GBQY4OBXIKQL6EQ2767WSXH6EYHKPPL6R4PD75RHAOZG6NTQRTIBNYTC
+  - GBRF7DL674464UYOUX5IIXELPGK2OYHVWSLX7GDNR5NO2R6FSGGFQPWL
+  evidence:
+  - kind: contract
+    subject: CACSMEBQLBR73CH6BRPGY7LDDE2P63C6WPZEJPZNIP5DLT5IN6O5VWA4
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CACSMEBQLBR73CH6BRPGY7LDDE2P63C6WPZEJPZNIP5DLT5IN6O5VWA4
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
+  - kind: contract
+    subject: CAQY7OYOJTXBAJ6SSUC72EUGWBDDPFENPIDQMCUJZ35YKXUNR7V6YGRK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAQY7OYOJTXBAJ6SSUC72EUGWBDDPFENPIDQMCUJZ35YKXUNR7V6YGRK
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/docs/memo-front-pricing.md
+  - kind: contract
+    subject: CARFDCPIC3CYMSGUSONWLS7WDSCMARHNZP4XKMJODGKKHWWCOA7657M3
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CARFDCPIC3CYMSGUSONWLS7WDSCMARHNZP4XKMJODGKKHWWCOA7657M3
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/docs/memo-front-pricing.md
+  - kind: contract
+    subject: CD2D3KQDUCE7SHQNT4XJUMQRHQNDNJUKE45TER2LSHAJPYCTRXX6NBVU
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CD2D3KQDUCE7SHQNT4XJUMQRHQNDNJUKE45TER2LSHAJPYCTRXX6NBVU
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
+  - kind: account
+    subject: GAP7FCBUGQUV7I3I4M7IBMSIQLGMRQ7MREHPJZ3LHVLMXJ7K7LYWRWR4
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAP7FCBUGQUV7I3I4M7IBMSIQLGMRQ7MREHPJZ3LHVLMXJ7K7LYWRWR4
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
+  - kind: account
+    subject: GB2IM2JZIS4AZX5ONUDFHFC5YSQQVYGYYQXFTPABX3SYHA4LHUGXCC5M
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GB2IM2JZIS4AZX5ONUDFHFC5YSQQVYGYYQXFTPABX3SYHA4LHUGXCC5M
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
+  - kind: account
+    subject: GBQY4OBXIKQL6EQ2767WSXH6EYHKPPL6R4PD75RHAOZG6NTQRTIBNYTC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBQY4OBXIKQL6EQ2767WSXH6EYHKPPL6R4PD75RHAOZG6NTQRTIBNYTC
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
+  - kind: account
+    subject: GBRF7DL674464UYOUX5IIXELPGK2OYHVWSLX7GDNR5NO2R6FSGGFQPWL
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GBRF7DL674464UYOUX5IIXELPGK2OYHVWSLX7GDNR5NO2R6FSGGFQPWL
+    file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
+contributors:
+- login: ygk94
+  contributions: 96
+- login: cda1712
+  contributions: 20
+- login: LancelotWA
+  contributions: 1

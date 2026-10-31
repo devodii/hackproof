@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/zelena-tech/harmony
+repo_url: https://github.com/zelena-tech/harmony
+name: harmony
+description: On-chain performance payroll
+language: JavaScript
+license: MIT
+created_at: '2026-05-18T05:43:20Z'
+owner: zelena-tech
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 4
+stack:
+  soroban-sdk: 21.7.0
+  '@stellar/stellar-sdk': ^14.6.1
+chain:
+  contracts: 3
+  wasm_uploads: 3
+  classic_ops: 2
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GDY7ULCXXFZJZXF3JMWGSYTP36PSKFLSY27SXEV2DNUHLKS7ML7WGUVB
+  evidence:
+  - kind: contract
+    subject: CAOMU37L7GQUO6JSO3O4RVRCTFDTIFYFHZJI77ZNTAD7TJ4LE7YZQMGI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CAOMU37L7GQUO6JSO3O4RVRCTFDTIFYFHZJI77ZNTAD7TJ4LE7YZQMGI
+    file_url: https://github.com/zelena-tech/harmony/blob/HEAD/examples/private-payouts/README.md
+  - kind: contract
+    subject: CB5BPQ6OV2RCZF3LL4P5RL7ZRRYJWCU4ZKPA5TMRB4WMY6LBJUYMJKWM
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB5BPQ6OV2RCZF3LL4P5RL7ZRRYJWCU4ZKPA5TMRB4WMY6LBJUYMJKWM
+    file_url: https://github.com/zelena-tech/harmony/blob/HEAD/examples/private-payouts/README.md
+  - kind: contract
+    subject: CB6GSGKBSATKJQUC5JWO7J3VN5DNWXFNK7UN62ETFZDP6BUYZKKJ3Z2A
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CB6GSGKBSATKJQUC5JWO7J3VN5DNWXFNK7UN62ETFZDP6BUYZKKJ3Z2A
+    file_url: https://github.com/zelena-tech/harmony/blob/HEAD/examples/private-payouts/README.md
+  - kind: wasm
+    subject: 398280583b6bb598f3d569616c76c8e241a0e3c251ac1feeb84488e7acb2042c
+    method: wasm_hash_match
+    file_url: https://github.com/zelena-tech/harmony/blob/HEAD/examples/private-payouts/oz-v0.8.0/wasm/confidential_auditor_example.wasm
+  - kind: wasm
+    subject: 42954cc1236022313c1de3833f71096a056bb91b12047deddbc380e6e9d7a797
+    method: wasm_hash_match
+    file_url: https://github.com/zelena-tech/harmony/blob/HEAD/examples/private-payouts/oz-v0.8.0/wasm/confidential_compliant_token_example.wasm
+  - kind: wasm
+    subject: 8c232212bcce900cd15f1b46d84b3ea53788692abdf93e2a8a9a2d6b7bb854f1
+    method: wasm_hash_match
+    file_url: https://github.com/zelena-tech/harmony/blob/HEAD/examples/private-payouts/oz-v0.8.0/wasm/confidential_verifier_example.wasm
+contributors:
+- login: Johnjmz13
+  contributions: 7

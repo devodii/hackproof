@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=../schema-hackathon-project.yml
+event: hackmeridian-2026
+canonical_id: pkg:github/Arkessiah/avocate-harvest-escrow
+repo_url: https://github.com/Arkessiah/avocate-harvest-escrow
+name: avocate-harvest-escrow
+homepage: https://avocate-harvest-escrow.vercel.app
+language: TypeScript
+created_at: '2026-10-25T11:48:49Z'
+owner: Arkessiah
+track: genesis
+track_declared: false
+evidence_tier: verified
+commits_in_window: 90
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': 17.4.0
+  '@creit.tech/stellar-wallets-kit': 2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/web/package.json
+- slug: soroswap
+  name: Soroswap
+  evidence:
+  - method: endpoint
+    detail: api.soroswap.finance
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/networks/testnet.json
+chain:
+  contracts: 4
+  wasm_uploads: 7
+  classic_ops: 4
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAB4XDEZ66XK4YQYCRRKZATP4MH4VMVUDJ44PPDUDF4JQW3EQGTSMNWU
+  - GAKZPSZH6IGTHONT3NSTDLWMV7YO63RINPWIB54RIBXMVGTK7J76YKC7
+  - GCVWZL2FILH4AW654MU6ILIVFKO55O3WJXMCJMHBCO2T7XSUUFCEZUCC
+  - GDN3RC6NRP7WOIDYOLSXDX322LCV5EBRR3TJSJJV7GO4TBF7EYM65AUV
+  evidence:
+  - kind: contract
+    subject: CBHU4N74WPLTXFNQ6JERWD7A3CIZCHVG433BCWOYYP3SR677FWPZNXBF
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CBHU4N74WPLTXFNQ6JERWD7A3CIZCHVG433BCWOYYP3SR677FWPZNXBF
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/deployments/testnet-smoke.md
+  - kind: contract
+    subject: CDAEMNCIH7ALNKVHDGAVOR5FWT2KZFW5AZCP7TTSDJP6NAD3EWJPHH3D
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDAEMNCIH7ALNKVHDGAVOR5FWT2KZFW5AZCP7TTSDJP6NAD3EWJPHH3D
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/deployments/testnet-smoke.md
+  - kind: contract
+    subject: CDAHTGYCWIHSJOLUJDLUIZJOC7P7DCTTPLQLPJIIMS5ID2S6L2W7X4VK
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDAHTGYCWIHSJOLUJDLUIZJOC7P7DCTTPLQLPJIIMS5ID2S6L2W7X4VK
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/audits/2026-10-25-security-audit.md
+  - kind: account
+    subject: GAB4XDEZ66XK4YQYCRRKZATP4MH4VMVUDJ44PPDUDF4JQW3EQGTSMNWU
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAB4XDEZ66XK4YQYCRRKZATP4MH4VMVUDJ44PPDUDF4JQW3EQGTSMNWU
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/deployments/testnet.json
+  - kind: account
+    subject: GAKZPSZH6IGTHONT3NSTDLWMV7YO63RINPWIB54RIBXMVGTK7J76YKC7
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAKZPSZH6IGTHONT3NSTDLWMV7YO63RINPWIB54RIBXMVGTK7J76YKC7
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/deployments/testnet.json
+  - kind: account
+    subject: GCVWZL2FILH4AW654MU6ILIVFKO55O3WJXMCJMHBCO2T7XSUUFCEZUCC
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GCVWZL2FILH4AW654MU6ILIVFKO55O3WJXMCJMHBCO2T7XSUUFCEZUCC
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/deployments/testnet.json
+  - kind: account
+    subject: GDN3RC6NRP7WOIDYOLSXDX322LCV5EBRR3TJSJJV7GO4TBF7EYM65AUV
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDN3RC6NRP7WOIDYOLSXDX322LCV5EBRR3TJSJJV7GO4TBF7EYM65AUV
+    file_url: https://github.com/Arkessiah/avocate-harvest-escrow/blob/HEAD/deploy/deployments/testnet.json
+contributors:
+- login: Arkessiah
+  contributions: 90
