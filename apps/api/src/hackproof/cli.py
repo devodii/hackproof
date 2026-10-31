@@ -22,7 +22,22 @@ def main() -> None:
         "--projects", action="store_true", help="only scan repos that are already projects"
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
-    commands.add_parser("export", help="write the json and yaml export and its schema")
+
+    export_parser = commands.add_parser(
+        "export", help="write the json and yaml export and its schema"
+    )
+    export_parser.add_argument(
+        "--target",
+        choices=["all", "hackproof", "stellarlight", "atlas"],
+        default="all",
+        help="which dataset(s) to export",
+    )
+    export_parser.add_argument(
+        "--diff",
+        action="store_true",
+        help="print diff comparing against existing export",
+    )
+
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -37,4 +52,4 @@ def main() -> None:
         case "reconcile":
             asyncio.run(run_reconcile())
         case "export":
-            asyncio.run(run_export())
+            asyncio.run(run_export(args.target, args.diff))
