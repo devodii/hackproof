@@ -31,6 +31,10 @@ class Settings(BaseSettings):
     github_tokens: Annotated[list[str], NoDecode] = Field(
         default_factory=list, validation_alias="HACKPROOF_GITHUB_TOKEN"
     )
+    opt_out_github_token: str | None = Field(
+        default=None,
+        validation_alias=AliasChoices("HACKPROOF_OPT_OUT_GITHUB_TOKEN", "OPT_OUT_GITHUB_TOKEN"),
+    )
     cors_origins: list[str] = ["http://localhost:5173"]
 
     @field_validator("github_tokens", mode="before")

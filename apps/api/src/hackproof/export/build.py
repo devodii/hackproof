@@ -141,6 +141,21 @@ async def build_export(
 ) -> HackathonExport:
     window = hackathon.window
     projects = await connection.fetch(PROJECTS_SQL, list(tiers), list(TIER_ORDER))
+
+    hidden = set(hackathon.hidden)
+    for h in hackathon.hidden:
+        if h.startswith("repo:"):
+            hidden.add(h[5:])
+        elif not h.startswith("acct:"):
+            hidden.add(f"repo:{h}")
+
+    projects = [
+        row
+        for row in projects
+        if row["full_name"] not in hidden
+        and f"repo:{row['full_name']}" not in hidden
+        and (not row["owner"] or row["owner"] not in hidden)
+    ]
     names = [row["full_name"] for row in projects]
     span = (window.start, window.end)
 

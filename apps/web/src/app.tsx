@@ -9,6 +9,7 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
+import { OptOutPage } from '@/pages/opt-out'
 import { ProjectPage } from '@/pages/project'
 
 function Shell() {
@@ -26,6 +27,7 @@ function Shell() {
             <Route path="/" element={<HomePage />} />
             <Route path="/project/*" element={<ProjectPage />} />
             <Route path="/builder/:address" element={<BuilderPage />} />
+            <Route path="/opt-out" element={<OptOutPage />} />
           </Routes>
         </main>
         <About />

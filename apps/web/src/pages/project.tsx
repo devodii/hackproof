@@ -1,5 +1,5 @@
 import { ExternalLinkIcon, StarIcon } from 'lucide-react'
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 
 import { Contributors } from '@/components/contributors'
 import { DataTable } from '@/components/data-table'
@@ -121,6 +121,12 @@ export function ProjectPage() {
                 <ExternalLinkIcon className="size-3.5" />
               </a>
             )}
+          <Link
+            to={`/opt-out?project_id=${encodeURIComponent(project.project_id)}`}
+            className="hover:text-foreground underline decoration-dotted"
+          >
+            Opt out
+          </Link>
         </div>
         {project.tier !== 'verified' && (
           <p className="text-sm text-muted-foreground">Included because it {inclusion}.</p>
