@@ -1,10 +1,6 @@
 from datetime import timedelta
 
-import jsonschema
-import yaml
-
 from hackproof.export.build import build_export
-from hackproof.export.render import json_schema, to_json, to_yaml
 from hackproof.export.urls import EXPLORER
 from hackproof.hackathon import Award, get_hackathon
 from hackproof.linking.reconcile import reconcile
@@ -59,14 +55,6 @@ async def test_export_carries_repo_chain_and_evidence(scratch_db):
     assert evidence.repo_file_url == "https://github.com/team/app/blob/HEAD/README.md"
 
 
-async def test_json_and_yaml_exports_validate_against_the_published_schema(scratch_db):
-    export = await populated_export(scratch_db)
-    schema = json_schema()
-
-    jsonschema.validate(yaml.safe_load(to_yaml(export)), schema)
-    jsonschema.validate(__import__("json").loads(to_json(export)), schema)
-
-
 async def test_weak_tiers_are_left_out_by_default(scratch_db):
     db = scratch_db
     await add_repo(db, "weak/repo", window_commits=5, dependencies=STELLAR)
@@ -99,9 +87,9 @@ async def test_track_is_the_declared_one_and_genesis_otherwise(scratch_db):
 
     projects = (await build_export(db, get_hackathon(), ["likely", "possible"])).projects
 
-    assert {p.repo_full_name: p.track for p in projects} == {
-        "team/declared": "scale",
-        "team/silent": "genesis",
+    assert {p.repo_full_name: (p.track, p.track_declared) for p in projects} == {
+        "team/declared": ("scale", True),
+        "team/silent": ("genesis", False),
     }
 
 

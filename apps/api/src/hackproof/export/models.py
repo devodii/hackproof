@@ -2,18 +2,15 @@ from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
-from pydantic.alias_generators import to_camel
 
 from hackproof.hackathon import Place
-
-SCHEMA_VERSION = "1.2"
 
 Tier = Literal["verified", "likely", "possible"]
 Track = Literal["genesis", "scale"]
 
 
 class Model(BaseModel):
-    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
+    model_config = ConfigDict(extra="forbid")
 
 
 class Owner(Model):
@@ -133,6 +130,9 @@ class Project(Model):
             "declare one are listed as genesis."
         )
     )
+    track_declared: bool = Field(
+        description="True when the team states its track itself, false when track is the default"
+    )
     award: Place | None = Field(
         description="HackMeridian award as announced by Build on Stellar: first, runner-up or null"
     )
@@ -166,7 +166,5 @@ class Hackathon(Model):
 
 
 class HackathonExport(Model):
-    schema_version: str = Field(description="Version of this schema")
-    generated_at: datetime = Field(description="When the export was produced, UTC")
     hackathon: Hackathon
     projects: list[Project]

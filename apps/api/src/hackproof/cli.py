@@ -22,7 +22,7 @@ def main() -> None:
         "--projects", action="store_true", help="only scan repos that are already projects"
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
-    commands.add_parser("export", help="write the json and yaml export and its schema")
+    commands.add_parser("export", help="write one yaml file per project into data and its schema")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")

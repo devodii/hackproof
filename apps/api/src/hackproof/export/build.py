@@ -1,12 +1,10 @@
 from collections import defaultdict
 from collections.abc import Iterable
-from datetime import UTC, datetime
 from typing import Any
 
 import asyncpg
 
 from hackproof.export.models import (
-    SCHEMA_VERSION,
     Account,
     Chain,
     Contract,
@@ -174,6 +172,7 @@ async def build_export(
             commits_in_window=row["window_commits"],
             total_commits=row["total_commits"],
             track=row["declared_track"] or "genesis",
+            track_declared=row["declared_track"] is not None,
             integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
             owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
             contributors=[
@@ -232,8 +231,6 @@ async def build_export(
         for row in projects
     ]
     return HackathonExport(
-        schema_version=SCHEMA_VERSION,
-        generated_at=datetime.now(UTC),
         hackathon=ExportedHackathon(
             slug=hackathon.slug,
             name=hackathon.name,
