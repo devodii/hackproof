@@ -1,0 +1,24 @@
+- code: TRAPPED
+  category: execution
+  plain_english: "The contract execution trapped (panicked) during invocation."
+  common_cause: "A require! or assert! failed, or an unhandled panic in contract code."
+  fix: "Check contract logs and the host error; add guards before the failing operation."
+  docs_url: "https://developers.stellar.org/docs/smart-contracts"
+- code: INSUFFICIENT_REFUNDABLE_FEE
+  category: fees
+  plain_english: "The transaction did not include enough refundable fee to cover resource usage."
+  common_cause: "Resource consumption exceeded the declared refundable fee."
+  fix: "Increase the fee or reduce resource usage (CPU, memory, ledger entries)."
+  docs_url: "https://developers.stellar.org/docs/smart-contracts/fees"
+- code: RESOURCE_LIMIT_EXCEEDED
+  category: resources
+  plain_english: "The transaction exceeded a Soroban resource limit."
+  common_cause: "Too much CPU, memory, or ledger I/O for a single transaction."
+  fix: "Split work across multiple transactions or optimize the contract."
+  docs_url: "https://developers.stellar.org/docs/smart-contracts/limits"
+- code: ENTRY_ARCHIVED
+  category: state
+  plain_english: "A ledger entry referenced by the transaction has been archived."
+  common_cause: "The contract or data entry expired and was archived."
+  fix: "Restore the archived entry before retrying the transaction."
+  docs_url: "https://developers.stellar.org/docs/smart-contracts/state-archival"
