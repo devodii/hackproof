@@ -1,3 +1,30 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/project/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(twitterbot|facebookexternalhit|linkedinbot|slackbot|discordbot|telegrambot|whatsapp|viber|line|pinterest|embed\\.ly|quora|outbrain|snapchat|yandex|baidu|applebot|bingbot|googlebot)"
+        }
+      ],
+      "destination": "/api/og?project=:path*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(twitterbot|facebookexternalhit|linkedinbot|slackbot|discordbot|telegrambot|whatsapp|viber|line|pinterest|embed\\.ly|quora|outbrain|snapchat|yandex|baidu|applebot|bingbot|googlebot)"
+        }
+      ],
+      "destination": "/api/og"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
