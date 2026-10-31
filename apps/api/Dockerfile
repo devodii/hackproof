@@ -13,7 +13,7 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY apps/api/src ./src
 RUN uv sync --frozen --no-dev
 
-COPY config /app/config
+COPY data/hackmeridian-2026.yaml data/integrations.yaml /app/data/
 
 RUN useradd --create-home app && chown -R app /app
 USER app

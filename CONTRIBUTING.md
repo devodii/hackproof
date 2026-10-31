@@ -12,7 +12,7 @@ Thanks for helping. Pick an issue, say so in a comment, and open one pull reques
   - `chat/`: the chat endpoint and its tools
   - `queries.py`, `routes.py`, `schemas.py`: the public API
 - `apps/web`: React, Vite and shadcn/ui
-- `config`: one YAML per hackathon, plus `integrations.yaml`
+- `data`: one YAML per hackathon (`hackmeridian-2026.yaml`), `integrations.yaml`, and one folder of project files per year
 
 The README has the commands to run everything locally.
 

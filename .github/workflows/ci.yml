@@ -68,7 +68,7 @@ jobs:
           filters: |
             api:
               - 'apps/api/**'
-              - 'config/**'
+              - 'data/*.yaml'
               - 'railway.json'
       - if: steps.changes.outputs.api == 'true'
         env:

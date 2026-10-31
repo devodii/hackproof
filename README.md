@@ -7,14 +7,14 @@
 
 HackMeridian 2026 submissions, rebuilt from Stellar testnet and linked to their GitHub repos by exact matches. Browse the projects, check each match on Stellar Expert and GitHub, download the data, or ask the chat.
 
-Each project has an evidence tier. `verified` means an exact repo to chain match with activity in the window. `likely` (shown as "Code only") means a Stellar dependency and at least 5 commits in the window, in a repo created or updated for the event. The window is set in `config/hackmeridian-2026.yaml`.
+Each project has an evidence tier. `verified` means an exact repo to chain match with activity in the window. `likely` (shown as "Code only") means a Stellar dependency and at least 5 commits in the window, in a repo created or updated for the event. The window is set in `data/hackmeridian-2026.yaml`.
 
 ## Layout
 
 - `apps/web`: React, Vite and shadcn/ui
 - `apps/api`: FastAPI, asyncpg and Postgres, managed with uv
 - `apps/api/src/hackproof/chat/system-prompt.md`: the chat prompts
-- `config/integrations.yaml`: the Stellar integration partners and how each is detected, by package in any language or by API host in code
+- `data/integrations.yaml`: the Stellar integration partners and how each is detected, by package in any language or by API host in code
 
 ## Run
 

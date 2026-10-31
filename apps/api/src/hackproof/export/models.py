@@ -105,7 +105,7 @@ class IntegrationEvidence(Model):
 
 
 class IntegrationPartner(Model):
-    slug: str = Field(description="Stable partner id, listed in config/integrations.yaml")
+    slug: str = Field(description="Stable partner id, listed in data/integrations.yaml")
     name: str = Field(description="Partner name")
     category: str = Field(description="payments, wallets, defi or cross-chain")
     website: str = Field(description="Partner website")
