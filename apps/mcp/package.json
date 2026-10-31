@@ -1,0 +1,37 @@
+{
+  "name": "hackproof-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for HackProof - inspect and query hackathon projects and contracts rebuilt from Stellar testnet",
+  "type": "module",
+  "bin": {
+    "hackproof-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node ./dist/index.js",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "stellar",
+    "soroban",
+    "hackproof",
+    "hackathon"
+  ],
+  "author": "HackProof Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "~6.0.3"
+  }
+}
