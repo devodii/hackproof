@@ -6,6 +6,7 @@ from hackproof.export.jobs import run_export
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
 from hackproof.linking.reconcile import run_reconcile
+from hackproof.sample import run_dump_sample, run_seed
 
 
 def main() -> None:
@@ -23,6 +24,10 @@ def main() -> None:
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
     commands.add_parser("export", help="write one yaml file per project into data and its schema")
+    commands.add_parser("seed", help="load sample data when the projects table is empty")
+    commands.add_parser(
+        "dump-sample", help="regenerate data/sample/sample.sql from the database"
+    )
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -38,3 +43,7 @@ def main() -> None:
             asyncio.run(run_reconcile())
         case "export":
             asyncio.run(run_export())
+        case "seed":
+            asyncio.run(run_seed())
+        case "dump-sample":
+            asyncio.run(run_dump_sample())
