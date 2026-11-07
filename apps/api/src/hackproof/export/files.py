@@ -1,3 +1,4 @@
+import json
 import re
 from collections import Counter
 from datetime import datetime
@@ -7,15 +8,39 @@ from typing import Any, Literal
 import yaml
 from pydantic import BaseModel, ConfigDict, Field
 
+from hackproof import schemas as api_schemas
 from hackproof.export.models import HackathonExport, Project, Tier, Track
 from hackproof.hackathon import Place
 
 SCHEMA_FILE = "schema-hackathon-project.yml"
 EVENT_FILE = "_event.yml"
 EVENT_SCHEMA_FILE = "schema-event.yml"
+SCHEMA_VERSION = "1.0"
 SOURCE_URL = "https://github.com/devodii/hackproof"
+SCHEMA_BASE_URL = f"{SOURCE_URL}/schema"
 SCHEMA_COMMENT = f"# yaml-language-server: $schema=../{SCHEMA_FILE}\n"
 EVENT_SCHEMA_COMMENT = f"# yaml-language-server: $schema=../{EVENT_SCHEMA_FILE}\n"
+
+API_SCHEMA_MODELS: tuple[tuple[str, type[BaseModel]], ...] = (
+    ("stats", api_schemas.Stats),
+    ("project", api_schemas.Project),
+    ("contributor", api_schemas.Contributor),
+    ("link", api_schemas.Link),
+    ("contract", api_schemas.Contract),
+    ("wasm-upload", api_schemas.WasmUpload),
+    ("failed-tx", api_schemas.FailedTx),
+    ("integration-use", api_schemas.IntegrationUse),
+    ("project-detail", api_schemas.ProjectDetail),
+    ("builder", api_schemas.Builder),
+    ("timeline-point", api_schemas.TimelinePoint),
+    ("integration", api_schemas.Integration),
+    ("ecosystem-tool", api_schemas.EcosystemTool),
+    ("country-count", api_schemas.CountryCount),
+    ("project-page", api_schemas.Page[api_schemas.Project]),
+    ("contract-page", api_schemas.Page[api_schemas.Contract]),
+    ("wasm-upload-page", api_schemas.Page[api_schemas.WasmUpload]),
+    ("failed-tx-page", api_schemas.Page[api_schemas.FailedTx]),
+)
 
 
 class FileModel(BaseModel):
@@ -250,3 +275,51 @@ def write_project_files(export: HackathonExport, root: Path) -> int:
         )
 
     return len(export.projects)
+
+
+def api_schema(slug: str, model: type[BaseModel]) -> dict[str, Any]:
+    return {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": f"{SCHEMA_BASE_URL}/{slug}.schema.json",
+        "version": SCHEMA_VERSION,
+        **model.model_json_schema(),
+    }
+
+
+def write_api_schemas(schema_dir: Path) -> dict[str, Any]:
+    schema_dir.mkdir(parents=True, exist_ok=True)
+    entries: list[dict[str, str]] = [
+        {
+            "name": "hackathon-export",
+            "version": SCHEMA_VERSION,
+            "file": f"hackathon-export-{SCHEMA_VERSION}.json",
+            "$id": f"{SCHEMA_BASE_URL}/hackathon-export-{SCHEMA_VERSION}.json",
+        },
+        {
+            "name": "hackathon-project",
+            "version": SCHEMA_VERSION,
+            "file": SCHEMA_FILE,
+            "$id": f"{SCHEMA_BASE_URL}/{SCHEMA_FILE}",
+        },
+        {
+            "name": "event",
+            "version": SCHEMA_VERSION,
+            "file": EVENT_SCHEMA_FILE,
+            "$id": f"{SCHEMA_BASE_URL}/{EVENT_SCHEMA_FILE}",
+        },
+    ]
+    for slug, model in API_SCHEMA_MODELS:
+        filename = f"{slug}.schema.json"
+        schema = api_schema(slug, model)
+        (schema_dir / filename).write_text(f"{json.dumps(schema, indent=2)}\n")
+        entries.append(
+            {
+                "name": slug,
+                "version": SCHEMA_VERSION,
+                "file": filename,
+                "$id": schema["$id"],
+            }
+        )
+    index = {"version": SCHEMA_VERSION, "schemas": entries}
+    (schema_dir / "index.json").write_text(f"{json.dumps(index, indent=2)}\n")
+    return index

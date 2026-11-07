@@ -1,9 +1,14 @@
+import json
+from datetime import UTC, datetime
+
 import jsonschema
 import pytest
 import yaml
 
+from hackproof import schemas as api_schemas
 from hackproof.export.build import build_export
 from hackproof.export.files import (
+    API_SCHEMA_MODELS,
     EVENT_FILE,
     EVENT_SCHEMA_FILE,
     SCHEMA_FILE,
@@ -12,6 +17,7 @@ from hackproof.export.files import (
     file_schema,
     project_file,
     to_file_yaml,
+    write_api_schemas,
     write_project_files,
 )
 from hackproof.hackathon import get_hackathon
@@ -115,3 +121,159 @@ async def test_the_event_manifest_validates_and_names_the_event(scratch_db, tmp_
     assert manifest["slug"] == export.hackathon.slug
     assert manifest["network"] == "testnet"
     assert manifest["ends_at"] > manifest["starts_at"]
+
+
+def test_api_schemas_and_index_validate_sample_responses(tmp_path):
+    now = datetime(2026, 10, 12, 12, 0, tzinfo=UTC)
+    sample_project = api_schemas.Project(
+        project_id="repo:team/app",
+        full_name="team/app",
+        url="https://github.com/team/app",
+        footprint="contracts",
+        tier="verified",
+        contracts=1,
+        classic_ops=2,
+        assets=0,
+        builders=1,
+        wasm_uploads=1,
+        failed_txs=0,
+        first_activity=now,
+        last_activity=now,
+        description="Sample project",
+        homepage=None,
+        stars=5,
+        forks=1,
+        language="Rust",
+        license="MIT",
+        owner="team",
+        owner_avatar="https://avatars/team",
+        country="US",
+        dependencies=None,
+        window_commits=7,
+        total_commits=10,
+        stellar_added_in_window=True,
+        created_at=now,
+        topics=["stellar"],
+        track="genesis",
+        integrations=["privy"],
+        tools=[],
+        award="first",
+    )
+    sample_contributor = api_schemas.Contributor(
+        login="ana",
+        url="https://github.com/ana",
+        avatar_url="https://avatars/ana",
+        contributions=12,
+        country="PT",
+    )
+    sample_link = api_schemas.Link(
+        subject_kind="contract",
+        subject="CXYZ",
+        method="contract_in_repo",
+        path="README.md",
+    )
+    sample_contract = api_schemas.Contract(
+        contract_id="CXYZ",
+        deployer="GDEPLOYER",
+        wasm_hash="w1",
+        tx_hash="tx1",
+        ledger=100,
+        deployed_at=now,
+        project_id="repo:team/app",
+    )
+    sample_wasm = api_schemas.WasmUpload(
+        wasm_hash="w1",
+        uploader="GDEPLOYER",
+        tx_hash="tx1",
+        size=1024,
+        source_repo="team/app",
+        full_name="team/app",
+        contracts=1,
+        uploaded_at=now,
+    )
+    sample_failed = api_schemas.FailedTx(
+        tx_hash="tx_fail",
+        source_account="GDEPLOYER",
+        kind="soroban",
+        result_code="tx_failed",
+        ledger=101,
+        created_at=now,
+    )
+    sample_integration_use = api_schemas.IntegrationUse(
+        slug="privy",
+        name="Privy",
+        method="package",
+        evidence="@privy-io/node",
+        path="package.json",
+    )
+    samples = {
+        "stats": api_schemas.Stats(
+            projects=10,
+            verified_projects=5,
+            likely_projects=3,
+            possible_projects=2,
+            unattributed_accounts=1,
+            contracts=8,
+            builders=6,
+            contributors=15,
+            countries=4,
+            wasm_uploads=9,
+            failed_txs=2,
+        ),
+        "project": sample_project,
+        "contributor": sample_contributor,
+        "link": sample_link,
+        "contract": sample_contract,
+        "wasm-upload": sample_wasm,
+        "failed-tx": sample_failed,
+        "integration-use": sample_integration_use,
+        "project-detail": api_schemas.ProjectDetail(
+            project=sample_project,
+            links=[sample_link],
+            integration_uses=[sample_integration_use],
+            tool_uses=[],
+            contributors=[sample_contributor],
+            contracts=[sample_contract],
+            wasm_uploads=[sample_wasm],
+            failed_txs=[sample_failed],
+        ),
+        "builder": api_schemas.Builder(
+            address="GDEPLOYER",
+            projects=[sample_project],
+            contracts=[sample_contract],
+            wasm_uploads=[sample_wasm],
+            failed_txs=[sample_failed],
+        ),
+        "timeline-point": api_schemas.TimelinePoint(hour=now, contracts=3),
+        "integration": api_schemas.Integration(
+            slug="privy",
+            name="Privy",
+            category="wallets",
+            site="https://privy.io",
+            projects=4,
+        ),
+        "ecosystem-tool": api_schemas.EcosystemTool(
+            slug="scaffold-stellar",
+            name="Scaffold Stellar",
+            site="https://scaffoldstellar.org",
+            projects=6,
+        ),
+        "country-count": api_schemas.CountryCount(country="PT", contributors=3),
+        "project-page": api_schemas.Page[api_schemas.Project](items=[sample_project], total=1),
+        "contract-page": api_schemas.Page[api_schemas.Contract](items=[sample_contract], total=1),
+        "wasm-upload-page": api_schemas.Page[api_schemas.WasmUpload](items=[sample_wasm], total=1),
+        "failed-tx-page": api_schemas.Page[api_schemas.FailedTx](items=[sample_failed], total=1),
+    }
+
+    index = write_api_schemas(tmp_path)
+    loaded_index = json.loads((tmp_path / "index.json").read_text())
+    assert loaded_index == index
+    indexed_names = {entry["name"] for entry in loaded_index["schemas"]}
+    assert {"hackathon-export", "hackathon-project", "event"} <= indexed_names
+
+    for slug, _ in API_SCHEMA_MODELS:
+        schema_path = tmp_path / f"{slug}.schema.json"
+        schema = json.loads(schema_path.read_text())
+        assert schema["$id"].endswith(f"/{slug}.schema.json")
+        assert schema["version"] == "1.0"
+        jsonschema.validate(samples[slug].model_dump(mode="json"), schema)

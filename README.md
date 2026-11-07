@@ -40,6 +40,8 @@ uv run hackproof reconcile
 uv run hackproof export
 ```
 
+Published dataset and API response JSON Schemas are indexed in [`apps/web/public/schema/index.json`](apps/web/public/schema/index.json).
+
 ## Checks
 
 ```sh
