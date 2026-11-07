@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import logging
 
+from hackproof.digest import run_digest
 from hackproof.export.jobs import run_export
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
@@ -23,6 +24,7 @@ def main() -> None:
     )
     commands.add_parser("reconcile", help="link chain activity to repos and build projects")
     commands.add_parser("export", help="write one yaml file per project into data and its schema")
+    commands.add_parser("digest", help="render a weekly markdown digest and post to discord")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -38,3 +40,5 @@ def main() -> None:
             asyncio.run(run_reconcile())
         case "export":
             asyncio.run(run_export())
+        case "digest":
+            asyncio.run(run_digest())
