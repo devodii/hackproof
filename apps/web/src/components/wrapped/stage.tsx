@@ -1,13 +1,9 @@
-import { type ReactNode, createContext, useContext, useLayoutEffect, useRef, useState } from 'react'
+import { type ReactNode, useLayoutEffect, useState } from 'react'
+
+import { StillContext } from '@/components/wrapped/use-still'
 
 export const STAGE_WIDTH = 1600
 export const STAGE_HEIGHT = 900
-
-const StillContext = createContext(false)
-
-export function useStill() {
-  return useContext(StillContext)
-}
 
 function fitScale() {
   return Math.min(window.innerWidth / STAGE_WIDTH, window.innerHeight / STAGE_HEIGHT)
@@ -15,7 +11,6 @@ function fitScale() {
 
 export function Stage({ still, children }: { still: boolean; children: ReactNode }) {
   const [scale, setScale] = useState(fitScale)
-  const frame = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     const resize = () => setScale(fitScale())
@@ -25,17 +20,10 @@ export function Stage({ still, children }: { still: boolean; children: ReactNode
 
   return (
     <StillContext value={still}>
-      <div
-        ref={frame}
-        className="dark fixed inset-0 grid place-items-center overflow-hidden bg-[#070707]"
-      >
+      <div className="dark fixed inset-0 grid place-items-center overflow-hidden bg-poster">
         <div
           className="relative shrink-0 overflow-hidden bg-background text-foreground"
-          style={{
-            width: STAGE_WIDTH,
-            height: STAGE_HEIGHT,
-            transform: `scale(${scale})`,
-          }}
+          style={{ width: STAGE_WIDTH, height: STAGE_HEIGHT, transform: `scale(${scale})` }}
         >
           {children}
         </div>
