@@ -12,6 +12,7 @@ from hackproof.github.repositories import fetch_repositories
 from hackproof.hackathon import Discovery, Window
 from hackproof.linking.country import resolve_country
 from hackproof.linking.repo_ref import normalize_repo
+from hackproof.sql_loader import load_sql
 
 log = logging.getLogger("hackproof.discovery")
 
@@ -196,25 +197,7 @@ async def store_candidates(
     connection: asyncpg.Connection, candidates: list[Candidate]
 ) -> None:
     await connection.executemany(
-        """
-        INSERT INTO repos (full_name, url, description, stars, owner, owner_avatar,
-                           default_branch, homepage, language, license, forks, created_at,
-                           pushed_at, topics, window_commits, total_commits, base_sha,
-                           owner_location, country, discovered_via)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16,
-                $17, $18, $19, $20)
-        ON CONFLICT (full_name) DO UPDATE SET
-            description = EXCLUDED.description, stars = EXCLUDED.stars,
-            default_branch = EXCLUDED.default_branch, homepage = EXCLUDED.homepage,
-            language = EXCLUDED.language, license = EXCLUDED.license, forks = EXCLUDED.forks,
-            pushed_at = EXCLUDED.pushed_at, topics = EXCLUDED.topics,
-            window_commits = EXCLUDED.window_commits, total_commits = EXCLUDED.total_commits,
-            base_sha = EXCLUDED.base_sha, owner_location = EXCLUDED.owner_location,
-            country = EXCLUDED.country,
-            discovered_via = ARRAY(
-                SELECT DISTINCT via FROM unnest(repos.discovered_via || EXCLUDED.discovered_via) via
-            )
-        """,
+        load_sql("github/upsert_repo"),
         [
             (
                 c.full_name,
@@ -244,9 +227,7 @@ async def store_candidates(
 
 
 async def wasm_meta_repos(connection: asyncpg.Connection) -> list[str]:
-    rows = await connection.fetch(
-        "SELECT DISTINCT source_repo FROM wasm_uploads WHERE source_repo IS NOT NULL"
-    )
+    rows = await connection.fetch(load_sql("github/wasm_source_repos"))
     return sorted(
         {name for row in rows if (name := normalize_repo(row["source_repo"]))}
     )

@@ -10,8 +10,3 @@ class LinkMethod(StrEnum):
     ASSET_IN_REPO = "asset_in_repo"
     DEPLOYER_IN_REPO = "deployer_in_repo"
     FOOTPRINT = "footprint"
-
-
-METHOD_RANK_SQL = "array_position(ARRAY[{}], l.method)".format(
-    ", ".join(f"'{method}'" for method in LinkMethod)
-)
