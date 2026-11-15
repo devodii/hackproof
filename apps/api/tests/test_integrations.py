@@ -160,3 +160,14 @@ def test_the_shipped_catalog_lists_unique_agents():
 
     assert {"claude-code", "cursor", "codex", "github-copilot"} <= {agent.slug for agent in agents}
     assert len({agent.slug for agent in agents}) == len(agents)
+
+
+def test_stellar_raven_and_skills_are_found_in_agent_config_files():
+    files = {
+        ".mcp.json": '{"mcpServers": {"stellar-raven": {"url": "https://raven.stellar.org/mcp"}}}',
+        "skills-lock.json": '{"skills": {"dapp": {"source": "stellar/stellar-dev-skill"}}}',
+    }
+
+    found = {(d.slug, d.path) for d in detect_tools(files, get_catalog(), "team")}
+
+    assert found == {("stellar-raven", ".mcp.json"), ("stellar-skills", "skills-lock.json")}

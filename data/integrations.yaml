@@ -146,11 +146,23 @@ tools:
         ]
     github_owners: [stellar-registry, theahaco]
 
+  - slug: stellar-raven
+    name: Stellar Raven
+    site: https://raven.stellar.org
+    endpoints: [raven.stellar.org, raven.stellar.buzz]
+    github_owners: [stellar]
+
+  - slug: stellar-skills
+    name: Stellar Skills
+    site: https://skills.stellar.org
+    endpoints: [skills.stellar.org, stellar/stellar-dev-skill]
+    github_owners: [stellar]
+
 agents:
   - slug: claude-code
     name: Claude Code
     site: https://claude.com/product/claude-code
-    files: [CLAUDE.md, ".claude/*"]
+    files: [CLAUDE.md, ".claude/*", ".claude-plugin/*"]
     authors: [claude, "claude[bot]"]
 
   - slug: cursor
@@ -190,6 +202,11 @@ agents:
     name: Kiro
     site: https://kiro.dev
     files: [".kiro/*"]
+
+  - slug: lovable
+    name: Lovable
+    site: https://lovable.dev
+    files: [".lovable/*"]
 
   - slug: devin
     name: Devin
