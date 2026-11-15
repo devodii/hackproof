@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { apiGet } from '@/lib/api'
 import { STRICT_TIERS } from '@/lib/format'
-import type { EcosystemTool, Integration, Page, Project } from '@/lib/types'
+import type { AiAgent, EcosystemTool, Integration, Page, Project } from '@/lib/types'
 
 const EVERYTHING = 200
 
@@ -28,6 +28,14 @@ export function useIntegrations() {
   return useQuery({
     queryKey: ['integrations'],
     queryFn: () => apiGet<Integration[]>('/integrations'),
+    staleTime: Infinity,
+  })
+}
+
+export function useAgents() {
+  return useQuery({
+    queryKey: ['agents'],
+    queryFn: () => apiGet<AiAgent[]>('/agents'),
     staleTime: Infinity,
   })
 }
