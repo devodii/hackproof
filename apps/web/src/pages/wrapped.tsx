@@ -297,6 +297,8 @@ function Builders({ wrapped }: { wrapped: Wrapped }) {
 function Agents({ data, lens, onSelect }: SectionProps) {
   const rows = ranked(data.agents, 'agent', AGENT_ROWS)
 
+  if (rows.length === 0) return null
+
   return (
     <Tile
       title="AI in the repos"
@@ -318,6 +320,8 @@ function Agents({ data, lens, onSelect }: SectionProps) {
 function Tooling({ data, lens, onSelect }: SectionProps) {
   const rows = ranked(data.tools, 'tool', data.tools.length)
 
+  if (rows.length === 0) return null
+
   return (
     <Tile title="Stellar tooling" note="projects using it" delay={0.5} grow={rows.length}>
       <LensList
@@ -333,6 +337,8 @@ function Tooling({ data, lens, onSelect }: SectionProps) {
 
 function BuiltWith({ data, lens, onSelect }: SectionProps) {
   const rows = ranked(data.integrations, 'integration', INTEGRATION_ROWS)
+
+  if (rows.length === 0) return null
 
   return (
     <Tile title="Built with" note="partner integrations" delay={0.65} grow={rows.length}>
