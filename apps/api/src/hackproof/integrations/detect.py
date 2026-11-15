@@ -1,10 +1,11 @@
 import re
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
+from fnmatch import fnmatchcase
 from pathlib import PurePosixPath
 
-from hackproof.github.dependencies import ECOSYSTEM, PARSERS
+from hackproof.github.dependencies import ECOSYSTEM, PARSERS, SKIP_DIRECTORIES
 from hackproof.integrations.catalog import Catalog, Product
-from hackproof.integrations.models import Detection, Method
+from hackproof.integrations.models import AgentDetection, Detection, Method
 
 PROSE_SUFFIXES = {".md", ".txt"}
 
@@ -72,3 +73,28 @@ def _detect(files: dict[str, str], products: Sequence[Product], owner: str) -> l
                         Detection(slug=partner.slug, method="endpoint", evidence=host, path=path),
                     )
     return list(found.values())
+
+
+def _matches(path: str, pattern: str) -> bool:
+    return fnmatchcase(path, pattern) or fnmatchcase(path, f"*/{pattern}")
+
+
+def detect_agents(
+    paths: Iterable[str], logins: Iterable[str], catalog: Catalog
+) -> list[AgentDetection]:
+    tracked = [path for path in paths if not SKIP_DIRECTORIES & set(PurePosixPath(path).parts[:-1])]
+    people = {login.lower() for login in logins}
+    found: list[AgentDetection] = []
+    for agent in catalog.agents:
+        for pattern in agent.files:
+            match = next((path for path in tracked if _matches(path, pattern)), None)
+            if match:
+                found.append(
+                    AgentDetection(slug=agent.slug, method="file", evidence=pattern, path=match)
+                )
+        found.extend(
+            AgentDetection(slug=agent.slug, method="author", evidence=login, path="")
+            for login in agent.authors
+            if login.lower() in people
+        )
+    return found

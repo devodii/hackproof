@@ -12,3 +12,15 @@ class Detection(BaseModel):
     method: Method
     evidence: str
     path: str
+
+
+AgentMethod = Literal["file", "author"]
+
+
+class AgentDetection(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    slug: str
+    method: AgentMethod
+    evidence: str
+    path: str
