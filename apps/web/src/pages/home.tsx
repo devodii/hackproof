@@ -1,6 +1,10 @@
+import { useSearchParams } from 'react-router'
+
 import { suggestionsFor } from '@/components/chat/page'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
+import { FilterHeading } from '@/components/explorer/filter-heading'
+import { readSelection, selectedCount } from '@/components/explorer/filters'
 import { Overview } from '@/components/overview'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -10,6 +14,16 @@ import { formatDateTime } from '@/lib/format'
 export function HomePage() {
   const { data } = useHackWindow()
   const { startChat } = useChatPanel()
+  const [params] = useSearchParams()
+
+  if (selectedCount(readSelection(params)) > 0) {
+    return (
+      <div className="flex flex-col gap-8">
+        <FilterHeading />
+        <Explorer />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-10">
