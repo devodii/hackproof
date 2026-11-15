@@ -13,7 +13,7 @@ import type { Project } from '@/lib/types'
 
 const VISIBLE_TOPICS = 3
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, commits }: { project: Project; commits?: number }) {
   const name = projectName(project.project_id)
   const topics = (project.topics ?? []).slice(0, VISIBLE_TOPICS)
   const { data: integrations = [] } = useIntegrations()
@@ -65,6 +65,11 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.description ?? 'No description'}
         </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+          {commits !== undefined && (
+            <span className="font-medium text-foreground">
+              {formatNumber(commits)} {commits === 1 ? 'commit' : 'commits'}
+            </span>
+          )}
           {project.language && <span>{project.language}</span>}
           {project.stars !== null && project.stars > 0 && (
             <span className="inline-flex items-center gap-1">
