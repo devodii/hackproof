@@ -10,7 +10,9 @@ ROOT_ENV = ROOT / ".env"
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=ROOT_ENV, env_prefix="HACKPROOF_", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=ROOT_ENV, env_prefix="HACKPROOF_", extra="ignore"
+    )
 
     database_url: str = Field(
         default="postgresql://hackproof:hackproof@localhost:5440/hackproof",
@@ -25,7 +27,9 @@ class Settings(BaseSettings):
     rpc_concurrency: int = 6
     anthropic_api_key: str | None = Field(
         default=None,
-        validation_alias=AliasChoices("HACKPROOF_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"),
+        validation_alias=AliasChoices(
+            "HACKPROOF_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"
+        ),
     )
     chat_model: str = "claude-sonnet-5-5"
     github_tokens: Annotated[list[str], NoDecode] = Field(

@@ -17,14 +17,18 @@ class FakeGithub:
         if path.endswith("/commits"):
             return [{"sha": sha} for sha in self._commits]
         sha = path.rsplit("/", 1)[-1]
-        return {"tree": [{"type": "blob", "path": name} for name in self._repo.get(sha, {})]}
+        return {
+            "tree": [{"type": "blob", "path": name} for name in self._repo.get(sha, {})]
+        }
 
     async def raw(self, full_name: str, ref: str, path: str) -> bytes | None:
         return self._repo.get(ref, {}).get(path)
 
 
 async def added(base_sha: str | None, commits: list[str], repo: dict) -> bool:
-    return await stellar_added_in_window(FakeGithub(commits, repo), "a/b", WANTED, base_sha, END)
+    return await stellar_added_in_window(
+        FakeGithub(commits, repo), "a/b", WANTED, base_sha, END
+    )
 
 
 async def test_stellar_missing_at_the_window_start_and_present_at_its_end_was_added_inside_it():

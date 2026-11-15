@@ -245,18 +245,26 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
         for select in FOOTPRINT:
             await _insert_links(connection, LinkMethod.FOOTPRINT, select)
         official = (window.start, window.end)
-        await connection.execute(REPO_PROJECTS, *official, MIN_WINDOW_COMMITS, MIN_LIKELY_COMMITS)
-        await connection.execute(ACCOUNT_PROJECTS, *official, settings.friendbot_account)
+        await connection.execute(
+            REPO_PROJECTS, *official, MIN_WINDOW_COMMITS, MIN_LIKELY_COMMITS
+        )
+        await connection.execute(
+            ACCOUNT_PROJECTS, *official, settings.friendbot_account
+        )
         await connection.execute(
             "DELETE FROM projects WHERE lower(project_id) = ANY($1)",
             [f"repo:{name.lower()}" for name in hackathon.discovery.exclude_repos],
         )
 
-    methods = await connection.fetch("SELECT method, count(*) AS n FROM links GROUP BY method")
+    methods = await connection.fetch(
+        "SELECT method, count(*) AS n FROM links GROUP BY method"
+    )
     footprints = await connection.fetch(
         "SELECT footprint, count(*) AS n FROM projects GROUP BY footprint"
     )
-    tiers = await connection.fetch("SELECT tier, count(*) AS n FROM projects GROUP BY tier")
+    tiers = await connection.fetch(
+        "SELECT tier, count(*) AS n FROM projects GROUP BY tier"
+    )
     return Report(
         links_by_method={row["method"]: row["n"] for row in methods},
         projects_by_footprint={row["footprint"]: row["n"] for row in footprints},

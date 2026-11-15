@@ -31,7 +31,9 @@ def ensure_within_retention(pull_start: datetime, oldest_closed_at: datetime) ->
         )
 
 
-async def _fetch_chunk(rpc: SorobanRpc, network_id: bytes, start: int, end: int) -> list[Event]:
+async def _fetch_chunk(
+    rpc: SorobanRpc, network_id: bytes, start: int, end: int
+) -> list[Event]:
     events: list[Event] = []
     page = await rpc.transactions(start_ledger=start)
     while page["transactions"]:
@@ -54,7 +56,9 @@ async def _store(events: list[Event], chunk_key: str) -> None:
     raise RuntimeError(f"{chunk_key} kept deadlocking")
 
 
-async def _insert(connection: asyncpg.Connection, events: list[Event], chunk_key: str) -> None:
+async def _insert(
+    connection: asyncpg.Connection, events: list[Event], chunk_key: str
+) -> None:
     by_table: dict[str, list[Event]] = defaultdict(list)
     for event in events:
         by_table[event.table].append(event)
@@ -66,7 +70,8 @@ async def _insert(connection: asyncpg.Connection, events: list[Event], chunk_key
                 [event.row() for event in rows],
             )
         await connection.execute(
-            "INSERT INTO sync_state VALUES ($1, 'done') ON CONFLICT DO NOTHING", chunk_key
+            "INSERT INTO sync_state VALUES ($1, 'done') ON CONFLICT DO NOTHING",
+            chunk_key,
         )
 
 
@@ -86,7 +91,9 @@ async def run_sync() -> None:
             window.pull_start,
             datetime.fromtimestamp(int(health["oldestLedgerCloseTime"]), tz=UTC),
         )
-        first = await horizon.first_ledger_at_or_after(window.pull_start, oldest, latest)
+        first = await horizon.first_ledger_at_or_after(
+            window.pull_start, oldest, latest
+        )
         last = await horizon.first_ledger_at_or_after(window.end, first, latest) - 1
         log.info("syncing ledgers %s to %s", first, last)
 
@@ -112,6 +119,8 @@ async def run_sync() -> None:
                 )
             await _store(events, f"{CHUNK_PREFIX}{start}")
             completed += 1
-            log.info("chunk %s/%s done (%s events)", completed, len(pending), len(events))
+            log.info(
+                "chunk %s/%s done (%s events)", completed, len(pending), len(events)
+            )
 
         await asyncio.gather(*(process(s) for s in pending))

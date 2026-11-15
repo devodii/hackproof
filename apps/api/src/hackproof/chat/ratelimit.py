@@ -45,7 +45,9 @@ class RateLimiter:
             if len(recent) >= window.limit:
                 retry_after = math.ceil(recent[0] + window.seconds - now)
                 denials.append(
-                    Denied(window=window.name, limit=window.limit, retry_after=retry_after)
+                    Denied(
+                        window=window.name, limit=window.limit, retry_after=retry_after
+                    )
                 )
         if denials:
             return max(denials, key=lambda denied: denied.retry_after)

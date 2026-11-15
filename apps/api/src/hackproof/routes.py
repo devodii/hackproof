@@ -36,7 +36,9 @@ async def stats() -> Stats:
     return Stats(**await queries.fetch_stats())
 
 
-async def _page(resource: queries.Resource, q: str | None, limit: int, offset: int) -> Page[Any]:
+async def _page(
+    resource: queries.Resource, q: str | None, limit: int, offset: int
+) -> Page[Any]:
     items, total = await queries.list_page(resource, q=q, limit=limit, offset=offset)
     return Page(items=items, total=total)
 
@@ -95,21 +97,29 @@ async def projects(
 
 
 @router.get("/contracts")
-async def contracts(q: Search = None, limit: Limit = 50, offset: Offset = 0) -> Page[Contract]:
+async def contracts(
+    q: Search = None, limit: Limit = 50, offset: Offset = 0
+) -> Page[Contract]:
     return await _page("contracts", q, limit, offset)
 
 
 @router.get("/wasm")
-async def wasm(q: Search = None, limit: Limit = 50, offset: Offset = 0) -> Page[WasmUpload]:
+async def wasm(
+    q: Search = None, limit: Limit = 50, offset: Offset = 0
+) -> Page[WasmUpload]:
     return await _page("wasm", q, limit, offset)
 
 
 @router.get("/failed")
-async def failed(q: Search = None, limit: Limit = 50, offset: Offset = 0) -> Page[FailedTx]:
+async def failed(
+    q: Search = None, limit: Limit = 50, offset: Offset = 0
+) -> Page[FailedTx]:
     return await _page("failed", q, limit, offset)
 
 
-async def _everything(resource: queries.Resource, **filters: str) -> list[dict[str, Any]]:
+async def _everything(
+    resource: queries.Resource, **filters: str
+) -> list[dict[str, Any]]:
     items, _ = await queries.list_page(resource, limit=EVERYTHING, **filters)
     return items
 
@@ -121,17 +131,23 @@ async def project(project_id: str) -> ProjectDetail:
         raise HTTPException(status_code=404, detail="project not found")
     return ProjectDetail(
         project=found[0],
-        links=await queries.fetch_links(found[0]["full_name"]) if found[0]["full_name"] else [],
+        links=await queries.fetch_links(found[0]["full_name"])
+        if found[0]["full_name"]
+        else [],
         integration_uses=(
             await queries.fetch_integration_uses(found[0]["full_name"])
             if found[0]["full_name"]
             else []
         ),
         tool_uses=(
-            await queries.fetch_tool_uses(found[0]["full_name"]) if found[0]["full_name"] else []
+            await queries.fetch_tool_uses(found[0]["full_name"])
+            if found[0]["full_name"]
+            else []
         ),
         contributors=(
-            await queries.fetch_contributors(found[0]["full_name"]) if found[0]["full_name"] else []
+            await queries.fetch_contributors(found[0]["full_name"])
+            if found[0]["full_name"]
+            else []
         ),
         contracts=await _everything("contracts", project_id=project_id),
         wasm_uploads=await _everything("wasm", project_id=project_id),
@@ -143,7 +159,9 @@ async def project(project_id: str) -> ProjectDetail:
 async def contributor(login: str) -> Person:
     person = await queries.fetch_person(login)
     if person is None:
-        raise HTTPException(status_code=404, detail="no hackathon project for this contributor")
+        raise HTTPException(
+            status_code=404, detail="no hackathon project for this contributor"
+        )
     return Person(**person)
 
 
@@ -156,6 +174,8 @@ async def builder(address: str) -> Builder:
         wasm_uploads=await _everything("wasm", account=address),
         failed_txs=await _everything("failed", account=address),
     )
-    if not (result.projects or result.contracts or result.wasm_uploads or result.failed_txs):
+    if not (
+        result.projects or result.contracts or result.wasm_uploads or result.failed_txs
+    ):
         raise HTTPException(status_code=404, detail="no activity in the hack window")
     return result

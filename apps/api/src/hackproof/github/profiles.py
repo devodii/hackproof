@@ -27,12 +27,18 @@ async def resolve_profiles(github: GithubClient, connection: asyncpg.Connection)
     for start in range(0, len(logins), BATCH):
         batch = logins[start : start + BATCH]
         data = await github.graphql(_query(batch))
-        locations = {node["login"].lower(): node["location"] for node in data.values() if node}
+        locations = {
+            node["login"].lower(): node["location"] for node in data.values() if node
+        }
         await connection.executemany(
             "INSERT INTO github_users (login, location, country) VALUES ($1, $2, $3)"
             " ON CONFLICT (login) DO NOTHING",
             [
-                (login, locations.get(login.lower()), resolve_country(locations.get(login.lower())))
+                (
+                    login,
+                    locations.get(login.lower()),
+                    resolve_country(locations.get(login.lower())),
+                )
                 for login in batch
             ],
         )

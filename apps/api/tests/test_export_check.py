@@ -18,8 +18,12 @@ def test_identical_files_have_no_drift(tmp_path):
 
 
 def test_drift_names_missing_extra_and_changed_files(tmp_path):
-    database = write(tmp_path / "db", {"2026/a.yml": "x: 1\n", "2026/new.yml": "n: 1\n"})
-    committed = write(tmp_path / "repo", {"2026/a.yml": "x: 2\n", "2026/old.yml": "o: 1\n"})
+    database = write(
+        tmp_path / "db", {"2026/a.yml": "x: 1\n", "2026/new.yml": "n: 1\n"}
+    )
+    committed = write(
+        tmp_path / "repo", {"2026/a.yml": "x: 2\n", "2026/old.yml": "o: 1\n"}
+    )
 
     assert drift(database, committed) == [
         "only in the files: 2026/old.yml",

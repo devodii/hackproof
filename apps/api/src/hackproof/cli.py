@@ -14,17 +14,30 @@ def main() -> None:
     commands.add_parser("sync", help="index the hack window from testnet")
     discover = commands.add_parser("discover", help="find candidate repos on github")
     discover.add_argument(
-        "--strings", action="store_true", help="also run the network string code queries"
+        "--strings",
+        action="store_true",
+        help="also run the network string code queries",
     )
-    scan = commands.add_parser("scan", help="scan discovered repos for chain fingerprints")
-    scan.add_argument("--force", action="store_true", help="rescan repos already scanned")
+    scan = commands.add_parser(
+        "scan", help="scan discovered repos for chain fingerprints"
+    )
     scan.add_argument(
-        "--projects", action="store_true", help="only scan repos that are already projects"
+        "--force", action="store_true", help="rescan repos already scanned"
     )
-    commands.add_parser("reconcile", help="link chain activity to repos and build projects")
-    commands.add_parser("export", help="write one yaml file per project into data and its schema")
+    scan.add_argument(
+        "--projects",
+        action="store_true",
+        help="only scan repos that are already projects",
+    )
     commands.add_parser(
-        "check", help="check, read-only, that the database matches the committed data files"
+        "reconcile", help="link chain activity to repos and build projects"
+    )
+    commands.add_parser(
+        "export", help="write one yaml file per project into data and its schema"
+    )
+    commands.add_parser(
+        "check",
+        help="check, read-only, that the database matches the committed data files",
     )
     args = parser.parse_args()
 

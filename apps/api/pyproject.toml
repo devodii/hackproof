@@ -37,7 +37,23 @@ asyncio_mode = "auto"
 testpaths = ["tests"]
 
 [tool.ruff]
-line-length = 100
+line-length = 88
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+# E501: the formatter wraps what it can, long SQL and message strings may stay long.
+ignore = ["E501"]
+# D209: closing """ goes on its own line (https://docs.astral.sh/ruff/rules/new-line-after-last-paragraph/)
+# D213: docstring summary starts on the line after the opening """ (https://docs.astral.sh/ruff/rules/multi-line-summary-second-line/)
+extend-select = ["TID", "D209", "D213"]
+
+[tool.ruff.lint.isort]
+# Keep `from x import a, b as c` on one line instead of splitting the alias out.
+combine-as-imports = true
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "parents"
+
+[tool.ruff.format]
+# Add a trailing comma to function defs with two or more args to enforce multiline formatting in ruff.
+skip-magic-trailing-comma = false

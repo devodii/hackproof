@@ -38,7 +38,9 @@ async def run_discover(include_strings: bool) -> None:
             log.info("stored %s candidate repos", len(candidates))
 
 
-PROJECT_REPOS = "full_name IN (SELECT full_name FROM projects WHERE full_name IS NOT NULL)"
+PROJECT_REPOS = (
+    "full_name IN (SELECT full_name FROM projects WHERE full_name IS NOT NULL)"
+)
 
 
 async def run_scan(force: bool, projects_only: bool = False) -> None:

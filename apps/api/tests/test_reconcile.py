@@ -28,8 +28,14 @@ async def test_a_contract_in_a_repo_pulls_in_the_whole_deployer_footprint(scratc
     assert found[("team/app", "contract", "C1")] == "contract_in_repo"
     assert found[("team/app", "account", "GDEPLOYER")] == "footprint"
     assert found[("team/app", "contract", "C2")] == "footprint"
-    project = await db.fetchrow("SELECT * FROM projects WHERE project_id = 'repo:team/app'")
-    assert (project["contracts"], project["footprint"], project["builders"]) == (2, "contracts", 1)
+    project = await db.fetchrow(
+        "SELECT * FROM projects WHERE project_id = 'repo:team/app'"
+    )
+    assert (project["contracts"], project["footprint"], project["builders"]) == (
+        2,
+        "contracts",
+        1,
+    )
 
 
 async def test_wasm_metadata_links_regardless_of_repo_name_case(scratch_db):
@@ -67,13 +73,18 @@ async def test_hacker_accounts_in_a_repo_attach_a_contractless_project(scratch_d
     await add_funding(db, "GHACKER")
     await add_ref(db, "team/payments", "account", "GHACKER")
     await db.execute(
-        "INSERT INTO classic_ops VALUES ('t', 0, 'GHACKER', 'payment', NULL, NULL, 1, $1)", INSIDE
+        "INSERT INTO classic_ops VALUES ('t', 0, 'GHACKER', 'payment', NULL, NULL, 1, $1)",
+        INSIDE,
     )
 
     await reconcile(db)
 
-    assert (await links(db))[("team/payments", "account", "GHACKER")] == "deployer_in_repo"
-    project = await db.fetchrow("SELECT * FROM projects WHERE project_id = 'repo:team/payments'")
+    assert (await links(db))[
+        ("team/payments", "account", "GHACKER")
+    ] == "deployer_in_repo"
+    project = await db.fetchrow(
+        "SELECT * FROM projects WHERE project_id = 'repo:team/payments'"
+    )
     assert (project["footprint"], project["classic_ops"]) == ("classic", 1)
 
 
@@ -99,14 +110,20 @@ async def test_unattributed_deployers_become_account_projects(scratch_db):
     assert await db.fetchval("SELECT project_id FROM projects") == "acct:GLONE"
 
 
-async def test_older_repos_that_added_stellar_during_the_window_become_projects(scratch_db):
+async def test_older_repos_that_added_stellar_during_the_window_become_projects(
+    scratch_db,
+):
     db = scratch_db
     await add_repo(db, "team/old", stellar_added_in_window=True, dependencies=STELLAR)
-    await add_repo(db, "team/stale", stellar_added_in_window=False, dependencies=STELLAR)
+    await add_repo(
+        db, "team/stale", stellar_added_in_window=False, dependencies=STELLAR
+    )
 
     await reconcile(db)
 
-    ids = {row["project_id"] for row in await db.fetch("SELECT project_id FROM projects")}
+    ids = {
+        row["project_id"] for row in await db.fetch("SELECT project_id FROM projects")
+    }
     assert ids == {"repo:team/old"}
 
 
@@ -119,12 +136,16 @@ async def test_repos_created_inside_the_window_become_projects(scratch_db):
     assert await db.fetchval("SELECT project_id FROM projects") == "repo:team/new"
 
 
-async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(scratch_db):
+async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(
+    scratch_db,
+):
     db = scratch_db
     await add_repo(db, "a/chain", window_commits=1)
     await add_ref(db, "a/chain", "contract", "C1")
     await add_contract(db, "C1", "GCHAIN", "w1")
-    await add_repo(db, "c/likely", window_commits=5, created_at=INSIDE, dependencies=STELLAR)
+    await add_repo(
+        db, "c/likely", window_commits=5, created_at=INSIDE, dependencies=STELLAR
+    )
     await add_repo(db, "d/possible", window_commits=5, dependencies=STELLAR)
 
     await reconcile(db)
@@ -138,14 +159,18 @@ async def test_projects_are_tiered_by_how_strong_the_hackmeridian_evidence_is(sc
 
 async def test_a_new_repo_with_only_a_few_commits_is_not_likely(scratch_db):
     db = scratch_db
-    await add_repo(db, "team/scaffold", window_commits=4, created_at=INSIDE, dependencies=STELLAR)
+    await add_repo(
+        db, "team/scaffold", window_commits=4, created_at=INSIDE, dependencies=STELLAR
+    )
 
     await reconcile(db)
 
     assert await tiers(db) == {"repo:team/scaffold": "possible"}
 
 
-async def test_matches_that_only_touch_the_pre_start_margin_are_not_verified(scratch_db):
+async def test_matches_that_only_touch_the_pre_start_margin_are_not_verified(
+    scratch_db,
+):
     db = scratch_db
     await add_repo(db, "team/early", window_commits=1)
     await add_ref(db, "team/early", "contract", "C1")
@@ -160,9 +185,14 @@ async def test_matches_that_only_touch_the_pre_start_margin_are_not_verified(scr
     assert (await tiers(db))["repo:team/early"] == "possible"
 
 
-async def test_a_chain_item_matched_by_two_repos_is_credited_to_the_older_one(scratch_db):
+async def test_a_chain_item_matched_by_two_repos_is_credited_to_the_older_one(
+    scratch_db,
+):
     db = scratch_db
-    for name, created in (("team/copy", INSIDE), ("team/original", INSIDE - timedelta(days=30))):
+    for name, created in (
+        ("team/copy", INSIDE),
+        ("team/original", INSIDE - timedelta(days=30)),
+    ):
         await add_repo(db, name, window_commits=3, created_at=created)
         await add_ref(db, name, "contract", "C1")
     await add_contract(db, "C1", "GDEPLOYER", "w1")

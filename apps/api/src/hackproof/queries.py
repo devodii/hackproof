@@ -301,7 +301,9 @@ async def list_page(
     placed = places()
     wanted = project_ids
     if wanted is None and (winners or awards):
-        wanted = [pid for pid, place in placed.items() if awards is None or place in awards]
+        wanted = [
+            pid for pid, place in placed.items() if awards is None or place in awards
+        ]
     args = (
         (
             q,
@@ -344,7 +346,9 @@ async def fetch_links(full_name: str) -> list[dict[str, Any]]:
 
 async def fetch_contributors(full_name: str) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
-        return [dict(row) for row in await connection.fetch(CONTRIBUTORS_SQL, full_name)]
+        return [
+            dict(row) for row in await connection.fetch(CONTRIBUTORS_SQL, full_name)
+        ]
 
 
 async def fetch_timeline() -> list[dict[str, Any]]:
@@ -357,28 +361,44 @@ async def fetch_integration_uses(full_name: str) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         rows = await connection.fetch(INTEGRATION_USES_SQL, full_name)
     names = {partner.slug: partner.name for partner in get_catalog().partners}
-    return [{**row, "name": names[row["slug"]]} for row in map(dict, rows) if row["slug"] in names]
+    return [
+        {**row, "name": names[row["slug"]]}
+        for row in map(dict, rows)
+        if row["slug"] in names
+    ]
 
 
 async def fetch_tool_uses(full_name: str) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         rows = await connection.fetch(TOOL_USES_SQL, full_name)
     names = {tool.slug: tool.name for tool in get_catalog().tools}
-    return [{**row, "name": names[row["slug"]]} for row in map(dict, rows) if row["slug"] in names]
+    return [
+        {**row, "name": names[row["slug"]]}
+        for row in map(dict, rows)
+        if row["slug"] in names
+    ]
 
 
 async def fetch_tools() -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
-        counts = {row["slug"]: row["projects"] for row in await connection.fetch(TOOLS_SQL)}
+        counts = {
+            row["slug"]: row["projects"] for row in await connection.fetch(TOOLS_SQL)
+        }
     return [
-        {**tool.model_dump(include={"slug", "name", "site"}), "projects": counts.get(tool.slug, 0)}
+        {
+            **tool.model_dump(include={"slug", "name", "site"}),
+            "projects": counts.get(tool.slug, 0),
+        }
         for tool in get_catalog().tools
     ]
 
 
 async def fetch_integrations() -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
-        counts = {row["slug"]: row["projects"] for row in await connection.fetch(INTEGRATIONS_SQL)}
+        counts = {
+            row["slug"]: row["projects"]
+            for row in await connection.fetch(INTEGRATIONS_SQL)
+        }
     return [
         {
             **partner.model_dump(include={"slug", "name", "category", "site"}),
@@ -395,25 +415,33 @@ async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:
 
 async def fetch_wrapped() -> dict[str, Any]:
     start, end = window()
-    agents = [login.lower() for agent in get_catalog().agents for login in agent.authors]
+    agents = [
+        login.lower() for agent in get_catalog().agents for login in agent.authors
+    ]
     async with pool().acquire() as connection:
         totals = dict(await connection.fetchrow(WRAPPED_TOTALS_SQL, agents, start, end))
         operations = await connection.fetch(WRAPPED_OPERATIONS_SQL, start, end)
         teams = await connection.fetch(WRAPPED_TEAMS_SQL, agents)
-        multi_team = await connection.fetch(WRAPPED_BUILDERS_SQL, agents, 2, MAX_BUILDERS)
+        multi_team = await connection.fetch(
+            WRAPPED_BUILDERS_SQL, agents, 2, MAX_BUILDERS
+        )
         top = await connection.fetch(WRAPPED_BUILDERS_SQL, agents, 1, TOP_BUILDERS)
     return {
         **totals,
         "operations_by_type": [dict(row) for row in operations],
         "team_sizes": [dict(row) for row in teams],
         "multi_team_builders": [dict(row) for row in multi_team],
-        "top_builders": [dict(row) for row in sorted(top, key=lambda row: -row["contributions"])],
+        "top_builders": [
+            dict(row) for row in sorted(top, key=lambda row: -row["contributions"])
+        ],
     }
 
 
 async def fetch_agents() -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
-        counts = {row["slug"]: row["projects"] for row in await connection.fetch(AGENTS_SQL)}
+        counts = {
+            row["slug"]: row["projects"] for row in await connection.fetch(AGENTS_SQL)
+        }
     return [
         {
             **agent.model_dump(include={"slug", "name", "site"}),

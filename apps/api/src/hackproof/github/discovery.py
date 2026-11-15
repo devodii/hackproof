@@ -30,14 +30,19 @@ def is_pinned(candidate: Candidate) -> bool:
 
 
 def should_keep(candidate: Candidate, window: Window, discovery: Discovery) -> bool:
-    if candidate.full_name.lower() in {name.lower() for name in discovery.exclude_repos}:
+    if candidate.full_name.lower() in {
+        name.lower() for name in discovery.exclude_repos
+    }:
         return False
     if is_pinned(candidate):
         return True
-    if candidate.fork or candidate.owner.lower() in {o.lower() for o in discovery.exclude_owners}:
+    if candidate.fork or candidate.owner.lower() in {
+        o.lower() for o in discovery.exclude_owners
+    }:
         return False
-    return candidate.pushed_at is not None and candidate.pushed_at >= window.start - timedelta(
-        days=1
+    return (
+        candidate.pushed_at is not None
+        and candidate.pushed_at >= window.start - timedelta(days=1)
     )
 
 
@@ -67,7 +72,9 @@ async def repository_slices(
 ) -> list[str]:
     async def count(lo: int, hi: int) -> int:
         pushed = f"pushed:{_stamp(lo)}..{_stamp(hi)}"
-        return await _total(github, "/search/repositories", f"{query} {pushed}", "repositories")
+        return await _total(
+            github, "/search/repositories", f"{query} {pushed}", "repositories"
+        )
 
     ranges = await split_range(int(since.timestamp()), int(until.timestamp()), count)
     return [f"{query} pushed:{_stamp(lo)}..{_stamp(hi)}" for lo, hi in ranges]
@@ -80,10 +87,15 @@ async def code_slices(github: GithubClient, query: str) -> list[str]:
     async def count(lo: int, hi: int) -> int:
         return await _total(github, "/search/code", f"{query} size:{lo}..{hi}", "code")
 
-    return [f"{query} size:{lo}..{hi}" for lo, hi in await split_range(0, SIZE_CEILING, count)]
+    return [
+        f"{query} size:{lo}..{hi}"
+        for lo, hi in await split_range(0, SIZE_CEILING, count)
+    ]
 
 
-async def _hits(github: GithubClient, path: str, query: str, kind: Search) -> list[dict[str, Any]]:
+async def _hits(
+    github: GithubClient, path: str, query: str, kind: Search
+) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     for page in range(1, RESULT_CAP // PAGE_SIZE + 1):
         data = await github.json(
@@ -121,7 +133,9 @@ async def _collect(
     async def repository_query(query: str) -> None:
         slices = await repository_slices(github, query, since, until)
         for sliced in slices:
-            for item in await _hits(github, "/search/repositories", sliced, "repositories"):
+            for item in await _hits(
+                github, "/search/repositories", sliced, "repositories"
+            ):
                 note(item["full_name"], f"search:{query}")
         log.info("repo search done: %s slices, %s", len(slices), query)
 
@@ -166,7 +180,10 @@ async def discover(
     for name in wasm_meta_repos:
         pinned.setdefault(name.lower(), set()).add("wasm_meta")
 
-    stages = [(discovery.github_queries, [], pinned), ([], discovery.github_code_queries, {})]
+    stages = [
+        (discovery.github_queries, [], pinned),
+        ([], discovery.github_code_queries, {}),
+    ]
     if include_strings:
         stages.append(([], discovery.github_string_queries, {}))
     for repository_queries, code_queries, extra in stages:
@@ -175,7 +192,9 @@ async def discover(
         yield await _resolve(github, found, window, discovery)
 
 
-async def store_candidates(connection: asyncpg.Connection, candidates: list[Candidate]) -> None:
+async def store_candidates(
+    connection: asyncpg.Connection, candidates: list[Candidate]
+) -> None:
     await connection.executemany(
         """
         INSERT INTO repos (full_name, url, description, stars, owner, owner_avatar,
@@ -228,4 +247,6 @@ async def wasm_meta_repos(connection: asyncpg.Connection) -> list[str]:
     rows = await connection.fetch(
         "SELECT DISTINCT source_repo FROM wasm_uploads WHERE source_repo IS NOT NULL"
     )
-    return sorted({name for row in rows if (name := normalize_repo(row["source_repo"]))})
+    return sorted(
+        {name for row in rows if (name := normalize_repo(row["source_repo"]))}
+    )

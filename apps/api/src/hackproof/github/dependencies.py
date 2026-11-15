@@ -5,8 +5,22 @@ from pathlib import PurePosixPath
 
 from hackproof.github.models import DependencyFingerprint
 
-MANIFESTS = {"Cargo.toml", "package.json", "requirements.txt", "pyproject.toml", "go.mod"}
-SKIP_DIRECTORIES = {"node_modules", "dist", "target", ".git", "build", "vendor", ".next"}
+MANIFESTS = {
+    "Cargo.toml",
+    "package.json",
+    "requirements.txt",
+    "pyproject.toml",
+    "go.mod",
+}
+SKIP_DIRECTORIES = {
+    "node_modules",
+    "dist",
+    "target",
+    ".git",
+    "build",
+    "vendor",
+    ".next",
+}
 ECOSYSTEM = {
     "Cargo.toml": "rust",
     "package.json": "js",
@@ -48,7 +62,9 @@ def _requirements(text: str) -> dict[str, str | None]:
 def _pyproject(text: str) -> dict[str, str | None]:
     data = tomllib.loads(text)
     found = _requirements("\n".join(data.get("project", {}).get("dependencies", [])))
-    for name, spec in data.get("tool", {}).get("poetry", {}).get("dependencies", {}).items():
+    for name, spec in (
+        data.get("tool", {}).get("poetry", {}).get("dependencies", {}).items()
+    ):
         found[name] = spec if isinstance(spec, str) else (spec or {}).get("version")
     return found
 
@@ -66,7 +82,9 @@ PARSERS = {
 }
 
 
-def fingerprint(files: dict[str, str], wanted: dict[str, list[str]]) -> DependencyFingerprint:
+def fingerprint(
+    files: dict[str, str], wanted: dict[str, list[str]]
+) -> DependencyFingerprint:
     result = DependencyFingerprint()
     for path, text in files.items():
         name = PurePosixPath(path).name

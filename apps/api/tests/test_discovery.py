@@ -38,14 +38,18 @@ def test_keeps_repos_pushed_around_the_window():
 
 
 def test_drops_stale_forked_and_excluded_repos():
-    assert not should_keep(candidate(pushed_at=datetime(2026, 9, 1, tzinfo=UTC)), WINDOW, DISCOVERY)
+    assert not should_keep(
+        candidate(pushed_at=datetime(2026, 9, 1, tzinfo=UTC)), WINDOW, DISCOVERY
+    )
     assert not should_keep(candidate(fork=True), WINDOW, DISCOVERY)
     assert not should_keep(candidate(owner="Stellar"), WINDOW, DISCOVERY)
 
 
 def test_repos_named_in_wasm_metadata_bypass_every_filter():
     stale = candidate(
-        pushed_at=datetime(2025, 1, 1, tzinfo=UTC), fork=True, discovered_via={"wasm_meta"}
+        pushed_at=datetime(2025, 1, 1, tzinfo=UTC),
+        fork=True,
+        discovered_via={"wasm_meta"},
     )
     assert is_pinned(stale)
     assert should_keep(stale, WINDOW, DISCOVERY)
@@ -53,7 +57,9 @@ def test_repos_named_in_wasm_metadata_bypass_every_filter():
 
 def test_excluded_repos_stay_out_even_when_wasm_metadata_names_them():
     assert not should_keep(
-        candidate(full_name="Team/Tool", discovered_via={"wasm_meta"}), WINDOW, DISCOVERY
+        candidate(full_name="Team/Tool", discovered_via={"wasm_meta"}),
+        WINDOW,
+        DISCOVERY,
     )
 
 

@@ -56,14 +56,16 @@ def candidate_from_node(node: dict[str, Any]) -> Candidate:
 
 def _lookup(index: int, name: str, fields: str) -> str:
     owner, repo = name.split("/")
-    return (
-        f"r{index}: repository(owner: {json.dumps(owner)}, name: {json.dumps(repo)}) {{{fields}}}"
-    )
+    return f"r{index}: repository(owner: {json.dumps(owner)}, name: {json.dumps(repo)}) {{{fields}}}"
 
 
 def _query(names: list[str], window: Window) -> str:
     fields = FIELDS.format(start=window.start.isoformat(), end=window.end.isoformat())
-    return "query {" + " ".join(_lookup(i, name, fields) for i, name in enumerate(names)) + "}"
+    return (
+        "query {"
+        + " ".join(_lookup(i, name, fields) for i, name in enumerate(names))
+        + "}"
+    )
 
 
 async def fetch_repositories(
@@ -81,8 +83,12 @@ async def fetch_repositories(
             if len(batch) == 1:
                 return []
             half = len(batch) // 2
-            first, second = await asyncio.gather(fetch(batch[:half]), fetch(batch[half:]))
+            first, second = await asyncio.gather(
+                fetch(batch[:half]), fetch(batch[half:])
+            )
             return first + second
         return [candidate_from_node(node) for node in data.values() if node]
 
-    return [c for found in await asyncio.gather(*(fetch(b) for b in batches)) for c in found]
+    return [
+        c for found in await asyncio.gather(*(fetch(b) for b in batches)) for c in found
+    ]

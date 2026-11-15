@@ -24,13 +24,18 @@ async def run_export() -> None:
         export = await build_export(connection, hackathon)
 
     count = write_project_files(export, DATA)
-    log.info("wrote %s project files to %s", count, DATA / str(export.hackathon.starts_at.year))
+    log.info(
+        "wrote %s project files to %s",
+        count,
+        DATA / str(export.hackathon.starts_at.year),
+    )
 
 
 async def run_check() -> int:
     hackathon = get_hackathon()
     connection = await asyncpg.connect(
-        get_settings().database_url, server_settings={"default_transaction_read_only": "on"}
+        get_settings().database_url,
+        server_settings={"default_transaction_read_only": "on"},
     )
     await connection.set_type_codec(
         "jsonb", encoder=json.dumps, decoder=json.loads, schema="pg_catalog"
@@ -49,5 +54,7 @@ async def run_check() -> int:
     if found:
         log.warning("%s files differ from the database", len(found))
     else:
-        log.info("in sync: the database matches all %s project files", len(export.projects))
+        log.info(
+            "in sync: the database matches all %s project files", len(export.projects)
+        )
     return 1 if found else 0

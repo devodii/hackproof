@@ -22,7 +22,9 @@ class GithubUnavailable(Exception):
 
 class Token(BaseModel):
     value: str | None
-    budget: dict[str, int] = Field(default_factory=lambda: {"core": 5000, "graphql": 5000})
+    budget: dict[str, int] = Field(
+        default_factory=lambda: {"core": 5000, "graphql": 5000}
+    )
     blocked_until: float = 0.0
     next_search_at: dict[str, float] = Field(
         default_factory=lambda: {"code": 0.0, "repositories": 0.0}
@@ -41,7 +43,9 @@ class GithubClient:
             async with self._lock:
                 now = time.monotonic()
                 usable = [
-                    t for t in self._tokens if t.blocked_until <= now and t.budget[resource] > 20
+                    t
+                    for t in self._tokens
+                    if t.blocked_until <= now and t.budget[resource] > 20
                 ]
                 if usable and search is None:
                     return max(usable, key=lambda t: t.budget[resource])
@@ -67,7 +71,9 @@ class GithubClient:
             reset = int(response.headers.get("x-ratelimit-reset", time.time() + 60))
             token.blocked_until = time.monotonic() + max(reset - time.time(), 1)
         elif response.status_code in (403, 429) and "retry-after" in response.headers:
-            token.blocked_until = time.monotonic() + int(response.headers["retry-after"])
+            token.blocked_until = time.monotonic() + int(
+                response.headers["retry-after"]
+            )
 
     async def _send(
         self,
@@ -84,7 +90,9 @@ class GithubClient:
             if token.value:
                 headers["Authorization"] = f"Bearer {token.value}"
             try:
-                response = await self._http.request(method, url, headers=headers, **options)
+                response = await self._http.request(
+                    method, url, headers=headers, **options
+                )
             except httpx.TransportError:
                 await asyncio.sleep(2**attempt / 2)
                 continue
@@ -96,7 +104,11 @@ class GithubClient:
         raise GithubUnavailable(url)
 
     async def get(
-        self, path: str, params: dict[str, Any] | None = None, *, search: Search | None = None
+        self,
+        path: str,
+        params: dict[str, Any] | None = None,
+        *,
+        search: Search | None = None,
     ) -> httpx.Response | None:
         response = await self._send("GET", f"{API}{path}", search=search, params=params)
         if response.status_code in ABSENT:
@@ -105,7 +117,11 @@ class GithubClient:
         return response
 
     async def json(
-        self, path: str, params: dict[str, Any] | None = None, *, search: Search | None = None
+        self,
+        path: str,
+        params: dict[str, Any] | None = None,
+        *,
+        search: Search | None = None,
     ) -> Any | None:
         response = await self.get(path, params, search=search)
         if response is None or response.status_code == 204:
@@ -122,14 +138,18 @@ class GithubClient:
             except ValueError:
                 await asyncio.sleep(2**attempt / 2)
                 continue
-            errors = [e for e in payload.get("errors", []) if e.get("type") != "NOT_FOUND"]
+            errors = [
+                e for e in payload.get("errors", []) if e.get("type") != "NOT_FOUND"
+            ]
             if errors or "data" not in payload:
                 await asyncio.sleep(2**attempt / 2)
                 continue
             return payload["data"]
         raise GithubUnavailable("graphql")
 
-    async def raw(self, full_name: str, ref: str, path: str, limit: int = 512_000) -> bytes | None:
+    async def raw(
+        self, full_name: str, ref: str, path: str, limit: int = 512_000
+    ) -> bytes | None:
         url = f"{RAW}/{full_name}/{ref}/{path}"
         for attempt in range(ATTEMPTS):
             await asyncio.sleep(max(self._raw_resume_at - time.monotonic(), 0))

@@ -22,7 +22,9 @@ async def _stellar_packages_at(
         ),
         key=lambda path: (len(PurePosixPath(path).parts), path),
     )[:MAX_MANIFESTS]
-    contents = await asyncio.gather(*(github.raw(full_name, sha, path) for path in paths))
+    contents = await asyncio.gather(
+        *(github.raw(full_name, sha, path) for path in paths)
+    )
     manifests = {
         path: content.decode(errors="ignore")
         for path, content in zip(paths, contents, strict=True)
@@ -39,9 +41,15 @@ async def stellar_added_in_window(
     window_end: datetime,
 ) -> bool:
     until = window_end.strftime("%Y-%m-%dT%H:%M:%SZ")
-    commits = await github.json(f"/repos/{full_name}/commits", {"until": until, "per_page": 1})
+    commits = await github.json(
+        f"/repos/{full_name}/commits", {"until": until, "per_page": 1}
+    )
     if not commits:
         return False
-    before = await _stellar_packages_at(github, full_name, base_sha, wanted) if base_sha else {}
+    before = (
+        await _stellar_packages_at(github, full_name, base_sha, wanted)
+        if base_sha
+        else {}
+    )
     after = await _stellar_packages_at(github, full_name, commits[0]["sha"], wanted)
     return not before and bool(after)

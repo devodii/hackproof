@@ -29,7 +29,9 @@ def test_select_files_prioritises_manifests_and_skips_noise():
 
 
 def test_select_files_drops_oversized_files():
-    texts, wasms = select_files([blob("big.json", 600_000), blob("huge.wasm", 9_000_000)])
+    texts, wasms = select_files(
+        [blob("big.json", 600_000), blob("huge.wasm", 9_000_000)]
+    )
     assert texts == [] and wasms == []
 
 
@@ -51,7 +53,12 @@ def test_contributors_keep_people_and_drop_bots():
                 "type": "User",
                 "contributions": 12,
             },
-            {"login": "dependabot[bot]", "html_url": "x", "type": "Bot", "contributions": 40},
+            {
+                "login": "dependabot[bot]",
+                "html_url": "x",
+                "type": "Bot",
+                "contributions": 40,
+            },
         ]
     )
     assert [(p.login, p.contributions) for p in people] == [("ana", 12)]
@@ -59,16 +66,18 @@ def test_contributors_keep_people_and_drop_bots():
 
 
 def test_demo_url_pattern_only_matches_ascii_hosts():
-    assert DEMO_URL.search("see https://my-app.vercel.app/docs for the demo").group() == (
-        "https://my-app.vercel.app/docs"
-    )
+    assert DEMO_URL.search(
+        "see https://my-app.vercel.app/docs for the demo"
+    ).group() == ("https://my-app.vercel.app/docs")
     assert DEMO_URL.search("https://你的用户名.github.io`、`SITE_BASE=") is None
 
 
 async def test_a_rescan_replaces_the_stored_integrations(scratch_db):
     db = scratch_db
     await add_repo(db, "team/app")
-    detection = Detection(slug="privy", method="package", evidence="@privy-io/node", path="a.json")
+    detection = Detection(
+        slug="privy", method="package", evidence="@privy-io/node", path="a.json"
+    )
 
     def scan(*found: Detection) -> RepoScan:
         return RepoScan(

@@ -13,6 +13,7 @@ from hackproof.export.models import (
     Contributor,
     EcosystemTool,
     Evidence,
+    Hackathon as ExportedHackathon,
     HackathonExport,
     IntegrationEvidence,
     IntegrationPartner,
@@ -20,7 +21,6 @@ from hackproof.export.models import (
     Project,
     WasmUpload,
 )
-from hackproof.export.models import Hackathon as ExportedHackathon
 from hackproof.export.urls import (
     account_url,
     asset_url,
@@ -120,7 +120,9 @@ def _evidence_url(kind: str, subject: str) -> str | None:
             return None
 
 
-def _group(rows: Iterable[asyncpg.Record], key: str = "full_name") -> dict[str, list[Any]]:
+def _group(
+    rows: Iterable[asyncpg.Record], key: str = "full_name"
+) -> dict[str, list[Any]]:
     grouped: dict[str, list[Any]] = defaultdict(list)
     for row in rows:
         grouped[row[key]].append(row)
@@ -142,27 +144,40 @@ def _found(
     return found
 
 
-def _agents(catalog: Catalog, rows: list[asyncpg.Record], repo_url: str) -> list[AiAgent]:
+def _agents(
+    catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
+) -> list[AiAgent]:
     found: dict[str, list[AgentEvidence]] = defaultdict(list)
     for row in rows:
         found[row["agent"]].append(
             AgentEvidence(
                 method=row["method"],
                 detail=row["evidence"],
-                repo_file_url=repo_file_url(repo_url, row["path"]) if row["path"] else None,
+                repo_file_url=repo_file_url(repo_url, row["path"])
+                if row["path"]
+                else None,
             )
         )
     return [
-        AiAgent(slug=agent.slug, name=agent.name, website=agent.site, evidence=found[agent.slug])
+        AiAgent(
+            slug=agent.slug,
+            name=agent.name,
+            website=agent.site,
+            evidence=found[agent.slug],
+        )
         for agent in catalog.agents
         if agent.slug in found
     ]
 
 
-def _tools(catalog: Catalog, rows: list[asyncpg.Record], repo_url: str) -> list[EcosystemTool]:
+def _tools(
+    catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
+) -> list[EcosystemTool]:
     found = _found(rows, "tool", repo_url)
     return [
-        EcosystemTool(slug=tool.slug, name=tool.name, website=tool.site, evidence=found[tool.slug])
+        EcosystemTool(
+            slug=tool.slug, name=tool.name, website=tool.site, evidence=found[tool.slug]
+        )
         for tool in catalog.tools
         if tool.slug in found
     ]
@@ -186,7 +201,9 @@ def _partners(
 
 
 async def build_export(
-    connection: asyncpg.Connection, hackathon: Hackathon, tiers: Iterable[str] = STRICT_TIERS
+    connection: asyncpg.Connection,
+    hackathon: Hackathon,
+    tiers: Iterable[str] = STRICT_TIERS,
 ) -> HackathonExport:
     window = hackathon.window
     projects = await connection.fetch(PROJECTS_SQL, list(tiers), list(TIER_ORDER))
@@ -226,10 +243,16 @@ async def build_export(
             total_commits=row["total_commits"],
             track=row["declared_track"] or "genesis",
             track_declared=row["declared_track"] is not None,
-            integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
+            integration_partners=_partners(
+                catalog, integrations[row["full_name"]], row["url"]
+            ),
             ecosystem_tools=_tools(catalog, tools[row["full_name"]], row["url"]),
             ai_agents=_agents(catalog, agents[row["full_name"]], row["url"]),
-            owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
+            owner=Owner(
+                login=row["owner"],
+                avatar_url=row["owner_avatar"],
+                country=row["country"],
+            ),
             contributors=[
                 Contributor(
                     login=c["login"],
@@ -247,7 +270,9 @@ async def build_export(
                 asset_count=row["assets"],
                 failed_tx_count=row["failed_txs"],
                 accounts=[
-                    Account(address=a["subject"], explorer_url=account_url(a["subject"]))
+                    Account(
+                        address=a["subject"], explorer_url=account_url(a["subject"])
+                    )
                     for a in accounts[row["full_name"]]
                 ],
                 wasm_uploads=[
@@ -277,7 +302,9 @@ async def build_export(
                         subject=e["subject"],
                         method=e["method"],
                         explorer_url=_evidence_url(e["subject_kind"], e["subject"]),
-                        repo_file_url=(repo_file_url(row["url"], e["path"]) if e["path"] else None),
+                        repo_file_url=(
+                            repo_file_url(row["url"], e["path"]) if e["path"] else None
+                        ),
                     )
                     for e in evidence[row["full_name"]]
                 ],

@@ -15,7 +15,10 @@ DECLARATION = re.compile(
 
 def _declared(text: str) -> Track | None:
     found = {
-        value.lower() for match in DECLARATION.finditer(text) for value in match.groups() if value
+        value.lower()
+        for match in DECLARATION.finditer(text)
+        for value in match.groups()
+        if value
     }
     return found.pop() if len(found) == 1 else None  # type: ignore[return-value]
 

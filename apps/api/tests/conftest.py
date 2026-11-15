@@ -16,7 +16,9 @@ async def scratch_db() -> AsyncIterator[asyncpg.Connection]:
     name = f"hackproof_test_{uuid4().hex[:8]}"
     admin = await asyncpg.connect(url)
     await admin.execute(f'CREATE DATABASE "{name}"')
-    connection = await asyncpg.connect(urlunparse(urlparse(url)._replace(path=f"/{name}")))
+    connection = await asyncpg.connect(
+        urlunparse(urlparse(url)._replace(path=f"/{name}"))
+    )
     await connection.set_type_codec(
         "jsonb", encoder=json.dumps, decoder=json.loads, schema="pg_catalog"
     )

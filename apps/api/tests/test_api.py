@@ -42,7 +42,9 @@ def test_unknown_project_and_builder_are_not_found():
 
 def test_projects_can_be_filtered_by_tier():
     with TestClient(app) as client:
-        body = client.get("/api/projects", params={"tier": ["verified", "likely"], "limit": 100})
+        body = client.get(
+            "/api/projects", params={"tier": ["verified", "likely"], "limit": 100}
+        )
     assert {item["tier"] for item in body.json()["items"]} <= {"verified", "likely"}
 
 
@@ -63,19 +65,26 @@ def test_countries_are_ranked_by_contributors():
 def test_integrations_list_every_partner_with_a_project_count():
     with TestClient(app) as client:
         body = client.get("/api/integrations").json()
-    assert {"trustless-work", "privy", "stellar-wallets-kit"} <= {row["slug"] for row in body}
+    assert {"trustless-work", "privy", "stellar-wallets-kit"} <= {
+        row["slug"] for row in body
+    }
     assert all(row["projects"] >= 0 for row in body)
 
 
 def test_projects_can_be_filtered_by_integration_partner():
     with TestClient(app) as client:
-        none = client.get("/api/projects", params={"integration": "no-such-partner"}).json()
+        none = client.get(
+            "/api/projects", params={"integration": "no-such-partner"}
+        ).json()
         assert none["total"] == 0
         used = next(
-            (row for row in client.get("/api/integrations").json() if row["projects"]), None
+            (row for row in client.get("/api/integrations").json() if row["projects"]),
+            None,
         )
         if used:
-            body = client.get("/api/projects", params={"integration": used["slug"]}).json()
+            body = client.get(
+                "/api/projects", params={"integration": used["slug"]}
+            ).json()
             assert body["total"] >= used["projects"]
             assert all(used["slug"] in item["integrations"] for item in body["items"])
 
@@ -83,7 +92,8 @@ def test_projects_can_be_filtered_by_integration_partner():
 def test_a_project_page_lists_where_each_integration_was_found():
     with TestClient(app) as client:
         used = next(
-            (row for row in client.get("/api/integrations").json() if row["projects"]), None
+            (row for row in client.get("/api/integrations").json() if row["projects"]),
+            None,
         )
         if used:
             [first, *_] = client.get(
@@ -91,7 +101,10 @@ def test_a_project_page_lists_where_each_integration_was_found():
             ).json()["items"]
             detail = client.get(f"/api/projects/{first['project_id']}").json()
             assert used["slug"] in {use["slug"] for use in detail["integration_uses"]}
-            assert {use["method"] for use in detail["integration_uses"]} <= {"package", "endpoint"}
+            assert {use["method"] for use in detail["integration_uses"]} <= {
+                "package",
+                "endpoint",
+            }
 
 
 def test_wrapped_team_sizes_fit_inside_the_projects():
@@ -112,7 +125,9 @@ def test_wrapped_builders_are_ranked_and_multi_team_means_two_or_more_projects()
         len(builder["project_names"]) == builder["projects"]
         for builder in body["multi_team_builders"]
     )
-    assert not {"cursoragent", "codex"} & {b["login"] for b in body["multi_team_builders"]}
+    assert not {"cursoragent", "codex"} & {
+        b["login"] for b in body["multi_team_builders"]
+    }
 
 
 def test_agents_list_every_catalog_agent_with_a_project_count():
@@ -136,7 +151,9 @@ def test_a_contributor_lists_their_projects_with_their_commits():
             return
         person = client.get(f"/api/contributors/{top[0]['login'].upper()}").json()
     assert person["login"] == top[0]["login"]
-    assert person["contributions"] == sum(item["contributions"] for item in person["projects"])
+    assert person["contributions"] == sum(
+        item["contributions"] for item in person["projects"]
+    )
     assert len(person["projects"]) == top[0]["projects"]
     commits = [item["contributions"] for item in person["projects"]]
     assert commits == sorted(commits, reverse=True)

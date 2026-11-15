@@ -29,7 +29,10 @@ def test_repo_files_link_to_the_default_branch():
 def test_file_paths_are_percent_encoded_so_every_link_is_a_valid_url():
     url = repo_file_url("https://github.com/team/app", "board/Leo's notes #1 (v2).md")
 
-    assert url == "https://github.com/team/app/blob/HEAD/board/Leo%27s%20notes%20%231%20%28v2%29.md"
+    assert (
+        url
+        == "https://github.com/team/app/blob/HEAD/board/Leo%27s%20notes%20%231%20%28v2%29.md"
+    )
     assert " " not in url
 
 

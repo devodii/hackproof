@@ -9,4 +9,6 @@ def test_awards_name_each_project_once():
 
 
 def test_places_maps_every_award():
-    assert places() == {award.project_id: award.place for award in get_hackathon().awards}
+    assert places() == {
+        award.project_id: award.place for award in get_hackathon().awards
+    }

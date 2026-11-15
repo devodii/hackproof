@@ -45,7 +45,9 @@ async def test_a_project_file_validates_and_keeps_only_public_facts(scratch_db):
     data = yaml.safe_load(text)
 
     jsonschema.validate(data, file_schema())
-    assert text.startswith("# yaml-language-server: $schema=../schema-hackathon-project.yml\n")
+    assert text.startswith(
+        "# yaml-language-server: $schema=../schema-hackathon-project.yml\n"
+    )
     assert data["canonical_id"] == "pkg:github/team/app"
     assert data["contributors"] == [{"login": "ana", "contributions": 12}]
     assert data["chain"]["accounts"] == ["GDEPLOYER"]
@@ -88,7 +90,9 @@ async def test_a_name_without_letters_or_digits_is_an_error(scratch_db):
         file_names(export.projects)
 
 
-async def test_writing_files_replaces_stale_ones_and_keeps_the_event_manifest(scratch_db, tmp_path):
+async def test_writing_files_replaces_stale_ones_and_keeps_the_event_manifest(
+    scratch_db, tmp_path
+):
     export = await likely_export(scratch_db, "team/app")
     year = tmp_path / str(export.hackathon.starts_at.year)
     year.mkdir()
@@ -99,7 +103,9 @@ async def test_writing_files_replaces_stale_ones_and_keeps_the_event_manifest(sc
     assert count == 1
     assert sorted(path.name for path in year.glob("*.yml")) == [EVENT_FILE, "app.yml"]
     jsonschema.validate(yaml.safe_load((year / "app.yml").read_text()), file_schema())
-    assert yaml.safe_load((tmp_path / SCHEMA_FILE).read_text())["title"] == "ProjectFile"
+    assert (
+        yaml.safe_load((tmp_path / SCHEMA_FILE).read_text())["title"] == "ProjectFile"
+    )
 
 
 async def test_the_event_manifest_validates_and_names_the_event(scratch_db, tmp_path):
