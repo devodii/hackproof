@@ -9,6 +9,7 @@ import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
 import { ProjectPage } from '@/pages/project'
+import { WrappedPage } from '@/pages/wrapped'
 
 function Shell() {
   const { view } = useChatPanel()
@@ -37,8 +38,16 @@ function Shell() {
 
 export function App() {
   return (
-    <ChatProvider>
-      <Shell />
-    </ChatProvider>
+    <Routes>
+      <Route path="/wrapped" element={<WrappedPage />} />
+      <Route
+        path="*"
+        element={
+          <ChatProvider>
+            <Shell />
+          </ChatProvider>
+        }
+      />
+    </Routes>
   )
 }
