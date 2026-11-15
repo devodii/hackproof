@@ -88,6 +88,13 @@ often or are personal.
 `true` only when the team states its track in its own docs, and `track` is then that value. `false`
 means the team did not say, and `track` is the default `genesis`, an assumption and not a fact.
 
+## Keeping the files in sync
+
+The files are written from the database with `uv run hackproof export` in `apps/api`. To check that
+a database still matches the committed files, run `uv run hackproof check`. It rebuilds every file in
+a read-only session and lists the ones that differ, and it exits with `1` when any do. Point
+`DATABASE_URL` at another database to check that one instead.
+
 ## Privacy
 
 Public GitHub handles and public repo facts only. No emails, avatars, locations or other personal
