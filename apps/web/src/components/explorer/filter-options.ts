@@ -67,6 +67,8 @@ export function options(
 export interface FilterGroup {
   key: FilterKey
   title: string
+  clause: string
+  lower?: boolean
   collapsible: boolean
   questions: string[]
 }
@@ -75,6 +77,8 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'award',
     title: 'Awards',
+    clause: 'awarded {label}',
+    lower: true,
     collapsible: false,
     questions: [
       'What did the projects awarded {label} build?',
@@ -86,6 +90,8 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'tier',
     title: 'Evidence',
+    clause: 'marked {label}',
+    lower: true,
     collapsible: false,
     questions: [
       'What are the projects with {label} evidence building?',
@@ -97,6 +103,8 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'track',
     title: 'Track',
+    clause: 'on the {label} track',
+    lower: true,
     collapsible: false,
     questions: [
       'What did the {label} projects build?',
@@ -108,6 +116,7 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'partner',
     title: 'Integrations',
+    clause: 'integrating {label}',
     collapsible: true,
     questions: [
       'What did the teams using {label} build?',
@@ -119,6 +128,7 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'tool',
     title: 'Ecosystem tooling',
+    clause: 'built with {label}',
     collapsible: false,
     questions: [
       'What did the teams using {label} build?',
@@ -130,6 +140,7 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'agent',
     title: 'AI coding agents',
+    clause: 'using {label}',
     collapsible: false,
     questions: [
       'What did the teams using {label} build?',
@@ -141,6 +152,8 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'activity',
     title: 'On-chain activity',
+    clause: 'with {label}',
+    lower: true,
     collapsible: false,
     questions: [
       'What do the projects with {label} build?',
@@ -151,6 +164,7 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'language',
     title: 'Language',
+    clause: 'written in {label}',
     collapsible: true,
     questions: [
       'What did the {label} projects build?',
@@ -162,6 +176,7 @@ export const GROUPS: FilterGroup[] = [
   {
     key: 'country',
     title: 'Country',
+    clause: 'from {label}',
     collapsible: true,
     questions: [
       'What did builders in {label} build?',
@@ -191,6 +206,8 @@ export function joinLabels(labels: string[]) {
 export interface SelectedGroup {
   key: FilterKey
   title: string
+  clause: string
+  lower: boolean
   labels: string[]
   questions: string[]
 }
@@ -202,17 +219,21 @@ export function selectedGroups(
   tools: EcosystemTool[],
   agents: AiAgent[],
 ): SelectedGroup[] {
-  return GROUPS.filter(({ key }) => selection[key].length > 0).map(({ key, title, questions }) => {
-    const known = options(key, projects, integrations, tools, agents, selection)
-    return {
-      key,
-      title,
-      questions,
-      labels: selection[key].map(
-        (value) => known.find((option) => option.value === value)?.label ?? value,
-      ),
-    }
-  })
+  return GROUPS.filter(({ key }) => selection[key].length > 0).map(
+    ({ key, title, clause, lower = false, questions }) => {
+      const known = options(key, projects, integrations, tools, agents, selection)
+      return {
+        key,
+        title,
+        clause,
+        lower,
+        questions,
+        labels: selection[key].map(
+          (value) => known.find((option) => option.value === value)?.label ?? value,
+        ),
+      }
+    },
+  )
 }
 
 export function filterQuestions(groups: SelectedGroup[]) {
