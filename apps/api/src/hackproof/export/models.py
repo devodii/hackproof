@@ -101,6 +101,26 @@ class IntegrationEvidence(Model):
     repo_file_url: str = Field(description="GitHub file where it was found")
 
 
+class AgentEvidence(Model):
+    method: Literal["file", "author"] = Field(
+        description=(
+            "How the agent was found. file: one of its config files is in the repo. author: it "
+            "appears as a commit author. Using a tool that leaves no trace is not counted."
+        )
+    )
+    detail: str = Field(description="The matched file pattern or commit author login")
+    repo_file_url: str | None = Field(
+        description="GitHub file where it was found; null for a commit author"
+    )
+
+
+class AiAgent(Model):
+    slug: str = Field(description="Stable agent id, listed in data/integrations.yaml")
+    name: str = Field(description="Agent name")
+    website: str = Field(description="Agent website")
+    evidence: list[AgentEvidence] = Field(description="Where the agent was found")
+
+
 class EcosystemTool(Model):
     slug: str = Field(description="Stable tool id, listed in data/integrations.yaml")
     name: str = Field(description="Tool name")
@@ -161,6 +181,9 @@ class Project(Model):
     )
     ecosystem_tools: list[EcosystemTool] = Field(
         description="Stellar developer tools the repo builds with, such as Scaffold Stellar"
+    )
+    ai_agents: list[AiAgent] = Field(
+        description="AI coding agents the repo shows traces of, such as Claude Code or Cursor"
     )
     owner: Owner
     contributors: list[Contributor]

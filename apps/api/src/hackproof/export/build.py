@@ -6,6 +6,8 @@ import asyncpg
 
 from hackproof.export.models import (
     Account,
+    AgentEvidence,
+    AiAgent,
     Chain,
     Contract,
     Contributor,
@@ -98,6 +100,14 @@ ORDER BY tool, method, evidence
 """
 
 
+AGENTS_SQL = """
+SELECT full_name, agent, method, evidence, path
+FROM repo_agents
+WHERE full_name = ANY($1)
+ORDER BY agent, method, evidence
+"""
+
+
 def _evidence_url(kind: str, subject: str) -> str | None:
     match kind:
         case "contract":
@@ -130,6 +140,23 @@ def _found(
             )
         )
     return found
+
+
+def _agents(catalog: Catalog, rows: list[asyncpg.Record], repo_url: str) -> list[AiAgent]:
+    found: dict[str, list[AgentEvidence]] = defaultdict(list)
+    for row in rows:
+        found[row["agent"]].append(
+            AgentEvidence(
+                method=row["method"],
+                detail=row["evidence"],
+                repo_file_url=repo_file_url(repo_url, row["path"]) if row["path"] else None,
+            )
+        )
+    return [
+        AiAgent(slug=agent.slug, name=agent.name, website=agent.site, evidence=found[agent.slug])
+        for agent in catalog.agents
+        if agent.slug in found
+    ]
 
 
 def _tools(catalog: Catalog, rows: list[asyncpg.Record], repo_url: str) -> list[EcosystemTool]:
@@ -173,6 +200,7 @@ async def build_export(
     evidence = _group(await connection.fetch(EVIDENCE_SQL, names))
     integrations = _group(await connection.fetch(INTEGRATIONS_SQL, names))
     tools = _group(await connection.fetch(TOOLS_SQL, names))
+    agents = _group(await connection.fetch(AGENTS_SQL, names))
     catalog = get_catalog()
     awards = {award.project_id: award.place for award in hackathon.awards}
 
@@ -200,6 +228,7 @@ async def build_export(
             track_declared=row["declared_track"] is not None,
             integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
             ecosystem_tools=_tools(catalog, tools[row["full_name"]], row["url"]),
+            ai_agents=_agents(catalog, agents[row["full_name"]], row["url"]),
             owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
             contributors=[
                 Contributor(

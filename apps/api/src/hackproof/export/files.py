@@ -54,6 +54,18 @@ class FileIntegration(FileModel):
     evidence: list[FileIntegrationEvidence]
 
 
+class FileAgentEvidence(FileModel):
+    method: Literal["file", "author"]
+    detail: str
+    file_url: str | None = None
+
+
+class FileAgent(FileModel):
+    slug: str
+    name: str
+    evidence: list[FileAgentEvidence]
+
+
 class FileContributor(FileModel):
     login: str
     contributions: int
@@ -95,6 +107,10 @@ class ProjectFile(FileModel):
     integrations: list[FileIntegration] = Field(default_factory=list)
     tools: list[FileIntegration] = Field(
         default_factory=list, description="Stellar developer tools the repo builds with"
+    )
+    agents: list[FileAgent] = Field(
+        default_factory=list,
+        description="AI coding agents the repo shows traces of, in config files or commits",
     )
     chain: FileChain
     contributors: list[FileContributor]
@@ -192,6 +208,19 @@ def project_file(event: str, project: Project) -> ProjectFile:
                 ],
             )
             for tool in project.ecosystem_tools
+        ],
+        agents=[
+            FileAgent(
+                slug=agent.slug,
+                name=agent.name,
+                evidence=[
+                    FileAgentEvidence(
+                        method=item.method, detail=item.detail, file_url=item.repo_file_url
+                    )
+                    for item in agent.evidence
+                ],
+            )
+            for agent in project.ai_agents
         ],
         chain=FileChain(
             contracts=chain.contract_count,
