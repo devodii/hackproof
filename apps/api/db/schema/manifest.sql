@@ -14,7 +14,6 @@
 \i tables/repo_tools.sql
 \i tables/repos.sql
 \i tables/sync_state.sql
-\i tables/wasm_repos.sql
 \i tables/wasm_uploads.sql
 \i indexes/accounts_funder.sql
 \i indexes/classic_ops_asset.sql
