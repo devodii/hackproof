@@ -9,6 +9,7 @@ import { Overview } from '@/components/overview'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
+import { EVENT_NAME } from '@/lib/config'
 import { formatDateTime } from '@/lib/format'
 
 export function HomePage() {
@@ -29,7 +30,7 @@ export function HomePage() {
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
         <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
-          HackMeridian 2026, rebuilt from the chain.
+          {EVENT_NAME}, rebuilt from the chain.
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
           The submission list is not public, so we rebuilt it from Stellar testnet. Every project

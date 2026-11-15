@@ -19,6 +19,7 @@ import { useAgents, useIntegrations, useProjects, useTools } from '@/hooks/use-p
 import { useStats } from '@/hooks/use-stats'
 import { useTimeline } from '@/hooks/use-timeline'
 import { useWrapped } from '@/hooks/use-wrapped'
+import { EVENT_NAME } from '@/lib/config'
 import { formatHour, formatNumber, humanize, tierLabel } from '@/lib/format'
 import type {
   AiAgent,
@@ -106,7 +107,7 @@ function Header({ window }: { window: HackWindow }) {
       className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between"
     >
       <h1 className="font-heading text-headline">
-        HackMeridian 2026 <span className="text-primary italic">Wrapped</span>
+        {EVENT_NAME} <span className="text-primary italic">Wrapped</span>
       </h1>
       <p className="pb-1 text-sm text-muted-foreground">{windowLabel(window)}</p>
     </motion.header>
