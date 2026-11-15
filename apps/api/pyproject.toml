@@ -20,6 +20,9 @@ dependencies = [
 [project.scripts]
 hackproof = "hackproof.cli:main"
 
+[project.entry-points."sqlfluff"]
+hackproof = "hackproof.db_utils.sqlfluff.plugin"
+
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
@@ -30,6 +33,7 @@ dev = [
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.1",
     "ruff>=0.17.3",
+    "sqlfluff>=4.5.0",
 ]
 
 [tool.pytest.ini_options]
@@ -57,3 +61,16 @@ ban-relative-imports = "parents"
 [tool.ruff.format]
 # Add a trailing comma to function defs with two or more args to enforce multiline formatting in ruff.
 skip-magic-trailing-comma = false
+
+[tool.sqlfluff.core]
+dialect = "postgres"
+# Rule codes: https://docs.sqlfluff.com/en/stable/reference/rules.html
+# LT05: comments may be longer than 80 characters.
+# RF04: flags legitimate column names like `version` as reserved keywords.
+exclude_rules = "LT05,RF04"
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "upper"
+
+[tool.sqlfluff.rules.capitalisation.literals]
+capitalisation_policy = "upper"
