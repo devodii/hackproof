@@ -33,6 +33,8 @@ jobs:
       DATABASE_URL: postgresql://hackproof:hackproof@localhost:5432/hackproof
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
@@ -40,6 +42,22 @@ jobs:
       - run: uv sync --frozen
       - run: uv run ruff check .
       - run: uv run ruff format --check .
+      - run: uv run sqlfluff lint db/schema
+      - name: A schema change needs a migration file
+        if: github.event_name == 'pull_request'
+        working-directory: .
+        run: |
+          base="origin/${{ github.base_ref }}"
+          changed=$(git diff --name-only "$base...HEAD" -- apps/api/db/schema ':!apps/api/db/schema/manifest.sql')
+          added=$(git diff --name-only --diff-filter=A "$base...HEAD" -- apps/api/db/migrations)
+          if [ -n "$changed" ] && [ -z "$added" ]; then
+            echo "::error::The schema files changed but no migration file was added. Run 'hackproof schema plan' and commit the file it writes."
+            exit 1
+          fi
+      - name: Build the schema on an empty database
+        run: uv run hackproof schema apply
+      - name: The schema files and the database agree
+        run: uv run hackproof schema verify
       - run: uv run pytest
 
   web:
@@ -56,8 +74,44 @@ jobs:
       - run: pnpm format:check
       - run: pnpm build
 
-  deploy-api:
+  migrate:
     needs: api
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: migrate-production
+      cancel-in-progress: false
+    defaults:
+      run:
+        working-directory: apps/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: apps/api/uv.lock
+      - run: uv sync --frozen
+      - name: Apply the schema to production
+        env:
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::Add the PRODUCTION_DATABASE_URL secret. The schema must be migrated before the API deploys."
+            exit 1
+          fi
+          mkdir -p "$RUNNER_TEMP/plan"
+          uv run hackproof schema apply --remote --out-dir "$RUNNER_TEMP/plan"
+      - name: Keep the plan that ran
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-plan
+          path: ${{ runner.temp }}/plan
+          if-no-files-found: ignore
+
+  deploy-api:
+    needs: [api, migrate]
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
