@@ -41,6 +41,25 @@ integrations:
   - method: package
     detail: '@defindex/sdk'
     file_url: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: .claude/*
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/.claude/skills
+- slug: codex
+  name: OpenAI Codex
+  evidence:
+  - method: file
+    detail: .codex/*
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/.codex/hooks.json
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/AGENTS.md
 chain:
   contracts: 3
   wasm_uploads: 3

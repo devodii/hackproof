@@ -23,9 +23,18 @@ class Tool(Product):
     pass
 
 
+class Agent(BaseModel):
+    slug: str
+    name: str
+    site: str
+    files: list[str] = Field(default_factory=list)
+    authors: list[str] = Field(default_factory=list)
+
+
 class Catalog(BaseModel):
     partners: list[Partner]
     tools: list[Tool] = Field(default_factory=list)
+    agents: list[Agent] = Field(default_factory=list)
 
     def partner(self, slug: str) -> Partner:
         return next(partner for partner in self.partners if partner.slug == slug)

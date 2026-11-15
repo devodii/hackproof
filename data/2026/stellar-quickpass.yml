@@ -15,6 +15,18 @@ commits_in_window: 57
 stack:
   soroban-sdk: '22'
   '@stellar/stellar-sdk': ^16.4.1
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/jxsu404/stellar-quickpass/blob/HEAD/AGENTS.md
 chain:
   contracts: 9
   wasm_uploads: 1

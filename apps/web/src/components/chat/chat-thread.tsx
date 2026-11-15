@@ -5,12 +5,14 @@ import { ChatError } from '@/components/chat/chat-error'
 import { ChatMessages } from '@/components/chat/chat-messages'
 import { PromptBox } from '@/components/chat/prompt-box'
 import { sessionTitle } from '@/components/chat/session'
-import { currentPage, suggestionsFor } from '@/components/chat/page'
 import { RateLimitError, transport } from '@/components/chat/transport'
+import { useSuggestions } from '@/components/chat/use-suggestions'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Button } from '@/components/ui/button'
 
 function EmptyThread({ onPick }: { onPick: (text: string) => void }) {
+  const suggestions = useSuggestions()
+
   return (
     <div className="min-h-0 flex-1 overflow-y-auto">
       <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center gap-6 px-4 py-6">
@@ -22,7 +24,7 @@ function EmptyThread({ onPick }: { onPick: (text: string) => void }) {
           </p>
         </div>
         <div className="flex flex-col gap-2">
-          {suggestionsFor(currentPage().kind).map((suggestion) => (
+          {suggestions.map((suggestion) => (
             <Button
               key={suggestion}
               variant="outline"

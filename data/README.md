@@ -7,7 +7,7 @@ The HackProof dataset: one YAML file per project, plus the config that produces 
 ```
 data/
   hackmeridian-2026.yaml         event config: window, awards, discovery queries
-  integrations.yaml              Stellar integration partners and how each is detected
+  integrations.yaml              Partners, Stellar tools and AI agents, and how each is detected
   schema-hackathon-project.yml   JSON Schema for every project file, generated
   schema-event.yml               JSON Schema for the event manifest, generated
   2026/_event.yml                event manifest: slug, name, network, window
@@ -68,6 +68,8 @@ its owner as a prefix, `<owner>-<name>`. A clash left after that stops the expor
 | `commits_in_window` | Commits made during the event window |
 | `stack` | Stellar package to declared version, `null` when the manifest gives none |
 | `integrations` | Ecosystem partners found, each with `evidence` (`method` is `package` or `endpoint`, `detail`, `file_url`) |
+| `tools` | Stellar developer tools found (Scaffold Stellar, Stellar Registry, Stellar Raven, Stellar Skills), same `evidence` shape as `integrations` |
+| `agents` | AI coding agents the repo shows traces of, each with `evidence` (`method` is `file` for a config file such as `CLAUDE.md` or `.cursor/`, or `author` for a commit author, `detail`, `file_url`). A tool that leaves no trace is not counted, so this is a lower bound |
 | `chain` | Testnet counts, the attributed `accounts` and the `evidence` behind the tier. Both lists are always present |
 | `contributors` | Public GitHub `login` and `contributions`. Always present |
 
@@ -85,6 +87,13 @@ often or are personal.
 
 `true` only when the team states its track in its own docs, and `track` is then that value. `false`
 means the team did not say, and `track` is the default `genesis`, an assumption and not a fact.
+
+## Keeping the files in sync
+
+The files are written from the database with `uv run hackproof export` in `apps/api`. To check that
+a database still matches the committed files, run `uv run hackproof check`. It rebuilds every file in
+a read-only session and lists the ones that differ, and it exits with `1` when any do. Point
+`DATABASE_URL` at another database to check that one instead.
 
 ## Privacy
 

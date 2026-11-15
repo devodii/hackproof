@@ -15,6 +15,13 @@ commits_in_window: 1
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^17.2.1
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: .claude/*
+    file_url: https://github.com/PoolFi-LTD/PoolFi-Build-1/blob/HEAD/.claude/launch.json
 chain:
   contracts: 0
   wasm_uploads: 1

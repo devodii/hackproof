@@ -145,3 +145,80 @@ tools:
           stellar-registry-name,
         ]
     github_owners: [stellar-registry, theahaco]
+
+  - slug: stellar-raven
+    name: Stellar Raven
+    site: https://raven.stellar.org
+    endpoints: [raven.stellar.org, raven.stellar.buzz]
+    github_owners: [stellar]
+
+  - slug: stellar-skills
+    name: Stellar Skills
+    site: https://skills.stellar.org
+    endpoints: [skills.stellar.org, stellar/stellar-dev-skill]
+    github_owners: [stellar]
+
+agents:
+  - slug: claude-code
+    name: Claude Code
+    site: https://claude.com/product/claude-code
+    files: [CLAUDE.md, ".claude/*", ".claude-plugin/*"]
+    authors: [claude, "claude[bot]"]
+
+  - slug: cursor
+    name: Cursor
+    site: https://cursor.com
+    files: [".cursor/*", .cursorrules, .cursorignore]
+    authors: [cursoragent]
+
+  - slug: codex
+    name: OpenAI Codex
+    site: https://openai.com/codex
+    files: [".codex/*"]
+    authors: [codex]
+
+  - slug: github-copilot
+    name: GitHub Copilot
+    site: https://github.com/features/copilot
+    files: [".github/copilot-instructions.md", ".github/instructions/*", ".github/agents/*"]
+    authors: [copilot, "copilot-swe-agent[bot]"]
+
+  - slug: windsurf
+    name: Windsurf
+    site: https://windsurf.com
+    files: [.windsurfrules, ".windsurf/*"]
+
+  - slug: gemini-cli
+    name: Gemini CLI
+    site: https://github.com/google-gemini/gemini-cli
+    files: [GEMINI.md, ".gemini/*"]
+
+  - slug: cline
+    name: Cline
+    site: https://cline.bot
+    files: [.clinerules, ".clinerules/*", ".cline/*"]
+
+  - slug: kiro
+    name: Kiro
+    site: https://kiro.dev
+    files: [".kiro/*"]
+
+  - slug: lovable
+    name: Lovable
+    site: https://lovable.dev
+    files: [".lovable/*"]
+
+  - slug: devin
+    name: Devin
+    site: https://devin.ai
+    authors: ["devin-ai-integration[bot]"]
+
+  - slug: jules
+    name: Jules
+    site: https://jules.google
+    authors: ["google-labs-jules[bot]"]
+
+  - slug: agents-md
+    name: AGENTS.md
+    site: https://agents.md
+    files: [AGENTS.md]

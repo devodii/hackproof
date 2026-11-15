@@ -21,6 +21,12 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/Ihlasthetics/redevice/blob/HEAD/web/package.json
+agents:
+- slug: codex
+  name: OpenAI Codex
+  evidence:
+  - method: author
+    detail: codex
 chain:
   contracts: 20
   wasm_uploads: 3

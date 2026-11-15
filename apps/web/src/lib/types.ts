@@ -65,6 +65,14 @@ export interface Project {
   track: Track | null
   integrations: string[]
   tools: string[]
+  agents: string[]
+}
+
+export interface AiAgent {
+  slug: string
+  name: string
+  site: string
+  projects: number
 }
 
 export interface EcosystemTool {
@@ -162,4 +170,43 @@ export interface TimelinePoint {
 export interface CountryCount {
   country: string
   contributors: number
+}
+
+export interface Count {
+  label: string
+  value: number
+}
+
+export interface PersonProject {
+  project: Project
+  contributions: number
+}
+
+export interface Person {
+  login: string
+  url: string
+  avatar_url: string | null
+  country: string | null
+  contributions: number
+  projects: PersonProject[]
+}
+
+export interface WrappedBuilder {
+  login: string
+  avatar_url: string | null
+  projects: number
+  contributions: number
+  project_names: string[]
+}
+
+export interface Wrapped {
+  builders: number
+  accounts_funded: number
+  deployers: number
+  operations: number
+  largest_wasm_contracts: number
+  operations_by_type: Count[]
+  team_sizes: Count[]
+  multi_team_builders: WrappedBuilder[]
+  top_builders: WrappedBuilder[]
 }

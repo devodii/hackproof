@@ -15,6 +15,13 @@ commits_in_window: 19
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^17.2.1
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/Lothinnt/card-place-stellar/blob/HEAD/AGENTS.md
 chain:
   contracts: 4
   wasm_uploads: 4

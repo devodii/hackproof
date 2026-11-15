@@ -1,5 +1,48 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 $defs:
+  FileAgent:
+    additionalProperties: false
+    properties:
+      slug:
+        title: Slug
+        type: string
+      name:
+        title: Name
+        type: string
+      evidence:
+        items:
+          $ref: '#/$defs/FileAgentEvidence'
+        title: Evidence
+        type: array
+    required:
+    - slug
+    - name
+    - evidence
+    title: FileAgent
+    type: object
+  FileAgentEvidence:
+    additionalProperties: false
+    properties:
+      method:
+        enum:
+        - file
+        - author
+        title: Method
+        type: string
+      detail:
+        title: Detail
+        type: string
+      file_url:
+        anyOf:
+        - type: string
+        - type: 'null'
+        default: null
+        title: File Url
+    required:
+    - method
+    - detail
+    title: FileAgentEvidence
+    type: object
   FileChain:
     additionalProperties: false
     properties:
@@ -243,6 +286,12 @@ properties:
     items:
       $ref: '#/$defs/FileIntegration'
     title: Tools
+    type: array
+  agents:
+    description: AI coding agents the repo shows traces of, in config files or commits
+    items:
+      $ref: '#/$defs/FileAgent'
+    title: Agents
     type: array
   chain:
     $ref: '#/$defs/FileChain'

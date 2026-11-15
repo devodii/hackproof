@@ -1,7 +1,7 @@
 from hackproof.github.demo import is_public_http
 from hackproof.github.models import DependencyFingerprint, RepoScan
 from hackproof.github.scan import DEMO_URL, contributors_from, select_files, store_scan
-from hackproof.integrations.models import Detection
+from hackproof.integrations.models import AgentDetection, Detection
 from tests.helpers import add_repo
 
 
@@ -86,3 +86,29 @@ async def test_a_rescan_replaces_the_stored_integrations(scratch_db):
 
     await store_scan(db, scan())
     assert await db.fetchval("SELECT count(*) FROM repo_integrations") == 0
+
+
+async def test_a_rescan_replaces_the_stored_agents(scratch_db):
+    db = scratch_db
+    await add_repo(db, "team/app")
+    detection = AgentDetection(
+        slug="cursor", method="file", evidence=".cursorrules", path=".cursorrules"
+    )
+
+    def scan(*found: AgentDetection) -> RepoScan:
+        return RepoScan(
+            full_name="team/app",
+            refs=[],
+            dependencies=DependencyFingerprint(),
+            stellar_added_in_window=None,
+            integrations=[],
+            agents=list(found),
+            contributors=[],
+        )
+
+    await store_scan(db, scan(detection))
+    await store_scan(db, scan(detection))
+    assert await db.fetchval("SELECT count(*) FROM repo_agents") == 1
+
+    await store_scan(db, scan())
+    assert await db.fetchval("SELECT count(*) FROM repo_agents") == 0

@@ -55,6 +55,7 @@ class Project(BaseModel):
     track: Literal["genesis", "scale"] | None = None
     integrations: list[str] = []
     tools: list[str] = []
+    agents: list[str] = []
     award: Place | None = None
 
 
@@ -64,6 +65,20 @@ class Contributor(BaseModel):
     avatar_url: str | None
     contributions: int
     country: str | None
+
+
+class PersonProject(BaseModel):
+    project: Project
+    contributions: int
+
+
+class Person(BaseModel):
+    login: str
+    url: str
+    avatar_url: str | None
+    country: str | None
+    contributions: int
+    projects: list[PersonProject]
 
 
 class Link(BaseModel):
@@ -150,9 +165,41 @@ class EcosystemTool(BaseModel):
     projects: int
 
 
+class AiAgent(BaseModel):
+    slug: str
+    name: str
+    site: str
+    projects: int
+
+
 class CountryCount(BaseModel):
     country: str
     contributors: int
+
+
+class Count(BaseModel):
+    label: str
+    value: int
+
+
+class WrappedBuilder(BaseModel):
+    login: str
+    avatar_url: str | None
+    projects: int
+    contributions: int
+    project_names: list[str]
+
+
+class Wrapped(BaseModel):
+    builders: int
+    accounts_funded: int
+    deployers: int
+    operations: int
+    largest_wasm_contracts: int
+    operations_by_type: list[Count]
+    team_sizes: list[Count]
+    multi_team_builders: list[WrappedBuilder]
+    top_builders: list[WrappedBuilder]
 
 
 class Page[T](BaseModel):

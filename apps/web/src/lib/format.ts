@@ -84,3 +84,8 @@ export const footprintLabel = {
 export function formatLastActivity(iso: string | null) {
   return iso ? formatDateTime(iso) : 'none'
 }
+
+export function humanize(slug: string) {
+  const text = slug.replaceAll('_', ' ')
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}

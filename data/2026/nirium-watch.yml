@@ -14,6 +14,13 @@ evidence_tier: verified
 commits_in_window: 53
 stack:
   '@stellar/stellar-sdk': ^16.0.1
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/Eras256/nirium-watch/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

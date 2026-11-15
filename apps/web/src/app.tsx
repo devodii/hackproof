@@ -8,7 +8,10 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
+import { ContributorsPage } from '@/pages/contributors'
+import { PersonPage } from '@/pages/person'
 import { ProjectPage } from '@/pages/project'
+import { WrappedPage } from '@/pages/wrapped'
 
 function Shell() {
   const { view } = useChatPanel()
@@ -25,6 +28,8 @@ function Shell() {
             <Route path="/" element={<HomePage />} />
             <Route path="/project/*" element={<ProjectPage />} />
             <Route path="/builder/:address" element={<BuilderPage />} />
+            <Route path="/contributors" element={<ContributorsPage />} />
+            <Route path="/contributor/:login" element={<PersonPage />} />
           </Routes>
         </main>
         <SiteFooter />
@@ -37,8 +42,16 @@ function Shell() {
 
 export function App() {
   return (
-    <ChatProvider>
-      <Shell />
-    </ChatProvider>
+    <Routes>
+      <Route path="/wrapped" element={<WrappedPage />} />
+      <Route
+        path="*"
+        element={
+          <ChatProvider>
+            <Shell />
+          </ChatProvider>
+        }
+      />
+    </Routes>
   )
 }

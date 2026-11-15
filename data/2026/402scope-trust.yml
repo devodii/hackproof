@@ -16,6 +16,12 @@ stack:
   stellar-sdk: '13.1'
   stellar-strkey: 0.0.16
   '@stellar/stellar-sdk': ^16.3.1
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
 chain:
   contracts: 0
   wasm_uploads: 8

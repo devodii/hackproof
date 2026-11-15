@@ -21,6 +21,21 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/Rushyard/Monolith/blob/HEAD/app/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/packages/ct-sdk/CLAUDE.md
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/Rushyard/Monolith/blob/HEAD/app/AGENTS.md
 chain:
   contracts: 4
   wasm_uploads: 3

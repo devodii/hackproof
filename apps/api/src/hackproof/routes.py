@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Query
 
 from hackproof import queries
 from hackproof.schemas import (
+    AiAgent,
     Builder,
     Contract,
     CountryCount,
@@ -11,12 +12,14 @@ from hackproof.schemas import (
     FailedTx,
     Integration,
     Page,
+    Person,
     Project,
     ProjectDetail,
     Stats,
     Tier,
     TimelinePoint,
     WasmUpload,
+    Wrapped,
 )
 
 router = APIRouter()
@@ -38,6 +41,11 @@ async def _page(resource: queries.Resource, q: str | None, limit: int, offset: i
     return Page(items=items, total=total)
 
 
+@router.get("/wrapped")
+async def wrapped() -> Wrapped:
+    return Wrapped(**await queries.fetch_wrapped())
+
+
 @router.get("/timeline")
 async def timeline() -> list[TimelinePoint]:
     return [TimelinePoint(**point) for point in await queries.fetch_timeline()]
@@ -56,6 +64,11 @@ async def integrations() -> list[Integration]:
 @router.get("/tools")
 async def tools() -> list[EcosystemTool]:
     return [EcosystemTool(**row) for row in await queries.fetch_tools()]
+
+
+@router.get("/agents")
+async def agents() -> list[AiAgent]:
+    return [AiAgent(**row) for row in await queries.fetch_agents()]
 
 
 @router.get("/projects")
@@ -124,6 +137,14 @@ async def project(project_id: str) -> ProjectDetail:
         wasm_uploads=await _everything("wasm", project_id=project_id),
         failed_txs=await _everything("failed", project_id=project_id),
     )
+
+
+@router.get("/contributors/{login}")
+async def contributor(login: str) -> Person:
+    person = await queries.fetch_person(login)
+    if person is None:
+        raise HTTPException(status_code=404, detail="no hackathon project for this contributor")
+    return Person(**person)
 
 
 @router.get("/builders/{address}")

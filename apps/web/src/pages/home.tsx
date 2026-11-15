@@ -1,21 +1,36 @@
+import { useSearchParams } from 'react-router'
+
 import { suggestionsFor } from '@/components/chat/page'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
+import { FilterHeading } from '@/components/explorer/filter-heading'
+import { readSelection, selectedCount } from '@/components/explorer/filters'
 import { Overview } from '@/components/overview'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
+import { EVENT_NAME } from '@/lib/config'
 import { formatDateTime } from '@/lib/format'
 
 export function HomePage() {
   const { data } = useHackWindow()
   const { startChat } = useChatPanel()
+  const [params] = useSearchParams()
+
+  if (selectedCount(readSelection(params)) > 0) {
+    return (
+      <div className="flex flex-col gap-8">
+        <FilterHeading />
+        <Explorer />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
         <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
-          HackMeridian 2026, rebuilt from the chain.
+          {EVENT_NAME}, rebuilt from the chain.
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
           The submission list is not public, so we rebuilt it from Stellar testnet. Every project

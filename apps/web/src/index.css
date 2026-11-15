@@ -63,6 +63,39 @@
   --tracking-wide: calc(var(--tracking-normal) + 0.025em);
   --tracking-wider: calc(var(--tracking-normal) + 0.05em);
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+
+  --color-poster: var(--poster);
+  --color-tile: var(--tile);
+  --color-tile-border: var(--tile-border);
+  --color-track: var(--track);
+  --color-axis: var(--axis);
+  --color-gridline: var(--gridline);
+  --color-glow-primary: var(--glow-primary);
+  --color-glow-secondary: var(--glow-secondary);
+}
+
+@theme {
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1;
+  --text-stat: 1.625rem;
+  --text-stat--line-height: 1;
+  --text-figure: 2.5rem;
+  --text-figure--line-height: 1;
+  --text-figure-lg: 3.5rem;
+  --text-figure-lg--line-height: 1;
+  --text-headline: 2.875rem;
+  --text-headline--line-height: 1;
+  --text-display: 9.375rem;
+  --text-display--line-height: 0.82;
+  --tracking-eyebrow: 0.2em;
+  --spacing-chart-sm: 8rem;
+  --spacing-chart-md: 12.25rem;
+  --spacing-chart-lg: 13.625rem;
+  --spacing-glow: 47.5rem;
+  --spacing-glow-lg: 56.25rem;
+  --blur-glow: 8.125rem;
+  --blur-glow-lg: 9.375rem;
+  --shadow-tile: inset 0 1px 0 var(--tile-border);
 }
 
 :root {
@@ -99,6 +132,18 @@
   --sidebar-border: #d6d2c4;
   --sidebar-ring: #fdda24;
   --radius: 0.5rem;
+  --poster: #070707;
+  --tile: rgb(255 255 255 / 3.5%);
+  --tile-border: rgb(255 255 255 / 10%);
+  --track: rgb(255 255 255 / 5%);
+  --axis: rgb(255 255 255 / 50%);
+  --gridline: rgb(255 255 255 / 7%);
+  --glow-primary: rgb(253 218 36 / 13%);
+  --glow-secondary: rgb(183 172 232 / 13%);
+  --dot: rgb(255 255 255 / 5%);
+  --dot-gap: 1.75rem;
+  --lens-label-width: 7.5rem;
+  --lens-count-width: 2.5rem;
   --shadow-2xs: 0 0.25rem 0.5rem 0 hsl(222.2 47.4% 11.2% / 0.05);
   --shadow-xs: 0 0.25rem 0.5rem 0 hsl(222.2 47.4% 11.2% / 0.05);
   --shadow-sm:
@@ -160,6 +205,41 @@
   --shadow-2xl: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.75);
   --skeleton-base: color-mix(in oklab, var(--foreground) 8%, var(--card));
   --skeleton-glint: color-mix(in oklab, var(--primary) 17%, var(--card));
+}
+
+@utility poster-dots {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: var(--dot-gap) var(--dot-gap);
+}
+
+@utility lens-row {
+  display: grid;
+  grid-template-columns: var(--lens-label-width) 1fr var(--lens-count-width);
+}
+
+@utility poster-grid {
+  display: grid;
+  grid-template-columns: 26.25rem 1fr 23.5rem;
+}
+
+@utility poster-chart {
+  & .recharts-cartesian-axis-tick-value {
+    fill: var(--axis);
+    font-size: var(--text-eyebrow);
+  }
+
+  & .recharts-label-list .recharts-text,
+  & .recharts-reference-dot .recharts-text,
+  & .recharts-reference-area .recharts-text {
+    fill: var(--foreground);
+    font-size: var(--text-xs);
+    font-weight: 600;
+  }
+
+  & .recharts-yAxis .recharts-cartesian-axis-tick-value {
+    fill: var(--foreground);
+    font-size: var(--text-sm);
+  }
 }
 
 @keyframes skeleton-shimmer {

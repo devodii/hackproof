@@ -21,6 +21,13 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/emirykl/nema/blob/HEAD/frontend/package.json
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/emirykl/nema/blob/HEAD/frontend/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

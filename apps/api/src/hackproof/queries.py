@@ -17,6 +17,8 @@ SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.cla
              GROUP BY i.partner ORDER BY i.partner) AS integrations,
        ARRAY(SELECT t.tool FROM repo_tools t WHERE t.full_name = p.full_name
              GROUP BY t.tool ORDER BY t.tool) AS tools,
+       ARRAY(SELECT a.agent FROM repo_agents a WHERE a.full_name = p.full_name
+             GROUP BY a.agent ORDER BY a.agent) AS agents,
        count(*) OVER () AS total
 FROM projects p
 LEFT JOIN repos r ON r.full_name = p.full_name
@@ -36,6 +38,14 @@ WHERE ($1::text IS NULL
   AND ($10::text[] IS NULL OR EXISTS (
        SELECT 1 FROM repo_tools t
        WHERE t.full_name = p.full_name AND t.tool = ANY($10)))
+  AND ($11::text[] IS NULL OR EXISTS (
+       SELECT 1 FROM repo_agents a
+       WHERE a.full_name = p.full_name AND a.agent = ANY($11)))
+  AND ($12::text[] IS NULL OR r.language = ANY($12))
+  AND ($13::text[] IS NULL OR r.country = ANY($13))
+  AND ($14::text[] IS NULL
+       OR ('contracts' = ANY($14) AND p.contracts > 0)
+       OR ('failed' = ANY($14) AND p.failed_txs > 0))
 ORDER BY array_position(
              ARRAY['verified', 'likely', 'possible', 'unattributed'], p.tier),
          p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
@@ -131,6 +141,14 @@ WHERE l.full_name = $1
 ORDER BY {METHOD_RANK_SQL}, l.subject_kind, l.subject
 """
 
+PERSON_SQL = """
+SELECT c.login, c.url, c.avatar_url, c.contributions, c.full_name, u.country
+FROM repo_contributors c
+LEFT JOIN github_users u ON u.login = c.login
+WHERE lower(c.login) = lower($1)
+ORDER BY c.contributions DESC, c.full_name
+"""
+
 CONTRIBUTORS_SQL = """
 SELECT c.login, c.url, c.avatar_url, c.contributions, u.country
 FROM repo_contributors c
@@ -169,6 +187,13 @@ JOIN projects p ON p.full_name = t.full_name AND p.tier IN ('verified', 'likely'
 GROUP BY t.tool
 """
 
+AGENTS_SQL = """
+SELECT a.agent AS slug, count(DISTINCT a.full_name) AS projects
+FROM repo_agents a
+JOIN projects p ON p.full_name = a.full_name AND p.tier IN ('verified', 'likely')
+GROUP BY a.agent
+"""
+
 TOOL_USES_SQL = """
 SELECT tool AS slug, method, evidence, path
 FROM repo_tools
@@ -185,6 +210,57 @@ WHERE u.country IS NOT NULL
 GROUP BY u.country
 ORDER BY contributors DESC, u.country
 LIMIT $1
+"""
+
+SHIPPED = "p.tier IN ('verified', 'likely')"
+HUMAN = "lower(c.login) <> ALL($1::text[]) AND c.login NOT LIKE '%[bot]'"
+TOP_BUILDERS = 12
+MAX_BUILDERS = 1_000
+
+WRAPPED_TOTALS_SQL = f"""
+SELECT
+    (SELECT count(DISTINCT c.login) FROM repo_contributors c
+     JOIN projects p ON p.full_name = c.full_name
+     WHERE {SHIPPED} AND {HUMAN}) AS builders,
+    (SELECT count(*) FROM accounts WHERE funded_at BETWEEN $2 AND $3) AS accounts_funded,
+    (SELECT count(DISTINCT deployer) FROM contracts
+     WHERE deployed_at BETWEEN $2 AND $3) AS deployers,
+    (SELECT count(*) FROM classic_ops WHERE occurred_at BETWEEN $2 AND $3) AS operations,
+    (SELECT coalesce(max(n), 0) FROM (
+        SELECT count(*) AS n FROM contracts WHERE deployed_at BETWEEN $2 AND $3
+        GROUP BY wasm_hash) shared) AS largest_wasm_contracts
+"""
+
+WRAPPED_OPERATIONS_SQL = """
+SELECT op_type AS label, count(*) AS value
+FROM classic_ops
+WHERE occurred_at BETWEEN $1 AND $2
+GROUP BY op_type
+ORDER BY value DESC, op_type
+LIMIT 5
+"""
+
+WRAPPED_TEAMS_SQL = f"""
+SELECT least(n, 5)::text AS label, count(*) AS value
+FROM (
+    SELECT c.full_name, count(*) AS n
+    FROM repo_contributors c JOIN projects p ON p.full_name = c.full_name
+    WHERE {SHIPPED} AND {HUMAN}
+    GROUP BY c.full_name) teams
+GROUP BY 1
+ORDER BY 1
+"""
+
+WRAPPED_BUILDERS_SQL = f"""
+SELECT c.login, max(c.avatar_url) AS avatar_url,
+       count(DISTINCT c.full_name) AS projects, sum(c.contributions)::int AS contributions,
+       array_agg(DISTINCT c.full_name ORDER BY c.full_name) AS project_names
+FROM repo_contributors c JOIN projects p ON p.full_name = c.full_name
+WHERE {SHIPPED} AND {HUMAN}
+GROUP BY c.login
+HAVING count(DISTINCT c.full_name) >= $2
+ORDER BY projects DESC, contributions DESC, c.login
+LIMIT $3
 """
 
 RESOURCE_SQL = {
@@ -212,14 +288,37 @@ async def list_page(
     track: str | None = None,
     integrations: list[str] | None = None,
     tools: list[str] | None = None,
+    agents: list[str] | None = None,
+    languages: list[str] | None = None,
+    countries: list[str] | None = None,
+    activity: list[str] | None = None,
+    awards: list[str] | None = None,
+    project_ids: list[str] | None = None,
     winners: bool = False,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
-    awards = places()
-    winner_ids = list(awards) if winners else None
+    placed = places()
+    wanted = project_ids
+    if wanted is None and (winners or awards):
+        wanted = [pid for pid, place in placed.items() if awards is None or place in awards]
     args = (
-        (q, account, project_id, tiers, limit, offset, track, integrations, winner_ids, tools)
+        (
+            q,
+            account,
+            project_id,
+            tiers,
+            limit,
+            offset,
+            track,
+            integrations,
+            wanted,
+            tools,
+            agents,
+            languages,
+            countries,
+            activity,
+        )
         if resource == "projects"
         else (*window(), q, account, project_id, limit, offset)
     )
@@ -228,7 +327,7 @@ async def list_page(
     total = rows[0]["total"] if rows else 0
     items = [{k: v for k, v in dict(row).items() if k != "total"} for row in rows]
     if resource == "projects":
-        items = [{**item, "award": awards.get(item["project_id"])} for item in items]
+        items = [{**item, "award": placed.get(item["project_id"])} for item in items]
     return items, total
 
 
@@ -292,3 +391,64 @@ async def fetch_integrations() -> list[dict[str, Any]]:
 async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         return [dict(row) for row in await connection.fetch(COUNTRIES_SQL, limit)]
+
+
+async def fetch_wrapped() -> dict[str, Any]:
+    start, end = window()
+    agents = [login.lower() for agent in get_catalog().agents for login in agent.authors]
+    async with pool().acquire() as connection:
+        totals = dict(await connection.fetchrow(WRAPPED_TOTALS_SQL, agents, start, end))
+        operations = await connection.fetch(WRAPPED_OPERATIONS_SQL, start, end)
+        teams = await connection.fetch(WRAPPED_TEAMS_SQL, agents)
+        multi_team = await connection.fetch(WRAPPED_BUILDERS_SQL, agents, 2, MAX_BUILDERS)
+        top = await connection.fetch(WRAPPED_BUILDERS_SQL, agents, 1, TOP_BUILDERS)
+    return {
+        **totals,
+        "operations_by_type": [dict(row) for row in operations],
+        "team_sizes": [dict(row) for row in teams],
+        "multi_team_builders": [dict(row) for row in multi_team],
+        "top_builders": [dict(row) for row in sorted(top, key=lambda row: -row["contributions"])],
+    }
+
+
+async def fetch_agents() -> list[dict[str, Any]]:
+    async with pool().acquire() as connection:
+        counts = {row["slug"]: row["projects"] for row in await connection.fetch(AGENTS_SQL)}
+    return [
+        {
+            **agent.model_dump(include={"slug", "name", "site"}),
+            "projects": counts.get(agent.slug, 0),
+        }
+        for agent in get_catalog().agents
+    ]
+
+
+async def fetch_person(login: str) -> dict[str, Any] | None:
+    async with pool().acquire() as connection:
+        rows = [dict(row) for row in await connection.fetch(PERSON_SQL, login)]
+    if not rows:
+        return None
+    commits = {f"repo:{row['full_name']}": row["contributions"] for row in rows}
+    projects, _ = await list_page(
+        "projects",
+        tiers=["verified", "likely"],
+        project_ids=list(commits),
+        limit=len(commits),
+    )
+    if not projects:
+        return None
+    first = rows[0]
+    return {
+        "login": first["login"],
+        "url": first["url"],
+        "avatar_url": first["avatar_url"],
+        "country": first["country"],
+        "contributions": sum(commits[project["project_id"]] for project in projects),
+        "projects": sorted(
+            (
+                {"project": project, "contributions": commits[project["project_id"]]}
+                for project in projects
+            ),
+            key=lambda item: (-item["contributions"], item["project"]["project_id"]),
+        ),
+    }

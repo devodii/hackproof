@@ -25,6 +25,13 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/enzoblain/ZKross/blob/HEAD/apps/frontend/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/enzoblain/ZKross/blob/HEAD/CLAUDE.md
 chain:
   contracts: 6
   wasm_uploads: 4

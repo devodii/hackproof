@@ -144,7 +144,12 @@ export function ProjectPage() {
           </div>
         )}
       </header>
-      <Accordion multiple defaultValue={['evidence', 'integrations', 'tools']}>
+      <Accordion multiple defaultValue={['contributors', 'evidence', 'integrations', 'tools']}>
+        {contributors.length > 0 && (
+          <Section value="contributors" title="Contributors" count={contributors.length}>
+            <Contributors contributors={contributors} />
+          </Section>
+        )}
         {integration_uses.length > 0 && (
           <Section value="integrations" title="Integrations" count={integration_uses.length}>
             <DataTable
@@ -161,11 +166,6 @@ export function ProjectPage() {
               rows={tool_uses}
               rowKey={(row) => `${row.slug}:${row.method}:${row.evidence}`}
             />
-          </Section>
-        )}
-        {contributors.length > 0 && (
-          <Section value="contributors" title="Contributors" count={contributors.length}>
-            <Contributors contributors={contributors} />
           </Section>
         )}
         {direct.length > 0 && (

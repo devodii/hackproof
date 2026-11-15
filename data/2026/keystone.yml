@@ -30,6 +30,13 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/Lagouze/keystone/blob/HEAD/app/package.json
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/Lagouze/keystone/blob/HEAD/AGENTS.md
 chain:
   contracts: 20
   wasm_uploads: 2

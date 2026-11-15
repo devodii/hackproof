@@ -16,7 +16,7 @@ from hackproof.github.refs import extract_refs
 from hackproof.github.track import declared_track
 from hackproof.hackathon import Discovery, Window
 from hackproof.integrations.catalog import Catalog, get_catalog
-from hackproof.integrations.detect import detect, detect_tools
+from hackproof.integrations.detect import detect, detect_agents, detect_tools
 
 TEXT_SUFFIXES = {
     ".rs", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".py", ".go", ".toml", ".json",
@@ -124,6 +124,7 @@ class Scanner:
             if dependencies.packages
             else None
         )
+        contributors = contributors_from(people)
         return RepoScan(
             full_name=repo.full_name,
             declared_track=declared_track(files),
@@ -132,7 +133,12 @@ class Scanner:
             stellar_added_in_window=added,
             integrations=detect(files, self._catalog, repo.owner),
             tools=detect_tools(files, self._catalog, repo.owner),
-            contributors=contributors_from(people),
+            agents=detect_agents(
+                (entry["path"] for entry in tree["tree"]),
+                (item["login"] for item in people or []),
+                self._catalog,
+            ),
+            contributors=contributors,
         )
 
 
@@ -181,6 +187,11 @@ async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
         await connection.executemany(
             "INSERT INTO repo_tools VALUES ($1, $2, $3, $4, $5)",
             [(scan.full_name, t.slug, t.method, t.evidence, t.path) for t in scan.tools],
+        )
+        await connection.execute("DELETE FROM repo_agents WHERE full_name = $1", scan.full_name)
+        await connection.executemany(
+            "INSERT INTO repo_agents VALUES ($1, $2, $3, $4, $5)",
+            [(scan.full_name, a.slug, a.method, a.evidence, a.path) for a in scan.agents],
         )
         await connection.execute(
             """

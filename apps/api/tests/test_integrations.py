@@ -1,7 +1,7 @@
 import json
 
-from hackproof.integrations.catalog import Catalog, Partner, Tool, get_catalog
-from hackproof.integrations.detect import detect, detect_tools
+from hackproof.integrations.catalog import Agent, Catalog, Partner, Tool, get_catalog
+from hackproof.integrations.detect import detect, detect_agents, detect_tools
 from hackproof.integrations.models import Detection
 
 CATALOG = Catalog(
@@ -119,3 +119,55 @@ def test_tools_are_found_apart_from_partners():
 
     assert {d.slug for d in detect_tools(files, catalog, "team")} == {"scaffold"}
     assert {d.slug for d in detect(files, catalog, "team")} == {"acme"}
+
+
+AGENT_CATALOG = Catalog(
+    partners=[],
+    agents=[
+        Agent(
+            slug="cursor",
+            name="Cursor",
+            site="https://cursor.example",
+            files=[".cursor/*", ".cursorrules"],
+            authors=["cursoragent"],
+        ),
+        Agent(slug="claude", name="Claude", site="https://claude.example", files=["CLAUDE.md"]),
+    ],
+)
+
+
+def test_agents_are_found_by_file_and_by_commit_author():
+    paths = ["src/app.ts", "CLAUDE.md", ".cursor/rules/style.mdc", "apps/web/.cursorrules"]
+
+    found = detect_agents(paths, ["Someone", "CursorAgent"], AGENT_CATALOG)
+
+    assert {(d.slug, d.method, d.evidence, d.path) for d in found} == {
+        ("cursor", "file", ".cursor/*", ".cursor/rules/style.mdc"),
+        ("cursor", "file", ".cursorrules", "apps/web/.cursorrules"),
+        ("cursor", "author", "cursoragent", ""),
+        ("claude", "file", "CLAUDE.md", "CLAUDE.md"),
+    }
+
+
+def test_agent_files_inside_dependencies_are_ignored():
+    paths = ["node_modules/pkg/CLAUDE.md", "vendor/.cursor/rules.mdc"]
+
+    assert detect_agents(paths, [], AGENT_CATALOG) == []
+
+
+def test_the_shipped_catalog_lists_unique_agents():
+    agents = get_catalog().agents
+
+    assert {"claude-code", "cursor", "codex", "github-copilot"} <= {agent.slug for agent in agents}
+    assert len({agent.slug for agent in agents}) == len(agents)
+
+
+def test_stellar_raven_and_skills_are_found_in_agent_config_files():
+    files = {
+        ".mcp.json": '{"mcpServers": {"stellar-raven": {"url": "https://raven.stellar.org/mcp"}}}',
+        "skills-lock.json": '{"skills": {"dapp": {"source": "stellar/stellar-dev-skill"}}}',
+    }
+
+    found = {(d.slug, d.path) for d in detect_tools(files, get_catalog(), "team")}
+
+    assert found == {("stellar-raven", ".mcp.json"), ("stellar-skills", "skills-lock.json")}

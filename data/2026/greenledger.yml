@@ -14,6 +14,12 @@ evidence_tier: verified
 commits_in_window: 1
 stack:
   soroban-sdk: 22.0.0
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
 chain:
   contracts: 1
   wasm_uploads: 0

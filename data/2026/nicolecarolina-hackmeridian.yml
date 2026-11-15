@@ -36,6 +36,13 @@ tools:
   - method: package
     detail: stellar-registry
     file_url: https://github.com/NicoleCarolina/HackMeridian/blob/HEAD/Cargo.toml
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/NicoleCarolina/HackMeridian/blob/HEAD/app/CLAUDE.md
 chain:
   contracts: 1
   wasm_uploads: 1

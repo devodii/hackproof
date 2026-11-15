@@ -4,11 +4,14 @@ from types import SimpleNamespace
 import pytest
 from fastapi.testclient import TestClient
 
+from hackproof import queries
 from hackproof.chat import routes, stream
+from hackproof.chat.briefs import Page, describe_page, view_filters
 from hackproof.chat.prompts import prompt, sections
 from hackproof.chat.ratelimit import RateLimiter
 from hackproof.chat.stream import Message, Part, stream_reply, to_anthropic, web_search_events
 from hackproof.chat.tools import TOOL_SPECS, run_tool
+from hackproof.db import close_pool, open_pool
 from hackproof.main import app
 
 
@@ -169,7 +172,7 @@ def test_chat_passes_the_current_page_to_the_model(monkeypatch):
 
 
 def test_prompt_file_has_every_section():
-    assert set(sections()) == {"system", "page-home", "page-entity", "page-empty"}
+    assert set(sections()) == {"system", "page-home", "page-entity", "page-empty", "page-filter"}
     text = prompt("system", start="A", end="B", page="ON THE HOME PAGE")
     assert "A to B UTC" in text and text.endswith("ON THE HOME PAGE")
     assert "{" not in text
@@ -190,3 +193,40 @@ def test_project_tools_can_filter_by_integration_partner():
     assert "get_integrations" in specs
     for name in ("query_projects", "summarize_projects"):
         assert "integrations" in specs[name]["input_schema"]["properties"]
+
+
+def test_project_tools_filter_by_every_explorer_filter():
+    specs = {spec["name"]: spec for spec in TOOL_SPECS}
+
+    assert {"get_tools", "get_agents"} <= set(specs)
+    for name in ("query_projects", "summarize_projects"):
+        properties = specs[name]["input_schema"]["properties"]
+        assert {"tools", "agents", "languages", "countries", "activity", "awards"} <= set(
+            properties
+        )
+
+
+def test_explorer_filters_map_onto_the_project_filters():
+    filters = view_filters(
+        {"agent": ["cursor"], "partner": ["freighter"], "track": ["scale"], "tier": ["verified"]}
+    )
+
+    assert filters.agents == ["cursor"]
+    assert filters.integrations == ["freighter"]
+    assert filters.track == "scale"
+    assert filters.list_args()["tiers"] == ["verified"]
+    assert view_filters({"track": ["genesis", "scale"]}).track is None
+    assert view_filters({"nonsense": ["x"]}).list_args()["tiers"] == ["verified", "likely"]
+
+
+async def test_the_filter_page_brief_counts_the_matching_projects():
+    await open_pool()
+    try:
+        brief = await describe_page(Page(kind="filter", filters={"agent": ["cursor"]}))
+        agents = await queries.fetch_agents()
+    finally:
+        await close_pool()
+
+    expected = next(agent for agent in agents if agent["slug"] == "cursor")["projects"]
+    assert f'"total": {expected},' in brief
+    assert '{"agent": ["cursor"]}' in brief

@@ -15,6 +15,13 @@ commits_in_window: 61
 stack:
   soroban-sdk: '25'
   stellar-xdr: =30.0.0
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: .claude/*
+    file_url: https://github.com/drank40/soroprove/blob/HEAD/lifter/.claude/worktrees
 chain:
   contracts: 0
   wasm_uploads: 0

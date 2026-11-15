@@ -4,7 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from hackproof.github.track import Track
-from hackproof.integrations.models import Detection
+from hackproof.integrations.models import AgentDetection, Detection
 
 RefKind = Literal["contract", "account", "asset", "wasm", "network"]
 
@@ -60,4 +60,5 @@ class RepoScan(BaseModel):
     stellar_added_in_window: bool | None
     integrations: list[Detection]
     tools: list[Detection] = Field(default_factory=list)
+    agents: list[AgentDetection] = Field(default_factory=list)
     contributors: list[Contributor]

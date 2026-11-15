@@ -32,6 +32,13 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/forever8896/dvdnd/blob/HEAD/app/package.json
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/forever8896/dvdnd/blob/HEAD/contracts/AGENTS.md
 chain:
   contracts: 14
   wasm_uploads: 13

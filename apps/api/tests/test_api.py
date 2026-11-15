@@ -92,3 +92,51 @@ def test_a_project_page_lists_where_each_integration_was_found():
             detail = client.get(f"/api/projects/{first['project_id']}").json()
             assert used["slug"] in {use["slug"] for use in detail["integration_uses"]}
             assert {use["method"] for use in detail["integration_uses"]} <= {"package", "endpoint"}
+
+
+def test_wrapped_team_sizes_fit_inside_the_projects():
+    with TestClient(app) as client:
+        body = client.get("/api/wrapped").json()
+        stats = client.get("/api/stats").json()
+    assert sum(item["value"] for item in body["team_sizes"]) <= stats["projects"]
+    assert {item["label"] for item in body["team_sizes"]} <= {"1", "2", "3", "4", "5"}
+
+
+def test_wrapped_builders_are_ranked_and_multi_team_means_two_or_more_projects():
+    with TestClient(app) as client:
+        body = client.get("/api/wrapped").json()
+    commits = [builder["contributions"] for builder in body["top_builders"]]
+    assert commits == sorted(commits, reverse=True)
+    assert all(builder["projects"] >= 2 for builder in body["multi_team_builders"])
+    assert all(
+        len(builder["project_names"]) == builder["projects"]
+        for builder in body["multi_team_builders"]
+    )
+    assert not {"cursoragent", "codex"} & {b["login"] for b in body["multi_team_builders"]}
+
+
+def test_agents_list_every_catalog_agent_with_a_project_count():
+    with TestClient(app) as client:
+        body = client.get("/api/agents").json()
+        projects = client.get("/api/projects", params={"limit": 5}).json()["items"]
+    assert {"claude-code", "cursor", "codex"} <= {row["slug"] for row in body}
+    assert all(row["projects"] >= 0 for row in body)
+    assert all(isinstance(item["agents"], list) for item in projects)
+
+
+def test_an_unknown_contributor_is_not_found():
+    with TestClient(app) as client:
+        assert client.get("/api/contributors/nobody-here-0000").status_code == 404
+
+
+def test_a_contributor_lists_their_projects_with_their_commits():
+    with TestClient(app) as client:
+        top = client.get("/api/wrapped").json()["top_builders"]
+        if not top:
+            return
+        person = client.get(f"/api/contributors/{top[0]['login'].upper()}").json()
+    assert person["login"] == top[0]["login"]
+    assert person["contributions"] == sum(item["contributions"] for item in person["projects"])
+    assert len(person["projects"]) == top[0]["projects"]
+    commits = [item["contributions"] for item in person["projects"]]
+    assert commits == sorted(commits, reverse=True)

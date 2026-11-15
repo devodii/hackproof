@@ -1,15 +1,11 @@
-from collections import Counter
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any
 
 from pydantic import BaseModel, Field
 from pydantic_core import to_jsonable_python
 
 from hackproof import queries
-from hackproof.chat.briefs import builder_brief, project_brief, slim
-from hackproof.schemas import Tier
+from hackproof.chat.briefs import ProjectFilters, builder_brief, project_brief, slim, summarize_view
 
-Track = Literal["genesis", "scale"]
-STRICT = ["verified", "likely"]
 WEB_SEARCH = {"type": "web_search_20250305", "name": "web_search", "max_uses": 3}
 
 Limit = Annotated[int, Field(ge=1, le=25, description="Rows to return")]
@@ -19,22 +15,11 @@ Search = Annotated[
 ]
 
 
-class QueryProjects(BaseModel):
+class QueryProjects(ProjectFilters):
     """Find HackMeridian projects. Ordered by evidence strength, then on-chain activity. Each
     project has an award field: first, runner-up, or null."""
 
     q: Search = None
-    tiers: list[Tier] | None = Field(
-        default=None, description="Evidence tiers to include; null means verified and likely"
-    )
-    track: Track | None = Field(
-        default=None,
-        description="genesis (repo created inside the window) or scale (older repo); null for both",
-    )
-    integrations: list[str] | None = Field(
-        default=None,
-        description="Partner slugs from get_integrations; keeps projects using any of them",
-    )
     winners: bool = Field(
         default=False,
         description="True keeps only the HackMeridian award winners: first place and runner-ups",
@@ -71,19 +56,10 @@ class QueryFailed(BaseModel):
     offset: Offset = 0
 
 
-class SummarizeProjects(BaseModel):
+class SummarizeProjects(ProjectFilters):
     """Aggregate every matching project: counts by tier and track, on chain totals, top
-    languages, topics, Stellar packages and countries, plus a sample of descriptions. Use this
-    for any breakdown or "what are they building" question."""
-
-    tiers: list[Tier] | None = Field(
-        default=None, description="Evidence tiers to include; null means verified and likely"
-    )
-    track: Track | None = Field(default=None, description="genesis, scale, or null for both")
-    integrations: list[str] | None = Field(
-        default=None,
-        description="Partner slugs from get_integrations; keeps projects using any of them",
-    )
+    languages, topics, Stellar packages, integrations, tooling, AI agents and countries, plus a
+    sample of descriptions. Use this for any breakdown or "what are they building" question."""
 
 
 class GetProject(BaseModel):
@@ -102,6 +78,17 @@ class GetIntegrations(BaseModel):
     """List the Stellar ecosystem partners we detect (slug, name, category) with how many
     verified and likely projects use each. Detection comes from dependency manifests and API
     hosts in code, not from READMEs."""
+
+
+class GetTools(BaseModel):
+    """List the Stellar developer tools we detect (such as Scaffold Stellar, Stellar Registry,
+    Stellar Raven and Stellar Skills) with how many verified and likely projects use each."""
+
+
+class GetAgents(BaseModel):
+    """List the AI coding agents we detect (slug, name) with how many verified and likely projects
+    show each. Detection reads agent config files such as CLAUDE.md or .cursor and commit authors,
+    so it is a lower bound: a tool that leaves no trace is not counted."""
 
 
 class GetStats(BaseModel):
@@ -125,6 +112,8 @@ TOOLS: dict[str, type[BaseModel]] = {
     "get_project": GetProject,
     "get_builder": GetBuilder,
     "get_integrations": GetIntegrations,
+    "get_tools": GetTools,
+    "get_agents": GetAgents,
     "get_stats": GetStats,
     "get_timeline": GetTimeline,
     "get_countries": GetCountries,
@@ -140,54 +129,14 @@ TOOL_SPECS = [
 ]
 
 
-def _top(counter: Counter[str], size: int) -> list[dict[str, Any]]:
-    return [{"name": name, "projects": count} for name, count in counter.most_common(size)]
-
-
-async def summarize(args: SummarizeProjects) -> dict[str, Any]:
-    items, total = await queries.list_page(
-        "projects",
-        tiers=args.tiers or STRICT,
-        track=args.track,
-        integrations=args.integrations,
-        limit=10_000,
-    )
-    topics: Counter[str] = Counter()
-    stack: Counter[str] = Counter()
-    partners: Counter[str] = Counter()
-    for item in items:
-        topics.update(topic.lower() for topic in item["topics"] or [])
-        stack.update(list((item["dependencies"] or {}).get("packages", {})))
-        partners.update(item["integrations"])
-    return {
-        "total": total,
-        "by_tier": dict(Counter(item["tier"] for item in items)),
-        "by_track": dict(Counter(item["track"] for item in items)),
-        "contracts": sum(item["contracts"] for item in items),
-        "wasm_uploads": sum(item["wasm_uploads"] for item in items),
-        "languages": _top(Counter(item["language"] for item in items if item["language"]), 10),
-        "topics": _top(topics, 20),
-        "stellar_packages": _top(stack, 15),
-        "integrations": _top(partners, 15),
-        "countries": _top(Counter(item["country"] for item in items if item["country"]), 10),
-        "descriptions": [
-            {"project_id": item["project_id"], "description": item["description"][:140]}
-            for item in items
-            if item["description"]
-        ][:25],
-    }
-
-
 async def run_tool(name: str, raw: dict[str, Any]) -> Any:
     args = TOOLS[name].model_validate(raw)
     match args:
         case QueryProjects():
             items, total = await queries.list_page(
                 "projects",
+                **args.list_args(),
                 q=args.q,
-                tiers=args.tiers or STRICT,
-                track=args.track,
-                integrations=args.integrations,
                 winners=args.winners,
                 limit=args.limit,
                 offset=args.offset,
@@ -210,13 +159,17 @@ async def run_tool(name: str, raw: dict[str, Any]) -> Any:
                 "failed", q=args.q, account=args.account, limit=args.limit, offset=args.offset
             )
         case SummarizeProjects():
-            return to_jsonable_python(await summarize(args))
+            return to_jsonable_python(await summarize_view(args))
         case GetProject():
             return await project_brief(args.project_id) or {"error": "project not found"}
         case GetBuilder():
             return await builder_brief(args.address) or {"error": "no activity in the hack window"}
         case GetIntegrations():
             return to_jsonable_python(await queries.fetch_integrations())
+        case GetTools():
+            return to_jsonable_python(await queries.fetch_tools())
+        case GetAgents():
+            return to_jsonable_python(await queries.fetch_agents())
         case GetStats():
             return to_jsonable_python(await queries.fetch_stats())
         case GetTimeline():

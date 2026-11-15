@@ -15,6 +15,13 @@ commits_in_window: 6
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': 17.2.1
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/flowpay-bmoni/flowpay/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0
