@@ -292,7 +292,15 @@ function Builders({ wrapped }: { wrapped: Wrapped }) {
           size="sm"
           delay={1}
         />
-        {hidden > 0 && <span className="text-xs text-muted-foreground">+{hidden}</span>}
+        {hidden > 0 && (
+          <Link
+            to="/contributors"
+            aria-label={`See all ${wrapped.multi_team_builders.length} builders on 2 or more teams`}
+            className="text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+          >
+            +{hidden}
+          </Link>
+        )}
       </div>
       <p className="mt-3 text-eyebrow tracking-eyebrow text-muted-foreground uppercase">
         Most commits
