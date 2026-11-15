@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Area, AreaChart, CartesianGrid, ReferenceArea, ReferenceDot, XAxis, YAxis } from 'recharts'
 
 import { type ChartConfig, ChartContainer } from '@/components/ui/chart'
@@ -26,6 +27,7 @@ interface TimelineChartProps {
 
 export function TimelineChart({ data, peak, rush, className }: TimelineChartProps) {
   const still = useStill()
+  const [drawn, setDrawn] = useState(still)
 
   return (
     <ChartContainer config={config} className={cn('poster-chart aspect-auto w-full', className)}>
@@ -45,15 +47,17 @@ export function TimelineChart({ data, peak, rush, className }: TimelineChartProp
           axisLine={false}
         />
         <YAxis tickLine={false} axisLine={false} width={44} />
-        <ReferenceArea
-          x1={rush[0].hour}
-          x2={rush[rush.length - 1].hour}
-          fill="var(--secondary)"
-          fillOpacity={0.18}
-          stroke="var(--secondary)"
-          strokeOpacity={0.5}
-          strokeDasharray="3 3"
-        />
+        {drawn && (
+          <ReferenceArea
+            x1={rush[0].hour}
+            x2={rush[rush.length - 1].hour}
+            fill="var(--secondary)"
+            fillOpacity={0.18}
+            stroke="var(--secondary)"
+            strokeOpacity={0.5}
+            strokeDasharray="3 3"
+          />
+        )}
         <Area
           dataKey="contracts"
           type="monotone"
@@ -64,15 +68,18 @@ export function TimelineChart({ data, peak, rush, className }: TimelineChartProp
           isAnimationActive={!still}
           animationDuration={1800}
           animationEasing="ease-out"
+          onAnimationEnd={() => setDrawn(true)}
         />
-        <ReferenceDot
-          x={peak.hour}
-          y={peak.contracts}
-          r={5}
-          fill="var(--primary)"
-          stroke="var(--background)"
-          strokeWidth={2}
-        />
+        {drawn && (
+          <ReferenceDot
+            x={peak.hour}
+            y={peak.contracts}
+            r={5}
+            fill="var(--primary)"
+            stroke="var(--background)"
+            strokeWidth={2}
+          />
+        )}
       </AreaChart>
     </ChartContainer>
   )
