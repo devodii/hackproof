@@ -1,3 +1,5 @@
+import { Link } from 'react-router'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { flagEmoji } from '@/lib/format'
@@ -14,7 +16,10 @@ export function Contributors({ contributors }: { contributors: Contributor[] }) 
         <Tooltip key={person.login}>
           <TooltipTrigger
             render={
-              <a href={person.url} target="_blank" rel="noreferrer" aria-label={person.login} />
+              <Link
+                to={`/contributor/${encodeURIComponent(person.login)}`}
+                aria-label={person.login}
+              />
             }
           >
             <Avatar>
