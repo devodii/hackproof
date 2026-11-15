@@ -1,0 +1,64 @@
+version: "3"
+
+tasks:
+  db:up:
+    desc: Start the local Postgres and apply the schema
+    cmds:
+      - docker compose up -d --wait db
+      - task: schema:apply
+
+  db:down:
+    desc: Stop the local Postgres
+    cmds:
+      - docker compose down
+
+  schema:plan:
+    desc: Write the pending changes to the next file in db/migrations
+    dir: apps/api
+    cmds:
+      - uv run hackproof schema plan
+
+  schema:apply:
+    desc: Apply the schema files to the local database
+    dir: apps/api
+    cmds:
+      - uv run hackproof schema apply
+
+  schema:verify:
+    desc: Check the database matches the schema files
+    dir: apps/api
+    cmds:
+      - uv run hackproof schema verify
+
+  sql:fmt:
+    desc: Format the schema and query files
+    dir: apps/api
+    cmds:
+      - uv run sqlfluff fix db/schema src/hackproof/sql
+
+  sql:lint:
+    desc: Lint the schema and query files
+    dir: apps/api
+    cmds:
+      - uv run sqlfluff lint db/schema src/hackproof/sql
+
+  py:fmt:
+    desc: Format the Python code
+    dir: apps/api
+    cmds:
+      - uv run ruff check --fix .
+      - uv run ruff format .
+
+  py:check:
+    desc: Lint and test the Python code
+    dir: apps/api
+    cmds:
+      - uv run ruff check .
+      - uv run ruff format --check .
+      - uv run pytest
+
+  data:check:
+    desc: Check the database matches the committed data files
+    dir: apps/api
+    cmds:
+      - uv run hackproof check
