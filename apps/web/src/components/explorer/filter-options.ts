@@ -64,14 +64,165 @@ export function options(
     .sort((a, b) => (key in FIXED ? 0 : b.count - a.count || a.label.localeCompare(b.label)))
 }
 
-export const GROUPS: { key: FilterKey; title: string; collapsible: boolean }[] = [
-  { key: 'award', title: 'Awards', collapsible: false },
-  { key: 'tier', title: 'Evidence', collapsible: false },
-  { key: 'track', title: 'Track', collapsible: false },
-  { key: 'partner', title: 'Integrations', collapsible: true },
-  { key: 'tool', title: 'Ecosystem tooling', collapsible: false },
-  { key: 'agent', title: 'AI coding agents', collapsible: false },
-  { key: 'activity', title: 'On-chain activity', collapsible: false },
-  { key: 'language', title: 'Language', collapsible: true },
-  { key: 'country', title: 'Country', collapsible: true },
+export interface FilterGroup {
+  key: FilterKey
+  title: string
+  collapsible: boolean
+  questions: string[]
+}
+
+export const GROUPS: FilterGroup[] = [
+  {
+    key: 'award',
+    title: 'Awards',
+    collapsible: false,
+    questions: [
+      'What did the projects awarded {label} build?',
+      'What do the {label} winners have in common?',
+      'How did the {label} winners compare with everyone else on chain?',
+      'Which Stellar tools and partners did the {label} winners use?',
+    ],
+  },
+  {
+    key: 'tier',
+    title: 'Evidence',
+    collapsible: false,
+    questions: [
+      'What are the projects with {label} evidence building?',
+      'What separates the {label} projects from the rest?',
+      'Which partners and tools show up most among the {label} projects?',
+      'How many contracts did the {label} projects deploy?',
+    ],
+  },
+  {
+    key: 'track',
+    title: 'Track',
+    collapsible: false,
+    questions: [
+      'What did the {label} projects build?',
+      'How do the {label} projects compare with the other track on chain?',
+      'Which {label} projects stand out, and why?',
+      'What stack do the {label} projects use?',
+    ],
+  },
+  {
+    key: 'partner',
+    title: 'Integrations',
+    collapsible: true,
+    questions: [
+      'What did the teams using {label} build?',
+      'How did these projects use {label}? Show the evidence.',
+      'Which other partners and tools do they combine with {label}?',
+      'Did the {label} projects deploy more contracts than the rest?',
+    ],
+  },
+  {
+    key: 'tool',
+    title: 'Ecosystem tooling',
+    collapsible: false,
+    questions: [
+      'What did the teams using {label} build?',
+      'How did these projects use {label}?',
+      'Which partners do the {label} projects pair it with?',
+      'How many of the {label} projects won an award?',
+    ],
+  },
+  {
+    key: 'agent',
+    title: 'AI coding agents',
+    collapsible: false,
+    questions: [
+      'What did the teams using {label} build?',
+      'Which {label} projects deployed the most contracts?',
+      'Did the {label} projects do better than the rest?',
+      'How do we detect {label} in a repo, and what does that miss?',
+    ],
+  },
+  {
+    key: 'activity',
+    title: 'On-chain activity',
+    collapsible: false,
+    questions: [
+      'What do the projects with {label} build?',
+      'Which projects had the most {label}?',
+      'Do projects with {label} win more often?',
+    ],
+  },
+  {
+    key: 'language',
+    title: 'Language',
+    collapsible: true,
+    questions: [
+      'What did the {label} projects build?',
+      'Which Stellar SDKs and tools do the {label} projects use?',
+      'How do the {label} projects compare with the other languages?',
+      'Which {label} projects deployed the most contracts?',
+    ],
+  },
+  {
+    key: 'country',
+    title: 'Country',
+    collapsible: true,
+    questions: [
+      'What did builders in {label} build?',
+      'Which Stellar tools did the teams from {label} use?',
+      'How many contracts did the projects from {label} deploy?',
+      'Did any projects from {label} win an award?',
+    ],
+  },
 ]
+
+export const VIEW_QUESTIONS = [
+  'Summarize the projects in this view',
+  'Which of these projects stand out, and why?',
+  'What do these projects have in common?',
+]
+
+const SUGGESTION_LIMIT = 5
+
+const FLAG = /^\p{Regional_Indicator}+\s*/u
+
+export function joinLabels(labels: string[]) {
+  const plain = labels.map((label) => label.replace(FLAG, ''))
+  if (plain.length < 2) return plain.join('')
+  return `${plain.slice(0, -1).join(', ')} or ${plain[plain.length - 1]}`
+}
+
+export interface SelectedGroup {
+  key: FilterKey
+  title: string
+  labels: string[]
+  questions: string[]
+}
+
+export function selectedGroups(
+  selection: Selection,
+  projects: Project[],
+  integrations: Integration[],
+  tools: EcosystemTool[],
+  agents: AiAgent[],
+): SelectedGroup[] {
+  return GROUPS.filter(({ key }) => selection[key].length > 0).map(({ key, title, questions }) => {
+    const known = options(key, projects, integrations, tools, agents, selection)
+    return {
+      key,
+      title,
+      questions,
+      labels: selection[key].map(
+        (value) => known.find((option) => option.value === value)?.label ?? value,
+      ),
+    }
+  })
+}
+
+export function filterQuestions(groups: SelectedGroup[]) {
+  const fill = (group: SelectedGroup, question: string) =>
+    question.replaceAll('{label}', joinLabels(group.labels))
+  const firsts = groups.map((group) => fill(group, group.questions[0]))
+  const rest = groups.flatMap((group) => group.questions.slice(1).map((q) => fill(group, q)))
+  const [summary, ...more] = VIEW_QUESTIONS
+  const ordered =
+    groups.length > 1 ? [summary, ...firsts, ...rest, ...more] : [...firsts, ...rest, summary]
+
+  return [...new Set(ordered)].slice(0, SUGGESTION_LIMIT)
+}
