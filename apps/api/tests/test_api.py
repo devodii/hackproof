@@ -108,6 +108,10 @@ def test_wrapped_builders_are_ranked_and_multi_team_means_two_or_more_projects()
     commits = [builder["contributions"] for builder in body["top_builders"]]
     assert commits == sorted(commits, reverse=True)
     assert all(builder["projects"] >= 2 for builder in body["multi_team_builders"])
+    assert all(
+        len(builder["project_names"]) == builder["projects"]
+        for builder in body["multi_team_builders"]
+    )
     assert not {"cursoragent", "codex"} & {b["login"] for b in body["multi_team_builders"]}
 
 

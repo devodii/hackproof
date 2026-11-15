@@ -253,7 +253,8 @@ ORDER BY 1
 
 WRAPPED_BUILDERS_SQL = f"""
 SELECT c.login, max(c.avatar_url) AS avatar_url,
-       count(DISTINCT c.full_name) AS projects, sum(c.contributions)::int AS contributions
+       count(DISTINCT c.full_name) AS projects, sum(c.contributions)::int AS contributions,
+       array_agg(DISTINCT c.full_name ORDER BY c.full_name) AS project_names
 FROM repo_contributors c JOIN projects p ON p.full_name = c.full_name
 WHERE {SHIPPED} AND {HUMAN}
 GROUP BY c.login

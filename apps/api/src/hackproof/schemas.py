@@ -187,6 +187,7 @@ class WrappedBuilder(BaseModel):
     avatar_url: str | None
     projects: int
     contributions: int
+    project_names: list[str]
 
 
 class Wrapped(BaseModel):
