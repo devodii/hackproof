@@ -1,34 +1,19 @@
 import { ArrowLeftIcon } from 'lucide-react'
-import { useMemo } from 'react'
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 
+import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Button } from '@/components/ui/button'
-import { useAgents, useIntegrations, useProjects, useTools } from '@/hooks/use-projects'
 import { formatNumber } from '@/lib/format'
 
-import { GROUPS, options } from './filter-options'
-import { matches, readSelection } from './filters'
+import { filterQuestions } from './filter-options'
+import { matches } from './filters'
+import { useSelectedGroups } from './use-selected-groups'
 
 export function FilterHeading() {
-  const [params] = useSearchParams()
   const location = useLocation()
   const navigate = useNavigate()
-  const { data: projects = [] } = useProjects()
-  const { data: integrations = [] } = useIntegrations()
-  const { data: tools = [] } = useTools()
-  const { data: agents = [] } = useAgents()
-  const selection = useMemo(() => readSelection(params), [params])
-
-  const groups = GROUPS.filter(({ key }) => selection[key].length > 0).map(({ key, title }) => {
-    const known = options(key, projects, integrations, tools, agents, selection)
-    return {
-      key,
-      title,
-      labels: selection[key].map(
-        (value) => known.find((option) => option.value === value)?.label ?? value,
-      ),
-    }
-  })
+  const { startChat } = useChatPanel()
+  const { selection, projects, groups } = useSelectedGroups()
   const count = projects.filter((project) => matches(project, selection)).length
   const canGoBack = location.key !== 'default'
 
@@ -55,6 +40,19 @@ export function FilterHeading() {
       <p className="text-muted-foreground">
         {formatNumber(count)} {count === 1 ? 'project matches' : 'projects match'}
       </p>
+      <div className="flex flex-wrap gap-2">
+        {filterQuestions(groups).map((question) => (
+          <Button
+            key={question}
+            variant="outline"
+            size="sm"
+            className="h-auto rounded-full px-3 py-1.5 text-left whitespace-normal"
+            onClick={() => startChat(question)}
+          >
+            {question}
+          </Button>
+        ))}
+      </div>
     </header>
   )
 }
