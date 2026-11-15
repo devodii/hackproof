@@ -1,11 +1,11 @@
-import { ArrowLeftIcon, ExternalLinkIcon } from 'lucide-react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router'
+import { ExternalLinkIcon } from 'lucide-react'
+import { useParams } from 'react-router'
 
+import { BackButton } from '@/components/back-button'
 import { ProjectCard } from '@/components/explorer/project-card'
 import { DetailError } from '@/components/query-state'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { usePerson } from '@/hooks/use-person'
 import { EVENT_NAME } from '@/lib/config'
@@ -31,8 +31,6 @@ function PersonSkeleton() {
 
 export function PersonPage() {
   const login = useParams().login ?? ''
-  const location = useLocation()
-  const navigate = useNavigate()
   const { data, isPending, error } = usePerson(login)
 
   if (isPending) return <PersonSkeleton />
@@ -43,15 +41,7 @@ export function PersonPage() {
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col items-start gap-4">
-        {location.key !== 'default' ? (
-          <Button variant="ghost" size="sm" className="-ml-2.5" onClick={() => navigate(-1)}>
-            <ArrowLeftIcon /> Back
-          </Button>
-        ) : (
-          <Button variant="ghost" size="sm" className="-ml-2.5" render={<Link to="/" />}>
-            <ArrowLeftIcon /> All projects
-          </Button>
-        )}
+        <BackButton />
         <div className="flex items-center gap-4">
           <Avatar className="size-20">
             {data.avatar_url && <AvatarImage src={data.avatar_url} alt="" />}

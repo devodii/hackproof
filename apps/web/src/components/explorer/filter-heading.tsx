@@ -1,6 +1,4 @@
-import { ArrowLeftIcon } from 'lucide-react'
-import { Link, useLocation, useNavigate } from 'react-router'
-
+import { BackButton } from '@/components/back-button'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Button } from '@/components/ui/button'
 import { EVENT_NAME } from '@/lib/config'
@@ -26,25 +24,14 @@ function separator(index: number, total: number) {
 }
 
 export function FilterHeading() {
-  const location = useLocation()
-  const navigate = useNavigate()
   const { startChat } = useChatPanel()
   const { selection, projects, groups } = useSelectedGroups()
   const count = projects.filter((project) => matches(project, selection)).length
-  const canGoBack = location.key !== 'default'
   const clauses = groups.map(clauseOf)
 
   return (
     <header className="flex flex-col items-start gap-3">
-      {canGoBack ? (
-        <Button variant="ghost" size="sm" className="-ml-2.5" onClick={() => navigate(-1)}>
-          <ArrowLeftIcon /> Back
-        </Button>
-      ) : (
-        <Button variant="ghost" size="sm" className="-ml-2.5" render={<Link to="/" />}>
-          <ArrowLeftIcon /> All projects
-        </Button>
-      )}
+      <BackButton />
       <h1 className="font-heading text-4xl leading-tight text-balance sm:text-6xl">
         <span className="text-muted-foreground">{EVENT_NAME} projects</span>
         {clauses.map((clause, index) => (
