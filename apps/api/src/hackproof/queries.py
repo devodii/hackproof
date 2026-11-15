@@ -133,6 +133,14 @@ WHERE l.full_name = $1
 ORDER BY {METHOD_RANK_SQL}, l.subject_kind, l.subject
 """
 
+PERSON_SQL = """
+SELECT c.login, c.url, c.avatar_url, c.contributions, c.full_name, u.country
+FROM repo_contributors c
+LEFT JOIN github_users u ON u.login = c.login
+WHERE lower(c.login) = lower($1)
+ORDER BY c.contributions DESC, c.full_name
+"""
+
 CONTRIBUTORS_SQL = """
 SELECT c.login, c.url, c.avatar_url, c.contributions, u.country
 FROM repo_contributors c
@@ -271,12 +279,13 @@ async def list_page(
     track: str | None = None,
     integrations: list[str] | None = None,
     tools: list[str] | None = None,
+    project_ids: list[str] | None = None,
     winners: bool = False,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
     awards = places()
-    winner_ids = list(awards) if winners else None
+    winner_ids = project_ids or (list(awards) if winners else None)
     args = (
         (q, account, project_id, tiers, limit, offset, track, integrations, winner_ids, tools)
         if resource == "projects"
@@ -381,3 +390,34 @@ async def fetch_agents() -> list[dict[str, Any]]:
         }
         for agent in get_catalog().agents
     ]
+
+
+async def fetch_person(login: str) -> dict[str, Any] | None:
+    async with pool().acquire() as connection:
+        rows = [dict(row) for row in await connection.fetch(PERSON_SQL, login)]
+    if not rows:
+        return None
+    commits = {f"repo:{row['full_name']}": row["contributions"] for row in rows}
+    projects, _ = await list_page(
+        "projects",
+        tiers=["verified", "likely"],
+        project_ids=list(commits),
+        limit=len(commits),
+    )
+    if not projects:
+        return None
+    first = rows[0]
+    return {
+        "login": first["login"],
+        "url": first["url"],
+        "avatar_url": first["avatar_url"],
+        "country": first["country"],
+        "contributions": sum(commits[project["project_id"]] for project in projects),
+        "projects": sorted(
+            (
+                {"project": project, "contributions": commits[project["project_id"]]}
+                for project in projects
+            ),
+            key=lambda item: (-item["contributions"], item["project"]["project_id"]),
+        ),
+    }

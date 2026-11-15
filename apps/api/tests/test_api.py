@@ -118,3 +118,21 @@ def test_agents_list_every_catalog_agent_with_a_project_count():
     assert {"claude-code", "cursor", "codex"} <= {row["slug"] for row in body}
     assert all(row["projects"] >= 0 for row in body)
     assert all(isinstance(item["agents"], list) for item in projects)
+
+
+def test_an_unknown_contributor_is_not_found():
+    with TestClient(app) as client:
+        assert client.get("/api/contributors/nobody-here-0000").status_code == 404
+
+
+def test_a_contributor_lists_their_projects_with_their_commits():
+    with TestClient(app) as client:
+        top = client.get("/api/wrapped").json()["top_builders"]
+        if not top:
+            return
+        person = client.get(f"/api/contributors/{top[0]['login'].upper()}").json()
+    assert person["login"] == top[0]["login"]
+    assert person["contributions"] == sum(item["contributions"] for item in person["projects"])
+    assert len(person["projects"]) == top[0]["projects"]
+    commits = [item["contributions"] for item in person["projects"]]
+    assert commits == sorted(commits, reverse=True)

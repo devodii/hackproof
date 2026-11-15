@@ -12,6 +12,7 @@ from hackproof.schemas import (
     FailedTx,
     Integration,
     Page,
+    Person,
     Project,
     ProjectDetail,
     Stats,
@@ -136,6 +137,14 @@ async def project(project_id: str) -> ProjectDetail:
         wasm_uploads=await _everything("wasm", project_id=project_id),
         failed_txs=await _everything("failed", project_id=project_id),
     )
+
+
+@router.get("/contributors/{login}")
+async def contributor(login: str) -> Person:
+    person = await queries.fetch_person(login)
+    if person is None:
+        raise HTTPException(status_code=404, detail="no hackathon project for this contributor")
+    return Person(**person)
 
 
 @router.get("/builders/{address}")

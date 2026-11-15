@@ -67,6 +67,20 @@ class Contributor(BaseModel):
     country: str | None
 
 
+class PersonProject(BaseModel):
+    project: Project
+    contributions: int
+
+
+class Person(BaseModel):
+    login: str
+    url: str
+    avatar_url: str | None
+    country: str | None
+    contributions: int
+    projects: list[PersonProject]
+
+
 class Link(BaseModel):
     subject_kind: str
     subject: str
