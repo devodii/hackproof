@@ -37,7 +37,9 @@ def event(payload: dict[str, Any]) -> str:
 def to_anthropic(messages: list[Message]) -> list[dict[str, Any]]:
     converted: list[dict[str, Any]] = []
     for message in messages:
-        text = "".join(part.text or "" for part in message.parts if part.type == "text").strip()
+        text = "".join(
+            part.text or "" for part in message.parts if part.type == "text"
+        ).strip()
         if message.role in ("user", "assistant") and text:
             converted.append({"role": message.role, "content": text})
     return converted
@@ -74,7 +76,9 @@ async def stream_reply(
     client: AsyncAnthropic, model: str, messages: list[dict[str, Any]], page: str = ""
 ) -> AsyncIterator[str]:
     window = get_hackathon().window
-    system = prompt("system", start=window.start.isoformat(), end=window.end.isoformat(), page=page)
+    system = prompt(
+        "system", start=window.start.isoformat(), end=window.end.isoformat(), page=page
+    )
     yield event({"type": "start", "messageId": uuid4().hex})
 
     try:
@@ -95,7 +99,9 @@ async def stream_reply(
                         if not text_open:
                             yield event({"type": "text-start", "id": text_id})
                             text_open = True
-                        yield event({"type": "text-delta", "id": text_id, "delta": chunk.text})
+                        yield event(
+                            {"type": "text-delta", "id": text_id, "delta": chunk.text}
+                        )
                     elif (
                         chunk.type == "content_block_start"
                         and chunk.content_block.type == "tool_use"
@@ -129,7 +135,10 @@ async def stream_reply(
 
             calls = [block for block in final.content if block.type == "tool_use"]
             if final.stop_reason == "pause_turn":
-                messages = [*messages, {"role": "assistant", "content": dump(final.content)}]
+                messages = [
+                    *messages,
+                    {"role": "assistant", "content": dump(final.content)},
+                ]
                 yield event({"type": "finish-step"})
                 continue
             if final.stop_reason != "tool_use" or not calls:
@@ -149,7 +158,11 @@ async def stream_reply(
                 try:
                     output = await run_tool(call.name, call.input)
                     yield event(
-                        {"type": "tool-output-available", "toolCallId": call.id, "output": output}
+                        {
+                            "type": "tool-output-available",
+                            "toolCallId": call.id,
+                            "output": output,
+                        }
                     )
                     content, is_error = json.dumps(output, default=str), False
                 except Exception as error:
@@ -177,7 +190,12 @@ async def stream_reply(
             ]
             yield event({"type": "finish-step"})
     except Exception:
-        yield event({"type": "error", "errorText": "The assistant ran into a problem. Try again."})
+        yield event(
+            {
+                "type": "error",
+                "errorText": "The assistant ran into a problem. Try again.",
+            }
+        )
 
     yield event({"type": "finish"})
     yield "data: [DONE]\n\n"

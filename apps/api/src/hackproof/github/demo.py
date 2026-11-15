@@ -8,7 +8,9 @@ import httpx
 from hackproof.github.models import Ref
 from hackproof.github.refs import extract_refs
 
-SCRIPT_SRC = re.compile(r"""<script[^>]+src=["']([^"']+\.m?js)[^"']*["']""", re.IGNORECASE)
+SCRIPT_SRC = re.compile(
+    r"""<script[^>]+src=["']([^"']+\.m?js)[^"']*["']""", re.IGNORECASE
+)
 MAX_BUNDLES = 5
 MAX_BYTES = 3_000_000
 TIMEOUT = 8

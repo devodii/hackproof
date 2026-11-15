@@ -30,7 +30,9 @@ async def fetch_texts(
             if len(batch) == 1:
                 raise
             half = len(batch) // 2
-            first, second = await asyncio.gather(fetch(batch[:half]), fetch(batch[half:]))
+            first, second = await asyncio.gather(
+                fetch(batch[:half]), fetch(batch[half:])
+            )
             return first | second
         repository = data["repository"] or {}
         return {

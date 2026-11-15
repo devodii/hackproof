@@ -15,7 +15,9 @@ class SorobanRpc:
         self._client = client
         self._url = url
 
-    async def call(self, method: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+    async def call(
+        self, method: str, params: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
         body = {"jsonrpc": "2.0", "id": 1, "method": method, "params": params or {}}
         for attempt in range(8):
             try:
@@ -34,7 +36,11 @@ class SorobanRpc:
         raise RpcError(f"{method} failed after retries")
 
     async def transactions(
-        self, *, start_ledger: int | None = None, cursor: str | None = None, limit: int = 200
+        self,
+        *,
+        start_ledger: int | None = None,
+        cursor: str | None = None,
+        limit: int = 200,
     ) -> dict[str, Any]:
         pagination: dict[str, Any] = {"limit": limit}
         params: dict[str, Any] = {"pagination": pagination}

@@ -21,7 +21,10 @@ ASSET_FIELDS: dict[xdr.OperationType, tuple[str, tuple[str, ...]]] = {
     OP.CHANGE_TRUST: ("change_trust_op", ("line",)),
     OP.MANAGE_SELL_OFFER: ("manage_sell_offer_op", ("selling", "buying")),
     OP.MANAGE_BUY_OFFER: ("manage_buy_offer_op", ("selling", "buying")),
-    OP.CREATE_PASSIVE_SELL_OFFER: ("create_passive_sell_offer_op", ("selling", "buying")),
+    OP.CREATE_PASSIVE_SELL_OFFER: (
+        "create_passive_sell_offer_op",
+        ("selling", "buying"),
+    ),
     OP.CREATE_CLAIMABLE_BALANCE: ("create_claimable_balance_op", ("asset",)),
     OP.SET_TRUST_LINE_FLAGS: ("set_trust_line_flags_op", ("asset",)),
 }
@@ -51,7 +54,9 @@ def _inner_transaction(envelope: xdr.TransactionEnvelope) -> Any:
 
 def _transaction_source(transaction: Any) -> str:
     if hasattr(transaction, "source_account_ed25519"):
-        return StrKey.encode_ed25519_public_key(transaction.source_account_ed25519.uint256)
+        return StrKey.encode_ed25519_public_key(
+            transaction.source_account_ed25519.uint256
+        )
     return MuxedAccount.from_xdr_object(transaction.source_account).account_id
 
 
@@ -89,7 +94,9 @@ def _counterparty(operation: xdr.Operation) -> str | None:
     field = RECIPIENT_FIELDS.get(operation.body.type)
     if field is None:
         return None
-    return MuxedAccount.from_xdr_object(getattr(operation.body, field).destination).account_id
+    return MuxedAccount.from_xdr_object(
+        getattr(operation.body, field).destination
+    ).account_id
 
 
 def _contract_id(preimage: xdr.ContractIDPreimage, network_id: bytes) -> str:
@@ -110,7 +117,11 @@ def _result_code(result_xdr: str) -> str:
         if result.result.inner_result_pair is not None
         else None
     )
-    if inner and inner[0].tr is not None and inner[0].tr.invoke_host_function_result is not None:
+    if (
+        inner
+        and inner[0].tr is not None
+        and inner[0].tr.invoke_host_function_result is not None
+    ):
         return inner[0].tr.invoke_host_function_result.code.name.removeprefix(
             "INVOKE_HOST_FUNCTION_"
         )
@@ -145,7 +156,11 @@ def _host_function_event(
             at=at,
         )
     if function.type in (CREATE, CREATE_V2):
-        args = function.create_contract if function.type == CREATE else function.create_contract_v2
+        args = (
+            function.create_contract
+            if function.type == CREATE
+            else function.create_contract_v2
+        )
         if (
             args.contract_id_preimage.type != FROM_ADDRESS
             or args.executable.type != WASM_EXECUTABLE
@@ -181,7 +196,9 @@ def parse_transaction(raw: dict[str, Any], network_id: bytes) -> list[Event]:
             function = operation.body.invoke_host_function_op.host_function
             failure_kind = failure_kind or _kind(function.type)
             if not failed and (
-                event := _host_function_event(function, source, network_id, tx_hash, ledger, at)
+                event := _host_function_event(
+                    function, source, network_id, tx_hash, ledger, at
+                )
             ):
                 events.append(event)
         elif failed:
@@ -189,7 +206,13 @@ def parse_transaction(raw: dict[str, Any], network_id: bytes) -> list[Event]:
         elif op_type == OP.CREATE_ACCOUNT:
             destination = _account_id(operation.body.create_account_op.destination)
             events.append(
-                Funding(account=destination, funder=source, tx_hash=tx_hash, ledger=ledger, at=at)
+                Funding(
+                    account=destination,
+                    funder=source,
+                    tx_hash=tx_hash,
+                    ledger=ledger,
+                    at=at,
+                )
             )
         elif op_type in ASSET_FIELDS or op_type in PLAIN_CLASSIC:
             events.append(

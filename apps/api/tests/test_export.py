@@ -38,10 +38,17 @@ async def test_export_carries_repo_chain_and_evidence(scratch_db):
     export = await populated_export(scratch_db)
 
     [project] = export.projects
-    assert (project.repo_full_name, project.tier, project.name) == ("team/app", "verified", "app")
+    assert (project.repo_full_name, project.tier, project.name) == (
+        "team/app",
+        "verified",
+        "app",
+    )
     assert project.stack == ["@stellar/stellar-sdk"]
     assert project.track == "genesis"
-    assert project.contributors[0].login == "ana" and project.contributors[0].country == "PT"
+    assert (
+        project.contributors[0].login == "ana"
+        and project.contributors[0].country == "PT"
+    )
     assert [c.contract_id for c in project.chain.contracts] == ["CXYZ"]
     assert [a.address for a in project.chain.accounts] == ["GDEPLOYER"]
     assert project.chain.accounts[0].explorer_url == f"{EXPLORER}/account/GDEPLOYER"
@@ -85,7 +92,9 @@ async def test_track_is_the_declared_one_and_genesis_otherwise(scratch_db):
     )
     await reconcile(db)
 
-    projects = (await build_export(db, get_hackathon(), ["likely", "possible"])).projects
+    projects = (
+        await build_export(db, get_hackathon(), ["likely", "possible"])
+    ).projects
 
     assert {p.repo_full_name: (p.track, p.track_declared) for p in projects} == {
         "team/declared": ("scale", True),
@@ -112,7 +121,9 @@ async def test_export_lists_integration_partners_with_their_evidence(scratch_db)
     assert [p.slug for p in project.integration_partners] == ["trustless-work", "privy"]
     [evidence] = project.integration_partners[0].evidence
     assert (evidence.method, evidence.detail) == ("endpoint", "api.trustlesswork.com")
-    assert evidence.repo_file_url == "https://github.com/team/app/blob/HEAD/src/client.go"
+    assert (
+        evidence.repo_file_url == "https://github.com/team/app/blob/HEAD/src/client.go"
+    )
 
 
 async def test_export_marks_award_winners(scratch_db):

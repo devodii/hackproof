@@ -12,6 +12,7 @@ from hackproof.github.profiles import resolve_profiles
 from hackproof.github.repositories import fetch_repositories
 from hackproof.github.scan import Scanner, store_scan
 from hackproof.hackathon import get_hackathon
+from hackproof.sql_loader import load_sql
 
 log = logging.getLogger("hackproof.github")
 
@@ -38,9 +39,6 @@ async def run_discover(include_strings: bool) -> None:
             log.info("stored %s candidate repos", len(candidates))
 
 
-PROJECT_REPOS = "full_name IN (SELECT full_name FROM projects WHERE full_name IS NOT NULL)"
-
-
 async def run_scan(force: bool, projects_only: bool = False) -> None:
     settings, hackathon = get_settings(), get_hackathon()
     await open_pool()
@@ -52,10 +50,7 @@ async def run_scan(force: bool, projects_only: bool = False) -> None:
             names = [
                 row["full_name"]
                 for row in await connection.fetch(
-                    f"""
-                    SELECT full_name FROM repos
-                    WHERE ($1 OR scanned_at IS NULL) AND ($2 IS FALSE OR {PROJECT_REPOS})
-                    """,
+                    load_sql("github/scan_names"),
                     force,
                     projects_only,
                 )
@@ -63,15 +58,7 @@ async def run_scan(force: bool, projects_only: bool = False) -> None:
             refreshed = await fetch_repositories(github, names, hackathon.window)
             await store_candidates(connection, refreshed)
             rows = await connection.fetch(
-                f"""
-                SELECT full_name, url, owner, default_branch, homepage, base_sha
-                FROM repos
-                WHERE ($1 OR scanned_at IS NULL)
-                  AND ($2 IS FALSE OR {PROJECT_REPOS})
-                  AND (COALESCE(window_commits, 0) > 0
-                       OR 'wasm_meta' = ANY(discovered_via))
-                ORDER BY pushed_at DESC NULLS LAST
-                """,
+                load_sql("github/scan_candidates"),
                 force,
                 projects_only,
             )

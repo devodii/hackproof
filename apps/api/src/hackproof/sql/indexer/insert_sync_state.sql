@@ -1,0 +1,1 @@
+INSERT INTO sync_state VALUES ($1, 'done') ON CONFLICT DO NOTHING

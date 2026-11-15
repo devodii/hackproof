@@ -19,7 +19,10 @@ def test_reads_rust_and_js_manifests():
         WANTED,
     )
     assert result.ecosystems == ["rust", "js"]
-    assert result.packages == {"soroban-sdk": "22.0.0", "@stellar/stellar-sdk": "^14.0.0"}
+    assert result.packages == {
+        "soroban-sdk": "22.0.0",
+        "@stellar/stellar-sdk": "^14.0.0",
+    }
 
 
 def test_reads_table_style_cargo_dependencies_and_workspaces():
@@ -52,5 +55,8 @@ def test_broken_manifests_are_skipped():
 
 def test_repos_without_stellar_dependencies_have_no_fingerprint():
     assert (
-        fingerprint({"package.json": '{"dependencies": {"react": "19"}}'}, WANTED).ecosystems == []
+        fingerprint(
+            {"package.json": '{"dependencies": {"react": "19"}}'}, WANTED
+        ).ecosystems
+        == []
     )

@@ -40,9 +40,21 @@ uv run hackproof reconcile
 uv run hackproof export
 ```
 
+## Database
+
+The schema lives in `apps/api/db/schema`, one file per table, index, view and function, and is applied with [pgschema](https://github.com/pgplex/pgschema). Queries live in `apps/api/src/hackproof/sql`. Run from `apps/api`.
+
+```sh
+uv run hackproof schema apply
+uv run hackproof schema plan
+uv run hackproof schema verify
+```
+
+To change the schema, edit the files in `db/schema`, run `schema plan`, and commit the numbered file it writes to `db/migrations` with your change. `apply` refuses a plan that drops data. CI checks every pull request against an empty database and migrates production when the pull request merges to `main`.
+
 ## Checks
 
 ```sh
-cd apps/api && uv run ruff check . && uv run ruff format --check . && uv run pytest
+cd apps/api && uv run ruff check . && uv run ruff format --check . && uv run sqlfluff lint db/schema src/hackproof/sql && uv run pytest
 pnpm lint && pnpm format:check && pnpm build
 ```

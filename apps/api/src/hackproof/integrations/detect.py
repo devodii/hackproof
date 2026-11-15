@@ -14,8 +14,12 @@ def _normalize(ecosystem: str, name: str) -> str:
     return name.lower().replace("_", "-") if ecosystem == "python" else name
 
 
-def _declares(ecosystem: str, partner: Product, declared: dict[str, str | None]) -> list[str]:
-    wanted = [_normalize(ecosystem, name) for name in partner.packages.get(ecosystem, [])]
+def _declares(
+    ecosystem: str, partner: Product, declared: dict[str, str | None]
+) -> list[str]:
+    wanted = [
+        _normalize(ecosystem, name) for name in partner.packages.get(ecosystem, [])
+    ]
     found = []
     for name in declared:
         normal = _normalize(ecosystem, name)
@@ -35,11 +39,15 @@ def detect(files: dict[str, str], catalog: Catalog, owner: str) -> list[Detectio
     return _detect(files, catalog.partners, owner)
 
 
-def detect_tools(files: dict[str, str], catalog: Catalog, owner: str) -> list[Detection]:
+def detect_tools(
+    files: dict[str, str], catalog: Catalog, owner: str
+) -> list[Detection]:
     return _detect(files, catalog.tools, owner)
 
 
-def _detect(files: dict[str, str], products: Sequence[Product], owner: str) -> list[Detection]:
+def _detect(
+    files: dict[str, str], products: Sequence[Product], owner: str
+) -> list[Detection]:
     partners = [
         partner
         for partner in products
@@ -61,16 +69,28 @@ def _detect(files: dict[str, str], products: Sequence[Product], owner: str) -> l
                 for package in _declares(ECOSYSTEM[name], partner, declared):
                     found.setdefault(
                         (partner.slug, "package", package),
-                        Detection(slug=partner.slug, method="package", evidence=package, path=path),
+                        Detection(
+                            slug=partner.slug,
+                            method="package",
+                            evidence=package,
+                            path=path,
+                        ),
                     )
-        if PurePosixPath(path).suffix in PROSE_SUFFIXES or name.lower().startswith("readme"):
+        if PurePosixPath(path).suffix in PROSE_SUFFIXES or name.lower().startswith(
+            "readme"
+        ):
             continue
         for partner in partners:
             for host, pattern in endpoints[partner.slug]:
                 if pattern.search(text):
                     found.setdefault(
                         (partner.slug, "endpoint", host),
-                        Detection(slug=partner.slug, method="endpoint", evidence=host, path=path),
+                        Detection(
+                            slug=partner.slug,
+                            method="endpoint",
+                            evidence=host,
+                            path=path,
+                        ),
                     )
     return list(found.values())
 
@@ -82,7 +102,11 @@ def _matches(path: str, pattern: str) -> bool:
 def detect_agents(
     paths: Iterable[str], logins: Iterable[str], catalog: Catalog
 ) -> list[AgentDetection]:
-    tracked = [path for path in paths if not SKIP_DIRECTORIES & set(PurePosixPath(path).parts[:-1])]
+    tracked = [
+        path
+        for path in paths
+        if not SKIP_DIRECTORIES & set(PurePosixPath(path).parts[:-1])
+    ]
     people = {login.lower() for login in logins}
     found: list[AgentDetection] = []
     for agent in catalog.agents:
@@ -90,7 +114,9 @@ def detect_agents(
             match = next((path for path in tracked if _matches(path, pattern)), None)
             if match:
                 found.append(
-                    AgentDetection(slug=agent.slug, method="file", evidence=pattern, path=match)
+                    AgentDetection(
+                        slug=agent.slug, method="file", evidence=pattern, path=match
+                    )
                 )
         found.extend(
             AgentDetection(slug=agent.slug, method="author", evidence=login, path="")

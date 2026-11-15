@@ -22,7 +22,14 @@ class Deploy(Event):
     at: datetime
 
     def row(self) -> tuple[Any, ...]:
-        return (self.contract_id, self.deployer, self.wasm_hash, self.tx_hash, self.ledger, self.at)
+        return (
+            self.contract_id,
+            self.deployer,
+            self.wasm_hash,
+            self.tx_hash,
+            self.ledger,
+            self.at,
+        )
 
 
 class Upload(Event):

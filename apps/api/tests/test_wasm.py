@@ -29,9 +29,18 @@ def meta_entry(key: str, value: str) -> bytes:
 
 
 def test_reads_every_entry_of_the_meta_section():
-    payload = meta_entry("source_repo", "github:acme/vault") + meta_entry("rsver", "1.93.0")
-    wasm = MAGIC + custom_section("name", b"ignored") + custom_section("contractmetav0", payload)
-    assert contract_meta(wasm) == {"source_repo": "github:acme/vault", "rsver": "1.93.0"}
+    payload = meta_entry("source_repo", "github:acme/vault") + meta_entry(
+        "rsver", "1.93.0"
+    )
+    wasm = (
+        MAGIC
+        + custom_section("name", b"ignored")
+        + custom_section("contractmetav0", payload)
+    )
+    assert contract_meta(wasm) == {
+        "source_repo": "github:acme/vault",
+        "rsver": "1.93.0",
+    }
 
 
 def test_wasm_without_meta_section_is_empty():

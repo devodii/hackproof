@@ -89,7 +89,9 @@ def test_a_detection_is_reported_once_with_the_first_file():
     }
 
     assert detect(files, CATALOG, "team") == [
-        Detection(slug="acme", method="package", evidence="@acme/sdk", path="package.json")
+        Detection(
+            slug="acme", method="package", evidence="@acme/sdk", path="package.json"
+        )
     ]
 
 
@@ -98,7 +100,9 @@ def test_the_shipped_catalog_is_valid_and_unique():
     slugs = [partner.slug for partner in catalog.partners]
 
     assert len(slugs) == len(set(slugs)) >= 10
-    assert catalog.partner("trustless-work").packages["js"][0] == "@trustless-work/escrow"
+    assert (
+        catalog.partner("trustless-work").packages["js"][0] == "@trustless-work/escrow"
+    )
 
 
 def test_tools_are_found_apart_from_partners():
@@ -114,7 +118,9 @@ def test_tools_are_found_apart_from_partners():
         ],
     )
     files = {
-        "package.json": json.dumps({"dependencies": {"@scaffold/app-lib": "1", "@acme/sdk": "1"}})
+        "package.json": json.dumps(
+            {"dependencies": {"@scaffold/app-lib": "1", "@acme/sdk": "1"}}
+        )
     }
 
     assert {d.slug for d in detect_tools(files, catalog, "team")} == {"scaffold"}
@@ -131,13 +137,23 @@ AGENT_CATALOG = Catalog(
             files=[".cursor/*", ".cursorrules"],
             authors=["cursoragent"],
         ),
-        Agent(slug="claude", name="Claude", site="https://claude.example", files=["CLAUDE.md"]),
+        Agent(
+            slug="claude",
+            name="Claude",
+            site="https://claude.example",
+            files=["CLAUDE.md"],
+        ),
     ],
 )
 
 
 def test_agents_are_found_by_file_and_by_commit_author():
-    paths = ["src/app.ts", "CLAUDE.md", ".cursor/rules/style.mdc", "apps/web/.cursorrules"]
+    paths = [
+        "src/app.ts",
+        "CLAUDE.md",
+        ".cursor/rules/style.mdc",
+        "apps/web/.cursorrules",
+    ]
 
     found = detect_agents(paths, ["Someone", "CursorAgent"], AGENT_CATALOG)
 
@@ -158,7 +174,9 @@ def test_agent_files_inside_dependencies_are_ignored():
 def test_the_shipped_catalog_lists_unique_agents():
     agents = get_catalog().agents
 
-    assert {"claude-code", "cursor", "codex", "github-copilot"} <= {agent.slug for agent in agents}
+    assert {"claude-code", "cursor", "codex", "github-copilot"} <= {
+        agent.slug for agent in agents
+    }
     assert len({agent.slug for agent in agents}) == len(agents)
 
 
@@ -170,4 +188,7 @@ def test_stellar_raven_and_skills_are_found_in_agent_config_files():
 
     found = {(d.slug, d.path) for d in detect_tools(files, get_catalog(), "team")}
 
-    assert found == {("stellar-raven", ".mcp.json"), ("stellar-skills", "skills-lock.json")}
+    assert found == {
+        ("stellar-raven", ".mcp.json"),
+        ("stellar-skills", "skills-lock.json"),
+    }

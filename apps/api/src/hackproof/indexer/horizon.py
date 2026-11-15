@@ -14,7 +14,9 @@ class Horizon:
         raw = response.json()["closed_at"]
         return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(UTC)
 
-    async def first_ledger_at_or_after(self, moment: datetime, low: int, high: int) -> int:
+    async def first_ledger_at_or_after(
+        self, moment: datetime, low: int, high: int
+    ) -> int:
         while low < high:
             middle = (low + high) // 2
             if await self.closed_at(middle) < moment:

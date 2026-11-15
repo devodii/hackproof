@@ -14,7 +14,9 @@ def test_query_escapes_paths_and_aliases_every_file():
 async def test_blank_and_missing_files_are_dropped():
     class Github:
         async def graphql(self, query: str) -> dict:
-            return {"repository": {"f0": {"text": "hello"}, "f1": None, "f2": {"text": ""}}}
+            return {
+                "repository": {"f0": {"text": "hello"}, "f1": None, "f2": {"text": ""}}
+            }
 
     found = await fetch_texts(Github(), "a/b", "main", ["a.md", "b.md", "c.md"])
     assert found == {"a.md": "hello"}

@@ -13,6 +13,7 @@ from hackproof.export.models import (
     Contributor,
     EcosystemTool,
     Evidence,
+    Hackathon as ExportedHackathon,
     HackathonExport,
     IntegrationEvidence,
     IntegrationPartner,
@@ -20,7 +21,6 @@ from hackproof.export.models import (
     Project,
     WasmUpload,
 )
-from hackproof.export.models import Hackathon as ExportedHackathon
 from hackproof.export.urls import (
     account_url,
     asset_url,
@@ -30,82 +30,10 @@ from hackproof.export.urls import (
 )
 from hackproof.hackathon import Hackathon
 from hackproof.integrations.catalog import Catalog, get_catalog
-from hackproof.linking.methods import METHOD_RANK_SQL
+from hackproof.sql_loader import load_sql
 
 STRICT_TIERS = ("verified", "likely")
 TIER_ORDER = ("verified", "likely", "possible")
-
-PROJECTS_SQL = """
-SELECT p.full_name, p.tier, p.contracts, p.classic_ops, p.assets, p.wasm_uploads, p.failed_txs,
-       r.url, r.description, r.homepage, r.language, r.license, r.stars, r.forks, r.topics,
-       r.dependencies, r.created_at, r.pushed_at, r.window_commits, r.total_commits,
-       r.owner, r.owner_avatar, r.country, r.declared_track
-FROM projects p
-JOIN repos r ON r.full_name = p.full_name
-WHERE p.tier = ANY($1)
-ORDER BY array_position($2::text[], p.tier), p.contracts DESC, r.stars DESC, p.full_name
-"""
-
-CONTRIBUTORS_SQL = """
-SELECT c.full_name, c.login, c.url, c.avatar_url, c.contributions, u.country
-FROM repo_contributors c
-LEFT JOIN github_users u ON u.login = c.login
-WHERE c.full_name = ANY($1)
-ORDER BY c.contributions DESC, c.login
-"""
-
-CONTRACTS_SQL = """
-SELECT a.full_name, c.contract_id, c.deployer, c.wasm_hash, c.deployed_at, c.ledger, c.tx_hash
-FROM contracts c
-JOIN attribution a ON a.subject_kind = 'contract' AND a.subject = c.contract_id
-WHERE a.full_name = ANY($1) AND c.deployed_at BETWEEN $2 AND $3
-ORDER BY c.deployed_at
-"""
-
-ACCOUNTS_SQL = """
-SELECT full_name, subject FROM links
-WHERE subject_kind = 'account' AND full_name = ANY($1)
-ORDER BY subject
-"""
-
-WASM_SQL = """
-SELECT DISTINCT ON (a.full_name, w.wasm_hash) a.full_name, w.wasm_hash, w.tx_hash
-FROM wasm_uploads w
-JOIN attribution a ON a.subject_kind = 'account' AND a.subject = w.uploader
-WHERE a.full_name = ANY($1) AND w.uploaded_at BETWEEN $2 AND $3
-ORDER BY a.full_name, w.wasm_hash, w.uploaded_at
-"""
-
-EVIDENCE_SQL = f"""
-SELECT l.full_name, l.subject_kind, l.subject, l.method, r.path
-FROM links l
-LEFT JOIN repo_refs r
-       ON r.full_name = l.full_name AND r.kind = l.subject_kind AND r.value = l.subject
-WHERE l.full_name = ANY($1) AND l.method <> 'footprint'
-ORDER BY {METHOD_RANK_SQL}, l.subject_kind, l.subject
-"""
-
-INTEGRATIONS_SQL = """
-SELECT full_name, partner, method, evidence, path
-FROM repo_integrations
-WHERE full_name = ANY($1)
-ORDER BY partner, method, evidence
-"""
-
-TOOLS_SQL = """
-SELECT full_name, tool, method, evidence, path
-FROM repo_tools
-WHERE full_name = ANY($1)
-ORDER BY tool, method, evidence
-"""
-
-
-AGENTS_SQL = """
-SELECT full_name, agent, method, evidence, path
-FROM repo_agents
-WHERE full_name = ANY($1)
-ORDER BY agent, method, evidence
-"""
 
 
 def _evidence_url(kind: str, subject: str) -> str | None:
@@ -120,7 +48,9 @@ def _evidence_url(kind: str, subject: str) -> str | None:
             return None
 
 
-def _group(rows: Iterable[asyncpg.Record], key: str = "full_name") -> dict[str, list[Any]]:
+def _group(
+    rows: Iterable[asyncpg.Record], key: str = "full_name"
+) -> dict[str, list[Any]]:
     grouped: dict[str, list[Any]] = defaultdict(list)
     for row in rows:
         grouped[row[key]].append(row)
@@ -142,27 +72,40 @@ def _found(
     return found
 
 
-def _agents(catalog: Catalog, rows: list[asyncpg.Record], repo_url: str) -> list[AiAgent]:
+def _agents(
+    catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
+) -> list[AiAgent]:
     found: dict[str, list[AgentEvidence]] = defaultdict(list)
     for row in rows:
         found[row["agent"]].append(
             AgentEvidence(
                 method=row["method"],
                 detail=row["evidence"],
-                repo_file_url=repo_file_url(repo_url, row["path"]) if row["path"] else None,
+                repo_file_url=repo_file_url(repo_url, row["path"])
+                if row["path"]
+                else None,
             )
         )
     return [
-        AiAgent(slug=agent.slug, name=agent.name, website=agent.site, evidence=found[agent.slug])
+        AiAgent(
+            slug=agent.slug,
+            name=agent.name,
+            website=agent.site,
+            evidence=found[agent.slug],
+        )
         for agent in catalog.agents
         if agent.slug in found
     ]
 
 
-def _tools(catalog: Catalog, rows: list[asyncpg.Record], repo_url: str) -> list[EcosystemTool]:
+def _tools(
+    catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
+) -> list[EcosystemTool]:
     found = _found(rows, "tool", repo_url)
     return [
-        EcosystemTool(slug=tool.slug, name=tool.name, website=tool.site, evidence=found[tool.slug])
+        EcosystemTool(
+            slug=tool.slug, name=tool.name, website=tool.site, evidence=found[tool.slug]
+        )
         for tool in catalog.tools
         if tool.slug in found
     ]
@@ -186,21 +129,31 @@ def _partners(
 
 
 async def build_export(
-    connection: asyncpg.Connection, hackathon: Hackathon, tiers: Iterable[str] = STRICT_TIERS
+    connection: asyncpg.Connection,
+    hackathon: Hackathon,
+    tiers: Iterable[str] = STRICT_TIERS,
 ) -> HackathonExport:
     window = hackathon.window
-    projects = await connection.fetch(PROJECTS_SQL, list(tiers), list(TIER_ORDER))
+    projects = await connection.fetch(
+        load_sql("export/projects"), list(tiers), list(TIER_ORDER)
+    )
     names = [row["full_name"] for row in projects]
     span = (window.start, window.end)
 
-    contributors = _group(await connection.fetch(CONTRIBUTORS_SQL, names))
-    contracts = _group(await connection.fetch(CONTRACTS_SQL, names, *span))
-    accounts = _group(await connection.fetch(ACCOUNTS_SQL, names))
-    wasm = _group(await connection.fetch(WASM_SQL, names, *span))
-    evidence = _group(await connection.fetch(EVIDENCE_SQL, names))
-    integrations = _group(await connection.fetch(INTEGRATIONS_SQL, names))
-    tools = _group(await connection.fetch(TOOLS_SQL, names))
-    agents = _group(await connection.fetch(AGENTS_SQL, names))
+    contributors = _group(
+        await connection.fetch(load_sql("export/contributors"), names)
+    )
+    contracts = _group(
+        await connection.fetch(load_sql("export/contracts"), names, *span)
+    )
+    accounts = _group(await connection.fetch(load_sql("export/accounts"), names))
+    wasm = _group(await connection.fetch(load_sql("export/wasm"), names, *span))
+    evidence = _group(await connection.fetch(load_sql("export/evidence"), names))
+    integrations = _group(
+        await connection.fetch(load_sql("export/integrations"), names)
+    )
+    tools = _group(await connection.fetch(load_sql("export/tools"), names))
+    agents = _group(await connection.fetch(load_sql("export/agents"), names))
     catalog = get_catalog()
     awards = {award.project_id: award.place for award in hackathon.awards}
 
@@ -226,10 +179,16 @@ async def build_export(
             total_commits=row["total_commits"],
             track=row["declared_track"] or "genesis",
             track_declared=row["declared_track"] is not None,
-            integration_partners=_partners(catalog, integrations[row["full_name"]], row["url"]),
+            integration_partners=_partners(
+                catalog, integrations[row["full_name"]], row["url"]
+            ),
             ecosystem_tools=_tools(catalog, tools[row["full_name"]], row["url"]),
             ai_agents=_agents(catalog, agents[row["full_name"]], row["url"]),
-            owner=Owner(login=row["owner"], avatar_url=row["owner_avatar"], country=row["country"]),
+            owner=Owner(
+                login=row["owner"],
+                avatar_url=row["owner_avatar"],
+                country=row["country"],
+            ),
             contributors=[
                 Contributor(
                     login=c["login"],
@@ -247,7 +206,9 @@ async def build_export(
                 asset_count=row["assets"],
                 failed_tx_count=row["failed_txs"],
                 accounts=[
-                    Account(address=a["subject"], explorer_url=account_url(a["subject"]))
+                    Account(
+                        address=a["subject"], explorer_url=account_url(a["subject"])
+                    )
                     for a in accounts[row["full_name"]]
                 ],
                 wasm_uploads=[
@@ -277,7 +238,9 @@ async def build_export(
                         subject=e["subject"],
                         method=e["method"],
                         explorer_url=_evidence_url(e["subject_kind"], e["subject"]),
-                        repo_file_url=(repo_file_url(row["url"], e["path"]) if e["path"] else None),
+                        repo_file_url=(
+                            repo_file_url(row["url"], e["path"]) if e["path"] else None
+                        ),
                     )
                     for e in evidence[row["full_name"]]
                 ],

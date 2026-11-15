@@ -26,7 +26,8 @@ class Page(BaseModel):
 
 class ProjectFilters(BaseModel):
     tiers: list[Tier] | None = Field(
-        default=None, description="Evidence tiers to include; null means verified and likely"
+        default=None,
+        description="Evidence tiers to include; null means verified and likely",
     )
     track: Track | None = Field(
         default=None,
@@ -56,7 +57,8 @@ class ProjectFilters(BaseModel):
         "with failed transactions",
     )
     awards: list[Place] | None = Field(
-        default=None, description="first or runner-up keeps projects that won that award"
+        default=None,
+        description="first or runner-up keeps projects that won that award",
     )
 
     def list_args(self) -> dict[str, Any]:
@@ -128,8 +130,12 @@ async def project_brief(project_id: str) -> dict[str, Any] | None:
 
 
 async def builder_brief(address: str) -> dict[str, Any] | None:
-    projects, project_total = await queries.list_page("projects", account=address, limit=SAMPLE)
-    contracts, contract_total = await queries.list_page("contracts", account=address, limit=SAMPLE)
+    projects, project_total = await queries.list_page(
+        "projects", account=address, limit=SAMPLE
+    )
+    contracts, contract_total = await queries.list_page(
+        "contracts", account=address, limit=SAMPLE
+    )
     _, wasm_total = await queries.list_page("wasm", account=address, limit=1)
     _, failed_total = await queries.list_page("failed", account=address, limit=1)
     if not (project_total or contract_total or wasm_total or failed_total):
@@ -146,11 +152,15 @@ async def builder_brief(address: str) -> dict[str, Any] | None:
 
 
 def _top(counter: Counter[str], size: int) -> list[dict[str, Any]]:
-    return [{"name": name, "projects": count} for name, count in counter.most_common(size)]
+    return [
+        {"name": name, "projects": count} for name, count in counter.most_common(size)
+    ]
 
 
 async def summarize_view(filters: ProjectFilters) -> dict[str, Any]:
-    items, total = await queries.list_page("projects", **filters.list_args(), limit=10_000)
+    items, total = await queries.list_page(
+        "projects", **filters.list_args(), limit=10_000
+    )
     topics: Counter[str] = Counter()
     stack: Counter[str] = Counter()
     partners: Counter[str] = Counter()
@@ -168,13 +178,17 @@ async def summarize_view(filters: ProjectFilters) -> dict[str, Any]:
         "by_track": dict(Counter(item["track"] for item in items)),
         "contracts": sum(item["contracts"] for item in items),
         "wasm_uploads": sum(item["wasm_uploads"] for item in items),
-        "languages": _top(Counter(item["language"] for item in items if item["language"]), 10),
+        "languages": _top(
+            Counter(item["language"] for item in items if item["language"]), 10
+        ),
         "topics": _top(topics, 20),
         "stellar_packages": _top(stack, 15),
         "integrations": _top(partners, 15),
         "stellar_tooling": _top(tooling, 10),
         "ai_agents": _top(agents, 10),
-        "countries": _top(Counter(item["country"] for item in items if item["country"]), 10),
+        "countries": _top(
+            Counter(item["country"] for item in items if item["country"]), 10
+        ),
         "descriptions": [
             {"project_id": item["project_id"], "description": item["description"][:140]}
             for item in items
@@ -185,7 +199,9 @@ async def summarize_view(filters: ProjectFilters) -> dict[str, Any]:
 
 def view_filters(selected: dict[str, list[str]]) -> ProjectFilters:
     known = {
-        PAGE_FILTERS[key]: values[:20] for key, values in selected.items() if key in PAGE_FILTERS
+        PAGE_FILTERS[key]: values[:20]
+        for key, values in selected.items()
+        if key in PAGE_FILTERS
     }
     tracks = selected.get("track", [])
     return ProjectFilters.model_validate(
@@ -222,5 +238,8 @@ async def describe_page(page: Page | None) -> str:
     if brief is None:
         return prompt("page-empty", subject=subject)
     return prompt(
-        "page-entity", subject=subject, pronoun=pronoun, data=json.dumps(brief, default=str)
+        "page-entity",
+        subject=subject,
+        pronoun=pronoun,
+        data=json.dumps(brief, default=str),
     )

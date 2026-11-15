@@ -17,12 +17,19 @@ from hackproof.github.track import declared_track
 from hackproof.hackathon import Discovery, Window
 from hackproof.integrations.catalog import Catalog, get_catalog
 from hackproof.integrations.detect import detect, detect_agents, detect_tools
+from hackproof.sql_loader import load_sql
 
 TEXT_SUFFIXES = {
     ".rs", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".py", ".go", ".toml", ".json",
     ".md", ".yml", ".yaml", ".sh", ".txt", ".html", ".env", ".sol", ".vue", ".svelte",
 }  # fmt: skip
-SKIP_FILES = {"package-lock.json", "pnpm-lock.yaml", "yarn.lock", "Cargo.lock", "poetry.lock"}
+SKIP_FILES = {
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "yarn.lock",
+    "Cargo.lock",
+    "poetry.lock",
+}
 FILE_CONCURRENCY = 100
 MAX_TEXT_FILES = 60
 MAX_WASM_FILES = 5
@@ -37,13 +44,19 @@ DEMO_URL = re.compile(
 def _is_text(path: str) -> bool:
     name = PurePosixPath(path).name
     return (
-        PurePosixPath(path).suffix in TEXT_SUFFIXES or name in MANIFESTS or name.startswith(".env")
+        PurePosixPath(path).suffix in TEXT_SUFFIXES
+        or name in MANIFESTS
+        or name.startswith(".env")
     )
 
 
 def _priority(path: str) -> tuple[int, int, str]:
     name = PurePosixPath(path).name
-    important = name in MANIFESTS or name.lower().startswith("readme") or name.startswith(".env")
+    important = (
+        name in MANIFESTS
+        or name.lower().startswith("readme")
+        or name.startswith(".env")
+    )
     return (0 if important else 1, len(PurePosixPath(path).parts), path)
 
 
@@ -90,7 +103,9 @@ class Scanner:
 
     async def _wasm_ref(self, repo: Candidate, branch: str, path: str) -> Ref | None:
         async with self._files:
-            content = await self._github.raw(repo.full_name, branch, path, limit=MAX_WASM_BYTES)
+            content = await self._github.raw(
+                repo.full_name, branch, path, limit=MAX_WASM_BYTES
+            )
         if content is None:
             return None
         return Ref(kind="wasm", value=hashlib.sha256(content).hexdigest(), path=path)
@@ -105,14 +120,20 @@ class Scanner:
         text_paths, wasm_paths = select_files(tree["tree"])
         texts, wasms, people = await asyncio.gather(
             fetch_texts(self._github, repo.full_name, branch, text_paths),
-            asyncio.gather(*(self._wasm_ref(repo, branch, path) for path in wasm_paths)),
-            self._github.json(f"/repos/{repo.full_name}/contributors", {"per_page": 100}),
+            asyncio.gather(
+                *(self._wasm_ref(repo, branch, path) for path in wasm_paths)
+            ),
+            self._github.json(
+                f"/repos/{repo.full_name}/contributors", {"per_page": 100}
+            ),
         )
         files = texts
         refs = [ref for path, text in files.items() for ref in extract_refs(text, path)]
         refs.extend(ref for ref in wasms if ref)
         readme = next((text for path, text in files.items() if _is_readme(path)), "")
-        demo = repo.homepage or (match[0] if (match := DEMO_URL.search(readme)) else None)
+        demo = repo.homepage or (
+            match[0] if (match := DEMO_URL.search(readme)) else None
+        )
         if demo:
             refs.extend(await scan_demo(self._http, demo))
         wanted = self._discovery.dependency_fingerprints
@@ -162,43 +183,42 @@ def _is_readme(path: str) -> bool:
 async def store_scan(connection: asyncpg.Connection, scan: RepoScan) -> None:
     async with connection.transaction():
         await connection.executemany(
-            "INSERT INTO repo_refs VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING",
+            load_sql("github/insert_ref"),
             [(scan.full_name, ref.kind, ref.value, ref.path) for ref in scan.refs],
         )
         await connection.executemany(
-            """
-            INSERT INTO repo_contributors VALUES ($1, $2, $3, $4, $5)
-            ON CONFLICT (full_name, login) DO UPDATE SET contributions = EXCLUDED.contributions,
-                avatar_url = EXCLUDED.avatar_url
-            """,
+            load_sql("github/upsert_contributor"),
             [
                 (scan.full_name, c.login, c.url, c.avatar_url, c.contributions)
                 for c in scan.contributors
             ],
         )
+        await connection.execute(load_sql("github/delete_integrations"), scan.full_name)
+        await connection.executemany(
+            load_sql("github/insert_integration"),
+            [
+                (scan.full_name, i.slug, i.method, i.evidence, i.path)
+                for i in scan.integrations
+            ],
+        )
+        await connection.execute(load_sql("github/delete_tools"), scan.full_name)
+        await connection.executemany(
+            load_sql("github/insert_tool"),
+            [
+                (scan.full_name, t.slug, t.method, t.evidence, t.path)
+                for t in scan.tools
+            ],
+        )
+        await connection.execute(load_sql("github/delete_agents"), scan.full_name)
+        await connection.executemany(
+            load_sql("github/insert_agent"),
+            [
+                (scan.full_name, a.slug, a.method, a.evidence, a.path)
+                for a in scan.agents
+            ],
+        )
         await connection.execute(
-            "DELETE FROM repo_integrations WHERE full_name = $1", scan.full_name
-        )
-        await connection.executemany(
-            "INSERT INTO repo_integrations VALUES ($1, $2, $3, $4, $5)",
-            [(scan.full_name, i.slug, i.method, i.evidence, i.path) for i in scan.integrations],
-        )
-        await connection.execute("DELETE FROM repo_tools WHERE full_name = $1", scan.full_name)
-        await connection.executemany(
-            "INSERT INTO repo_tools VALUES ($1, $2, $3, $4, $5)",
-            [(scan.full_name, t.slug, t.method, t.evidence, t.path) for t in scan.tools],
-        )
-        await connection.execute("DELETE FROM repo_agents WHERE full_name = $1", scan.full_name)
-        await connection.executemany(
-            "INSERT INTO repo_agents VALUES ($1, $2, $3, $4, $5)",
-            [(scan.full_name, a.slug, a.method, a.evidence, a.path) for a in scan.agents],
-        )
-        await connection.execute(
-            """
-            UPDATE repos SET dependencies = $2, stellar_added_in_window = $3,
-                declared_track = $4, scanned_at = now()
-            WHERE full_name = $1
-            """,
+            load_sql("github/update_scan"),
             scan.full_name,
             scan.dependencies.model_dump(),
             scan.stellar_added_in_window,

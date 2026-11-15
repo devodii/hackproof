@@ -9,7 +9,13 @@ from hackproof.chat import routes, stream
 from hackproof.chat.briefs import Page, describe_page, view_filters
 from hackproof.chat.prompts import prompt, sections
 from hackproof.chat.ratelimit import RateLimiter
-from hackproof.chat.stream import Message, Part, stream_reply, to_anthropic, web_search_events
+from hackproof.chat.stream import (
+    Message,
+    Part,
+    stream_reply,
+    to_anthropic,
+    web_search_events,
+)
 from hackproof.chat.tools import TOOL_SPECS, run_tool
 from hackproof.db import close_pool, open_pool
 from hackproof.main import app
@@ -99,13 +105,17 @@ async def test_streams_text_then_tool_then_answer(monkeypatch):
         ]
     )
 
-    events = parse([c async for c in stream_reply(client, "m", [{"role": "user", "content": "x"}])])
+    events = parse(
+        [c async for c in stream_reply(client, "m", [{"role": "user", "content": "x"}])]
+    )
     types = [e["type"] if isinstance(e, dict) else e for e in events]
 
     assert types[0] == "start" and types[-2:] == ["finish", "[DONE]"]
     assert types.index("tool-input-start") < types.index("tool-input-available")
     assert types.index("tool-input-available") < types.index("tool-output-available")
-    deltas = [e["delta"] for e in events if isinstance(e, dict) and e["type"] == "text-delta"]
+    deltas = [
+        e["delta"] for e in events if isinstance(e, dict) and e["type"] == "text-delta"
+    ]
     assert deltas == ["Checking.", "One project."]
 
 
@@ -121,20 +131,26 @@ async def test_tool_failure_is_reported_not_raised(monkeypatch):
             FakeStream([], SimpleNamespace(stop_reason="end_turn", content=[])),
         ]
     )
-    events = parse([c async for c in stream_reply(client, "m", [{"role": "user", "content": "x"}])])
+    events = parse(
+        [c async for c in stream_reply(client, "m", [{"role": "user", "content": "x"}])]
+    )
     assert any(isinstance(e, dict) and e["type"] == "tool-output-error" for e in events)
 
 
 def post(client: TestClient):
     return client.post(
         "/api/chat",
-        json={"messages": [{"role": "user", "parts": [{"type": "text", "text": "hi"}]}]},
+        json={
+            "messages": [{"role": "user", "parts": [{"type": "text", "text": "hi"}]}]
+        },
     )
 
 
 def test_chat_is_rate_limited(monkeypatch):
     monkeypatch.setattr(routes, "limiter", RateLimiter())
-    monkeypatch.setattr(routes, "get_settings", lambda: SimpleNamespace(anthropic_api_key=None))
+    monkeypatch.setattr(
+        routes, "get_settings", lambda: SimpleNamespace(anthropic_api_key=None)
+    )
     with TestClient(app) as client:
         statuses = [post(client).status_code for _ in range(11)]
         denied = post(client)
@@ -159,7 +175,9 @@ def test_chat_passes_the_current_page_to_the_model(monkeypatch):
     monkeypatch.setattr(routes, "describe_page", fake_describe)
     monkeypatch.setattr(routes, "stream_reply", fake_stream)
     monkeypatch.setattr(
-        routes, "get_settings", lambda: SimpleNamespace(anthropic_api_key="k", chat_model="m")
+        routes,
+        "get_settings",
+        lambda: SimpleNamespace(anthropic_api_key="k", chat_model="m"),
     )
     body = {
         "page": {"kind": "project", "id": "repo:a/b"},
@@ -172,19 +190,31 @@ def test_chat_passes_the_current_page_to_the_model(monkeypatch):
 
 
 def test_prompt_file_has_every_section():
-    assert set(sections()) == {"system", "page-home", "page-entity", "page-empty", "page-filter"}
+    assert set(sections()) == {
+        "system",
+        "page-home",
+        "page-entity",
+        "page-empty",
+        "page-filter",
+    }
     text = prompt("system", start="A", end="B", page="ON THE HOME PAGE")
     assert "A to B UTC" in text and text.endswith("ON THE HOME PAGE")
     assert "{" not in text
 
 
 def test_web_search_is_reported_as_a_provider_tool():
-    call = SimpleNamespace(type="server_tool_use", id="s1", name="web_search", input={"query": "q"})
+    call = SimpleNamespace(
+        type="server_tool_use", id="s1", name="web_search", input={"query": "q"}
+    )
     hit = SimpleNamespace(title="Meridian", url="https://meridian.stellar.org")
-    result = SimpleNamespace(type="web_search_tool_result", tool_use_id="s1", content=[hit])
+    result = SimpleNamespace(
+        type="web_search_tool_result", tool_use_id="s1", content=[hit]
+    )
     start, done = parse(list(web_search_events(call)) + list(web_search_events(result)))
     assert start["providerExecuted"] and start["input"] == {"query": "q"}
-    assert done["output"] == [{"title": "Meridian", "url": "https://meridian.stellar.org"}]
+    assert done["output"] == [
+        {"title": "Meridian", "url": "https://meridian.stellar.org"}
+    ]
 
 
 def test_project_tools_can_filter_by_integration_partner():
@@ -201,14 +231,24 @@ def test_project_tools_filter_by_every_explorer_filter():
     assert {"get_tools", "get_agents"} <= set(specs)
     for name in ("query_projects", "summarize_projects"):
         properties = specs[name]["input_schema"]["properties"]
-        assert {"tools", "agents", "languages", "countries", "activity", "awards"} <= set(
-            properties
-        )
+        assert {
+            "tools",
+            "agents",
+            "languages",
+            "countries",
+            "activity",
+            "awards",
+        } <= set(properties)
 
 
 def test_explorer_filters_map_onto_the_project_filters():
     filters = view_filters(
-        {"agent": ["cursor"], "partner": ["freighter"], "track": ["scale"], "tier": ["verified"]}
+        {
+            "agent": ["cursor"],
+            "partner": ["freighter"],
+            "track": ["scale"],
+            "tier": ["verified"],
+        }
     )
 
     assert filters.agents == ["cursor"]
@@ -216,7 +256,10 @@ def test_explorer_filters_map_onto_the_project_filters():
     assert filters.track == "scale"
     assert filters.list_args()["tiers"] == ["verified"]
     assert view_filters({"track": ["genesis", "scale"]}).track is None
-    assert view_filters({"nonsense": ["x"]}).list_args()["tiers"] == ["verified", "likely"]
+    assert view_filters({"nonsense": ["x"]}).list_args()["tiers"] == [
+        "verified",
+        "likely",
+    ]
 
 
 async def test_the_filter_page_brief_counts_the_matching_projects():

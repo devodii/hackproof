@@ -26,7 +26,11 @@ class FileEvidence(FileModel):
     kind: Literal["contract", "wasm", "account", "asset"]
     subject: str
     method: Literal[
-        "contract_in_repo", "wasm_hash_match", "wasm_meta", "deployer_in_repo", "asset_in_repo"
+        "contract_in_repo",
+        "wasm_hash_match",
+        "wasm_meta",
+        "deployer_in_repo",
+        "asset_in_repo",
     ]
     explorer_url: str | None = None
     file_url: str | None = None
@@ -79,20 +83,28 @@ class EventFile(FileModel):
     )
     starts_at: datetime = Field(description="Official start, UTC")
     ends_at: datetime = Field(description="Official submission deadline, UTC")
-    source_url: str | None = Field(default=None, description="Where the dataset is produced")
+    source_url: str | None = Field(
+        default=None, description="Where the dataset is produced"
+    )
 
 
 class ProjectFile(FileModel):
     event: str = Field(description="Hackathon slug")
-    canonical_id: str = Field(description="pkg:github/<owner>/<repo>, the join key for repos")
+    canonical_id: str = Field(
+        description="pkg:github/<owner>/<repo>, the join key for repos"
+    )
     repo_url: str
     name: str = Field(description="Repository name")
     description: str | None = None
     homepage: str | None = None
     language: str | None = None
     license: str | None = None
-    topics: list[str] = Field(default_factory=list, description="Tags the team set on the repo")
-    created_at: datetime | None = Field(default=None, description="Repo creation time, UTC")
+    topics: list[str] = Field(
+        default_factory=list, description="Tags the team set on the repo"
+    )
+    created_at: datetime | None = Field(
+        default=None, description="Repo creation time, UTC"
+    )
     owner: str = Field(description="GitHub login of the repo owner")
     track: Track
     track_declared: bool = Field(
@@ -102,7 +114,8 @@ class ProjectFile(FileModel):
     evidence_tier: Tier
     commits_in_window: int | None = None
     stack: dict[str, str | None] = Field(
-        default_factory=dict, description="Stellar package to declared version, null when unknown"
+        default_factory=dict,
+        description="Stellar package to declared version, null when unknown",
     )
     integrations: list[FileIntegration] = Field(default_factory=list)
     tools: list[FileIntegration] = Field(
@@ -130,7 +143,9 @@ def file_names(projects: list[Project]) -> dict[str, str]:
         name: f"{slugify(name.split('/')[0])}-{slug}" if counts[slug] > 1 else slug
         for name, slug in slugs.items()
     }
-    clashes = sorted(name for name, count in Counter(names.values()).items() if count > 1)
+    clashes = sorted(
+        name for name, count in Counter(names.values()).items() if count > 1
+    )
     if clashes:
         raise ValueError(f"file names still collide: {', '.join(clashes)}")
 
@@ -189,7 +204,9 @@ def project_file(event: str, project: Project) -> ProjectFile:
                 name=partner.name,
                 evidence=[
                     FileIntegrationEvidence(
-                        method=item.method, detail=item.detail, file_url=item.repo_file_url
+                        method=item.method,
+                        detail=item.detail,
+                        file_url=item.repo_file_url,
                     )
                     for item in partner.evidence
                 ],
@@ -202,7 +219,9 @@ def project_file(event: str, project: Project) -> ProjectFile:
                 name=tool.name,
                 evidence=[
                     FileIntegrationEvidence(
-                        method=item.method, detail=item.detail, file_url=item.repo_file_url
+                        method=item.method,
+                        detail=item.detail,
+                        file_url=item.repo_file_url,
                     )
                     for item in tool.evidence
                 ],
@@ -215,7 +234,9 @@ def project_file(event: str, project: Project) -> ProjectFile:
                 name=agent.name,
                 evidence=[
                     FileAgentEvidence(
-                        method=item.method, detail=item.detail, file_url=item.repo_file_url
+                        method=item.method,
+                        detail=item.detail,
+                        file_url=item.repo_file_url,
                     )
                     for item in agent.evidence
                 ],
@@ -273,7 +294,10 @@ def write_project_files(export: HackathonExport, root: Path) -> int:
     for stale in directory.glob("*.yml"):
         if stale.name not in wanted:
             stale.unlink()
-    for name, schema in ((SCHEMA_FILE, file_schema()), (EVENT_SCHEMA_FILE, event_schema())):
+    for name, schema in (
+        (SCHEMA_FILE, file_schema()),
+        (EVENT_SCHEMA_FILE, event_schema()),
+    ):
         (root / name).write_text(
             yaml.safe_dump(schema, sort_keys=False, allow_unicode=True, width=120)
         )

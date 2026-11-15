@@ -39,7 +39,9 @@ async def chat(body: ChatRequest, request: Request):
 
     messages = to_anthropic(body.messages)
     if not messages or messages[-1]["role"] != "user":
-        raise HTTPException(status_code=422, detail="last message must be from the user")
+        raise HTTPException(
+            status_code=422, detail="last message must be from the user"
+        )
 
     return StreamingResponse(
         stream_reply(
