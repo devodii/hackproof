@@ -22,6 +22,9 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+  --color-award-first: var(--award-first);
+  --color-award-runner-up: var(--award-runner-up);
+  --color-award-foreground: var(--award-foreground);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -119,6 +122,9 @@
   --input: #d6d2c4;
   --ring: #fdda24;
   --chart-1: #fdda24;
+  --award-first: #c98f00;
+  --award-runner-up: #6b7585;
+  --award-foreground: #0f0f0f;
   --chart-2: #00a7b5;
   --chart-3: #b7ace8;
   --chart-4: #002e5d;
@@ -183,6 +189,9 @@
   --input: #1a1917;
   --ring: #fdda24;
   --chart-1: #fdda24;
+  --award-first: #f5c518;
+  --award-runner-up: #c4cad4;
+  --award-foreground: #0f0f0f;
   --chart-2: #00a7b5;
   --chart-3: #b7ace8;
   --chart-4: #d6d2c4;

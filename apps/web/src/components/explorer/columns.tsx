@@ -9,6 +9,7 @@ import {
   ProjectLink,
 } from '@/components/links'
 import { AwardBadge } from '@/components/award-badge'
+import { AwardMark } from '@/components/award-mark'
 import { TierBadge } from '@/components/tier-badge'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -31,6 +32,7 @@ export const projectColumns: Column<Project>[] = [
     cell: (row) => (
       <div className="flex flex-col gap-0.5">
         <span className="flex items-center gap-2">
+          <AwardMark place={row.award} className="size-4" />
           <ProjectLink projectId={row.project_id} />
           {row.country && <span title={row.country}>{flagEmoji(row.country)}</span>}
           {!row.full_name && <Badge variant="outline">no repo</Badge>}
