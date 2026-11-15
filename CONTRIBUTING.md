@@ -22,7 +22,7 @@ The README has the commands to run everything locally.
 - Pydantic models for anything that crosses a module boundary. No dataclasses, NamedTuple or TypedDict.
 - Models for upstream responses use `extra="allow"` so new fields are not lost. Models we derive use `extra="forbid"`.
 - Tests run against the scratch Postgres database from `tests/conftest.py` and never touch the live network. Anything that needs an upstream response uses a recorded fixture in `apps/api/tests/fixtures/`.
-- New pipeline steps follow the existing shape: a `run_*` job in the relevant package, a subcommand in `cli.py`, and tables added to `db.py`.
+- New pipeline steps follow the existing shape: a `run_*` job in the relevant package, a subcommand in `cli.py`, and any schema change as files in `db/schema` with a migration from `hackproof schema plan`. SQL goes in `src/hackproof/sql`, loaded with `load_sql`, never in Python strings.
 
 ## React
 
