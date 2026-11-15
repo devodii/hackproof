@@ -3,8 +3,10 @@ import { Area, AreaChart, CartesianGrid, ReferenceArea, ReferenceDot, XAxis, YAx
 
 import { type ChartConfig, ChartContainer } from '@/components/ui/chart'
 import { useStill } from '@/components/wrapped/use-still'
+import { useMediaQuery } from '@/hooks/use-media-query'
 import { formatHour } from '@/lib/format'
 import type { TimelinePoint } from '@/lib/types'
+import { POSTER_MEDIA } from '@/lib/wrapped'
 import { cn } from '@/lib/utils'
 
 const day = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' })
@@ -13,6 +15,9 @@ function tickLabel(iso: string) {
   const hour = formatHour(iso)
   return hour === '00:00' ? day.format(new Date(iso)) : hour
 }
+
+const WIDE_TICK_HOURS = 3
+const NARROW_TICK_HOURS = 6
 
 const config = {
   contracts: { label: 'Contracts deployed', color: 'var(--primary)' },
@@ -27,6 +32,9 @@ interface TimelineChartProps {
 
 export function TimelineChart({ data, peak, rush, className }: TimelineChartProps) {
   const still = useStill()
+  const wide = useMediaQuery(POSTER_MEDIA)
+  const step = wide ? WIDE_TICK_HOURS : NARROW_TICK_HOURS
+  const ticks = data.filter((_, index) => index % step === 0).map((point) => point.hour)
   const [drawn, setDrawn] = useState(still)
 
   return (
@@ -42,7 +50,7 @@ export function TimelineChart({ data, peak, rush, className }: TimelineChartProp
         <XAxis
           dataKey="hour"
           tickFormatter={tickLabel}
-          interval={2}
+          ticks={ticks}
           tickLine={false}
           axisLine={false}
         />

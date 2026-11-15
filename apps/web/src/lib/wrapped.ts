@@ -1,5 +1,7 @@
 import type { Project, TimelinePoint } from '@/lib/types'
 
+export const POSTER_MEDIA = '(min-width: 64rem)'
+
 export const EASE_OUT = [0.22, 1, 0.36, 1] as const
 export const EASE_SPRING = [0.34, 1.56, 0.64, 1] as const
 export const EASE_SETTLE = [0.16, 1, 0.3, 1] as const
