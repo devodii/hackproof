@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router'
 
+import { EventLogo } from '@/components/brand/event-logo'
 import { suggestionsFor } from '@/components/chat/page'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
@@ -29,6 +30,7 @@ export function HomePage() {
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
+        <EventLogo className="h-9 w-auto sm:h-11" />
         <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
           {EVENT_NAME}, rebuilt from the chain.
         </h1>
