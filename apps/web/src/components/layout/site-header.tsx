@@ -1,4 +1,4 @@
-import { CrownIcon, ExternalLinkIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { CrownIcon, ExternalLinkIcon, MoonIcon, SparklesIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Link } from 'react-router'
 
@@ -20,6 +20,12 @@ export function SiteHeader() {
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
           >
             <CrownIcon className="size-3.5" /> Winners
+          </Link>
+          <Link
+            to="/wrapped"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <SparklesIcon className="size-3.5" /> Wrapped
           </Link>
           <a
             href={REPO_URL}
