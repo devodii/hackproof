@@ -14,6 +14,7 @@ DB_DIR = API_DIR / "db"
 SCHEMA_DIR = DB_DIR / "schema"
 MIGRATIONS_DIR = DB_DIR / "migrations"
 MANIFEST = "/db/schema/manifest.sql"
+LOCK_TIMEOUT = "30s"
 
 
 def docker_command(
@@ -158,6 +159,8 @@ def apply(
             "--plan",
             "/out/plan.json",
             "--auto-approve",
+            "--lock-timeout",
+            LOCK_TIMEOUT,
             connection=connection,
             mounts={target: "/out"},
         )

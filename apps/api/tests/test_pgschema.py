@@ -32,6 +32,15 @@ def test_a_connection_is_read_from_a_url():
     assert not connection.is_local
 
 
+def test_every_part_of_a_remote_url_is_masked_in_ci_logs():
+    lines = Connection.from_url(NEON).mask_lines()
+
+    assert "::add-mask::ep-cool-1234.us-east-2.aws.neon.tech" in lines
+    assert "::add-mask::owner" in lines
+    assert "::add-mask::p@ss" in lines
+    assert "::add-mask::p%40ss" in lines
+
+
 def test_a_local_database_is_reached_through_the_host_the_container_can_see(
     monkeypatch,
 ):
@@ -146,3 +155,42 @@ async def test_the_sql_method_rank_follows_the_python_order(scratch_db):
     for position, method in enumerate(LinkMethod, start=1):
         assert await scratch_db.fetchval("SELECT method_rank($1)", method) == position
     assert await scratch_db.fetchval("SELECT method_rank('unknown')") is None
+
+
+def test_apply_runs_the_reviewed_plan_with_a_lock_timeout(monkeypatch, tmp_path):
+    seen = []
+    monkeypatch.setattr(
+        pgschema,
+        "run_pgschema",
+        lambda command, *args, **kwargs: seen.append((command, args)) or 0,
+    )
+    monkeypatch.setattr(
+        pgschema, "plan_sql", lambda *_: (0, "CREATE TABLE x (id text);")
+    )
+    monkeypatch.setattr(pgschema, "generate_manifest", lambda *_: None)
+
+    code = pgschema.apply(Connection.from_url(NEON), out_dir=tmp_path)
+
+    assert code == 0
+    command, args = seen[0]
+    assert command == "apply"
+    assert args[:2] == ("--plan", "/out/plan.json")
+    assert args[args.index("--lock-timeout") + 1] == "30s"
+
+
+def test_apply_refuses_a_plan_that_drops_data_and_never_runs_it(monkeypatch, tmp_path):
+    ran = []
+    monkeypatch.setattr(pgschema, "run_pgschema", lambda *a, **k: ran.append(a) or 0)
+    monkeypatch.setattr(pgschema, "plan_sql", lambda *_: (0, "DROP TABLE contracts;"))
+    monkeypatch.setattr(pgschema, "generate_manifest", lambda *_: None)
+
+    code = pgschema.apply(Connection.from_url(NEON), out_dir=tmp_path)
+
+    assert code == 2
+    assert ran == []
+    assert (
+        pgschema.apply(
+            Connection.from_url(NEON), allow_destructive=True, out_dir=tmp_path
+        )
+        == 0
+    )

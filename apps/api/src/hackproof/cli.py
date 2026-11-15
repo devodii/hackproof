@@ -15,6 +15,8 @@ from hackproof.linking.reconcile import run_reconcile
 
 def run_schema(args: argparse.Namespace) -> int:
     connection = Connection.from_url(get_settings().database_url)
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print("\n".join(connection.mask_lines()), flush=True)
     match args.action:
         case "plan":
             return pgschema.plan(connection)
