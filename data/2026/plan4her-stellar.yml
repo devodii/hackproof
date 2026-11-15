@@ -22,6 +22,12 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/Paolag93/plan4her-stellar/blob/HEAD/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
 chain:
   contracts: 0
   wasm_uploads: 0

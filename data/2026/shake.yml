@@ -14,6 +14,15 @@ commits_in_window: 102
 stack:
   soroban-sdk: 29.0.1
   '@stellar/stellar-sdk': ^16.3.1
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/franciscogfsm/shake/blob/HEAD/CLAUDE.md
 chain:
   contracts: 5
   wasm_uploads: 5

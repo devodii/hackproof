@@ -22,6 +22,46 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/dashboard/package.json
+tools:
+- slug: stellar-raven
+  name: Stellar Raven
+  evidence:
+  - method: endpoint
+    detail: raven.stellar.org
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/.mcp.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: .claude-plugin/*
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/.claude-plugin/marketplace.json
+  - method: file
+    detail: .claude/*
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/.claude/skills
+- slug: cursor
+  name: Cursor
+  evidence:
+  - method: author
+    detail: cursoragent
+- slug: codex
+  name: OpenAI Codex
+  evidence:
+  - method: file
+    detail: .codex/*
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/.codex/config.toml
+- slug: gemini-cli
+  name: Gemini CLI
+  evidence:
+  - method: file
+    detail: .gemini/*
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/.gemini/settings.json
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/kovan-protocol/kovan/blob/HEAD/dashboard/AGENTS.md
 chain:
   contracts: 32
   wasm_uploads: 14

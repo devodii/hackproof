@@ -12,6 +12,13 @@ evidence_tier: verified
 commits_in_window: 14
 stack:
   '@stellar/stellar-sdk': ^16.0.0
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/infoenzastore-cmd/enza/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

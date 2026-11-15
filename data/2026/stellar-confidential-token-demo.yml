@@ -24,6 +24,13 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/brozorec/stellar-confidential-token-demo/blob/HEAD/packages/app/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/brozorec/stellar-confidential-token-demo/blob/HEAD/CLAUDE.md
 chain:
   contracts: 0
   wasm_uploads: 1

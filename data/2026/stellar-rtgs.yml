@@ -21,6 +21,19 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/frontend-web/packages/core/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/backend-soroban/CLAUDE.md
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/rodrodros/stellar-rtgs/blob/HEAD/backend-soroban/AGENTS.md
 chain:
   contracts: 1
   wasm_uploads: 1

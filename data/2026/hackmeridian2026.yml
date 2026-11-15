@@ -31,6 +31,22 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/frontend/package.json
+tools:
+- slug: stellar-raven
+  name: Stellar Raven
+  evidence:
+  - method: endpoint
+    detail: raven.stellar.org
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/.mcp.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: author
+    detail: claude
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/Team-hackmeridian-2026/Hackmeridian2026/blob/HEAD/CLAUDE.md
 chain:
   contracts: 9
   wasm_uploads: 3

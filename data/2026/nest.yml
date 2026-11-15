@@ -40,6 +40,26 @@ integrations:
   - method: package
     detail: '@blend-capital/blend-sdk'
     file_url: https://github.com/ethan-r13n/nest/blob/HEAD/packages/adapters/package.json
+tools:
+- slug: stellar-raven
+  name: Stellar Raven
+  evidence:
+  - method: endpoint
+    detail: raven.stellar.org
+    file_url: https://github.com/ethan-r13n/nest/blob/HEAD/design/nest/index.html
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/ethan-r13n/nest/blob/HEAD/CLAUDE.md
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/ethan-r13n/nest/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

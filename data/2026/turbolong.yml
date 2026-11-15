@@ -31,6 +31,13 @@ integrations:
   - method: package
     detail: '@stellar-broker/client'
     file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/frontend/package.json
+agents:
+- slug: kiro
+  name: Kiro
+  evidence:
+  - method: file
+    detail: .kiro/*
+    file_url: https://github.com/Dgetsylver/TurboLong/blob/HEAD/.kiro/specs
 chain:
   contracts: 1
   wasm_uploads: 1

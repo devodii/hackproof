@@ -24,6 +24,19 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/apps/web/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/CLAUDE.md
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/joaointech/explorador-agent-loan-stellar/blob/HEAD/apps/web/AGENTS.md
 chain:
   contracts: 30
   wasm_uploads: 3

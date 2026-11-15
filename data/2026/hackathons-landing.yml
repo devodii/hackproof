@@ -12,6 +12,13 @@ track: genesis
 track_declared: false
 evidence_tier: verified
 commits_in_window: 3
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/defindex-io/hackathons-landing/blob/HEAD/CLAUDE.md
 chain:
   contracts: 5
   wasm_uploads: 0

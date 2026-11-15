@@ -21,6 +21,13 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/HackatonWinnners/toolport/blob/HEAD/apps/web/package.json
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: .claude-plugin/*
+    file_url: https://github.com/HackatonWinnners/toolport/blob/HEAD/.claude-plugin/marketplace.json
 chain:
   contracts: 0
   wasm_uploads: 0
