@@ -3,11 +3,27 @@ import { Link, useLocation, useNavigate } from 'react-router'
 
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Button } from '@/components/ui/button'
+import { EVENT_NAME } from '@/lib/config'
 import { formatNumber } from '@/lib/format'
 
-import { filterQuestions } from './filter-options'
+import { filterQuestions, joinLabels, type SelectedGroup } from './filter-options'
 import { matches } from './filters'
 import { useSelectedGroups } from './use-selected-groups'
+
+function lowerFirst(label: string) {
+  return label.charAt(0).toLowerCase() + label.slice(1)
+}
+
+function clauseOf(group: SelectedGroup) {
+  const [before, after = ''] = group.clause.split('{label}')
+  const labels = group.lower ? group.labels.map(lowerFirst) : group.labels
+  return { key: group.key, before, label: joinLabels(labels), after }
+}
+
+function separator(index: number, total: number) {
+  if (index === 0) return ' '
+  return index === total - 1 ? ' and ' : ', '
+}
 
 export function FilterHeading() {
   const location = useLocation()
@@ -16,6 +32,7 @@ export function FilterHeading() {
   const { selection, projects, groups } = useSelectedGroups()
   const count = projects.filter((project) => matches(project, selection)).length
   const canGoBack = location.key !== 'default'
+  const clauses = groups.map(clauseOf)
 
   return (
     <header className="flex flex-col items-start gap-3">
@@ -29,16 +46,20 @@ export function FilterHeading() {
         </Button>
       )}
       <h1 className="font-heading text-4xl leading-tight text-balance sm:text-6xl">
-        {groups.map((group, index) => (
-          <span key={group.key}>
-            {index > 0 && <span className="text-muted-foreground"> · </span>}
-            <span className="text-muted-foreground">{group.title}: </span>
-            {group.labels.join(', ')}
+        <span className="text-muted-foreground">{EVENT_NAME} projects</span>
+        {clauses.map((clause, index) => (
+          <span key={clause.key}>
+            <span className="text-muted-foreground">
+              {separator(index, clauses.length)}
+              {clause.before}
+            </span>
+            {clause.label}
+            <span className="text-muted-foreground">{clause.after}</span>
           </span>
         ))}
       </h1>
       <p className="text-muted-foreground">
-        {formatNumber(count)} {count === 1 ? 'project matches' : 'projects match'}
+        {formatNumber(count)} of {formatNumber(projects.length)} projects match
       </p>
       <div className="flex flex-wrap gap-2">
         {filterQuestions(groups).map((question) => (
