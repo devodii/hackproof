@@ -55,6 +55,7 @@ class Project(BaseModel):
     track: Literal["genesis", "scale"] | None = None
     integrations: list[str] = []
     tools: list[str] = []
+    agents: list[str] = []
     award: Place | None = None
 
 
@@ -144,6 +145,13 @@ class Integration(BaseModel):
 
 
 class EcosystemTool(BaseModel):
+    slug: str
+    name: str
+    site: str
+    projects: int
+
+
+class AiAgent(BaseModel):
     slug: str
     name: str
     site: str

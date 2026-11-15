@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Query
 
 from hackproof import queries
 from hackproof.schemas import (
+    AiAgent,
     Builder,
     Contract,
     CountryCount,
@@ -62,6 +63,11 @@ async def integrations() -> list[Integration]:
 @router.get("/tools")
 async def tools() -> list[EcosystemTool]:
     return [EcosystemTool(**row) for row in await queries.fetch_tools()]
+
+
+@router.get("/agents")
+async def agents() -> list[AiAgent]:
+    return [AiAgent(**row) for row in await queries.fetch_agents()]
 
 
 @router.get("/projects")

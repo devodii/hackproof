@@ -110,3 +110,12 @@ def test_wrapped_stack_is_bounded_by_the_readable_projects():
     assert all(item["value"] <= body["readable_projects"] for item in body["stack"])
     assert body["ai_agent_projects"] <= body["projects"]
     assert len(body["timeline"]) == 27
+
+
+def test_agents_list_every_catalog_agent_with_a_project_count():
+    with TestClient(app) as client:
+        body = client.get("/api/agents").json()
+        projects = client.get("/api/projects", params={"limit": 5}).json()["items"]
+    assert {"claude-code", "cursor", "codex"} <= {row["slug"] for row in body}
+    assert all(row["projects"] >= 0 for row in body)
+    assert all(isinstance(item["agents"], list) for item in projects)

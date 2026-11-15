@@ -18,6 +18,8 @@ SELECT p.project_id, p.full_name, r.url, p.footprint, p.tier, p.contracts, p.cla
              GROUP BY i.partner ORDER BY i.partner) AS integrations,
        ARRAY(SELECT t.tool FROM repo_tools t WHERE t.full_name = p.full_name
              GROUP BY t.tool ORDER BY t.tool) AS tools,
+       ARRAY(SELECT a.agent FROM repo_agents a WHERE a.full_name = p.full_name
+             GROUP BY a.agent ORDER BY a.agent) AS agents,
        count(*) OVER () AS total
 FROM projects p
 LEFT JOIN repos r ON r.full_name = p.full_name
@@ -168,6 +170,13 @@ SELECT t.tool AS slug, count(DISTINCT t.full_name) AS projects
 FROM repo_tools t
 JOIN projects p ON p.full_name = t.full_name AND p.tier IN ('verified', 'likely')
 GROUP BY t.tool
+"""
+
+AGENTS_SQL = """
+SELECT a.agent AS slug, count(DISTINCT a.full_name) AS projects
+FROM repo_agents a
+JOIN projects p ON p.full_name = a.full_name AND p.tier IN ('verified', 'likely')
+GROUP BY a.agent
 """
 
 TOOL_USES_SQL = """
@@ -415,3 +424,15 @@ async def fetch_wrapped() -> dict[str, Any]:
         "team_sizes": [dict(row) for row in teams],
         "tracks": [dict(row) for row in tracks],
     }
+
+
+async def fetch_agents() -> list[dict[str, Any]]:
+    async with pool().acquire() as connection:
+        counts = {row["slug"]: row["projects"] for row in await connection.fetch(AGENTS_SQL)}
+    return [
+        {
+            **agent.model_dump(include={"slug", "name", "site"}),
+            "projects": counts.get(agent.slug, 0),
+        }
+        for agent in get_catalog().agents
+    ]
