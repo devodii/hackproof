@@ -1,3 +1,4 @@
+\i functions/hackers.sql
 \i functions/method_rank.sql
 \i tables/accounts.sql
 \i tables/classic_ops.sql

@@ -86,4 +86,5 @@ def schema_sql(schema_dir: Path) -> str:
         for line in (schema_dir / "manifest.sql").read_text().splitlines()
         if line.startswith("\\i ")
     ]
-    return "\n".join(path.read_text() for path in paths)
+    body = "\n".join(path.read_text() for path in paths)
+    return f"SET check_function_bodies = off;\n{body}"
