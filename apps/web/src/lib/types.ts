@@ -177,6 +177,20 @@ export interface Count {
   value: number
 }
 
+export interface PersonProject {
+  project: Project
+  contributions: number
+}
+
+export interface Person {
+  login: string
+  url: string
+  avatar_url: string | null
+  country: string | null
+  contributions: number
+  projects: PersonProject[]
+}
+
 export interface WrappedBuilder {
   login: string
   avatar_url: string | null
