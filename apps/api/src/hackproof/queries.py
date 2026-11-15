@@ -38,6 +38,14 @@ WHERE ($1::text IS NULL
   AND ($10::text[] IS NULL OR EXISTS (
        SELECT 1 FROM repo_tools t
        WHERE t.full_name = p.full_name AND t.tool = ANY($10)))
+  AND ($11::text[] IS NULL OR EXISTS (
+       SELECT 1 FROM repo_agents a
+       WHERE a.full_name = p.full_name AND a.agent = ANY($11)))
+  AND ($12::text[] IS NULL OR r.language = ANY($12))
+  AND ($13::text[] IS NULL OR r.country = ANY($13))
+  AND ($14::text[] IS NULL
+       OR ('contracts' = ANY($14) AND p.contracts > 0)
+       OR ('failed' = ANY($14) AND p.failed_txs > 0))
 ORDER BY array_position(
              ARRAY['verified', 'likely', 'possible', 'unattributed'], p.tier),
          p.contracts DESC, p.classic_ops DESC, r.stars DESC NULLS LAST, p.last_activity DESC
@@ -279,15 +287,37 @@ async def list_page(
     track: str | None = None,
     integrations: list[str] | None = None,
     tools: list[str] | None = None,
+    agents: list[str] | None = None,
+    languages: list[str] | None = None,
+    countries: list[str] | None = None,
+    activity: list[str] | None = None,
+    awards: list[str] | None = None,
     project_ids: list[str] | None = None,
     winners: bool = False,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
-    awards = places()
-    winner_ids = project_ids or (list(awards) if winners else None)
+    placed = places()
+    wanted = project_ids
+    if wanted is None and (winners or awards):
+        wanted = [pid for pid, place in placed.items() if awards is None or place in awards]
     args = (
-        (q, account, project_id, tiers, limit, offset, track, integrations, winner_ids, tools)
+        (
+            q,
+            account,
+            project_id,
+            tiers,
+            limit,
+            offset,
+            track,
+            integrations,
+            wanted,
+            tools,
+            agents,
+            languages,
+            countries,
+            activity,
+        )
         if resource == "projects"
         else (*window(), q, account, project_id, limit, offset)
     )
@@ -296,7 +326,7 @@ async def list_page(
     total = rows[0]["total"] if rows else 0
     items = [{k: v for k, v in dict(row).items() if k != "total"} for row in rows]
     if resource == "projects":
-        items = [{**item, "award": awards.get(item["project_id"])} for item in items]
+        items = [{**item, "award": placed.get(item["project_id"])} for item in items]
     return items, total
 
 
