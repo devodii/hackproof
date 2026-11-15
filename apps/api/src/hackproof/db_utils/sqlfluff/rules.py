@@ -3,16 +3,7 @@ from sqlfluff.core.rules.crawlers import SegmentSeekerCrawler
 
 
 class Rule_Hackproof_CT01(BaseRule):
-    """Enforce upper-case CREATE TYPE names.
-
-    Problem: sqlfluff's built-in CP05 only flags inconsistent type casing within
-    a single file, so a CREATE TYPE declaration living alone in its own
-    schema/types/<name>.sql file never has anything to compare against and is
-    never checked.
-    Solution: this rule checks every CREATE TYPE name directly against a fixed
-    upper-case policy, independent of what else does or doesn't appear in the
-    same file.
-    """  # noqa: D213 -- summary must stay on this line so `sqlfluff rules` can show it as the description
+    """Enforce upper-case CREATE TYPE names."""
 
     name = "custom.create_type_upper"
     groups = ("all",)

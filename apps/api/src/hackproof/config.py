@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     integrations_file: Path = ROOT / "data" / "integrations.yaml"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
+    pgschema_image: str = "pgplex/pgschema:1.14.1"
     anthropic_api_key: str | None = Field(
         default=None,
         validation_alias=AliasChoices(
