@@ -138,6 +138,16 @@ CREATE TABLE IF NOT EXISTS repo_tools (
 );
 CREATE INDEX IF NOT EXISTS repo_tools_tool ON repo_tools (tool);
 
+CREATE TABLE IF NOT EXISTS repo_agents (
+    full_name TEXT NOT NULL,
+    agent TEXT NOT NULL,
+    method TEXT NOT NULL,
+    evidence TEXT NOT NULL,
+    path TEXT NOT NULL,
+    PRIMARY KEY (full_name, agent, method, evidence)
+);
+CREATE INDEX IF NOT EXISTS repo_agents_agent ON repo_agents (agent);
+
 CREATE TABLE IF NOT EXISTS links (
     full_name TEXT NOT NULL,
     subject_kind TEXT NOT NULL,
