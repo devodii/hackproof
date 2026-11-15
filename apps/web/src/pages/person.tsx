@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { usePerson } from '@/hooks/use-person'
+import { EVENT_NAME } from '@/lib/config'
 import { countryName, flagEmoji, formatNumber } from '@/lib/format'
 
 function PersonSkeleton() {
@@ -57,6 +58,9 @@ export function PersonPage() {
             <AvatarFallback>{data.login.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col items-start gap-2">
+            <p className="text-sm tracking-wide text-muted-foreground uppercase">
+              {EVENT_NAME} builder
+            </p>
             <h1 className="text-4xl sm:text-5xl">{data.login}</h1>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
               {data.country && (
@@ -78,7 +82,7 @@ export function PersonPage() {
         <p className="flex flex-wrap items-center gap-2 text-lg text-muted-foreground">
           <span>
             {formatNumber(data.contributions)} {data.contributions === 1 ? 'commit' : 'commits'} on{' '}
-            {teams} {teams === 1 ? 'project' : 'projects'} at HackMeridian 2026
+            {teams} {teams === 1 ? 'project' : 'projects'} at {EVENT_NAME}
           </span>
           {teams > 1 && <Badge variant="secondary">On {teams} teams</Badge>}
         </p>
