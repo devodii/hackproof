@@ -14,6 +14,7 @@ from hackproof.indexer.events import Event
 from hackproof.indexer.horizon import Horizon
 from hackproof.indexer.parser import parse_transaction
 from hackproof.indexer.rpc import SorobanRpc
+from hackproof.sql_loader import load_sql
 
 log = logging.getLogger("hackproof.sync")
 
@@ -64,13 +65,12 @@ async def _insert(
         by_table[event.table].append(event)
     async with connection.transaction():
         for table, rows in sorted(by_table.items()):
-            placeholders = ", ".join(f"${n}" for n in range(1, len(rows[0].row()) + 1))
             await connection.executemany(
-                f"INSERT INTO {table} VALUES ({placeholders}) ON CONFLICT DO NOTHING",
+                load_sql(f"indexer/insert_{table}"),
                 [event.row() for event in rows],
             )
         await connection.execute(
-            "INSERT INTO sync_state VALUES ($1, 'done') ON CONFLICT DO NOTHING",
+            load_sql("indexer/insert_sync_state"),
             chunk_key,
         )
 
@@ -102,7 +102,7 @@ async def run_sync() -> None:
             done = {
                 row["key"]
                 for row in await connection.fetch(
-                    "SELECT key FROM sync_state WHERE key LIKE $1", f"{CHUNK_PREFIX}%"
+                    load_sql("indexer/done_chunks"), f"{CHUNK_PREFIX}%"
                 )
             }
         pending = [s for s in starts if f"{CHUNK_PREFIX}{s}" not in done]
