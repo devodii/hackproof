@@ -2,6 +2,7 @@ import { motion } from 'motion/react'
 import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
 
+import { EventLogo } from '@/components/brand/event-logo'
 import { BuilderAvatars } from '@/components/wrapped/builder-avatars'
 import { Figure } from '@/components/wrapped/figure'
 import { LensList, type LensRow } from '@/components/wrapped/lens-list'
@@ -106,9 +107,13 @@ function Header({ window }: { window: HackWindow }) {
       transition={{ duration: 0.7, ease: EASE_OUT }}
       className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between"
     >
-      <h1 className="font-heading text-headline">
-        {EVENT_NAME} <span className="text-primary italic">Wrapped</span>
-      </h1>
+      <div className="flex items-center gap-4">
+        <EventLogo className="h-7 w-auto sm:h-9" />
+        <h1 className="font-heading text-headline">
+          <span className="sr-only">{EVENT_NAME} </span>
+          <span className="text-primary italic">Wrapped</span>
+        </h1>
+      </div>
       <p className="pb-1 text-sm text-muted-foreground">{windowLabel(window)}</p>
     </motion.header>
   )
