@@ -1,12 +1,19 @@
 import { motion } from 'motion/react'
 
+import { awardIcon } from '@/components/award-mark'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useStill } from '@/components/wrapped/use-still'
-import { projectName, tierLabel } from '@/lib/format'
+import { placeLabel, projectName, tierLabel } from '@/lib/format'
 import { EASE_SPRING, matchesLens, type Lens } from '@/lib/wrapped'
-import type { Project } from '@/lib/types'
+import type { Place, Project } from '@/lib/types'
 import { cn } from '@/lib/utils'
+
+function AwardGlyph({ place }: { place: Place }) {
+  const Icon = awardIcon[place]
+
+  return <Icon className="size-3/5 fill-award-foreground/25 text-award-foreground" />
+}
 
 interface WaffleProps {
   projects: Project[]
@@ -49,10 +56,12 @@ export function Waffle({ projects, lens, columns, delay = 0 }: WaffleProps) {
                   ease: EASE_SPRING,
                 }}
                 className={cn(
-                  'block size-full rounded-sm',
+                  'grid size-full place-items-center rounded-sm',
                   project.tier === 'verified' ? 'bg-primary' : 'bg-secondary',
                 )}
-              />
+              >
+                {project.award && <AwardGlyph place={project.award} />}
+              </motion.span>
             </TooltipTrigger>
             <TooltipContent>
               <Avatar size="sm">
@@ -60,6 +69,7 @@ export function Waffle({ projects, lens, columns, delay = 0 }: WaffleProps) {
                 <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
               </Avatar>
               <span className="font-semibold">{name}</span>
+              {project.award && <span>{placeLabel[project.award]}</span>}
               <span className="opacity-70">
                 {tierLabel[project.tier]}
                 {project.language && ` · ${project.language}`}

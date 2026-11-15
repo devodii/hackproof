@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { AwardBadge } from '@/components/award-badge'
+import { AwardedAvatar } from '@/components/award-mark'
 import { TierBadge } from '@/components/tier-badge'
 import { TrackBadge } from '@/components/track-badge'
 import { Badge } from '@/components/ui/badge'
@@ -27,12 +28,14 @@ export function ProjectCard({ project, commits }: { project: Project; commits?: 
     <Card size="sm" className="relative h-full transition-colors hover:bg-muted/40">
       <CardHeader>
         <div className="flex items-start gap-3">
-          <Avatar>
-            {project.owner_avatar && (
-              <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />
-            )}
-            <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
-          </Avatar>
+          <AwardedAvatar place={project.award}>
+            <Avatar>
+              {project.owner_avatar && (
+                <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />
+              )}
+              <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
+            </Avatar>
+          </AwardedAvatar>
           <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
             <Link
               to={`/project/${project.project_id}`}

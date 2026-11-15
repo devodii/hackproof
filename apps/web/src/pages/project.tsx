@@ -9,6 +9,7 @@ import { ProjectSkeleton } from '@/components/page-skeletons'
 import { DetailError } from '@/components/query-state'
 import { Section } from '@/components/section'
 import { AwardBadge } from '@/components/award-badge'
+import { AwardedAvatar } from '@/components/award-mark'
 import { TierBadge } from '@/components/tier-badge'
 import { TrackBadge } from '@/components/track-badge'
 import { Accordion } from '@/components/ui/accordion'
@@ -53,12 +54,14 @@ export function ProjectPage() {
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <Avatar className="shrink-0">
-            {project.owner_avatar && (
-              <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />
-            )}
-            <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
-          </Avatar>
+          <AwardedAvatar place={project.award}>
+            <Avatar className="shrink-0">
+              {project.owner_avatar && (
+                <AvatarImage src={project.owner_avatar} alt={project.owner ?? ''} />
+              )}
+              <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
+            </Avatar>
+          </AwardedAvatar>
           <h1 className="min-w-0 text-3xl leading-none wrap-break-word sm:text-5xl">{name}</h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           <TierBadge tier={project.tier} />
