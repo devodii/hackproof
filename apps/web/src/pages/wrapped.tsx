@@ -1,11 +1,12 @@
 import { motion } from 'motion/react'
-import { useSearchParams } from 'react-router'
+import { useState } from 'react'
+import { Link, useSearchParams } from 'react-router'
 
 import { BuilderAvatars } from '@/components/wrapped/builder-avatars'
 import { Figure } from '@/components/wrapped/figure'
 import { LensList, type LensRow } from '@/components/wrapped/lens-list'
 import { RankedBars } from '@/components/wrapped/ranked-bars'
-import { SegmentedBar } from '@/components/wrapped/segmented-bar'
+import { type Segment, SegmentedBar } from '@/components/wrapped/segmented-bar'
 import { Stage } from '@/components/wrapped/stage'
 import { TeamBars } from '@/components/wrapped/team-bars'
 import { Tile } from '@/components/wrapped/tile'
@@ -30,8 +31,7 @@ import type {
 } from '@/lib/types'
 import {
   EASE_OUT,
-  formatLens,
-  isSameLens,
+  explorerPath,
   matchesLens,
   parseLens,
   timelineHighlights,
@@ -61,7 +61,7 @@ interface PosterData {
 interface SectionProps {
   data: PosterData
   lens: Lens | null
-  onSelect: (lens: Lens) => void
+  onPreview: (lens: Lens | null) => void
 }
 
 const day = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' })
@@ -111,7 +111,7 @@ function Header({ window }: { window: HackWindow }) {
   )
 }
 
-function languageCounts(projects: Project[]) {
+function languageCounts(projects: Project[]): Segment[] {
   const counts = new Map<string, number>()
   projects.forEach((project) => {
     const language = project.language ?? 'Other'
@@ -120,7 +120,11 @@ function languageCounts(projects: Project[]) {
   const sorted = [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
   const rest = sorted.slice(LANGUAGES_SHOWN).reduce((sum, [, value]) => sum + value, 0)
   return [
-    ...sorted.slice(0, LANGUAGES_SHOWN).map(([label, value]) => ({ label, value })),
+    ...sorted.slice(0, LANGUAGES_SHOWN).map(([label, value]) => ({
+      label,
+      value,
+      lens: { kind: 'language' as const, value: label },
+    })),
     ...(rest ? [{ label: 'Other', value: rest }] : []),
   ]
 }
@@ -137,7 +141,7 @@ function lensSummary(lens: Lens, data: PosterData) {
   return { matched, name: names[lens.kind] ?? lens.value }
 }
 
-function Hero({ data, lens, onSelect }: SectionProps) {
+function Hero({ data, lens, onPreview }: SectionProps) {
   const { stats, projects } = data
   const commits = projects.reduce((sum, project) => sum + (project.window_commits ?? 0), 0)
   const summary = lens && lensSummary(lens, data)
@@ -170,16 +174,17 @@ function Hero({ data, lens, onSelect }: SectionProps) {
             </span>
           ) : (
             tiers.map(({ tier, swatch }) => (
-              <button
+              <Link
                 key={tier}
-                type="button"
-                onClick={() => onSelect({ kind: 'tier', value: tier })}
+                to={explorerPath({ kind: 'tier', value: tier })}
+                onMouseEnter={() => onPreview({ kind: 'tier', value: tier })}
+                onMouseLeave={() => onPreview(null)}
                 className="flex items-center gap-2 hover:text-foreground"
               >
                 <i className={`size-2.5 rounded-sm ${swatch}`} />
                 {tier === 'verified' ? stats.verified_projects : stats.likely_projects}{' '}
                 {tierLabel[tier].toLowerCase()}
-              </button>
+              </Link>
             ))
           )}
         </div>
@@ -187,7 +192,7 @@ function Hero({ data, lens, onSelect }: SectionProps) {
           <SegmentedBar
             data={languageCounts(projects)}
             active={lens}
-            onSelect={onSelect}
+            onPreview={onPreview}
             delay={1}
           />
         </div>
@@ -294,7 +299,7 @@ function Builders({ wrapped }: { wrapped: Wrapped }) {
   )
 }
 
-function Agents({ data, lens, onSelect }: SectionProps) {
+function Agents({ data, lens, onPreview }: SectionProps) {
   const rows = ranked(data.agents, 'agent', AGENT_ROWS)
 
   if (rows.length === 0) return null
@@ -310,14 +315,14 @@ function Agents({ data, lens, onSelect }: SectionProps) {
         rows={rows}
         total={data.projects.length}
         active={lens}
-        onSelect={onSelect}
+        onPreview={onPreview}
         delay={0.9}
       />
     </Tile>
   )
 }
 
-function Tooling({ data, lens, onSelect }: SectionProps) {
+function Tooling({ data, lens, onPreview }: SectionProps) {
   const rows = ranked(data.tools, 'tool', data.tools.length)
 
   if (rows.length === 0) return null
@@ -328,14 +333,14 @@ function Tooling({ data, lens, onSelect }: SectionProps) {
         rows={rows}
         total={data.projects.length}
         active={lens}
-        onSelect={onSelect}
+        onPreview={onPreview}
         delay={1}
       />
     </Tile>
   )
 }
 
-function BuiltWith({ data, lens, onSelect }: SectionProps) {
+function BuiltWith({ data, lens, onPreview }: SectionProps) {
   const rows = ranked(data.integrations, 'integration', INTEGRATION_ROWS)
 
   if (rows.length === 0) return null
@@ -346,7 +351,7 @@ function BuiltWith({ data, lens, onSelect }: SectionProps) {
         rows={rows}
         total={data.projects.length}
         active={lens}
-        onSelect={onSelect}
+        onPreview={onPreview}
         delay={1.1}
       />
     </Tile>
@@ -390,16 +395,10 @@ function usePosterData(): PosterData | undefined {
 }
 
 export function WrappedPage() {
-  const [params, setParams] = useSearchParams()
+  const [params] = useSearchParams()
+  const [preview, setPreview] = useState<Lens | null>(null)
   const data = usePosterData()
-  const lens = parseLens(params.get('lens'))
-
-  const select = (next: Lens) => {
-    const updated = new URLSearchParams(params)
-    if (isSameLens(lens, next)) updated.delete('lens')
-    else updated.set('lens', formatLens(next))
-    setParams(updated, { replace: true })
-  }
+  const lens = preview ?? parseLens(params.get('lens'))
 
   return (
     <Stage still={params.has('still')}>
@@ -408,7 +407,7 @@ export function WrappedPage() {
         <div className="relative flex h-full flex-col gap-3.5 px-9 pt-7 pb-5">
           <Header window={data.window} />
           <div className="poster-grid min-h-0 flex-1 gap-3.5">
-            <Hero data={data} lens={lens} onSelect={select} />
+            <Hero data={data} lens={lens} onPreview={setPreview} />
             <div className="flex min-h-0 flex-col gap-3.5">
               <Chain data={data} />
               <div className="flex min-h-0 flex-1 gap-3.5">
@@ -417,9 +416,9 @@ export function WrappedPage() {
               </div>
             </div>
             <div className="flex min-h-0 flex-col gap-3.5">
-              <Agents data={data} lens={lens} onSelect={select} />
-              <Tooling data={data} lens={lens} onSelect={select} />
-              <BuiltWith data={data} lens={lens} onSelect={select} />
+              <Agents data={data} lens={lens} onPreview={setPreview} />
+              <Tooling data={data} lens={lens} onPreview={setPreview} />
+              <BuiltWith data={data} lens={lens} onPreview={setPreview} />
             </div>
           </div>
           <Footer />

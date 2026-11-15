@@ -21,14 +21,22 @@ const matchers: Record<LensKind, (project: Project, value: string) => boolean> =
   language: (project, value) => project.language === value,
 }
 
+const EXPLORER_FILTER: Record<LensKind, string> = {
+  tier: 'tier',
+  agent: 'agent',
+  tool: 'tool',
+  integration: 'partner',
+  language: 'language',
+}
+
+export function explorerPath(lens: Lens) {
+  return `/?${EXPLORER_FILTER[lens.kind]}=${encodeURIComponent(lens.value)}`
+}
+
 export function parseLens(raw: string | null): Lens | null {
   const [kind, ...rest] = (raw ?? '').split(':')
   const value = rest.join(':')
   return KINDS.includes(kind as LensKind) && value ? { kind: kind as LensKind, value } : null
-}
-
-export function formatLens(lens: Lens) {
-  return `${lens.kind}:${lens.value}`
 }
 
 export function isSameLens(first: Lens | null, second: Lens) {
