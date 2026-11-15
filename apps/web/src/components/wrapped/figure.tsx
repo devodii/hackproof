@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useStill } from '@/components/wrapped/use-still'
 import { formatNumber } from '@/lib/format'
 import { EASE_SETTLE } from '@/lib/wrapped'
+import { cn } from '@/lib/utils'
 
 interface FigureProps {
   value: number
@@ -22,5 +23,12 @@ export function Figure({ value, delay = 0, className }: FigureProps) {
     return controls.stop
   }, [count, value, delay, still])
 
-  return <motion.span className={className}>{text}</motion.span>
+  return (
+    <span className={cn('relative inline-block', className)}>
+      <span className="invisible">{formatNumber(value)}</span>
+      <motion.span aria-hidden className="absolute inset-0">
+        {text}
+      </motion.span>
+    </span>
+  )
 }
