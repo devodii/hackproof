@@ -163,3 +163,35 @@ export interface CountryCount {
   country: string
   contributors: number
 }
+
+export interface Count {
+  label: string
+  value: number
+}
+
+export interface Wrapped {
+  window_start: string
+  window_end: string
+  projects: number
+  verified_projects: number
+  builders: number
+  commits: number
+  countries: number
+  contracts: number
+  deployers: number
+  accounts_funded: number
+  operations: number
+  failed_txs: number
+  largest_wasm_contracts: number
+  readable_projects: number
+  new_projects: number
+  multi_team_builders: number
+  ai_agent_projects: number
+  timeline: TimelinePoint[]
+  operations_by_type: Count[]
+  languages: Count[]
+  stack: Count[]
+  partners: Count[]
+  team_sizes: Count[]
+  tracks: Count[]
+}
