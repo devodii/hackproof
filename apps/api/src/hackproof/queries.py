@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Any, Literal
 
-from hackproof.agents import AI_AGENT_LOGINS
 from hackproof.db import pool
 from hackproof.hackathon import get_hackathon, places
 from hackproof.integrations.catalog import get_catalog
@@ -198,44 +197,22 @@ LIMIT $1
 """
 
 SHIPPED = "p.tier IN ('verified', 'likely')"
-HUMAN = "lower(c.login) <> ALL({agents}::text[]) AND c.login NOT LIKE '%[bot]'"
-
-STACK_PACKAGES = (
-    ("Stellar JS SDK", "@stellar/stellar-sdk"),
-    ("Soroban Rust SDK", "soroban-sdk"),
-    ("Freighter API", "@stellar/freighter-api"),
-    ("Wallets Kit", "@creit.tech/stellar-wallets-kit"),
-)
+HUMAN = "lower(c.login) <> ALL($1::text[]) AND c.login NOT LIKE '%[bot]'"
+TOP_BUILDERS = 12
+MAX_BUILDERS = 1_000
 
 WRAPPED_TOTALS_SQL = f"""
 SELECT
-    (SELECT count(*) FROM projects p WHERE {SHIPPED}) AS projects,
-    (SELECT count(*) FROM projects WHERE tier = 'verified') AS verified_projects,
     (SELECT count(DISTINCT c.login) FROM repo_contributors c
      JOIN projects p ON p.full_name = c.full_name
-     WHERE {SHIPPED} AND {HUMAN.format(agents="$3")}) AS builders,
-    (SELECT coalesce(sum(r.window_commits), 0) FROM projects p
-     JOIN repos r ON r.full_name = p.full_name WHERE {SHIPPED}) AS commits,
-    (SELECT count(*) FROM contracts WHERE deployed_at BETWEEN $1 AND $2) AS contracts,
+     WHERE {SHIPPED} AND {HUMAN}) AS builders,
+    (SELECT count(*) FROM accounts WHERE funded_at BETWEEN $2 AND $3) AS accounts_funded,
     (SELECT count(DISTINCT deployer) FROM contracts
-     WHERE deployed_at BETWEEN $1 AND $2) AS deployers,
-    (SELECT count(*) FROM accounts WHERE funded_at BETWEEN $1 AND $2) AS accounts_funded,
-    (SELECT count(*) FROM classic_ops WHERE occurred_at BETWEEN $1 AND $2) AS operations,
-    (SELECT count(*) FROM failed_txs WHERE created_at BETWEEN $1 AND $2) AS failed_txs,
+     WHERE deployed_at BETWEEN $2 AND $3) AS deployers,
+    (SELECT count(*) FROM classic_ops WHERE occurred_at BETWEEN $2 AND $3) AS operations,
     (SELECT coalesce(max(n), 0) FROM (
-        SELECT count(*) AS n FROM contracts WHERE deployed_at BETWEEN $1 AND $2
-        GROUP BY wasm_hash) shared) AS largest_wasm_contracts,
-    (SELECT count(*) FROM projects p JOIN repos r ON r.full_name = p.full_name
-     WHERE {SHIPPED} AND r.dependencies -> 'packages' <> '{{}}'::jsonb) AS readable_projects,
-    (SELECT count(*) FROM projects p JOIN repos r ON r.full_name = p.full_name
-     WHERE {SHIPPED} AND r.created_at >= $1) AS new_projects,
-    (SELECT count(*) FROM (
-        SELECT c.login FROM repo_contributors c JOIN projects p ON p.full_name = c.full_name
-        WHERE {SHIPPED} AND {HUMAN.format(agents="$3")}
-        GROUP BY c.login HAVING count(DISTINCT c.full_name) > 1) multi) AS multi_team_builders,
-    (SELECT count(DISTINCT c.full_name) FROM repo_contributors c
-     JOIN projects p ON p.full_name = c.full_name
-     WHERE {SHIPPED} AND lower(c.login) = ANY($3::text[])) AS ai_agent_projects
+        SELECT count(*) AS n FROM contracts WHERE deployed_at BETWEEN $2 AND $3
+        GROUP BY wasm_hash) shared) AS largest_wasm_contracts
 """
 
 WRAPPED_OPERATIONS_SQL = """
@@ -247,39 +224,26 @@ ORDER BY value DESC, op_type
 LIMIT 5
 """
 
-WRAPPED_LANGUAGES_SQL = f"""
-SELECT coalesce(r.language, 'Other') AS label, count(*) AS value
-FROM projects p JOIN repos r ON r.full_name = p.full_name
-WHERE {SHIPPED}
-GROUP BY 1
-ORDER BY value DESC, label
-"""
-
-WRAPPED_STACK_SQL = f"""
-SELECT u.label, count(*) AS value
-FROM unnest($1::text[], $2::text[]) AS u(package, label)
-JOIN repos r ON r.dependencies -> 'packages' ? u.package
-JOIN projects p ON p.full_name = r.full_name AND {SHIPPED}
-GROUP BY u.label
-"""
-
 WRAPPED_TEAMS_SQL = f"""
 SELECT least(n, 5)::text AS label, count(*) AS value
 FROM (
     SELECT c.full_name, count(*) AS n
     FROM repo_contributors c JOIN projects p ON p.full_name = c.full_name
-    WHERE {SHIPPED} AND {HUMAN.format(agents="$1")}
+    WHERE {SHIPPED} AND {HUMAN}
     GROUP BY c.full_name) teams
 GROUP BY 1
 ORDER BY 1
 """
 
-WRAPPED_TRACKS_SQL = f"""
-SELECT coalesce(r.declared_track, 'genesis') AS label, count(*) AS value
-FROM projects p JOIN repos r ON r.full_name = p.full_name
-WHERE {SHIPPED}
-GROUP BY 1
-ORDER BY value DESC
+WRAPPED_BUILDERS_SQL = f"""
+SELECT c.login, max(c.avatar_url) AS avatar_url,
+       count(DISTINCT c.full_name) AS projects, sum(c.contributions)::int AS contributions
+FROM repo_contributors c JOIN projects p ON p.full_name = c.full_name
+WHERE {SHIPPED} AND {HUMAN}
+GROUP BY c.login
+HAVING count(DISTINCT c.full_name) >= $2
+ORDER BY projects DESC, contributions DESC, c.login
+LIMIT $3
 """
 
 RESOURCE_SQL = {
@@ -391,38 +355,19 @@ async def fetch_countries(limit: int = 12) -> list[dict[str, Any]]:
 
 async def fetch_wrapped() -> dict[str, Any]:
     start, end = window()
-    agents = list(AI_AGENT_LOGINS)
-    packages = [package for _, package in STACK_PACKAGES]
-    labels = [label for label, _ in STACK_PACKAGES]
+    agents = [login.lower() for agent in get_catalog().agents for login in agent.authors]
     async with pool().acquire() as connection:
-        totals = dict(await connection.fetchrow(WRAPPED_TOTALS_SQL, start, end, agents))
+        totals = dict(await connection.fetchrow(WRAPPED_TOTALS_SQL, agents, start, end))
         operations = await connection.fetch(WRAPPED_OPERATIONS_SQL, start, end)
-        languages = await connection.fetch(WRAPPED_LANGUAGES_SQL)
-        stack = await connection.fetch(WRAPPED_STACK_SQL, packages, labels)
         teams = await connection.fetch(WRAPPED_TEAMS_SQL, agents)
-        tracks = await connection.fetch(WRAPPED_TRACKS_SQL)
-    partners = sorted(
-        [
-            {"label": row["name"], "value": row["projects"]}
-            for row in [*await fetch_integrations(), *await fetch_tools()]
-            if row["projects"]
-        ],
-        key=lambda row: (-row["value"], row["label"]),
-    )
-    top_languages = [dict(row) for row in languages[:4]]
-    other = sum(row["value"] for row in languages[4:])
+        multi_team = await connection.fetch(WRAPPED_BUILDERS_SQL, agents, 2, MAX_BUILDERS)
+        top = await connection.fetch(WRAPPED_BUILDERS_SQL, agents, 1, TOP_BUILDERS)
     return {
         **totals,
-        "window_start": start,
-        "window_end": end,
-        "countries": (await fetch_stats())["countries"],
-        "timeline": await fetch_timeline(),
         "operations_by_type": [dict(row) for row in operations],
-        "languages": [*top_languages, *([{"label": "Other", "value": other}] if other else [])],
-        "stack": sorted((dict(row) for row in stack), key=lambda row: -row["value"]),
-        "partners": partners[:8],
         "team_sizes": [dict(row) for row in teams],
-        "tracks": [dict(row) for row in tracks],
+        "multi_team_builders": [dict(row) for row in multi_team],
+        "top_builders": [dict(row) for row in sorted(top, key=lambda row: -row["contributions"])],
     }
 
 

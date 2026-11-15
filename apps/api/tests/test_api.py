@@ -94,22 +94,21 @@ def test_a_project_page_lists_where_each_integration_was_found():
             assert {use["method"] for use in detail["integration_uses"]} <= {"package", "endpoint"}
 
 
-def test_wrapped_buckets_add_up_to_the_projects():
+def test_wrapped_team_sizes_fit_inside_the_projects():
     with TestClient(app) as client:
         body = client.get("/api/wrapped").json()
-    assert sum(item["value"] for item in body["languages"]) == body["projects"]
-    assert sum(item["value"] for item in body["tracks"]) == body["projects"]
-    assert sum(item["value"] for item in body["team_sizes"]) <= body["projects"]
-    assert body["new_projects"] <= body["projects"]
-    assert body["verified_projects"] <= body["projects"]
+        stats = client.get("/api/stats").json()
+    assert sum(item["value"] for item in body["team_sizes"]) <= stats["projects"]
+    assert {item["label"] for item in body["team_sizes"]} <= {"1", "2", "3", "4", "5"}
 
 
-def test_wrapped_stack_is_bounded_by_the_readable_projects():
+def test_wrapped_builders_are_ranked_and_multi_team_means_two_or_more_projects():
     with TestClient(app) as client:
         body = client.get("/api/wrapped").json()
-    assert all(item["value"] <= body["readable_projects"] for item in body["stack"])
-    assert body["ai_agent_projects"] <= body["projects"]
-    assert len(body["timeline"]) == 27
+    commits = [builder["contributions"] for builder in body["top_builders"]]
+    assert commits == sorted(commits, reverse=True)
+    assert all(builder["projects"] >= 2 for builder in body["multi_team_builders"])
+    assert not {"cursoragent", "codex"} & {b["login"] for b in body["multi_team_builders"]}
 
 
 def test_agents_list_every_catalog_agent_with_a_project_count():

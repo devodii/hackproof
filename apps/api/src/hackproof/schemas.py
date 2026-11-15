@@ -168,31 +168,23 @@ class Count(BaseModel):
     value: int
 
 
-class Wrapped(BaseModel):
-    window_start: datetime
-    window_end: datetime
+class WrappedBuilder(BaseModel):
+    login: str
+    avatar_url: str | None
     projects: int
-    verified_projects: int
+    contributions: int
+
+
+class Wrapped(BaseModel):
     builders: int
-    commits: int
-    countries: int
-    contracts: int
-    deployers: int
     accounts_funded: int
+    deployers: int
     operations: int
-    failed_txs: int
     largest_wasm_contracts: int
-    readable_projects: int
-    new_projects: int
-    multi_team_builders: int
-    ai_agent_projects: int
-    timeline: list[TimelinePoint]
     operations_by_type: list[Count]
-    languages: list[Count]
-    stack: list[Count]
-    partners: list[Count]
     team_sizes: list[Count]
-    tracks: list[Count]
+    multi_team_builders: list[WrappedBuilder]
+    top_builders: list[WrappedBuilder]
 
 
 class Page[T](BaseModel):
