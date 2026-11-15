@@ -155,6 +155,38 @@ class CountryCount(BaseModel):
     contributors: int
 
 
+class Count(BaseModel):
+    label: str
+    value: int
+
+
+class Wrapped(BaseModel):
+    window_start: datetime
+    window_end: datetime
+    projects: int
+    verified_projects: int
+    builders: int
+    commits: int
+    countries: int
+    contracts: int
+    deployers: int
+    accounts_funded: int
+    operations: int
+    failed_txs: int
+    largest_wasm_contracts: int
+    readable_projects: int
+    new_projects: int
+    multi_team_builders: int
+    ai_agent_projects: int
+    timeline: list[TimelinePoint]
+    operations_by_type: list[Count]
+    languages: list[Count]
+    stack: list[Count]
+    partners: list[Count]
+    team_sizes: list[Count]
+    tracks: list[Count]
+
+
 class Page[T](BaseModel):
     items: list[T]
     total: int

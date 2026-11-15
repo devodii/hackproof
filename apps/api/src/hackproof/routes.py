@@ -17,6 +17,7 @@ from hackproof.schemas import (
     Tier,
     TimelinePoint,
     WasmUpload,
+    Wrapped,
 )
 
 router = APIRouter()
@@ -36,6 +37,11 @@ async def stats() -> Stats:
 async def _page(resource: queries.Resource, q: str | None, limit: int, offset: int) -> Page[Any]:
     items, total = await queries.list_page(resource, q=q, limit=limit, offset=offset)
     return Page(items=items, total=total)
+
+
+@router.get("/wrapped")
+async def wrapped() -> Wrapped:
+    return Wrapped(**await queries.fetch_wrapped())
 
 
 @router.get("/timeline")

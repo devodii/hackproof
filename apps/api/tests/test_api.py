@@ -92,3 +92,21 @@ def test_a_project_page_lists_where_each_integration_was_found():
             detail = client.get(f"/api/projects/{first['project_id']}").json()
             assert used["slug"] in {use["slug"] for use in detail["integration_uses"]}
             assert {use["method"] for use in detail["integration_uses"]} <= {"package", "endpoint"}
+
+
+def test_wrapped_buckets_add_up_to_the_projects():
+    with TestClient(app) as client:
+        body = client.get("/api/wrapped").json()
+    assert sum(item["value"] for item in body["languages"]) == body["projects"]
+    assert sum(item["value"] for item in body["tracks"]) == body["projects"]
+    assert sum(item["value"] for item in body["team_sizes"]) <= body["projects"]
+    assert body["new_projects"] <= body["projects"]
+    assert body["verified_projects"] <= body["projects"]
+
+
+def test_wrapped_stack_is_bounded_by_the_readable_projects():
+    with TestClient(app) as client:
+        body = client.get("/api/wrapped").json()
+    assert all(item["value"] <= body["readable_projects"] for item in body["stack"])
+    assert body["ai_agent_projects"] <= body["projects"]
+    assert len(body["timeline"]) == 27
