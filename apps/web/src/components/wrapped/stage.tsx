@@ -20,10 +20,14 @@ export function Stage({ still, children }: { still: boolean; children: ReactNode
 
   return (
     <StillContext value={still}>
-      <div className="dark fixed inset-0 grid place-items-center overflow-hidden bg-poster">
+      <div className="dark fixed inset-0 overflow-hidden bg-poster">
         <div
-          className="relative shrink-0 overflow-hidden bg-background text-foreground"
-          style={{ width: STAGE_WIDTH, height: STAGE_HEIGHT, transform: `scale(${scale})` }}
+          className="absolute top-1/2 left-1/2 overflow-hidden bg-background text-foreground"
+          style={{
+            width: STAGE_WIDTH,
+            height: STAGE_HEIGHT,
+            transform: `translate(-50%, -50%) scale(${scale})`,
+          }}
         >
           {children}
         </div>
