@@ -6,6 +6,7 @@ export const FILTER_KEYS = [
   'track',
   'partner',
   'tool',
+  'agent',
   'activity',
   'language',
   'country',
@@ -19,6 +20,7 @@ const VALUES: Record<FilterKey, (project: Project) => string[]> = {
   track: (project) => (project.track ? [project.track] : []),
   partner: (project) => project.integrations ?? [],
   tool: (project) => project.tools ?? [],
+  agent: (project) => project.agents ?? [],
   activity: (project) => [
     ...(project.contracts > 0 ? ['contracts'] : []),
     ...(project.failed_txs > 0 ? ['failed'] : []),

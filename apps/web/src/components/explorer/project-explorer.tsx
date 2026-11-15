@@ -11,7 +11,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PAGE_SIZE } from '@/hooks/use-paged-list'
 import { usePaginationMode } from '@/hooks/use-pagination-mode'
-import { useIntegrations, useProjects, useTools } from '@/hooks/use-projects'
+import { useAgents, useIntegrations, useProjects, useTools } from '@/hooks/use-projects'
 import { posthog } from '@/lib/analytics'
 import { formatNumber } from '@/lib/format'
 
@@ -30,6 +30,7 @@ export function ProjectExplorer({ search }: { search: string }) {
   const { data: projects, isPending, isError } = useProjects()
   const { data: integrations = [] } = useIntegrations()
   const { data: tools = [] } = useTools()
+  const { data: agents = [] } = useAgents()
   const view = params.get('view') === 'table' ? 'table' : 'cards'
   const selection = useMemo(() => readSelection(params), [params])
   const active = selectedCount(selection)
@@ -109,6 +110,7 @@ export function ProjectExplorer({ search }: { search: string }) {
       projects={projects ?? []}
       integrations={integrations}
       tools={tools}
+      agents={agents}
       selection={selection}
       onToggle={toggle}
       onClear={clear}
