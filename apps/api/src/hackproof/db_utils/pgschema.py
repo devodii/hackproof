@@ -93,6 +93,8 @@ def next_migration_path() -> Path:
 
 
 def plan_sql(connection: Connection, out_dir: Path) -> tuple[int, str]:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir.chmod(0o777)
     returncode = run_pgschema(
         "plan",
         "--file",
