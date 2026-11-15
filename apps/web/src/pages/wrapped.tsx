@@ -11,9 +11,10 @@ import { Stage } from '@/components/wrapped/stage'
 import { TeamBars } from '@/components/wrapped/team-bars'
 import { Tile } from '@/components/wrapped/tile'
 import { TimelineChart } from '@/components/wrapped/timeline-chart'
-import { useStill } from '@/components/wrapped/use-still'
+import { StillContext, useStill } from '@/components/wrapped/use-still'
 import { Waffle } from '@/components/wrapped/waffle'
 import { useHackWindow } from '@/hooks/use-hack-window'
+import { useMediaQuery } from '@/hooks/use-media-query'
 import { useAgents, useIntegrations, useProjects, useTools } from '@/hooks/use-projects'
 import { useStats } from '@/hooks/use-stats'
 import { useTimeline } from '@/hooks/use-timeline'
@@ -34,6 +35,7 @@ import {
   explorerPath,
   matchesLens,
   parseLens,
+  POSTER_MEDIA,
   timelineHighlights,
   type Lens,
 } from '@/lib/wrapped'
@@ -101,7 +103,7 @@ function Header({ window }: { window: HackWindow }) {
       initial={still ? false : { opacity: 0, y: -14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: EASE_OUT }}
-      className="flex items-end justify-between"
+      className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between"
     >
       <h1 className="font-heading text-headline">
         HackMeridian 2026 <span className="text-primary italic">Wrapped</span>
@@ -226,7 +228,7 @@ function Chain({ data }: { data: PosterData }) {
 
   return (
     <Tile title="The 27 hours on chain" note="contracts deployed per hour" delay={0.25}>
-      <div className="mb-1 flex gap-10">
+      <div className="mb-1 flex flex-wrap gap-x-10 gap-y-4">
         {figures.map(([label, value], index) => (
           <div key={label}>
             <div className="font-heading text-figure">
@@ -235,7 +237,7 @@ function Chain({ data }: { data: PosterData }) {
             <div className="mt-1 text-xs text-muted-foreground">{label}</div>
           </div>
         ))}
-        <div className="ml-auto flex flex-col items-end justify-center gap-1 text-xs">
+        <div className="flex w-full flex-wrap gap-2 text-xs lg:ml-auto lg:w-auto lg:flex-col lg:items-end lg:justify-center lg:gap-1">
           <span className="rounded-full border border-tile-border bg-track px-2.5 py-1">
             <b className="text-primary">{formatNumber(peak.contracts)}</b> in one hour at{' '}
             {formatHour(peak.hour)} UTC
@@ -254,8 +256,14 @@ function Operations({ wrapped }: { wrapped: Wrapped }) {
   const rows = wrapped.operations_by_type.map((row) => ({ ...row, label: humanize(row.label) }))
 
   return (
-    <Tile title="What the chain did" note="top operations" delay={0.4} grow={5} className="basis-0">
-      <RankedBars data={rows} className="min-h-0 flex-1" />
+    <Tile
+      title="What the chain did"
+      note="top operations"
+      delay={0.4}
+      grow={5}
+      className="lg:basis-0"
+    >
+      <RankedBars data={rows} className="h-chart-md lg:h-auto lg:min-h-0 lg:flex-1" />
     </Tile>
   )
 }
@@ -269,8 +277,8 @@ function Builders({ wrapped }: { wrapped: Wrapped }) {
   const hidden = wrapped.multi_team_builders.length - MULTI_TEAM_BUILDERS
 
   return (
-    <Tile title="Builders" note="people per repo" delay={0.5} grow={4} className="basis-0">
-      <TeamBars data={teams} className="min-h-chart-sm flex-1" />
+    <Tile title="Builders" note="people per repo" delay={0.5} grow={4} className="lg:basis-0">
+      <TeamBars data={teams} className="h-chart-sm lg:h-auto lg:min-h-chart-sm lg:flex-1" />
       <div className="mt-3 flex items-center gap-2 text-xs text-foreground/80">
         <b className="font-heading text-stat text-secondary">
           {wrapped.multi_team_builders.length}
@@ -360,7 +368,7 @@ function BuiltWith({ data, lens, onPreview }: SectionProps) {
 
 function Footer() {
   return (
-    <p className="flex justify-between text-eyebrow text-muted-foreground">
+    <p className="flex flex-col gap-1 text-eyebrow text-muted-foreground lg:flex-row lg:justify-between">
       <span>
         Rebuilt from the Stellar testnet and GitHub. Every project links to its on chain evidence.
       </span>
@@ -369,15 +377,22 @@ function Footer() {
   )
 }
 
-function usePosterData(): PosterData | undefined {
-  const { data: wrapped } = useWrapped()
-  const { data: stats } = useStats()
-  const { data: timeline } = useTimeline()
-  const { data: projects } = useProjects()
-  const { data: integrations } = useIntegrations()
-  const { data: tools } = useTools()
-  const { data: agents } = useAgents()
-  const { data: window } = useHackWindow()
+function usePosterData(): { data: PosterData | undefined; failed: boolean } {
+  const queries = {
+    wrapped: useWrapped(),
+    stats: useStats(),
+    timeline: useTimeline(),
+    projects: useProjects(),
+    integrations: useIntegrations(),
+    tools: useTools(),
+    agents: useAgents(),
+    window: useHackWindow(),
+  }
+  const failed = Object.values(queries).some((query) => query.isError)
+  const { wrapped, stats, timeline, projects, integrations, tools, agents, window } =
+    Object.fromEntries(Object.entries(queries).map(([key, query]) => [key, query.data])) as {
+      [K in keyof typeof queries]: (typeof queries)[K]['data']
+    }
 
   if (
     !wrapped ||
@@ -389,45 +404,93 @@ function usePosterData(): PosterData | undefined {
     !agents ||
     !window
   ) {
-    return undefined
+    return { data: undefined, failed }
   }
-  return { wrapped, stats, timeline, projects, integrations, tools, agents, window }
+  return {
+    data: { wrapped, stats, timeline, projects, integrations, tools, agents, window },
+    failed,
+  }
+}
+
+function Notice({ failed, className }: { failed: boolean; className: string }) {
+  return (
+    <div className={`relative grid place-items-center text-muted-foreground ${className}`}>
+      {failed ? 'Could not load the numbers. Try again in a moment.' : 'Counting…'}
+    </div>
+  )
+}
+
+function Poster({ data, lens, onPreview }: SectionProps) {
+  return (
+    <div className="relative flex h-full flex-col gap-3.5 px-9 pt-7 pb-5">
+      <Header window={data.window} />
+      <div className="poster-grid min-h-0 flex-1 gap-3.5">
+        <Hero data={data} lens={lens} onPreview={onPreview} />
+        <div className="flex min-h-0 flex-col gap-3.5">
+          <Chain data={data} />
+          <div className="flex min-h-0 flex-1 gap-3.5">
+            <Operations wrapped={data.wrapped} />
+            <Builders wrapped={data.wrapped} />
+          </div>
+        </div>
+        <div className="flex min-h-0 flex-col gap-3.5">
+          <Agents data={data} lens={lens} onPreview={onPreview} />
+          <Tooling data={data} lens={lens} onPreview={onPreview} />
+          <BuiltWith data={data} lens={lens} onPreview={onPreview} />
+        </div>
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
+function Feed({ data, lens, onPreview }: SectionProps) {
+  return (
+    <div className="relative flex flex-col gap-3.5 px-4 py-6">
+      <Header window={data.window} />
+      <Hero data={data} lens={lens} onPreview={onPreview} />
+      <Chain data={data} />
+      <Operations wrapped={data.wrapped} />
+      <Builders wrapped={data.wrapped} />
+      <Agents data={data} lens={lens} onPreview={onPreview} />
+      <Tooling data={data} lens={lens} onPreview={onPreview} />
+      <BuiltWith data={data} lens={lens} onPreview={onPreview} />
+      <Footer />
+    </div>
+  )
 }
 
 export function WrappedPage() {
   const [params] = useSearchParams()
   const [preview, setPreview] = useState<Lens | null>(null)
-  const data = usePosterData()
+  const { data, failed } = usePosterData()
+  const isPoster = useMediaQuery(POSTER_MEDIA)
+  const still = params.has('still')
   const lens = preview ?? parseLens(params.get('lens'))
 
+  if (isPoster) {
+    return (
+      <Stage still={still}>
+        <Backdrop />
+        {data ? (
+          <Poster data={data} lens={lens} onPreview={setPreview} />
+        ) : (
+          <Notice failed={failed} className="h-full" />
+        )}
+      </Stage>
+    )
+  }
+
   return (
-    <Stage still={params.has('still')}>
-      <Backdrop />
-      {data ? (
-        <div className="relative flex h-full flex-col gap-3.5 px-9 pt-7 pb-5">
-          <Header window={data.window} />
-          <div className="poster-grid min-h-0 flex-1 gap-3.5">
-            <Hero data={data} lens={lens} onPreview={setPreview} />
-            <div className="flex min-h-0 flex-col gap-3.5">
-              <Chain data={data} />
-              <div className="flex min-h-0 flex-1 gap-3.5">
-                <Operations wrapped={data.wrapped} />
-                <Builders wrapped={data.wrapped} />
-              </div>
-            </div>
-            <div className="flex min-h-0 flex-col gap-3.5">
-              <Agents data={data} lens={lens} onPreview={setPreview} />
-              <Tooling data={data} lens={lens} onPreview={setPreview} />
-              <BuiltWith data={data} lens={lens} onPreview={setPreview} />
-            </div>
-          </div>
-          <Footer />
-        </div>
-      ) : (
-        <div className="relative grid h-full place-items-center text-muted-foreground">
-          Counting…
-        </div>
-      )}
-    </Stage>
+    <StillContext value={still}>
+      <div className="dark relative min-h-svh overflow-hidden bg-background text-foreground">
+        <Backdrop />
+        {data ? (
+          <Feed data={data} lens={lens} onPreview={setPreview} />
+        ) : (
+          <Notice failed={failed} className="min-h-svh" />
+        )}
+      </div>
+    </StillContext>
   )
 }
