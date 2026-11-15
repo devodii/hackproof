@@ -196,6 +196,7 @@ export interface WrappedBuilder {
   avatar_url: string | null
   projects: number
   contributions: number
+  project_names: string[]
 }
 
 export interface Wrapped {
