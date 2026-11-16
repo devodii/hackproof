@@ -13,13 +13,6 @@ evidence_tier: likely
 commits_in_window: 5
 stack:
   '@stellar/stellar-sdk': ^16.4.1
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/Fizzl13/presign-guard/blob/HEAD/.claude/hooks
 chain:
   contracts: 0
   wasm_uploads: 0

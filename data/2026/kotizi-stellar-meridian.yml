@@ -30,13 +30,6 @@ integrations:
   - method: package
     detail: '@privy-io/react-auth'
     file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/frontend/package.json
-agents:
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/kotizi/kotizi-stellar-meridian/blob/HEAD/frontend/AGENTS.md
 chain:
   contracts: 6
   wasm_uploads: 5

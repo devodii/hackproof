@@ -25,13 +25,6 @@ commits_in_window: 13
 stack:
   soroban-sdk: =28.0.0
   '@stellar/stellar-sdk': ^14.4.0
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/untangledfinance/oz-policy-builder/blob/HEAD/.claude/skills
 chain:
   contracts: 17
   wasm_uploads: 7

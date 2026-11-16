@@ -13,12 +13,6 @@ commits_in_window: 25
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^14.6.1
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
 chain:
   contracts: 3
   wasm_uploads: 3

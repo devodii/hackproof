@@ -24,19 +24,6 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/troqpay/private-yield/blob/HEAD/package.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/troqpay/private-yield/blob/HEAD/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/troqpay/private-yield/blob/HEAD/AGENTS.md
 chain:
   contracts: 12
   wasm_uploads: 0

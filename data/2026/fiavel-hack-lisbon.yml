@@ -15,18 +15,6 @@ commits_in_window: 48
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^16.0.1
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Rjk3d/Fiavel_Hack_Lisbon/blob/HEAD/AGENTS.md
 chain:
   contracts: 9
   wasm_uploads: 7

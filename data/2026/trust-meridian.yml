@@ -33,12 +33,6 @@ integrations:
   - method: endpoint
     detail: api.defindex.io
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/scripts/probe.sh
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
 chain:
   contracts: 16
   wasm_uploads: 8

@@ -25,19 +25,6 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/fredericjasmin/cuotia/blob/HEAD/package.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/fredericjasmin/cuotia/blob/HEAD/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/fredericjasmin/cuotia/blob/HEAD/AGENTS.md
 chain:
   contracts: 1
   wasm_uploads: 1

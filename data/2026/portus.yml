@@ -22,13 +22,6 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/AzrielTheHellrazor/portus/blob/HEAD/package.json
-agents:
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/AzrielTheHellrazor/portus/blob/HEAD/AGENTS.md
 chain:
   contracts: 2
   wasm_uploads: 2

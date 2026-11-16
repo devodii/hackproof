@@ -14,21 +14,6 @@ commits_in_window: 53
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^16.0.1
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/don-radman/merit/blob/HEAD/.claude/launch.json
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/don-radman/merit/blob/HEAD/AGENTS.md
 chain:
   contracts: 30
   wasm_uploads: 8

@@ -22,44 +22,6 @@ integrations:
   - method: endpoint
     detail: 1click.chaindefuser.com
     file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/evidence/topup/dry-quote-2026-10-25T22-07-19-789Z.json
-tools:
-- slug: stellar-raven
-  name: Stellar Raven
-  evidence:
-  - method: endpoint
-    detail: raven.stellar.buzz
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.mcp.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude-plugin/*
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.agents/skills/humanizer/.claude-plugin/marketplace.json
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.claude/settings.json
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.agents/skills/humanizer/CLAUDE.md
-- slug: cursor
-  name: Cursor
-  evidence:
-  - method: file
-    detail: .cursor/*
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.cursor/mcp.json
-- slug: codex
-  name: OpenAI Codex
-  evidence:
-  - method: file
-    detail: .codex/*
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.codex/config.toml
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/grmkris/hack-meridian-2026/blob/HEAD/.agents/skills/humanizer/AGENTS.md
 chain:
   contracts: 91
   wasm_uploads: 4

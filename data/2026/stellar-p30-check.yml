@@ -30,24 +30,6 @@ stack:
   '@stellar/stellar-sdk': ^16.0.0
   '@stellar/stellar-base': 15.0.0
   github.com/stellar/go: v0.0.0-20251210100531-aab2ea4aca88
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
-- slug: codex
-  name: OpenAI Codex
-  evidence:
-  - method: file
-    detail: .codex/*
-    file_url: https://github.com/Protocol-30/stellar-p30-check/blob/HEAD/.codex/config.toml
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Protocol-30/stellar-p30-check/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

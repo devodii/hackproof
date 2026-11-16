@@ -22,19 +22,6 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/apps/web/package.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Lendara-Org/lendara-shield/blob/HEAD/AGENTS.md
 chain:
   contracts: 10
   wasm_uploads: 2

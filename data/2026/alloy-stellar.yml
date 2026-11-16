@@ -26,13 +26,6 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/app/package.json
-agents:
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/0xDanomite/alloy-stellar/blob/HEAD/AGENTS.md
 chain:
   contracts: 3
   wasm_uploads: 7

@@ -13,39 +13,6 @@ commits_in_window: 88
 stack:
   soroban-sdk: =25.3.1
   '@stellar/stellar-sdk': latest
-tools:
-- slug: stellar-raven
-  name: Stellar Raven
-  evidence:
-  - method: endpoint
-    detail: raven.stellar.org
-    file_url: https://github.com/CaBsCrypto/AgentSpacialEconomy/blob/HEAD/.mcp.json
-- slug: stellar-skills
-  name: Stellar Skills
-  evidence:
-  - method: endpoint
-    detail: stellar/stellar-dev-skill
-    file_url: https://github.com/CaBsCrypto/AgentSpacialEconomy/blob/HEAD/agent/services.mjs
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/CaBsCrypto/AgentSpacialEconomy/blob/HEAD/CLAUDE.md
-- slug: codex
-  name: OpenAI Codex
-  evidence:
-  - method: author
-    detail: codex
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/CaBsCrypto/AgentSpacialEconomy/blob/HEAD/AGENTS.md
 chain:
   contracts: 5
   wasm_uploads: 1

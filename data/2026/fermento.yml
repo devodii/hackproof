@@ -15,13 +15,6 @@ commits_in_window: 41
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^16.0.1
-tools:
-- slug: stellar-skills
-  name: Stellar Skills
-  evidence:
-  - method: endpoint
-    detail: skills.stellar.org
-    file_url: https://github.com/the-axmc/Fermento/blob/HEAD/scripts/producer-api.ts
 chain:
   contracts: 15
   wasm_uploads: 23

@@ -24,23 +24,6 @@ evidence_tier: verified
 commits_in_window: 29
 stack:
   soroban-sdk: null
-tools:
-- slug: stellar-raven
-  name: Stellar Raven
-  evidence:
-  - method: endpoint
-    detail: raven.stellar.org
-    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/.mcp.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/.claude/settings.json
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/Belvast-Innovation/Breakwater/blob/HEAD/CLAUDE.md
 chain:
   contracts: 6
   wasm_uploads: 5

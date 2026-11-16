@@ -38,28 +38,6 @@ tools:
   - method: package
     detail: stellar-registry
     file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/Cargo.toml
-- slug: stellar-skills
-  name: Stellar Skills
-  evidence:
-  - method: endpoint
-    detail: stellar/stellar-dev-skill
-    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/.claude/settings.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/.claude/settings.json
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/app/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/video/AGENTS.md
 chain:
   contracts: 11
   wasm_uploads: 7
