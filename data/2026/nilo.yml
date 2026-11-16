@@ -14,12 +14,6 @@ commits_in_window: 64
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^17.3.0
-agents:
-- slug: cursor
-  name: Cursor
-  evidence:
-  - method: author
-    detail: cursoragent
 chain:
   contracts: 4
   wasm_uploads: 4

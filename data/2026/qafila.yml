@@ -31,16 +31,6 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/apps/web/package.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.claude/skills
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/CLAUDE.md
 chain:
   contracts: 47
   wasm_uploads: 6

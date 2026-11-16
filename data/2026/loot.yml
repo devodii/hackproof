@@ -29,13 +29,6 @@ integrations:
   - method: package
     detail: passkey-kit
     file_url: https://github.com/Klorenn/LOOT/blob/HEAD/app/package.json
-agents:
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Klorenn/LOOT/blob/HEAD/app/AGENTS.md
 chain:
   contracts: 111
   wasm_uploads: 10

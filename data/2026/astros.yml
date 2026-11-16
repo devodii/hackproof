@@ -30,46 +30,6 @@ tools:
   - method: package
     detail: '@stellar-scaffold/app-lib'
     file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/app/package.json
-- slug: stellar-raven
-  name: Stellar Raven
-  evidence:
-  - method: endpoint
-    detail: raven.stellar.org
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/.mcp.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/.claude/launch.json
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/CLAUDE.md
-- slug: cursor
-  name: Cursor
-  evidence:
-  - method: file
-    detail: .cursor/*
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/.cursor/mcp.json
-- slug: codex
-  name: OpenAI Codex
-  evidence:
-  - method: file
-    detail: .codex/*
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/.codex/config.toml
-- slug: gemini-cli
-  name: Gemini CLI
-  evidence:
-  - method: file
-    detail: .gemini/*
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/.gemini/settings.json
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Eco-RV/AstrOS/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 1

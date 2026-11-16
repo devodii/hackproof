@@ -39,29 +39,6 @@ integrations:
   - method: package
     detail: '@defindex/sdk'
     file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
-tools:
-- slug: stellar-skills
-  name: Stellar Skills
-  evidence:
-  - method: endpoint
-    detail: skills.stellar.org
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/scripts/install-stellar-skills.sh
-  - method: endpoint
-    detail: stellar/stellar-dev-skill
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/scripts/install-stellar-skills.sh
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/AGENTS.md
 chain:
   contracts: 5
   wasm_uploads: 5

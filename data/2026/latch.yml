@@ -24,13 +24,6 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/karagozemin/LATCH/blob/HEAD/sites/latch-demo/package.json
-agents:
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/karagozemin/LATCH/blob/HEAD/AGENTS.md
 chain:
   contracts: 1
   wasm_uploads: 0

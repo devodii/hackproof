@@ -36,13 +36,6 @@ tools:
   - method: package
     detail: stellar-registry
     file_url: https://github.com/bilfrux/DrainMyWallet/blob/HEAD/Cargo.toml
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/bilfrux/DrainMyWallet/blob/HEAD/app/CLAUDE.md
 chain:
   contracts: 7
   wasm_uploads: 13

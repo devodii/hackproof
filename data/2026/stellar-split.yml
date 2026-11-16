@@ -24,25 +24,6 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/apps/web/package.json
-tools:
-- slug: stellar-raven
-  name: Stellar Raven
-  evidence:
-  - method: endpoint
-    detail: raven.stellar.org
-    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/.mcp.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: author
-    detail: claude
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Michella-stack/Stellar-Split/blob/HEAD/docs/AGENTS.md
 chain:
   contracts: 1
   wasm_uploads: 0

@@ -21,22 +21,6 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/web/app/package.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/sdk/.claude/skills
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/web/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/devfelipenunes/CMI-hackthon-meridian/blob/HEAD/specs/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

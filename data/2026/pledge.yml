@@ -13,22 +13,6 @@ commits_in_window: 66
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': 16.4.1
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/.claude/commands
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/CLAUDE.md
-- slug: kiro
-  name: Kiro
-  evidence:
-  - method: file
-    detail: .kiro/*
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/.kiro/pipeline
 chain:
   contracts: 10
   wasm_uploads: 5

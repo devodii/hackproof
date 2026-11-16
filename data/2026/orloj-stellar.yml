@@ -28,19 +28,6 @@ integrations:
   - method: endpoint
     detail: api.defindex.io
     file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/packages/stellar-registry/demo-contract/top10-audit/mcp-mainnet-remediation-results.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/CLAUDE.md
-- slug: agents-md
-  name: AGENTS.md
-  evidence:
-  - method: file
-    detail: AGENTS.md
-    file_url: https://github.com/Deivitto/orloj-stellar/blob/HEAD/AGENTS.md
 chain:
   contracts: 0
   wasm_uploads: 0

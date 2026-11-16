@@ -13,13 +13,6 @@ evidence_tier: likely
 commits_in_window: 10
 stack:
   '@stellar/stellar-sdk': ^17.4.0
-tools:
-- slug: stellar-raven
-  name: Stellar Raven
-  evidence:
-  - method: endpoint
-    detail: raven.stellar.buzz
-    file_url: https://github.com/mizukuhiiragi/starpocket/blob/HEAD/.agents/mcp_config.json
 chain:
   contracts: 0
   wasm_uploads: 0

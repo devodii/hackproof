@@ -15,23 +15,6 @@ commits_in_window: 79
 stack:
   '@stellar/stellar-sdk': 15.1.0
   '@stellar/stellar-base': 15.0.0
-tools:
-- slug: stellar-skills
-  name: Stellar Skills
-  evidence:
-  - method: endpoint
-    detail: stellar/stellar-dev-skill
-    file_url: https://github.com/skopolabs/usagepay/blob/HEAD/implementation-versions.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/skopolabs/usagepay/blob/HEAD/.claude/settings.json
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/skopolabs/usagepay/blob/HEAD/CLAUDE.md
 chain:
   contracts: 5
   wasm_uploads: 0

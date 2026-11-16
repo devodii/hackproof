@@ -23,13 +23,6 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/fdddf/clippay/blob/HEAD/web/package.json
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: .claude/*
-    file_url: https://github.com/fdddf/clippay/blob/HEAD/.claude/launch.json
 chain:
   contracts: 24
   wasm_uploads: 5

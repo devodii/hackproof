@@ -27,13 +27,6 @@ evidence_tier: verified
 commits_in_window: 1
 stack:
   soroban-sdk: null
-agents:
-- slug: claude-code
-  name: Claude Code
-  evidence:
-  - method: file
-    detail: CLAUDE.md
-    file_url: https://github.com/SLASettleHQ/slasettle-vault/blob/HEAD/CLAUDE.md
 chain:
   contracts: 2
   wasm_uploads: 2
