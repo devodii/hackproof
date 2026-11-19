@@ -86,6 +86,7 @@ class IntegrationDetail(Model):
     site: str
     networks: dict[str, Network]
     contracts: list[ContractState]
+    surfaces: list[ContractState]
     adopters: list[Adopter]
     of_projects: int
     signals: list[SignalCount]
@@ -145,7 +146,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
     adopters.sort(key=lambda item: (-len(item.profile.signals), item.full_name))
 
     snapshots = {
-        row["contract_id"]: (
+        (row["network"], row["contract_id"]): (
             ContractSnapshot.model_validate(row["snapshot"]),
             row["observed_at"],
         )
@@ -155,8 +156,10 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
     for adopter in adopters:
         for contract in adopter.profile.contracts:
             used[contract.id] += 1
-    contracts = [
-        ContractState(
+
+    def state(item: ProfileContract, projects: int) -> ContractState:
+        snapshot, observed = snapshots.get((item.network, item.id), (None, None))
+        return ContractState(
             slug=item.slug,
             id=item.id,
             name=item.name,
@@ -164,13 +167,14 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
             kind=item.kind,
             attributes=item.attributes,
             explorer_url=_explorer(partner, item),
-            snapshot=snapshots.get(item.id, (None, None))[0],
-            observed_at=snapshots.get(item.id, (None, None))[1],
-            projects=used[item.id],
-            expired=_expired(snapshots.get(item.id, (None, None))[0]),
+            snapshot=snapshot,
+            observed_at=observed,
+            projects=projects,
+            expired=_expired(snapshot),
         )
-        for item in profile.contracts
-    ]
+
+    contracts = [state(item, used[item.id]) for item in profile.contracts]
+    surfaces = [state(item, 0) for item in profile.surfaces]
 
     signal_projects: dict[str, int] = defaultdict(int)
     check_pass: dict[str, int] = defaultdict(int)
@@ -205,6 +209,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
         site=partner.site,
         networks=profile.networks,
         contracts=contracts,
+        surfaces=surfaces,
         adopters=adopters,
         of_projects=total,
         signals=[

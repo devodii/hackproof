@@ -22,7 +22,7 @@ async def run_observe() -> None:
             profile = partner.profile
             if profile is None or profile.adapter not in ADAPTERS:
                 continue
-            for contract in profile.contracts:
+            for contract in [*profile.contracts, *profile.surfaces]:
                 network = profile.networks[contract.network]
                 try:
                     snapshot = await ADAPTERS[profile.adapter].observe(

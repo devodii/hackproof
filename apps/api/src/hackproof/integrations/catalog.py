@@ -80,6 +80,7 @@ class Profile(BaseModel):
     networks: dict[str, Network] = Field(default_factory=dict)
     context: list[str]
     contracts: list[ProfileContract] = Field(default_factory=list)
+    surfaces: list[ProfileContract] = Field(default_factory=list)
     live: list[LiveProbe] = Field(default_factory=list)
     signals: list[Signal] = Field(default_factory=list)
     captures: list[Capture] = Field(default_factory=list)
