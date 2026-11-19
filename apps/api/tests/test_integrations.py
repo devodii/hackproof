@@ -345,3 +345,16 @@ def test_private_signals_and_checks_never_reach_the_public_profile():
     assert public.checks == []
     assert "public-api-key" in {item.slug for item in internal.signals}
     assert "public-api-key" in catalog.private_signals()["trustless-work"]
+
+
+def test_a_contract_id_listed_in_prose_is_not_an_integration():
+    files = {
+        "README.md": "Feed CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W",
+        ".agents/skills/ecosystem.md": "CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN",
+    }
+    assert detect(files, get_catalog(), "someone") == []
+    files = {
+        ".env.testnet": "ORACLE=CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W"
+    }
+    found = {item.method for item in detect(files, get_catalog(), "someone")}
+    assert "contract" in found
