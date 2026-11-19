@@ -1,6 +1,5 @@
+import { type Column, DataTable } from '@/components/data-table'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
 import type { ContractState, Reading } from '@/lib/types'
 
 function amount(value: string) {
@@ -19,50 +18,52 @@ interface LiveReadingsProps {
 }
 
 export function LiveReadings({ readings, contracts }: LiveReadingsProps) {
-  if (!readings) {
-    return (
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-        {Array.from({ length: 6 }, (_, index) => (
-          <Skeleton key={index} className="h-24 rounded-xl" />
-        ))}
-      </div>
-    )
-  }
+  const feed = (reading: Reading) => contracts.find((item) => item.slug === reading.contract)
+  const columns: Column<Reading>[] = [
+    {
+      header: 'Asset',
+      cell: (row) => <span className="font-mono font-semibold">{row.subject}</span>,
+    },
+    {
+      header: 'Price',
+      className: 'text-right tabular-nums',
+      cell: (row) => (row.value === null ? '-' : amount(row.value)),
+    },
+    {
+      header: 'Status',
+      cell: (row) =>
+        row.value === null ? (
+          <Badge variant="destructive">No quote</Badge>
+        ) : (
+          row.stale !== null && (
+            <Badge variant={row.stale ? 'destructive' : 'outline'}>
+              {row.stale ? 'Stale' : 'Fresh'}
+            </Badge>
+          )
+        ),
+    },
+    {
+      header: 'Feed',
+      cell: (row) => `${feed(row)?.name} · ${feed(row)?.network}`,
+    },
+    {
+      header: 'Updated',
+      cell: (row) =>
+        row.age_seconds !== null
+          ? age(row.age_seconds)
+          : feed(row)?.expired.includes(row.subject)
+            ? 'expired'
+            : '-',
+    },
+  ]
 
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-      {readings.map((reading) => {
-        const contract = contracts.find((item) => item.slug === reading.contract)
-
-        return (
-          <Card key={`${reading.contract}:${reading.subject}`} size="sm">
-            <CardContent className="flex flex-col gap-1.5">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-sm font-semibold">{reading.subject}</span>
-                {reading.value === null ? (
-                  <Badge variant="destructive">No quote</Badge>
-                ) : (
-                  reading.stale !== null && (
-                    <Badge variant={reading.stale ? 'destructive' : 'outline'}>
-                      {reading.stale ? 'Stale' : 'Fresh'}
-                    </Badge>
-                  )
-                )}
-              </div>
-              <span className="font-heading text-3xl leading-none">
-                {reading.value === null ? '-' : amount(reading.value)}
-              </span>
-              <span className="text-xs text-muted-foreground">
-                {contract?.name} · {contract?.network}
-                {reading.age_seconds !== null && ` · ${age(reading.age_seconds)}`}
-                {reading.value === null &&
-                  contract?.expired.includes(reading.subject) &&
-                  ' · expired'}
-              </span>
-            </CardContent>
-          </Card>
-        )
-      })}
-    </div>
+    <DataTable
+      columns={columns}
+      rows={readings ?? []}
+      rowKey={(row) => `${row.contract}:${row.subject}`}
+      isLoading={!readings}
+      paginate={false}
+    />
   )
 }

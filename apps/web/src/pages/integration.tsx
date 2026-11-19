@@ -4,12 +4,12 @@ import { NotFoundPage } from '@/pages/not-found'
 
 import { AdopterCards } from '@/components/integration/adopter-cards'
 import { Block } from '@/components/integration/block'
-import { CaptureDemand } from '@/components/integration/capture-demand'
+import { CaptureTable } from '@/components/integration/capture-table'
 import { ContractTable } from '@/components/integration/contract-table'
 import { Hero } from '@/components/integration/hero'
 import { LiveReadings } from '@/components/integration/live-readings'
-import { SignalBars } from '@/components/integration/signal-bars'
-import { SurfaceGrid } from '@/components/integration/surface-grid'
+import { SignalTable } from '@/components/integration/signal-table'
+import { SurfaceTable } from '@/components/integration/surface-table'
 import { DetailError } from '@/components/query-state'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useIntegration, useIntegrationLive } from '@/hooks/use-integration'
@@ -35,7 +35,7 @@ export function IntegrationPage() {
           title={`What ${data.name} runs today`}
           note="Refreshed from the source at most once an hour"
         >
-          <SurfaceGrid surfaces={data.surfaces} />
+          <SurfaceTable surfaces={data.surfaces} />
         </Block>
       )}
 
@@ -56,12 +56,12 @@ export function IntegrationPage() {
       </Block>
 
       <Block eyebrow="Patterns" title="How it is used">
-        <SignalBars signals={data.signals} max={data.adopters.length} />
+        <SignalTable signals={data.signals} max={data.adopters.length} />
       </Block>
 
       {Object.entries(data.captures).map(([name, rows]) => (
         <Block key={name} eyebrow="Demand" title={humanize(name.replaceAll('-', ' '))}>
-          <CaptureDemand rows={rows} contracts={data.contracts} />
+          <CaptureTable rows={rows} contracts={data.contracts} />
         </Block>
       ))}
     </div>
