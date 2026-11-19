@@ -508,6 +508,8 @@ export interface components {
         };
         /** EcosystemTool */
         EcosystemTool: {
+            /** Deep */
+            deep: boolean;
             /** Name */
             name: string;
             /** Projects */

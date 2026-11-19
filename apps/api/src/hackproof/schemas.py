@@ -175,6 +175,7 @@ class EcosystemTool(BaseModel):
     name: str
     site: str
     projects: int
+    deep: bool
 
 
 class AIAgent(BaseModel):

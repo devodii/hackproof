@@ -536,6 +536,10 @@
       },
       "EcosystemTool": {
         "properties": {
+          "deep": {
+            "title": "Deep",
+            "type": "boolean"
+          },
           "name": {
             "title": "Name",
             "type": "string"
@@ -557,7 +561,8 @@
           "slug",
           "name",
           "site",
-          "projects"
+          "projects",
+          "deep"
         ],
         "title": "EcosystemTool",
         "type": "object"
