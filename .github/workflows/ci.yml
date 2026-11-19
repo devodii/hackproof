@@ -59,6 +59,13 @@ jobs:
       - name: The schema files and the database agree
         run: uv run hackproof schema verify
       - run: uv run pytest
+      - name: The openapi schema the web app generates its types from is current
+        run: |
+          uv run hackproof openapi
+          git diff --exit-code -- ../web/openapi.json || {
+            echo "::error::The API changed but apps/web/openapi.json did not. Run 'pnpm types' and commit the result."
+            exit 1
+          }
 
   web:
     runs-on: ubuntu-latest
@@ -70,6 +77,13 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: The generated api types are current
+        run: |
+          pnpm --filter web types
+          git diff --exit-code -- apps/web/src/lib/api-schema.ts || {
+            echo "::error::apps/web/openapi.json changed but the generated types did not. Run 'pnpm types' and commit the result."
+            exit 1
+          }
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm build

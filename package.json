@@ -8,6 +8,7 @@
     "build": "pnpm --filter web build",
     "lint": "pnpm --filter web lint",
     "format": "pnpm --filter web format",
-    "format:check": "pnpm --filter web format:check"
+    "format:check": "pnpm --filter web format:check",
+    "types": "cd apps/api && uv run hackproof openapi && cd ../.. && pnpm --filter web types"
   }
 }
