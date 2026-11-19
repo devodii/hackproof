@@ -1,6 +1,13 @@
 import json
 
-from hackproof.integrations.catalog import Agent, Catalog, Partner, Tool, get_catalog
+from hackproof.integrations.catalog import (
+    Agent,
+    Catalog,
+    Partner,
+    Profile,
+    Tool,
+    get_catalog,
+)
 from hackproof.integrations.detect import (
     depth_hints,
     detect,
@@ -247,3 +254,33 @@ def test_a_prose_mention_of_a_deep_partner_asks_for_a_deeper_scan():
     hints = depth_hints(files, get_catalog(), [])
     assert hints is not None and "escrow" in hints
     assert depth_hints({"README.md": "hello"}, get_catalog(), []) is None
+
+
+def test_a_profile_written_before_the_newer_fields_still_loads():
+    older = {
+        "adapter": "reflector",
+        "context": ["reflector"],
+        "networks": {
+            "testnet": {
+                "rpc_url": "https://rpc",
+                "passphrase": "p",
+                "explorer": "https://e",
+            }
+        },
+        "contracts": [
+            {
+                "slug": "fx",
+                "id": "C1",
+                "name": "FX",
+                "network": "testnet",
+                "kind": "feed",
+            }
+        ],
+        "checks": [
+            {"slug": "age", "label": "Age", "severity": "warn", "requires": ["a"]}
+        ],
+    }
+    profile = Profile.model_validate(older)
+    assert profile.surfaces == [] and profile.hints == []
+    assert profile.contracts[0].url is None
+    assert profile.checks[0].forbids == []

@@ -64,6 +64,7 @@ class CheckCount(Model):
     severity: str
     passing: int
     failing: int
+    offenders: list[str]
 
 
 class CaptureCount(Model):
@@ -179,12 +180,15 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
     signal_projects: dict[str, int] = defaultdict(int)
     check_pass: dict[str, int] = defaultdict(int)
     check_fail: dict[str, int] = defaultdict(int)
+    offenders: dict[str, list[str]] = defaultdict(list)
     capture_projects: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     for adopter in adopters:
         for signal in adopter.profile.signals:
             signal_projects[signal.slug] += 1
         for check in adopter.profile.checks:
             (check_pass if check.status == "pass" else check_fail)[check.slug] += 1
+            if check.status != "pass":
+                offenders[check.slug].append(adopter.full_name)
         for name, values in adopter.profile.captures.items():
             for value in values:
                 capture_projects[name][value] += 1
@@ -228,6 +232,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 severity=check.severity,
                 passing=check_pass[check.slug],
                 failing=check_fail[check.slug],
+                offenders=offenders[check.slug],
             )
             for check in profile.checks
         ],

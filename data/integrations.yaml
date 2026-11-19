@@ -4,9 +4,251 @@ partners:
     category: payments
     site: https://www.trustlesswork.com
     packages:
-      js: ["@trustless-work/escrow", "@trustless-work/blocks", "@trustless-work/skill"]
-    endpoints: [api.trustlesswork.com, dev.api.trustlesswork.com]
+      js: ["@trustless-work/escrow", "@trustless-work/escrow-js", "@trustless-work/blocks", "@trustless-work/skill"]
+    endpoints: [api.trustlesswork.com, dev.api.trustlesswork.com, beta.api.trustlesswork.com, mcp.trustlesswork.com]
     github_owners: [Trustless-Work]
+    profile:
+      adapter: trustless-work
+      hints: [trustless, escrow, payment, milestone, webhook, deposit, release, settle]
+      networks:
+        testnet:
+          rpc_url: https://soroban-testnet.stellar.org
+          passphrase: Test SDF Network ; September 2015
+          explorer: https://stellar.expert/explorer/testnet/contract
+        mainnet:
+          rpc_url: https://mainnet.sorobanrpc.com
+          passphrase: Public Global Stellar Network ; September 2015
+          explorer: https://stellar.expert/explorer/public/contract
+        npm:
+          rpc_url: https://registry.npmjs.org
+          passphrase: npm
+          explorer: https://www.npmjs.com/package
+        github:
+          rpc_url: https://api.github.com
+          passphrase: github
+          explorer: https://github.com
+      context:
+        - trustless[-_ ]?work
+        - trustlesswork\.com
+        - /(?:deployer|escrow)/(?:single|multi)-release
+      surfaces:
+        - {slug: api-mainnet, id: https://api.trustlesswork.com, name: REST API V1, network: mainnet, kind: api, url: https://api.trustlesswork.com/docs}
+        - {slug: api-testnet, id: https://dev.api.trustlesswork.com, name: REST API V1, network: testnet, kind: api, url: https://dev.api.trustlesswork.com/docs}
+        - {slug: api-beta, id: https://beta.api.trustlesswork.com, name: REST API V2 beta, network: testnet, kind: api, url: https://beta.api.trustlesswork.com/docs, attributes: {schema: api/all-json}}
+        - {slug: pkg-escrow, id: "@trustless-work/escrow", name: React SDK, network: npm, kind: package}
+        - {slug: pkg-blocks, id: "@trustless-work/blocks", name: Blocks UI kit, network: npm, kind: package}
+        - {slug: pkg-escrow-js, id: "@trustless-work/escrow-js", name: JavaScript SDK, network: npm, kind: package}
+        - {slug: pkg-skill, id: "@trustless-work/skill", name: Agent skill installer, network: npm, kind: package}
+        - {slug: repo-contract, id: Trustless-Work/trustlesswork-smart-contract-stellar, name: Escrow contract, network: github, kind: repo}
+        - {slug: repo-indexer, id: Trustless-Work/trustlesswork-indexer-go, name: Indexer, network: github, kind: repo}
+        - {slug: repo-skill, id: Trustless-Work/trustlesswork-skill, name: Agent skill, network: github, kind: repo}
+        - {slug: repo-sdk-react, id: Trustless-Work/trustlesswork-sdk-react, name: React SDK source, network: github, kind: repo}
+        - {slug: repo-sdk-js, id: Trustless-Work/trustlesswork-sdk-js, name: JavaScript SDK source, network: github, kind: repo}
+        - {slug: repo-blocks, id: Trustless-Work/trustlesswork-sdk-blocks-react, name: Blocks source, network: github, kind: repo}
+        - {slug: repo-spikes, id: Trustless-Work/trustlesswork-spikes, name: Product discussions, network: github, kind: repo}
+        - {slug: wasm-single-v1-testnet, id: 38c42f5476192aabe5ae14aa773231a6e08c013ce4683aa387f2dc9e69376474, name: Single release V1, network: testnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-single-v2-testnet, id: 1bbce13523346de574214b8c6cc829a71a409d524e9a3435427da1c935885c04, name: Single release V2, network: testnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-multi-v1-testnet, id: 0136f8fcc6e65dfe4aa3f8abe8dc386e5ec6ed503a123ee6275461ad2d9bd8df, name: Multi release V1, network: testnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-multi-v2-testnet, id: 3d9241655390f03c80536a2ef29dc350fb6c50f4d29dec380c366ab7ec24263c, name: Multi release V2, network: testnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-single-v1-mainnet, id: 38c42f5476192aabe5ae14aa773231a6e08c013ce4683aa387f2dc9e69376474, name: Single release V1, network: mainnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-single-v2-mainnet, id: 1bbce13523346de574214b8c6cc829a71a409d524e9a3435427da1c935885c04, name: Single release V2, network: mainnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-multi-v1-mainnet, id: 0136f8fcc6e65dfe4aa3f8abe8dc386e5ec6ed503a123ee6275461ad2d9bd8df, name: Multi release V1, network: mainnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+        - {slug: wasm-multi-v2-mainnet, id: 3d9241655390f03c80536a2ef29dc350fb6c50f4d29dec380c366ab7ec24263c, name: Multi release V2, network: mainnet, kind: wasm, url: https://github.com/Trustless-Work/trustlesswork-smart-contract-stellar}
+      signals:
+        - slug: calls-api
+          group: client
+          label: Calls the escrow API
+          patterns:
+            - '@trustless-work/(?:escrow|blocks)'
+            - '(?:dev\.|beta\.)?api\.trustlesswork\.com'
+            - '/(?:deployer|escrow)/(?:single|multi)-release'
+        - slug: rest-api
+          group: client
+          label: Raw REST calls
+          patterns:
+            - '/(?:deployer|escrow)/(?:single|multi)-release'
+            - '/helper/(?:send-transaction|get-escrow)'
+        - slug: react-sdk
+          group: client
+          label: React SDK
+          patterns:
+            - '@trustless-work/escrow(?!-js)'
+            - 'TrustlessWorkConfig'
+        - slug: blocks
+          group: client
+          label: Blocks UI kit
+          patterns:
+            - '@trustless-work/blocks'
+            - 'tw-blocks'
+        - slug: js-sdk
+          group: client
+          label: JavaScript SDK
+          patterns:
+            - '@trustless-work/escrow-js'
+        - slug: mcp
+          group: client
+          label: MCP server
+          patterns:
+            - 'mcp\.trustlesswork\.com'
+        - slug: v1-api
+          group: version
+          label: V1 production API
+          patterns:
+            - '/deployer/(?:single|multi)-release'
+            - '/escrow/(?:single|multi)-release/(?:fund-escrow|release-funds|release-milestone-funds|approve-milestone|change-milestone-status|dispute-escrow|dispute-milestone|resolve-dispute|resolve-milestone-dispute|update-escrow|withdraw-remaining-funds)'
+        - slug: api-v2
+          group: version
+          label: V2 beta API
+          patterns:
+            - 'beta\.api\.trustlesswork\.com'
+            - '/(?:single|multi)-release/v2/'
+            - 'approve-and-release-milestones'
+            - 'manage-milestones'
+        - slug: single-release
+          group: type
+          label: Single release escrows
+          patterns:
+            - 'single-release|singleRelease|SingleRelease'
+        - slug: multi-release
+          group: type
+          label: Multi release escrows
+          patterns:
+            - 'multi-release|multiRelease|MultiRelease'
+        - slug: testnet-api
+          group: network
+          label: Testnet host
+          patterns:
+            - '(?:dev|beta)\.api\.trustlesswork\.com'
+        - slug: mainnet-api
+          group: network
+          label: Mainnet host
+          patterns:
+            - '(?<![\w.-])api\.trustlesswork\.com'
+        - slug: deploy
+          group: flow
+          label: Deploys escrows
+          patterns:
+            - '/deployer/'
+            - 'initialize-escrow|useInitializeEscrow|/v2/deploy'
+        - slug: fund
+          group: flow
+          label: Funds escrows
+          patterns:
+            - 'fund-escrow|useFundEscrow|/v2/fund'
+        - slug: approve
+          group: flow
+          label: Approves milestones
+          patterns:
+            - 'approve-milestone|useApproveMilestone'
+        - slug: release
+          group: flow
+          label: Releases funds
+          patterns:
+            - 'release-funds|release-milestone-funds|useReleaseFunds|approve-and-release'
+        - slug: dispute
+          group: flow
+          label: Opens disputes
+          patterns:
+            - 'dispute-escrow|dispute-milestone|useStartDispute'
+        - slug: resolve
+          group: flow
+          label: Resolves disputes
+          patterns:
+            - 'resolve-dispute|resolve-milestone-dispute|useResolveDispute'
+        - slug: milestone-status
+          group: flow
+          label: Reports milestone progress
+          patterns:
+            - 'change-milestone-status|useChangeMilestoneStatus'
+        - slug: update
+          group: flow
+          label: Updates escrows
+          patterns:
+            - 'update-escrow|useUpdateEscrow'
+        - slug: withdraw
+          group: flow
+          label: Withdraws leftovers
+          patterns:
+            - 'withdraw-remaining-funds|useWithdrawRemainingFunds'
+        - slug: reads
+          group: flow
+          label: Reads escrows back
+          patterns:
+            - 'get-escrows?-by-|get-escrow-by-contract|useGetEscrows|/helper/get-escrow'
+        - slug: validates-on-chain
+          group: safety
+          label: Validates against the chain
+          patterns:
+            - 'validateOnChain'
+        - slug: submits-signed
+          group: safety
+          label: Signs and submits through the helper
+          patterns:
+            - 'send-transaction|useSendTransaction|sendTransaction'
+        - slug: handles-rate-limit
+          group: safety
+          label: Handles the rate limit
+          patterns:
+            - '\b429\b|Retry-After|rate[-_ ]?limit'
+        - slug: receives-webhooks
+          group: safety
+          label: Receives webhooks
+          patterns:
+            - '(?i)webhook'
+        - slug: verifies-webhook
+          group: safety
+          label: Verifies webhook signatures
+          patterns:
+            - '(?i)trustless-?work-?signature|x-tw-signature|x-trustless-work-signature'
+        - slug: public-api-key
+          group: risk
+          label: Key readable in the browser
+          patterns:
+            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_[A-Z_]*(?:TRUSTLESS|TW)[A-Z_]*(?:KEY|API)[A-Z_]*'
+            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_API_KEY'
+      captures:
+        - slug: operation
+          label: Operations called
+          patterns:
+            - '/(?:single|multi)-release/(?:v2/)?([a-z][a-z-]+)'
+        - slug: react-sdk-version
+          label: React SDK versions
+          patterns:
+            - '"@trustless-work/escrow"\s*:\s*"[\^~]?(\d[\w.-]*)"'
+        - slug: blocks-version
+          label: Blocks versions
+          patterns:
+            - '"@trustless-work/blocks"\s*:\s*"[\^~]?(\d[\w.-]*)"'
+        - slug: asset
+          label: Assets escrowed
+          patterns:
+            - "(?:symbol|asset|currency)['\"]?\\s*[:=]\\s*['\"](USDC|EURC|PYUSD)['\"]"
+      checks:
+        - slug: exposes-api-key
+          label: Ships the API key to the browser
+          severity: fail
+          requires: [calls-api]
+          forbids: [public-api-key]
+        - slug: v2-on-mainnet-host
+          label: Calls V2 beta paths on the mainnet host
+          severity: fail
+          requires: [mainnet-api]
+          forbids: [api-v2]
+        - slug: release-without-validation
+          label: Releases funds without validating against the chain
+          severity: warn
+          requires: [release]
+          missing: [validates-on-chain]
+        - slug: no-rate-limit
+          label: Ignores the 50 requests per minute limit
+          severity: warn
+          requires: [calls-api]
+          missing: [handles-rate-limit]
+        - slug: unverified-webhook
+          label: Accepts webhooks without checking the signature
+          severity: fail
+          requires: [receives-webhooks]
+          missing: [verifies-webhook]
 
   - slug: stellar-wallets-kit
     name: Stellar Wallets Kit
@@ -213,6 +455,7 @@ tools:
         ]
     github_owners: [stellar-registry, theahaco]
     profile:
+      hints: [oracle, price, reflector, feed, rate, quote, contract, lib]
       context: ['stellar[ -]registry', 'stellar-registry']
       signals:
         - {slug: cli-publish, group: client, label: Publishes wasm with the registry CLI, patterns: ['stellar\s+registry\s+publish']}

@@ -75,7 +75,8 @@ async def observe_api(
     http: httpx.AsyncClient, contract: ProfileContract
 ) -> ContractSnapshot | None:
     started = time.monotonic()
-    response = await http.get(f"{contract.id}/docs-json")
+    schema_path = contract.attributes.get("schema", "docs-json")
+    response = await http.get(f"{contract.id}/{schema_path}")
     if response.status_code != 200:
         return None
     latency = int((time.monotonic() - started) * 1000)
