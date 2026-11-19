@@ -75,9 +75,6 @@ integrations:
     detail: fund
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
   - method: signal
-    detail: handles-rate-limit
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/limits.test.ts
-  - method: signal
     detail: multi-release
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/types.ts
   - method: signal
@@ -96,13 +93,7 @@ integrations:
     detail: single-release
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
   - method: signal
-    detail: submits-signed
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
-  - method: signal
     detail: v1-api
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
-  - method: signal
-    detail: validates-on-chain
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
   - method: signal
     detail: withdraw
@@ -151,15 +142,6 @@ integrations:
     - slug: reads
       group: flow
       label: Reads escrows back
-    - slug: validates-on-chain
-      group: safety
-      label: Validates against the chain
-    - slug: submits-signed
-      group: safety
-      label: Signs and submits through the helper
-    - slug: handles-rate-limit
-      group: safety
-      label: Handles the rate limit
     captures:
       asset:
       - USDC
@@ -176,19 +158,6 @@ integrations:
       - release-funds
       - resolve-dispute
       - withdraw-remaining-funds
-    checks:
-    - slug: exposes-api-key
-      label: Ships the API key to the browser
-      status: pass
-    - slug: release-without-validation
-      label: Releases funds without validating against the chain
-      status: pass
-    - slug: no-rate-limit
-      label: Ignores the 50 requests per minute limit
-      status: pass
-    - slug: expects-webhooks
-      label: Waits for webhooks Trustless Work does not send yet
-      status: pass
 agents:
 - slug: claude-code
   name: Claude Code

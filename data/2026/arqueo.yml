@@ -53,10 +53,6 @@ integrations:
       attributes:
         source: stellar-pubnet
         asset_kind: stellar
-    checks:
-    - slug: wrong-network
-      label: Only points at mainnet feeds while the event runs on testnet
-      status: fail
 tools:
 - slug: stellar-scaffold
   name: Scaffold Stellar

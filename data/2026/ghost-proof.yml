@@ -76,9 +76,6 @@ integrations:
     detail: multi-release
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsMutations.ts
   - method: signal
-    detail: public-api-key
-    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/.env.example
-  - method: signal
     detail: react-sdk
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
   - method: signal
@@ -97,9 +94,6 @@ integrations:
     detail: single-release
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
   - method: signal
-    detail: submits-signed
-    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
-  - method: signal
     detail: testnet-api
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
   - method: signal
@@ -108,9 +102,6 @@ integrations:
   - method: signal
     detail: v1-api
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
-  - method: signal
-    detail: validates-on-chain
-    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsByContractIdsQuery.ts
   - method: signal
     detail: withdraw
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsMutations.ts
@@ -173,15 +164,6 @@ integrations:
     - slug: reads
       group: flow
       label: Reads escrows back
-    - slug: validates-on-chain
-      group: safety
-      label: Validates against the chain
-    - slug: submits-signed
-      group: safety
-      label: Signs and submits through the helper
-    - slug: public-api-key
-      group: risk
-      label: Key readable in the browser
     captures:
       asset:
       - USDC
@@ -193,22 +175,6 @@ integrations:
       - resolve-dispute
       react-sdk-version:
       - 3.0.5
-    checks:
-    - slug: exposes-api-key
-      label: Ships the API key to the browser
-      status: fail
-    - slug: v2-on-mainnet-host
-      label: Calls V2 beta paths on the mainnet host
-      status: pass
-    - slug: release-without-validation
-      label: Releases funds without validating against the chain
-      status: pass
-    - slug: no-rate-limit
-      label: Ignores the 50 requests per minute limit
-      status: warn
-    - slug: expects-webhooks
-      label: Waits for webhooks Trustless Work does not send yet
-      status: pass
 - slug: freighter
   name: Freighter
   evidence:

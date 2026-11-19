@@ -58,12 +58,6 @@ integrations:
   - method: contract
     detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
     file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
-  - method: signal
-    detail: checks-age
-    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/contracts/fork/tests/leverage.rs
-  - method: signal
-    detail: number-cast
-    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
   profile:
     contracts:
     - slug: mainnet-exchanges
@@ -93,17 +87,6 @@ integrations:
       attributes:
         source: fx
         asset_kind: other
-    signals:
-    - slug: checks-age
-      group: safety
-      label: Checks the quote age
-    - slug: number-cast
-      group: risk
-      label: Casts the price with Number()
-    checks:
-    - slug: wrong-network
-      label: Only points at mainnet feeds while the event runs on testnet
-      status: fail
 chain:
   contracts: 0
   wasm_uploads: 0

@@ -39,20 +39,11 @@ integrations:
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
     file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
   - method: signal
-    detail: checks-age
-    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/docs/board.html
-  - method: signal
-    detail: reads-decimals
-    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/docs/board.html
-  - method: signal
     detail: reads-history
     file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/contracts/repo/src/oracle.rs
   - method: signal
     detail: reads-last-price
     file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/docs/board.html
-  - method: signal
-    detail: reads-resolution
-    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/contracts/repo/src/oracle.rs
   profile:
     contracts:
     - slug: testnet-stellar-pubnet
@@ -89,22 +80,9 @@ integrations:
     - slug: reads-history
       group: read
       label: Reads price history
-    - slug: reads-decimals
-      group: safety
-      label: Reads decimals()
-    - slug: reads-resolution
-      group: safety
-      label: Reads resolution()
-    - slug: checks-age
-      group: safety
-      label: Checks the quote age
     captures:
       tickers:
       - USD
-    checks:
-    - slug: no-age-check
-      label: Reads prices without checking how old they are
-      status: pass
 agents:
 - slug: claude-code
   name: Claude Code

@@ -50,9 +50,6 @@ integrations:
     detail: single-release
     file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/config.mjs
   - method: signal
-    detail: submits-signed
-    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/config.mjs
-  - method: signal
     detail: testnet-api
     file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/.env.example
   - method: signal
@@ -84,24 +81,11 @@ integrations:
     - slug: deploy
       group: flow
       label: Deploys escrows
-    - slug: submits-signed
-      group: safety
-      label: Signs and submits through the helper
     captures:
       asset:
       - EURC
       operation:
       - deployer
-    checks:
-    - slug: exposes-api-key
-      label: Ships the API key to the browser
-      status: pass
-    - slug: no-rate-limit
-      label: Ignores the 50 requests per minute limit
-      status: warn
-    - slug: expects-webhooks
-      label: Waits for webhooks Trustless Work does not send yet
-      status: pass
 - slug: freighter
   name: Freighter
   evidence:

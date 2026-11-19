@@ -77,9 +77,6 @@ integrations:
     detail: rest-api
     file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/test/ledger-trustless-work.test.ts
   - method: signal
-    detail: submits-signed
-    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/test/ledger-trustless-work.test.ts
-  - method: signal
     detail: testnet-api
     file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/src/ledger/trustless-work.ts
   - method: signal
@@ -126,9 +123,6 @@ integrations:
     - slug: reads
       group: flow
       label: Reads escrows back
-    - slug: submits-signed
-      group: safety
-      label: Signs and submits through the helper
     captures:
       asset:
       - USDC
@@ -140,19 +134,6 @@ integrations:
       - fund-escrow
       - release-milestone-funds
       - resolve-milestone-dispute
-    checks:
-    - slug: exposes-api-key
-      label: Ships the API key to the browser
-      status: pass
-    - slug: release-without-validation
-      label: Releases funds without validating against the chain
-      status: warn
-    - slug: no-rate-limit
-      label: Ignores the 50 requests per minute limit
-      status: warn
-    - slug: expects-webhooks
-      label: Waits for webhooks Trustless Work does not send yet
-      status: pass
 tools:
 - slug: stellar-raven
   name: Stellar Raven

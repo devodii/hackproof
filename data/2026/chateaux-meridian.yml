@@ -57,10 +57,6 @@ integrations:
       attributes:
         source: fx
         asset_kind: other
-    checks:
-    - slug: wrong-network
-      label: Only points at mainnet feeds while the event runs on testnet
-      status: fail
 chain:
   contracts: 0
   wasm_uploads: 0

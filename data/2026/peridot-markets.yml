@@ -42,26 +42,14 @@ integrations:
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
     file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/qa/lib/bootstrap.ts
   - method: signal
-    detail: checks-age
-    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/margin-factory/src/test.rs
-  - method: signal
     detail: client-pulse
     file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/core/aquarius-lp-vault/src/oracle.rs
-  - method: signal
-    detail: hardcoded-decimals
-    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/launchpad-curve/src/test.rs
-  - method: signal
-    detail: reads-decimals
-    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/launchpad-factory/src/test.rs
   - method: signal
     detail: reads-history
     file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/core/simple-peridottroller/src/reflector.rs
   - method: signal
     detail: reads-last-price
     file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/market-factory/src/test.rs
-  - method: signal
-    detail: reads-resolution
-    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/price-router-ext/src/test.rs
   profile:
     contracts:
     - slug: testnet-stellar-pubnet
@@ -92,28 +80,9 @@ integrations:
     - slug: reads-history
       group: read
       label: Reads price history
-    - slug: reads-decimals
-      group: safety
-      label: Reads decimals()
-    - slug: reads-resolution
-      group: safety
-      label: Reads resolution()
-    - slug: checks-age
-      group: safety
-      label: Checks the quote age
-    - slug: hardcoded-decimals
-      group: risk
-      label: Assumes 7 decimals
     captures:
       tickers:
       - XLM
-    checks:
-    - slug: no-age-check
-      label: Reads prices without checking how old they are
-      status: pass
-    - slug: assumed-decimals
-      label: Scales prices as if they had 7 decimals
-      status: pass
 chain:
   contracts: 11
   wasm_uploads: 44

@@ -58,9 +58,6 @@ integrations:
     detail: single-release
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
   - method: signal
-    detail: submits-signed
-    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
-  - method: signal
     detail: testnet-api
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
   - method: signal
@@ -95,9 +92,6 @@ integrations:
     - slug: milestone-status
       group: flow
       label: Reports milestone progress
-    - slug: submits-signed
-      group: safety
-      label: Signs and submits through the helper
     captures:
       asset:
       - USDC
@@ -106,19 +100,6 @@ integrations:
       - change-milestone-status
       - deployer
       - release-funds
-    checks:
-    - slug: exposes-api-key
-      label: Ships the API key to the browser
-      status: pass
-    - slug: release-without-validation
-      label: Releases funds without validating against the chain
-      status: warn
-    - slug: no-rate-limit
-      label: Ignores the 50 requests per minute limit
-      status: warn
-    - slug: expects-webhooks
-      label: Waits for webhooks Trustless Work does not send yet
-      status: pass
 - slug: soroswap
   name: Soroswap
   evidence:
@@ -137,9 +118,6 @@ integrations:
   - method: contract
     detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/src/chain/index.js
-  - method: signal
-    detail: number-cast
-    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/src/live.js
   profile:
     contracts:
     - slug: testnet-fx
@@ -151,10 +129,6 @@ integrations:
       attributes:
         source: fx
         asset_kind: other
-    signals:
-    - slug: number-cast
-      group: risk
-      label: Casts the price with Number()
 agents:
 - slug: claude-code
   name: Claude Code
