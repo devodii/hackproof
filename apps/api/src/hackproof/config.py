@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     network_passphrase: str = "Test SDF Network ; September 2015"
     hackathon_file: Path = ROOT / "data" / "hackmeridian-2026.yaml"
     integrations_file: Path = ROOT / "data" / "integrations.yaml"
+    reflector_file: Path = ROOT / "data" / "reflector.yaml"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
     pgschema_image: str = "pgplex/pgschema:1.14.1"
