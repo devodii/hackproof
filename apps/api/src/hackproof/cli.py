@@ -7,7 +7,7 @@ from pathlib import Path
 from hackproof.config import get_settings
 from hackproof.db_utils import pgschema
 from hackproof.db_utils.connection import Connection
-from hackproof.export.jobs import run_check, run_export
+from hackproof.export.jobs import run_check, run_export, run_import
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
 from hackproof.linking.reconcile import run_reconcile
@@ -37,6 +37,18 @@ def run_schema(args: argparse.Namespace) -> int:
     return 1
 
 
+def run_restore(args: argparse.Namespace) -> int:
+    connection = Connection.from_url(get_settings().database_url)
+    if not (connection.is_local or args.remote or os.environ.get("CI")):
+        print(
+            f"{connection.label} is not on this machine. Pass --remote to write to it, "
+            "or let CI do it on merge."
+        )
+        return 1
+    asyncio.run(run_import())
+    return 0
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="hackproof")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -63,6 +75,15 @@ def main() -> None:
     )
     commands.add_parser(
         "export", help="write one yaml file per project into data and its schema"
+    )
+    restore = commands.add_parser(
+        "import",
+        help="load the integrations, tools and agents of the committed project files into the database",
+    )
+    restore.add_argument(
+        "--remote",
+        action="store_true",
+        help="allow a database that is not on this machine",
     )
     commands.add_parser(
         "check",
@@ -107,6 +128,8 @@ def main() -> None:
             asyncio.run(run_reconcile())
         case "export":
             asyncio.run(run_export())
+        case "import":
+            raise SystemExit(run_restore(args))
         case "check":
             raise SystemExit(asyncio.run(run_check()))
         case "schema":
