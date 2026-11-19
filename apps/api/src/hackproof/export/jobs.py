@@ -10,6 +10,7 @@ from hackproof.db import open_pool, pool
 from hackproof.export.build import build_export
 from hackproof.export.check import drift
 from hackproof.export.files import write_project_files
+from hackproof.export.restore import load_files, restore
 from hackproof.hackathon import get_hackathon
 
 log = logging.getLogger("hackproof.export")
@@ -58,3 +59,11 @@ async def run_check() -> int:
             "in sync: the database matches all %s project files", len(export.projects)
         )
     return 1 if found else 0
+
+
+async def run_import() -> None:
+    files = load_files(DATA)
+    await open_pool()
+    async with pool().acquire() as connection:
+        count = await restore(connection, files)
+    log.info("restored the scan data of %s projects from %s", count, DATA)

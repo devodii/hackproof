@@ -102,6 +102,10 @@ jobs:
           fi
           mkdir -p "$RUNNER_TEMP/plan"
           uv run hackproof schema apply --remote --out-dir "$RUNNER_TEMP/plan"
+      - name: Restore the scan data from the committed files
+        env:
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+        run: uv run hackproof import --remote
       - name: Keep the plan that ran
         if: always()
         uses: actions/upload-artifact@v4

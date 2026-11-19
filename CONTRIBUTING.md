@@ -38,6 +38,7 @@ The README has the commands to run everything locally.
 - Never store or publish emails, private messages or anything that is not on a public profile.
 - Locations are only ever the text the user wrote on their public profile, normalized to a country.
 - A new column or table that appears in the export means a new export schema version. Keep the old schema files.
+- Production does not run the scans, so whatever the scans find reaches it from the committed project files through `hackproof import`, which CI runs on merge and the data sync runs before it exports. A new section on the project files must be added to `RESTORED` in `export/restore.py`, or to `FROM_DATABASE` when the database can rebuild it. A test fails until you do, and without it the sync would open a pull request that deletes the section.
 
 ## Checks
 
