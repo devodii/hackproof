@@ -399,10 +399,10 @@ export interface components {
             failing: number;
             /** Label */
             label: string;
-            /** Offenders */
-            offenders: string[];
             /** Passing */
             passing: number;
+            /** Rule */
+            rule: string;
             /**
              * Severity
              * @enum {string}

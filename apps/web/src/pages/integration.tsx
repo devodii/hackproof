@@ -5,7 +5,6 @@ import { NotFoundPage } from '@/pages/not-found'
 import { AdopterCards } from '@/components/integration/adopter-cards'
 import { Block } from '@/components/integration/block'
 import { CaptureDemand } from '@/components/integration/capture-demand'
-import { CheckCards } from '@/components/integration/check-cards'
 import { ContractTable } from '@/components/integration/contract-table'
 import { Hero } from '@/components/integration/hero'
 import { LiveReadings } from '@/components/integration/live-readings'
@@ -49,16 +48,6 @@ export function IntegrationPage() {
       {data.contracts.length > 0 && (
         <Block eyebrow="On chain" title="Contracts">
           <ContractTable contracts={data.contracts} />
-        </Block>
-      )}
-
-      {data.checks.length > 0 && (
-        <Block
-          eyebrow="Audit"
-          title="Integration checklist"
-          note="Read from the code of every project"
-        >
-          <CheckCards checks={data.checks} adopters={data.adopters} />
         </Block>
       )}
 

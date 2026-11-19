@@ -214,16 +214,13 @@
             "title": "Label",
             "type": "string"
           },
-          "offenders": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Offenders",
-            "type": "array"
-          },
           "passing": {
             "title": "Passing",
             "type": "integer"
+          },
+          "rule": {
+            "title": "Rule",
+            "type": "string"
           },
           "severity": {
             "enum": [
@@ -244,7 +241,7 @@
           "severity",
           "passing",
           "failing",
-          "offenders"
+          "rule"
         ],
         "title": "CheckCount",
         "type": "object"
