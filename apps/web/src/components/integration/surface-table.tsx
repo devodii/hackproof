@@ -69,10 +69,7 @@ function columnsFor(
       cell: (row: ContractState) => {
         const value = row.snapshot?.facts[key]
         return (
-          <span
-            className={cn('block max-w-48 truncate tabular-nums', tone(value))}
-            title={String(value)}
-          >
+          <span className="block max-w-48 truncate tabular-nums" title={String(value)}>
             {factValue(value)}
           </span>
         )
