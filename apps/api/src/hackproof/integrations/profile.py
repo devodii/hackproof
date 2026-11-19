@@ -8,7 +8,9 @@ from hackproof.integrations.catalog import Product
 
 
 class Model(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        extra="forbid", json_schema_serialization_defaults_required=True
+    )
 
 
 class ProfileContractUse(Model):

@@ -1,7 +1,7 @@
 import time
 from collections import defaultdict
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 import httpx
 from pydantic import BaseModel, ConfigDict
@@ -16,6 +16,7 @@ from hackproof.integrations.catalog import (
 )
 from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.profile import IntegrationProfile, build_profile
+from hackproof.schemas import Tier
 from hackproof.sql_loader import load_sql
 
 NETWORK = "testnet"
@@ -23,7 +24,9 @@ LIVE_TTL = 30
 
 
 class Model(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        extra="forbid", json_schema_serialization_defaults_required=True
+    )
 
 
 class ContractState(Model):
@@ -46,7 +49,7 @@ class Adopter(Model):
     url: str
     owner: str
     owner_avatar: str | None
-    tier: str
+    tier: Tier
     language: str | None
     profile: IntegrationProfile
 
@@ -61,7 +64,7 @@ class SignalCount(Model):
 class CheckCount(Model):
     slug: str
     label: str
-    severity: str
+    severity: Literal["warn", "fail"]
     passing: int
     failing: int
     offenders: list[str]
