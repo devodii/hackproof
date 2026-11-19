@@ -53,6 +53,8 @@ The tables are not split by event, so each hackathon gets a database of its own,
 
 Any partner or tool in `data/integrations.yaml` can carry a `profile`. It lists the partner's known contract addresses, regex signals that say how the code uses it, values to capture from source, and checks built from those signals. The scan reads more files for a repo that shows the partner and records what it finds as evidence, `/api/integrations/{slug}` and the page at `/integration/{slug}` render it for every partner the same way, and the project files carry a `profile` per integration. A profile with no `adapter` needs no code at all, as Stellar Registry shows. Set `adapter` to a class registered in `integrations/adapters` when the partner's contracts can be read live; Reflector's adapter reads each oracle feed, its assets, when each asset expires, and a live price.
 
+A profile can also list `surfaces`: things the adapter watches that the repos never reference, such as a REST API, an npm package, a GitHub repo or a contract code hash. The adapter decides what each `kind` means and returns plain facts, and the page shows them as live cards without knowing the partner. `hints` tell the scan which paths to read first, and a check can `require` signals, need one of `missing` or fail on any of `forbids`. Trustless Work is the example: its adapter reads the published OpenAPI of three API hosts, npm, GitHub and the ledger.
+
 ## Database
 
 The schema lives in `apps/api/db/schema`, one file per table, index, view and function, and is applied with [pgschema](https://github.com/pgplex/pgschema). Queries live in `apps/api/src/hackproof/sql`. Run from `apps/api`.
@@ -71,3 +73,5 @@ To change the schema, edit the files in `db/schema`, run `schema plan`, and comm
 cd apps/api && uv run ruff check . && uv run ruff format --check . && uv run sqlfluff lint db/schema src/hackproof/sql && uv run pytest
 pnpm lint && pnpm format:check && pnpm build
 ```
+
+The web app's API types are generated. After changing a response model run `pnpm types` and commit `apps/web/openapi.json` and `apps/web/src/lib/api-schema.ts`; CI fails when they are stale.
