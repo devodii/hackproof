@@ -8,6 +8,7 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
+import { IntegrationPage } from '@/pages/integration'
 import { ContributorsPage } from '@/pages/contributors'
 import { PersonPage } from '@/pages/person'
 import { ProjectPage } from '@/pages/project'
@@ -28,6 +29,7 @@ function Shell() {
             <Route path="/" element={<HomePage />} />
             <Route path="/project/*" element={<ProjectPage />} />
             <Route path="/builder/:address" element={<BuilderPage />} />
+            <Route path="/integration/:slug" element={<IntegrationPage />} />
             <Route path="/contributors" element={<ContributorsPage />} />
             <Route path="/contributor/:login" element={<PersonPage />} />
           </Routes>

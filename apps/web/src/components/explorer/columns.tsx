@@ -19,6 +19,8 @@ import {
   formatDateTime,
   formatLastActivity,
   formatNumber,
+  humanize,
+  methodLabel,
   shortId,
 } from '@/lib/format'
 import { expertUrl, githubUrl } from '@/lib/links'
@@ -70,7 +72,7 @@ export const integrationColumns = (fullName: string): Column<IntegrationUse>[] =
   {
     header: 'Found as',
     cell: (row) => (
-      <Badge variant="outline">{row.method === 'package' ? 'Package' : 'API host'}</Badge>
+      <Badge variant="outline">{methodLabel[row.method] ?? humanize(row.method)}</Badge>
     ),
   },
   { header: 'Match', cell: (row) => <span className="font-mono text-xs">{row.evidence}</span> },

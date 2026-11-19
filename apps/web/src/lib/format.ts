@@ -89,3 +89,11 @@ export function humanize(slug: string) {
   const text = slug.replaceAll('_', ' ')
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
+
+export const methodLabel: Record<string, string> = {
+  package: 'Package',
+  endpoint: 'API host',
+  contract: 'Contract',
+  signal: 'Code signal',
+  capture: 'Captured value',
+}

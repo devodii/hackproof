@@ -88,6 +88,7 @@ export interface Integration {
   category: string
   site: string
   projects: number
+  deep: boolean
 }
 
 export interface Contributor {
@@ -138,15 +139,131 @@ export interface FailedTx {
 export interface IntegrationUse {
   slug: string
   name: string
-  method: 'package' | 'endpoint'
+  method: string
   evidence: string
   path: string
+}
+
+export interface ProfileContractUse {
+  slug: string
+  id: string
+  name: string
+  network: string
+  kind: string
+  explorer_url: string
+  attributes: Record<string, string>
+}
+
+export interface ProfileSignal {
+  slug: string
+  group: string
+  label: string
+}
+
+export interface ProfileCheck {
+  slug: string
+  label: string
+  status: 'pass' | 'warn' | 'fail'
+}
+
+export interface IntegrationProfile {
+  contracts: ProfileContractUse[]
+  signals: ProfileSignal[]
+  captures: Record<string, string[]>
+  checks: ProfileCheck[]
+}
+
+export interface IntegrationDepth {
+  slug: string
+  name: string
+  profile: IntegrationProfile
+}
+
+export type Fact = number | string | null
+
+export interface ContractSnapshot {
+  facts: Record<string, Fact>
+  items: string[]
+  deadlines: Record<string, number>
+}
+
+export interface ContractState {
+  slug: string
+  id: string
+  name: string
+  network: string
+  kind: string
+  attributes: Record<string, string>
+  explorer_url: string
+  snapshot: ContractSnapshot | null
+  observed_at: string | null
+  projects: number
+  expired: string[]
+}
+
+export interface Adopter {
+  project_id: string
+  full_name: string
+  url: string
+  owner: string
+  owner_avatar: string | null
+  tier: Tier
+  language: string | null
+  profile: IntegrationProfile
+}
+
+export interface SignalCount {
+  slug: string
+  label: string
+  group: string
+  projects: number
+}
+
+export interface CheckCount {
+  slug: string
+  label: string
+  severity: 'warn' | 'fail'
+  passing: number
+  failing: number
+}
+
+export interface CaptureCount {
+  value: string
+  projects: number
+  offered_by: string[]
+  expired_on: string[]
+}
+
+export interface IntegrationDetail {
+  slug: string
+  name: string
+  category: string
+  site: string
+  contracts: ContractState[]
+  adopters: Adopter[]
+  of_projects: number
+  signals: SignalCount[]
+  checks: CheckCount[]
+  captures: Record<string, CaptureCount[]>
+  overlap: { total: number; matched: number; by_contract: Record<string, number> } | null
+  live: string[]
+}
+
+export interface Reading {
+  contract: string
+  subject: string
+  value: string | null
+  timestamp: number | null
+  age_seconds: number | null
+  stale: boolean | null
+  facts: Record<string, Fact>
 }
 
 export interface ProjectDetail {
   project: Project
   links: Link[]
   integration_uses: IntegrationUse[]
+  integration_depths: IntegrationDepth[]
   tool_uses: IntegrationUse[]
   contributors: Contributor[]
   contracts: Contract[]

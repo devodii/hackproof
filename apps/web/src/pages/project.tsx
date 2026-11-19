@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 
 import { Contributors } from '@/components/contributors'
 import { DataTable } from '@/components/data-table'
+import { DepthCard } from '@/components/integration/depth-card'
 import { ActivitySections } from '@/components/explorer/activity-sections'
 import { integrationColumns, linkColumns } from '@/components/explorer/columns'
 import { ProjectSkeleton } from '@/components/page-skeletons'
@@ -32,6 +33,7 @@ export function ProjectPage() {
     project,
     links,
     integration_uses,
+    integration_depths,
     tool_uses,
     contributors,
     contracts,
@@ -155,11 +157,16 @@ export function ProjectPage() {
         )}
         {integration_uses.length > 0 && (
           <Section value="integrations" title="Integrations" count={integration_uses.length}>
-            <DataTable
-              columns={integrationColumns(project.full_name ?? '')}
-              rows={integration_uses}
-              rowKey={(row) => `${row.slug}:${row.method}:${row.evidence}`}
-            />
+            <div className="flex flex-col gap-4">
+              {integration_depths.map((depth) => (
+                <DepthCard key={depth.slug} depth={depth} />
+              ))}
+              <DataTable
+                columns={integrationColumns(project.full_name ?? '')}
+                rows={integration_uses}
+                rowKey={(row) => `${row.slug}:${row.method}:${row.evidence}`}
+              />
+            </div>
           </Section>
         )}
         {tool_uses.length > 0 && (
