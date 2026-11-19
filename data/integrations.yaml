@@ -168,9 +168,9 @@ partners:
         - {slug: reads-history, group: read, label: Reads price history, patterns: ['\.prices\(\s*&?[\w"''`]', '\bTWAP\b', '\btwap\b']}
         - {slug: reads-decimals, group: safety, label: Reads decimals(), patterns: ['\.decimals\(\s*\)', '\bdecimals\(\s*\)']}
         - {slug: reads-resolution, group: safety, label: Reads resolution(), patterns: ['\.resolution\(\s*\)', '\bresolution\(\s*\)']}
-        - {slug: checks-age, group: safety, label: Checks the quote age, patterns: ['ledger\(\)\.timestamp\(\)', 'Date\.now\(\)', '\bstale\b', '\bStale\w*', 'max_?[aA]ge', '[aA]ge_?[sS]ec']}
+        - {slug: checks-age, group: safety, label: Checks the quote age, patterns: ['ledger\(\)\.timestamp\(\)[^;\n]{0,80}timestamp', 'timestamp[^;\n]{0,80}ledger\(\)\.timestamp\(\)', 'Date\.now\(\)[^;\n]{0,80}timestamp', 'timestamp[^;\n]{0,80}Date\.now\(\)', '\b[sS]tale\w*', 'max_?[aA]ge', '[aA]ge_?[sS]ec', 'resolution\s*\*\s*\d']}
         - {slug: checks-expiry, group: safety, label: Checks feed expiry, patterns: ['\.expires\(', '\bexpires\(\s*&?\w']}
-        - {slug: hardcoded-decimals, group: risk, label: Assumes 7 decimals, patterns: ['\b10\s*\*\*\s*7\b', '\b1e7\b', '\b10_?000_?000\b', 'Math\.pow\(\s*10\s*,\s*7\s*\)']}
+        - {slug: hardcoded-decimals, group: risk, label: Assumes 7 decimals, patterns: ['[pP]rice[^;\n]{0,60}(?:\b1e7\b|10\s*\*\*\s*7\b|\b10_?000_?000\b|Math\.pow\(\s*10\s*,\s*7\s*\))', '(?:\b1e7\b|10\s*\*\*\s*7\b|\b10_?000_?000\b)[^;\n]{0,60}[pP]rice']}
         - {slug: number-cast, group: risk, label: Casts the price with Number(), patterns: ['Number\(\s*[\w.]*\.price\s*\)', 'Number\(\s*(?:quote|data|price)\w*\s*\)']}
       captures:
         - slug: tickers
@@ -185,7 +185,7 @@ partners:
       checks:
         - {slug: no-age-check, severity: warn, label: Reads prices without checking how old they are, requires: [reads-last-price], missing: [checks-age]}
         - {slug: assumed-decimals, severity: warn, label: Scales prices as if they had 7 decimals, requires: [hardcoded-decimals, reads-last-price], missing: [reads-decimals]}
-        - {slug: lossy-price, severity: warn, label: Turns a 14 decimal bigint price into a Number, requires: [number-cast], missing: []}
+        - {slug: lossy-price, severity: warn, label: Turns a 14 decimal bigint price into a Number, requires: [number-cast, reads-last-price], missing: []}
         - {slug: wrong-network, severity: fail, label: Only points at mainnet feeds while the event runs on testnet, only_networks: [mainnet]}
 
 tools:
