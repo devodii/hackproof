@@ -14,13 +14,11 @@ interface Figure {
 }
 
 function figures(data: IntegrationDetail): Figure[] {
-  const findings = data.checks.reduce((sum, check) => sum + check.failing, 0)
   const watched = [...data.contracts, ...data.surfaces]
   const observed = watched.filter((item) => item.snapshot).length
   const expired = data.contracts.reduce((sum, item) => sum + item.expired.length, 0)
   const all: Array<Figure | false | null> = [
     { value: data.adopters.length, total: data.of_projects, label: 'projects using it' },
-    { value: findings, label: 'open findings' },
     watched.length > 0 && {
       value: observed,
       total: watched.length,
