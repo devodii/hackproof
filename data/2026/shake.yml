@@ -14,6 +14,31 @@ commits_in_window: 102
 stack:
   soroban-sdk: 29.0.1
   '@stellar/stellar-sdk': ^16.3.1
+integrations:
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+    file_url: https://github.com/franciscogfsm/shake/blob/HEAD/README.md
+  - method: signal
+    detail: number-cast
+    file_url: https://github.com/franciscogfsm/shake/blob/HEAD/scripts/fx.mjs
+  profile:
+    contracts:
+    - slug: testnet-fx
+      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      name: Fiat FX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      attributes:
+        source: fx
+        asset_kind: other
+    signals:
+    - slug: number-cast
+      group: risk
+      label: Casts the price with Number()
 agents:
 - slug: claude-code
   name: Claude Code
@@ -67,28 +92,3 @@ contributors:
   contributions: 3
 - login: claude
   contributions: 2
-integrations:
-- slug: reflector
-  name: Reflector
-  evidence:
-  - method: contract
-    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-    file_url: https://github.com/franciscogfsm/shake/blob/HEAD/README.md
-  - method: signal
-    detail: number-cast
-    file_url: https://github.com/franciscogfsm/shake/blob/HEAD/scripts/fx.mjs
-  profile:
-    contracts:
-    - slug: testnet-fx
-      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      name: Fiat FX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      attributes:
-        source: fx
-        asset_kind: other
-    signals:
-    - slug: number-cast
-      group: risk
-      label: Casts the price with Number()

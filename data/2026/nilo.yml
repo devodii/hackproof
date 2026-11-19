@@ -14,6 +14,49 @@ commits_in_window: 64
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^17.3.0
+integrations:
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
+  - method: contract
+    detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
+  - method: signal
+    detail: checks-age
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/apps/web/src/prices.ts
+  - method: signal
+    detail: reads-decimals
+    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/packages/core/src/prices.ts
+  profile:
+    contracts:
+    - slug: testnet-fx
+      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      name: Fiat FX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      attributes:
+        source: fx
+        asset_kind: other
+    - slug: testnet-exchanges
+      id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      name: CEX and DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      attributes:
+        source: exchanges
+        asset_kind: other
+    signals:
+    - slug: reads-decimals
+      group: safety
+      label: Reads decimals()
+    - slug: checks-age
+      group: safety
+      label: Checks the quote age
 agents:
 - slug: cursor
   name: Cursor
@@ -78,46 +121,3 @@ contributors:
   contributions: 2
 - login: cursoragent
   contributions: 1
-integrations:
-- slug: reflector
-  name: Reflector
-  evidence:
-  - method: contract
-    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
-  - method: contract
-    detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
-    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/README.md
-  - method: signal
-    detail: checks-age
-    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/apps/web/src/prices.ts
-  - method: signal
-    detail: reads-decimals
-    file_url: https://github.com/Nearx-Labs/nilo/blob/HEAD/packages/core/src/prices.ts
-  profile:
-    contracts:
-    - slug: testnet-fx
-      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      name: Fiat FX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      attributes:
-        source: fx
-        asset_kind: other
-    - slug: testnet-exchanges
-      id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
-      name: CEX and DEX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
-      attributes:
-        source: exchanges
-        asset_kind: other
-    signals:
-    - slug: reads-decimals
-      group: safety
-      label: Reads decimals()
-    - slug: checks-age
-      group: safety
-      label: Checks the quote age
