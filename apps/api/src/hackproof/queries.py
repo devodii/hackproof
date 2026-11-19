@@ -159,6 +159,7 @@ async def fetch_integrations() -> list[dict[str, Any]]:
         {
             **partner.model_dump(include={"slug", "name", "category", "site"}),
             "projects": counts.get(partner.slug, 0),
+            "deep": partner.profile is not None,
         }
         for partner in get_catalog().partners
     ]

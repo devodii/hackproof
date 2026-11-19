@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from hackproof.github.models import DependencyFingerprint
 from hackproof.hackathon import Place
 from hackproof.integrations.models import Method
+from hackproof.integrations.profile import IntegrationProfile
 
 Tier = Literal["verified", "likely", "possible", "unattributed"]
 
@@ -127,10 +128,17 @@ class IntegrationUse(BaseModel):
     path: str
 
 
+class IntegrationDepth(BaseModel):
+    slug: str
+    name: str
+    profile: IntegrationProfile
+
+
 class ProjectDetail(BaseModel):
     project: Project
     links: list[Link]
     integration_uses: list[IntegrationUse]
+    integration_depths: list[IntegrationDepth]
     tool_uses: list[IntegrationUse]
     contributors: list[Contributor]
     contracts: list[Contract]
@@ -157,6 +165,7 @@ class Integration(BaseModel):
     category: str
     site: str
     projects: int
+    deep: bool
 
 
 class EcosystemTool(BaseModel):

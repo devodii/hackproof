@@ -3,6 +3,7 @@ from typing import Annotated, Any, Literal
 from fastapi import APIRouter, HTTPException, Query
 
 from hackproof import queries
+from hackproof.integrations.insights import depths
 from hackproof.schemas import (
     AiAgent,
     Builder,
@@ -129,16 +130,18 @@ async def project(project_id: str) -> ProjectDetail:
     found = await _everything("projects", project_id=project_id)
     if not found:
         raise HTTPException(status_code=404, detail="project not found")
+    uses = (
+        await queries.fetch_integration_uses(found[0]["full_name"])
+        if found[0]["full_name"]
+        else []
+    )
     return ProjectDetail(
         project=found[0],
         links=await queries.fetch_links(found[0]["full_name"])
         if found[0]["full_name"]
         else [],
-        integration_uses=(
-            await queries.fetch_integration_uses(found[0]["full_name"])
-            if found[0]["full_name"]
-            else []
-        ),
+        integration_uses=uses,
+        integration_depths=depths(uses),
         tool_uses=(
             await queries.fetch_tool_uses(found[0]["full_name"])
             if found[0]["full_name"]

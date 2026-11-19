@@ -159,3 +159,19 @@ def test_a_contributor_lists_their_projects_with_their_commits():
     assert len(person["projects"]) == top[0]["projects"]
     commits = [item["contributions"] for item in person["projects"]]
     assert commits == sorted(commits, reverse=True)
+
+
+def test_a_deep_partner_has_a_profile_and_a_plain_one_does_not():
+    with TestClient(app) as client:
+        deep = [
+            row["slug"] for row in client.get("/api/integrations").json() if row["deep"]
+        ]
+        assert deep
+        body = client.get(f"/api/integrations/{deep[0]}").json()
+        assert {"contracts", "adopters", "signals", "checks", "captures"} <= set(body)
+        plain = next(
+            row["slug"]
+            for row in client.get("/api/integrations").json()
+            if not row["deep"]
+        )
+        assert client.get(f"/api/integrations/{plain}").status_code == 404
