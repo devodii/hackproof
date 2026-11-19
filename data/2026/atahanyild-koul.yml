@@ -17,37 +17,6 @@ commits_in_window: 2
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': 16.0.1
-integrations:
-- slug: reflector
-  name: Reflector
-  evidence:
-  - method: capture
-    detail: tickers:USD
-    file_url: https://github.com/atahanyild/koul/blob/HEAD/contracts/koul_mock_fx/src/lib.rs
-  - method: contract
-    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-    file_url: https://github.com/atahanyild/koul/blob/HEAD/docs/phase0.md
-  - method: signal
-    detail: reads-last-price
-    file_url: https://github.com/atahanyild/koul/blob/HEAD/contracts/koul_mock_fx/src/lib.rs
-  profile:
-    contracts:
-    - slug: testnet-fx
-      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      name: Fiat FX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      attributes:
-        source: fx
-        asset_kind: other
-    signals:
-    - slug: reads-last-price
-      group: read
-      label: Reads the latest price
-    captures:
-      tickers:
-      - USD
 agents:
 - slug: claude-code
   name: Claude Code

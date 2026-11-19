@@ -32,10 +32,10 @@ integrations:
     file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/clients.rs
   - method: contract
     detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/testing/fork/README.md
+    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/test_fork.rs
   - method: contract
     detail: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/testing/fork/README.md
+    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/test_fork.rs
   - method: signal
     detail: client-pulse
     file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/cl_core.rs

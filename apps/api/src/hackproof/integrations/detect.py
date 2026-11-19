@@ -54,14 +54,14 @@ def _profile_hits(files: dict[str, str], partner: Product) -> list[Detection]:
         )
 
     for path, text in files.items():
-        for contract_id in ids:
-            if contract_id in text:
-                add("contract", contract_id, path)
         name = PurePosixPath(path).name
         if PurePosixPath(path).suffix in PROSE_SUFFIXES or name.lower().startswith(
             "readme"
         ):
             continue
+        for contract_id in ids:
+            if contract_id in text:
+                add("contract", contract_id, path)
         if not profile.in_context(text):
             continue
         for signal in profile.signals:

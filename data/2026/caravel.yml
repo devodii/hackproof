@@ -30,12 +30,6 @@ integrations:
     detail: tickers:USD
     file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/contracts/oracle/src/lib.rs
   - method: contract
-    detail: CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
-    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/scripts/README.md
-  - method: contract
-    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-    file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/scripts/README.md
-  - method: contract
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
     file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/.env
   - method: signal
@@ -46,24 +40,6 @@ integrations:
     file_url: https://github.com/rcusans-code/Caravel/blob/HEAD/docs/board.html
   profile:
     contracts:
-    - slug: testnet-stellar-pubnet
-      id: CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
-      name: Stellar Pubnet DEX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
-      attributes:
-        source: stellar-pubnet
-        asset_kind: stellar
-    - slug: testnet-fx
-      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      name: Fiat FX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      attributes:
-        source: fx
-        asset_kind: other
     - slug: testnet-exchanges
       id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
       name: CEX and DEX

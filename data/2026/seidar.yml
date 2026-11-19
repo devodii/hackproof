@@ -58,6 +58,9 @@ integrations:
   - method: contract
     detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
     file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
   profile:
     contracts:
     - slug: mainnet-exchanges
@@ -87,6 +90,10 @@ integrations:
       attributes:
         source: fx
         asset_kind: other
+    signals:
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
 chain:
   contracts: 0
   wasm_uploads: 0

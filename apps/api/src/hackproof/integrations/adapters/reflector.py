@@ -8,6 +8,7 @@ from stellar_sdk import StrKey, scval, xdr
 
 from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.adapters.base import Adapter
+from hackproof.integrations.adapters.sources import observe_package, observe_repo
 from hackproof.integrations.catalog import Network, ProfileContract
 from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.soroban import view
@@ -120,6 +121,10 @@ class ReflectorAdapter(Adapter):
     async def observe(
         self, http: httpx.AsyncClient, network: Network, contract: ProfileContract
     ) -> ContractSnapshot | None:
+        if contract.kind == "package":
+            return await observe_package(http, contract)
+        if contract.kind == "repo":
+            return await observe_repo(http, contract)
         return await observe(SorobanRpc(http, network.rpc_url), network, contract)
 
     async def probe(

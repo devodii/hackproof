@@ -29,7 +29,7 @@ integrations:
   evidence:
   - method: contract
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
-    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/deployments/sdk.testnet.json
   - method: signal
     detail: client-pulse
     file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/contracts/oracle_router/src/sources.rs
