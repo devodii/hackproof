@@ -1,5 +1,7 @@
 import { useParams } from 'react-router'
 
+import { NotFoundPage } from '@/pages/not-found'
+
 import { AdopterCards } from '@/components/integration/adopter-cards'
 import { Block } from '@/components/integration/block'
 import { CaptureDemand } from '@/components/integration/capture-demand'
@@ -12,6 +14,7 @@ import { SurfaceGrid } from '@/components/integration/surface-grid'
 import { DetailError } from '@/components/query-state'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useIntegration, useIntegrationLive } from '@/hooks/use-integration'
+import { ApiError } from '@/lib/api'
 import { humanize } from '@/lib/format'
 
 export function IntegrationPage() {
@@ -20,6 +23,7 @@ export function IntegrationPage() {
   const { data: readings } = useIntegrationLive(slug, (data?.live.length ?? 0) > 0)
 
   if (isPending) return <Skeleton className="h-96 rounded-3xl" />
+  if (error instanceof ApiError && error.status === 404) return <NotFoundPage />
   if (error) return <DetailError error={error} subject="integration" />
 
   return (
