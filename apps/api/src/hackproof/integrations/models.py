@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
-Method = Literal["package", "endpoint"]
+Method = Literal["package", "endpoint", "contract", "signal", "capture"]
 
 
 class Detection(BaseModel):
