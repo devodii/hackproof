@@ -207,7 +207,8 @@ partners:
         - slug: operation
           label: Operations called
           patterns:
-            - '/(?:single|multi)-release/(?:v2/)?([a-z][a-z-]+)'
+            - '/(?:single|multi)-release/(?:v2/)?(approve-and-release-milestones|approve-milestones?|change-milestone-status|deploy|dispute-escrow|dispute-milestones?|dispute|extend-ttl|fund-escrow|fund|manage-milestones|release-milestone-funds|release-funds|resolve-milestone-dispute|resolve-dispute|update-escrow|update|withdraw-remaining-funds|escrow-balances)\b'
+            - '/(deployer)/(?:single|multi)-release\b'
         - slug: react-sdk-version
           label: React SDK versions
           patterns:

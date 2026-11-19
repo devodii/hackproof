@@ -15,6 +15,7 @@ from hackproof.integrations.detect import (
     detect_tools,
 )
 from hackproof.integrations.models import Detection
+from hackproof.integrations.profile import build_profile
 
 CATALOG = Catalog(
     partners=[
@@ -284,3 +285,40 @@ def test_a_profile_written_before_the_newer_fields_still_loads():
     assert profile.surfaces == [] and profile.hints == []
     assert profile.contracts[0].url is None
     assert profile.checks[0].forbids == []
+
+
+def test_trustless_work_is_read_deeply_from_source():
+    files = {
+        "package.json": '{"dependencies": {"@trustless-work/escrow": "^3.0.5"}}',
+        ".env.example": "NEXT_PUBLIC_TRUSTLESS_WORK_API_KEY=\n",
+        "src/escrow.ts": (
+            "const base = 'https://dev.api.trustlesswork.com'\n"
+            "await fetch(`${base}/escrow/single-release/fund-escrow`, { headers })\n"
+            "await fetch(`${base}/escrow/single-release/v2/release-funds`, { headers })\n"
+            "const note = 'v1 hosts are dev.api and api.trustlesswork.com'\n"
+        ),
+        "README.md": "Built on Trustless Work. Webhooks soon.",
+    }
+    catalog = get_catalog()
+    found = [
+        (item.method, item.evidence)
+        for item in detect(files, catalog, "someone")
+        if item.slug == "trustless-work"
+    ]
+    assert ("package", "@trustless-work/escrow") in found
+    assert ("signal", "public-api-key") in found
+    assert ("signal", "testnet-api") in found
+    assert ("signal", "mainnet-api") not in found
+    assert ("capture", "operation:fund-escrow") in found
+    assert ("capture", "operation:release-funds") in found
+    assert ("capture", "react-sdk-version:3.0.5") in found
+    checks = {
+        check.slug: check.status
+        for check in build_profile(
+            catalog.partner("trustless-work"), found, "testnet"
+        ).checks
+    }
+    assert checks["exposes-api-key"] == "fail"
+    assert checks["release-without-validation"] == "warn"
+    assert checks["no-rate-limit"] == "warn"
+    assert "v2-on-mainnet-host" not in checks

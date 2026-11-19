@@ -67,7 +67,7 @@ export function IntegrationPage() {
       </Block>
 
       {Object.entries(data.captures).map(([name, rows]) => (
-        <Block key={name} eyebrow="Demand" title={humanize(name)}>
+        <Block key={name} eyebrow="Demand" title={humanize(name.replaceAll('-', ' '))}>
           <CaptureDemand rows={rows} contracts={data.contracts} />
         </Block>
       ))}
