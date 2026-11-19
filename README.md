@@ -37,8 +37,15 @@ uv run hackproof sync
 uv run hackproof discover
 uv run hackproof scan
 uv run hackproof reconcile
+uv run hackproof observe
 uv run hackproof export
 ```
+
+`observe` reads the live state of the contracts a deep integration declares, through the adapter named in its profile, and maps the hack's assets to their contract ids so the two can be compared.
+
+## Deep integrations
+
+Any partner or tool in `data/integrations.yaml` can carry a `profile`. It lists the partner's known contract addresses, regex signals that say how the code uses it, values to capture from source, and checks built from those signals. The scan reads more files for a repo that shows the partner and records what it finds as evidence, `/api/integrations/{slug}` and the page at `/integration/{slug}` render it for every partner the same way, and the project files carry a `profile` per integration. A profile with no `adapter` needs no code at all, as Stellar Registry shows. Set `adapter` to a class registered in `integrations/adapters` when the partner's contracts can be read live; Reflector's adapter reads each oracle feed, its assets, when each asset expires, and a live price.
 
 ## Database
 
