@@ -72,7 +72,7 @@ integrations:
       status: pass
     - slug: lossy-price
       label: Turns a 14 decimal bigint price into a Number
-      status: pass
+      status: warn
 chain:
   contracts: 92
   wasm_uploads: 29

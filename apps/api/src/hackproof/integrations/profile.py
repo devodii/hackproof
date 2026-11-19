@@ -106,9 +106,14 @@ def build_profile(
             continue
         if not set(check.requires) <= found_signals:
             continue
-        broken = any(slug in found_signals for slug in check.forbids) or (
-            bool(check.missing)
-            and not any(slug in found_signals for slug in check.missing)
+        guarded = bool(check.forbids or check.missing)
+        broken = (
+            not guarded
+            or any(slug in found_signals for slug in check.forbids)
+            or (
+                bool(check.missing)
+                and not any(slug in found_signals for slug in check.missing)
+            )
         )
         checks.append(
             ProfileCheck(

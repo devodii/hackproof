@@ -213,7 +213,7 @@ integrations:
       status: warn
     - slug: lossy-price
       label: Turns a 14 decimal bigint price into a Number
-      status: pass
+      status: warn
 agents:
 - slug: claude-code
   name: Claude Code

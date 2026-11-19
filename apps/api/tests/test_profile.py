@@ -50,3 +50,8 @@ def test_captures_group_by_name_and_deduplicate():
         "testnet",
     )
     assert profile and profile.captures == {"tickers": ["BRL", "EUR"]}
+
+
+def test_a_check_with_only_required_signals_fails_whenever_it_applies():
+    found = _statuses([("signal", "number-cast"), ("signal", "reads-last-price")])
+    assert found["lossy-price"] == "warn"
