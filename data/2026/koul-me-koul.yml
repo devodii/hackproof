@@ -28,25 +28,13 @@ integrations:
     detail: tickers:XLM
     file_url: https://github.com/koul-me/koul/blob/HEAD/contracts/koul_router/src/lib.rs
   - method: contract
-    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-    file_url: https://github.com/koul-me/koul/blob/HEAD/docs/phase0.md
-  - method: contract
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
-    file_url: https://github.com/koul-me/koul/blob/HEAD/README.md
+    file_url: https://github.com/koul-me/koul/blob/HEAD/keeper/scripts/competition.ts
   - method: signal
     detail: reads-last-price
     file_url: https://github.com/koul-me/koul/blob/HEAD/contracts/koul_mock_fx/src/lib.rs
   profile:
     contracts:
-    - slug: testnet-fx
-      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      name: Fiat FX
-      network: testnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-      attributes:
-        source: fx
-        asset_kind: other
     - slug: testnet-exchanges
       id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
       name: CEX and DEX

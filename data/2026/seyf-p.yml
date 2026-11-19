@@ -44,16 +44,19 @@ integrations:
   evidence:
   - method: contract
     detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/stellar-ecosystem.md
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
   - method: contract
     detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/stellar-ecosystem.md
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
   - method: contract
     detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/stellar-ecosystem.md
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
   - method: contract
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
-    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/stellar-ecosystem.md
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
   profile:
     contracts:
     - slug: mainnet-exchanges
@@ -92,6 +95,10 @@ integrations:
       attributes:
         source: exchanges
         asset_kind: other
+    signals:
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
 tools:
 - slug: stellar-skills
   name: Stellar Skills

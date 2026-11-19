@@ -34,9 +34,6 @@ integrations:
     detail: tickers:USD
     file_url: https://github.com/ygk94/4ward/blob/HEAD/contracts/mock-oracle/src/lib.rs
   - method: contract
-    detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-    file_url: https://github.com/ygk94/4ward/blob/HEAD/README.fr.md
-  - method: contract
     detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
     file_url: https://github.com/ygk94/4ward/blob/HEAD/.env.testnet
   - method: signal
@@ -44,15 +41,6 @@ integrations:
     file_url: https://github.com/ygk94/4ward/blob/HEAD/scripts/crash.sh
   profile:
     contracts:
-    - slug: mainnet-fx
-      id: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-      name: Fiat FX
-      network: mainnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/public/contract/CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-      attributes:
-        source: fx
-        asset_kind: other
     - slug: testnet-fx
       id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
       name: Fiat FX

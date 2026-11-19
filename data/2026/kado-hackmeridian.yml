@@ -12,36 +12,6 @@ evidence_tier: verified
 commits_in_window: 32
 stack:
   '@stellar/stellar-sdk': 17.2.1
-integrations:
-- slug: reflector
-  name: Reflector
-  evidence:
-  - method: contract
-    detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-    file_url: https://github.com/eduruizhipolito/kado-hackmeridian/blob/HEAD/.agents/skills/standards/ecosystem.md
-  - method: contract
-    detail: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-    file_url: https://github.com/eduruizhipolito/kado-hackmeridian/blob/HEAD/.agents/skills/standards/ecosystem.md
-  profile:
-    contracts:
-    - slug: mainnet-exchanges
-      id: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-      name: CEX and DEX
-      network: mainnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/public/contract/CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-      attributes:
-        source: exchanges
-        asset_kind: other
-    - slug: mainnet-stellar-pubnet
-      id: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-      name: Stellar Pubnet DEX
-      network: mainnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/public/contract/CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-      attributes:
-        source: stellar-pubnet
-        asset_kind: stellar
 tools:
 - slug: stellar-raven
   name: Stellar Raven
