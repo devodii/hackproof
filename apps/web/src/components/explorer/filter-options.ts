@@ -1,5 +1,5 @@
 import { countryName, flagEmoji, placeLabel, tierLabel, trackLabel } from '@/lib/format'
-import type { AiAgent, EcosystemTool, Integration, Project } from '@/lib/types'
+import type { AIAgent, EcosystemTool, Integration, Project } from '@/lib/types'
 
 import { countValues, type FilterKey, type Selection } from './filters'
 
@@ -34,7 +34,7 @@ export function options(
   projects: Project[],
   integrations: Integration[],
   tools: EcosystemTool[],
-  agents: AiAgent[],
+  agents: AIAgent[],
   selection: Selection,
 ): Option[] {
   const counts = countValues(projects, selection, key)
@@ -217,7 +217,7 @@ export function selectedGroups(
   projects: Project[],
   integrations: Integration[],
   tools: EcosystemTool[],
-  agents: AiAgent[],
+  agents: AIAgent[],
 ): SelectedGroup[] {
   return GROUPS.filter(({ key }) => selection[key].length > 0).map(
     ({ key, title, clause, lower = false, questions }) => {

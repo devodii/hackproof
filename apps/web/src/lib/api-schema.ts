@@ -331,6 +331,17 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AIAgent */
+        AIAgent: {
+            /** Name */
+            name: string;
+            /** Projects */
+            projects: number;
+            /** Site */
+            site: string;
+            /** Slug */
+            slug: string;
+        };
         /** Adopter */
         Adopter: {
             /** Full Name */
@@ -351,17 +362,6 @@ export interface components {
             tier: "verified" | "likely" | "possible" | "unattributed";
             /** Url */
             url: string;
-        };
-        /** AiAgent */
-        AiAgent: {
-            /** Name */
-            name: string;
-            /** Projects */
-            projects: number;
-            /** Site */
-            site: string;
-            /** Slug */
-            slug: string;
         };
         /** Builder */
         Builder: {
@@ -1070,8 +1070,8 @@ export interface components {
     headers: never;
     pathItems: never;
 }
+export type AiAgent = components['schemas']['AIAgent'];
 export type Adopter = components['schemas']['Adopter'];
-export type AiAgent = components['schemas']['AiAgent'];
 export type Builder = components['schemas']['Builder'];
 export type CaptureCount = components['schemas']['CaptureCount'];
 export type ChatRequest = components['schemas']['ChatRequest'];
@@ -1133,7 +1133,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["AiAgent"][];
+                    "application/json": components["schemas"]["AIAgent"][];
                 };
             };
         };

@@ -177,7 +177,7 @@ class EcosystemTool(BaseModel):
     projects: int
 
 
-class AiAgent(BaseModel):
+class AIAgent(BaseModel):
     slug: str
     name: str
     site: str

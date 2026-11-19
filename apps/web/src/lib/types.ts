@@ -1,7 +1,6 @@
-import type { Project } from '@/lib/api-schema'
+import type { components, Project } from '@/lib/api-schema'
 
 export type {
-  AiAgent,
   Adopter,
   Builder,
   CaptureCount,
@@ -36,6 +35,8 @@ export type {
   WrappedBuilder,
 } from '@/lib/api-schema'
 export type { Project }
+
+export type AIAgent = components['schemas']['AIAgent']
 
 export interface Page<T> {
   items: T[]

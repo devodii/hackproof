@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import type { AiAgent, EcosystemTool, Integration, Project } from '@/lib/types'
+import type { AIAgent, EcosystemTool, Integration, Project } from '@/lib/types'
 
 import { GROUPS, type Option, options } from './filter-options'
 import { type FilterKey, type Selection, selectedCount } from './filters'
@@ -13,7 +13,7 @@ interface FilterPanelProps {
   projects: Project[]
   integrations: Integration[]
   tools: EcosystemTool[]
-  agents: AiAgent[]
+  agents: AIAgent[]
   selection: Selection
   onToggle: (key: FilterKey, value: string) => void
   onClear: () => void

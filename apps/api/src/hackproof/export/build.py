@@ -7,7 +7,7 @@ import asyncpg
 from hackproof.export.models import (
     Account,
     AgentEvidence,
-    AiAgent,
+    AIAgent,
     Chain,
     Contract,
     Contributor,
@@ -76,7 +76,7 @@ def _found(
 
 def _agents(
     catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
-) -> list[AiAgent]:
+) -> list[AIAgent]:
     found: dict[str, list[AgentEvidence]] = defaultdict(list)
     for row in rows:
         found[row["agent"]].append(
@@ -89,7 +89,7 @@ def _agents(
             )
         )
     return [
-        AiAgent(
+        AIAgent(
             slug=agent.slug,
             name=agent.name,
             website=agent.site,

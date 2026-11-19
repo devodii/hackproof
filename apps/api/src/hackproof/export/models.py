@@ -149,7 +149,7 @@ class AgentEvidence(Model):
     )
 
 
-class AiAgent(Model):
+class AIAgent(Model):
     slug: str = Field(description="Stable agent id, listed in data/integrations.yaml")
     name: str = Field(description="Agent name")
     website: str = Field(description="Agent website")
@@ -235,7 +235,7 @@ class Project(Model):
     ecosystem_tools: list[EcosystemTool] = Field(
         description="Stellar developer tools the repo builds with, such as Scaffold Stellar"
     )
-    ai_agents: list[AiAgent] = Field(
+    ai_agents: list[AIAgent] = Field(
         description="AI coding agents the repo shows traces of, such as Claude Code or Cursor"
     )
     owner: Owner
