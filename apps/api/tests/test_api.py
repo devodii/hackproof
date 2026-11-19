@@ -167,8 +167,16 @@ def test_a_deep_partner_has_a_profile_and_a_plain_one_does_not():
             row["slug"] for row in client.get("/api/integrations").json() if row["deep"]
         ]
         assert deep
-        body = client.get(f"/api/integrations/{deep[0]}").json()
-        assert {"contracts", "adopters", "signals", "checks", "captures"} <= set(body)
+        for slug in deep:
+            body = client.get(f"/api/integrations/{slug}").json()
+            assert {
+                "contracts",
+                "surfaces",
+                "adopters",
+                "signals",
+                "checks",
+                "captures",
+            } <= set(body)
         plain = next(
             row["slug"]
             for row in client.get("/api/integrations").json()

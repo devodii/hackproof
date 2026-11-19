@@ -267,6 +267,9 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 contract.slug
             )
 
+    slug_of = {item.id: item.slug for item in contracts}
+    covered = [row for row in overlap_rows if row["contract_id"] in slug_of]
+
     return IntegrationDetail(
         slug=partner.slug,
         name=partner.name,
@@ -316,16 +319,12 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
         },
         overlap=Overlap(
             total=overlap_rows[0]["total"],
-            matched=sum(row["matched"] for row in overlap_rows),
+            matched=sum(row["matched"] for row in covered),
             by_contract={
-                next(c.slug for c in contracts if c.id == row["contract_id"]): row[
-                    "matched"
-                ]
-                for row in overlap_rows
+                slug_of[row["contract_id"]]: row["matched"] for row in covered
             },
         )
-        if overlap_rows
-        and any(item.snapshot and item.snapshot.items for item in contracts)
+        if covered and any(item.snapshot and item.snapshot.items for item in contracts)
         else None,
         live=[f"{probe.contract}:{probe.asset}" for probe in profile.live],
     )
