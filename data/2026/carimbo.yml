@@ -29,6 +29,9 @@ integrations:
     detail: operation:change-milestone-status
     file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
     detail: operation:dispute-escrow
     file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
   - method: capture
@@ -141,6 +144,7 @@ integrations:
       operation:
       - approve-milestone
       - change-milestone-status
+      - deployer
       - dispute-escrow
       - fund-escrow
       - release-funds

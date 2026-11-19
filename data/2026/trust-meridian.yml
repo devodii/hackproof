@@ -28,6 +28,9 @@ integrations:
     detail: operation:change-milestone-status
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: capture
     detail: operation:release-funds
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
   - method: endpoint
@@ -101,6 +104,7 @@ integrations:
       operation:
       - approve-milestone
       - change-milestone-status
+      - deployer
       - release-funds
     checks:
     - slug: exposes-api-key

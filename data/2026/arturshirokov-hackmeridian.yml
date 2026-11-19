@@ -26,6 +26,9 @@ integrations:
     detail: operation:change-milestone-status
     file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/test/ledger-trustless-work.test.ts
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/test/ledger-trustless-work.test.ts
+  - method: capture
     detail: operation:dispute-milestone
     file_url: https://github.com/ArturShirokov/hackmeridian/blob/HEAD/test/ledger-trustless-work.test.ts
   - method: capture
@@ -132,6 +135,7 @@ integrations:
       operation:
       - approve-milestone
       - change-milestone-status
+      - deployer
       - dispute-milestone
       - fund-escrow
       - release-milestone-funds

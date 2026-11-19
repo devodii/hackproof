@@ -39,6 +39,9 @@ integrations:
     detail: operation:change-milestone-status
     file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/test/trustless-work.test.ts
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: capture
     detail: operation:dispute-milestone
     file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
   - method: capture
@@ -173,6 +176,7 @@ integrations:
       - approve-and-release-milestones
       - approve-milestone
       - change-milestone-status
+      - deployer
       - dispute-milestone
       - dispute-milestones
       - fund-escrow

@@ -22,6 +22,9 @@ integrations:
   - method: capture
     detail: asset:EURC
     file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/src/domain/payments/escrow-types.ts
+  - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/stable-compat.mjs
   - method: endpoint
     detail: beta.api.trustlesswork.com
     file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/.env.example
@@ -87,6 +90,8 @@ integrations:
     captures:
       asset:
       - EURC
+      operation:
+      - deployer
     checks:
     - slug: exposes-api-key
       label: Ships the API key to the browser

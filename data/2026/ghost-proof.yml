@@ -25,13 +25,10 @@ integrations:
     detail: blocks-version:1.2.5
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: capture
     detail: operation:dispute-escrow
-    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/escrows/escrows-by-role/details/Actions.tsx
-  - method: capture
-    detail: operation:initialize-escrow
-    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/app/demo/page.tsx
-  - method: capture
-    detail: operation:release-escrow
     file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/escrows/escrows-by-role/details/Actions.tsx
   - method: capture
     detail: operation:resolve-dispute
@@ -191,9 +188,8 @@ integrations:
       blocks-version:
       - 1.2.5
       operation:
+      - deployer
       - dispute-escrow
-      - initialize-escrow
-      - release-escrow
       - resolve-dispute
       react-sdk-version:
       - 3.0.5

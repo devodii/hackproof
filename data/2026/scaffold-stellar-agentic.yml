@@ -44,6 +44,9 @@ integrations:
     detail: operation:change-milestone-status
     file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/tw-smoke.mjs
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/tw-smoke.mjs
+  - method: capture
     detail: operation:fund-escrow
     file_url: https://github.com/bitfalt/scaffold-stellar-agentic/blob/HEAD/scripts/tw-smoke.mjs
   - method: capture
@@ -183,6 +186,7 @@ integrations:
       operation:
       - approve-milestone
       - change-milestone-status
+      - deployer
       - fund-escrow
       - release-milestone-funds
       react-sdk-version:

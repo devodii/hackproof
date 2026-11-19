@@ -26,6 +26,9 @@ integrations:
     detail: operation:change-milestone-status
     file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: capture
     detail: operation:dispute-milestone
     file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
   - method: capture
@@ -148,6 +151,7 @@ integrations:
       operation:
       - approve-milestone
       - change-milestone-status
+      - deployer
       - dispute-milestone
       - release-milestone-funds
       - resolve-milestone-dispute

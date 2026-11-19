@@ -33,6 +33,9 @@ integrations:
     detail: operation:deploy
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/app.test.ts
   - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
     detail: operation:dispute
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/app.test.ts
   - method: capture
@@ -49,9 +52,6 @@ integrations:
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
   - method: capture
     detail: operation:resolve-dispute
-    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
-  - method: capture
-    detail: operation:vault-position
     file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
   - method: capture
     detail: operation:withdraw-remaining-funds
@@ -168,13 +168,13 @@ integrations:
       - approve-milestone
       - approve-milestones
       - deploy
+      - deployer
       - dispute
       - dispute-escrow
       - fund
       - fund-escrow
       - release-funds
       - resolve-dispute
-      - vault-position
       - withdraw-remaining-funds
     checks:
     - slug: exposes-api-key
