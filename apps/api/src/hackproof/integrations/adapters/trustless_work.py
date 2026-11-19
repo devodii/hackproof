@@ -161,7 +161,7 @@ async def observe_repo(
             "stars": repository.stargazers_count,
             "forks": repository.forks_count,
             "pushed": repository.pushed_at[:10],
-            "archived": "yes" if repository.archived else "no",
+            "archived": "TRUE" if repository.archived else "FALSE",
         }
     )
 
@@ -180,10 +180,10 @@ async def observe_wasm(
     )
     entries = result.get("entries") or []
     if not entries:
-        return ContractSnapshot(facts={"live": "no"})
+        return ContractSnapshot(facts={"live": "FALSE"})
     code = xdr.LedgerEntryData.from_xdr(entries[0]["xdr"]).contract_code.code
     present = [name for name in ESCROW_FUNCTIONS if name.encode() in code]
-    return ContractSnapshot(facts={"live": "yes", "bytes": len(code)}, items=present)
+    return ContractSnapshot(facts={"live": "TRUE", "bytes": len(code)}, items=present)
 
 
 class TrustlessWorkAdapter(Adapter):

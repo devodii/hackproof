@@ -36,12 +36,6 @@ function factValue(value: Fact | undefined) {
   return typeof value === 'number' ? formatNumber(value) : value
 }
 
-function tone(value: Fact | undefined) {
-  if (value === 'yes') return 'text-ok'
-  if (value === 'no') return 'text-destructive'
-  return ''
-}
-
 function isFresh(iso: string | null) {
   return iso !== null && moment().diff(moment(iso), 'hours') < FRESH_HOURS
 }
