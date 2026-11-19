@@ -121,7 +121,7 @@ class FailedTx(BaseModel):
 class IntegrationUse(BaseModel):
     slug: str
     name: str
-    method: Literal["package", "endpoint"]
+    method: Literal["package", "endpoint", "contract", "signal", "capture"]
     evidence: str
     path: str
 
