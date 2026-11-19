@@ -33,13 +33,19 @@ The web app is on `localhost:5173` and proxies `/api` to port 8000. Set `ANTHROP
 Run from `apps/api`. `discover` and `scan` need `HACKPROOF_GITHUB_TOKEN`.
 
 ```sh
-uv run hackproof sync
-uv run hackproof discover
-uv run hackproof scan
-uv run hackproof reconcile
-uv run hackproof observe
-uv run hackproof export
+uv run hackproof run
 ```
+
+`run` does the whole job for one hackathon, in order: `sync` indexes the hack window from the chain, `discover` finds candidate repos, `scan` reads them, `reconcile` links chain activity to repos and builds the projects, `observe` reads the live state of the integrations' contracts, and `export` writes the project files into `data`. It stops at the first stage that fails and prints the command to carry on from there. Use `--from reconcile`, `--only export` or `--skip discover scan` to run part of it, and `--force`, `--projects` or `--strings` to change how the scan and discovery behave. The stages are also commands of their own.
+
+To run a new hackathon, copy `data/hackmeridian-2026.yaml`, set its slug, window, awards and discovery queries, create a database for it and run:
+
+```sh
+HACKPROOF_DATABASE_URL=postgresql://... uv run hackproof schema apply
+HACKPROOF_DATABASE_URL=postgresql://... uv run hackproof run --hackathon ../../data/<your-file>.yaml
+```
+
+The tables are not split by event, so each hackathon gets a database of its own, and `run` records the event in the database and refuses to run another one on it. Against a database that is not on this machine it needs `--remote`.
 
 `observe` reads the live state of the contracts a deep integration declares, through the adapter named in its profile, and maps the hack's assets to their contract ids so the two can be compared.
 
