@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict
 from hackproof.db import pool
 from hackproof.integrations.adapters import ADAPTERS
 from hackproof.integrations.catalog import (
+    Check,
     Network,
     Product,
     ProfileContract,
@@ -67,7 +68,7 @@ class CheckCount(Model):
     severity: Literal["warn", "fail"]
     passing: int
     failing: int
-    offenders: list[str]
+    rule: str
 
 
 class CaptureCount(Model):
@@ -98,6 +99,24 @@ class IntegrationDetail(Model):
     captures: dict[str, list[CaptureCount]]
     overlap: Overlap | None
     live: list[str]
+
+
+def describe(check: Check, labels: dict[str, str]) -> str:
+    def named(slugs: list[str]) -> str:
+        return ", ".join(labels.get(slug, slug).lower() for slug in slugs)
+
+    if check.only_networks:
+        return f"Fails when a project only points at {', '.join(check.only_networks)} contracts."
+    counted = (
+        f"Counted when the code shows: {named(check.requires)}. "
+        if check.requires
+        else ""
+    )
+    if check.forbids:
+        return f"{counted}Fails when it also shows: {named(check.forbids)}."
+    if check.missing:
+        return f"{counted}Fails when it shows none of: {named(check.missing)}."
+    return f"{counted}Fails whenever it applies."
 
 
 def _expired(snapshot: ContractSnapshot | None) -> list[str]:
@@ -180,18 +199,16 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
     contracts = [state(item, used[item.id]) for item in profile.contracts]
     surfaces = [state(item, 0) for item in profile.surfaces]
 
+    labels = {signal.slug: signal.label for signal in profile.signals}
     signal_projects: dict[str, int] = defaultdict(int)
     check_pass: dict[str, int] = defaultdict(int)
     check_fail: dict[str, int] = defaultdict(int)
-    offenders: dict[str, list[str]] = defaultdict(list)
     capture_projects: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     for adopter in adopters:
         for signal in adopter.profile.signals:
             signal_projects[signal.slug] += 1
         for check in adopter.profile.checks:
             (check_pass if check.status == "pass" else check_fail)[check.slug] += 1
-            if check.status != "pass":
-                offenders[check.slug].append(adopter.full_name)
         for name, values in adopter.profile.captures.items():
             for value in values:
                 capture_projects[name][value] += 1
@@ -235,7 +252,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 severity=check.severity,
                 passing=check_pass[check.slug],
                 failing=check_fail[check.slug],
-                offenders=offenders[check.slug],
+                rule=describe(check, labels),
             )
             for check in profile.checks
         ],
