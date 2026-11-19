@@ -393,7 +393,23 @@ partners:
           rpc_url: https://mainnet.sorobanrpc.com
           passphrase: Public Global Stellar Network ; September 2015
           explorer: https://stellar.expert/explorer/public/contract
+        npm:
+          rpc_url: https://registry.npmjs.org
+          passphrase: npm
+          explorer: https://www.npmjs.com/package
+        github:
+          rpc_url: https://api.github.com
+          passphrase: github
+          explorer: https://github.com
       context: [reflector, '\bPulseClient\b', '\bBeamClient\b', '\bFlareClient\b', '\bReflector\w*Client\b']
+      surfaces:
+        - {slug: pkg-contract-client, id: "@reflector/contract-client", name: Contract client, network: npm, kind: package}
+        - {slug: pkg-dao-client, id: "@reflector/dao-client", name: DAO client, network: npm, kind: package}
+        - {slug: pkg-subscription-client, id: "@reflector/subscription-client", name: Subscription client, network: npm, kind: package}
+        - {slug: repo-contract, id: reflector-network/reflector-contract, name: Oracle contract, network: github, kind: repo}
+        - {slug: repo-client, id: reflector-network/contract-client-js, name: Contract client source, network: github, kind: repo}
+        - {slug: repo-node, id: reflector-network/reflector-node, name: Oracle node, network: github, kind: repo}
+        - {slug: repo-subscription, id: reflector-network/reflector-subscription-contract, name: Subscription contract, network: github, kind: repo}
       contracts:
         - {slug: testnet-fx, id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W, name: Fiat FX, network: testnet, kind: feed, attributes: {source: fx, asset_kind: other}}
         - {slug: testnet-exchanges, id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63, name: CEX and DEX, network: testnet, kind: feed, attributes: {source: exchanges, asset_kind: other}}
