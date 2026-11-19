@@ -16,6 +16,13 @@ commits_in_window: 8
 stack:
   soroban-sdk: =29.0.1
   '@stellar/stellar-sdk': 17.2.1
+integrations:
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: package
+    detail: '@reflector/contract-client'
+    file_url: https://github.com/Bran18/citypass/blob/HEAD/package.json
 agents:
 - slug: agents-md
   name: AGENTS.md

@@ -13,6 +13,182 @@ commits_in_window: 66
 stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': 16.4.1
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: capture
+    detail: asset:USDC
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/fianza.ts
+  - method: capture
+    detail: operation:approve-and-release-milestones
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/fianzas.test.ts
+  - method: capture
+    detail: operation:approve-milestone
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
+    detail: operation:approve-milestones
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/fianzas.test.ts
+  - method: capture
+    detail: operation:deploy
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/app.test.ts
+  - method: capture
+    detail: operation:dispute
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/app.test.ts
+  - method: capture
+    detail: operation:dispute-escrow
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
+    detail: operation:fund
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/fianzas.test.ts
+  - method: capture
+    detail: operation:fund-escrow
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
+    detail: operation:release-funds
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
+    detail: operation:resolve-dispute
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
+    detail: operation:vault-position
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: capture
+    detail: operation:withdraw-remaining-funds
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: api-v2
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/app.test.ts
+  - method: signal
+    detail: approve
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: dispute
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: fund
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: handles-rate-limit
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/apps/api/src/limits.test.ts
+  - method: signal
+    detail: multi-release
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/types.ts
+  - method: signal
+    detail: reads
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: release
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: resolve
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: single-release
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: submits-signed
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: validates-on-chain
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/packages/trustless/src/client.test.ts
+  - method: signal
+    detail: withdraw
+    file_url: https://github.com/jzelada97/Pledge/blob/HEAD/.env.example
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: api-v2
+      group: version
+      label: V2 beta API
+    - slug: single-release
+      group: type
+      label: Single release escrows
+    - slug: multi-release
+      group: type
+      label: Multi release escrows
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: fund
+      group: flow
+      label: Funds escrows
+    - slug: approve
+      group: flow
+      label: Approves milestones
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: dispute
+      group: flow
+      label: Opens disputes
+    - slug: resolve
+      group: flow
+      label: Resolves disputes
+    - slug: withdraw
+      group: flow
+      label: Withdraws leftovers
+    - slug: reads
+      group: flow
+      label: Reads escrows back
+    - slug: validates-on-chain
+      group: safety
+      label: Validates against the chain
+    - slug: submits-signed
+      group: safety
+      label: Signs and submits through the helper
+    - slug: handles-rate-limit
+      group: safety
+      label: Handles the rate limit
+    captures:
+      asset:
+      - USDC
+      operation:
+      - approve-and-release-milestones
+      - approve-milestone
+      - approve-milestones
+      - deploy
+      - dispute
+      - dispute-escrow
+      - fund
+      - fund-escrow
+      - release-funds
+      - resolve-dispute
+      - vault-position
+      - withdraw-remaining-funds
+    checks:
+    - slug: exposes-api-key
+      label: Ships the API key to the browser
+      status: pass
+    - slug: release-without-validation
+      label: Releases funds without validating against the chain
+      status: pass
+    - slug: no-rate-limit
+      label: Ignores the 50 requests per minute limit
+      status: pass
+    - slug: expects-webhooks
+      label: Waits for webhooks Trustless Work does not send yet
+      status: pass
 agents:
 - slug: claude-code
   name: Claude Code

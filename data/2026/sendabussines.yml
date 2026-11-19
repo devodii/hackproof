@@ -19,12 +19,103 @@ integrations:
 - slug: trustless-work
   name: Trustless Work
   evidence:
+  - method: capture
+    detail: asset:USDC
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.ts
+  - method: capture
+    detail: operation:approve-and-release-milestones
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/constants.ts
+  - method: capture
+    detail: operation:deploy
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: capture
+    detail: operation:fund
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
   - method: endpoint
     detail: api.trustlesswork.com
     file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/constants.ts
   - method: endpoint
+    detail: beta.api.trustlesswork.com
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/.env.example
+  - method: endpoint
     detail: dev.api.trustlesswork.com
     file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: api-v2
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/.env.example
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/.env.example
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: fund
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: multi-release
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: release
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: submits-signed
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/src/escrow/client.test.ts
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/SendaLabs/SendaBussines/blob/HEAD/apps/api/.env.example
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: api-v2
+      group: version
+      label: V2 beta API
+    - slug: multi-release
+      group: type
+      label: Multi release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: fund
+      group: flow
+      label: Funds escrows
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: submits-signed
+      group: safety
+      label: Signs and submits through the helper
+    captures:
+      asset:
+      - USDC
+      operation:
+      - approve-and-release-milestones
+      - deploy
+      - fund
+    checks:
+    - slug: exposes-api-key
+      label: Ships the API key to the browser
+      status: pass
+    - slug: release-without-validation
+      label: Releases funds without validating against the chain
+      status: warn
+    - slug: no-rate-limit
+      label: Ignores the 50 requests per minute limit
+      status: warn
+    - slug: expects-webhooks
+      label: Waits for webhooks Trustless Work does not send yet
+      status: pass
 - slug: freighter
   name: Freighter
   evidence:

@@ -46,6 +46,64 @@ integrations:
   - method: package
     detail: '@allbridge/bridge-core-sdk'
     file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: contract
+    detail: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: contract
+    detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: signal
+    detail: checks-age
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/contracts/fork/tests/leverage.rs
+  - method: signal
+    detail: number-cast
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  profile:
+    contracts:
+    - slug: mainnet-exchanges
+      id: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+      name: CEX and DEX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+      attributes:
+        source: exchanges
+        asset_kind: other
+    - slug: mainnet-stellar-pubnet
+      id: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
+      name: Stellar Pubnet DEX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
+      attributes:
+        source: stellar-pubnet
+        asset_kind: stellar
+    - slug: mainnet-fx
+      id: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+      name: Fiat FX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+      attributes:
+        source: fx
+        asset_kind: other
+    signals:
+    - slug: checks-age
+      group: safety
+      label: Checks the quote age
+    - slug: number-cast
+      group: risk
+      label: Casts the price with Number()
+    checks:
+    - slug: wrong-network
+      label: Only points at mainnet feeds while the event runs on testnet
+      status: fail
 chain:
   contracts: 0
   wasm_uploads: 0

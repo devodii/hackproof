@@ -19,12 +19,154 @@ integrations:
 - slug: trustless-work
   name: Trustless Work
   evidence:
+  - method: capture
+    detail: operation:approve-milestone
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: capture
+    detail: operation:change-milestone-status
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: capture
+    detail: operation:dispute-milestone
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: capture
+    detail: operation:release-milestone-funds
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: capture
+    detail: operation:resolve-milestone-dispute
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
   - method: endpoint
     detail: api.trustlesswork.com
     file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
   - method: endpoint
     detail: dev.api.trustlesswork.com
     file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
+  - method: signal
+    detail: approve
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: dispute
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: fund
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: mainnet-api
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
+  - method: signal
+    detail: milestone-status
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: multi-release
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: react-sdk
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/services/api/src/adapters/trustlesswork.ts
+  - method: signal
+    detail: reads
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: release
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: resolve
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: submits-signed
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/.env.example
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  - method: signal
+    detail: validates-on-chain
+    file_url: https://github.com/Ilyes-Ali-Jeridi/qafila/blob/HEAD/scripts/spikes/sp10-trustless-work.ts
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: react-sdk
+      group: client
+      label: React SDK
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: multi-release
+      group: type
+      label: Multi release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: mainnet-api
+      group: network
+      label: Mainnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: fund
+      group: flow
+      label: Funds escrows
+    - slug: approve
+      group: flow
+      label: Approves milestones
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: dispute
+      group: flow
+      label: Opens disputes
+    - slug: resolve
+      group: flow
+      label: Resolves disputes
+    - slug: milestone-status
+      group: flow
+      label: Reports milestone progress
+    - slug: reads
+      group: flow
+      label: Reads escrows back
+    - slug: validates-on-chain
+      group: safety
+      label: Validates against the chain
+    - slug: submits-signed
+      group: safety
+      label: Signs and submits through the helper
+    captures:
+      operation:
+      - approve-milestone
+      - change-milestone-status
+      - dispute-milestone
+      - release-milestone-funds
+      - resolve-milestone-dispute
+    checks:
+    - slug: exposes-api-key
+      label: Ships the API key to the browser
+      status: pass
+    - slug: v2-on-mainnet-host
+      label: Calls V2 beta paths on the mainnet host
+      status: pass
+    - slug: release-without-validation
+      label: Releases funds without validating against the chain
+      status: pass
+    - slug: no-rate-limit
+      label: Ignores the 50 requests per minute limit
+      status: warn
+    - slug: expects-webhooks
+      label: Waits for webhooks Trustless Work does not send yet
+      status: pass
 - slug: stellar-wallets-kit
   name: Stellar Wallets Kit
   evidence:
@@ -67,7 +209,7 @@ integrations:
       status: warn
     - slug: lossy-price
       label: Turns a 14 decimal bigint price into a Number
-      status: warn
+      status: pass
 agents:
 - slug: claude-code
   name: Claude Code
