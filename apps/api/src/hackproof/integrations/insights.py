@@ -33,6 +33,7 @@ class ContractState(Model):
     snapshot: ContractSnapshot | None
     observed_at: datetime | None
     projects: int
+    expired: list[str]
 
 
 class Adopter(Model):
@@ -65,6 +66,7 @@ class CaptureCount(Model):
     value: str
     projects: int
     offered_by: list[str]
+    expired_on: list[str]
 
 
 class Overlap(Model):
@@ -87,6 +89,13 @@ class IntegrationDetail(Model):
     captures: dict[str, list[CaptureCount]]
     overlap: Overlap | None
     live: list[str]
+
+
+def _expired(snapshot: ContractSnapshot | None) -> list[str]:
+    if snapshot is None:
+        return []
+    now = time.time()
+    return [item for item, due in snapshot.deadlines.items() if due < now]
 
 
 def _explorer(partner: Partner, network: str, contract_id: str) -> str:
@@ -154,6 +163,7 @@ async def fetch_detail(partner: Partner) -> IntegrationDetail:
             snapshot=snapshots.get(item.id, (None, None))[0],
             observed_at=snapshots.get(item.id, (None, None))[1],
             projects=used[item.id],
+            expired=_expired(snapshots.get(item.id, (None, None))[0]),
         )
         for item in profile.contracts
     ]
@@ -171,9 +181,18 @@ async def fetch_detail(partner: Partner) -> IntegrationDetail:
             for value in values:
                 capture_projects[name][value] += 1
     offered: dict[str, list[str]] = defaultdict(list)
+    lapsed: dict[str, list[str]] = defaultdict(list)
     for contract in contracts:
-        for item in contract.snapshot.items if contract.snapshot else []:
-            offered[item].append(contract.slug)
+        if not contract.snapshot:
+            continue
+        base = contract.snapshot.facts.get("base")
+        for item in [
+            *contract.snapshot.items,
+            *([base] if isinstance(base, str) else []),
+        ]:
+            (lapsed if item in contract.expired else offered)[item].append(
+                contract.slug
+            )
 
     return IntegrationDetail(
         slug=partner.slug,
@@ -210,6 +229,7 @@ async def fetch_detail(partner: Partner) -> IntegrationDetail:
                         value=value,
                         projects=count,
                         offered_by=offered.get(value, []),
+                        expired_on=lapsed.get(value, []),
                     )
                     for value, count in values.items()
                 ),

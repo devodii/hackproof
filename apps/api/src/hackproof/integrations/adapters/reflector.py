@@ -11,6 +11,8 @@ from hackproof.integrations.catalog import Network, ProfileContract
 from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.soroban import view
 
+EXPIRY_CONCURRENCY = 8
+
 
 def asset_key(native: Any) -> str:
     kind, value = native
@@ -43,6 +45,20 @@ async def observe(
         read("last_timestamp"),
         read("assets"),
     )
+    items = [asset_key(item) for item in assets or []]
+    gate = asyncio.Semaphore(EXPIRY_CONCURRENCY)
+
+    async def deadline(item: str) -> int | None:
+        async with gate:
+            return await view(
+                rpc,
+                network.passphrase,
+                contract.id,
+                "expires",
+                [asset_arg(contract, item)],
+            )
+
+    deadlines = await asyncio.gather(*(deadline(item) for item in items))
     return ContractSnapshot(
         facts={
             "base": asset_key(base) if base else None,
@@ -52,7 +68,12 @@ async def observe(
             "version": version,
             "last_timestamp": last,
         },
-        items=[asset_key(item) for item in assets or []],
+        items=items,
+        deadlines={
+            item: deadline
+            for item, deadline in zip(items, deadlines, strict=True)
+            if deadline
+        },
     )
 
 
@@ -75,7 +96,11 @@ async def quote(
         ),
     )
     if not last:
-        return None
+        return Reading(
+            contract=contract.slug,
+            subject=asset,
+            facts={"decimals": decimals, "resolution": resolution},
+        )
     age = max(0, int(time.time()) - last["timestamp"])
     return Reading(
         contract=contract.slug,

@@ -8,6 +8,7 @@ class ContractSnapshot(BaseModel):
 
     facts: dict[str, Fact] = Field(default_factory=dict)
     items: list[str] = Field(default_factory=list)
+    deadlines: dict[str, int] = Field(default_factory=dict)
 
 
 class Reading(BaseModel):
@@ -15,7 +16,7 @@ class Reading(BaseModel):
 
     contract: str
     subject: str
-    value: str
+    value: str | None = None
     timestamp: int | None = None
     age_seconds: int | None = None
     stale: bool | None = None
