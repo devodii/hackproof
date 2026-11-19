@@ -206,8 +206,8 @@ partners:
           private: true
           label: Key readable in the browser
           patterns:
-            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_[A-Z_]*(?:TRUSTLESS|TW)[A-Z_]*(?:KEY|API)[A-Z_]*'
-            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_API_KEY'
+            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_[A-Z_]*(?:TRUSTLESS|TW)[A-Z_]*KEY\b'
+            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_API_KEY\b'
       captures:
         - slug: operation
           label: Operations called
