@@ -43,10 +43,10 @@ async def run_observe() -> None:
                         datetime.now(UTC),
                     )
                 log.info(
-                    "observed %s %s: %s assets",
+                    "observed %s %s: %s items",
                     partner.slug,
                     contract.slug,
-                    len(snapshot.assets),
+                    len(snapshot.items),
                 )
     await map_assets()
 

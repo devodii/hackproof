@@ -1,25 +1,22 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
+
+Fact = int | str | None
 
 
 class ContractSnapshot(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    base: str | None = None
-    decimals: int | None = None
-    resolution: int | None = None
-    retention: int | None = None
-    version: int | None = None
-    last_timestamp: int | None = None
-    assets: list[str]
+    facts: dict[str, Fact] = Field(default_factory=dict)
+    items: list[str] = Field(default_factory=list)
 
 
-class Quote(BaseModel):
+class Reading(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     contract: str
-    asset: str
-    price: str
-    decimals: int
-    timestamp: int
-    age_seconds: int
-    stale: bool
+    subject: str
+    value: str
+    timestamp: int | None = None
+    age_seconds: int | None = None
+    stale: bool | None = None
+    facts: dict[str, Fact] = Field(default_factory=dict)

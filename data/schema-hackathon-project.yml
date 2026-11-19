@@ -291,12 +291,7 @@ $defs:
         title: Slug
         type: string
       group:
-        description: 'client: which client it uses. read: what it reads. safety: guards it applies. risk: known pitfalls'
-        enum:
-        - client
-        - read
-        - safety
-        - risk
+        description: How the catalog groups the signal, for example client, read, safety or risk
         title: Group
         type: string
       label:

@@ -3,7 +3,7 @@ from typing import ClassVar
 
 from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.catalog import Network, ProfileContract
-from hackproof.integrations.chain import ContractSnapshot, Quote
+from hackproof.integrations.chain import ContractSnapshot, Reading
 
 
 class Adapter(ABC):
@@ -19,7 +19,7 @@ class Adapter(ABC):
         rpc: SorobanRpc,
         network: Network,
         contract: ProfileContract,
-        asset: str,
+        subject: str,
         params: dict[str, int],
-    ) -> Quote | None:
+    ) -> Reading | None:
         return None

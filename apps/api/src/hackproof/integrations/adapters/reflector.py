@@ -8,7 +8,7 @@ from stellar_sdk import StrKey, scval, xdr
 from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.adapters.base import Adapter
 from hackproof.integrations.catalog import Network, ProfileContract
-from hackproof.integrations.chain import ContractSnapshot, Quote
+from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.soroban import view
 
 
@@ -44,13 +44,15 @@ async def observe(
         read("assets"),
     )
     return ContractSnapshot(
-        base=asset_key(base) if base else None,
-        decimals=decimals,
-        resolution=resolution,
-        retention=retention,
-        version=version,
-        last_timestamp=last,
-        assets=[asset_key(item) for item in assets or []],
+        facts={
+            "base": asset_key(base) if base else None,
+            "decimals": decimals,
+            "resolution": resolution,
+            "retention": retention,
+            "version": version,
+            "last_timestamp": last,
+        },
+        items=[asset_key(item) for item in assets or []],
     )
 
 
@@ -60,7 +62,7 @@ async def quote(
     contract: ProfileContract,
     asset: str,
     age_factor: int,
-) -> Quote | None:
+) -> Reading | None:
     decimals, resolution, last = await asyncio.gather(
         view(rpc, network.passphrase, contract.id, "decimals"),
         view(rpc, network.passphrase, contract.id, "resolution"),
@@ -75,14 +77,14 @@ async def quote(
     if not last:
         return None
     age = max(0, int(time.time()) - last["timestamp"])
-    return Quote(
+    return Reading(
         contract=contract.slug,
-        asset=asset,
-        price=format(Decimal(last["price"]) / Decimal(10) ** decimals, "f"),
-        decimals=decimals,
+        subject=asset,
+        value=format(Decimal(last["price"]) / Decimal(10) ** decimals, "f"),
         timestamp=last["timestamp"],
         age_seconds=age,
         stale=age > resolution * age_factor,
+        facts={"decimals": decimals, "resolution": resolution},
     )
 
 
@@ -99,7 +101,7 @@ class ReflectorAdapter(Adapter):
         rpc: SorobanRpc,
         network: Network,
         contract: ProfileContract,
-        asset: str,
+        subject: str,
         params: dict[str, int],
-    ) -> Quote | None:
-        return await quote(rpc, network, contract, asset, params.get("age_factor", 2))
+    ) -> Reading | None:
+        return await quote(rpc, network, contract, subject, params.get("age_factor", 2))

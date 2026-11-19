@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from hackproof.github.models import DependencyFingerprint
 from hackproof.hackathon import Place
+from hackproof.integrations.models import Method
 
 Tier = Literal["verified", "likely", "possible", "unattributed"]
 
@@ -121,7 +122,7 @@ class FailedTx(BaseModel):
 class IntegrationUse(BaseModel):
     slug: str
     name: str
-    method: Literal["package", "endpoint", "contract", "signal", "capture"]
+    method: Method
     evidence: str
     path: str
 

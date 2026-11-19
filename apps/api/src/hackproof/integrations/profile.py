@@ -25,8 +25,8 @@ class ProfileContractUse(Model):
 
 class ProfileSignal(Model):
     slug: str = Field(description="Stable signal id in data/integrations.yaml")
-    group: Literal["client", "read", "safety", "risk"] = Field(
-        description="client: which client it uses. read: what it reads. safety: guards it applies. risk: known pitfalls"
+    group: str = Field(
+        description="How the catalog groups the signal, for example client, read, safety or risk"
     )
     label: str = Field(description="What the signal means")
 

@@ -53,7 +53,7 @@ class Patterned(BaseModel):
 
 
 class Signal(Patterned):
-    group: Literal["client", "read", "safety", "risk"]
+    group: str
 
 
 class Capture(Patterned):

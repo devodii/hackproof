@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from hackproof.hackathon import Place
+from hackproof.integrations.models import Method
 from hackproof.integrations.profile import IntegrationProfile
 
 Tier = Literal["verified", "likely", "possible"]
@@ -119,7 +120,7 @@ class Chain(Model):
 
 
 class IntegrationEvidence(Model):
-    method: Literal["package", "endpoint", "contract", "signal", "capture"] = Field(
+    method: Method = Field(
         description=(
             "How the integration was found. package: declared in a dependency manifest. "
             "endpoint: the partner's API host appears in source or config, which covers raw "

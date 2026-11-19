@@ -1,5 +1,8 @@
+from typing import get_args
+
 from fastapi.testclient import TestClient
 
+from hackproof.integrations.models import Method
 from hackproof.main import app
 
 
@@ -101,10 +104,9 @@ def test_a_project_page_lists_where_each_integration_was_found():
             ).json()["items"]
             detail = client.get(f"/api/projects/{first['project_id']}").json()
             assert used["slug"] in {use["slug"] for use in detail["integration_uses"]}
-            assert {use["method"] for use in detail["integration_uses"]} <= {
-                "package",
-                "endpoint",
-            }
+            assert {use["method"] for use in detail["integration_uses"]} <= set(
+                get_args(Method)
+            )
 
 
 def test_wrapped_team_sizes_fit_inside_the_projects():

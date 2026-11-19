@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from hackproof.export.models import HackathonExport, Project, Tier, Track
 from hackproof.hackathon import Place
+from hackproof.integrations.models import Method
 from hackproof.integrations.profile import IntegrationProfile
 
 SCHEMA_FILE = "schema-hackathon-project.yml"
@@ -48,7 +49,7 @@ class FileChain(FileModel):
 
 
 class FileIntegrationEvidence(FileModel):
-    method: Literal["package", "endpoint", "contract", "signal", "capture"]
+    method: Method
     detail: str
     file_url: str
 
