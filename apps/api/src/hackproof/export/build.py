@@ -60,10 +60,12 @@ def _group(
 
 
 def _found(
-    rows: list[asyncpg.Record], key: str, repo_url: str
+    rows: list[asyncpg.Record], key: str, repo_url: str, private: dict[str, set[str]]
 ) -> dict[str, list[IntegrationEvidence]]:
     found: dict[str, list[IntegrationEvidence]] = defaultdict(list)
     for row in rows:
+        if row["method"] == "signal" and row["evidence"] in private.get(row[key], ()):
+            continue
         found[row[key]].append(
             IntegrationEvidence(
                 method=row["method"],
@@ -103,7 +105,7 @@ def _agents(
 def _tools(
     catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
 ) -> list[EcosystemTool]:
-    found = _found(rows, "tool", repo_url)
+    found = _found(rows, "tool", repo_url, catalog.private_signals())
     raw = defaultdict(list)
     for row in rows:
         raw[row["tool"]].append((row["method"], row["evidence"]))
@@ -123,7 +125,7 @@ def _tools(
 def _partners(
     catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
 ) -> list[IntegrationPartner]:
-    found = _found(rows, "partner", repo_url)
+    found = _found(rows, "partner", repo_url, catalog.private_signals())
     raw = defaultdict(list)
     for row in rows:
         raw[row["partner"]].append((row["method"], row["evidence"]))

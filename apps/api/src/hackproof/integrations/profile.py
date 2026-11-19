@@ -61,7 +61,10 @@ class IntegrationProfile(Model):
 
 
 def build_profile(
-    partner: Product, evidence: Iterable[tuple[str, str]], network: str
+    partner: Product,
+    evidence: Iterable[tuple[str, str]],
+    network: str,
+    include_private: bool = False,
 ) -> IntegrationProfile | None:
     profile = partner.profile
     if profile is None:
@@ -122,6 +125,11 @@ def build_profile(
                 status=check.severity if broken else "pass",
             )
         )
+    private_signals = {slug for slug, item in signals.items() if item.private}
+    private_checks = {item.slug for item in profile.checks if item.private}
+    if not include_private:
+        found_signals -= private_signals
+        checks = [item for item in checks if item.slug not in private_checks]
     if not (contracts or found_signals or captures or checks):
         return None
     return IntegrationProfile(

@@ -6,7 +6,9 @@ TESTNET_FX = "CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W"
 
 
 def _statuses(evidence: list[tuple[str, str]]) -> dict[str, str]:
-    profile = build_profile(get_catalog().partner("reflector"), evidence, "testnet")
+    profile = build_profile(
+        get_catalog().partner("reflector"), evidence, "testnet", include_private=True
+    )
     assert profile
     return {check.slug: check.status for check in profile.checks}
 

@@ -46,6 +46,7 @@ class Patterned(BaseModel):
 
 class Signal(Patterned):
     group: str
+    private: bool = False
 
 
 class Capture(Patterned):
@@ -58,6 +59,7 @@ class Check(BaseModel):
     slug: str
     label: str
     severity: Literal["warn", "fail"]
+    private: bool = False
     requires: list[str] = Field(default_factory=list)
     missing: list[str] = Field(default_factory=list)
     forbids: list[str] = Field(default_factory=list)
@@ -130,6 +132,15 @@ class Catalog(BaseModel):
 
     def partner(self, slug: str) -> Partner:
         return next(partner for partner in self.partners if partner.slug == slug)
+
+    def private_signals(self) -> dict[str, set[str]]:
+        return {
+            item.slug: {
+                signal.slug for signal in item.profile.signals if signal.private
+            }
+            for item in [*self.partners, *self.tools]
+            if item.profile
+        }
 
     def deep(self, slug: str) -> Product | None:
         found = next(

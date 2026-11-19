@@ -285,6 +285,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 projects=signal_projects[signal.slug],
             )
             for signal in profile.signals
+            if not signal.private
         ],
         checks=[
             CheckCount(
@@ -296,6 +297,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 rule=describe(check, labels),
             )
             for check in profile.checks
+            if not check.private
         ],
         captures={
             name: sorted(

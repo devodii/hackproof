@@ -177,21 +177,25 @@ partners:
             - 'get-escrows?-by-|get-escrow-by-contract|useGetEscrows|/helper/get-escrow'
         - slug: validates-on-chain
           group: safety
+          private: true
           label: Validates against the chain
           patterns:
             - 'validateOnChain'
         - slug: submits-signed
           group: safety
+          private: true
           label: Signs and submits through the helper
           patterns:
             - 'send-transaction|useSendTransaction|sendTransaction'
         - slug: handles-rate-limit
           group: safety
+          private: true
           label: Handles the rate limit
           patterns:
             - '\b429\b|(?i:retry-after)'
         - slug: receives-webhooks
           group: risk
+          private: true
           label: Waits for webhooks
           patterns:
             - '(?i)(?:post|put|use|route)\s*\(\s*[`''"/][^)]*webhooks?[^)]*\)'
@@ -199,6 +203,7 @@ partners:
             - '(?i)trustless-?work-?signature'
         - slug: public-api-key
           group: risk
+          private: true
           label: Key readable in the browser
           patterns:
             - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_[A-Z_]*(?:TRUSTLESS|TW)[A-Z_]*(?:KEY|API)[A-Z_]*'
@@ -225,26 +230,31 @@ partners:
         - slug: exposes-api-key
           label: Ships the API key to the browser
           severity: fail
+          private: true
           requires: [calls-api]
           forbids: [public-api-key]
         - slug: v2-on-mainnet-host
           label: Calls V2 beta paths on the mainnet host
           severity: fail
+          private: true
           requires: [mainnet-api]
           forbids: [api-v2]
         - slug: release-without-validation
           label: Releases funds without validating against the chain
           severity: warn
+          private: true
           requires: [release]
           missing: [validates-on-chain]
         - slug: no-rate-limit
           label: Ignores the 50 requests per minute limit
           severity: warn
+          private: true
           requires: [calls-api]
           missing: [handles-rate-limit]
         - slug: expects-webhooks
           label: Waits for webhooks Trustless Work does not send yet
           severity: warn
+          private: true
           requires: [calls-api]
           forbids: [receives-webhooks]
 
@@ -407,12 +417,12 @@ partners:
         - {slug: client-dao, group: client, label: DAO client, patterns: ['\bDaoClient\b']}
         - {slug: reads-last-price, group: read, label: Reads the latest price, patterns: ['\.lastPrice\(', '\blastprice\s*\(', '\blast_price\s*\(']}
         - {slug: reads-history, group: read, label: Reads price history, patterns: ['\.prices\(\s*&?[\w"''`]', '\bTWAP\b', '\btwap\b']}
-        - {slug: reads-decimals, group: safety, label: Reads decimals(), patterns: ['\.decimals\(\s*\)', '\bdecimals\(\s*\)']}
-        - {slug: reads-resolution, group: safety, label: Reads resolution(), patterns: ['\.resolution\(\s*\)', '\bresolution\(\s*\)']}
-        - {slug: checks-age, group: safety, label: Checks the quote age, patterns: ['ledger\(\)\.timestamp\(\)[^;\n]{0,80}timestamp', 'timestamp[^;\n]{0,80}ledger\(\)\.timestamp\(\)', 'Date\.now\(\)[^;\n]{0,80}timestamp', 'timestamp[^;\n]{0,80}Date\.now\(\)', '\b[sS]tale\w*', 'max_?[aA]ge', '[aA]ge_?[sS]ec', 'resolution\s*\*\s*\d']}
-        - {slug: checks-expiry, group: safety, label: Checks feed expiry, patterns: ['\.expires\(', '\bexpires\(\s*&?\w']}
-        - {slug: hardcoded-decimals, group: risk, label: Assumes 7 decimals, patterns: ['[pP]rice[^;\n]{0,60}(?:\b1e7\b|10\s*\*\*\s*7\b|\b10_?000_?000\b|Math\.pow\(\s*10\s*,\s*7\s*\))', '(?:\b1e7\b|10\s*\*\*\s*7\b|\b10_?000_?000\b)[^;\n]{0,60}[pP]rice']}
-        - {slug: number-cast, group: risk, label: Casts the price with Number(), patterns: ['Number\(\s*[\w.]*\.price\s*\)', 'Number\(\s*(?:quote|data|price)\w*\s*\)']}
+        - {slug: reads-decimals, private: true, group: safety, label: Reads decimals(), patterns: ['\.decimals\(\s*\)', '\bdecimals\(\s*\)']}
+        - {slug: reads-resolution, private: true, group: safety, label: Reads resolution(), patterns: ['\.resolution\(\s*\)', '\bresolution\(\s*\)']}
+        - {slug: checks-age, private: true, group: safety, label: Checks the quote age, patterns: ['ledger\(\)\.timestamp\(\)[^;\n]{0,80}timestamp', 'timestamp[^;\n]{0,80}ledger\(\)\.timestamp\(\)', 'Date\.now\(\)[^;\n]{0,80}timestamp', 'timestamp[^;\n]{0,80}Date\.now\(\)', '\b[sS]tale\w*', 'max_?[aA]ge', '[aA]ge_?[sS]ec', 'resolution\s*\*\s*\d']}
+        - {slug: checks-expiry, private: true, group: safety, label: Checks feed expiry, patterns: ['\.expires\(', '\bexpires\(\s*&?\w']}
+        - {slug: hardcoded-decimals, private: true, group: risk, label: Assumes 7 decimals, patterns: ['[pP]rice[^;\n]{0,60}(?:\b1e7\b|10\s*\*\*\s*7\b|\b10_?000_?000\b|Math\.pow\(\s*10\s*,\s*7\s*\))', '(?:\b1e7\b|10\s*\*\*\s*7\b|\b10_?000_?000\b)[^;\n]{0,60}[pP]rice']}
+        - {slug: number-cast, private: true, group: risk, label: Casts the price with Number(), patterns: ['Number\(\s*[\w.]*\.price\s*\)', 'Number\(\s*(?:quote|data|price)\w*\s*\)']}
       captures:
         - slug: tickers
           label: Assets it asks the oracle for
@@ -424,10 +434,10 @@ partners:
             - 'tag:\s*["'']Other["'']\s*,\s*values:\s*\[\s*["'']([A-Z0-9]{2,10})["'']'
             - 'Other\(\s*["'']([A-Z0-9]{2,10})["'']\s*\)'
       checks:
-        - {slug: no-age-check, severity: warn, label: Reads prices without checking how old they are, requires: [reads-last-price], missing: [checks-age]}
-        - {slug: assumed-decimals, severity: warn, label: Scales prices as if they had 7 decimals, requires: [hardcoded-decimals, reads-last-price], missing: [reads-decimals]}
-        - {slug: lossy-price, severity: warn, label: Turns a 14 decimal bigint price into a Number, requires: [number-cast, reads-last-price], missing: []}
-        - {slug: wrong-network, severity: fail, label: Only points at mainnet feeds while the event runs on testnet, only_networks: [mainnet]}
+        - {slug: no-age-check, severity: warn, private: true, label: Reads prices without checking how old they are, requires: [reads-last-price], missing: [checks-age]}
+        - {slug: assumed-decimals, severity: warn, private: true, label: Scales prices as if they had 7 decimals, requires: [hardcoded-decimals, reads-last-price], missing: [reads-decimals]}
+        - {slug: lossy-price, severity: warn, private: true, label: Turns a 14 decimal bigint price into a Number, requires: [number-cast, reads-last-price], missing: []}
+        - {slug: wrong-network, severity: fail, private: true, label: Only points at mainnet feeds while the event runs on testnet, only_networks: [mainnet]}
 
 tools:
   - slug: stellar-scaffold

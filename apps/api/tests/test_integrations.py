@@ -317,7 +317,7 @@ def test_trustless_work_is_read_deeply_from_source():
     checks = {
         check.slug: check.status
         for check in build_profile(
-            catalog.partner("trustless-work"), found, "testnet"
+            catalog.partner("trustless-work"), found, "testnet", include_private=True
         ).checks
     }
     assert checks["exposes-api-key"] == "fail"
@@ -331,3 +331,17 @@ def test_observed_state_goes_stale_after_an_hour():
     assert is_stale(None, now)
     assert not is_stale(now - timedelta(minutes=59), now)
     assert is_stale(now - timedelta(minutes=61), now)
+
+
+def test_private_signals_and_checks_never_reach_the_public_profile():
+    catalog = get_catalog()
+    found = [("signal", "calls-api"), ("signal", "public-api-key")]
+    public = build_profile(catalog.partner("trustless-work"), found, "testnet")
+    internal = build_profile(
+        catalog.partner("trustless-work"), found, "testnet", include_private=True
+    )
+    assert public and internal
+    assert {item.slug for item in public.signals} == {"calls-api"}
+    assert public.checks == []
+    assert "public-api-key" in {item.slug for item in internal.signals}
+    assert "public-api-key" in catalog.private_signals()["trustless-work"]
