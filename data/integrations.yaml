@@ -131,6 +131,7 @@ partners:
     github_owners: [reflector-network]
     profile:
       adapter: reflector
+      hints: [oracle, price, reflector, feed, rate, quote, contract, lib]
       params:
         age_factor: 2
       networks:

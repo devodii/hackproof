@@ -1,6 +1,7 @@
 import asyncio
 import hashlib
 import re
+from collections.abc import Iterable
 from pathlib import PurePosixPath
 
 import asyncpg
@@ -35,16 +36,6 @@ FILE_CONCURRENCY = 100
 MAX_TEXT_FILES = 60
 MAX_WASM_FILES = 5
 MAX_DEEP_FILES = 150
-DEEP_HINTS = (
-    "oracle",
-    "price",
-    "reflector",
-    "feed",
-    "rate",
-    "quote",
-    "contract",
-    "lib",
-)
 MAX_TEXT_BYTES = 512_000
 MAX_WASM_BYTES = 5_000_000
 DEMO_URL = re.compile(
@@ -102,12 +93,15 @@ def select_files(entries: list[dict]) -> tuple[list[str], list[str]]:
     return texts[:MAX_TEXT_FILES], wasms[:MAX_WASM_FILES]
 
 
-def select_deep(entries: list[dict], fetched: set[str]) -> list[str]:
+def select_deep(
+    entries: list[dict], fetched: set[str], hints: Iterable[str]
+) -> list[str]:
+    needles = [hint.lower() for hint in hints]
     paths, _ = select_files_uncapped(entries)
     wanted = [path for path in paths if path not in fetched]
     wanted.sort(
         key=lambda path: (
-            0 if any(hint in path.lower() for hint in DEEP_HINTS) else 1,
+            0 if any(hint in path.lower() for hint in needles) else 1,
             len(PurePosixPath(path).parts),
             path,
         )
@@ -131,13 +125,16 @@ class Scanner:
         self._catalog = catalog or get_catalog()
         self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
-    def _wants_depth(self, detections: list[Detection]) -> bool:
-        deep = {
-            item.slug
+    def _deep_hints(self, detections: list[Detection]) -> list[str] | None:
+        found = {item.slug for item in detections}
+        profiles = [
+            item.profile
             for item in [*self._catalog.partners, *self._catalog.tools]
-            if item.profile
-        }
-        return any(item.slug in deep for item in detections)
+            if item.profile and item.slug in found
+        ]
+        if not profiles:
+            return None
+        return [hint for profile in profiles for hint in profile.hints]
 
     async def _wasm_ref(self, repo: Candidate, branch: str, path: str) -> Ref | None:
         async with self._files:
@@ -184,10 +181,11 @@ class Scanner:
             else None
         )
         integrations = detect(files, self._catalog, repo.owner)
-        if self._wants_depth(
+        hints = self._deep_hints(
             integrations + detect_tools(files, self._catalog, repo.owner)
-        ):
-            extra = select_deep(tree["tree"], set(files))
+        )
+        if hints is not None:
+            extra = select_deep(tree["tree"], set(files), hints)
             files = files | await fetch_texts(
                 self._github, repo.full_name, branch, extra
             )

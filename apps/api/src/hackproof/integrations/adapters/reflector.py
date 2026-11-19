@@ -3,6 +3,7 @@ import time
 from decimal import Decimal
 from typing import Any
 
+import httpx
 from stellar_sdk import StrKey, scval, xdr
 
 from hackproof.indexer.rpc import SorobanRpc
@@ -117,16 +118,22 @@ class ReflectorAdapter(Adapter):
     name = "reflector"
 
     async def observe(
-        self, rpc: SorobanRpc, network: Network, contract: ProfileContract
+        self, http: httpx.AsyncClient, network: Network, contract: ProfileContract
     ) -> ContractSnapshot | None:
-        return await observe(rpc, network, contract)
+        return await observe(SorobanRpc(http, network.rpc_url), network, contract)
 
     async def probe(
         self,
-        rpc: SorobanRpc,
+        http: httpx.AsyncClient,
         network: Network,
         contract: ProfileContract,
         subject: str,
         params: dict[str, int],
     ) -> Reading | None:
-        return await quote(rpc, network, contract, subject, params.get("age_factor", 2))
+        return await quote(
+            SorobanRpc(http, network.rpc_url),
+            network,
+            contract,
+            subject,
+            params.get("age_factor", 2),
+        )

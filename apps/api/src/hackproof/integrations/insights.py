@@ -7,9 +7,13 @@ import httpx
 from pydantic import BaseModel, ConfigDict
 
 from hackproof.db import pool
-from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.adapters import ADAPTERS
-from hackproof.integrations.catalog import Network, Product, get_catalog
+from hackproof.integrations.catalog import (
+    Network,
+    Product,
+    ProfileContract,
+    get_catalog,
+)
 from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.profile import IntegrationProfile, build_profile
 from hackproof.sql_loader import load_sql
@@ -98,9 +102,9 @@ def _expired(snapshot: ContractSnapshot | None) -> list[str]:
     return [item for item, due in snapshot.deadlines.items() if due < now]
 
 
-def _explorer(partner: Product, network: str, contract_id: str) -> str:
+def _explorer(partner: Product, item: ProfileContract) -> str:
     assert partner.profile
-    return f"{partner.profile.networks[network].explorer}/{contract_id}"
+    return item.url or f"{partner.profile.networks[item.network].explorer}/{item.id}"
 
 
 async def fetch_detail(partner: Product) -> IntegrationDetail:
@@ -159,7 +163,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
             network=item.network,
             kind=item.kind,
             attributes=item.attributes,
-            explorer_url=_explorer(partner, item.network, item.id),
+            explorer_url=_explorer(partner, item),
             snapshot=snapshots.get(item.id, (None, None))[0],
             observed_at=snapshots.get(item.id, (None, None))[1],
             projects=used[item.id],
@@ -248,6 +252,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
             },
         )
         if overlap_rows
+        and any(item.snapshot and item.snapshot.items for item in contracts)
         else None,
         live=[f"{probe.contract}:{probe.asset}" for probe in profile.live],
     )
@@ -271,11 +276,7 @@ async def fetch_live(partner: Product) -> list[Reading]:
             contract = profile.contract(probe.contract)
             network = profile.networks[contract.network]
             reading = await adapter.probe(
-                SorobanRpc(http, network.rpc_url),
-                network,
-                contract,
-                probe.asset,
-                profile.params,
+                http, network, contract, probe.asset, profile.params
             )
             if reading:
                 readings.append(reading)

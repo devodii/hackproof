@@ -6,7 +6,7 @@ from stellar_sdk import Asset
 
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
-from hackproof.indexer.rpc import RpcError, SorobanRpc
+from hackproof.indexer.rpc import RpcError
 from hackproof.integrations.adapters import ADAPTERS
 from hackproof.integrations.catalog import get_catalog
 from hackproof.sql_loader import load_sql
@@ -26,9 +26,9 @@ async def run_observe() -> None:
                 network = profile.networks[contract.network]
                 try:
                     snapshot = await ADAPTERS[profile.adapter].observe(
-                        SorobanRpc(http, network.rpc_url), network, contract
+                        http, network, contract
                     )
-                except RpcError:
+                except (RpcError, httpx.HTTPError):
                     log.warning("could not read %s %s", partner.slug, contract.slug)
                     continue
                 if snapshot is None:

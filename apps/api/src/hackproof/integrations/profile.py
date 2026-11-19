@@ -91,10 +91,10 @@ def build_profile(
         for contract_id in sorted(found_contracts)
     ]
     checks: list[ProfileCheck] = []
-    feed_networks = {item.network for item in contracts if item.kind == "feed"}
+    used_networks = {item.network for item in contracts}
     for check in profile.checks:
         if check.only_networks:
-            if feed_networks and feed_networks <= set(check.only_networks):
+            if used_networks and used_networks <= set(check.only_networks):
                 if network not in check.only_networks:
                     checks.append(
                         ProfileCheck(
@@ -104,7 +104,10 @@ def build_profile(
             continue
         if not set(check.requires) <= found_signals:
             continue
-        broken = not any(slug in found_signals for slug in check.missing)
+        broken = any(slug in found_signals for slug in check.forbids) or (
+            bool(check.missing)
+            and not any(slug in found_signals for slug in check.missing)
+        )
         checks.append(
             ProfileCheck(
                 slug=check.slug,

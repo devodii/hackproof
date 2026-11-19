@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import ClassVar
 
-from hackproof.indexer.rpc import SorobanRpc
+import httpx
+
 from hackproof.integrations.catalog import Network, ProfileContract
 from hackproof.integrations.chain import ContractSnapshot, Reading
 
@@ -11,12 +12,12 @@ class Adapter(ABC):
 
     @abstractmethod
     async def observe(
-        self, rpc: SorobanRpc, network: Network, contract: ProfileContract
+        self, http: httpx.AsyncClient, network: Network, contract: ProfileContract
     ) -> ContractSnapshot | None: ...
 
     async def probe(
         self,
-        rpc: SorobanRpc,
+        http: httpx.AsyncClient,
         network: Network,
         contract: ProfileContract,
         subject: str,

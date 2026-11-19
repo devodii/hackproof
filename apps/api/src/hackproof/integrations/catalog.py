@@ -24,6 +24,7 @@ class ProfileContract(BaseModel):
     name: str
     network: str
     kind: str
+    url: str | None = None
     attributes: dict[str, str] = Field(default_factory=dict)
 
 
@@ -59,6 +60,7 @@ class Check(BaseModel):
     severity: Literal["warn", "fail"]
     requires: list[str] = Field(default_factory=list)
     missing: list[str] = Field(default_factory=list)
+    forbids: list[str] = Field(default_factory=list)
     only_networks: list[str] = Field(default_factory=list)
 
 
@@ -74,6 +76,7 @@ class Profile(BaseModel):
 
     adapter: str | None = None
     params: dict[str, int] = Field(default_factory=dict)
+    hints: list[str] = Field(default_factory=list)
     networks: dict[str, Network] = Field(default_factory=dict)
     context: list[str]
     contracts: list[ProfileContract] = Field(default_factory=list)
