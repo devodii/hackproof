@@ -110,7 +110,7 @@ function SurfaceCard({ surface }: { surface: ContractState }) {
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
-              className="self-start text-sm text-primary hover:underline"
+              className="self-start text-sm text-foreground underline decoration-primary underline-offset-4 hover:decoration-2"
             >
               {open ? 'Hide' : 'Show'} {formatNumber(items.length)} items
             </button>

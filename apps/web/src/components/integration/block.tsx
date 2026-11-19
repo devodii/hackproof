@@ -13,7 +13,8 @@ export function Block({ eyebrow, title, note, children }: BlockProps) {
   return (
     <section className="flex flex-col gap-4">
       <Reveal className="flex flex-col gap-1">
-        <span className="text-eyebrow font-semibold tracking-eyebrow text-primary uppercase">
+        <span className="flex items-center gap-2 text-eyebrow font-semibold tracking-eyebrow text-muted-foreground uppercase">
+          <span className="size-1.5 rounded-full bg-primary" />
           {eyebrow}
         </span>
         <div className="flex flex-wrap items-baseline justify-between gap-2">
