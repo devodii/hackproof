@@ -30,8 +30,10 @@ from hackproof.export.urls import (
 )
 from hackproof.hackathon import Hackathon
 from hackproof.integrations.catalog import Catalog, get_catalog
+from hackproof.integrations.profile import build_profile
 from hackproof.sql_loader import load_sql
 
+EVENT_NETWORK = "testnet"
 STRICT_TIERS = ("verified", "likely")
 TIER_ORDER = ("verified", "likely", "possible")
 
@@ -115,6 +117,9 @@ def _partners(
     catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
 ) -> list[IntegrationPartner]:
     found = _found(rows, "partner", repo_url)
+    raw = defaultdict(list)
+    for row in rows:
+        raw[row["partner"]].append((row["method"], row["evidence"]))
     return [
         IntegrationPartner(
             slug=partner.slug,
@@ -122,6 +127,7 @@ def _partners(
             category=partner.category,
             website=partner.site,
             evidence=found[partner.slug],
+            profile=build_profile(partner, raw[partner.slug], EVENT_NETWORK),
         )
         for partner in catalog.partners
         if partner.slug in found
@@ -252,7 +258,7 @@ async def build_export(
         hackathon=ExportedHackathon(
             slug=hackathon.slug,
             name=hackathon.name,
-            network="testnet",
+            network=EVENT_NETWORK,
             starts_at=window.start,
             submission_deadline=window.end,
         ),
