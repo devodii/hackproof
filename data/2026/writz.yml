@@ -41,6 +41,76 @@ integrations:
   - method: package
     detail: '@defindex/sdk'
     file_url: https://github.com/WritzProtocol/writz/blob/HEAD/relayer/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: capture
+    detail: tickers:BTC
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
+  - method: contract
+    detail: CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/scripts/verify-oracles.sh
+  - method: contract
+    detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/frontend/app/.env.example
+  - method: signal
+    detail: checks-age
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/scripts/verify-oracles.sh
+  - method: signal
+    detail: client-pulse
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
+  - method: signal
+    detail: reads-decimals
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/scripts/verify-oracles.sh
+  - method: signal
+    detail: reads-resolution
+    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
+  profile:
+    contracts:
+    - slug: testnet-stellar-pubnet
+      id: CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
+      name: Stellar Pubnet DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
+      attributes:
+        source: stellar-pubnet
+        asset_kind: stellar
+    - slug: testnet-exchanges
+      id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      name: CEX and DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      attributes:
+        source: exchanges
+        asset_kind: other
+    signals:
+    - slug: client-pulse
+      group: client
+      label: Pulse client
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
+    - slug: reads-decimals
+      group: safety
+      label: Reads decimals()
+    - slug: reads-resolution
+      group: safety
+      label: Reads resolution()
+    - slug: checks-age
+      group: safety
+      label: Checks the quote age
+    captures:
+      tickers:
+      - BTC
+    checks:
+    - slug: no-age-check
+      label: Reads prices without checking how old they are
+      status: pass
 agents:
 - slug: claude-code
   name: Claude Code

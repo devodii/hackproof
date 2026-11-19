@@ -1,5 +1,8 @@
+from typing import get_args
+
 from fastapi.testclient import TestClient
 
+from hackproof.integrations.models import Method
 from hackproof.main import app
 
 
@@ -101,10 +104,9 @@ def test_a_project_page_lists_where_each_integration_was_found():
             ).json()["items"]
             detail = client.get(f"/api/projects/{first['project_id']}").json()
             assert used["slug"] in {use["slug"] for use in detail["integration_uses"]}
-            assert {use["method"] for use in detail["integration_uses"]} <= {
-                "package",
-                "endpoint",
-            }
+            assert {use["method"] for use in detail["integration_uses"]} <= set(
+                get_args(Method)
+            )
 
 
 def test_wrapped_team_sizes_fit_inside_the_projects():
@@ -157,3 +159,19 @@ def test_a_contributor_lists_their_projects_with_their_commits():
     assert len(person["projects"]) == top[0]["projects"]
     commits = [item["contributions"] for item in person["projects"]]
     assert commits == sorted(commits, reverse=True)
+
+
+def test_a_deep_partner_has_a_profile_and_a_plain_one_does_not():
+    with TestClient(app) as client:
+        deep = [
+            row["slug"] for row in client.get("/api/integrations").json() if row["deep"]
+        ]
+        assert deep
+        body = client.get(f"/api/integrations/{deep[0]}").json()
+        assert {"contracts", "adopters", "signals", "checks", "captures"} <= set(body)
+        plain = next(
+            row["slug"]
+            for row in client.get("/api/integrations").json()
+            if not row["deep"]
+        )
+        assert client.get(f"/api/integrations/{plain}").status_code == 404

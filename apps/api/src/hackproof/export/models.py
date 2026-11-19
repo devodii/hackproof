@@ -4,6 +4,8 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from hackproof.hackathon import Place
+from hackproof.integrations.models import Method
+from hackproof.integrations.profile import IntegrationProfile
 
 Tier = Literal["verified", "likely", "possible"]
 Track = Literal["genesis", "scale"]
@@ -118,14 +120,19 @@ class Chain(Model):
 
 
 class IntegrationEvidence(Model):
-    method: Literal["package", "endpoint"] = Field(
+    method: Method = Field(
         description=(
             "How the integration was found. package: declared in a dependency manifest. "
             "endpoint: the partner's API host appears in source or config, which covers raw "
-            "API use without an SDK. A mention in prose never counts."
+            "API use without an SDK. contract: one of the partner's known contract ids appears "
+            "in the repo. signal: a usage pattern from the partner's profile matched in source. "
+            "capture: a value pulled out of source, written as name:value. A mention in prose "
+            "never counts, except a contract id."
         )
     )
-    detail: str = Field(description="The matched package name or API host")
+    detail: str = Field(
+        description="The matched package name, API host, contract id, signal id or name:value"
+    )
     repo_file_url: str = Field(description="GitHub file where it was found")
 
 
@@ -154,6 +161,10 @@ class EcosystemTool(Model):
     name: str = Field(description="Tool name")
     website: str = Field(description="Tool website")
     evidence: list[IntegrationEvidence] = Field(description="Where the tool was found")
+    profile: IntegrationProfile | None = Field(
+        default=None,
+        description="How deeply the repo uses the tool, for tools with a profile in data/integrations.yaml",
+    )
 
 
 class IntegrationPartner(Model):
@@ -163,6 +174,10 @@ class IntegrationPartner(Model):
     website: str = Field(description="Partner website")
     evidence: list[IntegrationEvidence] = Field(
         description="Where the integration was found"
+    )
+    profile: IntegrationProfile | None = Field(
+        default=None,
+        description="How deeply the repo integrates the partner, for partners with a profile in data/integrations.yaml",
     )
 
 

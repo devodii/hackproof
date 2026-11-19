@@ -150,6 +150,11 @@ $defs:
           $ref: '#/$defs/FileIntegrationEvidence'
         title: Evidence
         type: array
+      profile:
+        anyOf:
+        - $ref: '#/$defs/IntegrationProfile'
+        - type: 'null'
+        default: null
     required:
     - slug
     - name
@@ -163,6 +168,9 @@ $defs:
         enum:
         - package
         - endpoint
+        - contract
+        - signal
+        - capture
         title: Method
         type: string
       detail:
@@ -176,6 +184,125 @@ $defs:
     - detail
     - file_url
     title: FileIntegrationEvidence
+    type: object
+  IntegrationProfile:
+    additionalProperties: false
+    properties:
+      contracts:
+        description: Known contracts of the partner that the repo references
+        items:
+          $ref: '#/$defs/ProfileContractUse'
+        title: Contracts
+        type: array
+      signals:
+        description: How the code uses the partner, matched in source files
+        items:
+          $ref: '#/$defs/ProfileSignal'
+        title: Signals
+        type: array
+      captures:
+        additionalProperties:
+          items:
+            type: string
+          type: array
+        description: Values pulled out of source, for example the assets requested from an oracle
+        title: Captures
+        type: object
+      checks:
+        description: The partner's own integration checklist applied to the repo
+        items:
+          $ref: '#/$defs/ProfileCheck'
+        title: Checks
+        type: array
+    title: IntegrationProfile
+    type: object
+  ProfileCheck:
+    additionalProperties: false
+    properties:
+      slug:
+        description: Stable check id in data/integrations.yaml
+        title: Slug
+        type: string
+      label:
+        description: What the check looks for
+        title: Label
+        type: string
+      status:
+        description: 'pass: the guard is there. warn or fail: the catalog''s severity when it is missing'
+        enum:
+        - pass
+        - warn
+        - fail
+        title: Status
+        type: string
+    required:
+    - slug
+    - label
+    - status
+    title: ProfileCheck
+    type: object
+  ProfileContractUse:
+    additionalProperties: false
+    properties:
+      slug:
+        description: Stable contract id in data/integrations.yaml
+        title: Slug
+        type: string
+      id:
+        description: Contract address found in the repo
+        title: Id
+        type: string
+      name:
+        description: What the contract is, for example Fiat FX
+        title: Name
+        type: string
+      network:
+        description: Network the contract lives on
+        title: Network
+        type: string
+      kind:
+        description: feed or token
+        title: Kind
+        type: string
+      explorer_url:
+        description: Stellar Expert page for the contract
+        title: Explorer Url
+        type: string
+      attributes:
+        additionalProperties:
+          type: string
+        description: Extra facts the catalog records
+        title: Attributes
+        type: object
+    required:
+    - slug
+    - id
+    - name
+    - network
+    - kind
+    - explorer_url
+    title: ProfileContractUse
+    type: object
+  ProfileSignal:
+    additionalProperties: false
+    properties:
+      slug:
+        description: Stable signal id in data/integrations.yaml
+        title: Slug
+        type: string
+      group:
+        description: How the catalog groups the signal, for example client, read, safety or risk
+        title: Group
+        type: string
+      label:
+        description: What the signal means
+        title: Label
+        type: string
+    required:
+    - slug
+    - group
+    - label
+    title: ProfileSignal
     type: object
 additionalProperties: false
 properties:

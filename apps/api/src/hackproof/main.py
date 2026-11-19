@@ -8,6 +8,7 @@ from hackproof.chat.routes import router as chat_router
 from hackproof.config import get_settings
 from hackproof.db import close_pool, open_pool
 from hackproof.hackathon import get_hackathon
+from hackproof.integrations.routes import router as integrations_router
 from hackproof.routes import router
 
 api = APIRouter(prefix="/api")
@@ -43,5 +44,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 api.include_router(router)
+api.include_router(integrations_router)
 api.include_router(chat_router)
 app.include_router(api)

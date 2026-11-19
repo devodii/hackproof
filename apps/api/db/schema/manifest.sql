@@ -1,10 +1,12 @@
 \i functions/hackers.sql
 \i functions/method_rank.sql
 \i tables/accounts.sql
+\i tables/asset_contracts.sql
 \i tables/classic_ops.sql
 \i tables/contracts.sql
 \i tables/failed_txs.sql
 \i tables/github_users.sql
+\i tables/integration_contracts.sql
 \i tables/links.sql
 \i tables/projects.sql
 \i tables/repo_agents.sql
@@ -16,6 +18,7 @@
 \i tables/sync_state.sql
 \i tables/wasm_uploads.sql
 \i indexes/accounts_funder.sql
+\i indexes/asset_contracts_contract.sql
 \i indexes/classic_ops_asset.sql
 \i indexes/classic_ops_source.sql
 \i indexes/contracts_deployed_at.sql

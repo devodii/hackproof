@@ -192,3 +192,46 @@ def test_stellar_raven_and_skills_are_found_in_agent_config_files():
         ("stellar-raven", ".mcp.json"),
         ("stellar-skills", "skills-lock.json"),
     }
+
+
+def test_reflector_is_found_deeply_from_source():
+    files = {
+        "package.json": '{"dependencies": {"@reflector/contract-client": "^2.2.0"}}',
+        "src/oracle.ts": (
+            'import { PulseClient } from "@reflector/contract-client"\n'
+            'const id = "CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W"\n'
+            'const quote = await client.lastPrice("BRL")\n'
+            "const human = Number(quote.price) / 1e7\n"
+        ),
+        "README.md": "uses reflector, client.lastPrice('XYZ')",
+    }
+    found = {
+        (item.method, item.evidence) for item in detect(files, get_catalog(), "someone")
+    }
+    assert ("package", "@reflector/contract-client") in found
+    assert (
+        "contract",
+        "CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W",
+    ) in found
+    assert ("signal", "client-pulse") in found
+    assert ("signal", "reads-last-price") in found
+    assert ("signal", "hardcoded-decimals") in found
+    assert ("capture", "tickers:BRL") in found
+    assert ("capture", "tickers:XYZ") not in found
+
+
+def test_a_repo_that_only_mentions_reflector_in_prose_is_not_an_integration():
+    files = {"README.md": "We looked at reflector.network and PulseClient"}
+    assert detect(files, get_catalog(), "someone") == []
+
+
+def test_a_partner_with_only_a_catalog_profile_needs_no_adapter():
+    files = {
+        "Makefile": "deploy:\n\tstellar registry deploy --contract-name vault --wasm-name v\n",
+    }
+    found = {
+        (item.slug, item.method, item.evidence)
+        for item in detect_tools(files, get_catalog(), "someone")
+    }
+    assert ("stellar-registry", "signal", "cli-deploy") in found
+    assert ("stellar-registry", "capture", "contract-names:vault") in found

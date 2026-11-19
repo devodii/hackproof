@@ -10,6 +10,7 @@ from hackproof.db_utils.connection import Connection
 from hackproof.export.jobs import run_check, run_export, run_import
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
+from hackproof.integrations.observe import run_observe
 from hackproof.linking.reconcile import run_reconcile
 
 
@@ -71,6 +72,10 @@ def main() -> None:
         help="only scan repos that are already projects",
     )
     commands.add_parser(
+        "observe",
+        help="read the live state of each partner's contracts and map assets to their contracts",
+    )
+    commands.add_parser(
         "reconcile", help="link chain activity to repos and build projects"
     )
     commands.add_parser(
@@ -124,6 +129,8 @@ def main() -> None:
             asyncio.run(run_discover(args.strings))
         case "scan":
             asyncio.run(run_scan(args.force, args.projects))
+        case "observe":
+            asyncio.run(run_observe())
         case "reconcile":
             asyncio.run(run_reconcile())
         case "export":
