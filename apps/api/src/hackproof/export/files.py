@@ -229,6 +229,7 @@ def project_file(event: str, project: Project) -> ProjectFile:
                     )
                     for item in tool.evidence
                 ],
+                profile=tool.profile,
             )
             for tool in project.ecosystem_tools
         ],

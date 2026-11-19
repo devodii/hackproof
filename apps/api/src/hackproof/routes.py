@@ -135,18 +135,19 @@ async def project(project_id: str) -> ProjectDetail:
         if found[0]["full_name"]
         else []
     )
+    tool_uses = (
+        await queries.fetch_tool_uses(found[0]["full_name"])
+        if found[0]["full_name"]
+        else []
+    )
     return ProjectDetail(
         project=found[0],
         links=await queries.fetch_links(found[0]["full_name"])
         if found[0]["full_name"]
         else [],
         integration_uses=uses,
-        integration_depths=depths(uses),
-        tool_uses=(
-            await queries.fetch_tool_uses(found[0]["full_name"])
-            if found[0]["full_name"]
-            else []
-        ),
+        integration_depths=depths(uses + tool_uses),
+        tool_uses=tool_uses,
         contributors=(
             await queries.fetch_contributors(found[0]["full_name"])
             if found[0]["full_name"]

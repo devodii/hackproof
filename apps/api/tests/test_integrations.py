@@ -223,3 +223,15 @@ def test_reflector_is_found_deeply_from_source():
 def test_a_repo_that_only_mentions_reflector_in_prose_is_not_an_integration():
     files = {"README.md": "We looked at reflector.network and PulseClient"}
     assert detect(files, get_catalog(), "someone") == []
+
+
+def test_a_partner_with_only_a_catalog_profile_needs_no_adapter():
+    files = {
+        "Makefile": "deploy:\n\tstellar registry deploy --contract-name vault --wasm-name v\n",
+    }
+    found = {
+        (item.slug, item.method, item.evidence)
+        for item in detect_tools(files, get_catalog(), "someone")
+    }
+    assert ("stellar-registry", "signal", "cli-deploy") in found
+    assert ("stellar-registry", "capture", "contract-names:vault") in found

@@ -211,6 +211,16 @@ tools:
           stellar-registry-name,
         ]
     github_owners: [stellar-registry, theahaco]
+    profile:
+      context: ['stellar[ -]registry', 'stellar-registry']
+      signals:
+        - {slug: cli-publish, group: client, label: Publishes wasm with the registry CLI, patterns: ['stellar\s+registry\s+publish']}
+        - {slug: cli-deploy, group: client, label: Deploys a named contract with the registry CLI, patterns: ['stellar\s+registry\s+deploy']}
+        - {slug: cli-install, group: read, label: Installs a published contract, patterns: ['stellar\s+registry\s+install']}
+      captures:
+        - slug: contract-names
+          label: Contract names it deploys
+          patterns: ['stellar\s+registry\s+deploy[^\n]*?--contract-name[ =]+["'']?([a-z0-9][a-z0-9_-]*)']
 
   - slug: stellar-raven
     name: Stellar Raven

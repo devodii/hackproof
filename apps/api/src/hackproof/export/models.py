@@ -161,6 +161,10 @@ class EcosystemTool(Model):
     name: str = Field(description="Tool name")
     website: str = Field(description="Tool website")
     evidence: list[IntegrationEvidence] = Field(description="Where the tool was found")
+    profile: IntegrationProfile | None = Field(
+        default=None,
+        description="How deeply the repo uses the tool, for tools with a profile in data/integrations.yaml",
+    )
 
 
 class IntegrationPartner(Model):

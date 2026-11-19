@@ -4,7 +4,7 @@ from fnmatch import fnmatchcase
 from pathlib import PurePosixPath
 
 from hackproof.github.dependencies import ECOSYSTEM, PARSERS, SKIP_DIRECTORIES
-from hackproof.integrations.catalog import Catalog, Partner, Product
+from hackproof.integrations.catalog import Catalog, Product
 from hackproof.integrations.models import AgentDetection, Detection, Method
 
 PROSE_SUFFIXES = {".md", ".txt"}
@@ -40,7 +40,7 @@ def detect(files: dict[str, str], catalog: Catalog, owner: str) -> list[Detectio
     return found + _profiles(files, catalog.partners, owner, found)
 
 
-def _profile_hits(files: dict[str, str], partner: Partner) -> list[Detection]:
+def _profile_hits(files: dict[str, str], partner: Product) -> list[Detection]:
     profile = partner.profile
     if profile is None:
         return []
@@ -76,7 +76,7 @@ def _profile_hits(files: dict[str, str], partner: Partner) -> list[Detection]:
 
 def _profiles(
     files: dict[str, str],
-    partners: Sequence[Partner],
+    partners: Sequence[Product],
     owner: str,
     found: list[Detection],
 ) -> list[Detection]:
@@ -103,7 +103,8 @@ def _profiles(
 def detect_tools(
     files: dict[str, str], catalog: Catalog, owner: str
 ) -> list[Detection]:
-    return _detect(files, catalog.tools, owner)
+    found = _detect(files, catalog.tools, owner)
+    return found + _profiles(files, catalog.tools, owner, found)
 
 
 def _detect(

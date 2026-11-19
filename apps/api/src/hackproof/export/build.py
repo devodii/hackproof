@@ -104,9 +104,16 @@ def _tools(
     catalog: Catalog, rows: list[asyncpg.Record], repo_url: str
 ) -> list[EcosystemTool]:
     found = _found(rows, "tool", repo_url)
+    raw = defaultdict(list)
+    for row in rows:
+        raw[row["tool"]].append((row["method"], row["evidence"]))
     return [
         EcosystemTool(
-            slug=tool.slug, name=tool.name, website=tool.site, evidence=found[tool.slug]
+            slug=tool.slug,
+            name=tool.name,
+            website=tool.site,
+            evidence=found[tool.slug],
+            profile=build_profile(tool, raw[tool.slug], EVENT_NETWORK),
         )
         for tool in catalog.tools
         if tool.slug in found

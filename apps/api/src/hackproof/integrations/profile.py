@@ -4,7 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from hackproof.integrations.catalog import Partner
+from hackproof.integrations.catalog import Product
 
 
 class Model(BaseModel):
@@ -59,7 +59,7 @@ class IntegrationProfile(Model):
 
 
 def build_profile(
-    partner: Partner, evidence: Iterable[tuple[str, str]], network: str
+    partner: Product, evidence: Iterable[tuple[str, str]], network: str
 ) -> IntegrationProfile | None:
     profile = partner.profile
     if profile is None:
@@ -112,6 +112,8 @@ def build_profile(
                 status=check.severity if broken else "pass",
             )
         )
+    if not (contracts or found_signals or captures or checks):
+        return None
     return IntegrationProfile(
         contracts=contracts,
         signals=[

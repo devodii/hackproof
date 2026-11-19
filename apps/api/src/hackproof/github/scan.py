@@ -132,7 +132,11 @@ class Scanner:
         self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
     def _wants_depth(self, detections: list[Detection]) -> bool:
-        deep = {p.slug for p in self._catalog.partners if p.profile}
+        deep = {
+            item.slug
+            for item in [*self._catalog.partners, *self._catalog.tools]
+            if item.profile
+        }
         return any(item.slug in deep for item in detections)
 
     async def _wasm_ref(self, repo: Candidate, branch: str, path: str) -> Ref | None:
@@ -180,7 +184,9 @@ class Scanner:
             else None
         )
         integrations = detect(files, self._catalog, repo.owner)
-        if self._wants_depth(integrations):
+        if self._wants_depth(
+            integrations + detect_tools(files, self._catalog, repo.owner)
+        ):
             extra = select_deep(tree["tree"], set(files))
             files = files | await fetch_texts(
                 self._github, repo.full_name, branch, extra

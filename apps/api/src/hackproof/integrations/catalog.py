@@ -8,15 +8,6 @@ from pydantic import BaseModel, ConfigDict, Field, PrivateAttr
 from hackproof.config import get_settings
 
 
-class Product(BaseModel):
-    slug: str
-    name: str
-    site: str
-    packages: dict[str, list[str]] = Field(default_factory=dict)
-    endpoints: list[str] = Field(default_factory=list)
-    github_owners: list[str] = Field(default_factory=list)
-
-
 class Network(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -81,15 +72,15 @@ class LiveProbe(BaseModel):
 class Profile(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    adapter: str
+    adapter: str | None = None
     params: dict[str, int] = Field(default_factory=dict)
-    networks: dict[str, Network]
+    networks: dict[str, Network] = Field(default_factory=dict)
     context: list[str]
-    contracts: list[ProfileContract]
+    contracts: list[ProfileContract] = Field(default_factory=list)
     live: list[LiveProbe] = Field(default_factory=list)
-    signals: list[Signal]
-    captures: list[Capture]
-    checks: list[Check]
+    signals: list[Signal] = Field(default_factory=list)
+    captures: list[Capture] = Field(default_factory=list)
+    checks: list[Check] = Field(default_factory=list)
     _context: list[re.Pattern[str]] = PrivateAttr(default_factory=list)
 
     def model_post_init(self, _: object) -> None:
@@ -102,9 +93,18 @@ class Profile(BaseModel):
         return next(item for item in self.contracts if item.slug == slug)
 
 
+class Product(BaseModel):
+    slug: str
+    name: str
+    site: str
+    packages: dict[str, list[str]] = Field(default_factory=dict)
+    endpoints: list[str] = Field(default_factory=list)
+    github_owners: list[str] = Field(default_factory=list)
+    profile: Profile | None = None
+
+
 class Partner(Product):
     category: str
-    profile: Profile | None = None
 
 
 class Tool(Product):
@@ -126,6 +126,12 @@ class Catalog(BaseModel):
 
     def partner(self, slug: str) -> Partner:
         return next(partner for partner in self.partners if partner.slug == slug)
+
+    def deep(self, slug: str) -> Product | None:
+        found = next(
+            (item for item in [*self.partners, *self.tools] if item.slug == slug), None
+        )
+        return found if found and found.profile else None
 
 
 @lru_cache

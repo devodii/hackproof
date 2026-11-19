@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict
 from hackproof.db import pool
 from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.adapters import ADAPTERS
-from hackproof.integrations.catalog import Network, Partner, get_catalog
+from hackproof.integrations.catalog import Network, Product, get_catalog
 from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.profile import IntegrationProfile, build_profile
 from hackproof.sql_loader import load_sql
@@ -98,12 +98,12 @@ def _expired(snapshot: ContractSnapshot | None) -> list[str]:
     return [item for item, due in snapshot.deadlines.items() if due < now]
 
 
-def _explorer(partner: Partner, network: str, contract_id: str) -> str:
+def _explorer(partner: Product, network: str, contract_id: str) -> str:
     assert partner.profile
     return f"{partner.profile.networks[network].explorer}/{contract_id}"
 
 
-async def fetch_detail(partner: Partner) -> IntegrationDetail:
+async def fetch_detail(partner: Product) -> IntegrationDetail:
     profile = partner.profile
     assert profile
     async with pool().acquire() as connection:
@@ -197,7 +197,7 @@ async def fetch_detail(partner: Partner) -> IntegrationDetail:
     return IntegrationDetail(
         slug=partner.slug,
         name=partner.name,
-        category=partner.category,
+        category=getattr(partner, "category", "tools"),
         site=partner.site,
         networks=profile.networks,
         contracts=contracts,
@@ -256,12 +256,14 @@ async def fetch_detail(partner: Partner) -> IntegrationDetail:
 _cache: dict[str, tuple[float, list[Reading]]] = {}
 
 
-async def fetch_live(partner: Partner) -> list[Reading]:
+async def fetch_live(partner: Product) -> list[Reading]:
     profile = partner.profile
     assert profile
     cached = _cache.get(partner.slug)
     if cached and time.monotonic() - cached[0] < LIVE_TTL:
         return cached[1]
+    if profile.adapter not in ADAPTERS:
+        return []
     adapter = ADAPTERS[profile.adapter]
     async with httpx.AsyncClient(timeout=20) as http:
         readings: list[Reading] = []
@@ -281,9 +283,8 @@ async def fetch_live(partner: Partner) -> list[Reading]:
     return readings
 
 
-def deep_partner(slug: str) -> Partner | None:
-    partner = next((p for p in get_catalog().partners if p.slug == slug), None)
-    return partner if partner and partner.profile else None
+def deep_partner(slug: str) -> Product | None:
+    return get_catalog().deep(slug)
 
 
 def depths(uses: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -291,7 +292,8 @@ def depths(uses: list[dict[str, Any]]) -> list[dict[str, Any]]:
     for use in uses:
         grouped[use["slug"]].append((use["method"], use["evidence"]))
     found = []
-    for partner in get_catalog().partners:
+    catalog = get_catalog()
+    for partner in [*catalog.partners, *catalog.tools]:
         if partner.profile is None or partner.slug not in grouped:
             continue
         profile = build_profile(partner, grouped[partner.slug], NETWORK)
