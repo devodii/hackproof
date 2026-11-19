@@ -1,7 +1,12 @@
 import json
 
 from hackproof.integrations.catalog import Agent, Catalog, Partner, Tool, get_catalog
-from hackproof.integrations.detect import detect, detect_agents, detect_tools
+from hackproof.integrations.detect import (
+    depth_hints,
+    detect,
+    detect_agents,
+    detect_tools,
+)
 from hackproof.integrations.models import Detection
 
 CATALOG = Catalog(
@@ -235,3 +240,10 @@ def test_a_partner_with_only_a_catalog_profile_needs_no_adapter():
     }
     assert ("stellar-registry", "signal", "cli-deploy") in found
     assert ("stellar-registry", "capture", "contract-names:vault") in found
+
+
+def test_a_prose_mention_of_a_deep_partner_asks_for_a_deeper_scan():
+    files = {"README.md": "We settle with Trustless Work escrows"}
+    hints = depth_hints(files, get_catalog(), [])
+    assert hints is not None and "escrow" in hints
+    assert depth_hints({"README.md": "hello"}, get_catalog(), []) is None

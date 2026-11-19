@@ -100,6 +100,24 @@ def _profiles(
     return detections
 
 
+def depth_hints(
+    files: dict[str, str], catalog: Catalog, detections: Iterable[Detection]
+) -> list[str] | None:
+    found = {item.slug for item in detections}
+    profiles = [
+        item.profile
+        for item in [*catalog.partners, *catalog.tools]
+        if item.profile
+        and (
+            item.slug in found
+            or any(item.profile.in_context(text) for text in files.values())
+        )
+    ]
+    if not profiles:
+        return None
+    return [hint for profile in profiles for hint in profile.hints]
+
+
 def detect_tools(
     files: dict[str, str], catalog: Catalog, owner: str
 ) -> list[Detection]:

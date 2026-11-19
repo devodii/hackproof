@@ -17,8 +17,12 @@ from hackproof.github.refs import extract_refs
 from hackproof.github.track import declared_track
 from hackproof.hackathon import Discovery, Window
 from hackproof.integrations.catalog import Catalog, get_catalog
-from hackproof.integrations.detect import detect, detect_agents, detect_tools
-from hackproof.integrations.models import Detection
+from hackproof.integrations.detect import (
+    depth_hints,
+    detect,
+    detect_agents,
+    detect_tools,
+)
 from hackproof.sql_loader import load_sql
 
 TEXT_SUFFIXES = {
@@ -125,17 +129,6 @@ class Scanner:
         self._catalog = catalog or get_catalog()
         self._files = asyncio.Semaphore(FILE_CONCURRENCY)
 
-    def _deep_hints(self, detections: list[Detection]) -> list[str] | None:
-        found = {item.slug for item in detections}
-        profiles = [
-            item.profile
-            for item in [*self._catalog.partners, *self._catalog.tools]
-            if item.profile and item.slug in found
-        ]
-        if not profiles:
-            return None
-        return [hint for profile in profiles for hint in profile.hints]
-
     async def _wasm_ref(self, repo: Candidate, branch: str, path: str) -> Ref | None:
         async with self._files:
             content = await self._github.raw(
@@ -181,8 +174,10 @@ class Scanner:
             else None
         )
         integrations = detect(files, self._catalog, repo.owner)
-        hints = self._deep_hints(
-            integrations + detect_tools(files, self._catalog, repo.owner)
+        hints = depth_hints(
+            files,
+            self._catalog,
+            integrations + detect_tools(files, self._catalog, repo.owner),
         )
         if hints is not None:
             extra = select_deep(tree["tree"], set(files), hints)
