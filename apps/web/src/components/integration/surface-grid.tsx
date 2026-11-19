@@ -13,6 +13,7 @@ import { useState } from 'react'
 
 import { Reveal } from '@/components/integration/reveal'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { formatNumber, humanize, shortId } from '@/lib/format'
 import type { ContractState, Fact } from '@/lib/types'
@@ -28,6 +29,7 @@ const KIND_ICON: Record<string, LucideIcon> = {
 }
 
 const FACTS_SHOWN = 6
+const GROUP_SHOWN = 3
 const FRESH_HOURS = 36
 
 function factValue(value: Fact) {
@@ -136,6 +138,36 @@ function SurfaceCard({ surface }: { surface: ContractState }) {
   )
 }
 
+function Group({ kind, items }: { kind: string; items: ContractState[] }) {
+  const [all, setAll] = useState(false)
+  const shown = all ? items : items.slice(0, GROUP_SHOWN)
+
+  return (
+    <div className="flex flex-col gap-3">
+      <Reveal className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+        {humanize(kind)}
+        <Badge variant="outline">{items.length}</Badge>
+      </Reveal>
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+        {shown.map((surface, index) => (
+          <Reveal
+            key={`${surface.network}:${surface.slug}`}
+            delay={Math.min(index, 5) * 0.06}
+            className="h-full"
+          >
+            <SurfaceCard surface={surface} />
+          </Reveal>
+        ))}
+      </div>
+      {items.length > GROUP_SHOWN && (
+        <Button variant="ghost" className="self-start" onClick={() => setAll((value) => !value)}>
+          {all ? 'Show fewer' : `Show all ${items.length}`}
+        </Button>
+      )}
+    </div>
+  )
+}
+
 export function SurfaceGrid({ surfaces }: { surfaces: ContractState[] }) {
   const groups = surfaces.reduce<Record<string, ContractState[]>>((found, surface) => {
     ;(found[surface.kind] ??= []).push(surface)
@@ -145,23 +177,7 @@ export function SurfaceGrid({ surfaces }: { surfaces: ContractState[] }) {
   return (
     <div className="flex flex-col gap-8">
       {Object.entries(groups).map(([kind, items]) => (
-        <div key={kind} className="flex flex-col gap-3">
-          <Reveal className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-            {humanize(kind)}
-            <Badge variant="outline">{items.length}</Badge>
-          </Reveal>
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {items.map((surface, index) => (
-              <Reveal
-                key={`${surface.network}:${surface.slug}`}
-                delay={Math.min(index, 5) * 0.06}
-                className="h-full"
-              >
-                <SurfaceCard surface={surface} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
+        <Group key={kind} kind={kind} items={items} />
       ))}
     </div>
   )
