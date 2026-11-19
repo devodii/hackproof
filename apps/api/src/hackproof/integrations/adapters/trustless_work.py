@@ -14,7 +14,6 @@ from hackproof.integrations.chain import ContractSnapshot
 
 METHODS = {"get", "post", "put", "patch", "delete"}
 FAULT_WORDS = ("required", "must", "invalid", "not supported", "incomplete")
-INTERNAL_PREFIXES = ("/admin", "/auth")
 ESCROW_FUNCTIONS = (
     "tw_new_single_release_escrow",
     "tw_new_multi_release_escrow",
@@ -65,7 +64,7 @@ async def observe_api(
     latency = int((time.monotonic() - started) * 1000)
     schema = Schema.model_validate(response.json())
     operations: list[str] = []
-    undocumented = faulty = internal = versioned = 0
+    undocumented = faulty = versioned = 0
     for path, item in schema.paths.items():
         for method, raw in item.items():
             if method not in METHODS:
@@ -74,7 +73,6 @@ async def observe_api(
             operations.append(f"{method.upper()} {path}")
             undocumented += not (operation.summary or operation.description)
             versioned += "/v2/" in path
-            internal += path.startswith(INTERNAL_PREFIXES)
             fault = str(operation.responses.get("500", ""))
             faulty += any(word in fault.lower() for word in FAULT_WORDS)
     fingerprint = hashlib.sha256("\n".join(sorted(operations)).encode()).hexdigest()[
@@ -82,12 +80,10 @@ async def observe_api(
     ]
     return ContractSnapshot(
         facts={
-            "version": schema.info.version,
             "operations": len(operations),
             "v2_operations": versioned,
             "undocumented": undocumented,
             "faults_as_500": faulty,
-            "internal_routes": internal,
             "fingerprint": fingerprint,
             "latency_ms": latency,
         },
