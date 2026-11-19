@@ -25,6 +25,67 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/app-lib/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/scaffold.yml
+  - method: signal
+    detail: checks-age
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/contracts/demo_oracle/src/lib.rs
+  - method: signal
+    detail: client-pulse
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/contracts/demo_oracle/src/lib.rs
+  - method: signal
+    detail: hardcoded-decimals
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/app/src/pages/Landing.tsx
+  - method: signal
+    detail: reads-decimals
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/contracts/demo_oracle/src/lib.rs
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/contracts/demo_oracle/src/lib.rs
+  - method: signal
+    detail: reads-resolution
+    file_url: https://github.com/MohamedDataX/HackMeridian-stellar-Hackathon/blob/HEAD/contracts/demo_oracle/src/lib.rs
+  profile:
+    contracts:
+    - slug: testnet-fx
+      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      name: Fiat FX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      attributes:
+        source: fx
+        asset_kind: other
+    signals:
+    - slug: client-pulse
+      group: client
+      label: Pulse client
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
+    - slug: reads-decimals
+      group: safety
+      label: Reads decimals()
+    - slug: reads-resolution
+      group: safety
+      label: Reads resolution()
+    - slug: checks-age
+      group: safety
+      label: Checks the quote age
+    - slug: hardcoded-decimals
+      group: risk
+      label: Assumes 7 decimals
+    checks:
+    - slug: no-age-check
+      label: Reads prices without checking how old they are
+      status: pass
+    - slug: assumed-decimals
+      label: Scales prices as if they had 7 decimals
+      status: pass
 tools:
 - slug: stellar-scaffold
   name: Scaffold Stellar

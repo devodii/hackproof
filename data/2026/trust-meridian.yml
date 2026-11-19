@@ -33,6 +33,30 @@ integrations:
   - method: endpoint
     detail: api.defindex.io
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/scripts/probe.sh
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/src/chain/index.js
+  - method: signal
+    detail: number-cast
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/src/live.js
+  profile:
+    contracts:
+    - slug: testnet-fx
+      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      name: Fiat FX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      attributes:
+        source: fx
+        asset_kind: other
+    signals:
+    - slug: number-cast
+      group: risk
+      label: Casts the price with Number()
 agents:
 - slug: claude-code
   name: Claude Code

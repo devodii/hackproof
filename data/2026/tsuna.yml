@@ -24,6 +24,55 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/web/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/README.md
+  - method: signal
+    detail: checks-age
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/contracts/agent_vault/src/test_oracle.rs
+  - method: signal
+    detail: client-pulse
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/contracts/oracle_router/src/sources.rs
+  - method: signal
+    detail: number-cast
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/web/lib/signals/reflector-risk.ts
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/CHAAIISE/tsuna/blob/HEAD/contracts/oracle_router/src/lib.rs
+  profile:
+    contracts:
+    - slug: testnet-exchanges
+      id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      name: CEX and DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      attributes:
+        source: exchanges
+        asset_kind: other
+    signals:
+    - slug: client-pulse
+      group: client
+      label: Pulse client
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
+    - slug: checks-age
+      group: safety
+      label: Checks the quote age
+    - slug: number-cast
+      group: risk
+      label: Casts the price with Number()
+    checks:
+    - slug: no-age-check
+      label: Reads prices without checking how old they are
+      status: pass
+    - slug: lossy-price
+      label: Turns a 14 decimal bigint price into a Number
+      status: warn
 chain:
   contracts: 92
   wasm_uploads: 29
