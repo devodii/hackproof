@@ -12,6 +12,7 @@ from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
 from hackproof.integrations.observe import run_observe
 from hackproof.linking.reconcile import run_reconcile
+from hackproof.pipeline import Options, WrongEvent, run_pipeline, select, stages
 
 
 def run_schema(args: argparse.Namespace) -> int:
@@ -38,6 +39,38 @@ def run_schema(args: argparse.Namespace) -> int:
     return 1
 
 
+def run_all(args: argparse.Namespace) -> int:
+    if args.hackathon:
+        os.environ["HACKPROOF_HACKATHON_FILE"] = str(args.hackathon.resolve())
+    connection = Connection.from_url(get_settings().database_url)
+    if not (connection.is_local or args.remote):
+        print(
+            f"{connection.label} is not on this machine. Pass --remote to run the "
+            "pipeline against it."
+        )
+        return 1
+    try:
+        chosen = select(
+            stages(
+                Options(
+                    strings=args.strings, force=args.force, projects_only=args.projects
+                )
+            ),
+            only=args.only,
+            skip=args.skip,
+            start=args.start,
+        )
+    except ValueError as error:
+        print(error)
+        return 1
+    try:
+        asyncio.run(run_pipeline(chosen))
+    except WrongEvent as error:
+        print(error)
+        return 1
+    return 0
+
+
 def run_restore(args: argparse.Namespace) -> int:
     connection = Connection.from_url(get_settings().database_url)
     if not (connection.is_local or args.remote or os.environ.get("CI")):
@@ -53,6 +86,36 @@ def run_restore(args: argparse.Namespace) -> int:
 def main() -> None:
     parser = argparse.ArgumentParser(prog="hackproof")
     commands = parser.add_subparsers(dest="command", required=True)
+    run = commands.add_parser(
+        "run",
+        help="run the whole pipeline for a hackathon: sync, discover, scan, reconcile, observe, export",
+    )
+    run.add_argument(
+        "--hackathon",
+        type=Path,
+        help="the hackathon file to run, default data/hackmeridian-2026.yaml",
+    )
+    run.add_argument("--from", dest="start", help="start at this stage and carry on")
+    run.add_argument("--only", nargs="+", default=[], help="run only these stages")
+    run.add_argument("--skip", nargs="+", default=[], help="leave these stages out")
+    run.add_argument(
+        "--strings",
+        action="store_true",
+        help="also run the network string code queries",
+    )
+    run.add_argument(
+        "--force", action="store_true", help="rescan repos already scanned"
+    )
+    run.add_argument(
+        "--projects",
+        action="store_true",
+        help="only scan repos that are already projects",
+    )
+    run.add_argument(
+        "--remote",
+        action="store_true",
+        help="allow a database that is not on this machine",
+    )
     commands.add_parser("sync", help="index the hack window from testnet")
     discover = commands.add_parser("discover", help="find candidate repos on github")
     discover.add_argument(
@@ -123,6 +186,8 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
     match args.command:
+        case "run":
+            raise SystemExit(run_all(args))
         case "sync":
             asyncio.run(run_sync())
         case "discover":
