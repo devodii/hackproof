@@ -1,6 +1,7 @@
+import asyncio
 import time
 from collections import defaultdict
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, Literal
 
 import httpx
@@ -16,12 +17,16 @@ from hackproof.integrations.catalog import (
     get_catalog,
 )
 from hackproof.integrations.chain import ContractSnapshot, Reading
+from hackproof.integrations.observe import observe_item
 from hackproof.integrations.profile import IntegrationProfile, build_profile
 from hackproof.schemas import Tier
 from hackproof.sql_loader import load_sql
 
 NETWORK = "testnet"
 LIVE_TTL = 30
+OBSERVE_TTL = 3600
+_refreshing: set[str] = set()
+_background: set[asyncio.Task[None]] = set()
 
 
 class Model(BaseModel):
@@ -119,6 +124,37 @@ def describe(check: Check, labels: dict[str, str]) -> str:
     return f"{counted}Fails whenever it applies."
 
 
+def is_stale(observed_at: datetime | None, now: datetime) -> bool:
+    return observed_at is None or (now - observed_at).total_seconds() > OBSERVE_TTL
+
+
+async def refresh(partner: Product, items: list[ProfileContract]) -> None:
+    try:
+        async with httpx.AsyncClient(timeout=30, follow_redirects=True) as http:
+            await asyncio.gather(*(observe_item(http, partner, item) for item in items))
+    finally:
+        _refreshing.discard(partner.slug)
+
+
+def refresh_in_background(
+    partner: Product,
+    items: list[ProfileContract],
+    observed: dict[tuple[str, str], datetime],
+) -> None:
+    if partner.profile is None or partner.profile.adapter not in ADAPTERS:
+        return
+    now = datetime.now(UTC)
+    stale = [
+        item for item in items if is_stale(observed.get((item.network, item.id)), now)
+    ]
+    if not stale or partner.slug in _refreshing:
+        return
+    _refreshing.add(partner.slug)
+    task = asyncio.create_task(refresh(partner, stale))
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+
+
 def _expired(snapshot: ContractSnapshot | None) -> list[str]:
     if snapshot is None:
         return []
@@ -175,6 +211,11 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
         )
         for row in states
     }
+    refresh_in_background(
+        partner,
+        [*profile.contracts, *profile.surfaces],
+        {key: value[1] for key, value in snapshots.items()},
+    )
     used: dict[str, int] = defaultdict(int)
     for adopter in adopters:
         for contract in adopter.profile.contracts:

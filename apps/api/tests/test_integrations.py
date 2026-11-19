@@ -1,4 +1,5 @@
 import json
+from datetime import UTC, datetime, timedelta
 
 from hackproof.integrations.catalog import (
     Agent,
@@ -14,6 +15,7 @@ from hackproof.integrations.detect import (
     detect_agents,
     detect_tools,
 )
+from hackproof.integrations.insights import is_stale
 from hackproof.integrations.models import Detection
 from hackproof.integrations.profile import build_profile
 
@@ -322,3 +324,10 @@ def test_trustless_work_is_read_deeply_from_source():
     assert checks["release-without-validation"] == "warn"
     assert checks["no-rate-limit"] == "warn"
     assert "v2-on-mainnet-host" not in checks
+
+
+def test_observed_state_goes_stale_after_an_hour():
+    now = datetime(2026, 11, 19, 12, 0, tzinfo=UTC)
+    assert is_stale(None, now)
+    assert not is_stale(now - timedelta(minutes=59), now)
+    assert is_stale(now - timedelta(minutes=61), now)

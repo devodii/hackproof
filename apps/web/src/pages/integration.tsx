@@ -33,7 +33,7 @@ export function IntegrationPage() {
         <Block
           eyebrow="Live"
           title={`What ${data.name} runs today`}
-          note="Read from the source when the dataset was built"
+          note="Refreshed from the source at most once an hour"
         >
           <SurfaceGrid surfaces={data.surfaces} />
         </Block>

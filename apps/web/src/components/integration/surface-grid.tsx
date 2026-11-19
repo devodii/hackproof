@@ -43,6 +43,14 @@ function tone(value: Fact) {
   return ''
 }
 
+function ago(iso: string) {
+  const minutes = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60_000))
+  if (minutes < 1) return 'just now'
+  if (minutes < 60) return `${minutes}m ago`
+  const hours = Math.round(minutes / 60)
+  return hours < 48 ? `${hours}h ago` : `${Math.round(hours / 24)}d ago`
+}
+
 function isFresh(iso: string | null) {
   return iso !== null && Date.now() - new Date(iso).getTime() < FRESH_HOURS * 3_600_000
 }
@@ -125,14 +133,17 @@ function SurfaceCard({ surface }: { surface: ContractState }) {
             )}
           </div>
         )}
-        <a
-          href={surface.explorer_url}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-auto inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-        >
-          Open <ExternalLinkIcon className="size-3" />
-        </a>
+        <div className="mt-auto flex items-center justify-between gap-3 text-xs text-muted-foreground">
+          <span>{surface.observed_at ? `Read ${ago(surface.observed_at)}` : 'Not read yet'}</span>
+          <a
+            href={surface.explorer_url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 hover:text-foreground"
+          >
+            Open <ExternalLinkIcon className="size-3" />
+          </a>
+        </div>
       </CardContent>
     </Card>
   )
