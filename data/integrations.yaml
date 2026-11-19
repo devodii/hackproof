@@ -59,7 +59,7 @@ partners:
           group: client
           label: Calls the escrow API
           patterns:
-            - '@trustless-work/(?:escrow|blocks)'
+            - '["'']@trustless-work/(?:escrow|blocks)'
             - '(?:dev\.|beta\.)?api\.trustlesswork\.com'
             - '/(?:deployer|escrow)/(?:single|multi)-release'
         - slug: rest-api
@@ -72,19 +72,19 @@ partners:
           group: client
           label: React SDK
           patterns:
-            - '@trustless-work/escrow(?!-js)'
+            - '["'']@trustless-work/escrow["''/]'
             - 'TrustlessWorkConfig'
         - slug: blocks
           group: client
           label: Blocks UI kit
           patterns:
-            - '@trustless-work/blocks'
+            - '["'']@trustless-work/blocks["''/]'
             - 'tw-blocks'
         - slug: js-sdk
           group: client
           label: JavaScript SDK
           patterns:
-            - '@trustless-work/escrow-js'
+            - '["'']@trustless-work/escrow-js["''/]'
         - slug: mcp
           group: client
           label: MCP server
@@ -118,12 +118,12 @@ partners:
           group: network
           label: Testnet host
           patterns:
-            - '(?:dev|beta)\.api\.trustlesswork\.com'
+            - 'https?://(?:dev|beta)\.api\.trustlesswork\.com'
         - slug: mainnet-api
           group: network
           label: Mainnet host
           patterns:
-            - '(?<![\w.-])api\.trustlesswork\.com'
+            - 'https?://api\.trustlesswork\.com'
         - slug: deploy
           group: flow
           label: Deploys escrows
@@ -189,17 +189,14 @@ partners:
           group: safety
           label: Handles the rate limit
           patterns:
-            - '\b429\b|Retry-After|rate[-_ ]?limit'
+            - '\b429\b|(?i:retry-after)'
         - slug: receives-webhooks
-          group: safety
-          label: Receives webhooks
+          group: risk
+          label: Waits for webhooks
           patterns:
-            - '(?i)webhook'
-        - slug: verifies-webhook
-          group: safety
-          label: Verifies webhook signatures
-          patterns:
-            - '(?i)trustless-?work-?signature|x-tw-signature|x-trustless-work-signature'
+            - '(?i)(?:post|put|use|route)\s*\(\s*[`''"/][^)]*webhooks?[^)]*\)'
+            - '(?i)class\s+\w*webhook\w*(?:controller|service|handler)'
+            - '(?i)trustless-?work-?signature'
         - slug: public-api-key
           group: risk
           label: Key readable in the browser
@@ -244,11 +241,11 @@ partners:
           severity: warn
           requires: [calls-api]
           missing: [handles-rate-limit]
-        - slug: unverified-webhook
-          label: Accepts webhooks without checking the signature
-          severity: fail
-          requires: [receives-webhooks]
-          missing: [verifies-webhook]
+        - slug: expects-webhooks
+          label: Waits for webhooks Trustless Work does not send yet
+          severity: warn
+          requires: [calls-api]
+          forbids: [receives-webhooks]
 
   - slug: stellar-wallets-kit
     name: Stellar Wallets Kit
