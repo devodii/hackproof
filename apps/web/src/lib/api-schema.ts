@@ -389,6 +389,11 @@ export interface components {
         };
         /** ChatRequest */
         ChatRequest: {
+            /**
+             * Language
+             * @default en
+             */
+            language: string;
             /** Messages */
             messages: components["schemas"]["Message"][];
             page?: components["schemas"]["Page"] | null;
