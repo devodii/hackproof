@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { usePerson } from '@/hooks/use-person'
-import { EVENT_NAME } from '@/lib/config'
+import { useHackathon } from '@/hooks/use-hackathon'
 import { countryName, flagEmoji, formatNumber } from '@/lib/format'
 
 function PersonSkeleton() {
@@ -31,6 +31,7 @@ function PersonSkeleton() {
 
 export function PersonPage() {
   const login = useParams().login ?? ''
+  const hackathon = useHackathon()
   const { data, isPending, error } = usePerson(login)
 
   if (isPending) return <PersonSkeleton />
@@ -49,7 +50,7 @@ export function PersonPage() {
           </Avatar>
           <div className="flex flex-col items-start gap-2">
             <p className="text-sm tracking-wide text-muted-foreground uppercase">
-              {EVENT_NAME} builder
+              {hackathon.name} builder
             </p>
             <h1 className="text-4xl sm:text-5xl">{data.login}</h1>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
@@ -72,7 +73,7 @@ export function PersonPage() {
         <p className="flex flex-wrap items-center gap-2 text-lg text-muted-foreground">
           <span>
             {formatNumber(data.contributions)} {data.contributions === 1 ? 'commit' : 'commits'} on{' '}
-            {teams} {teams === 1 ? 'project' : 'projects'} at {EVENT_NAME}
+            {teams} {teams === 1 ? 'project' : 'projects'} at {hackathon.name}
           </span>
           {teams > 1 && <Badge variant="secondary">On {teams} teams</Badge>}
         </p>

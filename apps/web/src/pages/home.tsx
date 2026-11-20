@@ -10,11 +10,12 @@ import { Overview } from '@/components/overview'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useHackWindow } from '@/hooks/use-hack-window'
-import { EVENT_NAME } from '@/lib/config'
+import { useHackathon } from '@/hooks/use-hackathon'
 import { formatDateTime } from '@/lib/format'
 
 export function HomePage() {
   const { data } = useHackWindow()
+  const hackathon = useHackathon()
   const { startChat } = useChatPanel()
   const [params] = useSearchParams()
 
@@ -32,12 +33,9 @@ export function HomePage() {
       <section className="flex flex-col items-start gap-5">
         <EventLogo className="h-9 w-auto sm:h-11" />
         <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
-          {EVENT_NAME}, rebuilt from the chain.
+          {hackathon.name}, rebuilt from the chain.
         </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground">
-          The submission list is not public, so we rebuilt it from Stellar testnet. Every project
-          below is matched to on-chain activity you can check yourself.
-        </p>
+        <p className="max-w-2xl text-lg text-muted-foreground">{hackathon.summary}</p>
         {data ? (
           <p className="text-sm text-muted-foreground">
             {formatDateTime(data.start)} to {formatDateTime(data.end)}

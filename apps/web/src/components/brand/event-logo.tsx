@@ -1,15 +1,23 @@
-import onDark from '@/assets/hackmeridian-light.png'
-import onLight from '@/assets/hackmeridian-dark.png'
-import { EVENT_NAME, EVENT_URL } from '@/lib/config'
+import { useHackathon } from '@/hooks/use-hackathon'
 import { cn } from '@/lib/utils'
 
+const logos = import.meta.glob<string>('@/assets/logos/*.png', {
+  eager: true,
+  import: 'default',
+})
+
 export function EventLogo({ className }: { className?: string }) {
+  const { slug, name, website } = useHackathon()
+  const onDark = logos[`/src/assets/logos/${slug}-light.png`]
+  const onLight = logos[`/src/assets/logos/${slug}-dark.png`]
+  if (!onDark || !onLight) return null
+
   return (
     <a
-      href={EVENT_URL}
+      href={website ?? undefined}
       target="_blank"
       rel="noreferrer"
-      aria-label={EVENT_NAME}
+      aria-label={name}
       className="shrink-0"
     >
       <img src={onLight} alt="" className={cn('dark:hidden', className)} />
