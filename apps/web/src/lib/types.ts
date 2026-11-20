@@ -14,6 +14,7 @@ export type {
   DependencyFingerprint,
   EcosystemTool,
   FailedTx,
+  HackathonSummary,
   Integration,
   IntegrationDepth,
   IntegrationDetail,
