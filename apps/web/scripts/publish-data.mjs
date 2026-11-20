@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { parse, stringify } from 'yaml'
@@ -12,6 +13,7 @@ if (hackathons.length === 0) throw new Error('data has no hackathon folders, not
 
 for (const hackathon of hackathons) {
   const folder = path.join(source, hackathon, 'projects')
+  if (!existsSync(folder)) continue
   const files = (await readdir(folder)).filter((name) => name.endsWith('.yml')).sort()
   const projects = await Promise.all(
     files.map(async (name) => parse(await readFile(path.join(folder, name), 'utf8'))),
