@@ -97,3 +97,19 @@ export const methodLabel: Record<string, string> = {
   signal: 'Code signal',
   capture: 'Captured value',
 }
+
+const day = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+const dayWithYear = new Intl.DateTimeFormat('en', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+})
+
+export function formatDateRange(startIso: string, endIso: string) {
+  const start = new Date(startIso)
+  const end = new Date(endIso)
+  if (start.toDateString() === end.toDateString()) return dayWithYear.format(start)
+  const sameYear = start.getUTCFullYear() === end.getUTCFullYear()
+  return `${sameYear ? day.format(start) : dayWithYear.format(start)} to ${dayWithYear.format(end)}`
+}
