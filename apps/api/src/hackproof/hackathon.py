@@ -37,6 +37,7 @@ class Hackathon(BaseModel):
     summary: str | None = None
     website: str | None = None
     location: str | None = None
+    about: str | None = None
     window: Window
     awards: list[Award] = []
     discovery: Discovery

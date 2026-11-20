@@ -1,5 +1,13 @@
 slug: hackmeridian-2026
 name: HackMeridian 2026
+summary: The submission list is not public, so we rebuilt it from Stellar testnet. Every project below is matched to on-chain activity you can check yourself.
+website: https://www.hackmeridian.com/
+location: Lisbon, Portugal
+about: |-
+  - HackMeridian is Stellar's flagship hackathon, held alongside the Meridian conference. The 2026 edition is in Lisbon, Portugal, on October 25 and 26, 2026. Teams build on Stellar and Soroban and demo to judges.
+  - It has two tracks. Genesis is for new builders turning an idea into a product. Scale is for experienced developers taking an existing project toward production.
+  - Prizes were reported as up to 30,000 USD in XLM across the tracks. Guava Global organizes it for the Stellar Development Foundation. Details live at https://meridian.stellar.org/event-details.
+  - HackProof is an independent project. It is not affiliated with SDF or Guava.
 window:
   start: "2026-10-25T09:00:00Z"
   pull_start: "2026-10-25T08:00:00Z"

@@ -75,9 +75,15 @@ def web_search_events(block: Any) -> Iterator[str]:
 async def stream_reply(
     client: AsyncAnthropic, model: str, messages: list[dict[str, Any]], page: str = ""
 ) -> AsyncIterator[str]:
-    window = current().window
+    hackathon = current()
+    window = hackathon.window
     system = prompt(
-        "system", start=window.start.isoformat(), end=window.end.isoformat(), page=page
+        "system",
+        hackathon=hackathon.name,
+        about=hackathon.about or "Nothing is on file. Use web search for background.",
+        start=window.start.isoformat(),
+        end=window.end.isoformat(),
+        page=page,
     )
     yield event({"type": "start", "messageId": uuid4().hex})
 
