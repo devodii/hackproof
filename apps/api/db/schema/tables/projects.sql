@@ -1,5 +1,6 @@
 CREATE TABLE projects (
     project_id text,
+    hackathon text DEFAULT 'hackmeridian-2026' NOT NULL,
     full_name text,
     footprint text NOT NULL,
     tier text NOT NULL,
