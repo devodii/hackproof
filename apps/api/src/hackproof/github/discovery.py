@@ -194,7 +194,7 @@ async def discover(
 
 
 async def store_candidates(
-    connection: asyncpg.Connection, candidates: list[Candidate]
+    connection: asyncpg.Connection, candidates: list[Candidate], hackathon: str
 ) -> None:
     await connection.executemany(
         load_sql("github/upsert_repo"),
@@ -220,6 +220,7 @@ async def store_candidates(
                 c.owner_location,
                 resolve_country(c.owner_location),
                 sorted(c.discovered_via),
+                hackathon,
             )
             for c in candidates
         ],

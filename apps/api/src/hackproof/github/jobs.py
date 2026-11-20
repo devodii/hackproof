@@ -35,7 +35,7 @@ async def run_discover(include_strings: bool) -> None:
         )
         async for candidates in stages:
             async with pool().acquire() as connection:
-                await store_candidates(connection, candidates)
+                await store_candidates(connection, candidates, hackathon.slug)
             log.info("stored %s candidate repos", len(candidates))
 
 
@@ -53,14 +53,16 @@ async def run_scan(force: bool, projects_only: bool = False) -> None:
                     load_sql("github/scan_names"),
                     force,
                     projects_only,
+                    hackathon.slug,
                 )
             ]
             refreshed = await fetch_repositories(github, names, hackathon.window)
-            await store_candidates(connection, refreshed)
+            await store_candidates(connection, refreshed, hackathon.slug)
             rows = await connection.fetch(
                 load_sql("github/scan_candidates"),
                 force,
                 projects_only,
+                hackathon.slug,
             )
         repos = [Candidate(**row) for row in rows]
         log.info("scanning %s repos", len(repos))
