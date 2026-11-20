@@ -8,7 +8,9 @@ from hackproof.integrations.catalog import Product
 
 
 class Model(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        extra="forbid", json_schema_serialization_defaults_required=True
+    )
 
 
 class ProfileContractUse(Model):
@@ -59,7 +61,10 @@ class IntegrationProfile(Model):
 
 
 def build_profile(
-    partner: Product, evidence: Iterable[tuple[str, str]], network: str
+    partner: Product,
+    evidence: Iterable[tuple[str, str]],
+    network: str,
+    include_private: bool = False,
 ) -> IntegrationProfile | None:
     profile = partner.profile
     if profile is None:
@@ -91,10 +96,10 @@ def build_profile(
         for contract_id in sorted(found_contracts)
     ]
     checks: list[ProfileCheck] = []
-    feed_networks = {item.network for item in contracts if item.kind == "feed"}
+    used_networks = {item.network for item in contracts}
     for check in profile.checks:
         if check.only_networks:
-            if feed_networks and feed_networks <= set(check.only_networks):
+            if used_networks and used_networks <= set(check.only_networks):
                 if network not in check.only_networks:
                     checks.append(
                         ProfileCheck(
@@ -104,7 +109,15 @@ def build_profile(
             continue
         if not set(check.requires) <= found_signals:
             continue
-        broken = not any(slug in found_signals for slug in check.missing)
+        guarded = bool(check.forbids or check.missing)
+        broken = (
+            not guarded
+            or any(slug in found_signals for slug in check.forbids)
+            or (
+                bool(check.missing)
+                and not any(slug in found_signals for slug in check.missing)
+            )
+        )
         checks.append(
             ProfileCheck(
                 slug=check.slug,
@@ -112,6 +125,11 @@ def build_profile(
                 status=check.severity if broken else "pass",
             )
         )
+    private_signals = {slug for slug, item in signals.items() if item.private}
+    private_checks = {item.slug for item in profile.checks if item.private}
+    if not include_private:
+        found_signals -= private_signals
+        checks = [item for item in checks if item.slug not in private_checks]
     if not (contracts or found_signals or captures or checks):
         return None
     return IntegrationProfile(

@@ -24,6 +24,7 @@ class ProfileContract(BaseModel):
     name: str
     network: str
     kind: str
+    url: str | None = None
     attributes: dict[str, str] = Field(default_factory=dict)
 
 
@@ -45,6 +46,7 @@ class Patterned(BaseModel):
 
 class Signal(Patterned):
     group: str
+    private: bool = False
 
 
 class Capture(Patterned):
@@ -57,8 +59,10 @@ class Check(BaseModel):
     slug: str
     label: str
     severity: Literal["warn", "fail"]
+    private: bool = False
     requires: list[str] = Field(default_factory=list)
     missing: list[str] = Field(default_factory=list)
+    forbids: list[str] = Field(default_factory=list)
     only_networks: list[str] = Field(default_factory=list)
 
 
@@ -74,9 +78,11 @@ class Profile(BaseModel):
 
     adapter: str | None = None
     params: dict[str, int] = Field(default_factory=dict)
+    hints: list[str] = Field(default_factory=list)
     networks: dict[str, Network] = Field(default_factory=dict)
     context: list[str]
     contracts: list[ProfileContract] = Field(default_factory=list)
+    surfaces: list[ProfileContract] = Field(default_factory=list)
     live: list[LiveProbe] = Field(default_factory=list)
     signals: list[Signal] = Field(default_factory=list)
     captures: list[Capture] = Field(default_factory=list)
@@ -126,6 +132,15 @@ class Catalog(BaseModel):
 
     def partner(self, slug: str) -> Partner:
         return next(partner for partner in self.partners if partner.slug == slug)
+
+    def private_signals(self) -> dict[str, set[str]]:
+        return {
+            item.slug: {
+                signal.slug for signal in item.profile.signals if signal.private
+            }
+            for item in [*self.partners, *self.tools]
+            if item.profile
+        }
 
     def deep(self, slug: str) -> Product | None:
         found = next(

@@ -18,6 +18,8 @@ class Ref(BaseModel):
 
 
 class DependencyFingerprint(BaseModel):
+    model_config = ConfigDict(json_schema_serialization_defaults_required=True)
+
     ecosystems: list[str] = Field(default_factory=list)
     packages: dict[str, str | None] = Field(default_factory=dict)
 

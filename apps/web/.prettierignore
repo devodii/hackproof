@@ -3,3 +3,5 @@ src/components/ui
 pnpm-lock.yaml
 public/data
 public/schema
+openapi.json
+src/lib/api-schema.ts

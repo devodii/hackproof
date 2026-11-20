@@ -1,25 +1,38 @@
+import asyncio
 import time
 from collections import defaultdict
-from datetime import datetime
-from typing import Any
+from datetime import UTC, datetime
+from typing import Any, Literal
 
 import httpx
 from pydantic import BaseModel, ConfigDict
 
 from hackproof.db import pool
-from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.adapters import ADAPTERS
-from hackproof.integrations.catalog import Network, Product, get_catalog
+from hackproof.integrations.catalog import (
+    Check,
+    Network,
+    Product,
+    ProfileContract,
+    get_catalog,
+)
 from hackproof.integrations.chain import ContractSnapshot, Reading
+from hackproof.integrations.observe import observe_item
 from hackproof.integrations.profile import IntegrationProfile, build_profile
+from hackproof.schemas import Tier
 from hackproof.sql_loader import load_sql
 
 NETWORK = "testnet"
 LIVE_TTL = 30
+OBSERVE_TTL = 3600
+_refreshing: set[str] = set()
+_background: set[asyncio.Task[None]] = set()
 
 
 class Model(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        extra="forbid", json_schema_serialization_defaults_required=True
+    )
 
 
 class ContractState(Model):
@@ -42,7 +55,7 @@ class Adopter(Model):
     url: str
     owner: str
     owner_avatar: str | None
-    tier: str
+    tier: Tier
     language: str | None
     profile: IntegrationProfile
 
@@ -57,9 +70,10 @@ class SignalCount(Model):
 class CheckCount(Model):
     slug: str
     label: str
-    severity: str
+    severity: Literal["warn", "fail"]
     passing: int
     failing: int
+    rule: str
 
 
 class CaptureCount(Model):
@@ -82,6 +96,7 @@ class IntegrationDetail(Model):
     site: str
     networks: dict[str, Network]
     contracts: list[ContractState]
+    surfaces: list[ContractState]
     adopters: list[Adopter]
     of_projects: int
     signals: list[SignalCount]
@@ -91,6 +106,55 @@ class IntegrationDetail(Model):
     live: list[str]
 
 
+def describe(check: Check, labels: dict[str, str]) -> str:
+    def named(slugs: list[str]) -> str:
+        return ", ".join(labels.get(slug, slug).lower() for slug in slugs)
+
+    if check.only_networks:
+        return f"Fails when a project only points at {', '.join(check.only_networks)} contracts."
+    counted = (
+        f"Counted when the code shows: {named(check.requires)}. "
+        if check.requires
+        else ""
+    )
+    if check.forbids:
+        return f"{counted}Fails when it also shows: {named(check.forbids)}."
+    if check.missing:
+        return f"{counted}Fails when it shows none of: {named(check.missing)}."
+    return f"{counted}Fails whenever it applies."
+
+
+def is_stale(observed_at: datetime | None, now: datetime) -> bool:
+    return observed_at is None or (now - observed_at).total_seconds() > OBSERVE_TTL
+
+
+async def refresh(partner: Product, items: list[ProfileContract]) -> None:
+    try:
+        async with httpx.AsyncClient(timeout=30, follow_redirects=True) as http:
+            await asyncio.gather(*(observe_item(http, partner, item) for item in items))
+    finally:
+        _refreshing.discard(partner.slug)
+
+
+def refresh_in_background(
+    partner: Product,
+    items: list[ProfileContract],
+    observed: dict[tuple[str, str], datetime],
+) -> None:
+    if partner.profile is None or partner.profile.adapter not in ADAPTERS:
+        return
+    now = datetime.now(UTC)
+    stale = [
+        item for item in items if is_stale(observed.get((item.network, item.id)), now)
+    ]
+    if not stale or partner.slug in _refreshing:
+        return
+    _refreshing.add(partner.slug)
+    task = asyncio.create_task(refresh(partner, stale))
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+
+
 def _expired(snapshot: ContractSnapshot | None) -> list[str]:
     if snapshot is None:
         return []
@@ -98,9 +162,9 @@ def _expired(snapshot: ContractSnapshot | None) -> list[str]:
     return [item for item, due in snapshot.deadlines.items() if due < now]
 
 
-def _explorer(partner: Product, network: str, contract_id: str) -> str:
+def _explorer(partner: Product, item: ProfileContract) -> str:
     assert partner.profile
-    return f"{partner.profile.networks[network].explorer}/{contract_id}"
+    return item.url or f"{partner.profile.networks[item.network].explorer}/{item.id}"
 
 
 async def fetch_detail(partner: Product) -> IntegrationDetail:
@@ -141,33 +205,42 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
     adopters.sort(key=lambda item: (-len(item.profile.signals), item.full_name))
 
     snapshots = {
-        row["contract_id"]: (
+        (row["network"], row["contract_id"]): (
             ContractSnapshot.model_validate(row["snapshot"]),
             row["observed_at"],
         )
         for row in states
     }
+    refresh_in_background(
+        partner,
+        [*profile.contracts, *profile.surfaces],
+        {key: value[1] for key, value in snapshots.items()},
+    )
     used: dict[str, int] = defaultdict(int)
     for adopter in adopters:
         for contract in adopter.profile.contracts:
             used[contract.id] += 1
-    contracts = [
-        ContractState(
+
+    def state(item: ProfileContract, projects: int) -> ContractState:
+        snapshot, observed = snapshots.get((item.network, item.id), (None, None))
+        return ContractState(
             slug=item.slug,
             id=item.id,
             name=item.name,
             network=item.network,
             kind=item.kind,
             attributes=item.attributes,
-            explorer_url=_explorer(partner, item.network, item.id),
-            snapshot=snapshots.get(item.id, (None, None))[0],
-            observed_at=snapshots.get(item.id, (None, None))[1],
-            projects=used[item.id],
-            expired=_expired(snapshots.get(item.id, (None, None))[0]),
+            explorer_url=_explorer(partner, item),
+            snapshot=snapshot,
+            observed_at=observed,
+            projects=projects,
+            expired=_expired(snapshot),
         )
-        for item in profile.contracts
-    ]
 
+    contracts = [state(item, used[item.id]) for item in profile.contracts]
+    surfaces = [state(item, 0) for item in profile.surfaces]
+
+    labels = {signal.slug: signal.label for signal in profile.signals}
     signal_projects: dict[str, int] = defaultdict(int)
     check_pass: dict[str, int] = defaultdict(int)
     check_fail: dict[str, int] = defaultdict(int)
@@ -194,6 +267,9 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 contract.slug
             )
 
+    slug_of = {item.id: item.slug for item in contracts}
+    covered = [row for row in overlap_rows if row["contract_id"] in slug_of]
+
     return IntegrationDetail(
         slug=partner.slug,
         name=partner.name,
@@ -201,6 +277,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
         site=partner.site,
         networks=profile.networks,
         contracts=contracts,
+        surfaces=surfaces,
         adopters=adopters,
         of_projects=total,
         signals=[
@@ -211,6 +288,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 projects=signal_projects[signal.slug],
             )
             for signal in profile.signals
+            if not signal.private
         ],
         checks=[
             CheckCount(
@@ -219,8 +297,10 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
                 severity=check.severity,
                 passing=check_pass[check.slug],
                 failing=check_fail[check.slug],
+                rule=describe(check, labels),
             )
             for check in profile.checks
+            if not check.private
         ],
         captures={
             name: sorted(
@@ -239,15 +319,12 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
         },
         overlap=Overlap(
             total=overlap_rows[0]["total"],
-            matched=sum(row["matched"] for row in overlap_rows),
+            matched=sum(row["matched"] for row in covered),
             by_contract={
-                next(c.slug for c in contracts if c.id == row["contract_id"]): row[
-                    "matched"
-                ]
-                for row in overlap_rows
+                slug_of[row["contract_id"]]: row["matched"] for row in covered
             },
         )
-        if overlap_rows
+        if covered and any(item.snapshot and item.snapshot.items for item in contracts)
         else None,
         live=[f"{probe.contract}:{probe.asset}" for probe in profile.live],
     )
@@ -271,11 +348,7 @@ async def fetch_live(partner: Product) -> list[Reading]:
             contract = profile.contract(probe.contract)
             network = profile.networks[contract.network]
             reading = await adapter.probe(
-                SorobanRpc(http, network.rpc_url),
-                network,
-                contract,
-                probe.asset,
-                profile.params,
+                http, network, contract, probe.asset, profile.params
             )
             if reading:
                 readings.append(reading)

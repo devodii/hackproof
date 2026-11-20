@@ -3,10 +3,12 @@ import time
 from decimal import Decimal
 from typing import Any
 
+import httpx
 from stellar_sdk import StrKey, scval, xdr
 
 from hackproof.indexer.rpc import SorobanRpc
 from hackproof.integrations.adapters.base import Adapter
+from hackproof.integrations.adapters.sources import observe_package, observe_repo
 from hackproof.integrations.catalog import Network, ProfileContract
 from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.soroban import view
@@ -117,16 +119,26 @@ class ReflectorAdapter(Adapter):
     name = "reflector"
 
     async def observe(
-        self, rpc: SorobanRpc, network: Network, contract: ProfileContract
+        self, http: httpx.AsyncClient, network: Network, contract: ProfileContract
     ) -> ContractSnapshot | None:
-        return await observe(rpc, network, contract)
+        if contract.kind == "package":
+            return await observe_package(http, contract)
+        if contract.kind == "repo":
+            return await observe_repo(http, contract)
+        return await observe(SorobanRpc(http, network.rpc_url), network, contract)
 
     async def probe(
         self,
-        rpc: SorobanRpc,
+        http: httpx.AsyncClient,
         network: Network,
         contract: ProfileContract,
         subject: str,
         params: dict[str, int],
     ) -> Reading | None:
-        return await quote(rpc, network, contract, subject, params.get("age_factor", 2))
+        return await quote(
+            SorobanRpc(http, network.rpc_url),
+            network,
+            contract,
+            subject,
+            params.get("age_factor", 2),
+        )

@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "types": "openapi-typescript openapi.json -o src/lib/api-schema.ts --root-types --root-types-no-schema-prefix"
   },
   "dependencies": {
     "@ai-sdk/react": "^4.0.158",
@@ -21,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.0",
     "lucide-react": "^1.61.0",
+    "moment": "^2.31.0",
     "motion": "^14.6.0",
     "next-themes": "^0.4.6",
     "posthog-js": "^1.440.0",
@@ -41,6 +43,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "openapi-typescript": "^7.13.0",
     "oxlint": "^1.88.0",
     "prettier": "^3.9.10",
     "typescript": "~6.0.3",

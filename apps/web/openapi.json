@@ -1,0 +1,2962 @@
+{
+  "components": {
+    "schemas": {
+      "AIAgent": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "site": {
+            "title": "Site",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "site",
+          "projects"
+        ],
+        "title": "AIAgent",
+        "type": "object"
+      },
+      "Adopter": {
+        "additionalProperties": false,
+        "properties": {
+          "full_name": {
+            "title": "Full Name",
+            "type": "string"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "owner": {
+            "title": "Owner",
+            "type": "string"
+          },
+          "owner_avatar": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Avatar"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/IntegrationProfile"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string"
+          },
+          "tier": {
+            "enum": [
+              "verified",
+              "likely",
+              "possible",
+              "unattributed"
+            ],
+            "title": "Tier",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_id",
+          "full_name",
+          "url",
+          "owner",
+          "owner_avatar",
+          "tier",
+          "language",
+          "profile"
+        ],
+        "title": "Adopter",
+        "type": "object"
+      },
+      "Builder": {
+        "properties": {
+          "address": {
+            "title": "Address",
+            "type": "string"
+          },
+          "contracts": {
+            "items": {
+              "$ref": "#/components/schemas/Contract"
+            },
+            "title": "Contracts",
+            "type": "array"
+          },
+          "failed_txs": {
+            "items": {
+              "$ref": "#/components/schemas/FailedTx"
+            },
+            "title": "Failed Txs",
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            },
+            "title": "Projects",
+            "type": "array"
+          },
+          "wasm_uploads": {
+            "items": {
+              "$ref": "#/components/schemas/WasmUpload"
+            },
+            "title": "Wasm Uploads",
+            "type": "array"
+          }
+        },
+        "required": [
+          "address",
+          "projects",
+          "contracts",
+          "wasm_uploads",
+          "failed_txs"
+        ],
+        "title": "Builder",
+        "type": "object"
+      },
+      "CaptureCount": {
+        "additionalProperties": false,
+        "properties": {
+          "expired_on": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Expired On",
+            "type": "array"
+          },
+          "offered_by": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Offered By",
+            "type": "array"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "projects",
+          "offered_by",
+          "expired_on"
+        ],
+        "title": "CaptureCount",
+        "type": "object"
+      },
+      "ChatRequest": {
+        "properties": {
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "title": "Messages",
+            "type": "array"
+          },
+          "page": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "messages"
+        ],
+        "title": "ChatRequest",
+        "type": "object"
+      },
+      "CheckCount": {
+        "additionalProperties": false,
+        "properties": {
+          "failing": {
+            "title": "Failing",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "passing": {
+            "title": "Passing",
+            "type": "integer"
+          },
+          "rule": {
+            "title": "Rule",
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "warn",
+              "fail"
+            ],
+            "title": "Severity",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "label",
+          "severity",
+          "passing",
+          "failing",
+          "rule"
+        ],
+        "title": "CheckCount",
+        "type": "object"
+      },
+      "Contract": {
+        "properties": {
+          "contract_id": {
+            "title": "Contract Id",
+            "type": "string"
+          },
+          "deployed_at": {
+            "format": "date-time",
+            "title": "Deployed At",
+            "type": "string"
+          },
+          "deployer": {
+            "title": "Deployer",
+            "type": "string"
+          },
+          "ledger": {
+            "title": "Ledger",
+            "type": "integer"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string"
+          },
+          "tx_hash": {
+            "title": "Tx Hash",
+            "type": "string"
+          },
+          "wasm_hash": {
+            "title": "Wasm Hash",
+            "type": "string"
+          }
+        },
+        "required": [
+          "contract_id",
+          "deployer",
+          "wasm_hash",
+          "tx_hash",
+          "ledger",
+          "deployed_at",
+          "project_id"
+        ],
+        "title": "Contract",
+        "type": "object"
+      },
+      "ContractSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "deadlines": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Deadlines",
+            "type": "object"
+          },
+          "facts": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Facts",
+            "type": "object"
+          },
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Items",
+            "type": "array"
+          }
+        },
+        "required": [
+          "facts",
+          "items",
+          "deadlines"
+        ],
+        "title": "ContractSnapshot",
+        "type": "object"
+      },
+      "ContractState": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Attributes",
+            "type": "object"
+          },
+          "expired": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Expired",
+            "type": "array"
+          },
+          "explorer_url": {
+            "title": "Explorer Url",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "network": {
+            "title": "Network",
+            "type": "string"
+          },
+          "observed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed At"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          },
+          "snapshot": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ContractSnapshot"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "slug",
+          "id",
+          "name",
+          "network",
+          "kind",
+          "attributes",
+          "explorer_url",
+          "snapshot",
+          "observed_at",
+          "projects",
+          "expired"
+        ],
+        "title": "ContractState",
+        "type": "object"
+      },
+      "Contributor": {
+        "properties": {
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avatar Url"
+          },
+          "contributions": {
+            "title": "Contributions",
+            "type": "integer"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country"
+          },
+          "login": {
+            "title": "Login",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "login",
+          "url",
+          "avatar_url",
+          "contributions",
+          "country"
+        ],
+        "title": "Contributor",
+        "type": "object"
+      },
+      "Count": {
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ],
+        "title": "Count",
+        "type": "object"
+      },
+      "CountryCount": {
+        "properties": {
+          "contributors": {
+            "title": "Contributors",
+            "type": "integer"
+          },
+          "country": {
+            "title": "Country",
+            "type": "string"
+          }
+        },
+        "required": [
+          "country",
+          "contributors"
+        ],
+        "title": "CountryCount",
+        "type": "object"
+      },
+      "DependencyFingerprint": {
+        "properties": {
+          "ecosystems": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Ecosystems",
+            "type": "array"
+          },
+          "packages": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Packages",
+            "type": "object"
+          }
+        },
+        "required": [
+          "ecosystems",
+          "packages"
+        ],
+        "title": "DependencyFingerprint",
+        "type": "object"
+      },
+      "EcosystemTool": {
+        "properties": {
+          "deep": {
+            "title": "Deep",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "site": {
+            "title": "Site",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "site",
+          "projects",
+          "deep"
+        ],
+        "title": "EcosystemTool",
+        "type": "object"
+      },
+      "FailedTx": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "ledger": {
+            "title": "Ledger",
+            "type": "integer"
+          },
+          "result_code": {
+            "title": "Result Code",
+            "type": "string"
+          },
+          "source_account": {
+            "title": "Source Account",
+            "type": "string"
+          },
+          "tx_hash": {
+            "title": "Tx Hash",
+            "type": "string"
+          }
+        },
+        "required": [
+          "tx_hash",
+          "source_account",
+          "kind",
+          "result_code",
+          "ledger",
+          "created_at"
+        ],
+        "title": "FailedTx",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "Integration": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "deep": {
+            "title": "Deep",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "site": {
+            "title": "Site",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "category",
+          "site",
+          "projects",
+          "deep"
+        ],
+        "title": "Integration",
+        "type": "object"
+      },
+      "IntegrationDepth": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/IntegrationProfile"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "profile"
+        ],
+        "title": "IntegrationDepth",
+        "type": "object"
+      },
+      "IntegrationDetail": {
+        "additionalProperties": false,
+        "properties": {
+          "adopters": {
+            "items": {
+              "$ref": "#/components/schemas/Adopter"
+            },
+            "title": "Adopters",
+            "type": "array"
+          },
+          "captures": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/CaptureCount"
+              },
+              "type": "array"
+            },
+            "title": "Captures",
+            "type": "object"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/CheckCount"
+            },
+            "title": "Checks",
+            "type": "array"
+          },
+          "contracts": {
+            "items": {
+              "$ref": "#/components/schemas/ContractState"
+            },
+            "title": "Contracts",
+            "type": "array"
+          },
+          "live": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Live",
+            "type": "array"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "networks": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Network"
+            },
+            "title": "Networks",
+            "type": "object"
+          },
+          "of_projects": {
+            "title": "Of Projects",
+            "type": "integer"
+          },
+          "overlap": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Overlap"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "signals": {
+            "items": {
+              "$ref": "#/components/schemas/SignalCount"
+            },
+            "title": "Signals",
+            "type": "array"
+          },
+          "site": {
+            "title": "Site",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          },
+          "surfaces": {
+            "items": {
+              "$ref": "#/components/schemas/ContractState"
+            },
+            "title": "Surfaces",
+            "type": "array"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "category",
+          "site",
+          "networks",
+          "contracts",
+          "surfaces",
+          "adopters",
+          "of_projects",
+          "signals",
+          "checks",
+          "captures",
+          "overlap",
+          "live"
+        ],
+        "title": "IntegrationDetail",
+        "type": "object"
+      },
+      "IntegrationProfile": {
+        "additionalProperties": false,
+        "properties": {
+          "captures": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "description": "Values pulled out of source, for example the assets requested from an oracle",
+            "title": "Captures",
+            "type": "object"
+          },
+          "checks": {
+            "description": "The partner's own integration checklist applied to the repo",
+            "items": {
+              "$ref": "#/components/schemas/ProfileCheck"
+            },
+            "title": "Checks",
+            "type": "array"
+          },
+          "contracts": {
+            "description": "Known contracts of the partner that the repo references",
+            "items": {
+              "$ref": "#/components/schemas/ProfileContractUse"
+            },
+            "title": "Contracts",
+            "type": "array"
+          },
+          "signals": {
+            "description": "How the code uses the partner, matched in source files",
+            "items": {
+              "$ref": "#/components/schemas/ProfileSignal"
+            },
+            "title": "Signals",
+            "type": "array"
+          }
+        },
+        "required": [
+          "contracts",
+          "signals",
+          "captures",
+          "checks"
+        ],
+        "title": "IntegrationProfile",
+        "type": "object"
+      },
+      "IntegrationUse": {
+        "properties": {
+          "evidence": {
+            "title": "Evidence",
+            "type": "string"
+          },
+          "method": {
+            "enum": [
+              "package",
+              "endpoint",
+              "contract",
+              "signal",
+              "capture"
+            ],
+            "title": "Method",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "method",
+          "evidence",
+          "path"
+        ],
+        "title": "IntegrationUse",
+        "type": "object"
+      },
+      "Link": {
+        "properties": {
+          "method": {
+            "title": "Method",
+            "type": "string"
+          },
+          "path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Path"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "subject_kind": {
+            "title": "Subject Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subject_kind",
+          "subject",
+          "method",
+          "path"
+        ],
+        "title": "Link",
+        "type": "object"
+      },
+      "Message": {
+        "properties": {
+          "parts": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/Part"
+            },
+            "title": "Parts",
+            "type": "array"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role"
+        ],
+        "title": "Message",
+        "type": "object"
+      },
+      "Network": {
+        "additionalProperties": false,
+        "properties": {
+          "explorer": {
+            "title": "Explorer",
+            "type": "string"
+          },
+          "passphrase": {
+            "title": "Passphrase",
+            "type": "string"
+          },
+          "rpc_url": {
+            "title": "Rpc Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "rpc_url",
+          "passphrase",
+          "explorer"
+        ],
+        "title": "Network",
+        "type": "object"
+      },
+      "Overlap": {
+        "additionalProperties": false,
+        "properties": {
+          "by_contract": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Contract",
+            "type": "object"
+          },
+          "matched": {
+            "title": "Matched",
+            "type": "integer"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "matched",
+          "by_contract"
+        ],
+        "title": "Overlap",
+        "type": "object"
+      },
+      "Page": {
+        "properties": {
+          "filters": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filters"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "kind": {
+            "enum": [
+              "home",
+              "project",
+              "builder",
+              "filter"
+            ],
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "title": "Page",
+        "type": "object"
+      },
+      "Page_Contract_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Contract"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "Page[Contract]",
+        "type": "object"
+      },
+      "Page_FailedTx_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/FailedTx"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "Page[FailedTx]",
+        "type": "object"
+      },
+      "Page_Project_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "Page[Project]",
+        "type": "object"
+      },
+      "Page_WasmUpload_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/WasmUpload"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "Page[WasmUpload]",
+        "type": "object"
+      },
+      "Part": {
+        "properties": {
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "title": "Part",
+        "type": "object"
+      },
+      "Person": {
+        "properties": {
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avatar Url"
+          },
+          "contributions": {
+            "title": "Contributions",
+            "type": "integer"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country"
+          },
+          "login": {
+            "title": "Login",
+            "type": "string"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/PersonProject"
+            },
+            "title": "Projects",
+            "type": "array"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "login",
+          "url",
+          "avatar_url",
+          "country",
+          "contributions",
+          "projects"
+        ],
+        "title": "Person",
+        "type": "object"
+      },
+      "PersonProject": {
+        "properties": {
+          "contributions": {
+            "title": "Contributions",
+            "type": "integer"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          }
+        },
+        "required": [
+          "project",
+          "contributions"
+        ],
+        "title": "PersonProject",
+        "type": "object"
+      },
+      "ProfileCheck": {
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "description": "What the check looks for",
+            "title": "Label",
+            "type": "string"
+          },
+          "slug": {
+            "description": "Stable check id in data/integrations.yaml",
+            "title": "Slug",
+            "type": "string"
+          },
+          "status": {
+            "description": "pass: the guard is there. warn or fail: the catalog's severity when it is missing",
+            "enum": [
+              "pass",
+              "warn",
+              "fail"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "label",
+          "status"
+        ],
+        "title": "ProfileCheck",
+        "type": "object"
+      },
+      "ProfileContractUse": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Extra facts the catalog records",
+            "title": "Attributes",
+            "type": "object"
+          },
+          "explorer_url": {
+            "description": "Stellar Expert page for the contract",
+            "title": "Explorer Url",
+            "type": "string"
+          },
+          "id": {
+            "description": "Contract address found in the repo",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "description": "feed or token",
+            "title": "Kind",
+            "type": "string"
+          },
+          "name": {
+            "description": "What the contract is, for example Fiat FX",
+            "title": "Name",
+            "type": "string"
+          },
+          "network": {
+            "description": "Network the contract lives on",
+            "title": "Network",
+            "type": "string"
+          },
+          "slug": {
+            "description": "Stable contract id in data/integrations.yaml",
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "id",
+          "name",
+          "network",
+          "kind",
+          "explorer_url",
+          "attributes"
+        ],
+        "title": "ProfileContractUse",
+        "type": "object"
+      },
+      "ProfileSignal": {
+        "additionalProperties": false,
+        "properties": {
+          "group": {
+            "description": "How the catalog groups the signal, for example client, read, safety or risk",
+            "title": "Group",
+            "type": "string"
+          },
+          "label": {
+            "description": "What the signal means",
+            "title": "Label",
+            "type": "string"
+          },
+          "slug": {
+            "description": "Stable signal id in data/integrations.yaml",
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "group",
+          "label"
+        ],
+        "title": "ProfileSignal",
+        "type": "object"
+      },
+      "Project": {
+        "properties": {
+          "agents": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Agents",
+            "type": "array"
+          },
+          "assets": {
+            "title": "Assets",
+            "type": "integer"
+          },
+          "award": {
+            "anyOf": [
+              {
+                "enum": [
+                  "first",
+                  "runner-up"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Award"
+          },
+          "builders": {
+            "title": "Builders",
+            "type": "integer"
+          },
+          "classic_ops": {
+            "title": "Classic Ops",
+            "type": "integer"
+          },
+          "contracts": {
+            "title": "Contracts",
+            "type": "integer"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "dependencies": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DependencyFingerprint"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "failed_txs": {
+            "title": "Failed Txs",
+            "type": "integer"
+          },
+          "first_activity": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Activity"
+          },
+          "footprint": {
+            "enum": [
+              "contracts",
+              "classic",
+              "github"
+            ],
+            "title": "Footprint",
+            "type": "string"
+          },
+          "forks": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forks"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          },
+          "homepage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Homepage"
+          },
+          "integrations": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Integrations",
+            "type": "array"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "last_activity": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Activity"
+          },
+          "license": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "License"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner"
+          },
+          "owner_avatar": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Avatar"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string"
+          },
+          "stars": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stars"
+          },
+          "stellar_added_in_window": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stellar Added In Window"
+          },
+          "tier": {
+            "enum": [
+              "verified",
+              "likely",
+              "possible",
+              "unattributed"
+            ],
+            "title": "Tier",
+            "type": "string"
+          },
+          "tools": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Tools",
+            "type": "array"
+          },
+          "topics": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topics"
+          },
+          "total_commits": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Commits"
+          },
+          "track": {
+            "anyOf": [
+              {
+                "enum": [
+                  "genesis",
+                  "scale"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Track"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "wasm_uploads": {
+            "title": "Wasm Uploads",
+            "type": "integer"
+          },
+          "window_commits": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window Commits"
+          }
+        },
+        "required": [
+          "project_id",
+          "full_name",
+          "url",
+          "footprint",
+          "tier",
+          "contracts",
+          "classic_ops",
+          "assets",
+          "builders",
+          "wasm_uploads",
+          "failed_txs",
+          "first_activity",
+          "last_activity",
+          "description",
+          "homepage",
+          "stars",
+          "forks",
+          "language",
+          "license",
+          "owner",
+          "owner_avatar",
+          "country",
+          "dependencies",
+          "window_commits",
+          "total_commits",
+          "stellar_added_in_window",
+          "created_at",
+          "topics",
+          "track",
+          "integrations",
+          "tools",
+          "agents",
+          "award"
+        ],
+        "title": "Project",
+        "type": "object"
+      },
+      "ProjectDetail": {
+        "properties": {
+          "contracts": {
+            "items": {
+              "$ref": "#/components/schemas/Contract"
+            },
+            "title": "Contracts",
+            "type": "array"
+          },
+          "contributors": {
+            "items": {
+              "$ref": "#/components/schemas/Contributor"
+            },
+            "title": "Contributors",
+            "type": "array"
+          },
+          "failed_txs": {
+            "items": {
+              "$ref": "#/components/schemas/FailedTx"
+            },
+            "title": "Failed Txs",
+            "type": "array"
+          },
+          "integration_depths": {
+            "items": {
+              "$ref": "#/components/schemas/IntegrationDepth"
+            },
+            "title": "Integration Depths",
+            "type": "array"
+          },
+          "integration_uses": {
+            "items": {
+              "$ref": "#/components/schemas/IntegrationUse"
+            },
+            "title": "Integration Uses",
+            "type": "array"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "title": "Links",
+            "type": "array"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          },
+          "tool_uses": {
+            "items": {
+              "$ref": "#/components/schemas/IntegrationUse"
+            },
+            "title": "Tool Uses",
+            "type": "array"
+          },
+          "wasm_uploads": {
+            "items": {
+              "$ref": "#/components/schemas/WasmUpload"
+            },
+            "title": "Wasm Uploads",
+            "type": "array"
+          }
+        },
+        "required": [
+          "project",
+          "links",
+          "integration_uses",
+          "integration_depths",
+          "tool_uses",
+          "contributors",
+          "contracts",
+          "wasm_uploads",
+          "failed_txs"
+        ],
+        "title": "ProjectDetail",
+        "type": "object"
+      },
+      "Reading": {
+        "additionalProperties": false,
+        "properties": {
+          "age_seconds": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Age Seconds"
+          },
+          "contract": {
+            "title": "Contract",
+            "type": "string"
+          },
+          "facts": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Facts",
+            "type": "object"
+          },
+          "stale": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stale"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "timestamp": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timestamp"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "contract",
+          "subject",
+          "value",
+          "timestamp",
+          "age_seconds",
+          "stale",
+          "facts"
+        ],
+        "title": "Reading",
+        "type": "object"
+      },
+      "SignalCount": {
+        "additionalProperties": false,
+        "properties": {
+          "group": {
+            "title": "Group",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "label",
+          "group",
+          "projects"
+        ],
+        "title": "SignalCount",
+        "type": "object"
+      },
+      "Stats": {
+        "properties": {
+          "builders": {
+            "title": "Builders",
+            "type": "integer"
+          },
+          "contracts": {
+            "title": "Contracts",
+            "type": "integer"
+          },
+          "contributors": {
+            "title": "Contributors",
+            "type": "integer"
+          },
+          "countries": {
+            "title": "Countries",
+            "type": "integer"
+          },
+          "failed_txs": {
+            "title": "Failed Txs",
+            "type": "integer"
+          },
+          "likely_projects": {
+            "title": "Likely Projects",
+            "type": "integer"
+          },
+          "possible_projects": {
+            "title": "Possible Projects",
+            "type": "integer"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "unattributed_accounts": {
+            "title": "Unattributed Accounts",
+            "type": "integer"
+          },
+          "verified_projects": {
+            "title": "Verified Projects",
+            "type": "integer"
+          },
+          "wasm_uploads": {
+            "title": "Wasm Uploads",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "projects",
+          "verified_projects",
+          "likely_projects",
+          "possible_projects",
+          "unattributed_accounts",
+          "contracts",
+          "builders",
+          "contributors",
+          "countries",
+          "wasm_uploads",
+          "failed_txs"
+        ],
+        "title": "Stats",
+        "type": "object"
+      },
+      "TimelinePoint": {
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "integer"
+          },
+          "hour": {
+            "format": "date-time",
+            "title": "Hour",
+            "type": "string"
+          }
+        },
+        "required": [
+          "hour",
+          "contracts"
+        ],
+        "title": "TimelinePoint",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "WasmUpload": {
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "integer"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          },
+          "size": {
+            "title": "Size",
+            "type": "integer"
+          },
+          "source_repo": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Repo"
+          },
+          "tx_hash": {
+            "title": "Tx Hash",
+            "type": "string"
+          },
+          "uploaded_at": {
+            "format": "date-time",
+            "title": "Uploaded At",
+            "type": "string"
+          },
+          "uploader": {
+            "title": "Uploader",
+            "type": "string"
+          },
+          "wasm_hash": {
+            "title": "Wasm Hash",
+            "type": "string"
+          }
+        },
+        "required": [
+          "wasm_hash",
+          "uploader",
+          "tx_hash",
+          "size",
+          "source_repo",
+          "full_name",
+          "contracts",
+          "uploaded_at"
+        ],
+        "title": "WasmUpload",
+        "type": "object"
+      },
+      "Wrapped": {
+        "properties": {
+          "accounts_funded": {
+            "title": "Accounts Funded",
+            "type": "integer"
+          },
+          "builders": {
+            "title": "Builders",
+            "type": "integer"
+          },
+          "deployers": {
+            "title": "Deployers",
+            "type": "integer"
+          },
+          "largest_wasm_contracts": {
+            "title": "Largest Wasm Contracts",
+            "type": "integer"
+          },
+          "multi_team_builders": {
+            "items": {
+              "$ref": "#/components/schemas/WrappedBuilder"
+            },
+            "title": "Multi Team Builders",
+            "type": "array"
+          },
+          "operations": {
+            "title": "Operations",
+            "type": "integer"
+          },
+          "operations_by_type": {
+            "items": {
+              "$ref": "#/components/schemas/Count"
+            },
+            "title": "Operations By Type",
+            "type": "array"
+          },
+          "team_sizes": {
+            "items": {
+              "$ref": "#/components/schemas/Count"
+            },
+            "title": "Team Sizes",
+            "type": "array"
+          },
+          "top_builders": {
+            "items": {
+              "$ref": "#/components/schemas/WrappedBuilder"
+            },
+            "title": "Top Builders",
+            "type": "array"
+          }
+        },
+        "required": [
+          "builders",
+          "accounts_funded",
+          "deployers",
+          "operations",
+          "largest_wasm_contracts",
+          "operations_by_type",
+          "team_sizes",
+          "multi_team_builders",
+          "top_builders"
+        ],
+        "title": "Wrapped",
+        "type": "object"
+      },
+      "WrappedBuilder": {
+        "properties": {
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avatar Url"
+          },
+          "contributions": {
+            "title": "Contributions",
+            "type": "integer"
+          },
+          "login": {
+            "title": "Login",
+            "type": "string"
+          },
+          "project_names": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Project Names",
+            "type": "array"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "login",
+          "avatar_url",
+          "projects",
+          "contributions",
+          "project_names"
+        ],
+        "title": "WrappedBuilder",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "hackproof",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/agents": {
+      "get": {
+        "operationId": "agents_api_agents_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AIAgent"
+                  },
+                  "title": "Response Agents Api Agents Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Agents"
+      }
+    },
+    "/api/builders/{address}": {
+      "get": {
+        "operationId": "builder_api_builders__address__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "address",
+            "required": true,
+            "schema": {
+              "title": "Address",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Builder"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Builder"
+      }
+    },
+    "/api/chat": {
+      "post": {
+        "operationId": "chat_api_chat_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Chat"
+      }
+    },
+    "/api/contracts": {
+      "get": {
+        "operationId": "contracts_api_contracts_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_Contract_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Contracts"
+      }
+    },
+    "/api/contributors/{login}": {
+      "get": {
+        "operationId": "contributor_api_contributors__login__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "login",
+            "required": true,
+            "schema": {
+              "title": "Login",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Contributor"
+      }
+    },
+    "/api/countries": {
+      "get": {
+        "operationId": "countries_api_countries_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CountryCount"
+                  },
+                  "title": "Response Countries Api Countries Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Countries"
+      }
+    },
+    "/api/failed": {
+      "get": {
+        "operationId": "failed_api_failed_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_FailedTx_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Failed"
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "title": "Response Health Api Health Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/api/integrations": {
+      "get": {
+        "operationId": "integrations_api_integrations_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Integration"
+                  },
+                  "title": "Response Integrations Api Integrations Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Integrations"
+      }
+    },
+    "/api/integrations/{slug}": {
+      "get": {
+        "operationId": "integration_api_integrations__slug__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "title": "Slug",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Integration"
+      }
+    },
+    "/api/integrations/{slug}/live": {
+      "get": {
+        "operationId": "integration_live_api_integrations__slug__live_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "title": "Slug",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Reading"
+                  },
+                  "title": "Response Integration Live Api Integrations  Slug  Live Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Integration Live"
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "operationId": "projects_api_projects_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "tier",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "items": {
+                    "enum": [
+                      "verified",
+                      "likely",
+                      "possible",
+                      "unattributed"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Tier"
+            }
+          },
+          {
+            "in": "query",
+            "name": "track",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "genesis",
+                    "scale"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Track"
+            }
+          },
+          {
+            "in": "query",
+            "name": "integration",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Integration"
+            }
+          },
+          {
+            "in": "query",
+            "name": "tool",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Tool"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_Project_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Projects"
+      }
+    },
+    "/api/projects/{project_id}": {
+      "get": {
+        "operationId": "project_api_projects__project_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "project_id",
+            "required": true,
+            "schema": {
+              "title": "Project Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Project"
+      }
+    },
+    "/api/stats": {
+      "get": {
+        "operationId": "stats_api_stats_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Stats"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Stats"
+      }
+    },
+    "/api/timeline": {
+      "get": {
+        "operationId": "timeline_api_timeline_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TimelinePoint"
+                  },
+                  "title": "Response Timeline Api Timeline Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Timeline"
+      }
+    },
+    "/api/tools": {
+      "get": {
+        "operationId": "tools_api_tools_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EcosystemTool"
+                  },
+                  "title": "Response Tools Api Tools Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Tools"
+      }
+    },
+    "/api/wasm": {
+      "get": {
+        "operationId": "wasm_api_wasm_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_WasmUpload_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Wasm"
+      }
+    },
+    "/api/window": {
+      "get": {
+        "operationId": "window_api_window_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "title": "Response Window Api Window Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Window"
+      }
+    },
+    "/api/wrapped": {
+      "get": {
+        "operationId": "wrapped_api_wrapped_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wrapped"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Wrapped"
+      }
+    }
+  }
+}

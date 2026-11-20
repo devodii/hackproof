@@ -144,6 +144,7 @@ async def fetch_tools() -> list[dict[str, Any]]:
         {
             **tool.model_dump(include={"slug", "name", "site"}),
             "projects": counts.get(tool.slug, 0),
+            "deep": tool.profile is not None,
         }
         for tool in get_catalog().tools
     ]

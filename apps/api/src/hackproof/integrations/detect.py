@@ -54,14 +54,14 @@ def _profile_hits(files: dict[str, str], partner: Product) -> list[Detection]:
         )
 
     for path, text in files.items():
-        for contract_id in ids:
-            if contract_id in text:
-                add("contract", contract_id, path)
         name = PurePosixPath(path).name
         if PurePosixPath(path).suffix in PROSE_SUFFIXES or name.lower().startswith(
             "readme"
         ):
             continue
+        for contract_id in ids:
+            if contract_id in text:
+                add("contract", contract_id, path)
         if not profile.in_context(text):
             continue
         for signal in profile.signals:
@@ -98,6 +98,24 @@ def _profiles(
         if present:
             detections.extend(hits)
     return detections
+
+
+def depth_hints(
+    files: dict[str, str], catalog: Catalog, detections: Iterable[Detection]
+) -> list[str] | None:
+    found = {item.slug for item in detections}
+    profiles = [
+        item.profile
+        for item in [*catalog.partners, *catalog.tools]
+        if item.profile
+        and (
+            item.slug in found
+            or any(item.profile.in_context(text) for text in files.values())
+        )
+    ]
+    if not profiles:
+        return None
+    return [hint for profile in profiles for hint in profile.hints]
 
 
 def detect_tools(

@@ -15,52 +15,6 @@ stack:
   soroban-sdk: null
   '@stellar/stellar-sdk': ^17.2.1
   '@stellar/typescript-wallet-sdk': ^5.1.0
-integrations:
-- slug: reflector
-  name: Reflector
-  evidence:
-  - method: contract
-    detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-    file_url: https://github.com/elszalencia/chateaux-meridian/blob/HEAD/research/raven-scope.md
-  - method: contract
-    detail: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-    file_url: https://github.com/elszalencia/chateaux-meridian/blob/HEAD/research/raven-scope.md
-  - method: contract
-    detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-    file_url: https://github.com/elszalencia/chateaux-meridian/blob/HEAD/research/raven-scope.md
-  profile:
-    contracts:
-    - slug: mainnet-exchanges
-      id: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-      name: CEX and DEX
-      network: mainnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/public/contract/CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-      attributes:
-        source: exchanges
-        asset_kind: other
-    - slug: mainnet-stellar-pubnet
-      id: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-      name: Stellar Pubnet DEX
-      network: mainnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/public/contract/CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-      attributes:
-        source: stellar-pubnet
-        asset_kind: stellar
-    - slug: mainnet-fx
-      id: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-      name: Fiat FX
-      network: mainnet
-      kind: feed
-      explorer_url: https://stellar.expert/explorer/public/contract/CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
-      attributes:
-        source: fx
-        asset_kind: other
-    checks:
-    - slug: wrong-network
-      label: Only points at mainnet feeds while the event runs on testnet
-      status: fail
 chain:
   contracts: 0
   wasm_uploads: 0

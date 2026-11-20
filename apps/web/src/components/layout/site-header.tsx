@@ -2,6 +2,7 @@ import { CrownIcon, ExternalLinkIcon, MoonIcon, SparklesIcon, SunIcon } from 'lu
 import { useTheme } from 'next-themes'
 import { Link } from 'react-router'
 
+import { IntegrationsMenu } from '@/components/layout/integrations-menu'
 import { Button } from '@/components/ui/button'
 import { REPO_URL } from '@/lib/config'
 
@@ -27,6 +28,7 @@ export function SiteHeader() {
           >
             <SparklesIcon className="size-3.5" /> Wrapped
           </Link>
+          <IntegrationsMenu />
           <a
             href={REPO_URL}
             target="_blank"

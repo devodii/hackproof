@@ -29,6 +29,60 @@ integrations:
   - method: package
     detail: '@stellar/freighter-api'
     file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: capture
+    detail: tickers:XLM
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/launchpad-curve/src/test_grad.rs
+  - method: contract
+    detail: CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/qa/lib/bootstrap.ts
+  - method: contract
+    detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/app/qa/lib/bootstrap.ts
+  - method: signal
+    detail: client-pulse
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/core/aquarius-lp-vault/src/oracle.rs
+  - method: signal
+    detail: reads-history
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/core/simple-peridottroller/src/reflector.rs
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/joshschcom/peridot-markets/blob/HEAD/contracts/market-factory/src/test.rs
+  profile:
+    contracts:
+    - slug: testnet-stellar-pubnet
+      id: CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
+      name: Stellar Pubnet DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CAVLP5DH2GJPZMVO7IJY4CVOD5MWEFTJFVPD2YY2FQXOQHRGHK4D6HLP
+      attributes:
+        source: stellar-pubnet
+        asset_kind: stellar
+    - slug: testnet-exchanges
+      id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      name: CEX and DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      attributes:
+        source: exchanges
+        asset_kind: other
+    signals:
+    - slug: client-pulse
+      group: client
+      label: Pulse client
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
+    - slug: reads-history
+      group: read
+      label: Reads price history
+    captures:
+      tickers:
+      - XLM
 chain:
   contracts: 11
   wasm_uploads: 44

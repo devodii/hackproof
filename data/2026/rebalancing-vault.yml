@@ -32,18 +32,12 @@ integrations:
     file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/clients.rs
   - method: contract
     detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
-    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/testing/fork/README.md
+    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/test_fork.rs
   - method: contract
     detail: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
-    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/testing/fork/README.md
-  - method: signal
-    detail: checks-age
-    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/build_deck.py
+    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/test_fork.rs
   - method: signal
     detail: client-pulse
-    file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/cl_core.rs
-  - method: signal
-    detail: hardcoded-decimals
     file_url: https://github.com/synt-tech/rebalancing_vault/blob/HEAD/contracts/cl_aquarius/src/cl_core.rs
   - method: signal
     detail: reads-last-price
@@ -75,25 +69,9 @@ integrations:
     - slug: reads-last-price
       group: read
       label: Reads the latest price
-    - slug: checks-age
-      group: safety
-      label: Checks the quote age
-    - slug: hardcoded-decimals
-      group: risk
-      label: Assumes 7 decimals
     captures:
       tickers:
       - XLM
-    checks:
-    - slug: no-age-check
-      label: Reads prices without checking how old they are
-      status: pass
-    - slug: assumed-decimals
-      label: Scales prices as if they had 7 decimals
-      status: warn
-    - slug: wrong-network
-      label: Only points at mainnet feeds while the event runs on testnet
-      status: fail
 chain:
   contracts: 9
   wasm_uploads: 11

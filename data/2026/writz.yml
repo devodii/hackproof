@@ -54,20 +54,11 @@ integrations:
     detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
     file_url: https://github.com/WritzProtocol/writz/blob/HEAD/frontend/app/.env.example
   - method: signal
-    detail: checks-age
-    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/scripts/verify-oracles.sh
-  - method: signal
     detail: client-pulse
-    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
-  - method: signal
-    detail: reads-decimals
     file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
   - method: signal
     detail: reads-last-price
     file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/scripts/verify-oracles.sh
-  - method: signal
-    detail: reads-resolution
-    file_url: https://github.com/WritzProtocol/writz/blob/HEAD/contracts/contracts/writz-lend/src/oracle.rs
   profile:
     contracts:
     - slug: testnet-stellar-pubnet
@@ -95,22 +86,9 @@ integrations:
     - slug: reads-last-price
       group: read
       label: Reads the latest price
-    - slug: reads-decimals
-      group: safety
-      label: Reads decimals()
-    - slug: reads-resolution
-      group: safety
-      label: Reads resolution()
-    - slug: checks-age
-      group: safety
-      label: Checks the quote age
     captures:
       tickers:
       - BTC
-    checks:
-    - slug: no-age-check
-      label: Reads prices without checking how old they are
-      status: pass
 agents:
 - slug: claude-code
   name: Claude Code

@@ -24,6 +24,30 @@ integrations:
   - method: package
     detail: '@creit.tech/stellar-wallets-kit'
     file_url: https://github.com/raglibol-re/ancora/blob/HEAD/app/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+    file_url: https://github.com/raglibol-re/ancora/blob/HEAD/app/.env.testnet
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/raglibol-re/ancora/blob/HEAD/contracts/organization/src/controls.rs
+  profile:
+    contracts:
+    - slug: testnet-fx
+      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      name: Fiat FX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      attributes:
+        source: fx
+        asset_kind: other
+    signals:
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
 agents:
 - slug: claude-code
   name: Claude Code

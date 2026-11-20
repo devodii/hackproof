@@ -23,7 +23,7 @@ import { useWrapped } from '@/hooks/use-wrapped'
 import { EVENT_NAME } from '@/lib/config'
 import { formatHour, formatNumber, humanize, tierLabel } from '@/lib/format'
 import type {
-  AiAgent,
+  AIAgent,
   EcosystemTool,
   HackWindow,
   Integration,
@@ -58,7 +58,7 @@ interface PosterData {
   projects: Project[]
   integrations: Integration[]
   tools: EcosystemTool[]
-  agents: AiAgent[]
+  agents: AIAgent[]
   window: HackWindow
 }
 

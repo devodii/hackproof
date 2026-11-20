@@ -20,6 +20,7 @@ The README has the commands to run everything locally.
 
 - Python 3.13, uv, ruff and pytest.
 - Pydantic models for anything that crosses a module boundary. No dataclasses, NamedTuple or TypedDict.
+- A response model with defaulted fields sets `json_schema_serialization_defaults_required=True` so the generated TypeScript marks them required, and uses a `Literal` for any closed set of strings.
 - Models for upstream responses use `extra="allow"` so new fields are not lost. Models we derive use `extra="forbid"`.
 - Tests run against the scratch Postgres database from `tests/conftest.py` and never touch the live network. Anything that needs an upstream response uses a recorded fixture in `apps/api/tests/fixtures/`.
 - New pipeline steps follow the existing shape: a `run_*` job in the relevant package, a subcommand in `cli.py`, and any schema change as files in `db/schema` with a migration from `hackproof schema plan`. SQL goes in `src/hackproof/sql`, loaded with `load_sql`, never in Python strings.
@@ -27,6 +28,7 @@ The README has the commands to run everything locally.
 ## React
 
 - Vite, TypeScript in strict mode, Tailwind and shadcn/ui.
+- Types for API responses are generated from the Pydantic models. Change a model, run `pnpm types` and commit `apps/web/openapi.json` with `apps/web/src/lib/api-schema.ts`. Never write an API type by hand in `lib/types.ts`. CI fails when either file is stale.
 - Add shadcn components with the shadcn CLI. Never hand edit `components/ui`.
 - Reusable pieces that know nothing about hackathons go in `components/charts` or a similar neutral folder. Pages live in `pages/` and are registered in `App.tsx`.
 - Fetch data through `lib/api.ts` and a hook in `hooks/` built on TanStack Query.

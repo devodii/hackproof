@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router'
+import { Outlet, Route, Routes } from 'react-router'
 
 import { ChatDock } from '@/components/chat/chat-dock'
 import { ChatOverlay } from '@/components/chat/chat-overlay'
@@ -9,6 +9,7 @@ import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
 import { HomePage } from '@/pages/home'
 import { IntegrationPage } from '@/pages/integration'
+import { NotFoundPage } from '@/pages/not-found'
 import { ContributorsPage } from '@/pages/contributors'
 import { PersonPage } from '@/pages/person'
 import { ProjectPage } from '@/pages/project'
@@ -25,14 +26,7 @@ function Shell() {
       >
         <SiteHeader />
         <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/project/*" element={<ProjectPage />} />
-            <Route path="/builder/:address" element={<BuilderPage />} />
-            <Route path="/integration/:slug" element={<IntegrationPage />} />
-            <Route path="/contributors" element={<ContributorsPage />} />
-            <Route path="/contributor/:login" element={<PersonPage />} />
-          </Routes>
+          <Outlet />
         </main>
         <SiteFooter />
         <ChatDock />
@@ -47,13 +41,20 @@ export function App() {
     <Routes>
       <Route path="/wrapped" element={<WrappedPage />} />
       <Route
-        path="*"
         element={
           <ChatProvider>
             <Shell />
           </ChatProvider>
         }
-      />
+      >
+        <Route path="/" element={<HomePage />} />
+        <Route path="/project/*" element={<ProjectPage />} />
+        <Route path="/builder/:address" element={<BuilderPage />} />
+        <Route path="/integration/:slug" element={<IntegrationPage />} />
+        <Route path="/contributors" element={<ContributorsPage />} />
+        <Route path="/contributor/:login" element={<PersonPage />} />
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

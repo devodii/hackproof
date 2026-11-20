@@ -26,9 +26,149 @@ integrations:
 - slug: trustless-work
   name: Trustless Work
   evidence:
+  - method: capture
+    detail: asset:USDC
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/test/trustless-work.test.ts
+  - method: capture
+    detail: operation:approve-and-release-milestones
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/test/trustless-work.test.ts
+  - method: capture
+    detail: operation:approve-milestone
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: capture
+    detail: operation:change-milestone-status
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/test/trustless-work.test.ts
+  - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: capture
+    detail: operation:dispute-milestone
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: capture
+    detail: operation:dispute-milestones
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/test/trustless-work.test.ts
+  - method: capture
+    detail: operation:fund-escrow
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: capture
+    detail: operation:release-milestone-funds
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: endpoint
+    detail: beta.api.trustlesswork.com
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
   - method: endpoint
     detail: dev.api.trustlesswork.com
     file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: signal
+    detail: api-v2
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: approve
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: signal
+    detail: dispute
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: fund
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: signal
+    detail: milestone-status
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: multi-release
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: react-sdk
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/escrow-client.ts
+  - method: signal
+    detail: reads
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: signal
+    detail: release
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: resolve
+    file_url: https://github.com/fabian416/witness/blob/HEAD/packages/core/src/lifecycle.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/trustless-work.ts
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/fabian416/witness/blob/HEAD/services/verifier/src/tw1-live.ts
+  - method: signal
+    detail: withdraw
+    file_url: https://github.com/fabian416/witness/blob/HEAD/packages/core/src/lifecycle.ts
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: react-sdk
+      group: client
+      label: React SDK
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: api-v2
+      group: version
+      label: V2 beta API
+    - slug: multi-release
+      group: type
+      label: Multi release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: fund
+      group: flow
+      label: Funds escrows
+    - slug: approve
+      group: flow
+      label: Approves milestones
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: dispute
+      group: flow
+      label: Opens disputes
+    - slug: resolve
+      group: flow
+      label: Resolves disputes
+    - slug: milestone-status
+      group: flow
+      label: Reports milestone progress
+    - slug: withdraw
+      group: flow
+      label: Withdraws leftovers
+    - slug: reads
+      group: flow
+      label: Reads escrows back
+    captures:
+      asset:
+      - USDC
+      operation:
+      - approve-and-release-milestones
+      - approve-milestone
+      - change-milestone-status
+      - deployer
+      - dispute-milestone
+      - dispute-milestones
+      - fund-escrow
+      - release-milestone-funds
 chain:
   contracts: 0
   wasm_uploads: 0

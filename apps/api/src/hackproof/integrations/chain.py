@@ -4,7 +4,9 @@ Fact = int | str | None
 
 
 class ContractSnapshot(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        extra="forbid", json_schema_serialization_defaults_required=True
+    )
 
     facts: dict[str, Fact] = Field(default_factory=dict)
     items: list[str] = Field(default_factory=list)
@@ -12,7 +14,9 @@ class ContractSnapshot(BaseModel):
 
 
 class Reading(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        extra="forbid", json_schema_serialization_defaults_required=True
+    )
 
     contract: str
     subject: str

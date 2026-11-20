@@ -19,9 +19,124 @@ integrations:
 - slug: trustless-work
   name: Trustless Work
   evidence:
+  - method: capture
+    detail: asset:USDC
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:approve-milestone
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:change-milestone-status
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:dispute-escrow
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:fund-escrow
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:release-funds
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: capture
+    detail: operation:resolve-dispute
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
   - method: endpoint
     detail: dev.api.trustlesswork.com
     file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: approve
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: dispute
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: fund
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: milestone-status
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: reads
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: release
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: resolve
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: single-release
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/W0lfyo/carimbo/blob/HEAD/web/src/lib/trustless.ts
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: single-release
+      group: type
+      label: Single release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: fund
+      group: flow
+      label: Funds escrows
+    - slug: approve
+      group: flow
+      label: Approves milestones
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: dispute
+      group: flow
+      label: Opens disputes
+    - slug: resolve
+      group: flow
+      label: Resolves disputes
+    - slug: milestone-status
+      group: flow
+      label: Reports milestone progress
+    - slug: reads
+      group: flow
+      label: Reads escrows back
+    captures:
+      asset:
+      - USDC
+      operation:
+      - approve-milestone
+      - change-milestone-status
+      - deployer
+      - dispute-escrow
+      - fund-escrow
+      - release-funds
+      - resolve-dispute
 chain:
   contracts: 0
   wasm_uploads: 0

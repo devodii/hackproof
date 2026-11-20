@@ -19,9 +19,73 @@ integrations:
 - slug: trustless-work
   name: Trustless Work
   evidence:
+  - method: capture
+    detail: asset:EURC
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/src/domain/payments/escrow-types.ts
+  - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/stable-compat.mjs
+  - method: endpoint
+    detail: beta.api.trustlesswork.com
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/.env.example
   - method: endpoint
     detail: dev.api.trustlesswork.com
     file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/stable-compat.mjs
+  - method: signal
+    detail: api-v2
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/.env.example
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/.env.example
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/stable-compat.mjs
+  - method: signal
+    detail: react-sdk
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/src/domain/payments/provider-factory.server.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/config.mjs
+  - method: signal
+    detail: single-release
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/config.mjs
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/.env.example
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/Innokeshka1/gamelock/blob/HEAD/spikes/trustless-work-eurc/stable-compat.mjs
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: react-sdk
+      group: client
+      label: React SDK
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: api-v2
+      group: version
+      label: V2 beta API
+    - slug: single-release
+      group: type
+      label: Single release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    captures:
+      asset:
+      - EURC
+      operation:
+      - deployer
 - slug: freighter
   name: Freighter
   evidence:

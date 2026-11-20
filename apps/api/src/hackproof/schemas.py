@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from hackproof.github.models import DependencyFingerprint
 from hackproof.hackathon import Place
@@ -26,6 +26,8 @@ class Stats(BaseModel):
 
 
 class Project(BaseModel):
+    model_config = ConfigDict(json_schema_serialization_defaults_required=True)
+
     project_id: str
     full_name: str | None
     url: str | None
@@ -173,9 +175,10 @@ class EcosystemTool(BaseModel):
     name: str
     site: str
     projects: int
+    deep: bool
 
 
-class AiAgent(BaseModel):
+class AIAgent(BaseModel):
     slug: str
     name: str
     site: str

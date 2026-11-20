@@ -12,6 +12,7 @@ from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
 from hackproof.integrations.observe import run_observe
 from hackproof.linking.reconcile import run_reconcile
+from hackproof.openapi import write as write_openapi
 from hackproof.pipeline import Options, WrongEvent, run_pipeline, select, stages
 
 
@@ -154,6 +155,10 @@ def main() -> None:
         help="allow a database that is not on this machine",
     )
     commands.add_parser(
+        "openapi",
+        help="write the api's openapi schema where the web app generates its types from",
+    )
+    commands.add_parser(
         "check",
         help="check, read-only, that the database matches the committed data files",
     )
@@ -202,6 +207,8 @@ def main() -> None:
             asyncio.run(run_export())
         case "import":
             raise SystemExit(run_restore(args))
+        case "openapi":
+            write_openapi()
         case "check":
             raise SystemExit(asyncio.run(run_check()))
         case "schema":

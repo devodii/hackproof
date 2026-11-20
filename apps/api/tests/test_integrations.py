@@ -1,8 +1,23 @@
 import json
+from datetime import UTC, datetime, timedelta
 
-from hackproof.integrations.catalog import Agent, Catalog, Partner, Tool, get_catalog
-from hackproof.integrations.detect import detect, detect_agents, detect_tools
+from hackproof.integrations.catalog import (
+    Agent,
+    Catalog,
+    Partner,
+    Profile,
+    Tool,
+    get_catalog,
+)
+from hackproof.integrations.detect import (
+    depth_hints,
+    detect,
+    detect_agents,
+    detect_tools,
+)
+from hackproof.integrations.insights import is_stale
 from hackproof.integrations.models import Detection
+from hackproof.integrations.profile import build_profile
 
 CATALOG = Catalog(
     partners=[
@@ -235,3 +250,109 @@ def test_a_partner_with_only_a_catalog_profile_needs_no_adapter():
     }
     assert ("stellar-registry", "signal", "cli-deploy") in found
     assert ("stellar-registry", "capture", "contract-names:vault") in found
+
+
+def test_a_prose_mention_of_a_deep_partner_asks_for_a_deeper_scan():
+    files = {"README.md": "We settle with Trustless Work escrows"}
+    hints = depth_hints(files, get_catalog(), [])
+    assert hints is not None and "escrow" in hints
+    assert depth_hints({"README.md": "hello"}, get_catalog(), []) is None
+
+
+def test_a_profile_written_before_the_newer_fields_still_loads():
+    older = {
+        "adapter": "reflector",
+        "context": ["reflector"],
+        "networks": {
+            "testnet": {
+                "rpc_url": "https://rpc",
+                "passphrase": "p",
+                "explorer": "https://e",
+            }
+        },
+        "contracts": [
+            {
+                "slug": "fx",
+                "id": "C1",
+                "name": "FX",
+                "network": "testnet",
+                "kind": "feed",
+            }
+        ],
+        "checks": [
+            {"slug": "age", "label": "Age", "severity": "warn", "requires": ["a"]}
+        ],
+    }
+    profile = Profile.model_validate(older)
+    assert profile.surfaces == [] and profile.hints == []
+    assert profile.contracts[0].url is None
+    assert profile.checks[0].forbids == []
+
+
+def test_trustless_work_is_read_deeply_from_source():
+    files = {
+        "package.json": '{"dependencies": {"@trustless-work/escrow": "^3.0.5"}}',
+        ".env.example": "NEXT_PUBLIC_TRUSTLESS_WORK_API_KEY=\n",
+        "src/escrow.ts": (
+            "const base = 'https://dev.api.trustlesswork.com'\n"
+            "await fetch(`${base}/escrow/single-release/fund-escrow`, { headers })\n"
+            "await fetch(`${base}/escrow/single-release/v2/release-funds`, { headers })\n"
+            "const note = 'v1 hosts are dev.api and api.trustlesswork.com'\n"
+        ),
+        "README.md": "Built on Trustless Work. Webhooks soon.",
+    }
+    catalog = get_catalog()
+    found = [
+        (item.method, item.evidence)
+        for item in detect(files, catalog, "someone")
+        if item.slug == "trustless-work"
+    ]
+    assert ("package", "@trustless-work/escrow") in found
+    assert ("signal", "testnet-api") in found
+    assert ("signal", "mainnet-api") not in found
+    assert ("capture", "operation:fund-escrow") in found
+    assert ("capture", "operation:release-funds") in found
+    assert ("capture", "react-sdk-version:3.0.5") in found
+    checks = {
+        check.slug: check.status
+        for check in build_profile(
+            catalog.partner("trustless-work"), found, "testnet", include_private=True
+        ).checks
+    }
+    assert checks["release-without-validation"] == "warn"
+    assert checks["no-rate-limit"] == "warn"
+    assert "v2-on-mainnet-host" not in checks
+
+
+def test_observed_state_goes_stale_after_an_hour():
+    now = datetime(2026, 11, 19, 12, 0, tzinfo=UTC)
+    assert is_stale(None, now)
+    assert not is_stale(now - timedelta(minutes=59), now)
+    assert is_stale(now - timedelta(minutes=61), now)
+
+
+def test_private_signals_and_checks_never_reach_the_public_profile():
+    catalog = get_catalog()
+    found = [("signal", "calls-api"), ("signal", "handles-rate-limit")]
+    public = build_profile(catalog.partner("trustless-work"), found, "testnet")
+    internal = build_profile(
+        catalog.partner("trustless-work"), found, "testnet", include_private=True
+    )
+    assert public and internal
+    assert {item.slug for item in public.signals} == {"calls-api"}
+    assert public.checks == []
+    assert "handles-rate-limit" in {item.slug for item in internal.signals}
+    assert "handles-rate-limit" in catalog.private_signals()["trustless-work"]
+
+
+def test_a_contract_id_listed_in_prose_is_not_an_integration():
+    files = {
+        "README.md": "Feed CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W",
+        ".agents/skills/ecosystem.md": "CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN",
+    }
+    assert detect(files, get_catalog(), "someone") == []
+    files = {
+        ".env.testnet": "ORACLE=CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W"
+    }
+    found = {item.method for item in detect(files, get_catalog(), "someone")}
+    assert "contract" in found

@@ -18,9 +18,88 @@ integrations:
 - slug: trustless-work
   name: Trustless Work
   evidence:
+  - method: capture
+    detail: asset:USDC
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: capture
+    detail: operation:approve-milestone
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: capture
+    detail: operation:change-milestone-status
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: capture
+    detail: operation:release-funds
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
   - method: endpoint
     detail: dev.api.trustlesswork.com
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: approve
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: milestone-status
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: release
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: single-release
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/api/escrow.js
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: single-release
+      group: type
+      label: Single release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: approve
+      group: flow
+      label: Approves milestones
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: milestone-status
+      group: flow
+      label: Reports milestone progress
+    captures:
+      asset:
+      - USDC
+      operation:
+      - approve-milestone
+      - change-milestone-status
+      - deployer
+      - release-funds
 - slug: soroswap
   name: Soroswap
   evidence:
@@ -40,7 +119,7 @@ integrations:
     detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/src/chain/index.js
   - method: signal
-    detail: number-cast
+    detail: reads-last-price
     file_url: https://github.com/Wilivms/trust-meridian/blob/HEAD/src/live.js
   profile:
     contracts:
@@ -54,9 +133,9 @@ integrations:
         source: fx
         asset_kind: other
     signals:
-    - slug: number-cast
-      group: risk
-      label: Casts the price with Number()
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
 agents:
 - slug: claude-code
   name: Claude Code
