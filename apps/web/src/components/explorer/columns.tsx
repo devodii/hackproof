@@ -40,7 +40,7 @@ export const projectColumns: Column<Project>[] = [
           {!row.full_name && <Badge variant="outline">no repo</Badge>}
         </span>
         {row.description && (
-          <span className="line-clamp-1 max-w-md text-xs text-muted-foreground">
+          <span translate="no" className="line-clamp-1 max-w-md text-xs text-muted-foreground">
             {row.description}
           </span>
         )}
@@ -124,6 +124,7 @@ export const wasmColumns: Column<WasmUpload>[] = [
           href={githubUrl.repo(row.full_name)}
           target="_blank"
           rel="noreferrer"
+          translate="no"
           className="text-xs hover:underline"
         >
           {row.full_name}

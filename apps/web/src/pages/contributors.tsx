@@ -55,7 +55,9 @@ export function ContributorsPage() {
                       <AvatarFallback>{builder.login.slice(0, 2).toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <div className="flex min-w-0 flex-col">
-                      <span className="truncate font-medium">{builder.login}</span>
+                      <span translate="no" className="truncate font-medium">
+                        {builder.login}
+                      </span>
                       <span className="text-sm text-muted-foreground">
                         {builder.projects} projects · {formatNumber(builder.contributions)} commits
                       </span>
@@ -63,7 +65,7 @@ export function ContributorsPage() {
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {builder.project_names.map((name) => (
-                      <Badge key={name} variant="secondary">
+                      <Badge key={name} variant="secondary" translate="no">
                         {projectName(`repo:${name}`)}
                       </Badge>
                     ))}

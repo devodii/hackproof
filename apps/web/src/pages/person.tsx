@@ -51,7 +51,9 @@ export function PersonPage() {
             <p className="text-sm tracking-wide text-muted-foreground uppercase">
               {EVENT_NAME} builder
             </p>
-            <h1 className="text-4xl sm:text-5xl">{data.login}</h1>
+            <h1 translate="no" className="text-4xl sm:text-5xl">
+              {data.login}
+            </h1>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
               {data.country && (
                 <span>
