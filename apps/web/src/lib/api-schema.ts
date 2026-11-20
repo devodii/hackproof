@@ -376,6 +376,8 @@ export interface components {
         Adopter: {
             /** Full Name */
             full_name: string;
+            /** Hackathon */
+            hackathon: string;
             /** Language */
             language: string | null;
             /** Owner */

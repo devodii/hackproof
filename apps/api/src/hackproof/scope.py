@@ -12,6 +12,10 @@ def current() -> Hackathon:
     return get_hackathon() if slug is None else hackathons()[slug]
 
 
+def selected_slug() -> str | None:
+    return _selected.get()
+
+
 async def select_hackathon(hackathon: str | None = Query(None, max_length=60)) -> None:
     if hackathon is not None and hackathon not in hackathons():
         raise HTTPException(404, "unknown hackathon")

@@ -207,3 +207,10 @@ def test_a_builder_page_is_not_scoped_to_one_hackathon():
         person = client.get(f"/api/builders/{top[0]['login']}").json()
         slugs = {item["slug"] for item in client.get("/api/hackathons").json()}
     assert {item["project"]["hackathon"] for item in person["projects"]} <= slugs
+
+
+def test_an_integration_lists_adopters_with_their_hackathon():
+    with TestClient(app) as client:
+        detail = client.get("/api/integrations/reflector").json()
+    assert detail["adopters"]
+    assert all(item["hackathon"] for item in detail["adopters"])

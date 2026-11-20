@@ -81,6 +81,10 @@
             "title": "Full Name",
             "type": "string"
           },
+          "hackathon": {
+            "title": "Hackathon",
+            "type": "string"
+          },
           "language": {
             "anyOf": [
               {
@@ -131,6 +135,7 @@
         },
         "required": [
           "project_id",
+          "hackathon",
           "full_name",
           "url",
           "owner",

@@ -4,7 +4,7 @@ from typing import Any, Literal
 from hackproof.db import pool
 from hackproof.hackathon import hackathons
 from hackproof.integrations.catalog import get_catalog
-from hackproof.scope import current
+from hackproof.scope import current, selected_slug
 from hackproof.sql_loader import load_sql
 
 TOP_BUILDERS = 12
@@ -186,7 +186,9 @@ async def fetch_tools() -> list[dict[str, Any]]:
     async with pool().acquire() as connection:
         counts = {
             row["slug"]: row["projects"]
-            for row in await connection.fetch(load_sql("queries/tools"), current().slug)
+            for row in await connection.fetch(
+                load_sql("queries/tools"), selected_slug()
+            )
         }
     return [
         {
@@ -203,7 +205,7 @@ async def fetch_integrations() -> list[dict[str, Any]]:
         counts = {
             row["slug"]: row["projects"]
             for row in await connection.fetch(
-                load_sql("queries/integrations"), current().slug
+                load_sql("queries/integrations"), selected_slug()
             )
         }
     return [
@@ -262,7 +264,7 @@ async def fetch_agents() -> list[dict[str, Any]]:
         counts = {
             row["slug"]: row["projects"]
             for row in await connection.fetch(
-                load_sql("queries/agents"), current().slug
+                load_sql("queries/agents"), selected_slug()
             )
         }
     return [
