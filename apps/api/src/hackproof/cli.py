@@ -94,7 +94,7 @@ def main() -> None:
     run.add_argument(
         "--hackathon",
         type=Path,
-        help="the hackathon file to run, default data/hackmeridian-2026.yaml",
+        help="the hackathon file to run, default data/hackmeridian-2026/main.yaml",
     )
     run.add_argument("--from", dest="start", help="start at this stage and carry on")
     run.add_argument("--only", nargs="+", default=[], help="run only these stages")

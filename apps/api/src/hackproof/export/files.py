@@ -2,7 +2,7 @@ import re
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Literal
+from typing import Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field
@@ -12,12 +12,7 @@ from hackproof.hackathon import Place
 from hackproof.integrations.models import Method
 from hackproof.integrations.profile import IntegrationProfile
 
-SCHEMA_FILE = "schema-hackathon-project.yml"
-EVENT_FILE = "_event.yml"
-EVENT_SCHEMA_FILE = "schema-event.yml"
-SOURCE_URL = "https://github.com/devodii/hackproof"
-SCHEMA_COMMENT = f"# yaml-language-server: $schema=../{SCHEMA_FILE}\n"
-EVENT_SCHEMA_COMMENT = f"# yaml-language-server: $schema=../{EVENT_SCHEMA_FILE}\n"
+PROJECTS_DIR = "projects"
 
 
 class FileModel(BaseModel):
@@ -78,21 +73,8 @@ class FileContributor(FileModel):
     contributions: int
 
 
-class EventFile(FileModel):
-    slug: str = Field(description="Event slug, lowercase words separated by hyphens")
-    name: str
-    network: Literal["pubnet", "testnet", "futurenet"] = Field(
-        description="Stellar network the event ran on"
-    )
-    starts_at: datetime = Field(description="Official start, UTC")
-    ends_at: datetime = Field(description="Official submission deadline, UTC")
-    source_url: str | None = Field(
-        default=None, description="Where the dataset is produced"
-    )
-
-
 class ProjectFile(FileModel):
-    event: str = Field(description="Hackathon slug")
+    hackathon: str = Field(description="Hackathon id, the folder the file lives in")
     canonical_id: str = Field(
         description="pkg:github/<owner>/<repo>, the join key for repos"
     )
@@ -155,36 +137,10 @@ def file_names(projects: list[Project]) -> dict[str, str]:
     return names
 
 
-def event_file(export: HackathonExport) -> EventFile:
-    hackathon = export.hackathon
-    return EventFile(
-        slug=hackathon.slug,
-        name=hackathon.name,
-        network=hackathon.network,
-        starts_at=hackathon.starts_at,
-        ends_at=hackathon.submission_deadline,
-        source_url=SOURCE_URL,
-    )
-
-
-def to_event_yaml(file: EventFile) -> str:
-    data = file.model_dump(mode="json", exclude_none=True)
-    body = yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=120)
-
-    return EVENT_SCHEMA_COMMENT + body
-
-
-def event_schema() -> dict[str, Any]:
-    return {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        **EventFile.model_json_schema(),
-    }
-
-
-def project_file(event: str, project: Project) -> ProjectFile:
+def project_file(hackathon: str, project: Project) -> ProjectFile:
     chain = project.chain
     return ProjectFile(
-        event=event,
+        hackathon=hackathon,
         canonical_id=f"pkg:github/{project.repo_full_name}",
         repo_url=project.repo_url,
         name=project.name,
@@ -277,34 +233,19 @@ def to_file_yaml(file: ProjectFile) -> str:
     data = file.model_dump(mode="json", exclude_none=True, exclude_defaults=True)
     body = yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=120)
 
-    return SCHEMA_COMMENT + body
-
-
-def file_schema() -> dict[str, Any]:
-    return {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        **ProjectFile.model_json_schema(),
-    }
+    return body
 
 
 def write_project_files(export: HackathonExport, root: Path) -> int:
-    directory = root / str(export.hackathon.starts_at.year)
+    directory = root / export.hackathon.slug / PROJECTS_DIR
     directory.mkdir(parents=True, exist_ok=True)
     names = file_names(export.projects)
     for project in export.projects:
         path = directory / f"{names[project.repo_full_name]}.yml"
         path.write_text(to_file_yaml(project_file(export.hackathon.slug, project)))
-    (directory / EVENT_FILE).write_text(to_event_yaml(event_file(export)))
-    wanted = {f"{name}.yml" for name in names.values()} | {EVENT_FILE}
+    wanted = {f"{name}.yml" for name in names.values()}
     for stale in directory.glob("*.yml"):
         if stale.name not in wanted:
             stale.unlink()
-    for name, schema in (
-        (SCHEMA_FILE, file_schema()),
-        (EVENT_SCHEMA_FILE, event_schema()),
-    ):
-        (root / name).write_text(
-            yaml.safe_dump(schema, sort_keys=False, allow_unicode=True, width=120)
-        )
 
     return len(export.projects)

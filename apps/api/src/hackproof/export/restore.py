@@ -6,7 +6,7 @@ import asyncpg
 import yaml
 from pydantic import BaseModel, ConfigDict
 
-from hackproof.export.files import EVENT_FILE, ProjectFile
+from hackproof.export.files import PROJECTS_DIR, ProjectFile
 from hackproof.sql_loader import load_sql
 
 log = logging.getLogger("hackproof.export")
@@ -28,7 +28,7 @@ RESTORED = {
 }
 
 FROM_DATABASE = {
-    "event",
+    "hackathon",
     "canonical_id",
     "repo_url",
     "name",
@@ -68,8 +68,7 @@ def path_of(repo_url: str, file_url: str | None) -> str:
 def load_files(root: Path) -> list[ProjectFile]:
     return [
         ProjectFile.model_validate(yaml.safe_load(path.read_text()))
-        for path in sorted(root.glob("*/*.yml"))
-        if path.name != EVENT_FILE
+        for path in sorted(root.glob(f"*/{PROJECTS_DIR}/*.yml"))
     ]
 
 
