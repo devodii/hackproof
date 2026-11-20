@@ -1,4 +1,4 @@
-import type { Card } from './_card.ts'
+import type { Card } from './_card'
 
 const INK = '#f6f7f8'
 const MUTED = '#a1a1aa'

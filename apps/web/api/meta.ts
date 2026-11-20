@@ -1,4 +1,4 @@
-import { describe, descriptionOf } from './_card.ts'
+import { describe, descriptionOf } from './_card'
 
 export const config = { runtime: 'edge' }
 

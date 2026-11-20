@@ -1,5 +1,5 @@
-import { describe } from './_card.ts'
-import { render } from './_render.ts'
+import { describe } from './_card'
+import { render } from './_render'
 
 export const config = { runtime: 'edge' }
 

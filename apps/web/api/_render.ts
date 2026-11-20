@@ -1,7 +1,7 @@
 import { ImageResponse } from '@vercel/og'
 
-import type { Card } from './_card.ts'
-import { layout } from './_layout.ts'
+import type { Card } from './_card'
+import { layout } from './_layout'
 
 export const SIZE = { width: 1200, height: 630 }
 
