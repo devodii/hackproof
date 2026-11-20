@@ -183,3 +183,19 @@ def test_a_deep_partner_has_a_profile_and_a_plain_one_does_not():
             if not row["deep"]
         )
         assert client.get(f"/api/integrations/{plain}").status_code == 404
+
+
+def test_hackathons_are_listed_with_their_status_and_counts():
+    with TestClient(app) as client:
+        body = client.get("/api/hackathons").json()
+    found = {item["slug"]: item for item in body}
+    assert found["hackmeridian-2026"]["projects"] > 0
+    assert {item["status"] for item in body} <= {"upcoming", "live", "past"}
+
+
+def test_every_endpoint_can_be_scoped_to_a_hackathon():
+    with TestClient(app) as client:
+        scoped = client.get("/api/stats", params={"hackathon": "hackmeridian-2026"})
+        unknown = client.get("/api/stats", params={"hackathon": "nope"})
+    assert scoped.status_code == 200
+    assert unknown.status_code == 404

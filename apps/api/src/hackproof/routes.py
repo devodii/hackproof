@@ -11,6 +11,7 @@ from hackproof.schemas import (
     CountryCount,
     EcosystemTool,
     FailedTx,
+    HackathonSummary,
     Integration,
     Page,
     Person,
@@ -30,6 +31,11 @@ Tiers = Annotated[list[Tier] | None, Query()]
 Limit = Annotated[int, Query(ge=1, le=200)]
 Offset = Annotated[int, Query(ge=0)]
 EVERYTHING = 10_000
+
+
+@router.get("/hackathons")
+async def hackathons() -> list[HackathonSummary]:
+    return [HackathonSummary(**item) for item in await queries.fetch_hackathons()]
 
 
 @router.get("/stats")

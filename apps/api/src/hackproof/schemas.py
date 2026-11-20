@@ -11,6 +11,25 @@ from hackproof.integrations.profile import IntegrationProfile
 Tier = Literal["verified", "likely", "possible", "unattributed"]
 
 
+HackathonStatus = Literal["upcoming", "live", "past"]
+
+
+class HackathonSummary(BaseModel):
+    slug: str
+    name: str
+    summary: str | None
+    website: str | None
+    location: str | None
+    starts_at: datetime
+    ends_at: datetime
+    status: HackathonStatus
+    indexed: bool
+    projects: int
+    verified_projects: int
+    contracts: int
+    winners: int
+
+
 class Stats(BaseModel):
     projects: int
     verified_projects: int
