@@ -308,3 +308,24 @@
     letter-spacing: -0.01em;
   }
 }
+
+body {
+  top: 0 !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+.goog-tooltip,
+#goog-gt-tt,
+body > .skiptranslate {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.goog-te-spinner-pos {
+  display: none !important;
+}

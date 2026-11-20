@@ -64,7 +64,9 @@ export function ProjectPage() {
               <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
           </AwardedAvatar>
-          <h1 className="min-w-0 text-3xl leading-none wrap-break-word sm:text-5xl">{name}</h1>
+          <h1 translate="no" className="min-w-0 text-3xl leading-none wrap-break-word sm:text-5xl">
+            {name}
+          </h1>
           {project.country && <span title={project.country}>{flagEmoji(project.country)}</span>}
           <TierBadge tier={project.tier} />
           <AwardBadge place={project.award} />
@@ -72,7 +74,9 @@ export function ProjectPage() {
           <Badge variant="outline">{footprintLabel[project.footprint]}</Badge>
         </div>
         {project.description && (
-          <p className="max-w-2xl text-muted-foreground">{project.description}</p>
+          <p translate="no" className="max-w-2xl text-muted-foreground">
+            {project.description}
+          </p>
         )}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
           {project.url ? (

@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { currentPage } from '@/components/chat/page'
 import { posthog } from '@/lib/analytics'
 import { API_URL } from '@/lib/config'
+import { currentLanguage } from '@/lib/languages'
 
 const rateLimitBody = z.object({
   window: z.enum(['minute', 'hour']),
@@ -45,6 +46,7 @@ export const transport = new DefaultChatTransport({
   prepareSendMessagesRequest: ({ messages }) => ({
     body: {
       page: currentPage(),
+      language: currentLanguage(),
       messages: messages.map((message) => ({
         role: message.role,
         parts: message.parts.filter((part) => part.type === 'text'),

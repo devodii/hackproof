@@ -20,6 +20,7 @@ export function ExternalId({ value, href, head, tail }: ExternalIdProps) {
       href={href}
       target="_blank"
       rel="noreferrer"
+      translate="no"
       className={`${styles} inline-flex items-center gap-1`}
     >
       {shortId(value, head, tail)}
@@ -62,7 +63,7 @@ export function LedgerLink({ sequence }: { sequence: number }) {
 
 export function ProjectLink({ projectId }: { projectId: string }) {
   return (
-    <Link to={`/project/${projectId}`} className="font-medium hover:underline">
+    <Link to={`/project/${projectId}`} translate="no" className="font-medium hover:underline">
       {projectName(projectId)}
     </Link>
   )

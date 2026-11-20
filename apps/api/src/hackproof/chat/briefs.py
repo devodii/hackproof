@@ -243,3 +243,9 @@ async def describe_page(page: Page | None) -> str:
         pronoun=pronoun,
         data=json.dumps(brief, default=str),
     )
+
+
+def language_note(code: str) -> str:
+    return (
+        "" if code.lower().startswith("en") else "\n\n" + prompt("language", code=code)
+    )

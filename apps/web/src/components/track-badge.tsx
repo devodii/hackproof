@@ -11,7 +11,7 @@ export function TrackBadge({ track }: { track: Track | null | undefined }) {
   const Icon = icons[track]
 
   return (
-    <Badge variant="outline" className="text-muted-foreground">
+    <Badge variant="outline" translate="no" className="text-muted-foreground">
       <Icon />
       {trackLabel[track]}
     </Badge>
