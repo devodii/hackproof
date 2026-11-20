@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from hackproof.chat.briefs import Page
 from hackproof.chat.prompts import prompt
 from hackproof.chat.tools import TOOL_SPECS, WEB_SEARCH, run_tool
-from hackproof.hackathon import get_hackathon
+from hackproof.scope import current
 
 MAX_STEPS = 6
 MAX_TOKENS = 2048
@@ -75,7 +75,7 @@ def web_search_events(block: Any) -> Iterator[str]:
 async def stream_reply(
     client: AsyncAnthropic, model: str, messages: list[dict[str, Any]], page: str = ""
 ) -> AsyncIterator[str]:
-    window = get_hackathon().window
+    window = current().window
     system = prompt(
         "system", start=window.start.isoformat(), end=window.end.isoformat(), page=page
     )

@@ -1,2 +1,2 @@
 SELECT count(*) AS total FROM projects
-WHERE tier IN ('verified', 'likely')
+WHERE hackathon = $1 AND tier IN ('verified', 'likely')

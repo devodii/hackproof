@@ -1,17 +1,17 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
-from fastapi import APIRouter, FastAPI
+from fastapi import APIRouter, Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from hackproof.chat.routes import router as chat_router
 from hackproof.config import get_settings
 from hackproof.db import close_pool, open_pool
-from hackproof.hackathon import get_hackathon
 from hackproof.integrations.routes import router as integrations_router
 from hackproof.routes import router
+from hackproof.scope import current, select_hackathon
 
-api = APIRouter(prefix="/api")
+api = APIRouter(prefix="/api", dependencies=[Depends(select_hackathon)])
 
 
 @api.get("/health")
@@ -21,7 +21,7 @@ async def health() -> dict[str, str]:
 
 @api.get("/window")
 async def window() -> dict[str, str]:
-    hackathon = get_hackathon()
+    hackathon = current()
     return {
         "name": hackathon.name,
         "start": hackathon.window.start.isoformat(),

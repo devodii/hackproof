@@ -49,7 +49,8 @@ SELECT
     COUNT(*) OVER () AS total
 FROM projects AS p
 LEFT JOIN repos AS r ON p.full_name = r.full_name
-WHERE (
+WHERE p.hackathon = $15
+AND (
     $1::text IS NULL
     OR p.project_id ILIKE '%' || $1 || '%'
     OR r.description ILIKE '%' || $1 || '%'

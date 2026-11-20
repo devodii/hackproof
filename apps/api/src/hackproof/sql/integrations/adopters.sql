@@ -28,6 +28,6 @@ SELECT
     f.evidence,
     f.path
 FROM found AS f
-INNER JOIN projects AS p ON f.full_name = p.full_name AND p.tier IN ('verified', 'likely')
+INNER JOIN projects AS p ON f.full_name = p.full_name AND p.hackathon = $2 AND p.tier IN ('verified', 'likely')
 INNER JOIN repos AS r ON p.full_name = r.full_name
 ORDER BY p.project_id, f.method, f.evidence
