@@ -1,5 +1,5 @@
 INSERT INTO projects (
-    project_id, full_name, footprint, tier, contracts, classic_ops, assets,
+    project_id, hackathon, full_name, footprint, tier, contracts, classic_ops, assets,
     wasm_uploads, failed_txs, builders, first_activity, last_activity
 )
 WITH contract_stats AS (
@@ -57,6 +57,7 @@ failed_stats AS (
 
 SELECT
     'repo:' || r.full_name AS project_id,
+    r.hackathon,
     r.full_name,
     CASE
         WHEN coalesce(cs.contracts, 0) > 0 THEN 'contracts'
@@ -96,13 +97,16 @@ LEFT JOIN asset_stats AS ast ON r.full_name = ast.full_name
 LEFT JOIN wasm_stats AS ws ON r.full_name = ws.full_name
 LEFT JOIN failed_stats AS fs ON r.full_name = fs.full_name
 WHERE
-    r.full_name IN (SELECT l.full_name FROM links AS l)
-    OR 'wasm_meta' = any(r.discovered_via)
-    OR (
-        jsonb_array_length(r.dependencies -> 'ecosystems') > 0
-        AND (
-            coalesce(r.window_commits, 0) >= $3
-            OR coalesce(r.stellar_added_in_window, FALSE)
-            OR r.created_at BETWEEN $1 AND $2
+    r.hackathon = $5
+    AND (
+        r.full_name IN (SELECT l.full_name FROM links AS l)
+        OR 'wasm_meta' = any(r.discovered_via)
+        OR (
+            jsonb_array_length(r.dependencies -> 'ecosystems') > 0
+            AND (
+                coalesce(r.window_commits, 0) >= $3
+                OR coalesce(r.stellar_added_in_window, FALSE)
+                OR r.created_at BETWEEN $1 AND $2
+            )
         )
     )

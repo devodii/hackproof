@@ -43,10 +43,10 @@ async def _insert_links(
     await connection.execute(load_sql(query), method.value, *params)
 
 
-async def _wasm_meta_links(connection: asyncpg.Connection) -> None:
+async def _wasm_meta_links(connection: asyncpg.Connection, hackathon: str) -> None:
     canonical = {
         row["full_name"].lower(): row["full_name"]
-        for row in await connection.fetch(load_sql("reconcile/repo_names"))
+        for row in await connection.fetch(load_sql("reconcile/repo_names"), hackathon)
     }
     rows = await connection.fetch(load_sql("reconcile/wasm_sources"))
     links = []
@@ -70,21 +70,22 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
     infra = [settings.friendbot_account, *hackathon.discovery.known_infra_accounts]
     pull = (window.pull_start, window.end)
     evidence_params: dict[LinkMethod, tuple[object, ...]] = {
-        LinkMethod.CONTRACT_IN_REPO: (),
-        LinkMethod.WASM_HASH_MATCH: (),
+        LinkMethod.CONTRACT_IN_REPO: (hackathon.slug,),
+        LinkMethod.WASM_HASH_MATCH: (hackathon.slug,),
         LinkMethod.DEPLOYER_IN_REPO: (
             *pull,
             settings.friendbot_account,
             infra,
             MAX_REPOS_PER_ACCOUNT,
+            hackathon.slug,
         ),
-        LinkMethod.ASSET_IN_REPO: (*pull, settings.friendbot_account),
+        LinkMethod.ASSET_IN_REPO: (*pull, settings.friendbot_account, hackathon.slug),
     }
 
     async with connection.transaction():
-        await connection.execute(load_sql("reconcile/reset_links"))
-        await connection.execute(load_sql("reconcile/reset_projects"))
-        await _wasm_meta_links(connection)
+        await connection.execute(load_sql("reconcile/reset_links"), hackathon.slug)
+        await connection.execute(load_sql("reconcile/reset_projects"), hackathon.slug)
+        await _wasm_meta_links(connection, hackathon.slug)
         for method, query in EVIDENCE.items():
             await _insert_links(connection, method, query, *evidence_params[method])
         for query in FOOTPRINT:
@@ -95,20 +96,27 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
             *official,
             MIN_WINDOW_COMMITS,
             MIN_LIKELY_COMMITS,
+            hackathon.slug,
         )
         await connection.execute(
             load_sql("reconcile/account_projects"),
             *official,
             settings.friendbot_account,
+            hackathon.slug,
         )
         await connection.execute(
             load_sql("reconcile/exclude_projects"),
             [f"repo:{name.lower()}" for name in hackathon.discovery.exclude_repos],
+            hackathon.slug,
         )
 
-    methods = await connection.fetch(load_sql("reconcile/report_methods"))
-    footprints = await connection.fetch(load_sql("reconcile/report_footprints"))
-    tiers = await connection.fetch(load_sql("reconcile/report_tiers"))
+    methods = await connection.fetch(
+        load_sql("reconcile/report_methods"), hackathon.slug
+    )
+    footprints = await connection.fetch(
+        load_sql("reconcile/report_footprints"), hackathon.slug
+    )
+    tiers = await connection.fetch(load_sql("reconcile/report_tiers"), hackathon.slug)
     return Report(
         links_by_method={row["method"]: row["n"] for row in methods},
         projects_by_footprint={row["footprint"]: row["n"] for row in footprints},
