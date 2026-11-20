@@ -9,19 +9,24 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { useHackathons } from '@/hooks/use-hackathons'
 import { projectName } from '@/lib/format'
+import { hackathonPath } from '@/lib/hackathon'
 import type { Adopter } from '@/lib/types'
 
 const SIGNALS_SHOWN = 5
 const CAPTURES_SHOWN = 4
 const INITIAL = 12
 
-function AdopterCard({ adopter }: { adopter: Adopter }) {
+function AdopterCard({ adopter, hackathon }: { adopter: Adopter; hackathon?: string }) {
   const signals = adopter.profile.signals
   const captures = Object.values(adopter.profile.captures).flat()
 
   return (
-    <Link to={`/project/${adopter.project_id}`} className="group block h-full">
+    <Link
+      to={hackathonPath(adopter.hackathon, `/project/${adopter.project_id}`)}
+      className="group block h-full"
+    >
       <Card className="h-full transition-all group-hover:-translate-y-0.5 group-hover:ring-primary/50">
         <CardContent className="flex h-full flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
@@ -34,8 +39,9 @@ function AdopterCard({ adopter }: { adopter: Adopter }) {
                 <span translate="no" className="truncate font-medium">
                   {projectName(adopter.project_id)}
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <span className="truncate text-xs text-muted-foreground">
                   {adopter.language ?? 'Unknown'}
+                  {hackathon && <span translate="no"> · {hackathon}</span>}
                 </span>
               </div>
             </div>
@@ -72,6 +78,8 @@ function AdopterCard({ adopter }: { adopter: Adopter }) {
 
 export function AdopterCards({ adopters }: { adopters: Adopter[] }) {
   const [all, setAll] = useState(false)
+  const { data: hackathons = [] } = useHackathons()
+  const names = Object.fromEntries(hackathons.map((item) => [item.slug, item.name]))
   const shown = all ? adopters : adopters.slice(0, INITIAL)
 
   return (
@@ -79,7 +87,7 @@ export function AdopterCards({ adopters }: { adopters: Adopter[] }) {
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {shown.map((adopter, index) => (
           <Reveal key={adopter.project_id} delay={Math.min(index, 5) * 0.05} className="h-full">
-            <AdopterCard adopter={adopter} />
+            <AdopterCard adopter={adopter} hackathon={names[adopter.hackathon]} />
           </Reveal>
         ))}
       </div>

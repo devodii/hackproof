@@ -8,7 +8,7 @@ export function selectedHackathon() {
   return selected
 }
 
-const GLOBAL = ['/builder/', '/hackathon/']
+const GLOBAL = ['/builder/', '/integration/', '/hackathon/']
 
 export function isGlobalPath(path: string) {
   return GLOBAL.some((prefix) => path.startsWith(prefix))

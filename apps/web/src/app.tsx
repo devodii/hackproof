@@ -63,6 +63,14 @@ export function App() {
             </Frame>
           }
         />
+        <Route
+          path="/integration/:slug"
+          element={
+            <Frame>
+              <IntegrationPage />
+            </Frame>
+          }
+        />
         <Route path="/hackathon/:id" element={<HackathonScope />}>
           <Route path="wrapped" element={<WrappedPage />} />
           <Route
@@ -75,7 +83,6 @@ export function App() {
             <Route index element={<HomePage />} />
             <Route path="project/*" element={<ProjectPage />} />
             <Route path="account/:address" element={<AccountPage />} />
-            <Route path="integration/:slug" element={<IntegrationPage />} />
             <Route path="contributors" element={<ContributorsPage />} />
           </Route>
         </Route>

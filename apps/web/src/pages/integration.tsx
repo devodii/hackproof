@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { useParams } from 'react-router'
 
 import { NotFoundPage } from '@/pages/not-found'
@@ -12,6 +13,8 @@ import { SignalTable } from '@/components/integration/signal-table'
 import { SurfaceTable } from '@/components/integration/surface-table'
 import { DetailError } from '@/components/query-state'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useHackathons } from '@/hooks/use-hackathons'
 import { useIntegration, useIntegrationLive } from '@/hooks/use-integration'
 import { ApiError } from '@/lib/api'
 import { humanize } from '@/lib/format'
@@ -20,6 +23,18 @@ export function IntegrationPage() {
   const { slug = '' } = useParams()
   const { data, isPending, error } = useIntegration(slug)
   const { data: readings } = useIntegrationLive(slug, (data?.live.length ?? 0) > 0)
+  const { data: all = [] } = useHackathons()
+  const [scope, setScope] = React.useState('all')
+
+  const adopters = (data?.adopters ?? []).filter(
+    (item) => scope === 'all' || item.hackathon === scope,
+  )
+  const hackathons = all
+    .map((item) => ({
+      ...item,
+      count: (data?.adopters ?? []).filter((adopter) => adopter.hackathon === item.slug).length,
+    }))
+    .filter((item) => item.count > 0)
 
   if (isPending) return <Skeleton className="h-96 rounded-3xl" />
   if (error instanceof ApiError && error.status === 404) return <NotFoundPage />
@@ -56,7 +71,19 @@ export function IntegrationPage() {
       )}
 
       <Block eyebrow="Adoption" title="Who uses it">
-        <AdopterCards adopters={data.adopters} />
+        {hackathons.length > 1 && (
+          <Tabs value={scope} onValueChange={setScope} className="mb-4">
+            <TabsList className="flex-wrap">
+              <TabsTrigger value="all">All {data.adopters.length}</TabsTrigger>
+              {hackathons.map((item) => (
+                <TabsTrigger key={item.slug} value={item.slug} translate="no">
+                  {item.name} {item.count}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+        )}
+        <AdopterCards key={scope} adopters={adopters} />
       </Block>
 
       <Block eyebrow="Patterns" title="How it is used">

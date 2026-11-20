@@ -27,7 +27,7 @@ export function SiteHeader() {
           )}
         </div>
         <div className="flex items-center gap-2">
-          {hackathon?.indexed && <IntegrationsMenu />}
+          {(!hackathon || hackathon.indexed) && <IntegrationsMenu />}
           <Button
             variant="ghost"
             size="icon"
