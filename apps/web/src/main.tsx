@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { Analytics } from '@vercel/analytics/react'
 import { ThemeProvider } from 'next-themes'
 import { PostHogProvider } from 'posthog-js/react'
@@ -10,11 +10,10 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 
 import { App } from './app'
 import { posthog } from './lib/analytics'
+import { createQueryClient } from './lib/query-client'
 import './index.css'
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { staleTime: 60_000, retry: 1 } },
-})
+const queryClient = createQueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
