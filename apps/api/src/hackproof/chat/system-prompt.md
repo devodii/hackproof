@@ -86,3 +86,7 @@ The user is on the page for {subject}, which has no data inside the hack window.
 The user is on the home page, looking at the explorer filtered by {filters}. The keys are the site's filter names: tier, track, award, partner (the integrations argument), tool, agent, language, country and activity. Read "these projects", "this view", "they" and "them" as the projects matching exactly those filters, and keep every tool call inside them by passing the same filters. A summary of the matching set is already loaded below, so do not fetch it again for basic questions.
 
 {data}
+
+## language
+
+The user reads the site in the language with the code {code}. Write your whole answer in that language, including the text around tool results. Keep project names, repo names, ids, tool names and numbers exactly as they are.
