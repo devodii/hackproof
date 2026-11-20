@@ -201,13 +201,6 @@ partners:
             - '(?i)(?:post|put|use|route)\s*\(\s*[`''"/][^)]*webhooks?[^)]*\)'
             - '(?i)class\s+\w*webhook\w*(?:controller|service|handler)'
             - '(?i)trustless-?work-?signature'
-        - slug: public-api-key
-          group: risk
-          private: true
-          label: Key readable in the browser
-          patterns:
-            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_[A-Z_]*(?:TRUSTLESS|TW)[A-Z_]*KEY\b'
-            - '(?:NEXT_PUBLIC|VITE|PUBLIC|REACT_APP|EXPO_PUBLIC)_API_KEY\b'
       captures:
         - slug: operation
           label: Operations called
@@ -227,12 +220,6 @@ partners:
           patterns:
             - "(?:symbol|asset|currency)['\"]?\\s*[:=]\\s*['\"](USDC|EURC|PYUSD)['\"]"
       checks:
-        - slug: exposes-api-key
-          label: Ships the API key to the browser
-          severity: fail
-          private: true
-          requires: [calls-api]
-          forbids: [public-api-key]
         - slug: v2-on-mainnet-host
           label: Calls V2 beta paths on the mainnet host
           severity: fail

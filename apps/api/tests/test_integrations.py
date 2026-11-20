@@ -308,7 +308,6 @@ def test_trustless_work_is_read_deeply_from_source():
         if item.slug == "trustless-work"
     ]
     assert ("package", "@trustless-work/escrow") in found
-    assert ("signal", "public-api-key") in found
     assert ("signal", "testnet-api") in found
     assert ("signal", "mainnet-api") not in found
     assert ("capture", "operation:fund-escrow") in found
@@ -320,7 +319,6 @@ def test_trustless_work_is_read_deeply_from_source():
             catalog.partner("trustless-work"), found, "testnet", include_private=True
         ).checks
     }
-    assert checks["exposes-api-key"] == "fail"
     assert checks["release-without-validation"] == "warn"
     assert checks["no-rate-limit"] == "warn"
     assert "v2-on-mainnet-host" not in checks
@@ -335,7 +333,7 @@ def test_observed_state_goes_stale_after_an_hour():
 
 def test_private_signals_and_checks_never_reach_the_public_profile():
     catalog = get_catalog()
-    found = [("signal", "calls-api"), ("signal", "public-api-key")]
+    found = [("signal", "calls-api"), ("signal", "handles-rate-limit")]
     public = build_profile(catalog.partner("trustless-work"), found, "testnet")
     internal = build_profile(
         catalog.partner("trustless-work"), found, "testnet", include_private=True
@@ -343,8 +341,8 @@ def test_private_signals_and_checks_never_reach_the_public_profile():
     assert public and internal
     assert {item.slug for item in public.signals} == {"calls-api"}
     assert public.checks == []
-    assert "public-api-key" in {item.slug for item in internal.signals}
-    assert "public-api-key" in catalog.private_signals()["trustless-work"]
+    assert "handles-rate-limit" in {item.slug for item in internal.signals}
+    assert "handles-rate-limit" in catalog.private_signals()["trustless-work"]
 
 
 def test_a_contract_id_listed_in_prose_is_not_an_integration():
