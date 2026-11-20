@@ -12,5 +12,5 @@ CREATE TABLE projects (
     builders integer NOT NULL,
     first_activity timestamptz,
     last_activity timestamptz,
-    CONSTRAINT projects_pkey PRIMARY KEY (project_id)
+    CONSTRAINT projects_pkey PRIMARY KEY (hackathon, project_id)
 );

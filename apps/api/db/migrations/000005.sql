@@ -1,5 +1,10 @@
 ALTER TABLE projects ADD COLUMN hackathon text DEFAULT 'hackmeridian-2026' NOT NULL;
 
+ALTER TABLE projects DROP CONSTRAINT projects_pkey;
+
+ALTER TABLE projects
+ADD CONSTRAINT projects_pkey PRIMARY KEY (hackathon, project_id);
+
 CREATE INDEX CONCURRENTLY IF NOT EXISTS projects_hackathon ON projects (hackathon);
 
 -- pgschema:wait
