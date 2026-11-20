@@ -50,7 +50,7 @@ export function HomePage() {
               key={suggestion}
               variant="outline"
               size="sm"
-              className="h-auto rounded-full px-3 py-1.5 whitespace-normal"
+              className="h-auto max-w-full rounded-full px-3 py-1.5 text-left whitespace-normal"
               onClick={() => startChat(suggestion)}
             >
               {suggestion}

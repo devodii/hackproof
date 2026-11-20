@@ -6,7 +6,7 @@ import { SiteHeader } from '@/components/layout/site-header'
 
 export function Frame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative isolate flex min-h-svh flex-col bg-background text-foreground">
+    <div className="relative isolate flex min-h-svh flex-col overflow-x-clip bg-background text-foreground">
       <Backdrop />
       <SiteHeader />
       <main className="relative mx-auto w-full max-w-6xl flex-1 px-6 py-12">{children}</main>

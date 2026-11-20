@@ -86,7 +86,11 @@ export function AdopterCards({ adopters }: { adopters: Adopter[] }) {
     <div className="flex flex-col gap-4">
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {shown.map((adopter, index) => (
-          <Reveal key={adopter.project_id} delay={Math.min(index, 5) * 0.05} className="h-full">
+          <Reveal
+            key={adopter.project_id}
+            delay={Math.min(index, 5) * 0.05}
+            className="h-full min-w-0"
+          >
             <AdopterCard adopter={adopter} hackathon={names[adopter.hackathon]} />
           </Reveal>
         ))}

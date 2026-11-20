@@ -26,7 +26,7 @@ export function ProjectCard({ project, commits }: { project: Project; commits?: 
   ]
 
   return (
-    <Card size="sm" className="relative h-full transition-colors hover:bg-muted/40">
+    <Card size="sm" className="relative h-full min-w-0 transition-colors hover:bg-muted/40">
       <CardHeader>
         <div className="flex items-start gap-3">
           <AwardedAvatar place={project.award}>

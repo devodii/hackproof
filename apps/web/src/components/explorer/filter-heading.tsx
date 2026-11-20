@@ -55,7 +55,7 @@ export function FilterHeading() {
             key={question}
             variant="outline"
             size="sm"
-            className="h-auto rounded-full px-3 py-1.5 text-left whitespace-normal"
+            className="h-auto max-w-full rounded-full px-3 py-1.5 text-left whitespace-normal"
             onClick={() => startChat(question)}
           >
             {question}

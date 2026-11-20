@@ -145,7 +145,11 @@ export function ProjectPage() {
         {packages.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {packages.map(([pkg, version]) => (
-              <Badge key={pkg} variant="outline" className="font-mono">
+              <Badge
+                key={pkg}
+                variant="outline"
+                className="h-auto max-w-full font-mono break-all whitespace-normal"
+              >
                 {pkg}
                 {version && ` ${version}`}
               </Badge>

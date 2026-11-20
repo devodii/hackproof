@@ -27,7 +27,7 @@ function Shell() {
     <>
       <div
         inert={view !== 'closed'}
-        className="relative isolate flex min-h-svh flex-col bg-background pb-24 text-foreground"
+        className="relative isolate flex min-h-svh flex-col overflow-x-clip bg-background pb-24 text-foreground"
       >
         <Backdrop />
         <SiteHeader />

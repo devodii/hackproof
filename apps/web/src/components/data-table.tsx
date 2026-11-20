@@ -70,7 +70,9 @@ function RowCard<T>({ columns, row, onRowClick }: RowCardProps<T>) {
         {details.map((column) => (
           <Fragment key={column.header}>
             <dt className="text-muted-foreground">{column.header}</dt>
-            <dd className="min-w-0 text-right break-words">{column.cell(row)}</dd>
+            <dd className="min-w-0 text-right break-words [&_[data-slot=badge]]:h-auto [&_[data-slot=badge]]:max-w-full [&_[data-slot=badge]]:whitespace-normal">
+              {column.cell(row)}
+            </dd>
           </Fragment>
         ))}
       </dl>
