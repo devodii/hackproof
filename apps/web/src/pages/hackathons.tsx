@@ -1,12 +1,16 @@
+import { ArrowRightIcon } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 import * as React from 'react'
-import { useSearchParams } from 'react-router'
+import { Link, useSearchParams } from 'react-router'
 
-import { HackathonCard } from '@/components/hackathon/hackathon-card'
 import { HackathonFilterBar } from '@/components/hackathon/hackathon-filters'
+import { HackathonTable } from '@/components/hackathon/hackathon-table'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Button } from '@/components/ui/button'
+import { Figure } from '@/components/wrapped/figure'
+import { Tile } from '@/components/wrapped/tile'
 import { useHackathons } from '@/hooks/use-hackathons'
-import { formatNumber } from '@/lib/format'
+import { hackathonPath } from '@/lib/hackathon'
 import {
   filterHackathons,
   readFilters,
@@ -14,18 +18,10 @@ import {
   yearsOf,
   type HackathonFilters,
 } from '@/lib/hackathons'
-
-function CardsSkeleton() {
-  return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {Array.from({ length: 4 }, (_, index) => (
-        <Skeleton key={index} className="h-48 rounded-xl" />
-      ))}
-    </div>
-  )
-}
+import { EASE_OUT } from '@/lib/wrapped'
 
 export function HackathonsPage() {
+  const reduced = useReducedMotion()
   const { data, isPending, isError } = useHackathons()
   const [params, setParams] = useSearchParams()
   const filters = readFilters(params)
@@ -34,45 +30,74 @@ export function HackathonsPage() {
     [setParams],
   )
   const shown = data ? filterHackathons(data, filters) : []
-  const projects = data?.reduce((sum, item) => sum + item.projects, 0) ?? 0
+  const indexed = (data ?? []).filter((item) => item.indexed)
+  const featured = [...indexed].sort((a, b) => b.starts_at.localeCompare(a.starts_at))[0]
+  const totals = [
+    ['hackathons', data?.length ?? 0],
+    ['projects checked', indexed.reduce((sum, item) => sum + item.projects, 0)],
+    ['verified on-chain', indexed.reduce((sum, item) => sum + item.verified_projects, 0)],
+    ['contracts linked', indexed.reduce((sum, item) => sum + item.contracts, 0)],
+  ] as const
 
   return (
     <div className="flex flex-col gap-10">
-      <section className="flex max-w-3xl flex-col items-start gap-4">
-        <h1 className="text-5xl leading-[1.02] text-balance sm:text-7xl">
-          Stellar hackathons, checked against the chain.
+      <motion.section
+        initial={reduced ? false : { opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE_OUT }}
+        className="flex max-w-4xl flex-col items-start gap-6"
+      >
+        <h1 className="font-heading text-5xl leading-[0.98] text-balance sm:text-8xl">
+          Stellar hackathons, <span className="text-brand italic">checked on-chain.</span>
         </h1>
-        <p className="text-lg text-muted-foreground">
-          Every project is matched to the on-chain activity behind it, so you can see what was
-          really built.
-          {data &&
-            ` ${formatNumber(projects)} projects across ${formatNumber(data.length)} hackathons.`}
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          We match every project to the contracts, accounts and commits behind it, so you can see
+          what was really built, who built it and what it runs on.
         </p>
-      </section>
-      {isError ? (
-        <Alert variant="destructive">
-          <AlertTitle>Could not load the hackathons</AlertTitle>
-          <AlertDescription>The API is unreachable. Try again in a moment.</AlertDescription>
-        </Alert>
-      ) : (
-        <>
-          <HackathonFilterBar filters={filters} years={yearsOf(data ?? [])} onChange={update} />
-          {isPending ? (
-            <CardsSkeleton />
-          ) : shown.length > 0 ? (
-            <div className="grid gap-4 md:grid-cols-2">
-              {shown.map((hackathon) => (
-                <HackathonCard key={hackathon.slug} hackathon={hackathon} />
-              ))}
-            </div>
-          ) : (
-            <Alert>
-              <AlertTitle>No hackathon matches</AlertTitle>
-              <AlertDescription>Try another search or clear the filters.</AlertDescription>
-            </Alert>
-          )}
-        </>
-      )}
+        {featured && (
+          <div className="flex flex-wrap items-center gap-3">
+            <Button size="lg" render={<Link to={hackathonPath(featured.slug)} />}>
+              Explore <span translate="no">{featured.name}</span> <ArrowRightIcon />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              render={<Link to={hackathonPath(featured.slug, '/wrapped')} />}
+            >
+              See it wrapped
+            </Button>
+          </div>
+        )}
+      </motion.section>
+      <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-4">
+        {totals.map(([label, value], index) => (
+          <Tile key={label} title={label} delay={0.15 + index * 0.08}>
+            <Figure
+              value={value}
+              delay={0.4 + index * 0.08}
+              className="font-heading text-figure-lg text-brand"
+            />
+          </Tile>
+        ))}
+      </div>
+      <Tile
+        title="Every hackathon"
+        note={data ? `${shown.length} of ${data.length}` : undefined}
+        delay={0.5}
+        className="gap-5 p-6"
+      >
+        {isError ? (
+          <Alert variant="destructive">
+            <AlertTitle>Could not load the hackathons</AlertTitle>
+            <AlertDescription>The API is unreachable. Try again in a moment.</AlertDescription>
+          </Alert>
+        ) : (
+          <>
+            <HackathonFilterBar filters={filters} years={yearsOf(data ?? [])} onChange={update} />
+            <HackathonTable hackathons={shown} isLoading={isPending} />
+          </>
+        )}
+      </Tile>
     </div>
   )
 }

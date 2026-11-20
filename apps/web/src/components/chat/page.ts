@@ -33,9 +33,9 @@ const SUGGESTIONS: Partial<Record<PageKind, string[]>> = {
   home: [
     'Who won, and what did they build?',
     'Did the teams that deployed the most contracts win?',
-    'When was the busiest hour of the hack?',
+    'When was the busiest hour of the hackathon?',
     'Which Stellar tools did most teams build on?',
-    'What can I learn from the winners to prepare for 2027?',
+    'What can I learn from the winners to prepare for the next one?',
   ],
   project: [
     'Summarize this project',

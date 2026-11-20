@@ -32,7 +32,7 @@ export function ExternalId({ value, href, head, tail }: ExternalIdProps) {
 export function AccountLink({ address }: { address: string }) {
   return (
     <span className="inline-flex items-center gap-1">
-      <Link to={`/builder/${address}`} className={styles}>
+      <Link to={`/account/${address}`} className={styles}>
         {shortId(address)}
       </Link>
       <a

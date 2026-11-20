@@ -3,6 +3,13 @@ import { SearchIcon, XIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   DEFAULT_FILTERS,
@@ -72,20 +79,21 @@ export function HackathonFilterBar({ filters, years, onChange }: Props) {
           />
           With indexed projects only
         </label>
-        <label className="ml-auto flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="ml-auto flex items-center gap-2 text-sm text-muted-foreground">
           Sort
-          <select
-            value={filters.sort}
-            onChange={(event) => set({ sort: event.target.value as Sort })}
-            className="h-8 rounded-lg border border-input bg-transparent px-2 text-sm text-foreground dark:bg-input/30"
-          >
-            {SORTS.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.label}
-              </option>
-            ))}
-          </select>
-        </label>
+          <Select value={filters.sort} onValueChange={(value) => set({ sort: value as Sort })}>
+            <SelectTrigger aria-label="Sort hackathons">
+              <SelectValue>{SORTS.find((item) => item.value === filters.sort)?.label}</SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {SORTS.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         {dirty && (
           <Button size="sm" variant="ghost" onClick={() => onChange(DEFAULT_FILTERS)}>
             <XIcon /> Clear

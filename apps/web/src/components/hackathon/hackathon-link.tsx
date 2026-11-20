@@ -2,10 +2,12 @@ import * as React from 'react'
 import { Link as RouterLink, useNavigate } from 'react-router'
 
 import { HackathonContext } from '@/hooks/use-hackathon'
-import { hackathonPath } from '@/lib/hackathon'
+import { hackathonPath, isGlobalPath } from '@/lib/hackathon'
 
 function scoped(slug: string | undefined, to: string) {
-  return slug !== undefined && to.startsWith('/') ? hackathonPath(slug, to) : to
+  return slug !== undefined && to.startsWith('/') && !isGlobalPath(to)
+    ? hackathonPath(slug, to)
+    : to
 }
 
 export function Link({ to, ...props }: React.ComponentProps<typeof RouterLink>) {

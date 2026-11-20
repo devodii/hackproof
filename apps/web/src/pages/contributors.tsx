@@ -48,7 +48,7 @@ export function ContributorsPage() {
           : builders.map((builder) => (
               <li key={builder.login}>
                 <Link
-                  to={`/contributor/${encodeURIComponent(builder.login)}`}
+                  to={`/builder/${encodeURIComponent(builder.login)}`}
                   className="flex h-full flex-col gap-3 rounded-xl border bg-card p-4 transition-colors hover:bg-muted/40"
                 >
                   <div className="flex items-center gap-3">

@@ -44,7 +44,7 @@ export function LensList({ rows, total, active, onPreview, delay = 0 }: LensList
               <span
                 className={cn(
                   'truncate text-sm',
-                  selected ? 'font-semibold text-primary' : 'text-foreground/80',
+                  selected ? 'font-semibold text-brand' : 'text-foreground/80',
                 )}
               >
                 {row.label}

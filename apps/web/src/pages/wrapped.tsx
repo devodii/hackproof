@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router'
 import { Link } from '@/components/hackathon/hackathon-link'
 
 import { EventLogo } from '@/components/brand/event-logo'
+import { Backdrop } from '@/components/wrapped/backdrop'
 import { BuilderAvatars } from '@/components/wrapped/builder-avatars'
 import { Figure } from '@/components/wrapped/figure'
 import { LensList, type LensRow } from '@/components/wrapped/lens-list'
@@ -89,16 +90,6 @@ function ranked<T extends { slug: string; name: string; projects: number }>(
     .map((item) => ({ label: item.name, value: item.projects, lens: { kind, value: item.slug } }))
 }
 
-function Backdrop() {
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0">
-      <div className="absolute -top-60 -left-40 size-glow rounded-full bg-glow-secondary blur-glow" />
-      <div className="absolute -right-48 -bottom-72 size-glow-lg rounded-full bg-glow-primary blur-glow-lg" />
-      <div className="poster-dots absolute inset-0" />
-    </div>
-  )
-}
-
 function Header({ window }: { window: HackWindow }) {
   const still = useStill()
   const hackathon = useHackathon()
@@ -114,7 +105,7 @@ function Header({ window }: { window: HackWindow }) {
         <EventLogo className="h-7 w-auto sm:h-9" />
         <h1 className="font-heading text-headline">
           <span className="sr-only">{hackathon.name} </span>
-          <span className="text-primary italic">Wrapped</span>
+          <span className="text-brand italic">Wrapped</span>
         </h1>
       </div>
       <p className="pb-1 text-sm text-muted-foreground">{windowLabel(window)}</p>
@@ -167,7 +158,7 @@ function Hero({ data, lens, onPreview }: SectionProps) {
         <Figure
           value={stats.projects}
           delay={0.5}
-          className="font-heading text-display text-primary"
+          className="font-heading text-display text-brand"
         />
         <p className="pb-2 text-sm leading-tight text-foreground/80">
           projects
@@ -180,7 +171,7 @@ function Hero({ data, lens, onPreview }: SectionProps) {
         <div className="mt-3 flex min-h-6 items-center gap-5 text-xs text-foreground/80">
           {summary ? (
             <span>
-              <b className="font-semibold text-primary">{summary.matched}</b> of {projects.length}{' '}
+              <b className="font-semibold text-brand">{summary.matched}</b> of {projects.length}{' '}
               projects: {summary.name}
             </span>
           ) : (
@@ -228,6 +219,7 @@ function Hero({ data, lens, onPreview }: SectionProps) {
 
 function Chain({ data }: { data: PosterData }) {
   const { peak, rush, rushTotal } = timelineHighlights(data.timeline)
+  const hours = data.timeline.length
   const figures = [
     ['contracts deployed', data.stats.contracts],
     ['deployers', data.wrapped.deployers],
@@ -236,7 +228,7 @@ function Chain({ data }: { data: PosterData }) {
   ]
 
   return (
-    <Tile title="The 27 hours on chain" note="contracts deployed per hour" delay={0.25}>
+    <Tile title={`The ${hours} hours on chain`} note="contracts deployed per hour" delay={0.25}>
       <div className="mb-1 flex flex-wrap gap-x-10 gap-y-4">
         {figures.map(([label, value], index) => (
           <div key={label}>
@@ -248,7 +240,7 @@ function Chain({ data }: { data: PosterData }) {
         ))}
         <div className="flex w-full flex-wrap gap-2 text-xs lg:ml-auto lg:w-auto lg:flex-col lg:items-end lg:justify-center lg:gap-1">
           <span className="rounded-full border border-tile-border bg-track px-2.5 py-1">
-            <b className="text-primary">{formatNumber(peak.contracts)}</b> in one hour at{' '}
+            <b className="text-brand">{formatNumber(peak.contracts)}</b> in one hour at{' '}
             {formatHour(peak.hour)} UTC
           </span>
           <span className="rounded-full border border-tile-border bg-track px-2.5 py-1">
@@ -304,7 +296,7 @@ function Builders({ wrapped }: { wrapped: Wrapped }) {
           <Link
             to="/contributors"
             aria-label={`See all ${wrapped.multi_team_builders.length} builders on 2 or more teams`}
-            className="text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+            className="text-xs text-muted-foreground underline-offset-4 hover:text-brand hover:underline"
           >
             +{hidden}
           </Link>

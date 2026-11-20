@@ -2,7 +2,7 @@ import type { components, Project } from '@/lib/api-schema'
 
 export type {
   Adopter,
-  Builder,
+  Account,
   CaptureCount,
   CheckCount,
   Contract,

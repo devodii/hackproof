@@ -32,8 +32,6 @@ export const DEFAULT_FILTERS: HackathonFilters = {
   sort: 'newest',
 }
 
-export const FILTER_KEYS = ['q', 'status', 'year', 'indexed', 'sort']
-
 export function readFilters(params: URLSearchParams): HackathonFilters {
   const status = params.get('status')
   const sort = params.get('sort')

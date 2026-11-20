@@ -1,11 +1,14 @@
 import { ArrowLeftIcon } from 'lucide-react'
+import * as React from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
 import { Link } from '@/components/hackathon/hackathon-link'
 
+import { HackathonContext } from '@/hooks/use-hackathon'
 import { Button } from '@/components/ui/button'
 
 export function BackButton() {
+  const hackathon = React.useContext(HackathonContext)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -18,7 +21,7 @@ export function BackButton() {
   }
   return (
     <Button variant="ghost" size="sm" className="-ml-2.5" render={<Link to="/" />}>
-      <ArrowLeftIcon /> All projects
+      <ArrowLeftIcon /> {hackathon ? 'All projects' : 'All hackathons'}
     </Button>
   )
 }

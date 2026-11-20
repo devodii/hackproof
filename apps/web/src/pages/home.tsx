@@ -6,6 +6,8 @@ import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
 import { FilterHeading } from '@/components/explorer/filter-heading'
 import { readSelection, selectedCount } from '@/components/explorer/filters'
+import { WinnersSpotlight } from '@/components/hackathon/winners-spotlight'
+import { WrappedTeaser } from '@/components/hackathon/wrapped-teaser'
 import { Overview } from '@/components/overview'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -56,6 +58,10 @@ export function HomePage() {
             </Button>
           ))}
         </div>
+      </section>
+      <section className="grid gap-4 lg:grid-cols-2">
+        <WrappedTeaser />
+        <WinnersSpotlight />
       </section>
       <Overview />
       <Explorer />

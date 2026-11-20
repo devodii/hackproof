@@ -70,7 +70,7 @@ function ActivityCard({ contracts }: { contracts?: number }) {
   return (
     <Card className="lg:col-span-2">
       <CardHeader>
-        <CardDescription>Contracts deployed, per hour over the 27 hour window</CardDescription>
+        <CardDescription>Contracts deployed per hour</CardDescription>
         {contracts === undefined ? (
           <Skeleton className="h-14 w-28" />
         ) : (

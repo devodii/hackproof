@@ -16,6 +16,8 @@ export function HackathonScope() {
   const hackathon = data?.find((item) => item.slug === id) ?? null
   const client = React.useMemo(createQueryClient, [id])
 
+  React.useEffect(() => () => selectHackathon(null), [])
+
   if (isPending) return null
   if (hackathon === null) return <NotFoundPage />
   selectHackathon(id)
