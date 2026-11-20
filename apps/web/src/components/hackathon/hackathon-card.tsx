@@ -59,7 +59,7 @@ export function HackathonCard({ hackathon }: { hackathon: HackathonSummary }) {
           <div className="flex flex-wrap items-end gap-x-8 gap-y-3">
             <Figure label="projects" value={hackathon.projects} />
             <Figure label="verified on-chain" value={hackathon.verified_projects} />
-            <Figure label="contracts" value={hackathon.contracts} />
+            <Figure label="linked contracts" value={hackathon.contracts} />
             {hackathon.winners > 0 && (
               <span className="ml-auto inline-flex items-center gap-1 text-sm text-muted-foreground">
                 <CrownIcon className="size-3.5" /> {hackathon.winners} winners

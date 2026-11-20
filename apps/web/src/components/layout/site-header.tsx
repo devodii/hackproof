@@ -47,7 +47,7 @@ export function SiteHeader() {
           )}
         </div>
         <div className="flex items-center gap-3">
-          {hackathon && <HackathonLinks />}
+          {hackathon?.indexed && <HackathonLinks />}
           <a href={REPO_URL} target="_blank" rel="noreferrer" className={NAV}>
             Open Source <ExternalLinkIcon className="size-3.5" />
           </a>

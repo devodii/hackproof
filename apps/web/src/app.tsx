@@ -9,6 +9,7 @@ import { LegacyRedirect } from '@/components/hackathon/legacy-redirect'
 import { Frame } from '@/components/layout/frame'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
+import { FILTER_KEYS } from '@/lib/hackathons'
 import { BuilderPage } from '@/pages/builder'
 import { HackathonsPage } from '@/pages/hackathons'
 import { HomePage } from '@/pages/home'
@@ -42,7 +43,8 @@ function Shell() {
 
 function Landing() {
   const { search } = useLocation()
-  if (search !== '') return <LegacyRedirect />
+  const legacy = [...new URLSearchParams(search).keys()].some((key) => !FILTER_KEYS.includes(key))
+  if (legacy) return <LegacyRedirect />
 
   return (
     <Frame>
