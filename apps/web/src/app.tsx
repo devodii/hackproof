@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Outlet, Route, Routes, useLocation } from 'react-router'
 
 import { ChatDock } from '@/components/chat/chat-dock'
@@ -7,6 +6,7 @@ import { ChatProvider } from '@/components/chat/chat-provider'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { HackathonScope } from '@/components/hackathon/hackathon-scope'
 import { LegacyRedirect } from '@/components/hackathon/legacy-redirect'
+import { Frame } from '@/components/layout/frame'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
@@ -18,16 +18,6 @@ import { ContributorsPage } from '@/pages/contributors'
 import { PersonPage } from '@/pages/person'
 import { ProjectPage } from '@/pages/project'
 import { WrappedPage } from '@/pages/wrapped'
-
-function Frame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex min-h-svh flex-col bg-background text-foreground">
-      <SiteHeader />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12">{children}</main>
-      <SiteFooter />
-    </div>
-  )
-}
 
 function Shell() {
   const { view } = useChatPanel()
