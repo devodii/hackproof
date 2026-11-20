@@ -1,5 +1,5 @@
 import { ExternalLinkIcon } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { formatNumber, projectName, shortId } from '@/lib/format'
 import { expertUrl } from '@/lib/links'

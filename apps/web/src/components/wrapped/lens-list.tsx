@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { useStill } from '@/components/wrapped/use-still'
 import { formatNumber } from '@/lib/format'

@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { CheckStatus } from '@/components/integration/check-status'
 import { Reveal } from '@/components/integration/reveal'

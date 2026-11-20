@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { BackButton } from '@/components/back-button'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -6,11 +6,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useWrapped } from '@/hooks/use-wrapped'
-import { EVENT_NAME } from '@/lib/config'
+import { useHackathon } from '@/hooks/use-hackathon'
 import { formatNumber, projectName } from '@/lib/format'
 
 export function ContributorsPage() {
   const { data, isPending, isError } = useWrapped()
+  const hackathon = useHackathon()
 
   if (isError) {
     return (
@@ -28,7 +29,8 @@ export function ContributorsPage() {
       <header className="flex flex-col items-start gap-3">
         <BackButton />
         <h1 className="font-heading text-4xl leading-tight text-balance sm:text-6xl">
-          <span className="text-muted-foreground">{EVENT_NAME} builders</span> on 2 or more teams
+          <span className="text-muted-foreground">{hackathon.name} builders</span> on 2 or more
+          teams
         </h1>
         <p className="text-muted-foreground">
           {isPending

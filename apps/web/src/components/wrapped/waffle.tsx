@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 
 import { awardIcon } from '@/components/award-mark'
+import { useHackathonPath } from '@/hooks/use-hackathon'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useStill } from '@/components/wrapped/use-still'
@@ -24,6 +25,7 @@ interface WaffleProps {
 
 export function Waffle({ projects, lens, columns, delay = 0 }: WaffleProps) {
   const still = useStill()
+  const path = useHackathonPath()
 
   return (
     <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
@@ -36,7 +38,7 @@ export function Waffle({ projects, lens, columns, delay = 0 }: WaffleProps) {
             <TooltipTrigger
               render={
                 <a
-                  href={`/project/${project.project_id}`}
+                  href={path(`/project/${project.project_id}`)}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={name}

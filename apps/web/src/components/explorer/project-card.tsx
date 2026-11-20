@@ -1,5 +1,5 @@
 import { ExternalLinkIcon, StarIcon } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { AwardBadge } from '@/components/award-badge'

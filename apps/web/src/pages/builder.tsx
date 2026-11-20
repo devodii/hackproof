@@ -1,7 +1,8 @@
 import { ExternalLinkIcon } from 'lucide-react'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 
 import { DataTable } from '@/components/data-table'
+import { useHackathonNavigate } from '@/components/hackathon/hackathon-link'
 import { ActivitySections } from '@/components/explorer/activity-sections'
 import { projectColumns } from '@/components/explorer/columns'
 import { BuilderSkeleton } from '@/components/page-skeletons'
@@ -13,7 +14,7 @@ import { expertUrl } from '@/lib/links'
 
 export function BuilderPage() {
   const address = useParams().address ?? ''
-  const navigate = useNavigate()
+  const navigate = useHackathonNavigate()
   const { data, isPending, error } = useBuilder(address)
 
   if (isPending) return <BuilderSkeleton />

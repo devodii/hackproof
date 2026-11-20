@@ -1,5 +1,7 @@
 import { ArrowLeftIcon } from 'lucide-react'
-import { Link, useLocation, useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
+
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { Button } from '@/components/ui/button'
 
