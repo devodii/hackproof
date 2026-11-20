@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { currentPage } from '@/components/chat/page'
 import { posthog } from '@/lib/analytics'
 import { API_URL } from '@/lib/config'
+import { withHackathon } from '@/lib/hackathon'
 
 const rateLimitBody = z.object({
   window: z.enum(['minute', 'hour']),
@@ -43,6 +44,7 @@ export const transport = new DefaultChatTransport({
     return response
   },
   prepareSendMessagesRequest: ({ messages }) => ({
+    api: `${API_URL}/api${withHackathon('/chat')}`,
     body: {
       page: currentPage(),
       messages: messages.map((message) => ({

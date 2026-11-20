@@ -9,7 +9,8 @@ export interface PageContext {
 }
 
 export function currentPage(): PageContext {
-  const { pathname, search } = window.location
+  const { search } = window.location
+  const pathname = window.location.pathname.replace(/^\/hackathon\/[^/]+/, '') || '/'
   if (pathname.startsWith('/project/')) {
     return { kind: 'project', id: decodeURIComponent(pathname.slice('/project/'.length)) }
   }
@@ -30,7 +31,7 @@ function activeFilters(params: URLSearchParams) {
 
 const SUGGESTIONS: Partial<Record<PageKind, string[]>> = {
   home: [
-    'Who won HackMeridian, and what did they build?',
+    'Who won, and what did they build?',
     'Did the teams that deployed the most contracts win?',
     'When was the busiest hour of the hack?',
     'Which Stellar tools did most teams build on?',

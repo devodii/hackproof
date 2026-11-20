@@ -1,6 +1,8 @@
 import { motion } from 'motion/react'
 import { useState } from 'react'
-import { Link, useSearchParams } from 'react-router'
+import { useSearchParams } from 'react-router'
+
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { EventLogo } from '@/components/brand/event-logo'
 import { BuilderAvatars } from '@/components/wrapped/builder-avatars'
@@ -20,7 +22,7 @@ import { useAgents, useIntegrations, useProjects, useTools } from '@/hooks/use-p
 import { useStats } from '@/hooks/use-stats'
 import { useTimeline } from '@/hooks/use-timeline'
 import { useWrapped } from '@/hooks/use-wrapped'
-import { EVENT_NAME } from '@/lib/config'
+import { useHackathon } from '@/hooks/use-hackathon'
 import { formatHour, formatNumber, humanize, tierLabel } from '@/lib/format'
 import type {
   AIAgent,
@@ -99,6 +101,7 @@ function Backdrop() {
 
 function Header({ window }: { window: HackWindow }) {
   const still = useStill()
+  const hackathon = useHackathon()
 
   return (
     <motion.header
@@ -110,7 +113,7 @@ function Header({ window }: { window: HackWindow }) {
       <div className="flex items-center gap-4">
         <EventLogo className="h-7 w-auto sm:h-9" />
         <h1 className="font-heading text-headline">
-          <span className="sr-only">{EVENT_NAME} </span>
+          <span className="sr-only">{hackathon.name} </span>
           <span className="text-primary italic">Wrapped</span>
         </h1>
       </div>
