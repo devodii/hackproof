@@ -150,7 +150,7 @@ async def build_export(
 ) -> HackathonExport:
     window = hackathon.window
     projects = await connection.fetch(
-        load_sql("export/projects"), list(tiers), list(TIER_ORDER)
+        load_sql("export/projects"), list(tiers), list(TIER_ORDER), hackathon.slug
     )
     names = [row["full_name"] for row in projects]
     span = (window.start, window.end)

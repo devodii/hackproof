@@ -25,5 +25,5 @@ SELECT
     r.declared_track
 FROM projects AS p
 INNER JOIN repos AS r ON p.full_name = r.full_name
-WHERE p.tier = ANY($1)
+WHERE p.tier = ANY($1) AND p.hackathon = $3
 ORDER BY ARRAY_POSITION($2::text[], p.tier), p.contracts DESC, r.stars DESC, p.full_name ASC
