@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router'
 
 import { Link } from '@/components/hackathon/hackathon-link'
 
-import { EventLogo } from '@/components/brand/event-logo'
 import { Backdrop } from '@/components/wrapped/backdrop'
 import { BuilderAvatars } from '@/components/wrapped/builder-avatars'
 import { Figure } from '@/components/wrapped/figure'
@@ -102,7 +101,6 @@ function Header({ window }: { window: HackWindow }) {
       className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between"
     >
       <div className="flex items-center gap-4">
-        <EventLogo className="h-7 w-auto sm:h-9" />
         <h1 className="font-heading text-headline">
           <span className="sr-only">{hackathon.name} </span>
           <span className="text-brand italic">Wrapped</span>
