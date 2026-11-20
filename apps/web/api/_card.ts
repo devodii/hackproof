@@ -10,6 +10,7 @@ export interface Card {
   subtitle: string | null
   stats: Stat[]
   avatar: string | null
+  meter: { lit: number; caption: string } | null
   title_for_page: string
 }
 
@@ -53,6 +54,8 @@ export function splitYear(name: string) {
   return found ? { title: found[1], year: found[2] } : { title: name, year: null }
 }
 
+const plural = (count: number, word: string) => (count === 1 ? word : `${word}s`)
+
 function range(start: string, end: string) {
   const [a, b] = [new Date(start), new Date(end)]
   if (a.toDateString() === b.toDateString()) return dayYear.format(a)
@@ -62,6 +65,8 @@ function range(start: string, end: string) {
 
 function clip(text: string | null, length: number) {
   if (!text) return null
+  const sentence = /^.+?[.!?](?=\s|$)/.exec(text)?.[0]
+  if (sentence && sentence.length <= length) return sentence
   return text.length > length ? `${text.slice(0, length - 1).trimEnd()}…` : text
 }
 
@@ -72,17 +77,23 @@ const LANDING: Card = {
   subtitle: 'Every project matched to the contracts, accounts and commits behind it.',
   stats: [],
   avatar: null,
+  meter: null,
   title_for_page: 'HackProof: Stellar hackathons, checked on-chain',
 }
 
 async function landing(api: string): Promise<Card> {
   const all = (await get<Hackathon[]>(api, '/hackathons')) ?? []
   const indexed = all.filter((item) => item.indexed)
-  const sum = (key: 'projects' | 'verified_projects' | 'contracts') =>
-    compact.format(indexed.reduce((total, item) => total + item[key], 0))
+  const total = (key: 'projects' | 'verified_projects' | 'contracts') =>
+    indexed.reduce((count, item) => count + item[key], 0)
+  const sum = (key: 'projects' | 'verified_projects' | 'contracts') => compact.format(total(key))
   if (all.length === 0) return LANDING
   return {
     ...LANDING,
+    meter: {
+      lit: total('projects') ? total('verified_projects') / total('projects') : 0,
+      caption: `${sum('verified_projects')} of ${sum('projects')} projects verified on-chain`,
+    },
     stats: [
       { value: compact.format(all.length), label: 'hackathons' },
       { value: sum('projects'), label: 'projects checked' },
@@ -103,7 +114,7 @@ async function hackathon(api: string, id: string, page: string): Promise<Card> {
     eyebrow: [range(found.starts_at, found.ends_at), found.location].filter(Boolean).join('  ·  '),
     title: wrapped ? `${found.name}` : title,
     accent: wrapped ? 'Wrapped' : year,
-    subtitle: clip(found.summary, 130),
+    subtitle: clip(found.summary, 110),
     stats: found.indexed
       ? [
           { value: compact.format(found.projects), label: 'projects' },
@@ -113,6 +124,12 @@ async function hackathon(api: string, id: string, page: string): Promise<Card> {
         ]
       : [],
     avatar: null,
+    meter: found.indexed
+      ? {
+          lit: found.projects ? found.verified_projects / found.projects : 0,
+          caption: `${compact.format(found.verified_projects)} of ${compact.format(found.projects)} projects verified on-chain`,
+        }
+      : null,
     title_for_page: `${found.name}${wrapped ? ' Wrapped' : ''} on HackProof`,
   }
 }
@@ -151,6 +168,7 @@ async function project(api: string, id: string, projectId: string): Promise<Card
       ...(item.language ? [{ value: item.language, label: 'language' }] : []),
     ],
     avatar: item.owner_avatar,
+    meter: null,
     title_for_page: `${name} at ${event}`,
   }
 }
@@ -172,11 +190,18 @@ async function builder(api: string, login: string): Promise<Card> {
     accent: null,
     subtitle: 'Everything this builder shipped at Stellar hackathons, across every event.',
     stats: [
-      { value: compact.format(person.projects.length), label: 'projects' },
+      {
+        value: compact.format(person.projects.length),
+        label: plural(person.projects.length, 'project'),
+      },
       { value: compact.format(events), label: events === 1 ? 'hackathon' : 'hackathons' },
-      { value: compact.format(person.contributions), label: 'commits' },
+      {
+        value: compact.format(person.contributions),
+        label: plural(person.contributions, 'commit'),
+      },
     ],
     avatar: person.avatar_url,
+    meter: null,
     title_for_page: `${person.login} on HackProof`,
   }
 }
@@ -189,10 +214,13 @@ interface Integration {
 }
 
 async function integration(api: string, slug: string): Promise<Card> {
-  const found = ((await get<Integration[]>(api, '/integrations')) ?? []).find(
-    (item) => item.slug === slug,
-  )
+  const [list, all] = await Promise.all([
+    get<Integration[]>(api, '/integrations'),
+    get<Hackathon[]>(api, '/hackathons'),
+  ])
+  const found = (list ?? []).find((item) => item.slug === slug)
   if (!found) return landing(api)
+  const total = (all ?? []).reduce((count, item) => count + (item.indexed ? item.projects : 0), 0)
   return {
     eyebrow: `Integration  ·  ${found.category}`,
     title: found.name,
@@ -200,6 +228,12 @@ async function integration(api: string, slug: string): Promise<Card> {
     subtitle: 'Which hackathon projects use it, and how, checked against the chain.',
     stats: [{ value: compact.format(found.projects), label: 'projects using it' }],
     avatar: null,
+    meter: total
+      ? {
+          lit: Math.min(1, found.projects / total),
+          caption: `${compact.format(found.projects)} of ${compact.format(total)} projects use it`,
+        }
+      : null,
     title_for_page: `${found.name} on HackProof`,
   }
 }
