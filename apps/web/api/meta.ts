@@ -1,11 +1,9 @@
 import { describe, descriptionOf } from './_card'
 
-export const config = { runtime: 'edge' }
-
 const escape = (value: string) =>
   value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
-export default async function handler(request: Request) {
+export async function GET(request: Request) {
   const url = new URL(request.url)
   const path = url.searchParams.get('path') ?? '/'
   const api = (process.env.VITE_API_URL ?? process.env.API_URL ?? '').replace(/\/$/, '')
