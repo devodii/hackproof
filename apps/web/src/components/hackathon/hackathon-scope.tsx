@@ -6,6 +6,8 @@ import { HackathonContext } from '@/hooks/use-hackathon'
 import { useHackathons } from '@/hooks/use-hackathons'
 import { selectHackathon } from '@/lib/hackathon'
 import { createQueryClient } from '@/lib/query-client'
+import { Frame } from '@/components/layout/frame'
+import { HackathonPendingPage } from '@/pages/hackathon-pending'
 import { NotFoundPage } from '@/pages/not-found'
 
 export function HackathonScope() {
@@ -21,7 +23,13 @@ export function HackathonScope() {
   return (
     <HackathonContext.Provider value={hackathon}>
       <QueryClientProvider client={client}>
-        <Outlet />
+        {hackathon.indexed ? (
+          <Outlet />
+        ) : (
+          <Frame>
+            <HackathonPendingPage />
+          </Frame>
+        )}
       </QueryClientProvider>
     </HackathonContext.Provider>
   )
