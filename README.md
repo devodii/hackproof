@@ -14,7 +14,7 @@ Each project has an evidence tier. `verified` means an exact repo to chain match
 - `apps/web`: React, Vite and shadcn/ui
 - `apps/api`: FastAPI, asyncpg and Postgres, managed with uv
 - `apps/api/src/hackproof/chat/system-prompt.md`: the chat prompts
-- `data`: the dataset, one YAML file per project, plus the event and integration configs. See [data/README.md](data/README.md)
+- `data`: the dataset, one YAML file per project, plus one config per hackathon and the shared integrations. See [data/README.md](data/README.md)
 
 ## Run
 
@@ -38,11 +38,11 @@ uv run hackproof run
 
 `run` does the whole job for one hackathon, in order: `sync` indexes the hack window from the chain, `discover` finds candidate repos, `scan` reads them, `reconcile` links chain activity to repos and builds the projects, `observe` reads the live state of the integrations' contracts, and `export` writes the project files into `data`. It stops at the first stage that fails and prints the command to carry on from there. Use `--from reconcile`, `--only export` or `--skip discover scan` to run part of it, and `--force`, `--projects` or `--strings` to change how the scan and discovery behave. The stages are also commands of their own.
 
-To run a new hackathon, copy `data/hackmeridian-2026.yaml`, set its slug, window, awards and discovery queries, create a database for it and run:
+To run a new hackathon, copy `data/hackmeridian-2026`, set the slug in `main.yaml`, window, awards and discovery queries, create a database for it and run:
 
 ```sh
 HACKPROOF_DATABASE_URL=postgresql://... uv run hackproof schema apply
-HACKPROOF_DATABASE_URL=postgresql://... uv run hackproof run --hackathon ../../data/<your-file>.yaml
+HACKPROOF_DATABASE_URL=postgresql://... uv run hackproof run --hackathon ../../data/<id>/main.yaml
 ```
 
 The tables are not split by event, so each hackathon gets a database of its own, and `run` records the event in the database and refuses to run another one on it. Against a database that is not on this machine it needs `--remote`.
