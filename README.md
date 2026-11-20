@@ -5,7 +5,7 @@
 
 # HackProof
 
-HackMeridian 2026 submissions, rebuilt from Stellar testnet and linked to their GitHub repos by exact matches. Browse the projects, check each match on Stellar Expert and GitHub, download the data, or ask the chat.
+Stellar hackathon submissions, rebuilt from Stellar testnet and linked to their GitHub repos by exact matches. Pick a hackathon, browse its projects, check each match on Stellar Expert and GitHub, download the data, or ask the chat.
 
 Each project has an evidence tier. `verified` means an exact repo to chain match with activity in the window. `likely` (shown as "Code only") means a Stellar dependency and at least 5 commits in the window, in a repo created or updated for the event. The window is set in `data/hackmeridian-2026.yaml`.
 
@@ -37,6 +37,16 @@ uv run hackproof run
 ```
 
 `run` does the whole job for one hackathon, in order: `sync` indexes the hack window from the chain, `discover` finds candidate repos, `scan` reads them, `reconcile` links chain activity to repos and builds the projects, `observe` reads the live state of the integrations' contracts, and `export` writes the project files into `data`. It stops at the first stage that fails and prints the command to carry on from there. Use `--from reconcile`, `--only export` or `--skip discover scan` to run part of it, and `--force`, `--projects` or `--strings` to change how the scan and discovery behave. The stages are also commands of their own.
+
+To add a hackathon, create `data/<id>/main.yaml` with its id, name, window and awards. With only that it is listed on the landing page as not indexed yet. To index it, add the `discovery` queries, then run:
+
+```sh
+uv run hackproof run --hackathon ../../data/<id>/main.yaml
+```
+
+One database holds every hackathon. Repos and projects carry the id of the hackathon they belong to, and the site and the API scope every dataset to the `hackathon` the request names. Against a database that is not on this machine `run` needs `--remote`. The chain sync reads recent testnet history only, so a hackathon has to be indexed while its window is still inside the RPC retention.
+
+`observe` reads the live state of the integrations' contracts, and `export` writes the project files into `data`. It stops at the first stage that fails and prints the command to carry on from there. Use `--from reconcile`, `--only export` or `--skip discover scan` to run part of it, and `--force`, `--projects` or `--strings` to change how the scan and discovery behave. The stages are also commands of their own.
 
 To run a new hackathon, copy `data/hackmeridian-2026`, set the slug in `main.yaml`, window, awards and discovery queries, create a database for it and run:
 
