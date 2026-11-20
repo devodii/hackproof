@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/api/accounts/{address}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Account */
+        get: operations["account_api_accounts__address__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/agents": {
         parameters: {
             query?: never;
@@ -21,7 +38,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/builders/{address}": {
+    "/api/builders/{login}": {
         parameters: {
             query?: never;
             header?: never;
@@ -29,7 +46,7 @@ export interface paths {
             cookie?: never;
         };
         /** Builder */
-        get: operations["builder_api_builders__address__get"];
+        get: operations["builder_api_builders__login__get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -64,23 +81,6 @@ export interface paths {
         };
         /** Contracts */
         get: operations["contracts_api_contracts_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/contributors/{login}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Contributor */
-        get: operations["contributor_api_contributors__login__get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -359,6 +359,19 @@ export interface components {
             /** Slug */
             slug: string;
         };
+        /** Account */
+        Account: {
+            /** Address */
+            address: string;
+            /** Contracts */
+            contracts: components["schemas"]["Contract"][];
+            /** Failed Txs */
+            failed_txs: components["schemas"]["FailedTx"][];
+            /** Projects */
+            projects: components["schemas"]["Project"][];
+            /** Wasm Uploads */
+            wasm_uploads: components["schemas"]["WasmUpload"][];
+        };
         /** Adopter */
         Adopter: {
             /** Full Name */
@@ -379,19 +392,6 @@ export interface components {
             tier: "verified" | "likely" | "possible" | "unattributed";
             /** Url */
             url: string;
-        };
-        /** Builder */
-        Builder: {
-            /** Address */
-            address: string;
-            /** Contracts */
-            contracts: components["schemas"]["Contract"][];
-            /** Failed Txs */
-            failed_txs: components["schemas"]["FailedTx"][];
-            /** Projects */
-            projects: components["schemas"]["Project"][];
-            /** Wasm Uploads */
-            wasm_uploads: components["schemas"]["WasmUpload"][];
         };
         /** CaptureCount */
         CaptureCount: {
@@ -925,6 +925,8 @@ export interface components {
             forks: number | null;
             /** Full Name */
             full_name: string | null;
+            /** Hackathon */
+            hackathon: string;
             /** Homepage */
             homepage: string | null;
             /**
@@ -1133,8 +1135,8 @@ export interface components {
     pathItems: never;
 }
 export type AiAgent = components['schemas']['AIAgent'];
+export type Account = components['schemas']['Account'];
 export type Adopter = components['schemas']['Adopter'];
-export type Builder = components['schemas']['Builder'];
 export type CaptureCount = components['schemas']['CaptureCount'];
 export type ChatRequest = components['schemas']['ChatRequest'];
 export type CheckCount = components['schemas']['CheckCount'];
@@ -1181,6 +1183,39 @@ export type Wrapped = components['schemas']['Wrapped'];
 export type WrappedBuilder = components['schemas']['WrappedBuilder'];
 export type $defs = Record<string, never>;
 export interface operations {
+    account_api_accounts__address__get: {
+        parameters: {
+            query?: {
+                hackathon?: string | null;
+            };
+            header?: never;
+            path: {
+                address: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Account"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     agents_api_agents_get: {
         parameters: {
             query?: {
@@ -1212,14 +1247,14 @@ export interface operations {
             };
         };
     };
-    builder_api_builders__address__get: {
+    builder_api_builders__login__get: {
         parameters: {
             query?: {
                 hackathon?: string | null;
             };
             header?: never;
             path: {
-                address: string;
+                login: string;
             };
             cookie?: never;
         };
@@ -1231,7 +1266,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Builder"];
+                    "application/json": components["schemas"]["Person"];
                 };
             };
             /** @description Validation Error */
@@ -1301,39 +1336,6 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Page_Contract_"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
-    };
-    contributor_api_contributors__login__get: {
-        parameters: {
-            query?: {
-                hackathon?: string | null;
-            };
-            header?: never;
-            path: {
-                login: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Person"];
                 };
             };
             /** @description Validation Error */

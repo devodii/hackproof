@@ -29,6 +29,51 @@
         "title": "AIAgent",
         "type": "object"
       },
+      "Account": {
+        "properties": {
+          "address": {
+            "title": "Address",
+            "type": "string"
+          },
+          "contracts": {
+            "items": {
+              "$ref": "#/components/schemas/Contract"
+            },
+            "title": "Contracts",
+            "type": "array"
+          },
+          "failed_txs": {
+            "items": {
+              "$ref": "#/components/schemas/FailedTx"
+            },
+            "title": "Failed Txs",
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            },
+            "title": "Projects",
+            "type": "array"
+          },
+          "wasm_uploads": {
+            "items": {
+              "$ref": "#/components/schemas/WasmUpload"
+            },
+            "title": "Wasm Uploads",
+            "type": "array"
+          }
+        },
+        "required": [
+          "address",
+          "projects",
+          "contracts",
+          "wasm_uploads",
+          "failed_txs"
+        ],
+        "title": "Account",
+        "type": "object"
+      },
       "Adopter": {
         "additionalProperties": false,
         "properties": {
@@ -95,51 +140,6 @@
           "profile"
         ],
         "title": "Adopter",
-        "type": "object"
-      },
-      "Builder": {
-        "properties": {
-          "address": {
-            "title": "Address",
-            "type": "string"
-          },
-          "contracts": {
-            "items": {
-              "$ref": "#/components/schemas/Contract"
-            },
-            "title": "Contracts",
-            "type": "array"
-          },
-          "failed_txs": {
-            "items": {
-              "$ref": "#/components/schemas/FailedTx"
-            },
-            "title": "Failed Txs",
-            "type": "array"
-          },
-          "projects": {
-            "items": {
-              "$ref": "#/components/schemas/Project"
-            },
-            "title": "Projects",
-            "type": "array"
-          },
-          "wasm_uploads": {
-            "items": {
-              "$ref": "#/components/schemas/WasmUpload"
-            },
-            "title": "Wasm Uploads",
-            "type": "array"
-          }
-        },
-        "required": [
-          "address",
-          "projects",
-          "contracts",
-          "wasm_uploads",
-          "failed_txs"
-        ],
-        "title": "Builder",
         "type": "object"
       },
       "CaptureCount": {
@@ -1563,6 +1563,10 @@
             ],
             "title": "Full Name"
           },
+          "hackathon": {
+            "title": "Hackathon",
+            "type": "string"
+          },
           "homepage": {
             "anyOf": [
               {
@@ -1751,6 +1755,7 @@
         },
         "required": [
           "project_id",
+          "hackathon",
           "full_name",
           "url",
           "footprint",
@@ -2278,6 +2283,62 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/accounts/{address}": {
+      "get": {
+        "operationId": "account_api_accounts__address__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "address",
+            "required": true,
+            "schema": {
+              "title": "Address",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Account"
+      }
+    },
     "/api/agents": {
       "get": {
         "operationId": "agents_api_agents_get",
@@ -2329,16 +2390,16 @@
         "summary": "Agents"
       }
     },
-    "/api/builders/{address}": {
+    "/api/builders/{login}": {
       "get": {
-        "operationId": "builder_api_builders__address__get",
+        "operationId": "builder_api_builders__login__get",
         "parameters": [
           {
             "in": "path",
-            "name": "address",
+            "name": "login",
             "required": true,
             "schema": {
-              "title": "Address",
+              "title": "Login",
               "type": "string"
             }
           },
@@ -2365,7 +2426,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Builder"
+                  "$ref": "#/components/schemas/Person"
                 }
               }
             },
@@ -2525,62 +2586,6 @@
           }
         },
         "summary": "Contracts"
-      }
-    },
-    "/api/contributors/{login}": {
-      "get": {
-        "operationId": "contributor_api_contributors__login__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "login",
-            "required": true,
-            "schema": {
-              "title": "Login",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "hackathon",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "maxLength": 60,
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Hackathon"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Person"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Contributor"
       }
     },
     "/api/countries": {

@@ -48,6 +48,7 @@ class Project(BaseModel):
     model_config = ConfigDict(json_schema_serialization_defaults_required=True)
 
     project_id: str
+    hackathon: str
     full_name: str | None
     url: str | None
     footprint: Literal["contracts", "classic", "github"]
@@ -167,7 +168,7 @@ class ProjectDetail(BaseModel):
     failed_txs: list[FailedTx]
 
 
-class Builder(BaseModel):
+class Account(BaseModel):
     address: str
     projects: list[Project]
     contracts: list[Contract]

@@ -5,8 +5,8 @@ from fastapi import APIRouter, HTTPException, Query
 from hackproof import queries
 from hackproof.integrations.insights import depths
 from hackproof.schemas import (
+    Account,
     AIAgent,
-    Builder,
     Contract,
     CountryCount,
     EcosystemTool,
@@ -165,19 +165,19 @@ async def project(project_id: str) -> ProjectDetail:
     )
 
 
-@router.get("/contributors/{login}")
-async def contributor(login: str) -> Person:
+@router.get("/builders/{login}")
+async def builder(login: str) -> Person:
     person = await queries.fetch_person(login)
     if person is None:
         raise HTTPException(
-            status_code=404, detail="no hackathon project for this contributor"
+            status_code=404, detail="no hackathon project for this builder"
         )
     return Person(**person)
 
 
-@router.get("/builders/{address}")
-async def builder(address: str) -> Builder:
-    result = Builder(
+@router.get("/accounts/{address}")
+async def account(address: str) -> Account:
+    result = Account(
         address=address,
         projects=await _everything("projects", account=address),
         contracts=await _everything("contracts", account=address),

@@ -42,11 +42,13 @@ async def list_page(
     awards: list[str] | None = None,
     project_ids: list[str] | None = None,
     winners: bool = False,
+    everywhere: bool = False,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
     hackathon = current()
     placed = hackathon.places()
+    awards_of = {slug: item.places() for slug, item in hackathons().items()}
     wanted = project_ids
     if wanted is None and (winners or awards):
         wanted = [
@@ -68,7 +70,7 @@ async def list_page(
             languages,
             countries,
             activity,
-            hackathon.slug,
+            None if everywhere else hackathon.slug,
         )
         if resource == "projects"
         else (*window(), q, account, project_id, limit, offset)
@@ -78,7 +80,13 @@ async def list_page(
     total = rows[0]["total"] if rows else 0
     items = [{k: v for k, v in dict(row).items() if k != "total"} for row in rows]
     if resource == "projects":
-        items = [{**item, "award": placed.get(item["project_id"])} for item in items]
+        items = [
+            {
+                **item,
+                "award": awards_of.get(item["hackathon"], {}).get(item["project_id"]),
+            }
+            for item in items
+        ]
     return items, total
 
 
@@ -279,6 +287,7 @@ async def fetch_person(login: str) -> dict[str, Any] | None:
         "projects",
         tiers=["verified", "likely"],
         project_ids=list(commits),
+        everywhere=True,
         limit=len(commits),
     )
     if not projects:
