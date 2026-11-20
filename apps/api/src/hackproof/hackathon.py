@@ -1,9 +1,9 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from functools import lru_cache
 from typing import Literal
 
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, TypeAdapter, model_validator
 
 from hackproof.config import get_settings
 
@@ -14,6 +14,14 @@ class Window(BaseModel):
     start: datetime
     pull_start: datetime
     end: datetime
+
+    @model_validator(mode="before")
+    @classmethod
+    def pull_from_an_hour_early(cls, data: object) -> object:
+        if isinstance(data, dict) and "pull_start" not in data:
+            start = TypeAdapter(datetime).validate_python(data["start"])
+            return {**data, "pull_start": start - timedelta(hours=1)}
+        return data
 
 
 class Discovery(BaseModel):
@@ -40,7 +48,14 @@ class Hackathon(BaseModel):
     about: str | None = None
     window: Window
     awards: list[Award] = []
-    discovery: Discovery
+    discovery: Discovery | None = None
+
+    def indexing(self) -> Discovery:
+        if self.discovery is None:
+            raise ValueError(
+                f"{self.slug} is listed only, add a discovery section to its main.yaml to index it"
+            )
+        return self.discovery
 
     def places(self) -> dict[str, Place]:
         return {award.project_id: award.place for award in self.awards}

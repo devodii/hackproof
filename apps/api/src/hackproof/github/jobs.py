@@ -29,7 +29,7 @@ async def run_discover(include_strings: bool) -> None:
         stages = discover(
             github,
             hackathon.window,
-            hackathon.discovery,
+            hackathon.indexing(),
             from_wasm,
             include_strings,
         )
@@ -67,7 +67,7 @@ async def run_scan(force: bool, projects_only: bool = False) -> None:
         repos = [Candidate(**row) for row in rows]
         log.info("scanning %s repos", len(repos))
 
-        scanner = Scanner(github, http, hackathon.discovery, hackathon.window)
+        scanner = Scanner(github, http, hackathon.indexing(), hackathon.window)
         gate = asyncio.Semaphore(SCAN_CONCURRENCY)
         done = 0
 

@@ -67,7 +67,7 @@ async def _wasm_meta_links(connection: asyncpg.Connection, hackathon: str) -> No
 async def reconcile(connection: asyncpg.Connection) -> Report:
     settings, hackathon = get_settings(), get_hackathon()
     window = hackathon.window
-    infra = [settings.friendbot_account, *hackathon.discovery.known_infra_accounts]
+    infra = [settings.friendbot_account, *hackathon.indexing().known_infra_accounts]
     pull = (window.pull_start, window.end)
     evidence_params: dict[LinkMethod, tuple[object, ...]] = {
         LinkMethod.CONTRACT_IN_REPO: (hackathon.slug,),
@@ -106,7 +106,7 @@ async def reconcile(connection: asyncpg.Connection) -> Report:
         )
         await connection.execute(
             load_sql("reconcile/exclude_projects"),
-            [f"repo:{name.lower()}" for name in hackathon.discovery.exclude_repos],
+            [f"repo:{name.lower()}" for name in hackathon.indexing().exclude_repos],
             hackathon.slug,
         )
 
