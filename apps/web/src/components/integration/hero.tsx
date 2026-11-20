@@ -63,9 +63,8 @@ export function Hero({ data }: { data: IntegrationDetail }) {
           {data.name}
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          How {formatNumber(data.of_projects)} hackathon projects use{' '}
-          <span translate="no"> {data.name} </span>, read from their source and checked against what{' '}
-          <span translate="no"> {data.name} </span> runs today.
+          How {formatNumber(data.of_projects)} hackathon projects use it, read from their source and
+          checked against what it runs today.
         </p>
       </motion.div>
       <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
