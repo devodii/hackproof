@@ -4,14 +4,12 @@ from collections.abc import Awaitable, Callable, Sequence
 
 from pydantic import BaseModel, ConfigDict
 
-from hackproof.db import close_pool, open_pool, pool
+from hackproof.db import close_pool
 from hackproof.export.jobs import run_export
 from hackproof.github.jobs import run_discover, run_scan
-from hackproof.hackathon import get_hackathon
 from hackproof.indexer.sync import run_sync
 from hackproof.integrations.observe import run_observe
 from hackproof.linking.reconcile import run_reconcile
-from hackproof.sql_loader import load_sql
 
 log = logging.getLogger("hackproof.pipeline")
 
@@ -90,28 +88,7 @@ def select(
     return [stage for stage in chosen if stage.name not in skip]
 
 
-class WrongEvent(Exception):
-    pass
-
-
-async def claim_database() -> None:
-    slug = get_hackathon().slug
-    await open_pool()
-    try:
-        async with pool().acquire() as connection:
-            await connection.execute(load_sql("pipeline/claim_event"), slug)
-            held = await connection.fetchval(load_sql("pipeline/event"))
-    finally:
-        await close_pool()
-    if held != slug:
-        raise WrongEvent(
-            f"this database already holds {held}, and the tables are not split by "
-            f"event. Point DATABASE_URL at a database of its own for {slug}."
-        )
-
-
 async def run_pipeline(chosen: Sequence[Stage]) -> None:
-    await claim_database()
     started = time.monotonic()
     log.info("running %s", ", ".join(stage.name for stage in chosen))
     for index, stage in enumerate(chosen, start=1):

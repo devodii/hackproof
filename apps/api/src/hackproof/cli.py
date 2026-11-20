@@ -13,7 +13,7 @@ from hackproof.indexer.sync import run_sync
 from hackproof.integrations.observe import run_observe
 from hackproof.linking.reconcile import run_reconcile
 from hackproof.openapi import write as write_openapi
-from hackproof.pipeline import Options, WrongEvent, run_pipeline, select, stages
+from hackproof.pipeline import Options, run_pipeline, select, stages
 
 
 def run_schema(args: argparse.Namespace) -> int:
@@ -64,11 +64,7 @@ def run_all(args: argparse.Namespace) -> int:
     except ValueError as error:
         print(error)
         return 1
-    try:
-        asyncio.run(run_pipeline(chosen))
-    except WrongEvent as error:
-        print(error)
-        return 1
+    asyncio.run(run_pipeline(chosen))
     return 0
 
 
