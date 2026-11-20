@@ -1,6 +1,5 @@
 import { useSearchParams } from 'react-router'
 
-import { EventLogo } from '@/components/brand/event-logo'
 import { suggestionsFor } from '@/components/chat/page'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Explorer } from '@/components/explorer/explorer'
@@ -10,14 +9,12 @@ import { WinnersSpotlight } from '@/components/hackathon/winners-spotlight'
 import { WrappedTeaser } from '@/components/hackathon/wrapped-teaser'
 import { Overview } from '@/components/overview'
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
-import { useHackWindow } from '@/hooks/use-hack-window'
 import { useHackathon } from '@/hooks/use-hackathon'
-import { formatDateTime } from '@/lib/format'
+import { formatDateRange, splitYear } from '@/lib/format'
 
 export function HomePage() {
-  const { data } = useHackWindow()
   const hackathon = useHackathon()
+  const { title, year } = splitYear(hackathon.name)
   const { startChat } = useChatPanel()
   const [params] = useSearchParams()
 
@@ -33,17 +30,19 @@ export function HomePage() {
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col items-start gap-5">
-        <EventLogo className="h-9 w-auto sm:h-11" />
-        <h1 className="max-w-4xl text-5xl leading-[1.02] text-balance sm:text-7xl">
-          {hackathon.name}, rebuilt from the chain.
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-eyebrow font-semibold tracking-eyebrow text-muted-foreground uppercase">
+          <span>{formatDateRange(hackathon.starts_at, hackathon.ends_at)}</span>
+          {hackathon.location && <span>· {hackathon.location}</span>}
+        </p>
+        <h1
+          translate="no"
+          className="max-w-5xl font-heading text-5xl leading-[0.98] text-balance sm:text-8xl"
+        >
+          {title}
+          {year && <span className="text-brand italic"> {year}</span>}
         </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground">{hackathon.summary}</p>
-        {data ? (
-          <p className="text-sm text-muted-foreground">
-            {formatDateTime(data.start)} to {formatDateTime(data.end)}
-          </p>
-        ) : (
-          <Skeleton className="h-5 w-72" />
+        {hackathon.summary && (
+          <p className="max-w-2xl text-lg text-muted-foreground">{hackathon.summary}</p>
         )}
         <div className="flex flex-wrap gap-2">
           {suggestionsFor('home').map((suggestion) => (

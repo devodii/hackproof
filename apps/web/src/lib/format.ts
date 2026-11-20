@@ -98,6 +98,11 @@ export const methodLabel: Record<string, string> = {
   capture: 'Captured value',
 }
 
+export function splitYear(name: string) {
+  const found = /^(.*?)\s*(\d{4})$/.exec(name)
+  return found ? { title: found[1], year: found[2] } : { title: name, year: null }
+}
+
 const day = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' })
 const dayWithYear = new Intl.DateTimeFormat('en', {
   month: 'short',
