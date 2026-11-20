@@ -4,6 +4,7 @@ import { ChatDock } from '@/components/chat/chat-dock'
 import { ChatOverlay } from '@/components/chat/chat-overlay'
 import { ChatProvider } from '@/components/chat/chat-provider'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
+import { LanguageProvider } from '@/components/layout/language-provider'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { BuilderPage } from '@/pages/builder'
@@ -38,23 +39,25 @@ function Shell() {
 
 export function App() {
   return (
-    <Routes>
-      <Route path="/wrapped" element={<WrappedPage />} />
-      <Route
-        element={
-          <ChatProvider>
-            <Shell />
-          </ChatProvider>
-        }
-      >
-        <Route path="/" element={<HomePage />} />
-        <Route path="/project/*" element={<ProjectPage />} />
-        <Route path="/builder/:address" element={<BuilderPage />} />
-        <Route path="/integration/:slug" element={<IntegrationPage />} />
-        <Route path="/contributors" element={<ContributorsPage />} />
-        <Route path="/contributor/:login" element={<PersonPage />} />
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <LanguageProvider>
+      <Routes>
+        <Route path="/wrapped" element={<WrappedPage />} />
+        <Route
+          element={
+            <ChatProvider>
+              <Shell />
+            </ChatProvider>
+          }
+        >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/project/*" element={<ProjectPage />} />
+          <Route path="/builder/:address" element={<BuilderPage />} />
+          <Route path="/integration/:slug" element={<IntegrationPage />} />
+          <Route path="/contributors" element={<ContributorsPage />} />
+          <Route path="/contributor/:login" element={<PersonPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </LanguageProvider>
   )
 }
