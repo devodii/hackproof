@@ -123,6 +123,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/hackathons": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Hackathons */
+        get: operations["hackathons_api_hackathons_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/health": {
         parameters: {
             query?: never;
@@ -541,6 +558,44 @@ export interface components {
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
+        };
+        /** HackathonSummary */
+        HackathonSummary: {
+            /** Contracts */
+            contracts: number;
+            /**
+             * Ends At
+             * Format: date-time
+             */
+            ends_at: string;
+            /** Indexed */
+            indexed: boolean;
+            /** Location */
+            location: string | null;
+            /** Name */
+            name: string;
+            /** Projects */
+            projects: number;
+            /** Slug */
+            slug: string;
+            /**
+             * Starts At
+             * Format: date-time
+             */
+            starts_at: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "upcoming" | "live" | "past";
+            /** Summary */
+            summary: string | null;
+            /** Verified Projects */
+            verified_projects: number;
+            /** Website */
+            website: string | null;
+            /** Winners */
+            winners: number;
         };
         /** Integration */
         Integration: {
@@ -1088,6 +1143,7 @@ export type DependencyFingerprint = components['schemas']['DependencyFingerprint
 export type EcosystemTool = components['schemas']['EcosystemTool'];
 export type FailedTx = components['schemas']['FailedTx'];
 export type HttpValidationError = components['schemas']['HTTPValidationError'];
+export type HackathonSummary = components['schemas']['HackathonSummary'];
 export type Integration = components['schemas']['Integration'];
 export type IntegrationDepth = components['schemas']['IntegrationDepth'];
 export type IntegrationDetail = components['schemas']['IntegrationDetail'];
@@ -1122,7 +1178,9 @@ export type $defs = Record<string, never>;
 export interface operations {
     agents_api_agents_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1138,11 +1196,22 @@ export interface operations {
                     "application/json": components["schemas"]["AIAgent"][];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     builder_api_builders__address__get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path: {
                 address: string;
@@ -1173,7 +1242,9 @@ export interface operations {
     };
     chat_api_chat_post: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1210,6 +1281,7 @@ export interface operations {
                 q?: string | null;
                 limit?: number;
                 offset?: number;
+                hackathon?: string | null;
             };
             header?: never;
             path?: never;
@@ -1239,7 +1311,9 @@ export interface operations {
     };
     contributor_api_contributors__login__get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path: {
                 login: string;
@@ -1270,7 +1344,9 @@ export interface operations {
     };
     countries_api_countries_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1286,6 +1362,15 @@ export interface operations {
                     "application/json": components["schemas"]["CountryCount"][];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     failed_api_failed_get: {
@@ -1294,6 +1379,7 @@ export interface operations {
                 q?: string | null;
                 limit?: number;
                 offset?: number;
+                hackathon?: string | null;
             };
             header?: never;
             path?: never;
@@ -1321,9 +1407,42 @@ export interface operations {
             };
         };
     };
+    hackathons_api_hackathons_get: {
+        parameters: {
+            query?: {
+                hackathon?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HackathonSummary"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     health_api_health_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1341,11 +1460,22 @@ export interface operations {
                     };
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     integrations_api_integrations_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1361,11 +1491,22 @@ export interface operations {
                     "application/json": components["schemas"]["Integration"][];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     integration_api_integrations__slug__get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path: {
                 slug: string;
@@ -1396,7 +1537,9 @@ export interface operations {
     };
     integration_live_api_integrations__slug__live_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path: {
                 slug: string;
@@ -1435,6 +1578,7 @@ export interface operations {
                 tool?: string[] | null;
                 limit?: number;
                 offset?: number;
+                hackathon?: string | null;
             };
             header?: never;
             path?: never;
@@ -1464,7 +1608,9 @@ export interface operations {
     };
     project_api_projects__project_id__get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path: {
                 project_id: string;
@@ -1495,7 +1641,9 @@ export interface operations {
     };
     stats_api_stats_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1511,11 +1659,22 @@ export interface operations {
                     "application/json": components["schemas"]["Stats"];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     timeline_api_timeline_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1531,11 +1690,22 @@ export interface operations {
                     "application/json": components["schemas"]["TimelinePoint"][];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     tools_api_tools_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1551,6 +1721,15 @@ export interface operations {
                     "application/json": components["schemas"]["EcosystemTool"][];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     wasm_api_wasm_get: {
@@ -1559,6 +1738,7 @@ export interface operations {
                 q?: string | null;
                 limit?: number;
                 offset?: number;
+                hackathon?: string | null;
             };
             header?: never;
             path?: never;
@@ -1588,7 +1768,9 @@ export interface operations {
     };
     window_api_window_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1606,11 +1788,22 @@ export interface operations {
                     };
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     wrapped_api_wrapped_get: {
         parameters: {
-            query?: never;
+            query?: {
+                hackathon?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1624,6 +1817,15 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Wrapped"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
