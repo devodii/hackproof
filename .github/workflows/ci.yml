@@ -141,6 +141,7 @@ jobs:
             api:
               - 'apps/api/**'
               - 'data/*.yaml'
+              - 'data/*/main.yaml'
               - 'railway.json'
       - if: steps.changes.outputs.api == 'true'
         env:
