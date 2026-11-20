@@ -6,7 +6,10 @@ SELECT
     $1::text AS method
 FROM repo_refs AS r
 WHERE
-    r.full_name IN (SELECT o.full_name FROM repos AS o WHERE o.hackathon = $7)
+    r.full_name IN (
+        SELECT o.full_name FROM repos AS o
+        WHERE o.hackathon = $7
+    )
     AND r.kind = 'account'
     AND r.value IN (SELECT hackers($2, $3, $4) AS account)
     AND r.value <> all($5::text[])

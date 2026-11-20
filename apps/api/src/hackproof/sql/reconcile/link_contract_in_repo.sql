@@ -6,7 +6,10 @@ SELECT
     $1::text AS method
 FROM repo_refs AS r
 WHERE
-    r.full_name IN (SELECT o.full_name FROM repos AS o WHERE o.hackathon = $2)
+    r.full_name IN (
+        SELECT o.full_name FROM repos AS o
+        WHERE o.hackathon = $2
+    )
     AND r.kind = 'contract'
     AND r.value IN (SELECT c.contract_id FROM contracts AS c)
 ON CONFLICT DO NOTHING

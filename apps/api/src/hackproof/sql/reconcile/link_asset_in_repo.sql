@@ -6,7 +6,10 @@ SELECT
     $1::text AS method
 FROM repo_refs AS r
 WHERE
-    r.full_name IN (SELECT o.full_name FROM repos AS o WHERE o.hackathon = $5)
+    r.full_name IN (
+        SELECT o.full_name FROM repos AS o
+        WHERE o.hackathon = $5
+    )
     AND r.kind = 'asset'
     AND split_part(r.value, ':', 2) IN (SELECT hackers($2, $3, $4) AS account)
     AND r.value IN (
