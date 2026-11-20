@@ -34,9 +34,15 @@ class Award(BaseModel):
 class Hackathon(BaseModel):
     slug: str
     name: str
+    summary: str | None = None
+    website: str | None = None
+    location: str | None = None
     window: Window
     awards: list[Award] = []
     discovery: Discovery
+
+    def places(self) -> dict[str, Place]:
+        return {award.project_id: award.place for award in self.awards}
 
 
 @lru_cache
@@ -45,5 +51,11 @@ def get_hackathon() -> Hackathon:
         return Hackathon.model_validate(yaml.safe_load(file))
 
 
-def places() -> dict[str, Place]:
-    return {award.project_id: award.place for award in get_hackathon().awards}
+@lru_cache
+def hackathons() -> dict[str, Hackathon]:
+    found = [
+        Hackathon.model_validate(yaml.safe_load(path.read_text()))
+        for path in get_settings().data_dir.glob("*/main.yaml")
+    ]
+    found.sort(key=lambda hackathon: hackathon.window.start, reverse=True)
+    return {hackathon.slug: hackathon for hackathon in found}
