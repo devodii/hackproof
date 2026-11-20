@@ -32,7 +32,11 @@ export function IntegrationPage() {
       {data.surfaces.length > 0 && (
         <Block
           eyebrow="Live"
-          title={`What ${data.name} runs today`}
+          title={
+            <>
+              What <span translate="no"> {data.name} </span> runs today
+            </>
+          }
           note="Refreshed from the source at most once an hour"
         >
           <SurfaceTable surfaces={data.surfaces} />

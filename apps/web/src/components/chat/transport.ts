@@ -5,6 +5,7 @@ import { currentPage } from '@/components/chat/page'
 import { posthog } from '@/lib/analytics'
 import { API_URL } from '@/lib/config'
 import { withHackathon } from '@/lib/hackathon'
+import { currentLanguage } from '@/lib/languages'
 
 const rateLimitBody = z.object({
   window: z.enum(['minute', 'hour']),
@@ -47,6 +48,7 @@ export const transport = new DefaultChatTransport({
     api: `${API_URL}/api${withHackathon('/chat')}`,
     body: {
       page: currentPage(),
+      language: currentLanguage(),
       messages: messages.map((message) => ({
         role: message.role,
         parts: message.parts.filter((part) => part.type === 'text'),

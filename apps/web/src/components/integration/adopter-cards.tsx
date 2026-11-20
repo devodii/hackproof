@@ -31,7 +31,9 @@ function AdopterCard({ adopter }: { adopter: Adopter }) {
                 <AvatarFallback>{adopter.owner.slice(0, 2).toUpperCase()}</AvatarFallback>
               </Avatar>
               <div className="flex min-w-0 flex-col">
-                <span className="truncate font-medium">{projectName(adopter.project_id)}</span>
+                <span translate="no" className="truncate font-medium">
+                  {projectName(adopter.project_id)}
+                </span>
                 <span className="text-xs text-muted-foreground">
                   {adopter.language ?? 'Unknown'}
                 </span>

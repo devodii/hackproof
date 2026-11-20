@@ -4,7 +4,7 @@ import { Reveal } from '@/components/integration/reveal'
 
 interface BlockProps {
   eyebrow: string
-  title: string
+  title: ReactNode
   note?: ReactNode
   children: ReactNode
 }

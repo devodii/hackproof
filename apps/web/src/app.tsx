@@ -7,6 +7,7 @@ import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { HackathonScope } from '@/components/hackathon/hackathon-scope'
 import { LegacyRedirect } from '@/components/hackathon/legacy-redirect'
 import { Frame } from '@/components/layout/frame'
+import { LanguageProvider } from '@/components/layout/language-provider'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { FILTER_KEYS } from '@/lib/hackathons'
@@ -64,29 +65,31 @@ const LEGACY_PATHS = [
 
 export function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/hackathon/:id" element={<HackathonScope />}>
-        <Route path="wrapped" element={<WrappedPage />} />
-        <Route
-          element={
-            <ChatProvider>
-              <Shell />
-            </ChatProvider>
-          }
-        >
-          <Route index element={<HomePage />} />
-          <Route path="project/*" element={<ProjectPage />} />
-          <Route path="builder/:address" element={<BuilderPage />} />
-          <Route path="integration/:slug" element={<IntegrationPage />} />
-          <Route path="contributors" element={<ContributorsPage />} />
-          <Route path="contributor/:login" element={<PersonPage />} />
+    <LanguageProvider>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/hackathon/:id" element={<HackathonScope />}>
+          <Route path="wrapped" element={<WrappedPage />} />
+          <Route
+            element={
+              <ChatProvider>
+                <Shell />
+              </ChatProvider>
+            }
+          >
+            <Route index element={<HomePage />} />
+            <Route path="project/*" element={<ProjectPage />} />
+            <Route path="builder/:address" element={<BuilderPage />} />
+            <Route path="integration/:slug" element={<IntegrationPage />} />
+            <Route path="contributors" element={<ContributorsPage />} />
+            <Route path="contributor/:login" element={<PersonPage />} />
+          </Route>
         </Route>
-      </Route>
-      {LEGACY_PATHS.map((path) => (
-        <Route key={path} path={path} element={<LegacyRedirect />} />
-      ))}
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        {LEGACY_PATHS.map((path) => (
+          <Route key={path} path={path} element={<LegacyRedirect />} />
+        ))}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </LanguageProvider>
   )
 }

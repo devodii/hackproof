@@ -46,14 +46,17 @@ function Message({ message, streaming }: { message: UIMessage; streaming: boolea
   if (message.role === 'user') {
     const text = message.parts.map((part) => (part.type === 'text' ? part.text : '')).join('')
     return (
-      <div className="ml-auto max-w-[85%] rounded-3xl rounded-br-md bg-primary px-4 py-2 text-sm whitespace-pre-wrap text-primary-foreground">
+      <div
+        translate="no"
+        className="ml-auto max-w-[85%] rounded-3xl rounded-br-md bg-primary px-4 py-2 text-sm whitespace-pre-wrap text-primary-foreground"
+      >
         {text}
       </div>
     )
   }
 
   return (
-    <div className="flex flex-col items-start gap-2 text-sm md:text-base">
+    <div translate="no" className="flex flex-col items-start gap-2 text-sm md:text-base">
       {message.parts.map((part, index) => {
         if (isToolUIPart(part)) return <ToolCall key={part.toolCallId} part={part} />
         if (part.type === 'text' && part.text) {

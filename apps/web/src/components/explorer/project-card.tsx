@@ -39,6 +39,7 @@ export function ProjectCard({ project, commits }: { project: Project; commits?: 
           <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
             <Link
               to={`/project/${project.project_id}`}
+              translate="no"
               className="max-w-full truncate font-medium after:absolute after:inset-0"
             >
               {name}
@@ -64,7 +65,7 @@ export function ProjectCard({ project, commits }: { project: Project; commits?: 
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
-        <p className="line-clamp-2 min-h-10 text-sm text-muted-foreground">
+        <p translate="no" className="line-clamp-2 min-h-10 text-sm text-muted-foreground">
           {project.description ?? 'No description'}
         </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">

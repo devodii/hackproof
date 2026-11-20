@@ -4,7 +4,7 @@ from typing import Any
 from uuid import uuid4
 
 from anthropic import AsyncAnthropic
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from hackproof.chat.briefs import Page
 from hackproof.chat.prompts import prompt
@@ -28,6 +28,9 @@ class Message(BaseModel):
 class ChatRequest(BaseModel):
     messages: list[Message]
     page: Page | None = None
+    language: str = Field(
+        "en", pattern=r"^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$", max_length=16
+    )
 
 
 def event(payload: dict[str, Any]) -> str:

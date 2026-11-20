@@ -59,10 +59,13 @@ export function Hero({ data }: { data: IntegrationDetail }) {
             {new URL(data.site).host} <ExternalLinkIcon className="size-3.5" />
           </a>
         </div>
-        <h1 className="text-5xl leading-none sm:text-7xl">{data.name}</h1>
+        <h1 translate="no" className="text-5xl leading-none sm:text-7xl">
+          {data.name}
+        </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          How {formatNumber(data.of_projects)} hackathon projects use {data.name}, read from their
-          source and checked against what {data.name} runs today.
+          How {formatNumber(data.of_projects)} hackathon projects use{' '}
+          <span translate="no"> {data.name} </span>, read from their source and checked against what{' '}
+          <span translate="no"> {data.name} </span> runs today.
         </p>
       </motion.div>
       <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">

@@ -20,7 +20,7 @@ export function Stage({ still, children }: { still: boolean; children: ReactNode
 
   return (
     <StillContext value={still}>
-      <div className="dark fixed inset-0 overflow-hidden bg-poster">
+      <div translate="no" className="dark fixed inset-0 overflow-hidden bg-poster">
         <div
           className="absolute top-1/2 left-1/2 overflow-hidden bg-background text-foreground"
           style={{
