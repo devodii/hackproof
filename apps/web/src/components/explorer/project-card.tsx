@@ -1,5 +1,5 @@
 import { ExternalLinkIcon, StarIcon } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { AwardBadge } from '@/components/award-badge'
@@ -9,6 +9,7 @@ import { TrackBadge } from '@/components/track-badge'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { useIntegrations, useTools } from '@/hooks/use-projects'
+import { hackathonPath } from '@/lib/hackathon'
 import { flagEmoji, formatNumber, projectName } from '@/lib/format'
 import type { Project } from '@/lib/types'
 
@@ -38,7 +39,7 @@ export function ProjectCard({ project, commits }: { project: Project; commits?: 
           </AwardedAvatar>
           <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
             <Link
-              to={`/project/${project.project_id}`}
+              to={hackathonPath(project.hackathon, `/project/${project.project_id}`)}
               translate="no"
               className="max-w-full truncate font-medium after:absolute after:inset-0"
             >

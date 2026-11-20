@@ -2,7 +2,7 @@ SELECT
     (
         SELECT count(DISTINCT c.login) FROM repo_contributors AS c
         INNER JOIN projects AS p ON c.full_name = p.full_name
-        WHERE p.tier IN ('verified', 'likely') AND lower(c.login) <> all($1::text[]) AND c.login NOT LIKE '%[bot]'
+        WHERE p.hackathon = $4 AND p.tier IN ('verified', 'likely') AND lower(c.login) <> all($1::text[]) AND c.login NOT LIKE '%[bot]'
     ) AS builders,
     (
         SELECT count(*) FROM accounts

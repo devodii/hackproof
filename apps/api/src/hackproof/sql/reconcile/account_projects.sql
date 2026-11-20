@@ -1,5 +1,5 @@
 INSERT INTO projects (
-    project_id, full_name, footprint, tier, contracts, classic_ops, assets,
+    project_id, hackathon, full_name, footprint, tier, contracts, classic_ops, assets,
     wasm_uploads, failed_txs, builders, first_activity, last_activity
 )
 WITH builders AS (
@@ -25,6 +25,7 @@ orphans AS (
 
 SELECT
     'acct:' || o.account AS project_id,
+    $4::text AS hackathon,
     NULL AS full_name,
     CASE WHEN EXISTS (
         SELECT 1 FROM contracts AS c

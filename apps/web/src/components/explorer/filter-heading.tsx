@@ -1,7 +1,7 @@
 import { BackButton } from '@/components/back-button'
 import { useChatPanel } from '@/components/chat/use-chat-panel'
 import { Button } from '@/components/ui/button'
-import { EVENT_NAME } from '@/lib/config'
+import { useHackathon } from '@/hooks/use-hackathon'
 import { formatNumber } from '@/lib/format'
 
 import { filterQuestions, joinLabels, type SelectedGroup } from './filter-options'
@@ -25,6 +25,7 @@ function separator(index: number, total: number) {
 
 export function FilterHeading() {
   const { startChat } = useChatPanel()
+  const { name } = useHackathon()
   const { selection, projects, groups } = useSelectedGroups()
   const count = projects.filter((project) => matches(project, selection)).length
   const clauses = groups.map(clauseOf)
@@ -33,7 +34,7 @@ export function FilterHeading() {
     <header className="flex flex-col items-start gap-3">
       <BackButton />
       <h1 className="font-heading text-4xl leading-tight text-balance sm:text-6xl">
-        <span className="text-muted-foreground">{EVENT_NAME} projects</span>
+        <span className="text-muted-foreground">{name} projects</span>
         {clauses.map((clause, index) => (
           <span key={clause.key}>
             <span className="text-muted-foreground">

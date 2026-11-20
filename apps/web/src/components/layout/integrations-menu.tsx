@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import {
   DropdownMenu,

@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -16,10 +16,7 @@ export function Contributors({ contributors }: { contributors: Contributor[] }) 
         <Tooltip key={person.login}>
           <TooltipTrigger
             render={
-              <Link
-                to={`/contributor/${encodeURIComponent(person.login)}`}
-                aria-label={person.login}
-              />
+              <Link to={`/builder/${encodeURIComponent(person.login)}`} aria-label={person.login} />
             }
           >
             <Avatar>

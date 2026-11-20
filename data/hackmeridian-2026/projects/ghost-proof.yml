@@ -1,0 +1,200 @@
+hackathon: hackmeridian-2026
+canonical_id: pkg:github/siwakadrianna-byte/ghost-proof
+repo_url: https://github.com/siwakadrianna-byte/ghost-proof
+name: ghost-proof
+description: 'Escrow for freelance designers on Stellar: no more getting ghosted.'
+language: TypeScript
+created_at: '2026-10-25T14:18:07Z'
+owner: siwakadrianna-byte
+track: genesis
+track_declared: true
+evidence_tier: likely
+commits_in_window: 24
+stack:
+  '@stellar/stellar-sdk': ^17.4.0
+  '@stellar/freighter-api': ^6.0.0
+integrations:
+- slug: trustless-work
+  name: Trustless Work
+  evidence:
+  - method: capture
+    detail: asset:USDC
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: capture
+    detail: blocks-version:1.2.5
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: capture
+    detail: operation:deployer
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: capture
+    detail: operation:dispute-escrow
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/escrows/escrows-by-role/details/Actions.tsx
+  - method: capture
+    detail: operation:resolve-dispute
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: capture
+    detail: react-sdk-version:3.0.5
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: endpoint
+    detail: api.trustlesswork.com
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/providers/TrustlessWork.tsx
+  - method: endpoint
+    detail: dev.api.trustlesswork.com
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/.env.example
+  - method: package
+    detail: '@trustless-work/blocks'
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: package
+    detail: '@trustless-work/escrow'
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: signal
+    detail: approve
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/ghost/useJobActions.ts
+  - method: signal
+    detail: blocks
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: signal
+    detail: calls-api
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/.env.example
+  - method: signal
+    detail: deploy
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: signal
+    detail: dispute
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/ghost/useJobActions.ts
+  - method: signal
+    detail: fund
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/ghost/useJobActions.ts
+  - method: signal
+    detail: mainnet-api
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/providers/TrustlessWork.tsx
+  - method: signal
+    detail: milestone-status
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/ghost/useJobActions.ts
+  - method: signal
+    detail: multi-release
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsMutations.ts
+  - method: signal
+    detail: react-sdk
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+  - method: signal
+    detail: reads
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsByRoleQuery.ts
+  - method: signal
+    detail: release
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/ghost/useJobActions.ts
+  - method: signal
+    detail: resolve
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: signal
+    detail: rest-api
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: signal
+    detail: single-release
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: signal
+    detail: testnet-api
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: signal
+    detail: update
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsMutations.ts
+  - method: signal
+    detail: v1-api
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/lib/trustless-server.ts
+  - method: signal
+    detail: withdraw
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/components/tw-blocks/tanstack/useEscrowsMutations.ts
+  profile:
+    signals:
+    - slug: calls-api
+      group: client
+      label: Calls the escrow API
+    - slug: rest-api
+      group: client
+      label: Raw REST calls
+    - slug: react-sdk
+      group: client
+      label: React SDK
+    - slug: blocks
+      group: client
+      label: Blocks UI kit
+    - slug: v1-api
+      group: version
+      label: V1 production API
+    - slug: single-release
+      group: type
+      label: Single release escrows
+    - slug: multi-release
+      group: type
+      label: Multi release escrows
+    - slug: testnet-api
+      group: network
+      label: Testnet host
+    - slug: mainnet-api
+      group: network
+      label: Mainnet host
+    - slug: deploy
+      group: flow
+      label: Deploys escrows
+    - slug: fund
+      group: flow
+      label: Funds escrows
+    - slug: approve
+      group: flow
+      label: Approves milestones
+    - slug: release
+      group: flow
+      label: Releases funds
+    - slug: dispute
+      group: flow
+      label: Opens disputes
+    - slug: resolve
+      group: flow
+      label: Resolves disputes
+    - slug: milestone-status
+      group: flow
+      label: Reports milestone progress
+    - slug: update
+      group: flow
+      label: Updates escrows
+    - slug: withdraw
+      group: flow
+      label: Withdraws leftovers
+    - slug: reads
+      group: flow
+      label: Reads escrows back
+    captures:
+      asset:
+      - USDC
+      blocks-version:
+      - 1.2.5
+      operation:
+      - deployer
+      - dispute-escrow
+      - resolve-dispute
+      react-sdk-version:
+      - 3.0.5
+- slug: freighter
+  name: Freighter
+  evidence:
+  - method: package
+    detail: '@stellar/freighter-api'
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/package.json
+agents:
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/siwakadrianna-byte/ghost-proof/blob/HEAD/AGENTS.md
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: siwakadrianna-byte
+  contributions: 24

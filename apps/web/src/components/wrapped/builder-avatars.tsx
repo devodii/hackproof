@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -30,7 +30,7 @@ export function BuilderAvatars({ builders, size = 'default', delay = 0 }: Builde
             <TooltipTrigger
               render={
                 <Link
-                  to={`/contributor/${encodeURIComponent(builder.login)}`}
+                  to={`/builder/${encodeURIComponent(builder.login)}`}
                   aria-label={builder.login}
                   className="block rounded-full ring-2 ring-tile-border transition-transform hover:scale-110 hover:ring-primary"
                 />

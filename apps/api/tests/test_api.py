@@ -40,7 +40,7 @@ def test_limit_is_bounded():
 def test_unknown_project_and_builder_are_not_found():
     with TestClient(app) as client:
         assert client.get("/api/projects/repo:nobody/nothing").status_code == 404
-        assert client.get("/api/builders/GNOBODY").status_code == 404
+        assert client.get("/api/accounts/GNOBODY").status_code == 404
 
 
 def test_projects_can_be_filtered_by_tier():
@@ -143,15 +143,15 @@ def test_agents_list_every_catalog_agent_with_a_project_count():
 
 def test_an_unknown_contributor_is_not_found():
     with TestClient(app) as client:
-        assert client.get("/api/contributors/nobody-here-0000").status_code == 404
+        assert client.get("/api/builders/nobody-here-0000").status_code == 404
 
 
-def test_a_contributor_lists_their_projects_with_their_commits():
+def test_a_builder_lists_their_projects_with_their_commits():
     with TestClient(app) as client:
         top = client.get("/api/wrapped").json()["top_builders"]
         if not top:
             return
-        person = client.get(f"/api/contributors/{top[0]['login'].upper()}").json()
+        person = client.get(f"/api/builders/{top[0]['login'].upper()}").json()
     assert person["login"] == top[0]["login"]
     assert person["contributions"] == sum(
         item["contributions"] for item in person["projects"]
@@ -183,3 +183,34 @@ def test_a_deep_partner_has_a_profile_and_a_plain_one_does_not():
             if not row["deep"]
         )
         assert client.get(f"/api/integrations/{plain}").status_code == 404
+
+
+def test_hackathons_are_listed_with_their_status_and_counts():
+    with TestClient(app) as client:
+        body = client.get("/api/hackathons").json()
+    found = {item["slug"]: item for item in body}
+    assert found["hackmeridian-2026"]["projects"] > 0
+    assert {item["status"] for item in body} <= {"upcoming", "live", "past"}
+
+
+def test_every_endpoint_can_be_scoped_to_a_hackathon():
+    with TestClient(app) as client:
+        scoped = client.get("/api/stats", params={"hackathon": "hackmeridian-2026"})
+        unknown = client.get("/api/stats", params={"hackathon": "nope"})
+    assert scoped.status_code == 200
+    assert unknown.status_code == 404
+
+
+def test_a_builder_page_is_not_scoped_to_one_hackathon():
+    with TestClient(app) as client:
+        top = client.get("/api/wrapped").json()["top_builders"]
+        person = client.get(f"/api/builders/{top[0]['login']}").json()
+        slugs = {item["slug"] for item in client.get("/api/hackathons").json()}
+    assert {item["project"]["hackathon"] for item in person["projects"]} <= slugs
+
+
+def test_an_integration_lists_adopters_with_their_hackathon():
+    with TestClient(app) as client:
+        detail = client.get("/api/integrations/reflector").json()
+    assert detail["adopters"]
+    assert all(item["hackathon"] for item in detail["adopters"])

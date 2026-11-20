@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { CheckStatus } from '@/components/integration/check-status'
 import { Badge } from '@/components/ui/badge'

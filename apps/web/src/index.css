@@ -70,6 +70,7 @@
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 
   --color-poster: var(--poster);
+  --color-brand: var(--brand);
   --color-tile: var(--tile);
   --color-tile-border: var(--tile-border);
   --color-track: var(--track);
@@ -104,6 +105,16 @@
 }
 
 :root {
+  --poster: #f6f7f8;
+  --tile: rgb(255 255 255 / 72%);
+  --tile-border: rgb(15 15 15 / 11%);
+  --track: rgb(15 15 15 / 6%);
+  --axis: rgb(15 15 15 / 55%);
+  --gridline: rgb(15 15 15 / 8%);
+  --glow-primary: rgb(253 218 36 / 28%);
+  --glow-secondary: rgb(183 172 232 / 28%);
+  --dot: rgb(15 15 15 / 8%);
+  --brand: #8a6a00;
   --background: #f6f7f8;
   --foreground: #0f0f0f;
   --card: #ffffff;
@@ -142,15 +153,6 @@
   --sidebar-border: #d6d2c4;
   --sidebar-ring: #fdda24;
   --radius: 0.5rem;
-  --poster: #070707;
-  --tile: rgb(255 255 255 / 3.5%);
-  --tile-border: rgb(255 255 255 / 10%);
-  --track: rgb(255 255 255 / 5%);
-  --axis: rgb(255 255 255 / 50%);
-  --gridline: rgb(255 255 255 / 7%);
-  --glow-primary: rgb(253 218 36 / 13%);
-  --glow-secondary: rgb(183 172 232 / 13%);
-  --dot: rgb(255 255 255 / 5%);
   --dot-gap: 1.75rem;
   --lens-label-width: 7.5rem;
   --lens-count-width: 2.5rem;
@@ -173,6 +175,16 @@
 }
 
 .dark {
+  --poster: #070707;
+  --tile: rgb(255 255 255 / 3.5%);
+  --tile-border: rgb(255 255 255 / 10%);
+  --track: rgb(255 255 255 / 5%);
+  --axis: rgb(255 255 255 / 50%);
+  --gridline: rgb(255 255 255 / 7%);
+  --glow-primary: rgb(253 218 36 / 13%);
+  --glow-secondary: rgb(183 172 232 / 13%);
+  --dot: rgb(255 255 255 / 5%);
+  --brand: #fdda24;
   --background: #0f0f0f;
   --foreground: #f6f7f8;
   --card: #18181b;

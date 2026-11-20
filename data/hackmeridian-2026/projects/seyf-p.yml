@@ -1,0 +1,179 @@
+hackathon: hackmeridian-2026
+canonical_id: pkg:github/Seyfert-Labs/SEYF-P
+repo_url: https://github.com/Seyfert-Labs/SEYF-P
+name: SEYF-P
+homepage: https://www.seyf.app
+language: TypeScript
+created_at: '2026-06-24T17:07:07Z'
+owner: Seyfert-Labs
+track: scale
+track_declared: true
+evidence_tier: verified
+commits_in_window: 98
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^14.6.1
+integrations:
+- slug: privy
+  name: Privy
+  evidence:
+  - method: package
+    detail: '@privy-io/react-auth'
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+- slug: soroswap
+  name: Soroswap
+  evidence:
+  - method: endpoint
+    detail: api.soroswap.finance
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/.env.example
+  - method: package
+    detail: '@soroswap/sdk'
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/.env.example
+  - method: package
+    detail: '@defindex/sdk'
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
+  - method: contract
+    detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
+  - method: contract
+    detail: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
+  - method: contract
+    detail: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/src/lib/stellar/reflector.ts
+  profile:
+    contracts:
+    - slug: mainnet-exchanges
+      id: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+      name: CEX and DEX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+      attributes:
+        source: exchanges
+        asset_kind: other
+    - slug: mainnet-fx
+      id: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+      name: Fiat FX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+      attributes:
+        source: fx
+        asset_kind: other
+    - slug: testnet-fx
+      id: CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      name: Fiat FX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCSSOHTBL3LEWUCBBEB5NJFC2OKFRC74OWEIJIZLRJBGAAU4VMU5NV4W
+      attributes:
+        source: fx
+        asset_kind: other
+    - slug: testnet-exchanges
+      id: CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      name: CEX and DEX
+      network: testnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/testnet/contract/CCYOZJCOPG34LLQQ7N24YXBM7LL62R7ONMZ3G6WZAAYPB5OYKOMJRN63
+      attributes:
+        source: exchanges
+        asset_kind: other
+    signals:
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
+tools:
+- slug: stellar-skills
+  name: Stellar Skills
+  evidence:
+  - method: endpoint
+    detail: skills.stellar.org
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/scripts/install-stellar-skills.sh
+  - method: endpoint
+    detail: stellar/stellar-dev-skill
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/scripts/install-stellar-skills.sh
+agents:
+- slug: claude-code
+  name: Claude Code
+  evidence:
+  - method: file
+    detail: CLAUDE.md
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/CLAUDE.md
+- slug: agents-md
+  name: AGENTS.md
+  evidence:
+  - method: file
+    detail: AGENTS.md
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/AGENTS.md
+chain:
+  contracts: 5
+  wasm_uploads: 5
+  classic_ops: 8
+  assets: 0
+  failed_txs: 0
+  accounts:
+  - GAENUW4LPKMBV7O3B35VZNA4L3IUCMSTG75NSMTL4GIU22HQQWRRT6UN
+  - GB7JUBAV4VK3P44AIAFGQO2NHRNJLA6VXB3N22GOEXZFPONTVH6XZS5M
+  - GC53GWNEEMF4IGTAZICPYZI6OAA46VM2DZFC6R6PBM4RSM7LIGXWLSRS
+  - GCLRKRTWHTSWK5RWOF5P2RS7NLDTG7RJEMZ653QMWMESEJNHZXQPNGZL
+  - GDCSGJSN7KOXKX3FNH7A6IFHPMHZOOTRIKTS2YQ2XKJW3L3UT46H3C4R
+  - GDUWZ6K5XRXN3ZO3Z7N635UIO2J5Z4NVT44F6CSVIHOUD2HVMNSJJUJ2
+  evidence:
+  - kind: contract
+    subject: CABH4NNGEVFHEJLASJRSULT3YYRK3FYPZDZKTMZMSWPF3JEYQWYALS2Q
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CABH4NNGEVFHEJLASJRSULT3YYRK3FYPZDZKTMZMSWPF3JEYQWYALS2Q
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: contract
+    subject: CASAU3YCJQYXAVKNUTSHTH5F2DJVES7BM3QOVN4RD2NVAVLD2DRUM7ZI
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CASAU3YCJQYXAVKNUTSHTH5F2DJVES7BM3QOVN4RD2NVAVLD2DRUM7ZI
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/contracts.md
+  - kind: contract
+    subject: CC5CLKMAJU7KHMUUJWXM7RJ6E7OCN6LPI66GPL26LJMH7YDTAU6XQ6BZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CC5CLKMAJU7KHMUUJWXM7RJ6E7OCN6LPI66GPL26LJMH7YDTAU6XQ6BZ
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/docs/hackmeridian-plan.md
+  - kind: contract
+    subject: CCLC3HRPL2GYXTGOFFNKITQGPYLZXQG4TO7OV6M533PGXZ3ZQBOGEGTZ
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CCLC3HRPL2GYXTGOFFNKITQGPYLZXQG4TO7OV6M533PGXZ3ZQBOGEGTZ
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: contract
+    subject: CDG5V5GRD7KYJBREQXRVDEUSJCGCUZSI3EXD5ZHF2WDM7WKZLU5I75XB
+    method: contract_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/contract/CDG5V5GRD7KYJBREQXRVDEUSJCGCUZSI3EXD5ZHF2WDM7WKZLU5I75XB
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: account
+    subject: GAENUW4LPKMBV7O3B35VZNA4L3IUCMSTG75NSMTL4GIU22HQQWRRT6UN
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GAENUW4LPKMBV7O3B35VZNA4L3IUCMSTG75NSMTL4GIU22HQQWRRT6UN
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+  - kind: account
+    subject: GDCSGJSN7KOXKX3FNH7A6IFHPMHZOOTRIKTS2YQ2XKJW3L3UT46H3C4R
+    method: deployer_in_repo
+    explorer_url: https://stellar.expert/explorer/testnet/account/GDCSGJSN7KOXKX3FNH7A6IFHPMHZOOTRIKTS2YQ2XKJW3L3UT46H3C4R
+    file_url: https://github.com/Seyfert-Labs/SEYF-P/blob/HEAD/soroban/DEPLOYMENTS.md
+contributors:
+- login: MarxMad
+  contributions: 176
+- login: IanHerez
+  contributions: 70
+- login: SegFaultPapi
+  contributions: 40

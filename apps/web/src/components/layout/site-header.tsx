@@ -1,42 +1,33 @@
-import { CrownIcon, ExternalLinkIcon, MoonIcon, SparklesIcon, SunIcon } from 'lucide-react'
+import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import * as React from 'react'
 import { Link } from 'react-router'
 
+import { HackathonSwitcher } from '@/components/hackathon/hackathon-switcher'
 import { IntegrationsMenu } from '@/components/layout/integrations-menu'
 import { Button } from '@/components/ui/button'
-import { REPO_URL } from '@/lib/config'
+import { HackathonContext } from '@/hooks/use-hackathon'
 
 export function SiteHeader() {
   const { resolvedTheme, setTheme } = useTheme()
+  const hackathon = React.useContext(HackathonContext)
 
   return (
-    <header className="border-b">
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" translate="no" className="font-heading text-2xl leading-none">
-          HackProof
-        </Link>
-        <div className="flex items-center gap-3">
-          <Link
-            to="/?award=first&award=runner-up"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <CrownIcon className="size-3.5" /> Winners
+    <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur">
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="flex min-w-0 items-center gap-1.5">
+          <Link to="/" translate="no" className="font-heading text-2xl leading-none">
+            HackProof
           </Link>
-          <Link
-            to="/wrapped"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <SparklesIcon className="size-3.5" /> Wrapped
-          </Link>
-          <IntegrationsMenu />
-          <a
-            href={REPO_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-          >
-            Open Source <ExternalLinkIcon className="size-3.5" />
-          </a>
+          {hackathon && (
+            <>
+              <span className="text-muted-foreground/60">/</span>
+              <HackathonSwitcher />
+            </>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          {(!hackathon || hackathon.indexed) && <IntegrationsMenu />}
           <Button
             variant="ghost"
             size="icon"

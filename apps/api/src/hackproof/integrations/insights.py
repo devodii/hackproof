@@ -20,6 +20,7 @@ from hackproof.integrations.chain import ContractSnapshot, Reading
 from hackproof.integrations.observe import observe_item
 from hackproof.integrations.profile import IntegrationProfile, build_profile
 from hackproof.schemas import Tier
+from hackproof.scope import selected_slug
 from hackproof.sql_loader import load_sql
 
 NETWORK = "testnet"
@@ -51,6 +52,7 @@ class ContractState(Model):
 
 class Adopter(Model):
     project_id: str
+    hackathon: str
     full_name: str
     url: str
     owner: str
@@ -170,17 +172,20 @@ def _explorer(partner: Product, item: ProfileContract) -> str:
 async def fetch_detail(partner: Product) -> IntegrationDetail:
     profile = partner.profile
     assert profile
+    slug = selected_slug()
     async with pool().acquire() as connection:
-        rows = await connection.fetch(load_sql("integrations/adopters"), partner.slug)
+        rows = await connection.fetch(
+            load_sql("integrations/adopters"), partner.slug, slug
+        )
         states = await connection.fetch(
             load_sql("integrations/contracts"), partner.slug
         )
         overlap_rows = await connection.fetch(
-            load_sql("integrations/overlap"), partner.slug
+            load_sql("integrations/overlap"), partner.slug, slug
         )
-        total = (await connection.fetchrow(load_sql("integrations/project_total")))[
-            "total"
-        ]
+        total = (
+            await connection.fetchrow(load_sql("integrations/project_total"), slug)
+        )["total"]
     by_project: dict[str, list[Any]] = defaultdict(list)
     for row in rows:
         by_project[row["project_id"]].append(row)
@@ -193,6 +198,7 @@ async def fetch_detail(partner: Product) -> IntegrationDetail:
         adopters.append(
             Adopter(
                 project_id=project_id,
+                hackathon=first["hackathon"],
                 full_name=first["full_name"],
                 url=first["url"],
                 owner=first["owner"],

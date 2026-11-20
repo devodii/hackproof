@@ -9,7 +9,7 @@ export function DetailError({ error, subject }: { error: Error; subject: string 
       <AlertTitle>{notFound ? `No ${subject} found` : `Could not load ${subject}`}</AlertTitle>
       <AlertDescription>
         {notFound
-          ? 'Nothing on testnet matches this inside the hack window.'
+          ? 'Nothing on testnet matches this inside the hackathon window.'
           : 'The API is unreachable. Try again in a moment.'}
       </AlertDescription>
     </Alert>

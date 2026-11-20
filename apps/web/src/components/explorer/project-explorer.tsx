@@ -1,7 +1,8 @@
 import { SlidersHorizontalIcon } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router'
+import { useSearchParams } from 'react-router'
 
+import { useHackathonNavigate } from '@/components/hackathon/hackathon-link'
 import { DataTable } from '@/components/data-table'
 import { PaginationBar } from '@/components/pagination-bar'
 import { ScrollBox } from '@/components/scroll-box'
@@ -26,7 +27,7 @@ const PLACE_RANK = { first: 0, 'runner-up': 1, none: 2 } as const
 export function ProjectExplorer({ search }: { search: string }) {
   const [params, setParams] = useSearchParams()
   const [page, setPage] = useState(0)
-  const navigate = useNavigate()
+  const navigate = useHackathonNavigate()
   const { data: projects, isPending, isError } = useProjects()
   const { data: integrations = [] } = useIntegrations()
   const { data: tools = [] } = useTools()

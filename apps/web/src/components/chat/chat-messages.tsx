@@ -1,6 +1,6 @@
 import { isToolUIPart, type ChatStatus, type UIMessage } from 'ai'
 import * as React from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 import { type Components, Streamdown } from 'streamdown'
 
 import { ToolCall } from '@/components/chat/tool-call'

@@ -29,11 +29,60 @@
         "title": "AIAgent",
         "type": "object"
       },
+      "Account": {
+        "properties": {
+          "address": {
+            "title": "Address",
+            "type": "string"
+          },
+          "contracts": {
+            "items": {
+              "$ref": "#/components/schemas/Contract"
+            },
+            "title": "Contracts",
+            "type": "array"
+          },
+          "failed_txs": {
+            "items": {
+              "$ref": "#/components/schemas/FailedTx"
+            },
+            "title": "Failed Txs",
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            },
+            "title": "Projects",
+            "type": "array"
+          },
+          "wasm_uploads": {
+            "items": {
+              "$ref": "#/components/schemas/WasmUpload"
+            },
+            "title": "Wasm Uploads",
+            "type": "array"
+          }
+        },
+        "required": [
+          "address",
+          "projects",
+          "contracts",
+          "wasm_uploads",
+          "failed_txs"
+        ],
+        "title": "Account",
+        "type": "object"
+      },
       "Adopter": {
         "additionalProperties": false,
         "properties": {
           "full_name": {
             "title": "Full Name",
+            "type": "string"
+          },
+          "hackathon": {
+            "title": "Hackathon",
             "type": "string"
           },
           "language": {
@@ -86,6 +135,7 @@
         },
         "required": [
           "project_id",
+          "hackathon",
           "full_name",
           "url",
           "owner",
@@ -95,51 +145,6 @@
           "profile"
         ],
         "title": "Adopter",
-        "type": "object"
-      },
-      "Builder": {
-        "properties": {
-          "address": {
-            "title": "Address",
-            "type": "string"
-          },
-          "contracts": {
-            "items": {
-              "$ref": "#/components/schemas/Contract"
-            },
-            "title": "Contracts",
-            "type": "array"
-          },
-          "failed_txs": {
-            "items": {
-              "$ref": "#/components/schemas/FailedTx"
-            },
-            "title": "Failed Txs",
-            "type": "array"
-          },
-          "projects": {
-            "items": {
-              "$ref": "#/components/schemas/Project"
-            },
-            "title": "Projects",
-            "type": "array"
-          },
-          "wasm_uploads": {
-            "items": {
-              "$ref": "#/components/schemas/WasmUpload"
-            },
-            "title": "Wasm Uploads",
-            "type": "array"
-          }
-        },
-        "required": [
-          "address",
-          "projects",
-          "contracts",
-          "wasm_uploads",
-          "failed_txs"
-        ],
-        "title": "Builder",
         "type": "object"
       },
       "CaptureCount": {
@@ -621,6 +626,107 @@
           }
         },
         "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HackathonSummary": {
+        "properties": {
+          "contracts": {
+            "title": "Contracts",
+            "type": "integer"
+          },
+          "ends_at": {
+            "format": "date-time",
+            "title": "Ends At",
+            "type": "string"
+          },
+          "indexed": {
+            "title": "Indexed",
+            "type": "boolean"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Location"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "integer"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          },
+          "starts_at": {
+            "format": "date-time",
+            "title": "Starts At",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "upcoming",
+              "live",
+              "past"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "verified_projects": {
+            "title": "Verified Projects",
+            "type": "integer"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Website"
+          },
+          "winners": {
+            "title": "Winners",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "summary",
+          "website",
+          "location",
+          "starts_at",
+          "ends_at",
+          "status",
+          "indexed",
+          "projects",
+          "verified_projects",
+          "contracts",
+          "winners"
+        ],
+        "title": "HackathonSummary",
         "type": "object"
       },
       "Integration": {
@@ -1462,6 +1568,10 @@
             ],
             "title": "Full Name"
           },
+          "hackathon": {
+            "title": "Hackathon",
+            "type": "string"
+          },
           "homepage": {
             "anyOf": [
               {
@@ -1650,6 +1760,7 @@
         },
         "required": [
           "project_id",
+          "hackathon",
           "full_name",
           "url",
           "footprint",
@@ -2177,9 +2288,84 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/accounts/{address}": {
+      "get": {
+        "operationId": "account_api_accounts__address__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "address",
+            "required": true,
+            "schema": {
+              "title": "Address",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Account"
+      }
+    },
     "/api/agents": {
       "get": {
         "operationId": "agents_api_agents_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2194,22 +2380,49 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Agents"
       }
     },
-    "/api/builders/{address}": {
+    "/api/builders/{login}": {
       "get": {
-        "operationId": "builder_api_builders__address__get",
+        "operationId": "builder_api_builders__login__get",
         "parameters": [
           {
             "in": "path",
-            "name": "address",
+            "name": "login",
             "required": true,
             "schema": {
-              "title": "Address",
+              "title": "Login",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
             }
           }
         ],
@@ -2218,7 +2431,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Builder"
+                  "$ref": "#/components/schemas/Person"
                 }
               }
             },
@@ -2241,6 +2454,25 @@
     "/api/chat": {
       "post": {
         "operationId": "chat_api_chat_post",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2317,6 +2549,23 @@
               "title": "Offset",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
           }
         ],
         "responses": {
@@ -2344,48 +2593,28 @@
         "summary": "Contracts"
       }
     },
-    "/api/contributors/{login}": {
-      "get": {
-        "operationId": "contributor_api_contributors__login__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "login",
-            "required": true,
-            "schema": {
-              "title": "Login",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Person"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Contributor"
-      }
-    },
     "/api/countries": {
       "get": {
         "operationId": "countries_api_countries_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2400,6 +2629,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Countries"
@@ -2448,6 +2687,23 @@
               "title": "Offset",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
           }
         ],
         "responses": {
@@ -2475,9 +2731,79 @@
         "summary": "Failed"
       }
     },
+    "/api/hackathons": {
+      "get": {
+        "operationId": "hackathons_api_hackathons_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HackathonSummary"
+                  },
+                  "title": "Response Hackathons Api Hackathons Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Hackathons"
+      }
+    },
     "/api/health": {
       "get": {
         "operationId": "health_api_health_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2492,6 +2818,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Health"
@@ -2500,6 +2836,25 @@
     "/api/integrations": {
       "get": {
         "operationId": "integrations_api_integrations_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2514,6 +2869,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Integrations"
@@ -2530,6 +2895,23 @@
             "schema": {
               "title": "Slug",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
             }
           }
         ],
@@ -2569,6 +2951,23 @@
             "schema": {
               "title": "Slug",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
             }
           }
         ],
@@ -2727,6 +3126,23 @@
               "title": "Offset",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
           }
         ],
         "responses": {
@@ -2766,6 +3182,23 @@
               "title": "Project Id",
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
           }
         ],
         "responses": {
@@ -2796,6 +3229,25 @@
     "/api/stats": {
       "get": {
         "operationId": "stats_api_stats_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2806,6 +3258,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Stats"
@@ -2814,6 +3276,25 @@
     "/api/timeline": {
       "get": {
         "operationId": "timeline_api_timeline_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2828,6 +3309,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Timeline"
@@ -2836,6 +3327,25 @@
     "/api/tools": {
       "get": {
         "operationId": "tools_api_tools_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2850,6 +3360,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Tools"
@@ -2898,6 +3418,23 @@
               "title": "Offset",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
           }
         ],
         "responses": {
@@ -2928,6 +3465,25 @@
     "/api/window": {
       "get": {
         "operationId": "window_api_window_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2942,6 +3498,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Window"
@@ -2950,6 +3516,25 @@
     "/api/wrapped": {
       "get": {
         "operationId": "wrapped_api_wrapped_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hackathon",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hackathon"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2960,6 +3545,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "summary": "Wrapped"

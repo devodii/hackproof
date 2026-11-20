@@ -1,5 +1,6 @@
 CREATE TABLE projects (
     project_id text,
+    hackathon text DEFAULT 'hackmeridian-2026' NOT NULL,
     full_name text,
     footprint text NOT NULL,
     tier text NOT NULL,
@@ -11,5 +12,5 @@ CREATE TABLE projects (
     builders integer NOT NULL,
     first_activity timestamptz,
     last_activity timestamptz,
-    CONSTRAINT projects_pkey PRIMARY KEY (project_id)
+    CONSTRAINT projects_pkey PRIMARY KEY (hackathon, project_id)
 );

@@ -3,7 +3,7 @@ WITH assets AS (
         a.asset,
         a.contract_id
     FROM links AS l
-    INNER JOIN projects AS p ON l.full_name = p.full_name AND p.tier IN ('verified', 'likely')
+    INNER JOIN projects AS p ON l.full_name = p.full_name AND ($2::text IS NULL OR p.hackathon = $2) AND p.tier IN ('verified', 'likely')
     INNER JOIN asset_contracts AS a ON l.subject = a.asset
     WHERE l.subject_kind = 'asset'
 )

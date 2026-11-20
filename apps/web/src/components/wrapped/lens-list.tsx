@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Link } from 'react-router'
+import { Link } from '@/components/hackathon/hackathon-link'
 
 import { useStill } from '@/components/wrapped/use-still'
 import { formatNumber } from '@/lib/format'
@@ -44,7 +44,7 @@ export function LensList({ rows, total, active, onPreview, delay = 0 }: LensList
               <span
                 className={cn(
                   'truncate text-sm',
-                  selected ? 'font-semibold text-primary' : 'text-foreground/80',
+                  selected ? 'font-semibold text-brand' : 'text-foreground/80',
                 )}
               >
                 {row.label}

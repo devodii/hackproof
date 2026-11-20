@@ -2,11 +2,11 @@ INSERT INTO repos (
     full_name, url, description, stars, owner, owner_avatar,
     default_branch, homepage, language, license, forks, created_at,
     pushed_at, topics, window_commits, total_commits, base_sha,
-    owner_location, country, discovered_via
+    owner_location, country, discovered_via, hackathon
 )
 VALUES (
     $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16,
-    $17, $18, $19, $20
+    $17, $18, $19, $20, $21
 )
 ON CONFLICT (full_name) DO UPDATE SET
     description = excluded.description, stars = excluded.stars,

@@ -25,11 +25,7 @@ async def run_export() -> None:
         export = await build_export(connection, hackathon)
 
     count = write_project_files(export, DATA)
-    log.info(
-        "wrote %s project files to %s",
-        count,
-        DATA / str(export.hackathon.starts_at.year),
-    )
+    log.info("wrote %s project files to %s", count, DATA / export.hackathon.slug)
 
 
 async def run_check() -> int:

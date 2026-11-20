@@ -25,11 +25,13 @@
 \i indexes/contracts_deployer.sql
 \i indexes/contracts_wasm.sql
 \i indexes/failed_txs_source.sql
+\i indexes/projects_hackathon.sql
 \i indexes/repo_agents_agent.sql
 \i indexes/repo_contributors_login.sql
 \i indexes/repo_integrations_partner.sql
 \i indexes/repo_refs_value.sql
 \i indexes/repo_tools_tool.sql
+\i indexes/repos_hackathon.sql
 \i indexes/wasm_uploads_hash.sql
 \i indexes/wasm_uploads_uploader.sql
 \i views/attribution.sql

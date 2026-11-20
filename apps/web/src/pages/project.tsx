@@ -45,12 +45,12 @@ export function ProjectPage() {
   const derived = links.length - direct.length
   const packages = Object.entries(project.dependencies?.packages ?? {})
   const reasons = [
-    isWithin(project.created_at, hackWindow) && 'was created during the hack',
-    project.stellar_added_in_window && 'added Stellar during the hack',
+    isWithin(project.created_at, hackWindow) && 'was created during the hackathon',
+    project.stellar_added_in_window && 'added Stellar during the hackathon',
   ].filter(Boolean) as string[]
   const inclusion = reasons.length
     ? new Intl.ListFormat('en', { type: 'conjunction' }).format(reasons)
-    : 'has a Stellar dependency and commits during the hack'
+    : 'has a Stellar dependency and commits during the hackathon'
 
   return (
     <div className="flex flex-col gap-8">

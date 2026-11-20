@@ -1,0 +1,106 @@
+hackathon: hackmeridian-2026
+canonical_id: pkg:github/seidar-hq/seidar
+repo_url: https://github.com/seidar-hq/seidar
+name: seidar
+description: Seidar — DeFi position manager on Stellar (Blend, XOXNO, Peridot)
+language: TypeScript
+created_at: '2026-09-28T01:41:40Z'
+owner: seidar-hq
+track: genesis
+track_declared: false
+evidence_tier: likely
+commits_in_window: 30
+stack:
+  soroban-sdk: null
+  '@stellar/stellar-sdk': ^16.3.0
+  '@creit.tech/stellar-wallets-kit': ^2.7.1
+integrations:
+- slug: stellar-wallets-kit
+  name: Stellar Wallets Kit
+  evidence:
+  - method: package
+    detail: '@creit.tech/stellar-wallets-kit'
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/apps/app/package.json
+- slug: soroswap
+  name: Soroswap
+  evidence:
+  - method: endpoint
+    detail: api.soroswap.finance
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/swap.ts
+- slug: defindex
+  name: DeFindex
+  evidence:
+  - method: endpoint
+    detail: api.defindex.io
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/vaults.ts
+- slug: blend
+  name: Blend
+  evidence:
+  - method: package
+    detail: '@blend-capital/blend-sdk'
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
+- slug: allbridge
+  name: Allbridge
+  evidence:
+  - method: package
+    detail: '@allbridge/bridge-core-sdk'
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/package.json
+- slug: reflector
+  name: Reflector
+  evidence:
+  - method: contract
+    detail: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: contract
+    detail: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: contract
+    detail: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  - method: signal
+    detail: reads-last-price
+    file_url: https://github.com/seidar-hq/seidar/blob/HEAD/services/api/src/prices.ts
+  profile:
+    contracts:
+    - slug: mainnet-exchanges
+      id: CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+      name: CEX and DEX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CAFJZQWSED6YAWZU3GWRTOCNPPCGBN32L7QV43XX5LZLFTK6JLN34DLN
+      attributes:
+        source: exchanges
+        asset_kind: other
+    - slug: mainnet-stellar-pubnet
+      id: CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
+      name: Stellar Pubnet DEX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CALI2BYU2JE6WVRUFYTS6MSBNEHGJ35P4AVCZYF3B6QOE3QKOB2PLE6M
+      attributes:
+        source: stellar-pubnet
+        asset_kind: stellar
+    - slug: mainnet-fx
+      id: CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+      name: Fiat FX
+      network: mainnet
+      kind: feed
+      explorer_url: https://stellar.expert/explorer/public/contract/CBKGPWGKSKZF52CFHMTRR23TBWTPMRDIYZ4O2P5VS65BMHYH4DXMCJZC
+      attributes:
+        source: fx
+        asset_kind: other
+    signals:
+    - slug: reads-last-price
+      group: read
+      label: Reads the latest price
+chain:
+  contracts: 0
+  wasm_uploads: 0
+  classic_ops: 0
+  assets: 0
+  failed_txs: 0
+  accounts: []
+  evidence: []
+contributors:
+- login: kings0x
+  contributions: 79

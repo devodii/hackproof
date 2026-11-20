@@ -23,5 +23,6 @@ CREATE TABLE repos (
     forks integer DEFAULT 0 NOT NULL,
     base_sha text,
     declared_track text,
+    hackathon text DEFAULT 'hackmeridian-2026' NOT NULL,
     CONSTRAINT repos_pkey PRIMARY KEY (full_name)
 );

@@ -24,14 +24,14 @@ Search = Annotated[
 
 class QueryProjects(ProjectFilters):
     """
-    Find HackMeridian projects. Ordered by evidence strength, then on-chain activity. Each
+    Find projects of the hackathon on screen. Ordered by evidence strength, then on-chain activity. Each
     project has an award field: first, runner-up, or null.
     """
 
     q: Search = None
     winners: bool = Field(
         default=False,
-        description="True keeps only the HackMeridian award winners: first place and runner-ups",
+        description="True keeps only the award winners: first place and runner-ups",
     )
     limit: Limit = 10
     offset: Offset = 0

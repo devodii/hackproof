@@ -198,7 +198,9 @@ def test_prompt_file_has_every_section():
         "page-filter",
         "language",
     }
-    text = prompt("system", start="A", end="B", page="ON THE HOME PAGE")
+    text = prompt(
+        "system", hackathon="N", about="X", start="A", end="B", page="ON THE HOME PAGE"
+    )
     assert "A to B UTC" in text and text.endswith("ON THE HOME PAGE")
     assert "{" not in text
 

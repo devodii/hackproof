@@ -1,15 +1,9 @@
-import jsonschema
 import pytest
 import yaml
 
 from hackproof.export.build import build_export
 from hackproof.export.files import (
-    EVENT_FILE,
-    EVENT_SCHEMA_FILE,
-    SCHEMA_FILE,
-    event_schema,
     file_names,
-    file_schema,
     project_file,
     to_file_yaml,
     write_project_files,
@@ -37,17 +31,13 @@ async def likely_export(db, *names):
     return await build_export(db, get_hackathon(), ["likely", "possible"])
 
 
-async def test_a_project_file_validates_and_keeps_only_public_facts(scratch_db):
+async def test_a_project_file_keeps_only_public_facts(scratch_db):
     export = await populated_export(scratch_db)
     [project] = export.projects
 
     text = to_file_yaml(project_file(export.hackathon.slug, project))
     data = yaml.safe_load(text)
 
-    jsonschema.validate(data, file_schema())
-    assert text.startswith(
-        "# yaml-language-server: $schema=../schema-hackathon-project.yml\n"
-    )
     assert data["canonical_id"] == "pkg:github/team/app"
     assert data["contributors"] == [{"login": "ana", "contributions": 12}]
     assert data["chain"]["accounts"] == ["GDEPLOYER"]
@@ -90,34 +80,17 @@ async def test_a_name_without_letters_or_digits_is_an_error(scratch_db):
         file_names(export.projects)
 
 
-async def test_writing_files_replaces_stale_ones_and_keeps_the_event_manifest(
-    scratch_db, tmp_path
-):
+async def test_writing_files_replaces_stale_ones(scratch_db, tmp_path):
     export = await likely_export(scratch_db, "team/app")
-    year = tmp_path / str(export.hackathon.starts_at.year)
-    year.mkdir()
-    (year / "gone.yml").write_text("event: old\n")
+    projects = tmp_path / export.hackathon.slug / "projects"
+    projects.mkdir(parents=True)
+    (projects / "gone.yml").write_text("hackathon: old\n")
 
     count = write_project_files(export, tmp_path)
 
     assert count == 1
-    assert sorted(path.name for path in year.glob("*.yml")) == [EVENT_FILE, "app.yml"]
-    jsonschema.validate(yaml.safe_load((year / "app.yml").read_text()), file_schema())
+    assert sorted(path.name for path in projects.glob("*.yml")) == ["app.yml"]
     assert (
-        yaml.safe_load((tmp_path / SCHEMA_FILE).read_text())["title"] == "ProjectFile"
+        yaml.safe_load((projects / "app.yml").read_text())["hackathon"]
+        == export.hackathon.slug
     )
-
-
-async def test_the_event_manifest_validates_and_names_the_event(scratch_db, tmp_path):
-    export = await likely_export(scratch_db, "team/app")
-
-    write_project_files(export, tmp_path)
-    year = tmp_path / str(export.hackathon.starts_at.year)
-    text = (year / EVENT_FILE).read_text()
-    manifest = yaml.safe_load(text)
-
-    jsonschema.validate(manifest, event_schema())
-    assert text.startswith(f"# yaml-language-server: $schema=../{EVENT_SCHEMA_FILE}\n")
-    assert manifest["slug"] == export.hackathon.slug
-    assert manifest["network"] == "testnet"
-    assert manifest["ends_at"] > manifest["starts_at"]

@@ -21,7 +21,8 @@ class Settings(BaseSettings):
     horizon_url: str = "https://horizon-testnet.stellar.org"
     soroban_rpc_url: str = "https://soroban-testnet.stellar.org"
     network_passphrase: str = "Test SDF Network ; September 2015"
-    hackathon_file: Path = ROOT / "data" / "hackmeridian-2026.yaml"
+    data_dir: Path = ROOT / "data"
+    hackathon_file: Path = ROOT / "data" / "hackmeridian-2026" / "main.yaml"
     integrations_file: Path = ROOT / "data" / "integrations.yaml"
     friendbot_account: str = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M7B43MGK3QJZNSR"
     rpc_concurrency: int = 6
