@@ -7,3 +7,4 @@
 **/__pycache__
 apps/web
 apps/api/tests
+data/*/projects
