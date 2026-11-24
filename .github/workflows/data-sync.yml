@@ -37,7 +37,7 @@ jobs:
       - name: Mask the connection details
         run: >
           uv run python -c "import os;
-          from hackproof.db_utils.connection import Connection;
+          from trawl.schema.connection import Connection;
           print('\n'.join(Connection.from_url(os.environ['DATABASE_URL']).mask_lines()))"
       - name: Restore the scan data the database does not hold
         run: uv run hackproof import --remote

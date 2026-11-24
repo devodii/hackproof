@@ -4,6 +4,7 @@ from typing import Annotated
 
 from pydantic import AliasChoices, Field, field_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
+from trawl.github.client import parse_tokens
 
 ROOT = Path(__file__).resolve().parents[4]
 ROOT_ENV = ROOT / ".env"
@@ -42,9 +43,7 @@ class Settings(BaseSettings):
     @field_validator("github_tokens", mode="before")
     @classmethod
     def split_tokens(cls, value: object) -> object:
-        if isinstance(value, str):
-            return [token.strip() for token in value.split(",") if token.strip()]
-        return value
+        return parse_tokens(value) if isinstance(value, str) else value
 
 
 @lru_cache

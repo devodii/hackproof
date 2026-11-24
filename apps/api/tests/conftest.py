@@ -5,9 +5,9 @@ from uuid import uuid4
 
 import asyncpg
 import pytest
+from trawl.schema.manifest import schema_sql
 
 from hackproof.config import get_settings
-from hackproof.db_utils.manifest import schema_sql
 from hackproof.db_utils.pgschema import SCHEMA_DIR
 
 

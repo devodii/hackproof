@@ -1,9 +1,6 @@
-from functools import cache
 from pathlib import Path
 
+from trawl.db.sql import sql_loader
+
 SQL_DIR = Path(__file__).with_name("sql")
-
-
-@cache
-def load_sql(name: str) -> str:
-    return (SQL_DIR / f"{name}.sql").read_text()
+load_sql = sql_loader(SQL_DIR)

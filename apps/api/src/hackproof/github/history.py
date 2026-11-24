@@ -2,7 +2,8 @@ import asyncio
 from datetime import datetime
 from pathlib import PurePosixPath
 
-from hackproof.github.client import GithubClient
+from trawl.github.client import GithubClient
+
 from hackproof.github.dependencies import MANIFESTS, SKIP_DIRECTORIES, fingerprint
 
 MAX_MANIFESTS = 60

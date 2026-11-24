@@ -6,8 +6,8 @@ from pathlib import PurePosixPath
 
 import asyncpg
 import httpx
+from trawl.github.client import GithubClient
 
-from hackproof.github.client import GithubClient
 from hackproof.github.demo import scan_demo
 from hackproof.github.dependencies import MANIFESTS, SKIP_DIRECTORIES, fingerprint
 from hackproof.github.files import fetch_texts
