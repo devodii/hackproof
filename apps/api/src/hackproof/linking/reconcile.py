@@ -2,12 +2,12 @@ import logging
 
 import asyncpg
 from pydantic import BaseModel
+from trawl.github.refs import normalize_repo
 
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
 from hackproof.hackathon import get_hackathon
 from hackproof.linking.methods import LinkMethod
-from hackproof.linking.repo_ref import normalize_repo
 from hackproof.sql_loader import load_sql
 
 log = logging.getLogger("hackproof.reconcile")
