@@ -1,6 +1,6 @@
 import pytest
+from trawl.github.client import GithubUnavailable
 
-from hackproof.github.client import GithubUnavailable
 from hackproof.github.files import BATCH, _query, fetch_texts
 
 

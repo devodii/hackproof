@@ -1,8 +1,8 @@
 import json
 
 import asyncpg
+from trawl.github.client import GithubClient
 
-from hackproof.github.client import GithubClient
 from hackproof.linking.country import resolve_country
 from hackproof.sql_loader import load_sql
 

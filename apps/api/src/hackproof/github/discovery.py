@@ -5,8 +5,8 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import asyncpg
+from trawl.github.client import GithubClient, GithubUnavailable
 
-from hackproof.github.client import GithubClient, GithubUnavailable, Search
 from hackproof.github.models import Candidate
 from hackproof.github.repositories import fetch_repositories
 from hackproof.hackathon import Discovery, Window
@@ -63,7 +63,7 @@ def _stamp(seconds: int) -> str:
     return datetime.fromtimestamp(seconds, UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-async def _total(github: GithubClient, path: str, query: str, kind: Search) -> int:
+async def _total(github: GithubClient, path: str, query: str, kind: str) -> int:
     data = await github.json(path, {"q": query, "per_page": 1}, search=kind)
     return data["total_count"] if data else 0
 
@@ -95,7 +95,7 @@ async def code_slices(github: GithubClient, query: str) -> list[str]:
 
 
 async def _hits(
-    github: GithubClient, path: str, query: str, kind: Search
+    github: GithubClient, path: str, query: str, kind: str
 ) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     for page in range(1, RESULT_CAP // PAGE_SIZE + 1):

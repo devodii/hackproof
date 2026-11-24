@@ -4,7 +4,8 @@ import re
 from collections.abc import Iterable
 from typing import Any
 
-from hackproof.github.client import GithubClient, GithubUnavailable
+from trawl.github.client import GithubClient, GithubUnavailable
+
 from hackproof.github.models import Candidate
 from hackproof.hackathon import Window
 

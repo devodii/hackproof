@@ -1,7 +1,7 @@
 import asyncio
 import json
 
-from hackproof.github.client import GithubClient, GithubUnavailable
+from trawl.github.client import GithubClient, GithubUnavailable
 
 BATCH = 25
 CONCURRENCY = 6

@@ -1,7 +1,8 @@
 from datetime import UTC, datetime
 
+from trawl.github.client import GithubUnavailable
+
 from hackproof.github import discovery
-from hackproof.github.client import GithubUnavailable
 from hackproof.github.discovery import is_pinned, patient, should_keep, split_range
 from hackproof.github.models import Candidate
 from hackproof.hackathon import Discovery, Window

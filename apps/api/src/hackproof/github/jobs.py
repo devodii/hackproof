@@ -2,10 +2,10 @@ import asyncio
 import logging
 
 import httpx
+from trawl.github.client import GithubClient, GithubUnavailable
 
 from hackproof.config import get_settings
 from hackproof.db import open_pool, pool
-from hackproof.github.client import GithubClient, GithubUnavailable
 from hackproof.github.discovery import discover, store_candidates, wasm_meta_repos
 from hackproof.github.models import Candidate
 from hackproof.github.profiles import resolve_profiles
