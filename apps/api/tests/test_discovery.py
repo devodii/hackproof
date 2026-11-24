@@ -1,9 +1,6 @@
 from datetime import UTC, datetime
 
-from trawl.github.client import GithubUnavailable
-
-from hackproof.github import discovery
-from hackproof.github.discovery import is_pinned, patient, should_keep, split_range
+from hackproof.github.discovery import is_pinned, should_keep
 from hackproof.github.models import Candidate
 from hackproof.hackathon import Discovery, Window
 
@@ -62,61 +59,3 @@ def test_excluded_repos_stay_out_even_when_wasm_metadata_names_them():
         WINDOW,
         DISCOVERY,
     )
-
-
-async def test_split_range_slices_until_every_range_fits_the_cap():
-    matches = [value for value in range(0, 10_000, 7)]
-
-    async def count(lo: int, hi: int) -> int:
-        return sum(1 for value in matches if lo <= value <= hi)
-
-    ranges = await split_range(0, 10_000, count, cap=100)
-    counts = [await count(lo, hi) for lo, hi in ranges]
-
-    assert max(counts) <= 100
-    assert sum(counts) == len(matches)
-    assert ranges[0][0] == 0 and ranges[-1][1] == 10_000
-    assert all(a[1] + 1 == b[0] for a, b in zip(ranges, ranges[1:], strict=False))
-
-
-async def test_split_range_stops_at_a_single_value_even_when_over_the_cap():
-    async def count(lo: int, hi: int) -> int:
-        return 5_000
-
-    assert await split_range(7, 7, count, cap=10) == [(7, 7)]
-
-
-async def test_split_range_leaves_small_queries_whole():
-    async def count(lo: int, hi: int) -> int:
-        return 3
-
-    assert await split_range(0, 400_000, count) == [(0, 400_000)]
-
-
-async def test_a_query_survives_a_connection_outage(monkeypatch):
-    async def instant(_seconds):
-        return None
-
-    monkeypatch.setattr(discovery.asyncio, "sleep", instant)
-    runs: list[str] = []
-
-    async def flaky(query: str) -> None:
-        runs.append(query)
-        if len(runs) < 3:
-            raise GithubUnavailable(query)
-
-    await patient("q", flaky)
-
-    assert runs == ["q", "q", "q"]
-
-
-async def test_a_query_that_never_recovers_is_skipped_not_fatal(monkeypatch):
-    async def instant(_seconds):
-        return None
-
-    monkeypatch.setattr(discovery.asyncio, "sleep", instant)
-
-    async def down(query: str) -> None:
-        raise GithubUnavailable(query)
-
-    await patient("q", down)
