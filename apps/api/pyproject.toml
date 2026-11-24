@@ -15,6 +15,7 @@ dependencies = [
     "pydantic-settings>=2.16.1",
     "pyyaml>=6.0.3",
     "stellar-sdk>=16.1.1",
+    "trawl @ https://github.com/devodii/trawl/releases/download/v0.1.0/trawl-0.1.0-py3-none-any.whl",
 ]
 
 [project.scripts]

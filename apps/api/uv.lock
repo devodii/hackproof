@@ -628,6 +628,7 @@ dependencies = [
     { name = "pydantic-settings" },
     { name = "pyyaml" },
     { name = "stellar-sdk" },
+    { name = "trawl" },
 ]
 
 [package.dev-dependencies]
@@ -649,6 +650,7 @@ requires-dist = [
     { name = "pydantic-settings", specifier = ">=2.16.1" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "stellar-sdk", specifier = ">=16.1.1" },
+    { name = "trawl", url = "https://github.com/devodii/trawl/releases/download/v0.1.0/trawl-0.1.0-py3-none-any.whl" },
 ]
 
 [package.metadata.requires-dev]
@@ -1955,6 +1957,35 @@ sdist = { url = "https://files.pythonhosted.org/packages/0d/ea/b2a5bd54b28a324da
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl", hash = "sha256:c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73", size = 80199, upload-time = "2026-09-11T07:25:14.599Z" },
 ]
+
+[[package]]
+name = "trawl"
+version = "0.1.0"
+source = { url = "https://github.com/devodii/trawl/releases/download/v0.1.0/trawl-0.1.0-py3-none-any.whl" }
+dependencies = [
+    { name = "asyncpg" },
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "pyyaml" },
+]
+wheels = [
+    { url = "https://github.com/devodii/trawl/releases/download/v0.1.0/trawl-0.1.0-py3-none-any.whl", hash = "sha256:bb57971034beafdca321ce3092ebe21664aadfca1694cc5788a3fc11257f6cab" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "asyncpg", specifier = ">=0.32.0" },
+    { name = "duckdb", marker = "extra == 'stellar'", specifier = ">=1.2.0" },
+    { name = "httpx", specifier = ">=0.28.1" },
+    { name = "pydantic", specifier = ">=2.11.0" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "sqlfluff", marker = "extra == 'sql'", specifier = ">=4.5.0" },
+    { name = "stellar-sdk", marker = "extra == 'stellar'", specifier = ">=17.0.1" },
+    { name = "tree-sitter", marker = "extra == 'parse'", specifier = ">=0.25.0" },
+    { name = "tree-sitter-rust", marker = "extra == 'parse'", specifier = ">=0.24.0" },
+    { name = "tree-sitter-toml", marker = "extra == 'parse'", specifier = ">=0.7.0" },
+]
+provides-extras = ["parse", "sql", "stellar"]
 
 [[package]]
 name = "truststore"
