@@ -4,9 +4,10 @@ import logging
 import os
 from pathlib import Path
 
+from trawl.schema.connection import Connection
+
 from hackproof.config import get_settings
 from hackproof.db_utils import pgschema
-from hackproof.db_utils.connection import Connection
 from hackproof.export.jobs import run_check, run_export, run_import
 from hackproof.github.jobs import run_discover, run_scan
 from hackproof.indexer.sync import run_sync
