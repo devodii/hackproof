@@ -1,23 +1,14 @@
-import json
-
 import asyncpg
+from trawl.db.pool import open_pool as connect
 
 from hackproof.config import get_settings
 
 _pool: asyncpg.Pool | None = None
 
 
-async def _init_connection(connection: asyncpg.Connection) -> None:
-    await connection.set_type_codec(
-        "jsonb", encoder=json.dumps, decoder=json.loads, schema="pg_catalog"
-    )
-
-
 async def open_pool() -> asyncpg.Pool:
     global _pool
-    _pool = await asyncpg.create_pool(
-        get_settings().database_url, min_size=1, max_size=10, init=_init_connection
-    )
+    _pool = await connect(get_settings().database_url)
     return _pool
 
 
